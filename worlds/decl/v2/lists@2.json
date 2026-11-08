@@ -1,0 +1,1248 @@
+{
+  "schema": "opulse.world/2",
+  "world": "lists",
+  "version": 2,
+  "dialect": "atoms-v2",
+  "title": "Tools from empty lists",
+  "source": {
+    "title_zh": "空表长出工具"
+  },
+  "params": {
+    "exhibit_max_length": 512,
+    "exhibit_items": [
+      -2,
+      -1,
+      0,
+      1,
+      2
+    ]
+  },
+  "constants": {},
+  "objects": [
+    {
+      "kind": "object",
+      "name": "int",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Signed integer element and exact inversion count."
+    },
+    {
+      "kind": "object",
+      "name": "bool",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Boolean result card."
+    },
+    {
+      "kind": "object",
+      "name": "list",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [
+        "list"
+      ],
+      "valid": {
+        "host": "opulse.worlds_v2.lists.hosts:list_valid",
+        "digest": "98f2c0750853b3cb62a269f6e2f4d9877d237853ed45aaa6a128a8da011b2c85"
+      },
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Finite homogeneous sequence; nil terminates every cons chain, including lists of 512 elements."
+    },
+    {
+      "kind": "object",
+      "name": "nonempty",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Output-sort placeholder; the nonempty refinement is invented in layer one."
+    },
+    {
+      "kind": "object",
+      "name": "pair",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Public generic product carrier."
+    },
+    {
+      "kind": "object",
+      "name": "run",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Public generic product carrier."
+    }
+  ],
+  "operations": [
+    {
+      "kind": "operation",
+      "name": "cons",
+      "symbol": "cons",
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "item",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "items",
+          "sort": "list",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "list",
+        "enter": "bottom"
+      },
+      "rule": "Prepend one integer to a finite list.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.lists.hosts:cons",
+        "digest": "86c9bb2c1321474c506beaf420280961f1a7d7b9b2764562493198d4f5e18797"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "snoc",
+      "symbol": "snoc",
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "item",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "items",
+          "sort": "list",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "list",
+        "enter": "bottom"
+      },
+      "rule": "Append one integer to a finite list.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.lists.hosts:snoc",
+        "digest": "8ec3b3e62954bfeef2397db8a0fc1b86d0d4e60f3dba6057e4d5513ed4365185"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "head",
+      "symbol": "head",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "items",
+          "sort": "list",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Return the first integer; empty list fails.",
+      "errors": [
+        "empty",
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.lists.hosts:head",
+        "digest": "7a89da3c3a20916b69d85758b0950c4f79138019021144e6f89d5d4d117d95b3"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "tail",
+      "symbol": "tail",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "items",
+          "sort": "list",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "list",
+        "enter": "bottom"
+      },
+      "rule": "Return the remaining list; empty list fails.",
+      "errors": [
+        "empty",
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.lists.hosts:tail",
+        "digest": "4ecb5a8a89d9b85d6da8d6b601b83383f48ede975b29ddd14e2878bca3481a85"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "is_empty",
+      "symbol": "is_empty",
+      "role": "decide",
+      "inputs": [
+        {
+          "name": "items",
+          "sort": "list",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Test whether a finite list is nil.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.lists.hosts:is_empty",
+        "digest": "e3dfcf88ed5bd5242c4aa7770f1a4feeacaa63de072d1dbe90ccb049fba3dafd"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "length",
+      "symbol": "length",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "items",
+          "sort": "list",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Count list nodes to measure structural recursion.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.lists.hosts:length",
+        "digest": "b893a65a1dd7ae505a6b18e0466d39490c7c9d90ce1cec86b29e436b6bd5f4f6"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "items",
+      "symbol": "items",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "items",
+          "sort": "list",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "list",
+        "enter": "bottom"
+      },
+      "rule": "Read the public items and their order without changing them.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.lists.hosts:items",
+        "digest": "ba8bb4ee7a700e0db84522e39412c500aafdc404c2c319157771af514444d9b1"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "same_list",
+      "symbol": "same_list",
+      "role": "relate",
+      "inputs": [
+        {
+          "name": "left",
+          "sort": "list",
+          "enter": "bottom"
+        },
+        {
+          "name": "right",
+          "sort": "list",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Generic structural equality of two ordered finite lists.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.lists.hosts:same_list",
+        "digest": "fadda5432e3d4c598a06c2ae582fa4e654f781062e8cc7b895147c2f05bb3dbc"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "nil",
+      "symbol": "nil",
+      "role": "transform",
+      "inputs": [],
+      "output": {
+        "sort": "list",
+        "enter": "bottom"
+      },
+      "rule": "Generic public nil constructor, accessor, comparison or list primitive.",
+      "errors": [
+        "invalid",
+        "empty"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.lists.hosts:nil",
+        "digest": "111aa4cedd69dad2e8774704ff4b587fb7ceafb8202b6803aa47c99701a0510b"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "lt",
+      "symbol": "lt",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Generic public lt constructor, accessor, comparison or list primitive.",
+      "errors": [
+        "invalid",
+        "empty"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.lists.hosts:lt",
+        "digest": "c39723504b51a0a0535eba3e90c395d7aefd28799c9c0ad47babf44fed7fda0d"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "le",
+      "symbol": "le",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Generic public le constructor, accessor, comparison or list primitive.",
+      "errors": [
+        "invalid",
+        "empty"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.lists.hosts:le",
+        "digest": "e8a942031cd1f58861b952abb065f95b3a7731d0a26b94d431743cefdae65fdd"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "ge",
+      "symbol": "ge",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Compare two integers in descending order.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.lists.hosts:ge",
+        "digest": "65781c58536c605a157a25c935b322a79fbdc956b5511ae4466018440eddc891"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "eq",
+      "symbol": "eq",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Generic public eq constructor, accessor, comparison or list primitive.",
+      "errors": [
+        "invalid",
+        "empty"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.lists.hosts:eq",
+        "digest": "21d8b0dd9ce8350e7f6c76ab9f70fe300dfb801ae19cc6ba016997ce6291e9ba"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "ne",
+      "symbol": "ne",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Generic public ne constructor, accessor, comparison or list primitive.",
+      "errors": [
+        "invalid",
+        "empty"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.lists.hosts:ne",
+        "digest": "5aebf5e4aff66eaa84c19bf0186383c1b5441bdf87e8b09c23389cded0693378"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "add",
+      "symbol": "add",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Generic public add constructor, accessor, comparison or list primitive.",
+      "errors": [
+        "invalid",
+        "empty"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.lists.hosts:add",
+        "digest": "82d52b971906e3b72e95576158010da795f8b779e24a44a2cf06fe423ff2d352"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "sub",
+      "symbol": "sub",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Generic public sub constructor, accessor, comparison or list primitive.",
+      "errors": [
+        "invalid",
+        "empty"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.lists.hosts:sub",
+        "digest": "e7807c5473f5c569514d7a26e3c78c88b64a901375bdc9b4b344a55613590e9c"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "half_floor",
+      "symbol": "half_floor",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Generic public half_floor constructor, accessor, comparison or list primitive.",
+      "errors": [
+        "invalid",
+        "empty"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.lists.hosts:half_floor",
+        "digest": "c70e884e9afbcd8d18c79966875e2d9055fcbcbcf55dce6782748fe2e276052b"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "pair",
+      "symbol": "pair",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "list",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "pair",
+        "enter": "bottom"
+      },
+      "rule": "Generic public pair constructor, accessor, comparison or list primitive.",
+      "errors": [
+        "invalid",
+        "empty"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.lists.hosts:pair",
+        "digest": "cf723bf1347d2fd5c28a33594eb88c180b69b04517b6c7dc0cb600d46cef03d5"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "first",
+      "symbol": "first",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "pair",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "list",
+        "enter": "bottom"
+      },
+      "rule": "Generic public first constructor, accessor, comparison or list primitive.",
+      "errors": [
+        "invalid",
+        "empty"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.lists.hosts:first",
+        "digest": "de7d55aaf9f86e97b6b0c5403c9c259eae97db467edcbef50be966cca181e501"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "second",
+      "symbol": "second",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "pair",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Generic public second constructor, accessor, comparison or list primitive.",
+      "errors": [
+        "invalid",
+        "empty"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.lists.hosts:second",
+        "digest": "cc27962393ac72161b3de91e2f5177aea18592d7b47dbad738152bb55fed71cb"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "split_at",
+      "symbol": "split_at",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "list",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "pair",
+        "enter": "bottom"
+      },
+      "rule": "Generic public split_at constructor, accessor, comparison or list primitive.",
+      "errors": [
+        "invalid",
+        "empty"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.lists.hosts:split_at",
+        "digest": "7be02faacd5ed5251b406fe6166f3f894c7287929e196edb323c13e46c27e074"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "append",
+      "symbol": "append",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "list",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "list",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "list",
+        "enter": "bottom"
+      },
+      "rule": "Generic public append constructor, accessor, comparison or list primitive.",
+      "errors": [
+        "invalid",
+        "empty"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.lists.hosts:append",
+        "digest": "ab563296952b97adc7b0e42ef135043c75441075937ad50b79639617811f8f1d"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "nth",
+      "symbol": "nth",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "list",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Generic public nth constructor, accessor, comparison or list primitive.",
+      "errors": [
+        "invalid",
+        "empty"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.lists.hosts:nth",
+        "digest": "791601c4f19818c7dcc2280970306e8e29e705078b3fc9bedd8e3bd4a95b126d"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "replace_at",
+      "symbol": "replace_at",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "list",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg2",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "list",
+        "enter": "bottom"
+      },
+      "rule": "Generic public replace_at constructor, accessor, comparison or list primitive.",
+      "errors": [
+        "invalid",
+        "empty"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.lists.hosts:replace_at",
+        "digest": "3c8a3dc9ffd3cae04138400bbd68e417c89e289d8be026e31799b4b8019f5a5e"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "run",
+      "symbol": "run",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "pair",
+        "enter": "bottom"
+      },
+      "rule": "Generic public run constructor, accessor, comparison or list primitive.",
+      "errors": [
+        "invalid",
+        "empty"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.lists.hosts:run",
+        "digest": "a8a01f88a9032159b98a07c8cab61ab5c07282e68eca28b5814d64886c00bc51"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "key",
+      "symbol": "key",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "pair",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Generic public key constructor, accessor, comparison or list primitive.",
+      "errors": [
+        "invalid",
+        "empty"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.lists.hosts:key",
+        "digest": "d5e30b2b8c3f81adaf9248bbcd7d1ed0b33b4b3afa58f4b50911325153bbfe2b"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "count",
+      "symbol": "count",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "pair",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Generic public count constructor, accessor, comparison or list primitive.",
+      "errors": [
+        "invalid",
+        "empty"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.lists.hosts:count",
+        "digest": "e2e580b9b70628038af3d9ac0bee72f1b96ca11e6f5aad4316725071d69e4d17"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "second_list",
+      "symbol": "second_list",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "pair",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "list",
+        "enter": "bottom"
+      },
+      "rule": "Generic public second constructor, accessor, comparison or list primitive.",
+      "errors": [
+        "invalid",
+        "empty"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.lists.hosts:second_list",
+        "digest": "cc27962393ac72161b3de91e2f5177aea18592d7b47dbad738152bb55fed71cb"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "pair_lists",
+      "symbol": "pair_lists",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "list",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "list",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "pair",
+        "enter": "bottom"
+      },
+      "rule": "Generic public pair constructor, accessor, comparison or list primitive.",
+      "errors": [
+        "invalid",
+        "empty"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.lists.hosts:pair_lists",
+        "digest": "cf723bf1347d2fd5c28a33594eb88c180b69b04517b6c7dc0cb600d46cef03d5"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "eq_bool",
+      "symbol": "eq_bool",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "bool",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "bool",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Generic public eq constructor, accessor, comparison or list primitive.",
+      "errors": [
+        "invalid",
+        "empty"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.lists.hosts:eq_bool",
+        "digest": "21d8b0dd9ce8350e7f6c76ab9f70fe300dfb801ae19cc6ba016997ce6291e9ba"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "head_run",
+      "symbol": "head_run",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "items",
+          "sort": "list",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "run",
+        "enter": "bottom"
+      },
+      "rule": "Return the first integer; empty list fails.",
+      "errors": [
+        "empty",
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.lists.hosts:head_run",
+        "digest": "7a89da3c3a20916b69d85758b0950c4f79138019021144e6f89d5d4d117d95b3"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    }
+  ],
+  "combinators": {
+    "nodes": [
+      "Var",
+      "Lit",
+      "Call",
+      "Let",
+      "Case",
+      "Rec"
+    ],
+    "library": [
+      {
+        "name": "then",
+        "params": [
+          "f",
+          "g",
+          "source"
+        ],
+        "op_params": [
+          "f",
+          "g"
+        ],
+        "body": {
+          "node": "Call",
+          "fn": "g",
+          "args": [
+            {
+              "node": "Call",
+              "fn": "f",
+              "args": [
+                {
+                  "node": "Var",
+                  "name": "source"
+                }
+              ]
+            }
+          ]
+        },
+        "unfold_rule": "substitute"
+      }
+    ],
+    "recursion": "measure"
+  },
+  "observation": {
+    "truth": "list",
+    "probes": [
+      {
+        "name": "items",
+        "sort": "list",
+        "reads": "list",
+        "reveals": [
+          "items",
+          "order"
+        ],
+        "impl": {
+          "host": "opulse.worlds_v2.lists.hosts:items",
+          "digest": "ba8bb4ee7a700e0db84522e39412c500aafdc404c2c319157771af514444d9b1"
+        }
+      },
+      {
+        "name": "length",
+        "sort": "int",
+        "reads": "list",
+        "reveals": [
+          "length"
+        ],
+        "impl": {
+          "host": "opulse.worlds_v2.lists.hosts:length",
+          "digest": "b893a65a1dd7ae505a6b18e0466d39490c7c9d90ce1cec86b29e436b6bd5f4f6"
+        }
+      }
+    ],
+    "capabilities": {
+      "learner": {
+        "channels": [
+          "public_items"
+        ],
+        "probes": [
+          "items",
+          "length"
+        ]
+      }
+    },
+    "show": {
+      "input": "public_list",
+      "result": "public_items"
+    },
+    "judge_view": "full_state"
+  },
+  "codec": {},
+  "lock": {
+    "host_digests": {
+      "cons": "86c9bb2c1321474c506beaf420280961f1a7d7b9b2764562493198d4f5e18797",
+      "snoc": "8ec3b3e62954bfeef2397db8a0fc1b86d0d4e60f3dba6057e4d5513ed4365185",
+      "head": "7a89da3c3a20916b69d85758b0950c4f79138019021144e6f89d5d4d117d95b3",
+      "tail": "4ecb5a8a89d9b85d6da8d6b601b83383f48ede975b29ddd14e2878bca3481a85",
+      "is_empty": "e3dfcf88ed5bd5242c4aa7770f1a4feeacaa63de072d1dbe90ccb049fba3dafd",
+      "length": "b893a65a1dd7ae505a6b18e0466d39490c7c9d90ce1cec86b29e436b6bd5f4f6",
+      "items": "ba8bb4ee7a700e0db84522e39412c500aafdc404c2c319157771af514444d9b1",
+      "same_list": "fadda5432e3d4c598a06c2ae582fa4e654f781062e8cc7b895147c2f05bb3dbc",
+      "nil": "111aa4cedd69dad2e8774704ff4b587fb7ceafb8202b6803aa47c99701a0510b",
+      "lt": "c39723504b51a0a0535eba3e90c395d7aefd28799c9c0ad47babf44fed7fda0d",
+      "le": "e8a942031cd1f58861b952abb065f95b3a7731d0a26b94d431743cefdae65fdd",
+      "ge": "65781c58536c605a157a25c935b322a79fbdc956b5511ae4466018440eddc891",
+      "eq": "21d8b0dd9ce8350e7f6c76ab9f70fe300dfb801ae19cc6ba016997ce6291e9ba",
+      "ne": "5aebf5e4aff66eaa84c19bf0186383c1b5441bdf87e8b09c23389cded0693378",
+      "add": "82d52b971906e3b72e95576158010da795f8b779e24a44a2cf06fe423ff2d352",
+      "sub": "e7807c5473f5c569514d7a26e3c78c88b64a901375bdc9b4b344a55613590e9c",
+      "half_floor": "c70e884e9afbcd8d18c79966875e2d9055fcbcbcf55dce6782748fe2e276052b",
+      "pair": "cf723bf1347d2fd5c28a33594eb88c180b69b04517b6c7dc0cb600d46cef03d5",
+      "first": "de7d55aaf9f86e97b6b0c5403c9c259eae97db467edcbef50be966cca181e501",
+      "second": "cc27962393ac72161b3de91e2f5177aea18592d7b47dbad738152bb55fed71cb",
+      "split_at": "7be02faacd5ed5251b406fe6166f3f894c7287929e196edb323c13e46c27e074",
+      "append": "ab563296952b97adc7b0e42ef135043c75441075937ad50b79639617811f8f1d",
+      "nth": "791601c4f19818c7dcc2280970306e8e29e705078b3fc9bedd8e3bd4a95b126d",
+      "replace_at": "3c8a3dc9ffd3cae04138400bbd68e417c89e289d8be026e31799b4b8019f5a5e",
+      "run": "a8a01f88a9032159b98a07c8cab61ab5c07282e68eca28b5814d64886c00bc51",
+      "key": "d5e30b2b8c3f81adaf9248bbcd7d1ed0b33b4b3afa58f4b50911325153bbfe2b",
+      "count": "e2e580b9b70628038af3d9ac0bee72f1b96ca11e6f5aad4316725071d69e4d17",
+      "second_list": "cc27962393ac72161b3de91e2f5177aea18592d7b47dbad738152bb55fed71cb",
+      "pair_lists": "cf723bf1347d2fd5c28a33594eb88c180b69b04517b6c7dc0cb600d46cef03d5",
+      "eq_bool": "21d8b0dd9ce8350e7f6c76ab9f70fe300dfb801ae19cc6ba016997ce6291e9ba",
+      "head_run": "7a89da3c3a20916b69d85758b0950c4f79138019021144e6f89d5d4d117d95b3",
+      "list.valid": "98f2c0750853b3cb62a269f6e2f4d9877d237853ed45aaa6a128a8da011b2c85",
+      "probe.items": "ba8bb4ee7a700e0db84522e39412c500aafdc404c2c319157771af514444d9b1",
+      "probe.length": "b893a65a1dd7ae505a6b18e0466d39490c7c9d90ce1cec86b29e436b6bd5f4f6"
+    },
+    "constants_hash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+    "world_hash": "ae5aed3de9474ff6452db7581a8c34dcef2eeea50752e6994a6eb263663eee04"
+  }
+}

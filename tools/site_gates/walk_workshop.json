@@ -1,0 +1,15 @@
+{
+  "pages": {"lab": "/play/"},
+  "urls": ["lab"],
+  "steps": [
+    {"wait": {"text": "Run preview", "timeout": 15}},
+    {"click_text": "Operation"},
+    {"click_text": "Example"},
+    {"fill": {"selector": "[data-a2='define'] select[aria-label='Claims to equal']", "value": "mul"}},
+    {"click_text": "Run preview"},
+    {"wait": {"text": "Ready to store this case-scoped preview result.", "timeout": 15}},
+    {"assert_text": "Ready to store this case-scoped preview result."},
+    {"click_text": "Store in session"},
+    {"assert_text": "Stored for this session with a browser-only, case-scoped comparison."}
+  ]
+}

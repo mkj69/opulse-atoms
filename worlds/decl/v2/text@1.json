@@ -1,0 +1,1531 @@
+{
+  "schema": "opulse.world/2",
+  "world": "text",
+  "version": 1,
+  "dialect": "atoms-v2",
+  "title": "Weighted Word Lattice",
+  "source": {
+    "title_zh": "词与空格：加权分词格"
+  },
+  "params": {
+    "alphabet": [
+      "a",
+      "b",
+      " "
+    ],
+    "max_length": 64,
+    "max_lexicon": 16
+  },
+  "constants": {},
+  "objects": [
+    {
+      "kind": "object",
+      "name": "str",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": {
+        "repr": "Python str",
+        "codec": "opulse.value/2"
+      },
+      "doc": "Host Unicode code points."
+    },
+    {
+      "kind": "object",
+      "name": "int",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": {
+        "repr": "Python int",
+        "codec": "opulse.value/2"
+      },
+      "doc": "Exact host integer."
+    },
+    {
+      "kind": "object",
+      "name": "bool",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": {
+        "repr": "Python bool",
+        "codec": "opulse.value/2"
+      },
+      "doc": "Boolean truth card."
+    },
+    {
+      "kind": "object",
+      "name": "any",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": {
+        "repr": "Python any",
+        "codec": "opulse.value/2"
+      },
+      "doc": "Generic value."
+    },
+    {
+      "kind": "object",
+      "name": "Text",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": {
+        "repr": "Python Text",
+        "codec": "opulse.value/2"
+      },
+      "doc": "At most 64 code points over a, b, and space."
+    },
+    {
+      "kind": "object",
+      "name": "Char",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": {
+        "repr": "Python Char",
+        "codec": "opulse.value/2"
+      },
+      "doc": "One permitted code point."
+    },
+    {
+      "kind": "object",
+      "name": "Nat",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": {
+        "repr": "Python Nat",
+        "codec": "opulse.value/2"
+      },
+      "doc": "Nonnegative exact integer."
+    },
+    {
+      "kind": "object",
+      "name": "List",
+      "form": "compose",
+      "base": null,
+      "tags": {
+        "list": {
+          "items": "any"
+        }
+      },
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Finite ordered list."
+    },
+    {
+      "kind": "object",
+      "name": "Pair",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": {
+        "repr": "opulse.atoms.values.Card",
+        "codec": "opulse.value/2"
+      },
+      "doc": "Ordered two-field card."
+    },
+    {
+      "kind": "object",
+      "name": "Option",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": {
+        "repr": "opulse.atoms.values.Card",
+        "codec": "opulse.value/2"
+      },
+      "doc": "None or some value."
+    },
+    {
+      "kind": "object",
+      "name": "Span",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": {
+        "repr": "opulse.atoms.values.Card",
+        "codec": "opulse.value/2"
+      },
+      "doc": "Half-open span with weight."
+    }
+  ],
+  "operations": [
+    {
+      "kind": "operation",
+      "name": "concat",
+      "symbol": "concat",
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "left",
+          "sort": "str",
+          "enter": "bottom"
+        },
+        {
+          "name": "right",
+          "sort": "str",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "str",
+        "enter": "bottom"
+      },
+      "rule": "Append public code points up to length 64.",
+      "errors": [
+        "text_domain_or_size"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.text.hosts:concat",
+        "digest": "bd5551f19de436214211a298c5c5dfe247f2ec9c5f7f5b2ef019c8837de18bda"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "slice_text",
+      "symbol": "slice_text",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "str",
+          "enter": "bottom"
+        },
+        {
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "str",
+        "enter": "bottom"
+      },
+      "rule": "Slice a valid half-open code point interval.",
+      "errors": [
+        "span"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.text.hosts:slice_text",
+        "digest": "d845a2ef7c87e2bf18a48bb9ebde8b7f1fde45210c339442a1e34d8839ad0b60"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "add",
+      "symbol": "add",
+      "role": "combine",
+      "inputs": [
+        {
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Exact nonnegative sum.",
+      "errors": [
+        "nat"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.text.hosts:add",
+        "digest": "7d521fb40b1cd15d43c83ca2ebbe0cf746050fee0e57200c220998ae85ec172a"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "sub_nat",
+      "symbol": "sub_nat",
+      "role": "combine",
+      "inputs": [
+        {
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Subtract with nonnegative remainder.",
+      "errors": [
+        "nat_subtraction"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.text.hosts:sub_nat",
+        "digest": "e30060703acc5044d368b70441b90b001ad16a73cb1107f9c8d5cae7cf8e19be"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "length",
+      "symbol": "length",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "str",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Count Unicode code points.",
+      "errors": [
+        "text_domain_or_size"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.text.hosts:length",
+        "digest": "145f900e831b580e548b6c9ee8550a75d0e20cb0973c2d35b2b10f990d6565cd"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "seq_empty",
+      "symbol": "seq_empty",
+      "role": "transform",
+      "inputs": [],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Construct empty finite list.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.text.hosts:seq_empty",
+        "digest": "466383fef8f2dca9ca38d991e94db18643ef1253066914e3c846e355bb7c3564"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "seq_is_empty",
+      "symbol": "seq_is_empty",
+      "role": "decide",
+      "inputs": [
+        {
+          "sort": "List",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Test empty list.",
+      "errors": [
+        "list"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.text.hosts:seq_is_empty",
+        "digest": "842b292ba5a7d3ac01b34492b03286f0f03d05987f93dde9b6a26c948d227a40"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "seq_head",
+      "symbol": "seq_head",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "List",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "any",
+        "enter": "bottom"
+      },
+      "rule": "First list item.",
+      "errors": [
+        "empty"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.text.hosts:seq_head",
+        "digest": "1e31659e29d0a357764f147cc921122f8f0405b8cf8c000f90fe10539c775332"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "seq_tail",
+      "symbol": "seq_tail",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "List",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Remaining list items.",
+      "errors": [
+        "empty"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.text.hosts:seq_tail",
+        "digest": "d4e0f2a543e523b58d790330ccf96d39ff447031166f453fc5413709f5641aad"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "seq_cons",
+      "symbol": "seq_cons",
+      "role": "combine",
+      "inputs": [
+        {
+          "sort": "any",
+          "enter": "bottom"
+        },
+        {
+          "sort": "List",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Prepend item to finite list.",
+      "errors": [
+        "list"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.text.hosts:seq_cons",
+        "digest": "7c0f58d309a07ba05c50444c228844c16ea962a6b29a04dea233e2dcc645bfbc"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "seq_length",
+      "symbol": "seq_length",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "List",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Count list entries.",
+      "errors": [
+        "list"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.text.hosts:seq_length",
+        "digest": "240df54b586b48a6c525dd8923b0bef8f8fa0f9440120dc7a741b3b009e1ed99"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "seq_get",
+      "symbol": "seq_get",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "List",
+          "enter": "bottom"
+        },
+        {
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "any",
+        "enter": "bottom"
+      },
+      "rule": "Read indexed list entry.",
+      "errors": [
+        "index"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.text.hosts:seq_get",
+        "digest": "3c9169e1564222af12c5dbf7092944f27906f407ebaa9531943e43e977b9c97a"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "seq_set",
+      "symbol": "seq_set",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "List",
+          "enter": "bottom"
+        },
+        {
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Replace indexed list entry immutably.",
+      "errors": [
+        "index"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.text.hosts:seq_set",
+        "digest": "66799fc103f3501835f97041834aade5779871dec4b6ea4f821a0d3759356eec"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "seq_append",
+      "symbol": "seq_append",
+      "role": "combine",
+      "inputs": [
+        {
+          "sort": "List",
+          "enter": "bottom"
+        },
+        {
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Append item to list.",
+      "errors": [
+        "list"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.text.hosts:seq_append",
+        "digest": "0c14047f1ce550e4f2772d256232a12ea82961767f329aaec553cecfe1bad6c1"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "seq_repeat",
+      "symbol": "seq_repeat",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "any",
+          "enter": "bottom"
+        },
+        {
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Repeat a value at most 65 times.",
+      "errors": [
+        "size"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.text.hosts:seq_repeat",
+        "digest": "e7aecd38009cf29b0607a7ffef5ac6d503461c14b5b25459eef9a8769577d8b2"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "seq_sort",
+      "symbol": "seq_sort",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "List",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Sort list by deterministic structural representation.",
+      "errors": [
+        "list"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.text.hosts:seq_sort",
+        "digest": "ad5510b9293d2f45c99dd86a8d1303e270cd9e015439cf617d8ac0da9842685f"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "seq_reverse",
+      "symbol": "seq_reverse",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "List",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Reverse the ordered list.",
+      "errors": [
+        "list"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.text.hosts:seq_reverse",
+        "digest": "765d5587f25cfe9abef73c5b0523ad5d5cd9ca59897b3838b3f5a15b49d61ce5"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "pair",
+      "symbol": "pair",
+      "role": "combine",
+      "inputs": [
+        {
+          "sort": "any",
+          "enter": "bottom"
+        },
+        {
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Pair",
+        "enter": "bottom"
+      },
+      "rule": "Construct a generic pair.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.text.hosts:pair",
+        "digest": "632026418b249f274a6e4d2658a310666b6632402243babb5cab642e8da48840"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "first",
+      "symbol": "first",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "Pair",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "any",
+        "enter": "bottom"
+      },
+      "rule": "First pair field.",
+      "errors": [
+        "pair"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.text.hosts:first",
+        "digest": "5dab3d6bf1a4f2a584d22db3e3dd2431e5ebc77f896e4798e5affceb45451360"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "second",
+      "symbol": "second",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "Pair",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "any",
+        "enter": "bottom"
+      },
+      "rule": "Second pair field.",
+      "errors": [
+        "pair"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.text.hosts:second",
+        "digest": "b788eb01d5752763045580cfa64f115fabd3424076f16f83e8e8a0f01cbc7d21"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "span",
+      "symbol": "span",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "sort": "any",
+          "enter": "bottom"
+        },
+        {
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Span",
+        "enter": "bottom"
+      },
+      "rule": "Construct half-open span.",
+      "errors": [
+        "span"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.text.hosts:span",
+        "digest": "b11e7fcdb8f25c0b76d5aa2f6a6527ebd799c41b5f8cda2f163972f513e684b6"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "span_start",
+      "symbol": "span_start",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "Span",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Read span start.",
+      "errors": [
+        "span"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.text.hosts:span_start",
+        "digest": "98c206a769ccbef76d8750755187cca1985e2094ceeb25fbbf1f263c863891b1"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "span_end",
+      "symbol": "span_end",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "Span",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Read span end.",
+      "errors": [
+        "span"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.text.hosts:span_end",
+        "digest": "9b0c41523fe563f50ed6529a0d91c6160b52eca4bdcc188d8d3c02b62cf76096"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "span_word",
+      "symbol": "span_word",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "Span",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "any",
+        "enter": "bottom"
+      },
+      "rule": "Read span word.",
+      "errors": [
+        "span"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.text.hosts:span_word",
+        "digest": "0ac652abc361c13edbaef6728bd0bd4f923198416924b352e03d77d34875a2ae"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "span_cost",
+      "symbol": "span_cost",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "Span",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Read span weight.",
+      "errors": [
+        "span"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.text.hosts:span_cost",
+        "digest": "b9298db3825021d0f846a8c7ea610aa4d83b8715fcdcd8c5032f1a9e7f224b7a"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "equal",
+      "symbol": "equal",
+      "role": "decide",
+      "inputs": [
+        {
+          "sort": "any",
+          "enter": "bottom"
+        },
+        {
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Structural equality.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.text.hosts:equal",
+        "digest": "9ef47e6d0fb7d1f617e7fd1a9634e6978fb5eeda2aa8fb3ef94f17cfa02365fb"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "less",
+      "symbol": "less",
+      "role": "decide",
+      "inputs": [
+        {
+          "sort": "any",
+          "enter": "bottom"
+        },
+        {
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Strict comparison of same-typed values.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.text.hosts:less",
+        "digest": "31d248ecdfcde565cec1acbb17c7cd8896e11aa08449869af46274003e1ed772"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "le",
+      "symbol": "le",
+      "role": "decide",
+      "inputs": [
+        {
+          "sort": "any",
+          "enter": "bottom"
+        },
+        {
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Inclusive comparison of same-typed values.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.text.hosts:le",
+        "digest": "970e75b23d1a3b0998fc93548d10141dc3aa8a0a999f0b4ba9b291502f82cbe9"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "not_equal",
+      "symbol": "not_equal",
+      "role": "decide",
+      "inputs": [
+        {
+          "sort": "any",
+          "enter": "bottom"
+        },
+        {
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Structural inequality.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.text.hosts:not_equal",
+        "digest": "1691840be0cccef95901ce95418bbe6956c4c41c3934316306143ce8a899fcbd"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "is_nat",
+      "symbol": "is_nat",
+      "role": "decide",
+      "inputs": [
+        {
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Validate nonnegative integer.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.text.hosts:is_nat",
+        "digest": "d78a5c1b77b34e7354bab784e54c8710f0addeb57746aec228c93b14c2264ed7"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "is_text",
+      "symbol": "is_text",
+      "role": "decide",
+      "inputs": [
+        {
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Validate finite text.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.text.hosts:is_text",
+        "digest": "38dbe591fda4873abad2e56d71b9cda6f98d3536b13e882bccad6da48f37e308"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "seq_merge",
+      "symbol": "seq_merge",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "List",
+          "enter": "bottom"
+        },
+        {
+          "sort": "List",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Concatenate two lists.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.text.hosts:seq_merge",
+        "digest": "a00d3bf24d8ce99f5f3f3aaa548ad1c0693acc67f5829d17fe7de820681053e8"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "seq_valid",
+      "symbol": "seq_valid",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Check the generic list tag.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.text.hosts:seq_valid",
+        "digest": "dcc586dcb7e271ff270db2b89b94553df6d32bfc5c17aaaa1e35dc23a8b54793"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "identity",
+      "symbol": "identity",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "any",
+        "enter": "bottom"
+      },
+      "rule": "Return the input unchanged.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.text.hosts:identity",
+        "digest": "edaaeb1663f87186a7d2b9942f72c68fdfb45038cadc123c80897872606d0c10"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "card_is",
+      "symbol": "card_is",
+      "role": "decide",
+      "inputs": [
+        {
+          "sort": "any",
+          "enter": "bottom"
+        },
+        {
+          "sort": "str",
+          "enter": "bottom"
+        },
+        {
+          "sort": "str",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Check the sort and tag of a generic card.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.text.hosts:card_is",
+        "digest": "8abfe1020bd3d312bb109ae75b28d81f8eacbc238ee9031f56e00850b5fee49a"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    }
+  ],
+  "combinators": {
+    "nodes": [
+      "Var",
+      "Lit",
+      "Call",
+      "Let",
+      "Case",
+      "Rec"
+    ],
+    "library": [
+      {
+        "name": "map_chars",
+        "params": [
+          "transform",
+          "text"
+        ],
+        "op_params": [
+          "transform"
+        ],
+        "body": {
+          "node": "Rec",
+          "fn": "map_char_local",
+          "params": [
+            "remaining"
+          ],
+          "body": {
+            "node": "Case",
+            "arms": [
+              [
+                {
+                  "node": "Test",
+                  "expr": {
+                    "node": "Call",
+                    "fn": "seq_is_empty",
+                    "args": [
+                      {
+                        "node": "Var",
+                        "name": "remaining"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "node": "Lit",
+                  "value": {
+                    "t": "str",
+                    "v": ""
+                  }
+                }
+              ]
+            ],
+            "default": {
+              "node": "Let",
+              "name": "mapped",
+              "value": {
+                "node": "Call",
+                "fn": "transform",
+                "args": [
+                  {
+                    "node": "Call",
+                    "fn": "second",
+                    "args": [
+                      {
+                        "node": "Call",
+                        "fn": "seq_head",
+                        "args": [
+                          {
+                            "node": "Var",
+                            "name": "remaining"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "body": {
+                "node": "Case",
+                "arms": [
+                  [
+                    {
+                      "node": "Test",
+                      "expr": {
+                        "node": "Call",
+                        "fn": "is_text",
+                        "args": [
+                          {
+                            "node": "Var",
+                            "name": "mapped"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "node": "Case",
+                      "arms": [
+                        [
+                          {
+                            "node": "Test",
+                            "expr": {
+                              "node": "Call",
+                              "fn": "equal",
+                              "args": [
+                                {
+                                  "node": "Call",
+                                  "fn": "length",
+                                  "args": [
+                                    {
+                                      "node": "Var",
+                                      "name": "mapped"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "node": "Lit",
+                                  "value": {
+                                    "t": "int",
+                                    "v": 1
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          {
+                            "node": "Call",
+                            "fn": "concat",
+                            "args": [
+                              {
+                                "node": "Var",
+                                "name": "mapped"
+                              },
+                              {
+                                "node": "Call",
+                                "fn": "map_char_local",
+                                "args": [
+                                  {
+                                    "node": "Call",
+                                    "fn": "seq_tail",
+                                    "args": [
+                                      {
+                                        "node": "Var",
+                                        "name": "remaining"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      ],
+                      "default": {
+                        "node": "Lit",
+                        "value": {
+                          "t": "bottom",
+                          "v": "char_step"
+                        }
+                      }
+                    }
+                  ]
+                ],
+                "default": {
+                  "node": "Lit",
+                  "value": {
+                    "t": "bottom",
+                    "v": "char_step"
+                  }
+                }
+              }
+            }
+          },
+          "args": [
+            {
+              "node": "Call",
+              "fn": "chars",
+              "args": [
+                {
+                  "node": "Var",
+                  "name": "text"
+                }
+              ]
+            }
+          ],
+          "measure": {
+            "node": "Call",
+            "fn": "seq_length",
+            "args": [
+              {
+                "node": "Var",
+                "name": "remaining"
+              }
+            ]
+          },
+          "memo": false
+        },
+        "unfold_rule": "substitute"
+      }
+    ],
+    "recursion": "measure"
+  },
+  "observation": {
+    "truth": "Text",
+    "probes": [
+      {
+        "name": "chars",
+        "sort": "List",
+        "reads": "Text",
+        "reveals": [
+          "all public codepoints with zero-based indices"
+        ],
+        "impl": {
+          "host": "opulse.worlds_v2.text.hosts:chars",
+          "digest": "19b9b5975766ca892ec4ae85c0d65dbf9e6a0387bb49a697e6758a36c544fb90"
+        }
+      }
+    ],
+    "capabilities": {
+      "learner": {
+        "probes": "all"
+      }
+    },
+    "show": "Public code points only.",
+    "judge_view": "Full text is public."
+  },
+  "codec": {
+    "value": "opulse.value/2"
+  },
+  "lock": {
+    "host_digests": {
+      "concat": "bd5551f19de436214211a298c5c5dfe247f2ec9c5f7f5b2ef019c8837de18bda",
+      "slice_text": "d845a2ef7c87e2bf18a48bb9ebde8b7f1fde45210c339442a1e34d8839ad0b60",
+      "add": "7d521fb40b1cd15d43c83ca2ebbe0cf746050fee0e57200c220998ae85ec172a",
+      "sub_nat": "e30060703acc5044d368b70441b90b001ad16a73cb1107f9c8d5cae7cf8e19be",
+      "length": "145f900e831b580e548b6c9ee8550a75d0e20cb0973c2d35b2b10f990d6565cd",
+      "seq_empty": "466383fef8f2dca9ca38d991e94db18643ef1253066914e3c846e355bb7c3564",
+      "seq_is_empty": "842b292ba5a7d3ac01b34492b03286f0f03d05987f93dde9b6a26c948d227a40",
+      "seq_head": "1e31659e29d0a357764f147cc921122f8f0405b8cf8c000f90fe10539c775332",
+      "seq_tail": "d4e0f2a543e523b58d790330ccf96d39ff447031166f453fc5413709f5641aad",
+      "seq_cons": "7c0f58d309a07ba05c50444c228844c16ea962a6b29a04dea233e2dcc645bfbc",
+      "seq_length": "240df54b586b48a6c525dd8923b0bef8f8fa0f9440120dc7a741b3b009e1ed99",
+      "seq_get": "3c9169e1564222af12c5dbf7092944f27906f407ebaa9531943e43e977b9c97a",
+      "seq_set": "66799fc103f3501835f97041834aade5779871dec4b6ea4f821a0d3759356eec",
+      "seq_append": "0c14047f1ce550e4f2772d256232a12ea82961767f329aaec553cecfe1bad6c1",
+      "seq_repeat": "e7aecd38009cf29b0607a7ffef5ac6d503461c14b5b25459eef9a8769577d8b2",
+      "seq_sort": "ad5510b9293d2f45c99dd86a8d1303e270cd9e015439cf617d8ac0da9842685f",
+      "seq_reverse": "765d5587f25cfe9abef73c5b0523ad5d5cd9ca59897b3838b3f5a15b49d61ce5",
+      "pair": "632026418b249f274a6e4d2658a310666b6632402243babb5cab642e8da48840",
+      "first": "5dab3d6bf1a4f2a584d22db3e3dd2431e5ebc77f896e4798e5affceb45451360",
+      "second": "b788eb01d5752763045580cfa64f115fabd3424076f16f83e8e8a0f01cbc7d21",
+      "span": "b11e7fcdb8f25c0b76d5aa2f6a6527ebd799c41b5f8cda2f163972f513e684b6",
+      "span_start": "98c206a769ccbef76d8750755187cca1985e2094ceeb25fbbf1f263c863891b1",
+      "span_end": "9b0c41523fe563f50ed6529a0d91c6160b52eca4bdcc188d8d3c02b62cf76096",
+      "span_word": "0ac652abc361c13edbaef6728bd0bd4f923198416924b352e03d77d34875a2ae",
+      "span_cost": "b9298db3825021d0f846a8c7ea610aa4d83b8715fcdcd8c5032f1a9e7f224b7a",
+      "equal": "9ef47e6d0fb7d1f617e7fd1a9634e6978fb5eeda2aa8fb3ef94f17cfa02365fb",
+      "less": "31d248ecdfcde565cec1acbb17c7cd8896e11aa08449869af46274003e1ed772",
+      "le": "970e75b23d1a3b0998fc93548d10141dc3aa8a0a999f0b4ba9b291502f82cbe9",
+      "not_equal": "1691840be0cccef95901ce95418bbe6956c4c41c3934316306143ce8a899fcbd",
+      "is_nat": "d78a5c1b77b34e7354bab784e54c8710f0addeb57746aec228c93b14c2264ed7",
+      "is_text": "38dbe591fda4873abad2e56d71b9cda6f98d3536b13e882bccad6da48f37e308",
+      "seq_merge": "a00d3bf24d8ce99f5f3f3aaa548ad1c0693acc67f5829d17fe7de820681053e8",
+      "seq_valid": "dcc586dcb7e271ff270db2b89b94553df6d32bfc5c17aaaa1e35dc23a8b54793",
+      "identity": "edaaeb1663f87186a7d2b9942f72c68fdfb45038cadc123c80897872606d0c10",
+      "card_is": "8abfe1020bd3d312bb109ae75b28d81f8eacbc238ee9031f56e00850b5fee49a",
+      "probe.chars": "19b9b5975766ca892ec4ae85c0d65dbf9e6a0387bb49a697e6758a36c544fb90"
+    },
+    "constants_hash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+    "world_hash": "e2c804ac1b0bb1770b2878f3b9d84b6d82c1a91dc619017c75597ff8281ac09b"
+  }
+}

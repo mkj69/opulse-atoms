@@ -1,0 +1,1943 @@
+{
+  "title": "Conflict scheduling by combinators alone",
+  "source": {
+    "catalogue": "worlds/catalogue/depth/comb_only.json"
+  },
+  "codec": {},
+  "schema": "opulse.world/2",
+  "world": "comb_only",
+  "version": 1,
+  "dialect": "atoms-v2",
+  "params": {
+    "max_blocks": 12,
+    "max_width": 16
+  },
+  "constants": {},
+  "objects": [
+    {
+      "kind": "object",
+      "doc": "Finite blocks, seed, optional override and cross-block bridges.",
+      "name": "Plan",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null
+    },
+    {
+      "kind": "object",
+      "doc": "Immutable available, chosen, earned search state.",
+      "name": "State",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null
+    },
+    {
+      "kind": "object",
+      "doc": "Canonical finite vertex set, encoded as a bitset.",
+      "name": "Set",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null
+    },
+    {
+      "kind": "object",
+      "doc": "Finite ordered sequence.",
+      "name": "List",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null
+    },
+    {
+      "kind": "object",
+      "doc": "Finite ordered pair.",
+      "name": "Pair",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null
+    },
+    {
+      "kind": "object",
+      "doc": "Lexicographically ordered tuple.",
+      "name": "Tuple",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null
+    },
+    {
+      "kind": "object",
+      "doc": "Optional public value.",
+      "name": "Option",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null
+    },
+    {
+      "kind": "object",
+      "doc": "Ok, Bottom or resource Unknown.",
+      "name": "Outcome",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null
+    },
+    {
+      "kind": "object",
+      "name": "unknown",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null
+    },
+    {
+      "kind": "object",
+      "name": "int",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null
+    },
+    {
+      "kind": "object",
+      "name": "bool",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null
+    },
+    {
+      "kind": "object",
+      "doc": "Finite nonnegative integer literal.",
+      "name": "Nat",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null
+    },
+    {
+      "kind": "object",
+      "doc": "Finite signed integer literal.",
+      "name": "Int",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null
+    },
+    {
+      "kind": "object",
+      "doc": "Fixed boolean truth value.",
+      "name": "Bool",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null
+    }
+  ],
+  "operations": [
+    {
+      "kind": "operation",
+      "name": "weight",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "Plan",
+          "enter": "bottom",
+          "name": "arg0"
+        },
+        {
+          "sort": "int",
+          "enter": "bottom",
+          "name": "arg1"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public local primitive weight.",
+      "errors": [
+        "range",
+        "unavailable"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.comb_only.hosts:weight",
+        "digest": "a44ac5eafe4a9da03c29669e0fd4f95351876dab1eb3318866b78915f953bb51"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "adjacent",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "Plan",
+          "enter": "bottom",
+          "name": "arg0"
+        },
+        {
+          "sort": "int",
+          "enter": "bottom",
+          "name": "arg1"
+        }
+      ],
+      "output": {
+        "sort": "Set",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public local primitive adjacent.",
+      "errors": [
+        "range",
+        "unavailable"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.comb_only.hosts:adjacent",
+        "digest": "70d2fd5199e361cfd3279c1e93150b7c9f78ae7cb2c1625d27fc67d39a681ce7"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "start",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "Plan",
+          "enter": "bottom",
+          "name": "arg0"
+        }
+      ],
+      "output": {
+        "sort": "State",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public local primitive start.",
+      "errors": [
+        "range",
+        "unavailable"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.comb_only.hosts:start",
+        "digest": "5a70bf388a016ef46052571041a7a977f331cd607100b9e2aecafefa01f09404"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "take",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "State",
+          "enter": "bottom",
+          "name": "arg0"
+        },
+        {
+          "sort": "int",
+          "enter": "bottom",
+          "name": "arg1"
+        }
+      ],
+      "output": {
+        "sort": "State",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public local primitive take.",
+      "errors": [
+        "range",
+        "unavailable"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.comb_only.hosts:take",
+        "digest": "9efc9c8530cca9b906893ac4814c6fa67e089f8e238c2f393eec2bf499fae8c3"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "ban",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "State",
+          "enter": "bottom",
+          "name": "arg0"
+        },
+        {
+          "sort": "int",
+          "enter": "bottom",
+          "name": "arg1"
+        }
+      ],
+      "output": {
+        "sort": "State",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public local primitive ban.",
+      "errors": [
+        "range",
+        "unavailable"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.comb_only.hosts:ban",
+        "digest": "17d37bf8c067ff77d9eec7569857d547e88f3e3f5fe58c784a649e136be498a1"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "priority",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "Plan",
+          "enter": "bottom",
+          "name": "arg0"
+        },
+        {
+          "sort": "Set",
+          "enter": "bottom",
+          "name": "arg1"
+        },
+        {
+          "sort": "int",
+          "enter": "bottom",
+          "name": "arg2"
+        }
+      ],
+      "output": {
+        "sort": "Tuple",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public local primitive priority.",
+      "errors": [
+        "range",
+        "unavailable"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.comb_only.hosts:priority",
+        "digest": "b362ff6db23a5596633c219b48bd4c3868f19ef87addf6966d2c6172a14197f7"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "degree",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "Plan",
+          "enter": "bottom",
+          "name": "arg0"
+        },
+        {
+          "sort": "int",
+          "enter": "bottom",
+          "name": "arg1"
+        },
+        {
+          "sort": "Set",
+          "enter": "bottom",
+          "name": "arg2"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public local primitive degree.",
+      "errors": [
+        "range",
+        "unavailable"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.comb_only.hosts:degree",
+        "digest": "3c1dfd95e4d0a34172c0d4f82204bcffca81b23d580162057e7f4b5696b00313"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "add",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "int",
+          "enter": "bottom",
+          "name": "arg0"
+        },
+        {
+          "sort": "int",
+          "enter": "bottom",
+          "name": "arg1"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public local primitive add.",
+      "errors": [
+        "range",
+        "unavailable"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.comb_only.hosts:add",
+        "digest": "63098273a7aaa630762d6f145dfcf9c61c8c9b290c6ebeb2a05fea5854ccb476"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "identity",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "unknown",
+          "enter": "bottom",
+          "name": "arg0"
+        }
+      ],
+      "output": {
+        "sort": "unknown",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public local primitive identity.",
+      "errors": [
+        "range",
+        "unavailable"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.comb_only.hosts:identity",
+        "digest": "edaaeb1663f87186a7d2b9942f72c68fdfb45038cadc123c80897872606d0c10"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "union",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "Set",
+          "enter": "bottom",
+          "name": "arg0"
+        },
+        {
+          "sort": "Set",
+          "enter": "bottom",
+          "name": "arg1"
+        }
+      ],
+      "output": {
+        "sort": "Set",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public local primitive union.",
+      "errors": [
+        "range",
+        "unavailable"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.comb_only.hosts:union",
+        "digest": "3e0d99c69b9c95edcdfc78f432ff2e440800d0e8ce342aa8041023ea296ce096"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "popcount",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "Set",
+          "enter": "bottom",
+          "name": "arg0"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public local primitive popcount.",
+      "errors": [
+        "range",
+        "unavailable"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.comb_only.hosts:popcount",
+        "digest": "d19dc66918d0a0ccef0403d071453853cf5f8c2066681cc90ec7ca19b7320030"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "drop_lowest",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "Set",
+          "enter": "bottom",
+          "name": "arg0"
+        }
+      ],
+      "output": {
+        "sort": "Set",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public local primitive drop_lowest.",
+      "errors": [
+        "range",
+        "unavailable"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.comb_only.hosts:drop_lowest",
+        "digest": "fbd7fb2e1ba04634f0caeb8935f1b152f343a11aa76ded1e78a3b20fed2bdc60"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "split_mid",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "List",
+          "enter": "bottom",
+          "name": "arg0"
+        }
+      ],
+      "output": {
+        "sort": "Pair",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public local primitive split_mid.",
+      "errors": [
+        "range",
+        "unavailable"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.comb_only.hosts:split_mid",
+        "digest": "90d8dd49ec84795789cb45986a3e84691f1355f011ebd4477d7ed4b2bcf8df45"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "head",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "List",
+          "enter": "bottom",
+          "name": "arg0"
+        }
+      ],
+      "output": {
+        "sort": "unknown",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public local primitive head.",
+      "errors": [
+        "range",
+        "unavailable"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.comb_only.hosts:head",
+        "digest": "50d91f9f763d5a0a7d9c95e8814697222a71b4439fe6f5f414d9892ff88d7479"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "tail",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "List",
+          "enter": "bottom",
+          "name": "arg0"
+        }
+      ],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public local primitive tail.",
+      "errors": [
+        "range",
+        "unavailable"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.comb_only.hosts:tail",
+        "digest": "9021c6c12fc9cdce82312bcf01e309763159d21e1e3f89978eb452f9380da1d5"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "append",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "List",
+          "enter": "bottom",
+          "name": "arg0"
+        },
+        {
+          "sort": "unknown",
+          "enter": "bottom",
+          "name": "arg1"
+        }
+      ],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public local primitive append.",
+      "errors": [
+        "range",
+        "unavailable"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.comb_only.hosts:append",
+        "digest": "2f05ce48d992d89de00a17be26b5be52e4ae01b3f91a7c2dbfb4b62d8660e1b8"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "concat",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "List",
+          "enter": "bottom",
+          "name": "arg0"
+        },
+        {
+          "sort": "List",
+          "enter": "bottom",
+          "name": "arg1"
+        }
+      ],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public local primitive concat.",
+      "errors": [
+        "range",
+        "unavailable"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.comb_only.hosts:concat",
+        "digest": "8ea37b1b61c12bbf5c6100b27f3a05318ba982bf300cc4618ed8c5c89ef3b5de"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "all_vertices",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "Plan",
+          "enter": "bottom",
+          "name": "arg0"
+        }
+      ],
+      "output": {
+        "sort": "Set",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public local primitive all_vertices.",
+      "errors": [
+        "range",
+        "unavailable"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.comb_only.hosts:all_vertices",
+        "digest": "578132c9b12073e74850db2244cc76610483aabffedbdd750bf629772f7329f8"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "ascending",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "Set",
+          "enter": "bottom",
+          "name": "arg0"
+        }
+      ],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public local primitive ascending.",
+      "errors": [
+        "range",
+        "unavailable"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.comb_only.hosts:ascending",
+        "digest": "c3ba2253a84299c3fa6539b23a20e56b21d1c6191f23ec2e2f26a675bfab4b91"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "member",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "unknown",
+          "enter": "bottom",
+          "name": "arg0"
+        },
+        {
+          "sort": "List",
+          "enter": "bottom",
+          "name": "arg1"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public local primitive member.",
+      "errors": [
+        "range",
+        "unavailable"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.comb_only.hosts:member",
+        "digest": "f95712ec4a7f1bd1822783be5606869d02dbf6db547c54944fe32d430b0edd60"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "intersect",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "Set",
+          "enter": "bottom",
+          "name": "arg0"
+        },
+        {
+          "sort": "Set",
+          "enter": "bottom",
+          "name": "arg1"
+        }
+      ],
+      "output": {
+        "sort": "Set",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public local primitive intersect.",
+      "errors": [
+        "range",
+        "unavailable"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.comb_only.hosts:intersect",
+        "digest": "de57160afb5bc4e4a2c6f2efef42ce2a91e57533b77cba250bbba9574321c482"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "empty",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "List",
+          "enter": "bottom",
+          "name": "arg0"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public local primitive empty.",
+      "errors": [
+        "range",
+        "unavailable"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.comb_only.hosts:empty",
+        "digest": "98046b8bd775209a93a65fb4804788bc1679b2153f9fa524d0ff9d7f02c97751"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "singleton_list",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "List",
+          "enter": "bottom",
+          "name": "arg0"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public local primitive singleton_list.",
+      "errors": [
+        "range",
+        "unavailable"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.comb_only.hosts:singleton_list",
+        "digest": "f1a23df899073315d991547158805c82a3c6485b331634597357fff5f1a8bb4d"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "le",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "int",
+          "enter": "bottom",
+          "name": "arg0"
+        },
+        {
+          "sort": "int",
+          "enter": "bottom",
+          "name": "arg1"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public local primitive le.",
+      "errors": [
+        "range",
+        "unavailable"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.comb_only.hosts:le",
+        "digest": "187eb6e961cc9feaeac89ff7453f5cb217acf6c6c31aa4a4ce230e5d092bca5c"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "lt",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "unknown",
+          "enter": "bottom",
+          "name": "arg0"
+        },
+        {
+          "sort": "unknown",
+          "enter": "bottom",
+          "name": "arg1"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public local primitive lt.",
+      "errors": [
+        "range",
+        "unavailable"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.comb_only.hosts:lt",
+        "digest": "1476ec921d2f95a73390c73a31f78170567492d682a89129f95d8bf6db3f2ea5"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "eq",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "unknown",
+          "enter": "bottom",
+          "name": "arg0"
+        },
+        {
+          "sort": "unknown",
+          "enter": "bottom",
+          "name": "arg1"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public local primitive eq.",
+      "errors": [
+        "range",
+        "unavailable"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.comb_only.hosts:eq",
+        "digest": "3dba116352f52f3f02ed03c483c7afafcbbb4b0c2934996b58e3be2e784debfd"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "difference",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "Set",
+          "enter": "bottom",
+          "name": "arg0"
+        },
+        {
+          "sort": "Set",
+          "enter": "bottom",
+          "name": "arg1"
+        }
+      ],
+      "output": {
+        "sort": "Set",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public local primitive difference.",
+      "errors": [
+        "range",
+        "unavailable"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.comb_only.hosts:difference",
+        "digest": "15bd82c48ee0eeb0ffb01c75287b3a0e16118d0c8922a352c7571c3eeda976d8"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "lowest",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "Set",
+          "enter": "bottom",
+          "name": "arg0"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public local primitive lowest.",
+      "errors": [
+        "range",
+        "unavailable"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.comb_only.hosts:lowest",
+        "digest": "98461ca94216b491dc0cf04f1dd440125a26248e4a2e8cf3c2983a55f5b04cc4"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "singleton",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "int",
+          "enter": "bottom",
+          "name": "arg0"
+        }
+      ],
+      "output": {
+        "sort": "Set",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public local primitive singleton.",
+      "errors": [
+        "range",
+        "unavailable"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.comb_only.hosts:singleton",
+        "digest": "99053cd28875bb9f54fd45dd2091c2817eed7179a18d11c74423e60f21356632"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "length",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "List",
+          "enter": "bottom",
+          "name": "arg0"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public local primitive length.",
+      "errors": [
+        "range",
+        "unavailable"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.comb_only.hosts:length",
+        "digest": "89455f2109add690a69aa2ccd4a38ae76159420647bc2cf0c23a6736cfd7ac7d"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "first",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "Pair",
+          "enter": "bottom",
+          "name": "arg0"
+        }
+      ],
+      "output": {
+        "sort": "unknown",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public local primitive first.",
+      "errors": [
+        "range",
+        "unavailable"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.comb_only.hosts:first",
+        "digest": "c9c0786a013e42c1bea5fd1c685762ba3e78eebe964f888a5947ee51a70800fd"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "second",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "Pair",
+          "enter": "bottom",
+          "name": "arg0"
+        }
+      ],
+      "output": {
+        "sort": "unknown",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public local primitive second.",
+      "errors": [
+        "range",
+        "unavailable"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.comb_only.hosts:second",
+        "digest": "4bfd60581407f960d1c60ed85e95c65a72fa08ab9de306f8f3caf98265adabbe"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "pair",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "unknown",
+          "enter": "bottom",
+          "name": "arg0"
+        },
+        {
+          "sort": "unknown",
+          "enter": "bottom",
+          "name": "arg1"
+        }
+      ],
+      "output": {
+        "sort": "Pair",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public local primitive pair.",
+      "errors": [
+        "range",
+        "unavailable"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.comb_only.hosts:pair",
+        "digest": "4483b710e7deb6cc16152ef55ad7dc2ff49bdcbdd8b233d3e44ea5e275e8650c"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "available",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "State",
+          "enter": "bottom",
+          "name": "arg0"
+        }
+      ],
+      "output": {
+        "sort": "Set",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public local primitive available.",
+      "errors": [
+        "range",
+        "unavailable"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.comb_only.hosts:available",
+        "digest": "fffcda2d73076808ea0fa1732caee99e4e2ce47a74dc28a513e907d4f3b7501e"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "chosen",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "State",
+          "enter": "bottom",
+          "name": "arg0"
+        }
+      ],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public local primitive chosen.",
+      "errors": [
+        "range",
+        "unavailable"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.comb_only.hosts:chosen",
+        "digest": "3576354d4cd459987f46e9487f9896fd4b1798d8f827e4e65739fd5fce55e98e"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "score",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "State",
+          "enter": "bottom",
+          "name": "arg0"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public local primitive score.",
+      "errors": [
+        "range",
+        "unavailable"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.comb_only.hosts:score",
+        "digest": "f4f28117b7e841820001bb98c06a33755a7cc6888c9432300508d3fd29b63d88"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "legal",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "State",
+          "enter": "bottom",
+          "name": "arg0"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public local primitive legal.",
+      "errors": [
+        "range",
+        "unavailable"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.comb_only.hosts:legal",
+        "digest": "824902b5efb7984ce5e91ddc0dfe9691001cdfabb07b8a272550671d764b9a7a"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "plan",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "State",
+          "enter": "bottom",
+          "name": "arg0"
+        }
+      ],
+      "output": {
+        "sort": "Plan",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public local primitive plan.",
+      "errors": [
+        "range",
+        "unavailable"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.comb_only.hosts:plan",
+        "digest": "4b4d7d15286955913819904b61c45f31d5c8f775f5fcb1c9193d294dcec54305"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "state_group",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "State",
+          "enter": "bottom",
+          "name": "arg0"
+        },
+        {
+          "sort": "Set",
+          "enter": "bottom",
+          "name": "arg1"
+        }
+      ],
+      "output": {
+        "sort": "State",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public local primitive state_group.",
+      "errors": [
+        "range",
+        "unavailable"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.comb_only.hosts:state_group",
+        "digest": "dc4119c250577e574b911d930291808897960e153c6742222a135da186a69ad5"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "join_state",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "State",
+          "enter": "bottom",
+          "name": "arg0"
+        },
+        {
+          "sort": "State",
+          "enter": "bottom",
+          "name": "arg1"
+        }
+      ],
+      "output": {
+        "sort": "State",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public local primitive join_state.",
+      "errors": [
+        "range",
+        "unavailable"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.comb_only.hosts:join_state",
+        "digest": "cd6e9f5a5c7d6938cdab4d9d9c1b1fc260958a5227500b5b6b30c9c0b4b609ab"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "done",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "State",
+          "enter": "bottom",
+          "name": "arg0"
+        }
+      ],
+      "output": {
+        "sort": "State",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public local primitive done.",
+      "errors": [
+        "range",
+        "unavailable"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.comb_only.hosts:done",
+        "digest": "9308b5500bd9ecb43b6def28ee816ad23eb36eae1deb663dbcbc91f521ce9376"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "non_decreasing",
+      "role": "transform",
+      "inputs": [],
+      "output": {
+        "sort": "unknown",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public local primitive non_decreasing.",
+      "errors": [
+        "range",
+        "unavailable"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.comb_only.hosts:non_decreasing",
+        "digest": "466e60d444f1da0bbf71ab8fad281dc68b223b643e6b7cc9fa61c2e10f2e807d"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "empty_frontier",
+      "role": "transform",
+      "inputs": [],
+      "output": {
+        "sort": "unknown",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public local primitive empty_frontier.",
+      "errors": [
+        "range",
+        "unavailable"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.comb_only.hosts:empty_frontier",
+        "digest": "178ef87b32821cbbc569e541afa3e75e5eec5336d586e2a07e8bbb5586a0e116"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "outside_universe",
+      "role": "transform",
+      "inputs": [],
+      "output": {
+        "sort": "unknown",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public local primitive outside_universe.",
+      "errors": [
+        "range",
+        "unavailable"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.comb_only.hosts:outside_universe",
+        "digest": "cbfe4ef9b2320f3c35ff3ff1ea52bdb8bcc6cd9748f66379c9086d20d1eec7a1"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "decrement",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "int",
+          "enter": "bottom",
+          "name": "arg0"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public local primitive decrement.",
+      "errors": [
+        "range",
+        "unavailable"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.comb_only.hosts:decrement",
+        "digest": "ce1ff50faca2dba064e1fdc6b16205edb212a7f81e4ae5c224134d0eef53884a"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "resource",
+      "role": "transform",
+      "inputs": [],
+      "output": {
+        "sort": "unknown",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public local primitive resource.",
+      "errors": [
+        "range",
+        "unavailable"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.comb_only.hosts:resource",
+        "digest": "a43b818b44186afaeb0fe69f3a2b1bd2340bd533fadd5257e1515dd52d763fed"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "nonzero",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "Set",
+          "enter": "bottom",
+          "name": "arg0"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public local primitive nonzero.",
+      "errors": [
+        "range",
+        "unavailable"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.comb_only.hosts:nonzero",
+        "digest": "668060c79aaa6d53520da54788d01dd7b16b8312cc25fd7e2b82c41f02406b8e"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    }
+  ],
+  "combinators": {
+    "nodes": [
+      "Var",
+      "Lit",
+      "Call",
+      "Let",
+      "Case",
+      "Rec"
+    ],
+    "recursion": "measure",
+    "library": [
+      {
+        "name": "case",
+        "params": [
+          "yes",
+          "no",
+          "test",
+          "x"
+        ],
+        "op_params": [
+          "yes",
+          "no",
+          "test"
+        ],
+        "body": {
+          "node": "Case",
+          "arms": [
+            [
+              {
+                "node": "Test",
+                "expr": {
+                  "node": "Call",
+                  "fn": "test",
+                  "args": [
+                    {
+                      "node": "Var",
+                      "name": "x"
+                    }
+                  ]
+                }
+              },
+              {
+                "node": "Call",
+                "fn": "yes",
+                "args": [
+                  {
+                    "node": "Var",
+                    "name": "x"
+                  }
+                ]
+              }
+            ]
+          ],
+          "default": {
+            "node": "Call",
+            "fn": "no",
+            "args": [
+              {
+                "node": "Var",
+                "name": "x"
+              }
+            ]
+          }
+        },
+        "unfold_rule": "substitute"
+      },
+      {
+        "name": "jump",
+        "params": [
+          "step",
+          "guard",
+          "x",
+          "fuel"
+        ],
+        "op_params": [
+          "step",
+          "guard"
+        ],
+        "body": {
+          "node": "Rec",
+          "fn": "loop",
+          "params": [
+            "state",
+            "remaining"
+          ],
+          "body": {
+            "node": "Case",
+            "arms": [
+              [
+                {
+                  "node": "Test",
+                  "expr": {
+                    "node": "Call",
+                    "fn": "guard",
+                    "args": [
+                      {
+                        "node": "Var",
+                        "name": "state"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "node": "Case",
+                  "arms": [
+                    [
+                      {
+                        "node": "Test",
+                        "expr": {
+                          "node": "Call",
+                          "fn": "le",
+                          "args": [
+                            {
+                              "node": "Var",
+                              "name": "remaining"
+                            },
+                            {
+                              "node": "Lit",
+                              "value": {
+                                "t": "int",
+                                "v": 0
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "node": "Call",
+                        "fn": "resource",
+                        "args": []
+                      }
+                    ]
+                  ],
+                  "default": {
+                    "node": "Call",
+                    "fn": "loop",
+                    "args": [
+                      {
+                        "node": "Call",
+                        "fn": "step",
+                        "args": [
+                          {
+                            "node": "Var",
+                            "name": "state"
+                          }
+                        ]
+                      },
+                      {
+                        "node": "Call",
+                        "fn": "decrement",
+                        "args": [
+                          {
+                            "node": "Var",
+                            "name": "remaining"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ]
+            ],
+            "default": {
+              "node": "Var",
+              "name": "state"
+            }
+          },
+          "args": [
+            {
+              "node": "Var",
+              "name": "x"
+            },
+            {
+              "node": "Var",
+              "name": "fuel"
+            }
+          ],
+          "measure": {
+            "node": "Var",
+            "name": "remaining"
+          },
+          "memo": false
+        },
+        "unfold_rule": "substitute"
+      }
+    ]
+  },
+  "observation": {
+    "truth": "State",
+    "show": [
+      "score",
+      "chosen",
+      "legal",
+      "available"
+    ],
+    "judge_view": "public",
+    "probes": [
+      {
+        "name": "score",
+        "sort": "int",
+        "reads": "State",
+        "reveals": [
+          "earned"
+        ],
+        "impl": null
+      },
+      {
+        "name": "chosen",
+        "sort": "List",
+        "reads": "State",
+        "reveals": [
+          "chosen"
+        ],
+        "impl": null
+      },
+      {
+        "name": "available",
+        "sort": "Set",
+        "reads": "State",
+        "reveals": [
+          "available"
+        ],
+        "impl": null
+      },
+      {
+        "name": "legal",
+        "sort": "bool",
+        "reads": "State",
+        "reveals": [
+          "valid certificate"
+        ],
+        "impl": null
+      }
+    ]
+  },
+  "lock": {
+    "host_digests": {
+      "weight": "a44ac5eafe4a9da03c29669e0fd4f95351876dab1eb3318866b78915f953bb51",
+      "adjacent": "70d2fd5199e361cfd3279c1e93150b7c9f78ae7cb2c1625d27fc67d39a681ce7",
+      "start": "5a70bf388a016ef46052571041a7a977f331cd607100b9e2aecafefa01f09404",
+      "take": "9efc9c8530cca9b906893ac4814c6fa67e089f8e238c2f393eec2bf499fae8c3",
+      "ban": "17d37bf8c067ff77d9eec7569857d547e88f3e3f5fe58c784a649e136be498a1",
+      "priority": "b362ff6db23a5596633c219b48bd4c3868f19ef87addf6966d2c6172a14197f7",
+      "degree": "3c1dfd95e4d0a34172c0d4f82204bcffca81b23d580162057e7f4b5696b00313",
+      "add": "63098273a7aaa630762d6f145dfcf9c61c8c9b290c6ebeb2a05fea5854ccb476",
+      "identity": "edaaeb1663f87186a7d2b9942f72c68fdfb45038cadc123c80897872606d0c10",
+      "union": "3e0d99c69b9c95edcdfc78f432ff2e440800d0e8ce342aa8041023ea296ce096",
+      "popcount": "d19dc66918d0a0ccef0403d071453853cf5f8c2066681cc90ec7ca19b7320030",
+      "drop_lowest": "fbd7fb2e1ba04634f0caeb8935f1b152f343a11aa76ded1e78a3b20fed2bdc60",
+      "split_mid": "90d8dd49ec84795789cb45986a3e84691f1355f011ebd4477d7ed4b2bcf8df45",
+      "head": "50d91f9f763d5a0a7d9c95e8814697222a71b4439fe6f5f414d9892ff88d7479",
+      "tail": "9021c6c12fc9cdce82312bcf01e309763159d21e1e3f89978eb452f9380da1d5",
+      "append": "2f05ce48d992d89de00a17be26b5be52e4ae01b3f91a7c2dbfb4b62d8660e1b8",
+      "concat": "8ea37b1b61c12bbf5c6100b27f3a05318ba982bf300cc4618ed8c5c89ef3b5de",
+      "all_vertices": "578132c9b12073e74850db2244cc76610483aabffedbdd750bf629772f7329f8",
+      "ascending": "c3ba2253a84299c3fa6539b23a20e56b21d1c6191f23ec2e2f26a675bfab4b91",
+      "member": "f95712ec4a7f1bd1822783be5606869d02dbf6db547c54944fe32d430b0edd60",
+      "intersect": "de57160afb5bc4e4a2c6f2efef42ce2a91e57533b77cba250bbba9574321c482",
+      "empty": "98046b8bd775209a93a65fb4804788bc1679b2153f9fa524d0ff9d7f02c97751",
+      "singleton_list": "f1a23df899073315d991547158805c82a3c6485b331634597357fff5f1a8bb4d",
+      "le": "187eb6e961cc9feaeac89ff7453f5cb217acf6c6c31aa4a4ce230e5d092bca5c",
+      "lt": "1476ec921d2f95a73390c73a31f78170567492d682a89129f95d8bf6db3f2ea5",
+      "eq": "3dba116352f52f3f02ed03c483c7afafcbbb4b0c2934996b58e3be2e784debfd",
+      "difference": "15bd82c48ee0eeb0ffb01c75287b3a0e16118d0c8922a352c7571c3eeda976d8",
+      "lowest": "98461ca94216b491dc0cf04f1dd440125a26248e4a2e8cf3c2983a55f5b04cc4",
+      "singleton": "99053cd28875bb9f54fd45dd2091c2817eed7179a18d11c74423e60f21356632",
+      "length": "89455f2109add690a69aa2ccd4a38ae76159420647bc2cf0c23a6736cfd7ac7d",
+      "first": "c9c0786a013e42c1bea5fd1c685762ba3e78eebe964f888a5947ee51a70800fd",
+      "second": "4bfd60581407f960d1c60ed85e95c65a72fa08ab9de306f8f3caf98265adabbe",
+      "pair": "4483b710e7deb6cc16152ef55ad7dc2ff49bdcbdd8b233d3e44ea5e275e8650c",
+      "available": "fffcda2d73076808ea0fa1732caee99e4e2ce47a74dc28a513e907d4f3b7501e",
+      "chosen": "3576354d4cd459987f46e9487f9896fd4b1798d8f827e4e65739fd5fce55e98e",
+      "score": "f4f28117b7e841820001bb98c06a33755a7cc6888c9432300508d3fd29b63d88",
+      "legal": "824902b5efb7984ce5e91ddc0dfe9691001cdfabb07b8a272550671d764b9a7a",
+      "plan": "4b4d7d15286955913819904b61c45f31d5c8f775f5fcb1c9193d294dcec54305",
+      "state_group": "dc4119c250577e574b911d930291808897960e153c6742222a135da186a69ad5",
+      "join_state": "cd6e9f5a5c7d6938cdab4d9d9c1b1fc260958a5227500b5b6b30c9c0b4b609ab",
+      "done": "9308b5500bd9ecb43b6def28ee816ad23eb36eae1deb663dbcbc91f521ce9376",
+      "non_decreasing": "466e60d444f1da0bbf71ab8fad281dc68b223b643e6b7cc9fa61c2e10f2e807d",
+      "empty_frontier": "178ef87b32821cbbc569e541afa3e75e5eec5336d586e2a07e8bbb5586a0e116",
+      "outside_universe": "cbfe4ef9b2320f3c35ff3ff1ea52bdb8bcc6cd9748f66379c9086d20d1eec7a1",
+      "decrement": "ce1ff50faca2dba064e1fdc6b16205edb212a7f81e4ae5c224134d0eef53884a",
+      "resource": "a43b818b44186afaeb0fe69f3a2b1bd2340bd533fadd5257e1515dd52d763fed",
+      "nonzero": "668060c79aaa6d53520da54788d01dd7b16b8312cc25fd7e2b82c41f02406b8e"
+    },
+    "constants_hash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+    "world_hash": "48a53d826411ecd39892463857c2ddf74334692f779d0140404d70acaf8450db"
+  },
+  "open_kinds": [
+    "combinator"
+  ]
+}

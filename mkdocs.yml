@@ -1,0 +1,187 @@
+# Project information
+site_name: 'Opulse'
+site_description: 'Invent the pieces; then build with them.'
+site_url: 'https://mkj69.github.io/opulse-atoms/'
+
+# Repository
+repo_name: 'mkj69/opulse-atoms'
+repo_url: 'https://github.com/mkj69/opulse-atoms'
+edit_uri: 'edit/main/docs/'
+
+# Copyright
+copyright: '© 2026 The Opulse Authors · Code: <a href="https://github.com/mkj69/opulse-atoms/blob/main/LICENSE">Apache 2.0</a> · Docs and data: <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>'
+
+# Configuration
+extra:
+  generator: false
+  continue_map:
+    '': ['learn/', 'How it grows']
+    'learn/': ['learn/kinds/', 'Six kinds']
+    'learn/kinds/': ['learn/checks/', 'Checks and limits']
+    'learn/checks/': ['play/', 'Lab']
+    'play/': ['play/challenge/', 'Challenge']
+    'play/challenge/': ['worlds/', 'World catalog']
+    'worlds/': ['research/', 'Use cases']
+    'research/': ['research/protocols/', 'Protocols']
+    'research/protocols/': ['research/experiments/', 'Experiments']
+    'research/experiments/': ['build/', 'Quickstart']
+    'build/': ['build/world/', 'Create a world']
+    'build/world/': ['reference/', 'Semantics']
+    'reference/': ['reference/api/', 'API and CLI']
+    'reference/api/': ['reference/glossary/', 'Glossary']
+    'reference/glossary/': ['reference/provenance/', 'Provenance']
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/mkj69/opulse-atoms
+      name: Opulse on GitHub
+
+theme:
+  name: 'material'
+  custom_dir: overrides
+  language: en
+  palette:
+    # Light by default; the toggle switches to dark and the choice is remembered.
+    - scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  font:
+    text: 'Inter'
+    code: 'JetBrains Mono'
+  logo: 'assets/images/mark.svg'
+  favicon: 'assets/images/favicon.svg'
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.top
+    - navigation.footer
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - toc.follow
+
+extra_css:
+  - assets/css/custom.css
+  - assets/css/atoms2.css
+
+extra_javascript:
+  - assets/js/atoms2/n3.js
+  - assets/js/layout.js
+  - assets/js/atoms2/kit.js
+  - assets/js/atoms2/data.js
+
+hooks:
+  - tools/mkdocs_hooks.py
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: [src]
+          options:
+            show_root_heading: true
+            show_source: false
+            members_order: source
+            show_signature_annotations: true
+            separate_signature: true
+
+markdown_extensions:
+  - admonition
+  - tables
+  - attr_list
+  - md_in_html
+  - pymdownx.highlight:
+      anchor_linenums: false
+      pygments_lang_class: true  # adds language-opulse etc. (docs/assets/css/custom.css)
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+  - pymdownx.snippets:
+      base_path: ["."]
+      check_paths: true
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - toc:
+      permalink: true
+
+exclude_docs: |
+  reference/cli.md
+  assets/video/*.mp4
+  assets/video/*.webm
+  assets/video/*.vtt
+  assets/video/*.txt
+  assets/video/evidence.json
+  assets/blog/
+  reference/configuration.md
+  assets/report/
+  snippets/
+  about/
+  api/
+  lab/
+  /glossary.md
+  spec/ui-atoms-v2.md
+  spec/atoms-v2.md
+  spec/notation-v3.md
+  assets/data/atoms/
+  assets/data/scales/
+  assets/data/scales_grade/
+  assets/data/scales_growth/
+  assets/data/scales_solve/
+  assets/data/stitch/
+  assets/data/granularity_*.json
+  assets/data/induce_tour.json
+  assets/data/worlds/*/
+  assets/data/challenge/legend/
+  assets/data/challenge/ripple.json
+  assets/data/challenge/laws.json
+  assets/data/challenge/describe.json
+  assets/data/challenge/wrongstep.json
+  assets/data/challenge/challenges.json
+  assets/data/challenge/hole.json
+  assets/data/challenge/expert.json
+  assets/data/challenge/equiv.json
+  assets/data/challenge/target.json
+  assets/data/challenge/translate.json
+  assets/data/challenge/legend.json
+  assets/data/challenge/deadbranch.json
+  assets/data/challenge/shorten.json
+  assets/js/scales-solve.js
+  assets/js/scales-growth.js
+
+nav:
+  - Home: index.md
+  - Learn:
+      - How it grows: learn/index.md
+      - Six kinds: learn/kinds.md
+      - Checks and limits: learn/checks.md
+  - Play:
+      - Lab: play/index.md
+      - Challenge: play/challenge.md
+      - Task ladders: play/ladders.md
+  - Worlds:
+      - Catalog: worlds/index.md
+  - Research:
+      - Use cases: research/index.md
+      - Protocols: research/protocols.md
+      - Experiments: research/experiments.md
+  - Build:
+      - Quickstart: build/index.md
+      - Create a world: build/world.md
+  - Reference:
+      - Semantics: reference/index.md
+      - Atoms v2 specification: reference/spec.md
+      - Notation v3: reference/notation-v3.md
+      - API and CLI: reference/api.md
+      - Glossary: reference/glossary.md
+      - Provenance: reference/provenance.md

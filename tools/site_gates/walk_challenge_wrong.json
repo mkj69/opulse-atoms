@@ -1,0 +1,14 @@
+{
+  "pages": {"challenge": "/play/challenge/"},
+  "urls": ["challenge"],
+  "steps": [
+    {"wait": {"text": "Check answer", "timeout": 15}},
+    {"fill": {"selector": "[data-roads-challenge] input[name='closed']", "value": ""}},
+    {"fill": {"selector": "[data-roads-challenge] input[name='route']", "value": "A, D, F, H, K, L"}},
+    {"open": "/play/challenge/?closed=&route=A%2CD%2CF%2CH%2CK%2CL&check=1"},
+    {"wait": {"text": "Incorrect.", "timeout": 15}},
+    {"assert_text": "Incorrect."},
+    {"assert_text": "A cheaper or lexicographically earlier route exists for your closure."},
+    {"assert_text": "Counterexample: Edges<"}
+  ]
+}

@@ -1,0 +1,2158 @@
+{
+  "schema": "opulse.world/2",
+  "world": "hidden",
+  "version": 1,
+  "dialect": "atoms-v2",
+  "title": "Sealed Cards and Budgeted Channels",
+  "source": {
+    "title_zh": "暗牌信道与有限预算决策"
+  },
+  "params": {
+    "cards": 2,
+    "lamps": 2,
+    "modes": 2,
+    "max_budget": 12
+  },
+  "constants": {
+    "prior": [
+      1,
+      2
+    ],
+    "cost": {
+      "A": 3,
+      "B": 1
+    }
+  },
+  "objects": [
+    {
+      "kind": "object",
+      "name": "Truth",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": true,
+      "interface": [
+        "signal"
+      ],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Sealed card and full state; never passed to the receiver."
+    },
+    {
+      "kind": "object",
+      "name": "ReceiverView",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Finite public ReceiverView values."
+    },
+    {
+      "kind": "object",
+      "name": "Mode",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Finite public Mode values."
+    },
+    {
+      "kind": "object",
+      "name": "Lamp",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Finite public Lamp values."
+    },
+    {
+      "kind": "object",
+      "name": "Modes",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Finite public Modes values."
+    },
+    {
+      "kind": "object",
+      "name": "Lamps",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Finite public Lamps values."
+    },
+    {
+      "kind": "object",
+      "name": "History",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Finite public History values."
+    },
+    {
+      "kind": "object",
+      "name": "Step",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Finite public Step values."
+    },
+    {
+      "kind": "object",
+      "name": "PolicyNode",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Finite public PolicyNode values."
+    },
+    {
+      "kind": "object",
+      "name": "Rational",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Finite public Rational values."
+    },
+    {
+      "kind": "object",
+      "name": "DistLamp",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Finite public DistLamp values."
+    },
+    {
+      "kind": "object",
+      "name": "DistTruth",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Finite public DistTruth values."
+    },
+    {
+      "kind": "object",
+      "name": "BeliefPair",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Finite public BeliefPair values."
+    },
+    {
+      "kind": "object",
+      "name": "int",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Finite public int values."
+    },
+    {
+      "kind": "object",
+      "name": "str",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Finite public str values."
+    },
+    {
+      "kind": "object",
+      "name": "bool",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Finite public bool values."
+    },
+    {
+      "kind": "object",
+      "name": "any",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Finite public any values."
+    },
+    {
+      "kind": "object",
+      "name": "Branches",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Finite public Branches values."
+    },
+    {
+      "kind": "object",
+      "name": "Branch",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Finite public Branch values."
+    }
+  ],
+  "operations": [
+    {
+      "kind": "operation",
+      "name": "channel",
+      "symbol": "channel",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "Mode",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "str",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "DistLamp",
+        "enter": "bottom"
+      },
+      "rule": "Public conditional lamp distribution.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.hidden.hosts:channel",
+        "digest": "72033453932fe1573e5a797d6b7d4536a580bf0fed2f6ec086f6e9268e1a5960"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "signal",
+      "symbol": "signal",
+      "role": "act",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "Truth",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "Mode",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "DistTruth",
+        "enter": "bottom"
+      },
+      "rule": "Trusted sealed conditional transition.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.hidden.hosts:signal",
+        "digest": "8220749cadbfb8c6d51b165a1af3b959f742d361e3d37027dfc34bd0d0f05198"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "guess",
+      "symbol": "guess",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "ReceiverView",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "str",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "ReceiverView",
+        "enter": "bottom"
+      },
+      "rule": "Append a receiver guess.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.hidden.hosts:guess",
+        "digest": "1e0733b261509e0f1bb04853ae202371b2386311ef2741f63e99e0844cef123c"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "eq",
+      "symbol": "eq",
+      "role": "relate",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "any",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Exact finite equality.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.hidden.hosts:eq",
+        "digest": "58af2efb9b53dddabfbf16281d0a18d3db1e76247248c220c4e8044b79ce02aa"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "lt",
+      "symbol": "lt",
+      "role": "relate",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "Rational",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "Rational",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Strict rational comparison.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.hidden.hosts:lt",
+        "digest": "8a9abe72ba03cb77d3aa7be15cb3aa295b45f71e6bf8f8bbeaa2431a1c850d0d"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "le",
+      "symbol": "le",
+      "role": "relate",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "Rational",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "Rational",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Weak rational comparison.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.hidden.hosts:le",
+        "digest": "acc58799ddd0eef4525d9dac5ead6a926f397eb909a0da08d5073f18f5f188d3"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "add",
+      "symbol": "add",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "Rational",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "Rational",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Rational",
+        "enter": "bottom"
+      },
+      "rule": "Exact rational addition.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.hidden.hosts:add",
+        "digest": "6fd589ec2b241cade68284203e697e3bb4e9e0faae93d888446bd298e0de8d81"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "mul",
+      "symbol": "mul",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "Rational",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "Rational",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Rational",
+        "enter": "bottom"
+      },
+      "rule": "Exact rational product.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.hidden.hosts:mul",
+        "digest": "3e7650d3bee8e71909ab908c2a09edd8339b45cc8c8b678ad90bc01477d5fe7c"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "div",
+      "symbol": "div",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "Rational",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "Rational",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Rational",
+        "enter": "bottom"
+      },
+      "rule": "Exact nonzero rational quotient.",
+      "errors": [
+        "impossible"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.hidden.hosts:div",
+        "digest": "07da540f6d02e85aff53c8d38b9400577b7d0e7e4a6dec18734f6a5754b55897"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "sub",
+      "symbol": "sub",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "Rational",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "Rational",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Rational",
+        "enter": "bottom"
+      },
+      "rule": "Exact rational difference.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.hidden.hosts:sub",
+        "digest": "f49805a763ed2371b6f7ec671d1c745da8862a86c690cf1f67ddd69669f94f7d"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "ratio",
+      "symbol": "ratio",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Rational",
+        "enter": "bottom"
+      },
+      "rule": "Canonical rational constructor.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.hidden.hosts:ratio",
+        "digest": "2ab656ac4e7583f5947c33e370a87a5d3763a950cb4b513f90b2a372766f1520"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "weight",
+      "symbol": "weight",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "DistLamp",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "Lamp",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Rational",
+        "enter": "bottom"
+      },
+      "rule": "Project a public lamp likelihood.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.hidden.hosts:weight",
+        "digest": "747aa46fe8e1fe7b561b86654803d075a1d4598c2dd5606f3de7ed7fc1e23062"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "mode_cost",
+      "symbol": "mode_cost",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "Mode",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Read public A=3 or B=1 cost.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.hidden.hosts:mode_cost",
+        "digest": "3897d02e4485d05ee5f3385696d7960dc51dccc6132c26e33d5b72a122f58fa8"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "history",
+      "symbol": "history",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "ReceiverView",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "History",
+        "enter": "bottom"
+      },
+      "rule": "Read the receiver's public history.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.hidden.hosts:history",
+        "digest": "d96e69d802f8cc1ba0162f3fbc8eb5eaedcc332bc5b6f9ece5d6c55c62c77060"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "step_lamp",
+      "symbol": "step_lamp",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "Step",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Lamp",
+        "enter": "bottom"
+      },
+      "rule": "Project the public lamp of a step.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.hidden.hosts:step_lamp",
+        "digest": "aafad3d67d5fe21a7d329618b14e7a99e5ef7e82e4676380bef99d207fba7be5"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "empty",
+      "symbol": "empty",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Test an arbitrary finite list.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.hidden.hosts:empty",
+        "digest": "a3a5ec80bab0c506a6415ef81a9e6c56e982c87241321d3b5d86757ee345650e"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "head",
+      "symbol": "head",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "any",
+        "enter": "bottom"
+      },
+      "rule": "Project its first list item.",
+      "errors": [
+        "empty"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.hidden.hosts:head",
+        "digest": "bca101b8bf7597246e12bd05a52abdb157b0847f39ebe1dbf34bbd5a167c4afa"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "tail",
+      "symbol": "tail",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "any",
+        "enter": "bottom"
+      },
+      "rule": "Drop its first list item.",
+      "errors": [
+        "empty"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.hidden.hosts:tail",
+        "digest": "169cbde79c52a9614053a1e7bc986b1054f5c60c3365fcba0009e0adeaabb2b2"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "prepend",
+      "symbol": "prepend",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "any",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "any",
+        "enter": "bottom"
+      },
+      "rule": "Prepend a finite-list item.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.hidden.hosts:prepend",
+        "digest": "2eef45c3d6f1159ff5658b1db43361a96cdd9a9a7b0e95b61f756d76587f2339"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "reverse",
+      "symbol": "reverse",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "any",
+        "enter": "bottom"
+      },
+      "rule": "Reverse a finite list.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.hidden.hosts:reverse",
+        "digest": "068236e00829d5f033ed905d9e0c7793af10704f93b86ade271708f117632b91"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "size",
+      "symbol": "size",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Count finite-list items.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.hidden.hosts:size",
+        "digest": "c8b6b751417ce4eb5bdda440fe40ca22f019501c17707ca872a142b59a74cb57"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "less_int",
+      "symbol": "less_int",
+      "role": "relate",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Compare public integer budgets.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.hidden.hosts:less_int",
+        "digest": "8d23ec8bd3b3f648dd1e66b8ae617cfd4b87737e9c14e4ad252733ad76973d61"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "decrease",
+      "symbol": "decrease",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Subtract a public mode cost.",
+      "errors": [
+        "budget"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.hidden.hosts:decrease",
+        "digest": "7fcb5c301a86fb4504706d79d7fc330730e89b17e33cc9230275a3e20f04bde2"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "fail",
+      "symbol": "fail",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "str",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "any",
+        "enter": "bottom"
+      },
+      "rule": "Produce a declared domain failure.",
+      "errors": [
+        "unpaired",
+        "budget",
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.hidden.hosts:fail",
+        "digest": "0ee4397ebbde4017f60e8073def555b653d6fb784fdeb115bce59a06a7f9ae50"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "node_leaf",
+      "symbol": "node_leaf",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "str",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "PolicyNode",
+        "enter": "bottom"
+      },
+      "rule": "Construct a guess leaf.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.hidden.hosts:node_leaf",
+        "digest": "918b7499b1fca565c953cb0996ff4ac482b09aa4d274f9bd946d2c7df275e761"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "node_ask",
+      "symbol": "node_ask",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "Mode",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "PolicyNode",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg2",
+          "sort": "PolicyNode",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "PolicyNode",
+        "enter": "bottom"
+      },
+      "rule": "Construct a red-blue decision node.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.hidden.hosts:node_ask",
+        "digest": "d809b9c4f2ba248afe79e5d4d41759b18ad75181b77a32c5d9683888ed36449d"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "node_is_ask",
+      "symbol": "node_is_ask",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "PolicyNode",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Distinguish branches from leaves.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.hidden.hosts:node_is_ask",
+        "digest": "f821605d175a98b5531fc2f78982594a1c6371c386717d30695509898c164a68"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "node_valid",
+      "symbol": "node_valid",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "PolicyNode",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Check a finite well-formed policy tree.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.hidden.hosts:node_valid",
+        "digest": "39448959975aa43876ca8ffdd59ef88b0a2117e682f1fc7c65515d6c09a08536"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "node_choice",
+      "symbol": "node_choice",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "PolicyNode",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "str",
+        "enter": "bottom"
+      },
+      "rule": "Read the choice in a leaf.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.hidden.hosts:node_choice",
+        "digest": "cfb42099f80f9be17bceff4efe2f5b4b820e6c0edf3974bab33fc05e792070ec"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "node_mode",
+      "symbol": "node_mode",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "PolicyNode",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Mode",
+        "enter": "bottom"
+      },
+      "rule": "Read the mode at a branch.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.hidden.hosts:node_mode",
+        "digest": "f704f5f5e0fa9b8f04e164c4e83ea605ed8e44ba4a099bee4f186cffbf98e4a4"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "node_red",
+      "symbol": "node_red",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "PolicyNode",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "PolicyNode",
+        "enter": "bottom"
+      },
+      "rule": "Read its red child.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.hidden.hosts:node_red",
+        "digest": "bc6c618ffe1e0368facabba6003616251da5cc30781faae72142dd62740e99b7"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "node_blue",
+      "symbol": "node_blue",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "PolicyNode",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "PolicyNode",
+        "enter": "bottom"
+      },
+      "rule": "Read its blue child.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.hidden.hosts:node_blue",
+        "digest": "3f59fc6858a9f31dd27cd9d08f63d964b8d7f0dd665afbe1cf5238766deb51f4"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "dist_items",
+      "symbol": "dist_items",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "DistTruth",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Branches",
+        "enter": "bottom"
+      },
+      "rule": "Read finite distribution entries.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.hidden.hosts:dist_items",
+        "digest": "72ea1171f611fe3c5c8165e2b017465fd70806e12c2635cf5fa593382a620088"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "dist_make",
+      "symbol": "dist_make",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "Branches",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "DistTruth",
+        "enter": "bottom"
+      },
+      "rule": "Construct a finite distribution from entries.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.hidden.hosts:dist_make",
+        "digest": "a46ae941451cee792560095f0c322820b0983bd58b4758ab6a90bb8079abf86c"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "branch",
+      "symbol": "branch",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "any",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "Rational",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Branch",
+        "enter": "bottom"
+      },
+      "rule": "Construct a weighted value.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.hidden.hosts:branch",
+        "digest": "67235de016a82fa53205c5fcd8f31ecb6b2ba43c85c803be5adf885fd2ad213f"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "branch_value",
+      "symbol": "branch_value",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "Branch",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "any",
+        "enter": "bottom"
+      },
+      "rule": "Read a weighted value.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.hidden.hosts:branch_value",
+        "digest": "e8bb233e654e587ea466ff5fa7c687846f7646c2a9915cdc38735435f02c801a"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "branch_weight",
+      "symbol": "branch_weight",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "Branch",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Rational",
+        "enter": "bottom"
+      },
+      "rule": "Read a branch's exact weight.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.hidden.hosts:branch_weight",
+        "digest": "d0c916c75d1aa44482ac2fee2320152a34f9a7218acb447fb481d55a596beee3"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "singleton",
+      "symbol": "singleton",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "DistTruth",
+        "enter": "bottom"
+      },
+      "rule": "Construct a unit-mass distribution.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.hidden.hosts:singleton",
+        "digest": "f50bce7c9042f37659f4887fd1395e3772a17c0d567df963faf738f451c45d7d"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "duplicate",
+      "symbol": "duplicate",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "DistTruth",
+        "enter": "bottom"
+      },
+      "rule": "Construct two equal half-mass branches.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.hidden.hosts:duplicate",
+        "digest": "346e65fa81455adb8732b8da985b010d5a1bf530f7c6449c39616249fc5cfade"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "BeliefPair.pair",
+      "symbol": "BeliefPair.pair",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "Rational",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "Rational",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "BeliefPair",
+        "enter": "bottom"
+      },
+      "rule": "Construct a public rational pair.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.hidden.hosts:pair",
+        "digest": "5e5419982a7e8f9527f5642c256440e7e5eadf32629c621b6ab0ff7f5c45188c"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "BeliefPair.r",
+      "symbol": "BeliefPair.r",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "BeliefPair",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Rational",
+        "enter": "bottom"
+      },
+      "rule": "Read its first component.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.hidden.hosts:pair_r",
+        "digest": "72c1e8946732b1e5a903fd4ef7c8d1ae20f41caf01cf42e82840b2936babf554"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "BeliefPair.b",
+      "symbol": "BeliefPair.b",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "BeliefPair",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Rational",
+        "enter": "bottom"
+      },
+      "rule": "Read its second component.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.hidden.hosts:pair_b",
+        "digest": "9d3c9bee47e3b83d34fbaf69ec592c5fdfdbb3c6417dc02dd4bd1f5ad05dc6a1"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    }
+  ],
+  "combinators": {
+    "nodes": [
+      "Var",
+      "Lit",
+      "Call",
+      "Let",
+      "Case",
+      "Rec"
+    ],
+    "library": [
+      {
+        "name": "bind",
+        "params": [
+          "f",
+          "distribution"
+        ],
+        "op_params": [
+          "f"
+        ],
+        "unfold_rule": "substitute",
+        "rule": "Bind finite distributions and combine equal weighted results.",
+        "body": {
+          "node": "Rec",
+          "fn": "fold",
+          "params": [
+            "entries",
+            "output"
+          ],
+          "body": {
+            "node": "Case",
+            "arms": [
+              [
+                {
+                  "node": "Test",
+                  "expr": {
+                    "node": "Call",
+                    "fn": "empty",
+                    "args": [
+                      {
+                        "node": "Var",
+                        "name": "entries"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "node": "Call",
+                  "fn": "dist_make",
+                  "args": [
+                    {
+                      "node": "Var",
+                      "name": "output"
+                    }
+                  ]
+                }
+              ]
+            ],
+            "default": {
+              "node": "Let",
+              "name": "weight",
+              "value": {
+                "node": "Call",
+                "fn": "branch_weight",
+                "args": [
+                  {
+                    "node": "Call",
+                    "fn": "head",
+                    "args": [
+                      {
+                        "node": "Var",
+                        "name": "entries"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "body": {
+                "node": "Call",
+                "fn": "fold",
+                "args": [
+                  {
+                    "node": "Call",
+                    "fn": "tail",
+                    "args": [
+                      {
+                        "node": "Var",
+                        "name": "entries"
+                      }
+                    ]
+                  },
+                  {
+                    "node": "Rec",
+                    "fn": "fold_mapped",
+                    "params": [
+                      "items",
+                      "output"
+                    ],
+                    "body": {
+                      "node": "Case",
+                      "arms": [
+                        [
+                          {
+                            "node": "Test",
+                            "expr": {
+                              "node": "Call",
+                              "fn": "empty",
+                              "args": [
+                                {
+                                  "node": "Var",
+                                  "name": "items"
+                                }
+                              ]
+                            }
+                          },
+                          {
+                            "node": "Var",
+                            "name": "output"
+                          }
+                        ]
+                      ],
+                      "default": {
+                        "node": "Let",
+                        "name": "item",
+                        "value": {
+                          "node": "Call",
+                          "fn": "head",
+                          "args": [
+                            {
+                              "node": "Var",
+                              "name": "items"
+                            }
+                          ]
+                        },
+                        "body": {
+                          "node": "Call",
+                          "fn": "fold_mapped",
+                          "args": [
+                            {
+                              "node": "Call",
+                              "fn": "tail",
+                              "args": [
+                                {
+                                  "node": "Var",
+                                  "name": "items"
+                                }
+                              ]
+                            },
+                            {
+                              "node": "Rec",
+                              "fn": "merge",
+                              "params": [
+                                "acc",
+                                "entry"
+                              ],
+                              "body": {
+                                "node": "Case",
+                                "arms": [
+                                  [
+                                    {
+                                      "node": "Test",
+                                      "expr": {
+                                        "node": "Call",
+                                        "fn": "empty",
+                                        "args": [
+                                          {
+                                            "node": "Var",
+                                            "name": "acc"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    {
+                                      "node": "Call",
+                                      "fn": "prepend",
+                                      "args": [
+                                        {
+                                          "node": "Var",
+                                          "name": "entry"
+                                        },
+                                        {
+                                          "node": "Var",
+                                          "name": "acc"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                ],
+                                "default": {
+                                  "node": "Case",
+                                  "arms": [
+                                    [
+                                      {
+                                        "node": "Test",
+                                        "expr": {
+                                          "node": "Call",
+                                          "fn": "eq",
+                                          "args": [
+                                            {
+                                              "node": "Call",
+                                              "fn": "branch_value",
+                                              "args": [
+                                                {
+                                                  "node": "Call",
+                                                  "fn": "head",
+                                                  "args": [
+                                                    {
+                                                      "node": "Var",
+                                                      "name": "acc"
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            },
+                                            {
+                                              "node": "Call",
+                                              "fn": "branch_value",
+                                              "args": [
+                                                {
+                                                  "node": "Var",
+                                                  "name": "entry"
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      {
+                                        "node": "Call",
+                                        "fn": "prepend",
+                                        "args": [
+                                          {
+                                            "node": "Call",
+                                            "fn": "branch",
+                                            "args": [
+                                              {
+                                                "node": "Call",
+                                                "fn": "branch_value",
+                                                "args": [
+                                                  {
+                                                    "node": "Call",
+                                                    "fn": "head",
+                                                    "args": [
+                                                      {
+                                                        "node": "Var",
+                                                        "name": "acc"
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              },
+                                              {
+                                                "node": "Call",
+                                                "fn": "add",
+                                                "args": [
+                                                  {
+                                                    "node": "Call",
+                                                    "fn": "branch_weight",
+                                                    "args": [
+                                                      {
+                                                        "node": "Call",
+                                                        "fn": "head",
+                                                        "args": [
+                                                          {
+                                                            "node": "Var",
+                                                            "name": "acc"
+                                                          }
+                                                        ]
+                                                      }
+                                                    ]
+                                                  },
+                                                  {
+                                                    "node": "Call",
+                                                    "fn": "branch_weight",
+                                                    "args": [
+                                                      {
+                                                        "node": "Var",
+                                                        "name": "entry"
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "node": "Call",
+                                            "fn": "tail",
+                                            "args": [
+                                              {
+                                                "node": "Var",
+                                                "name": "acc"
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  ],
+                                  "default": {
+                                    "node": "Call",
+                                    "fn": "prepend",
+                                    "args": [
+                                      {
+                                        "node": "Call",
+                                        "fn": "head",
+                                        "args": [
+                                          {
+                                            "node": "Var",
+                                            "name": "acc"
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "node": "Call",
+                                        "fn": "merge",
+                                        "args": [
+                                          {
+                                            "node": "Call",
+                                            "fn": "tail",
+                                            "args": [
+                                              {
+                                                "node": "Var",
+                                                "name": "acc"
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "node": "Var",
+                                            "name": "entry"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                }
+                              },
+                              "args": [
+                                {
+                                  "node": "Var",
+                                  "name": "output"
+                                },
+                                {
+                                  "node": "Call",
+                                  "fn": "branch",
+                                  "args": [
+                                    {
+                                      "node": "Call",
+                                      "fn": "branch_value",
+                                      "args": [
+                                        {
+                                          "node": "Var",
+                                          "name": "item"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "node": "Call",
+                                      "fn": "mul",
+                                      "args": [
+                                        {
+                                          "node": "Var",
+                                          "name": "weight"
+                                        },
+                                        {
+                                          "node": "Call",
+                                          "fn": "branch_weight",
+                                          "args": [
+                                            {
+                                              "node": "Var",
+                                              "name": "item"
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ],
+                              "measure": {
+                                "node": "Call",
+                                "fn": "size",
+                                "args": [
+                                  {
+                                    "node": "Var",
+                                    "name": "acc"
+                                  }
+                                ]
+                              },
+                              "memo": false
+                            }
+                          ]
+                        }
+                      }
+                    },
+                    "args": [
+                      {
+                        "node": "Call",
+                        "fn": "dist_items",
+                        "args": [
+                          {
+                            "node": "Call",
+                            "fn": "f",
+                            "args": [
+                              {
+                                "node": "Call",
+                                "fn": "branch_value",
+                                "args": [
+                                  {
+                                    "node": "Call",
+                                    "fn": "head",
+                                    "args": [
+                                      {
+                                        "node": "Var",
+                                        "name": "entries"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "node": "Var",
+                        "name": "output"
+                      }
+                    ],
+                    "measure": {
+                      "node": "Call",
+                      "fn": "size",
+                      "args": [
+                        {
+                          "node": "Var",
+                          "name": "items"
+                        }
+                      ]
+                    },
+                    "memo": false
+                  }
+                ]
+              }
+            }
+          },
+          "args": [
+            {
+              "node": "Call",
+              "fn": "dist_items",
+              "args": [
+                {
+                  "node": "Var",
+                  "name": "distribution"
+                }
+              ]
+            },
+            {
+              "node": "Lit",
+              "value": {
+                "t": "Branches",
+                "tag": "list",
+                "f": []
+              }
+            }
+          ],
+          "measure": {
+            "node": "Call",
+            "fn": "size",
+            "args": [
+              {
+                "node": "Var",
+                "name": "entries"
+              }
+            ]
+          },
+          "memo": false
+        }
+      }
+    ],
+    "recursion": "fuel"
+  },
+  "observation": {
+    "truth": "Truth",
+    "probes": [
+      {
+        "name": "receiver",
+        "sort": "ReceiverView",
+        "reads": "Truth",
+        "reveals": [
+          "history",
+          "actions"
+        ],
+        "impl": {
+          "host": "opulse.worlds_v2.hidden.hosts:receiver",
+          "digest": "ce88d6b893a85d136e026c89d7d9e5e905ffcf1592a60bcc8018b7a9d285b386"
+        }
+      },
+      {
+        "name": "judge",
+        "sort": "bool",
+        "reads": "Truth",
+        "reveals": [
+          "correct"
+        ],
+        "impl": {
+          "host": "opulse.worlds_v2.hidden.hosts:judge",
+          "digest": "fa276f22174885f3542886a71e7a834b563eb51213888204390db65d4f28bd27"
+        }
+      }
+    ],
+    "capabilities": {
+      "receiver": {
+        "probes": [
+          "receiver"
+        ]
+      },
+      "judge": {
+        "probes": [
+          "judge"
+        ]
+      }
+    },
+    "show": {
+      "receiver": [
+        "history",
+        "actions"
+      ],
+      "judge": [
+        "card",
+        "history",
+        "actions"
+      ]
+    },
+    "judge_view": "full_state"
+  },
+  "codec": {},
+  "lock": {
+    "host_digests": {
+      "channel": "72033453932fe1573e5a797d6b7d4536a580bf0fed2f6ec086f6e9268e1a5960",
+      "signal": "8220749cadbfb8c6d51b165a1af3b959f742d361e3d37027dfc34bd0d0f05198",
+      "guess": "1e0733b261509e0f1bb04853ae202371b2386311ef2741f63e99e0844cef123c",
+      "eq": "58af2efb9b53dddabfbf16281d0a18d3db1e76247248c220c4e8044b79ce02aa",
+      "lt": "8a9abe72ba03cb77d3aa7be15cb3aa295b45f71e6bf8f8bbeaa2431a1c850d0d",
+      "le": "acc58799ddd0eef4525d9dac5ead6a926f397eb909a0da08d5073f18f5f188d3",
+      "add": "6fd589ec2b241cade68284203e697e3bb4e9e0faae93d888446bd298e0de8d81",
+      "mul": "3e7650d3bee8e71909ab908c2a09edd8339b45cc8c8b678ad90bc01477d5fe7c",
+      "div": "07da540f6d02e85aff53c8d38b9400577b7d0e7e4a6dec18734f6a5754b55897",
+      "sub": "f49805a763ed2371b6f7ec671d1c745da8862a86c690cf1f67ddd69669f94f7d",
+      "ratio": "2ab656ac4e7583f5947c33e370a87a5d3763a950cb4b513f90b2a372766f1520",
+      "weight": "747aa46fe8e1fe7b561b86654803d075a1d4598c2dd5606f3de7ed7fc1e23062",
+      "mode_cost": "3897d02e4485d05ee5f3385696d7960dc51dccc6132c26e33d5b72a122f58fa8",
+      "history": "d96e69d802f8cc1ba0162f3fbc8eb5eaedcc332bc5b6f9ece5d6c55c62c77060",
+      "step_lamp": "aafad3d67d5fe21a7d329618b14e7a99e5ef7e82e4676380bef99d207fba7be5",
+      "empty": "a3a5ec80bab0c506a6415ef81a9e6c56e982c87241321d3b5d86757ee345650e",
+      "head": "bca101b8bf7597246e12bd05a52abdb157b0847f39ebe1dbf34bbd5a167c4afa",
+      "tail": "169cbde79c52a9614053a1e7bc986b1054f5c60c3365fcba0009e0adeaabb2b2",
+      "prepend": "2eef45c3d6f1159ff5658b1db43361a96cdd9a9a7b0e95b61f756d76587f2339",
+      "reverse": "068236e00829d5f033ed905d9e0c7793af10704f93b86ade271708f117632b91",
+      "size": "c8b6b751417ce4eb5bdda440fe40ca22f019501c17707ca872a142b59a74cb57",
+      "less_int": "8d23ec8bd3b3f648dd1e66b8ae617cfd4b87737e9c14e4ad252733ad76973d61",
+      "decrease": "7fcb5c301a86fb4504706d79d7fc330730e89b17e33cc9230275a3e20f04bde2",
+      "fail": "0ee4397ebbde4017f60e8073def555b653d6fb784fdeb115bce59a06a7f9ae50",
+      "node_leaf": "918b7499b1fca565c953cb0996ff4ac482b09aa4d274f9bd946d2c7df275e761",
+      "node_ask": "d809b9c4f2ba248afe79e5d4d41759b18ad75181b77a32c5d9683888ed36449d",
+      "node_is_ask": "f821605d175a98b5531fc2f78982594a1c6371c386717d30695509898c164a68",
+      "node_valid": "39448959975aa43876ca8ffdd59ef88b0a2117e682f1fc7c65515d6c09a08536",
+      "node_choice": "cfb42099f80f9be17bceff4efe2f5b4b820e6c0edf3974bab33fc05e792070ec",
+      "node_mode": "f704f5f5e0fa9b8f04e164c4e83ea605ed8e44ba4a099bee4f186cffbf98e4a4",
+      "node_red": "bc6c618ffe1e0368facabba6003616251da5cc30781faae72142dd62740e99b7",
+      "node_blue": "3f59fc6858a9f31dd27cd9d08f63d964b8d7f0dd665afbe1cf5238766deb51f4",
+      "dist_items": "72ea1171f611fe3c5c8165e2b017465fd70806e12c2635cf5fa593382a620088",
+      "dist_make": "a46ae941451cee792560095f0c322820b0983bd58b4758ab6a90bb8079abf86c",
+      "branch": "67235de016a82fa53205c5fcd8f31ecb6b2ba43c85c803be5adf885fd2ad213f",
+      "branch_value": "e8bb233e654e587ea466ff5fa7c687846f7646c2a9915cdc38735435f02c801a",
+      "branch_weight": "d0c916c75d1aa44482ac2fee2320152a34f9a7218acb447fb481d55a596beee3",
+      "singleton": "f50bce7c9042f37659f4887fd1395e3772a17c0d567df963faf738f451c45d7d",
+      "duplicate": "346e65fa81455adb8732b8da985b010d5a1bf530f7c6449c39616249fc5cfade",
+      "BeliefPair.pair": "5e5419982a7e8f9527f5642c256440e7e5eadf32629c621b6ab0ff7f5c45188c",
+      "BeliefPair.r": "72c1e8946732b1e5a903fd4ef7c8d1ae20f41caf01cf42e82840b2936babf554",
+      "BeliefPair.b": "9d3c9bee47e3b83d34fbaf69ec592c5fdfdbb3c6417dc02dd4bd1f5ad05dc6a1",
+      "probe.receiver": "ce88d6b893a85d136e026c89d7d9e5e905ffcf1592a60bcc8018b7a9d285b386",
+      "probe.judge": "fa276f22174885f3542886a71e7a834b563eb51213888204390db65d4f28bd27"
+    },
+    "constants_hash": "dfa5e96937444512b1da3eb1fd0f3d7c395a656fc0241cad693804d12454011e",
+    "world_hash": "ee4fb40c6e2cb15d30ea07e50c9a4d442ac2cadba1a421039f54fe2b961fe8f1"
+  }
+}

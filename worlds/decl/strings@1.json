@@ -1,0 +1,518 @@
+{
+  "schema": "opulse.world/2",
+  "world": "strings",
+  "version": 1,
+  "dialect": "legacy-v1",
+  "title": "Strings",
+  "source": {
+    "published": "docs/assets/data/worlds/strings.json",
+    "settings": {
+      "preset": "strings",
+      "recursion.direct_bound": 8,
+      "operators.max_if_branches": 3
+    }
+  },
+  "params": {
+    "semantics": {
+      "mode": "exact",
+      "bound": 2147483647,
+      "max_string_length": 256
+    },
+    "published_settings": {
+      "preset": "strings",
+      "recursion.direct_bound": 8,
+      "operators.max_if_branches": 3
+    },
+    "recursion": {
+      "direct_bound": 8
+    },
+    "operators": {
+      "max_if_branches": 3
+    }
+  },
+  "constants": {},
+  "objects": [
+    {
+      "kind": "object",
+      "name": "int",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": {
+        "repr": "Python int",
+        "codec": "legacy JSON {t: int, v: integer}"
+      },
+      "doc": "Legacy int values."
+    },
+    {
+      "kind": "object",
+      "name": "bool",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": {
+        "repr": "Python bool",
+        "codec": "legacy JSON {t: bool, v: boolean}"
+      },
+      "doc": "Legacy bool values."
+    },
+    {
+      "kind": "object",
+      "name": "str",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": {
+        "repr": "Python str",
+        "codec": "legacy JSON {t: str, v: text}"
+      },
+      "doc": "Legacy str values."
+    }
+  ],
+  "operations": [
+    {
+      "kind": "operation",
+      "name": "add",
+      "symbol": "+",
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "b",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "a + b is integer addition.",
+      "errors": [
+        "overflow"
+      ],
+      "impl": {
+        "host": "opulse.core.semantics:Semantics.operations",
+        "digest": "b27269173b44c4f371ece11817d4e9379427db73e36906993274078129d1db6e"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "sub",
+      "symbol": "-",
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "b",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "a - b is integer subtraction.",
+      "errors": [
+        "overflow"
+      ],
+      "impl": {
+        "host": "opulse.core.semantics:Semantics.operations",
+        "digest": "b27269173b44c4f371ece11817d4e9379427db73e36906993274078129d1db6e"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "mod",
+      "symbol": "%",
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "b",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "a % b is the remainder a - b * (a / b), with the sign of a (-7 % 2 = -1); b = 0 gives NaN.",
+      "errors": [
+        "div_zero",
+        "overflow"
+      ],
+      "impl": {
+        "host": "opulse.core.semantics:Semantics.operations",
+        "digest": "b27269173b44c4f371ece11817d4e9379427db73e36906993274078129d1db6e"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "neg",
+      "symbol": "-",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "- a is the negation of a.",
+      "errors": [
+        "overflow"
+      ],
+      "impl": {
+        "host": "opulse.core.semantics:Semantics.operations",
+        "digest": "b27269173b44c4f371ece11817d4e9379427db73e36906993274078129d1db6e"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "str_concat",
+      "symbol": "⊕",
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "str",
+          "enter": "bottom"
+        },
+        {
+          "name": "b",
+          "sort": "str",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "str",
+        "enter": "bottom"
+      },
+      "rule": "a ⊕ b joins string a followed by string b.",
+      "errors": [
+        "string_too_long"
+      ],
+      "impl": {
+        "host": "opulse.core.presets:register_preset",
+        "digest": "322bad53029bad69d9db246d61f0835661fdbabb33b7c76bf527ba6d9e7307a7"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "str_length",
+      "symbol": "ℓ",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "str",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "a ℓ is the number of characters in string a.",
+      "errors": [
+        "overflow"
+      ],
+      "impl": {
+        "host": "opulse.core.presets:register_preset",
+        "digest": "322bad53029bad69d9db246d61f0835661fdbabb33b7c76bf527ba6d9e7307a7"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "str_reverse",
+      "symbol": "↶",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "str",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "str",
+        "enter": "bottom"
+      },
+      "rule": "a ↶ reverses the characters in string a.",
+      "errors": [
+        "string_too_long"
+      ],
+      "impl": {
+        "host": "opulse.core.presets:register_preset",
+        "digest": "322bad53029bad69d9db246d61f0835661fdbabb33b7c76bf527ba6d9e7307a7"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "str_first",
+      "symbol": "⌑",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "str",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "str",
+        "enter": "bottom"
+      },
+      "rule": "a ⌑ is its first character, or the empty string when a is empty.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.core.presets:register_preset",
+        "digest": "322bad53029bad69d9db246d61f0835661fdbabb33b7c76bf527ba6d9e7307a7"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "str_drop",
+      "symbol": "⇥",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "str",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "str",
+        "enter": "bottom"
+      },
+      "rule": "a ⇥ removes its first character; the empty string stays empty.",
+      "errors": [
+        "string_too_long"
+      ],
+      "impl": {
+        "host": "opulse.core.presets:register_preset",
+        "digest": "322bad53029bad69d9db246d61f0835661fdbabb33b7c76bf527ba6d9e7307a7"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "str_upper",
+      "symbol": "⇧",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "str",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "str",
+        "enter": "bottom"
+      },
+      "rule": "a ⇧ changes each lowercase letter in a to uppercase.",
+      "errors": [
+        "string_too_long"
+      ],
+      "impl": {
+        "host": "opulse.core.presets:register_preset",
+        "digest": "322bad53029bad69d9db246d61f0835661fdbabb33b7c76bf527ba6d9e7307a7"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "str_lower",
+      "symbol": "⇩",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "str",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "str",
+        "enter": "bottom"
+      },
+      "rule": "a ⇩ changes each uppercase letter in a to lowercase.",
+      "errors": [
+        "string_too_long"
+      ],
+      "impl": {
+        "host": "opulse.core.presets:register_preset",
+        "digest": "322bad53029bad69d9db246d61f0835661fdbabb33b7c76bf527ba6d9e7307a7"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "str_equal",
+      "symbol": "≡",
+      "role": "decide",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "str",
+          "enter": "bottom"
+        },
+        {
+          "name": "b",
+          "sort": "str",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "a ≡ b is true exactly when strings a and b have the same characters.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.core.presets:register_preset",
+        "digest": "322bad53029bad69d9db246d61f0835661fdbabb33b7c76bf527ba6d9e7307a7"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    }
+  ],
+  "combinators": {
+    "nodes": [
+      "Var",
+      "Lit",
+      "Call",
+      "Case",
+      "Rec"
+    ],
+    "library": [],
+    "recursion": "legacy"
+  },
+  "observation": {
+    "truth": null,
+    "probes": [],
+    "capabilities": {
+      "learner": {
+        "channels": [
+          "results",
+          "errors",
+          "renders",
+          "traces",
+          "steps",
+          "memory"
+        ],
+        "probes": "all"
+      }
+    },
+    "show": {
+      "input": "values",
+      "result": "value"
+    },
+    "judge_view": "full_state"
+  },
+  "codec": {
+    "legacy_tags": {
+      "nan": "Bottom",
+      "int": "int",
+      "str": "str",
+      "bool": "bool"
+    }
+  },
+  "lock": {
+    "host_digests": {
+      "add": "b27269173b44c4f371ece11817d4e9379427db73e36906993274078129d1db6e",
+      "sub": "b27269173b44c4f371ece11817d4e9379427db73e36906993274078129d1db6e",
+      "mod": "b27269173b44c4f371ece11817d4e9379427db73e36906993274078129d1db6e",
+      "neg": "b27269173b44c4f371ece11817d4e9379427db73e36906993274078129d1db6e",
+      "str_concat": "322bad53029bad69d9db246d61f0835661fdbabb33b7c76bf527ba6d9e7307a7",
+      "str_length": "322bad53029bad69d9db246d61f0835661fdbabb33b7c76bf527ba6d9e7307a7",
+      "str_reverse": "322bad53029bad69d9db246d61f0835661fdbabb33b7c76bf527ba6d9e7307a7",
+      "str_first": "322bad53029bad69d9db246d61f0835661fdbabb33b7c76bf527ba6d9e7307a7",
+      "str_drop": "322bad53029bad69d9db246d61f0835661fdbabb33b7c76bf527ba6d9e7307a7",
+      "str_upper": "322bad53029bad69d9db246d61f0835661fdbabb33b7c76bf527ba6d9e7307a7",
+      "str_lower": "322bad53029bad69d9db246d61f0835661fdbabb33b7c76bf527ba6d9e7307a7",
+      "str_equal": "322bad53029bad69d9db246d61f0835661fdbabb33b7c76bf527ba6d9e7307a7"
+    },
+    "constants_hash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+    "world_hash": "07491800678e23a16385b6d41f4d9ab952ad8e5619fa48864de98315fa8cfd29"
+  }
+}

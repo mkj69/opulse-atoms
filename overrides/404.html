@@ -1,0 +1,5 @@
+{% extends 'main.html' %}
+{% block content %}
+  <h1>Page not found</h1>
+  <p>The requested page is unavailable. Use <button type="button" class="op-search-link" onclick="document.getElementById('__search').click()">Search</button>, or visit <a href="{{ '' | url }}">Home</a>, <a href="{{ 'worlds/' | url }}">Worlds</a>, or <a href="{{ 'reference/' | url }}">Reference</a>.</p>
+{% endblock %}

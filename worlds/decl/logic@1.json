@@ -1,0 +1,410 @@
+{
+  "schema": "opulse.world/2",
+  "world": "logic",
+  "version": 1,
+  "dialect": "legacy-v1",
+  "title": "Logic",
+  "source": {
+    "published": "docs/assets/data/worlds/logic.json",
+    "settings": {
+      "preset": "logic",
+      "recursion.direct_bound": 3,
+      "operators.max_if_branches": 2
+    }
+  },
+  "params": {
+    "semantics": {
+      "mode": "exact",
+      "bound": 2147483647,
+      "max_string_length": 256
+    },
+    "published_settings": {
+      "preset": "logic",
+      "recursion.direct_bound": 3,
+      "operators.max_if_branches": 2
+    },
+    "recursion": {
+      "direct_bound": 3
+    },
+    "operators": {
+      "max_if_branches": 2
+    }
+  },
+  "constants": {},
+  "objects": [
+    {
+      "kind": "object",
+      "name": "int",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": {
+        "repr": "Python int",
+        "codec": "legacy JSON {t: int, v: integer}"
+      },
+      "doc": "Legacy int values."
+    },
+    {
+      "kind": "object",
+      "name": "bool",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": {
+        "repr": "Python bool",
+        "codec": "legacy JSON {t: bool, v: boolean}"
+      },
+      "doc": "Legacy bool values."
+    }
+  ],
+  "operations": [
+    {
+      "kind": "operation",
+      "name": "add",
+      "symbol": "+",
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "b",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "a + b is integer addition.",
+      "errors": [
+        "overflow"
+      ],
+      "impl": {
+        "host": "opulse.core.semantics:Semantics.operations",
+        "digest": "b27269173b44c4f371ece11817d4e9379427db73e36906993274078129d1db6e"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "sub",
+      "symbol": "-",
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "b",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "a - b is integer subtraction.",
+      "errors": [
+        "overflow"
+      ],
+      "impl": {
+        "host": "opulse.core.semantics:Semantics.operations",
+        "digest": "b27269173b44c4f371ece11817d4e9379427db73e36906993274078129d1db6e"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "neg",
+      "symbol": "-",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "- a is the negation of a.",
+      "errors": [
+        "overflow"
+      ],
+      "impl": {
+        "host": "opulse.core.semantics:Semantics.operations",
+        "digest": "b27269173b44c4f371ece11817d4e9379427db73e36906993274078129d1db6e"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "logic_and",
+      "symbol": "⋀",
+      "role": "decide",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "bool",
+          "enter": "bottom"
+        },
+        {
+          "name": "b",
+          "sort": "bool",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "a ⋀ b is true exactly when both a and b are true.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.core.presets:register_preset",
+        "digest": "322bad53029bad69d9db246d61f0835661fdbabb33b7c76bf527ba6d9e7307a7"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "logic_or",
+      "symbol": "⋁",
+      "role": "decide",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "bool",
+          "enter": "bottom"
+        },
+        {
+          "name": "b",
+          "sort": "bool",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "a ⋁ b is true exactly when a or b is true.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.core.presets:register_preset",
+        "digest": "322bad53029bad69d9db246d61f0835661fdbabb33b7c76bf527ba6d9e7307a7"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "logic_not",
+      "symbol": "¬",
+      "role": "decide",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "bool",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "¬ a is true exactly when a is false.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.core.presets:register_preset",
+        "digest": "322bad53029bad69d9db246d61f0835661fdbabb33b7c76bf527ba6d9e7307a7"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "logic_implies",
+      "symbol": "→",
+      "role": "decide",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "bool",
+          "enter": "bottom"
+        },
+        {
+          "name": "b",
+          "sort": "bool",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "a → b is false exactly when a is true and b is false.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.core.presets:register_preset",
+        "digest": "322bad53029bad69d9db246d61f0835661fdbabb33b7c76bf527ba6d9e7307a7"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "logic_xor",
+      "symbol": "≢",
+      "role": "decide",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "bool",
+          "enter": "bottom"
+        },
+        {
+          "name": "b",
+          "sort": "bool",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "a ≢ b is true exactly when a and b differ.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.core.presets:register_preset",
+        "digest": "322bad53029bad69d9db246d61f0835661fdbabb33b7c76bf527ba6d9e7307a7"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "logic_equal",
+      "symbol": "⇔",
+      "role": "decide",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "bool",
+          "enter": "bottom"
+        },
+        {
+          "name": "b",
+          "sort": "bool",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "a ⇔ b is true exactly when a and b have the same truth value.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.core.presets:register_preset",
+        "digest": "322bad53029bad69d9db246d61f0835661fdbabb33b7c76bf527ba6d9e7307a7"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    }
+  ],
+  "combinators": {
+    "nodes": [
+      "Var",
+      "Lit",
+      "Call",
+      "Case",
+      "Rec"
+    ],
+    "library": [],
+    "recursion": "legacy"
+  },
+  "observation": {
+    "truth": null,
+    "probes": [],
+    "capabilities": {
+      "learner": {
+        "channels": [
+          "results",
+          "errors",
+          "renders",
+          "traces",
+          "steps",
+          "memory"
+        ],
+        "probes": "all"
+      }
+    },
+    "show": {
+      "input": "values",
+      "result": "value"
+    },
+    "judge_view": "full_state"
+  },
+  "codec": {
+    "legacy_tags": {
+      "nan": "Bottom",
+      "int": "int",
+      "bool": "bool"
+    }
+  },
+  "lock": {
+    "host_digests": {
+      "add": "b27269173b44c4f371ece11817d4e9379427db73e36906993274078129d1db6e",
+      "sub": "b27269173b44c4f371ece11817d4e9379427db73e36906993274078129d1db6e",
+      "neg": "b27269173b44c4f371ece11817d4e9379427db73e36906993274078129d1db6e",
+      "logic_and": "322bad53029bad69d9db246d61f0835661fdbabb33b7c76bf527ba6d9e7307a7",
+      "logic_or": "322bad53029bad69d9db246d61f0835661fdbabb33b7c76bf527ba6d9e7307a7",
+      "logic_not": "322bad53029bad69d9db246d61f0835661fdbabb33b7c76bf527ba6d9e7307a7",
+      "logic_implies": "322bad53029bad69d9db246d61f0835661fdbabb33b7c76bf527ba6d9e7307a7",
+      "logic_xor": "322bad53029bad69d9db246d61f0835661fdbabb33b7c76bf527ba6d9e7307a7",
+      "logic_equal": "322bad53029bad69d9db246d61f0835661fdbabb33b7c76bf527ba6d9e7307a7"
+    },
+    "constants_hash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+    "world_hash": "8c2d4980b12f7c92994f043d71ec788a87ea36a43a6fb81414b5df6fe8ca2196"
+  }
+}

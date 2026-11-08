@@ -1,0 +1,1212 @@
+{
+  "schema": "opulse.world/2",
+  "world": "versions",
+  "version": 1,
+  "dialect": "atoms-v2",
+  "open_kinds": ["combinator", "law", "object", "observation", "operation"],
+  "title": "Two Editors, One Draft",
+  "source": {
+    "title_zh": "两人改一稿"
+  },
+  "params": {},
+  "constants": {
+    "paths": [
+      "/a",
+      "/b",
+      "/c",
+      "/d",
+      "/e",
+      "/f",
+      "/g",
+      "/h",
+      "/i",
+      "/j",
+      "/k",
+      "/l"
+    ],
+    "base": "Doc<12:>",
+    "deletion": "Gone<>"
+  },
+  "objects": [
+    {
+      "kind": "object",
+      "name": "Doc",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": {
+        "host": "opulse.worlds_v2.versions.hosts:valid_doc",
+        "digest": "ca6086794b9e184e9c6072033e700a44bd08eaf3404defe14644b5298e295b84"
+      },
+      "canon": null,
+      "sealed": true,
+      "interface": [
+        "edit",
+        "read",
+        "at"
+      ],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "obj Doc<12:/a=v,...,/l=v> given"
+    },
+    {
+      "kind": "object",
+      "name": "Base12",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "obj Base12<> given"
+    },
+    {
+      "kind": "object",
+      "name": "Gone",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "obj Gone<> given"
+    },
+    {
+      "kind": "object",
+      "name": "Path",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "obj Path</a..l> given"
+    },
+    {
+      "kind": "object",
+      "name": "Text",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "obj Text<alphanumeric> given"
+    },
+    {
+      "kind": "object",
+      "name": "History",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": {
+        "host": "opulse.worlds_v2.versions.hosts:valid_history",
+        "digest": "309dd2b074895764e63b4f61a34986711bbe23d02564b0628225d4b87bd893b6"
+      },
+      "canon": null,
+      "sealed": true,
+      "interface": [
+        "fork",
+        "read_version"
+      ],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "obj History<Version<id,parent,doc>...> given"
+    },
+    {
+      "kind": "object",
+      "name": "Version",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "obj Version<id,parent,doc> given"
+    },
+    {
+      "kind": "object",
+      "name": "List",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "obj List<items...> given"
+    },
+    {
+      "kind": "object",
+      "name": "Choices",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": {
+        "host": "opulse.worlds_v2.versions.hosts:valid_choices",
+        "digest": "e1a0020caa36bfc5270c435e9041438a0283a246dac781705b0a5381829edf28"
+      },
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "obj Choices<path=side...> given"
+    },
+    {
+      "kind": "object",
+      "name": "str",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": ""
+    },
+    {
+      "kind": "object",
+      "name": "int",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": ""
+    },
+    {
+      "kind": "object",
+      "name": "bool",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": ""
+    },
+    {
+      "kind": "object",
+      "name": "Any",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": ""
+    }
+  ],
+  "operations": [
+    {
+      "kind": "operation",
+      "name": "identity_doc",
+      "symbol": "identity_doc",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "document",
+          "sort": "Doc",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Doc",
+        "enter": "bottom"
+      },
+      "rule": "Generic identity on a well-formed document.",
+      "errors": [
+        "domain"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.versions.hosts:identity_doc",
+        "digest": "815f5fd38d5f59f93b32784eab38ed8b0bec13f27f6852b520d5c8dff5a72d57"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "edit",
+      "symbol": "edit",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "document",
+          "sort": "Doc",
+          "enter": "bottom"
+        },
+        {
+          "name": "path",
+          "sort": "str",
+          "enter": "bottom"
+        },
+        {
+          "name": "value",
+          "sort": "str",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Doc",
+        "enter": "bottom"
+      },
+      "rule": "Replace exactly one of twelve paths without mutating the old document.",
+      "errors": [
+        "domain"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.versions.hosts:edit",
+        "digest": "8816b274b018ad4e76267d804e0e5c606c91326cbe46ef35def04f640e075845"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "fork",
+      "symbol": "fork",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "versions",
+          "sort": "History",
+          "enter": "bottom"
+        },
+        {
+          "name": "parent",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "path",
+          "sort": "str",
+          "enter": "bottom"
+        },
+        {
+          "name": "value",
+          "sort": "str",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "History",
+        "enter": "bottom"
+      },
+      "rule": "Append immutable child of the requested existing version.",
+      "errors": [
+        "domain"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.versions.hosts:fork",
+        "digest": "fd19a04256a9082acdae23c2a441f3190bb08db1c3eee64cb02595ac83d6c2a5"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "read",
+      "symbol": "?read",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "document",
+          "sort": "Doc",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Doc",
+        "enter": "bottom"
+      },
+      "rule": "Read the full twelve-path public document.",
+      "errors": [
+        "domain"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.versions.hosts:read",
+        "digest": "ad02b12c2f1335bdd241c0f27e3b55868453fa52b08c3360fe17b5b7fefe2407"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "read_version",
+      "symbol": "?read_version",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "versions",
+          "sort": "History",
+          "enter": "bottom"
+        },
+        {
+          "name": "identifier",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Version",
+        "enter": "bottom"
+      },
+      "rule": "Read a public version by identifier.",
+      "errors": [
+        "domain"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.versions.hosts:read_version",
+        "digest": "c0ec5bfc32ee155e7dc281878e73251676f56a98f7b723be2106452580fdefc2"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "at",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "document",
+          "sort": "Doc",
+          "enter": "bottom"
+        },
+        {
+          "name": "path",
+          "sort": "str",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "str",
+        "enter": "bottom"
+      },
+      "rule": "Project the value at a public document path.",
+      "errors": [
+        "domain"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.versions.hosts:at",
+        "digest": "4ac1cc1f3afaee12faa5c1fb63fdc1264915be6b7c90219f11f725e5b0c900d9"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "card",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "sort",
+          "sort": "str",
+          "enter": "bottom"
+        },
+        {
+          "name": "tag",
+          "sort": "str",
+          "enter": "bottom"
+        },
+        {
+          "name": "fields",
+          "sort": "List",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Any",
+        "enter": "bottom"
+      },
+      "rule": "Construct an immutable tagged card from fields.",
+      "errors": [
+        "domain"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.versions.hosts:card",
+        "digest": "a49c8eb1cf2229e640140c7ffcfa0e1dd27fa27935bc737ac387a27df4f0b404"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "field",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "value",
+          "sort": "Any",
+          "enter": "bottom"
+        },
+        {
+          "name": "index",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Any",
+        "enter": "bottom"
+      },
+      "rule": "Project an immutable card field.",
+      "errors": [
+        "domain"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.versions.hosts:field",
+        "digest": "418b8cbb3a129c0c894f0bbc4f64a7c99e65e1d0fdac40182228e6f897384e5f"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "empty",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Construct empty ordered list.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.versions.hosts:empty",
+        "digest": "dd1bb03c8740435ad74048be78671ff1b9a1fdcc85af55cc28ec82f4a64ce68f"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "cons",
+      "symbol": null,
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "item",
+          "sort": "Any",
+          "enter": "bottom"
+        },
+        {
+          "name": "items",
+          "sort": "List",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Prepend one item.",
+      "errors": [
+        "domain"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.versions.hosts:cons",
+        "digest": "f5c4a2c590e880b95fe23a151c6186596c93cdeef1ae5ff9430cce9eb3c56301"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "append",
+      "symbol": null,
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "items",
+          "sort": "List",
+          "enter": "bottom"
+        },
+        {
+          "name": "item",
+          "sort": "Any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Append one item.",
+      "errors": [
+        "domain"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.versions.hosts:append",
+        "digest": "afc04b0c4198ea8f04a45af87e1c3bebadba16a02ff1412aa803d0dc9ee6a8cb"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "head",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "items",
+          "sort": "List",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Any",
+        "enter": "bottom"
+      },
+      "rule": "Project first list element.",
+      "errors": [
+        "domain"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.versions.hosts:head",
+        "digest": "f11647578b1ef369b5a9daf6667a7b4d629f028a6b93e3b8242270aa47635cef"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "tail",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "items",
+          "sort": "List",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Project remaining elements.",
+      "errors": [
+        "domain"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.versions.hosts:tail",
+        "digest": "b071b5df53c5f4dff40a04e627a7012f1c189e7dd9d8426181fd0c99492ea59a"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "is_empty",
+      "symbol": null,
+      "role": "decide",
+      "inputs": [
+        {
+          "name": "items",
+          "sort": "List",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Decide whether list is empty.",
+      "errors": [
+        "domain"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.versions.hosts:is_empty",
+        "digest": "1f4cb2b60c6489676a5882c2866f60412af2a4784b97842aa602d4a1fc57cd26"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "length",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "items",
+          "sort": "List",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Count list items.",
+      "errors": [
+        "domain"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.versions.hosts:length",
+        "digest": "641ed7d2af2290ff69b5f353a977a17cf0c2f969e5ed8305a2ae34deccee8ca9"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "item_at",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "items",
+          "sort": "List",
+          "enter": "bottom"
+        },
+        {
+          "name": "index",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Any",
+        "enter": "bottom"
+      },
+      "rule": "Project list item by index.",
+      "errors": [
+        "domain"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.versions.hosts:item_at",
+        "digest": "42cc559f3b833458d1bfc7bb320ea80869a8218b5e533eecf76f95ab9218f748"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "eq",
+      "symbol": null,
+      "role": "decide",
+      "inputs": [
+        {
+          "name": "left",
+          "sort": "Any",
+          "enter": "bottom"
+        },
+        {
+          "name": "right",
+          "sort": "Any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Structural equality.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.versions.hosts:eq",
+        "digest": "3dba116352f52f3f02ed03c483c7afafcbbb4b0c2934996b58e3be2e784debfd"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "add",
+      "symbol": null,
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "left",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "right",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Integer addition.",
+      "errors": [
+        "domain"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.versions.hosts:add",
+        "digest": "29a7fc82fdd9110dc50c1d7a1803c92d2236f265dfda578b4b8f5ef56b39d795"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "sub",
+      "symbol": null,
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "left",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "right",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Integer subtraction.",
+      "errors": [
+        "domain"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.versions.hosts:sub",
+        "digest": "1a5dc6add2d673c34aad0a3f7b52924e90ba4189ee6eaecaa0f6a46c83754995"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "path_at",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "index",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "str",
+        "enter": "bottom"
+      },
+      "rule": "Project one of twelve canonical path names.",
+      "errors": [
+        "domain"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.versions.hosts:path_at",
+        "digest": "539cda02eeef2acd40b77dabd46b0f941da2c37afb65b98676c3aa20649c8a9c"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "reject",
+      "symbol": null,
+      "role": "decide",
+      "inputs": [
+        {
+          "name": "reason",
+          "sort": "str",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Any",
+        "enter": "bottom"
+      },
+      "rule": "Raise an explicit error reason.",
+      "errors": [
+        "guard",
+        "domain"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.versions.hosts:reject",
+        "digest": "4d5b7c3e5ed6cd1ba503b98abb566875b9ea2cd2136f6c7f7689a3bda8a5eb7e"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "lt",
+      "symbol": null,
+      "role": "decide",
+      "inputs": [
+        {
+          "name": "left",
+          "sort": "Any",
+          "enter": "bottom"
+        },
+        {
+          "name": "right",
+          "sort": "Any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Compare two small integers or strings.",
+      "errors": [
+        "domain"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.versions.hosts:lt",
+        "digest": "bcc1083e7a39ea1f1adc723df89ae6891bd769be2b48482debf3141d176d1cac"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "base12",
+      "symbol": "Base12",
+      "role": "transform",
+      "inputs": [],
+      "output": {
+        "sort": "Doc",
+        "enter": "bottom"
+      },
+      "rule": "Construct twelve 0-valued paths.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.versions.hosts:base12",
+        "digest": "64bcf9636168fafeeb51cdb4229617309810d5b8c4b92c284570df1d8cdc1145"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "history",
+      "symbol": "History",
+      "role": "transform",
+      "inputs": [],
+      "output": {
+        "sort": "History",
+        "enter": "bottom"
+      },
+      "rule": "Construct the root version holding Base12.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.versions.hosts:history",
+        "digest": "f5a466210b5d20986fdd442e29541be187034848877c6bd43a2402d9d6e53260"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "tag",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "value",
+          "sort": "Any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "str",
+        "enter": "bottom"
+      },
+      "rule": "Project a card tag.",
+      "errors": [
+        "domain"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.versions.hosts:tag",
+        "digest": "bbfc6adaab743e218b4ee11634f94047bc3b01a4c9312c6df662f874ece2f030"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "sort_of",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "value",
+          "sort": "Any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "str",
+        "enter": "bottom"
+      },
+      "rule": "Project a card sort.",
+      "errors": [
+        "domain"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.versions.hosts:sort_of",
+        "digest": "6000568fb92412f48038a1ef01021d9baf632521eb5f12de09509e7a95396dd0"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    }
+  ],
+  "combinators": {
+    "nodes": [
+      "Var",
+      "Lit",
+      "Call",
+      "Let",
+      "Case",
+      "Rec"
+    ],
+    "library": [
+      {
+        "name": "fix",
+        "params": [
+          "f",
+          "doc",
+          "args"
+        ],
+        "op_params": [
+          "f"
+        ],
+        "body": {
+          "node": "Call",
+          "fn": "f",
+          "args": [
+            {
+              "node": "Var",
+              "name": "doc"
+            },
+            {
+              "node": "Var",
+              "name": "args"
+            }
+          ]
+        },
+        "unfold_rule": "substitute"
+      }
+    ],
+    "recursion": "measure"
+  },
+  "observation": {
+    "truth": "Any",
+    "probes": [
+      {
+        "name": "read",
+        "sort": "Doc",
+        "reads": "Any",
+        "reveals": [
+          "/a",
+          "/b",
+          "/c",
+          "/d",
+          "/e",
+          "/f",
+          "/g",
+          "/h",
+          "/i",
+          "/j",
+          "/k",
+          "/l"
+        ],
+        "impl": {
+          "host": "opulse.worlds_v2.versions.hosts:read",
+          "digest": "ad02b12c2f1335bdd241c0f27e3b55868453fa52b08c3360fe17b5b7fefe2407"
+        }
+      },
+      {
+        "name": "read_version",
+        "sort": "Version",
+        "reads": "Any",
+        "reveals": [
+          "id",
+          "parent",
+          "doc"
+        ],
+        "impl": {
+          "host": "opulse.worlds_v2.versions.hosts:read_version",
+          "digest": "c0ec5bfc32ee155e7dc281878e73251676f56a98f7b723be2106452580fdefc2"
+        }
+      }
+    ],
+    "capabilities": {
+      "learner": {
+        "channels": [
+          "results",
+          "errors",
+          "renders",
+          "traces",
+          "steps"
+        ],
+        "probes": "all"
+      }
+    },
+    "show": {
+      "input": "Doc",
+      "result": "Doc"
+    },
+    "judge_view": "full_state"
+  },
+  "codec": {
+    "Doc": "immutable Card",
+    "History": "immutable Card",
+    "List": "host tuple encoded as Card(List, items, elements)"
+  },
+  "lock": {
+    "host_digests": {
+      "identity_doc": "815f5fd38d5f59f93b32784eab38ed8b0bec13f27f6852b520d5c8dff5a72d57",
+      "edit": "8816b274b018ad4e76267d804e0e5c606c91326cbe46ef35def04f640e075845",
+      "fork": "fd19a04256a9082acdae23c2a441f3190bb08db1c3eee64cb02595ac83d6c2a5",
+      "read": "ad02b12c2f1335bdd241c0f27e3b55868453fa52b08c3360fe17b5b7fefe2407",
+      "read_version": "c0ec5bfc32ee155e7dc281878e73251676f56a98f7b723be2106452580fdefc2",
+      "at": "4ac1cc1f3afaee12faa5c1fb63fdc1264915be6b7c90219f11f725e5b0c900d9",
+      "card": "a49c8eb1cf2229e640140c7ffcfa0e1dd27fa27935bc737ac387a27df4f0b404",
+      "field": "418b8cbb3a129c0c894f0bbc4f64a7c99e65e1d0fdac40182228e6f897384e5f",
+      "empty": "dd1bb03c8740435ad74048be78671ff1b9a1fdcc85af55cc28ec82f4a64ce68f",
+      "cons": "f5c4a2c590e880b95fe23a151c6186596c93cdeef1ae5ff9430cce9eb3c56301",
+      "append": "afc04b0c4198ea8f04a45af87e1c3bebadba16a02ff1412aa803d0dc9ee6a8cb",
+      "head": "f11647578b1ef369b5a9daf6667a7b4d629f028a6b93e3b8242270aa47635cef",
+      "tail": "b071b5df53c5f4dff40a04e627a7012f1c189e7dd9d8426181fd0c99492ea59a",
+      "is_empty": "1f4cb2b60c6489676a5882c2866f60412af2a4784b97842aa602d4a1fc57cd26",
+      "length": "641ed7d2af2290ff69b5f353a977a17cf0c2f969e5ed8305a2ae34deccee8ca9",
+      "item_at": "42cc559f3b833458d1bfc7bb320ea80869a8218b5e533eecf76f95ab9218f748",
+      "eq": "3dba116352f52f3f02ed03c483c7afafcbbb4b0c2934996b58e3be2e784debfd",
+      "add": "29a7fc82fdd9110dc50c1d7a1803c92d2236f265dfda578b4b8f5ef56b39d795",
+      "sub": "1a5dc6add2d673c34aad0a3f7b52924e90ba4189ee6eaecaa0f6a46c83754995",
+      "path_at": "539cda02eeef2acd40b77dabd46b0f941da2c37afb65b98676c3aa20649c8a9c",
+      "reject": "4d5b7c3e5ed6cd1ba503b98abb566875b9ea2cd2136f6c7f7689a3bda8a5eb7e",
+      "lt": "bcc1083e7a39ea1f1adc723df89ae6891bd769be2b48482debf3141d176d1cac",
+      "base12": "64bcf9636168fafeeb51cdb4229617309810d5b8c4b92c284570df1d8cdc1145",
+      "history": "f5a466210b5d20986fdd442e29541be187034848877c6bd43a2402d9d6e53260",
+      "tag": "bbfc6adaab743e218b4ee11634f94047bc3b01a4c9312c6df662f874ece2f030",
+      "sort_of": "6000568fb92412f48038a1ef01021d9baf632521eb5f12de09509e7a95396dd0",
+      "Doc.valid": "ca6086794b9e184e9c6072033e700a44bd08eaf3404defe14644b5298e295b84",
+      "History.valid": "309dd2b074895764e63b4f61a34986711bbe23d02564b0628225d4b87bd893b6",
+      "Choices.valid": "e1a0020caa36bfc5270c435e9041438a0283a246dac781705b0a5381829edf28",
+      "probe.read": "ad02b12c2f1335bdd241c0f27e3b55868453fa52b08c3360fe17b5b7fefe2407",
+      "probe.read_version": "c0ec5bfc32ee155e7dc281878e73251676f56a98f7b723be2106452580fdefc2"
+    },
+    "constants_hash": "bc03a7484be40620949b458b0b46024df82800be5183c6b999742893e2852e35",
+    "world_hash": "93fcc73159b73295c96ce58f83804eee572fc3b18f31968f6b7b9faf4180c887"
+  }
+}

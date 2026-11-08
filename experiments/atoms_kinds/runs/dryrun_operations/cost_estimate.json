@@ -1,0 +1,9 @@
+{
+ "tasks_per_episode": 240,
+ "expected_calls": 14400.0,
+ "worst_calls": 28800,
+ "expected_input_tokens": 9476700.0,
+ "worst_input_tokens": 19033320,
+ "expected_output_tokens": 4320000.0,
+ "worst_output_tokens": 29491200
+}

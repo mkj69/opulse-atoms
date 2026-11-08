@@ -1,0 +1,22 @@
+{
+ "episodes": 2,
+ "fuel": 200000,
+ "groups": [
+  "B",
+  "C"
+ ],
+ "hashes": {
+  "tasks/stage1.json": "0f5f5ee5dccca2212e3fed1c1a329ffaa50eb4f0f19a55b9faad5bdb11d8309a",
+  "tasks/stage2.json": "071581b983e76526e237eb5b0c2b1c167529f567bdf1317bf47328740734efba",
+  "worlds/A.json": "fb5c4dc83eb9e23c0e5b333834f1b2b3b787edf5a88c86928f83aba938640b61",
+  "worlds/B.json": "f0f15a26e0d817b4b530f2031cba9e985d041a47f37e5a65d1bc49b9bac1e2d2",
+  "worlds/C.json": "4f9d13b96186333dc00b5ee937b0ec7ca6a2111f1e447fcd8f0bb4ac43a77c3b",
+  "worlds/decl/atoms_mul_A.json": "98d6ef79c72c6bc482487a9ade3f665703e5dd4ce6614a42b1e59613fcb8bf11",
+  "worlds/decl/atoms_mul_B.json": "7afffb0104711fbcf213f27426084764090ba2848ddd9e356c521621c0840577",
+  "worlds/decl/atoms_mul_C.json": "65ee1806190bf7f9d30e2f539b23b4f7d1959c852cfc23a1b0afaf3c23531af0"
+ },
+ "max_attempts": 3,
+ "model": null,
+ "policy": "nosave",
+ "track": "aml"
+}

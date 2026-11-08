@@ -1,0 +1,15 @@
+<footer class="md-footer">
+  {% if page and page.url != '404/' %}
+    {% set next = config.extra.continue_map.get(page.url) if config.extra.continue_map else none %}
+    {% if not next and page.next_page %}{% set next = [page.next_page.url, page.next_page.title] %}{% endif %}
+    <nav class="op-footer-links md-grid" aria-label="Continue and project links">
+      {% if next %}<a class="op-footer-next" href="{{ next[0] | url }}">Continue: {{ next[1] }}</a>{% endif %}
+      <a href="{{ 'reference/provenance/' | url }}">Contribute</a>
+      <a href="{{ 'reference/provenance/' | url }}">Cite</a>
+    </nav>
+  {% endif %}
+  <div class="md-footer-meta md-typeset"><div class="md-footer-meta__inner md-grid">
+    {% include "partials/copyright.html" %}
+    {% if config.extra.social %}{% include "partials/social.html" %}{% endif %}
+  </div></div>
+</footer>

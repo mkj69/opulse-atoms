@@ -1,0 +1,48 @@
+C1	a \dia_6 b = { (a @) * b }
+C2	\dn_2 a = { # a, if a >= 59; a \wspade_28 a, else }
+C3	a ^1\spade_3 b = { 0, if b == 0; a + (a \spade_3 (b - 1)), else }
+C4	\bbD_1 = { (n, d) \in \bbZ \x \bbZ \mid d != 0 } / \wdia_9 \seal [\lz_41, \wdia_42, \wdia_43]
+C5	\bbD_1(2, 4) => \bbD_1(1, 2)
+C5	[1, 2, 3]
+C5	\bbH_2(14) => \bbH_2(2)
+C5	\bbM_3(pos: (2, 3), facing: E)
+C6	\bbK_4[\bbX_t, \dia_a] = \bbX_t / \dia_a
+C6	\bbT_5[\bbX_t, \bbY_t] = \bbX_t \x \bbY_t
+C6	\bbD_1 = \bbK_4[\bbT_5[\bbZ, \bbZ], \wdia_9]
+C6	\bbH_2 = \bbK_4[\bbZ, \wdia_14]
+C7	\wlz_44 : \bbD_1 \x \bbD_1 -> \bbD_1
+C7	x \wlz_44 y = { \lz_41((\wdia_42 x) \spade_3 (\wdia_42 y), (\wdia_43 x) \spade_3 (\wdia_43 y)) }
+C8	\Theta_1[\dia_a] x = { \dia_a (\dia_a x) }
+C8	\Phi_2[\dia_a](z, l) = { z, if l == []; \Phi_2[\dia_a](z \dia_a (\wspade_8 l), \wspade_9 l), else }
+C8	\Psi_3[\dia_a] x = { x, if (\dia_a x) == x; \Psi_3[\dia_a] (\dia_a x), else } |- \dec \wdia_11
+C9	\Theta_1[\wheart_45] 3 => 12
+C9	\Phi_2[+](0, [1, 2, 3, 4]) => 10
+C10	\Theta_1[x |-> x * 3] 2 => 18
+C11	\hatO_1<|s|> = { not \hatW<|s|> and not \hatU<|s|> }
+C12	\hatS_2<||> = 0
+C12	\hatS_2<|s|> = { \hatS_2' + 1, if \hatC<|s|> == R; 0, else }
+C13	\hatO_1<|s|> => \top
+C13	\hatO_1<|s|> => ?
+C14	\eqv_1 : \all a, b \in \bbZ. a \spade_3 b == b \spade_3 a
+C14	(3 \spade_3 5) \eqv_1 (5 \spade_3 3)
+C14	((a \spade_3 b) \dia_6 c) \eqv_1 ((b \spade_3 a) \dia_6 c)
+C15	\squig_1 : \bbS_6 -> \bbG_7 |- \hatI_3<|\squig_1(m)|> == \hatJ_4<|m|>
+C15	\squig_1(m)
+C16	(\bbD_1(1, 2) \wlz_46 \bbD_1(1, 3)) \wlz_44 \bbD_1(3, 5) => ?
+C17	\hatI_3<|\Psi_3[\wclub_47] \bbI_8((0, 0), (1, 0))|> => ?
+C18	a ^1\spade_3 b = { 0, if b == 0; a + (a \spade_3 (b - 1)), else }
+C18	(+) : \bbZ \x \bbZ -> \bbZ
+C19	{ x, if a < b and not (\wdia_12 c); y, else }
+C20	\hatH_5<|P1, s|>
+X	\Lambda_4[\Theta_a][\dia_a] x = { \Theta_a[\Theta_a[\dia_a]] x }
+X	\Lambda_4[\Theta_1][\wheart_45] 3 => 48
+X	\Omega_5[\dia_a, \dia_e] x = { \dia_a (\dia_e x) }
+X	a \Omega_5[\dia_6, \dia_9] b
+X	\spade_9([|a \dia_6 b = { (a @) * b }|]) => [|...|]
+X	a \dia{| \spade_9([|\dia_6|]) |} b
+X	\Theta{| \spade_10([|\Theta_1|]) |}[\wheart_45] 3
+X	\bbX{| \spade_11([|\bbD_1|]) |}(2, 4)
+X	\k7_3(x)
+X	\k1000_a<|P1|>
+X	\dia_1000000 (a \k7_3 b)
+X	\Phi_2[+]([1, 2])

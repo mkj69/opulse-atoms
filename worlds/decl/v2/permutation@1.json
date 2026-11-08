@@ -1,0 +1,1271 @@
+{
+  "schema": "opulse.world/2",
+  "world": "permutation",
+  "version": 1,
+  "dialect": "atoms-v2",
+  "title": "Twelve-card permutation group",
+  "source": {
+    "catalogue": "depth/permutation"
+  },
+  "params": {
+    "positions": 12,
+    "closure_limit": 4096
+  },
+  "constants": {},
+  "objects": [
+    {
+      "kind": "object",
+      "name": "any",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Polymorphic member of a finite sequence."
+    },
+    {
+      "kind": "object",
+      "name": "permutation",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": true,
+      "interface": [
+        "swap",
+        "pack"
+      ],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "A bijection of the twelve visible card positions."
+    },
+    {
+      "kind": "object",
+      "name": "sequence",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "A finite sequence of values."
+    },
+    {
+      "kind": "object",
+      "name": "int",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "A small integer."
+    },
+    {
+      "kind": "object",
+      "name": "str",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "A text value."
+    },
+    {
+      "kind": "object",
+      "name": "bool",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "A truth value."
+    },
+    {
+      "kind": "object",
+      "name": "I",
+      "form": "constant",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": {
+        "node": "Lit",
+        "value": {
+          "t": "permutation",
+          "tag": "cards",
+          "f": [
+            {
+              "t": "int",
+              "v": 1
+            },
+            {
+              "t": "int",
+              "v": 2
+            },
+            {
+              "t": "int",
+              "v": 3
+            },
+            {
+              "t": "int",
+              "v": 4
+            },
+            {
+              "t": "int",
+              "v": 5
+            },
+            {
+              "t": "int",
+              "v": 6
+            },
+            {
+              "t": "int",
+              "v": 7
+            },
+            {
+              "t": "int",
+              "v": 8
+            },
+            {
+              "t": "int",
+              "v": 9
+            },
+            {
+              "t": "int",
+              "v": 10
+            },
+            {
+              "t": "int",
+              "v": 11
+            },
+            {
+              "t": "int",
+              "v": 12
+            }
+          ]
+        }
+      },
+      "host": null,
+      "doc": "Identity card order."
+    },
+    {
+      "kind": "object",
+      "name": "R",
+      "form": "constant",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": {
+        "node": "Lit",
+        "value": {
+          "t": "permutation",
+          "tag": "cards",
+          "f": [
+            {
+              "t": "int",
+              "v": 12
+            },
+            {
+              "t": "int",
+              "v": 1
+            },
+            {
+              "t": "int",
+              "v": 2
+            },
+            {
+              "t": "int",
+              "v": 3
+            },
+            {
+              "t": "int",
+              "v": 4
+            },
+            {
+              "t": "int",
+              "v": 5
+            },
+            {
+              "t": "int",
+              "v": 6
+            },
+            {
+              "t": "int",
+              "v": 7
+            },
+            {
+              "t": "int",
+              "v": 8
+            },
+            {
+              "t": "int",
+              "v": 9
+            },
+            {
+              "t": "int",
+              "v": 10
+            },
+            {
+              "t": "int",
+              "v": 11
+            }
+          ]
+        }
+      },
+      "host": null,
+      "doc": "One-step rotation."
+    },
+    {
+      "kind": "object",
+      "name": "S",
+      "form": "constant",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": {
+        "node": "Lit",
+        "value": {
+          "t": "permutation",
+          "tag": "cards",
+          "f": [
+            {
+              "t": "int",
+              "v": 1
+            },
+            {
+              "t": "int",
+              "v": 12
+            },
+            {
+              "t": "int",
+              "v": 11
+            },
+            {
+              "t": "int",
+              "v": 10
+            },
+            {
+              "t": "int",
+              "v": 9
+            },
+            {
+              "t": "int",
+              "v": 8
+            },
+            {
+              "t": "int",
+              "v": 7
+            },
+            {
+              "t": "int",
+              "v": 6
+            },
+            {
+              "t": "int",
+              "v": 5
+            },
+            {
+              "t": "int",
+              "v": 4
+            },
+            {
+              "t": "int",
+              "v": 3
+            },
+            {
+              "t": "int",
+              "v": 2
+            }
+          ]
+        }
+      },
+      "host": null,
+      "doc": "Reflection preserving position one."
+    }
+  ],
+  "operations": [
+    {
+      "kind": "operation",
+      "name": "swap",
+      "symbol": "swap",
+      "role": "act",
+      "inputs": [
+        {
+          "name": "first",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "second",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "state",
+          "sort": "permutation",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "permutation",
+        "enter": "bottom"
+      },
+      "rule": "Exchange positions first and second; invalid indices yield Bottom(invalid).",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.permutation.hosts:swap",
+        "digest": "8bc6f0f046a5a7e72b2b4f38e0a40ddb3aaa3a600344aa9808dba260db758367"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "length",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "items",
+          "sort": "sequence",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Return the length of a finite sequence.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.permutation.hosts:length",
+        "digest": "258c6803fbe42af194b512465c3cc38222df1caf6d54cf6955d38ef65fc5bd65"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "at",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "items",
+          "sort": "sequence",
+          "enter": "bottom"
+        },
+        {
+          "name": "index",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "any",
+        "enter": "bottom"
+      },
+      "rule": "Read an item by zero-based index.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.permutation.hosts:at",
+        "digest": "683aa7bd582eb8d5480392f4f20f97d48f117531b3150ea70a423e99367b9221"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "append",
+      "symbol": null,
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "items",
+          "sort": "sequence",
+          "enter": "bottom"
+        },
+        {
+          "name": "item",
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "sequence",
+        "enter": "bottom"
+      },
+      "rule": "Append a value to a finite sequence.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.permutation.hosts:append",
+        "digest": "57301a7fd49cdb0f22a56eec6c43a2ff4dc58d4b656bb61ef86721a2b0362007"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "contains",
+      "symbol": null,
+      "role": "decide",
+      "inputs": [
+        {
+          "name": "items",
+          "sort": "sequence",
+          "enter": "bottom"
+        },
+        {
+          "name": "item",
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Check sequence membership.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.permutation.hosts:contains",
+        "digest": "61852520ec057c0bd27d7472e771fde871ba688b6ba737b9a5a602a049bc9d85"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "reverse",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "items",
+          "sort": "sequence",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "sequence",
+        "enter": "bottom"
+      },
+      "rule": "Reverse an ordered list.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.permutation.hosts:reverse",
+        "digest": "c325a5ab40be8b04285fe1b3d8c16e28610f0e73ea89825b9e15106085166021"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "sorted_unique",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "items",
+          "sort": "sequence",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "sequence",
+        "enter": "bottom"
+      },
+      "rule": "Sort and deduplicate a finite list of comparable items.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.permutation.hosts:sorted_unique",
+        "digest": "c7d154a5b120230c0278510bc7e782704887273d9e0db22bd0460b9c866811fe"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "distinct",
+      "symbol": null,
+      "role": "decide",
+      "inputs": [
+        {
+          "name": "items",
+          "sort": "sequence",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Test whether all list entries are distinct.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.permutation.hosts:distinct",
+        "digest": "2bd1bf291acfe506a1606689737a4423f52c9ddb74b12cb4bebd5f7fb4b447d8"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "smallest",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "items",
+          "sort": "sequence",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Find the least item of a nonempty finite list.",
+      "errors": [
+        "empty"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.permutation.hosts:smallest",
+        "digest": "388b68b40bc916c2d842a1268ab0d9d782a746f7c045d5d2880b4b538c99e753"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "eq",
+      "symbol": null,
+      "role": "decide",
+      "inputs": [
+        {
+          "name": "left",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "right",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Compare two values structurally.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.permutation.hosts:eq",
+        "digest": "12c41430f8f8e4bb1b687c1e54595b296afaf07ed252af44a042d198e75ba05a"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "lt",
+      "symbol": null,
+      "role": "decide",
+      "inputs": [
+        {
+          "name": "left",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "right",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Test if the first integer is smaller.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.permutation.hosts:lt",
+        "digest": "36725814c8fb3b66ffcac882a8c42204eefb0de1fb00d7ea8f71abd2398d8555"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "le",
+      "symbol": null,
+      "role": "decide",
+      "inputs": [
+        {
+          "name": "left",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "right",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Test if the first integer is no greater.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.permutation.hosts:le",
+        "digest": "614c2ee205e8470f994730a0877382f018a0840f60b70e7e7bbf878bc91aab7b"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "add",
+      "symbol": null,
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "left",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "right",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Add small integers.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.permutation.hosts:add",
+        "digest": "93974e0d4b5a6049d118787d6f63499026d3b08c0dd5840b774c82349fc6d7b4"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "sub",
+      "symbol": null,
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "left",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "right",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Subtract small integers.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.permutation.hosts:sub",
+        "digest": "9a244b6b9515de5510604d8dc0fb1a6d93a1a18a52ae2565c83e1470bdeee36d"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "rem",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "left",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "right",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Return the integer remainder.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.permutation.hosts:rem",
+        "digest": "8ebe60b55b0ab05c135c3486ec959dfd89da990304c9f7696e5edfadf4433152"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "lcm",
+      "symbol": null,
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "left",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "right",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Compute integer least common multiple.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.permutation.hosts:lcm",
+        "digest": "c5c0fcd5248e38a498f0c9c682b3b88a4299590b3173035a813de9ac62321d97"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "is_perm",
+      "symbol": null,
+      "role": "decide",
+      "inputs": [
+        {
+          "name": "state",
+          "sort": "permutation",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Validate a twelve-card permutation.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.permutation.hosts:is_perm",
+        "digest": "546489031481dd830db47dbf89ef28aecdab52f0eb82825ff138c965ccf44401"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "require_limit",
+      "symbol": null,
+      "role": "decide",
+      "inputs": [
+        {
+          "name": "size",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Reject a count greater than 4096.",
+      "errors": [
+        "limit"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.permutation.hosts:require_limit",
+        "digest": "e9585ac26d5f5030a51e6120ae291e6638a85fd72432be1acdbdc1413a71ec08"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "require_bijective",
+      "symbol": null,
+      "role": "decide",
+      "inputs": [
+        {
+          "name": "size",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Reject a failed finite bijection test.",
+      "errors": [
+        "not_bijective"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.permutation.hosts:require_bijective",
+        "digest": "6d511a2b6bdbd9cb7db58b3b7817e0124f47b8b75531413f60255e4b7815c751"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "reverse_tail",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "items",
+          "sort": "sequence",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "sequence",
+        "enter": "bottom"
+      },
+      "rule": "Preserve a list's first entry and reverse its tail.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.permutation.hosts:reverse_tail",
+        "digest": "56d697ed24ace7ad41ebdffe6d2cbf0e1443be3ac59ffdd436c2fb693296b883"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "all_between",
+      "symbol": null,
+      "role": "decide",
+      "inputs": [
+        {
+          "name": "items",
+          "sort": "sequence",
+          "enter": "bottom"
+        },
+        {
+          "name": "lower",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "upper",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Check every element is an integer within inclusive bounds.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.permutation.hosts:all_between",
+        "digest": "4b800ca3f1cd855df06f149c48ec943a29bdd74da4fb9e92dabed4f030a6e299"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "merge_visited",
+      "symbol": null,
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "first",
+          "sort": "sequence",
+          "enter": "bottom"
+        },
+        {
+          "name": "second",
+          "sort": "sequence",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "sequence",
+        "enter": "bottom"
+      },
+      "rule": "Merge two finite lists and sort distinct members.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.permutation.hosts:merge_visited",
+        "digest": "8e5bb2a0726b05875a0974d42d213b1614bcb43845b78e716e025e4a1b72925e"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "at_seq",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "items",
+          "sort": "sequence",
+          "enter": "bottom"
+        },
+        {
+          "name": "index",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "sequence",
+        "enter": "bottom"
+      },
+      "rule": "Read a sequence-valued entry by zero-based index.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.permutation.hosts:at",
+        "digest": "683aa7bd582eb8d5480392f4f20f97d48f117531b3150ea70a423e99367b9221"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "pack",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "items",
+          "sort": "sequence",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "permutation",
+        "enter": "bottom"
+      },
+      "rule": "Construct a twelve-card permutation from a valid sequence; otherwise Bottom(invalid).",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.permutation.hosts:pack",
+        "digest": "5ed3ce0746ec6573f626fc824d4944420415226df4d2cd90aece5702e2e36ae1"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "at_perm",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "items",
+          "sort": "sequence",
+          "enter": "bottom"
+        },
+        {
+          "name": "index",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "permutation",
+        "enter": "bottom"
+      },
+      "rule": "Read a permutation-valued entry by zero-based index.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.permutation.hosts:at",
+        "digest": "683aa7bd582eb8d5480392f4f20f97d48f117531b3150ea70a423e99367b9221"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "reject",
+      "symbol": null,
+      "role": "decide",
+      "inputs": [
+        {
+          "name": "reason",
+          "sort": "str",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Construct an explicit Bottom with the requested error reason.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.permutation.hosts:reject",
+        "digest": "493c3a8920dfee8d5f685b97bcd13ef4025ce57d8ef1788f1895e37aef29b2c6"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    }
+  ],
+  "combinators": {
+    "nodes": [
+      "Var",
+      "Lit",
+      "Call",
+      "Let",
+      "Case",
+      "Rec"
+    ],
+    "library": [
+      {
+        "name": "then",
+        "params": [
+          "f",
+          "g",
+          "source"
+        ],
+        "op_params": [
+          "f",
+          "g"
+        ],
+        "body": {
+          "node": "Call",
+          "fn": "g",
+          "args": [
+            {
+              "node": "Call",
+              "fn": "f",
+              "args": [
+                {
+                  "node": "Var",
+                  "name": "source"
+                }
+              ]
+            }
+          ]
+        },
+        "unfold_rule": "substitute"
+      }
+    ],
+    "recursion": "measure"
+  },
+  "observation": {
+    "truth": "permutation",
+    "probes": [
+      {
+        "name": "cards",
+        "sort": "sequence",
+        "reads": "permutation",
+        "reveals": [
+          "cards"
+        ],
+        "impl": {
+          "host": "opulse.worlds_v2.permutation.hosts:cards",
+          "digest": "8685fcb7b903c7bae2a3f8792c9ed7285e62503732a00611144bc342ebcc763a"
+        }
+      }
+    ],
+    "capabilities": {
+      "learner": {
+        "channels": [
+          "results",
+          "errors",
+          "renders",
+          "traces",
+          "steps"
+        ],
+        "probes": "all"
+      }
+    },
+    "show": {
+      "input": "cards",
+      "result": "cards"
+    },
+    "judge_view": "full_state"
+  },
+  "codec": {
+    "permutation": "opulse.worlds_v2.permutation.hosts:to_card/from_card"
+  },
+  "lock": {
+    "host_digests": {
+      "swap": "8bc6f0f046a5a7e72b2b4f38e0a40ddb3aaa3a600344aa9808dba260db758367",
+      "length": "258c6803fbe42af194b512465c3cc38222df1caf6d54cf6955d38ef65fc5bd65",
+      "at": "683aa7bd582eb8d5480392f4f20f97d48f117531b3150ea70a423e99367b9221",
+      "append": "57301a7fd49cdb0f22a56eec6c43a2ff4dc58d4b656bb61ef86721a2b0362007",
+      "contains": "61852520ec057c0bd27d7472e771fde871ba688b6ba737b9a5a602a049bc9d85",
+      "reverse": "c325a5ab40be8b04285fe1b3d8c16e28610f0e73ea89825b9e15106085166021",
+      "sorted_unique": "c7d154a5b120230c0278510bc7e782704887273d9e0db22bd0460b9c866811fe",
+      "distinct": "2bd1bf291acfe506a1606689737a4423f52c9ddb74b12cb4bebd5f7fb4b447d8",
+      "smallest": "388b68b40bc916c2d842a1268ab0d9d782a746f7c045d5d2880b4b538c99e753",
+      "eq": "12c41430f8f8e4bb1b687c1e54595b296afaf07ed252af44a042d198e75ba05a",
+      "lt": "36725814c8fb3b66ffcac882a8c42204eefb0de1fb00d7ea8f71abd2398d8555",
+      "le": "614c2ee205e8470f994730a0877382f018a0840f60b70e7e7bbf878bc91aab7b",
+      "add": "93974e0d4b5a6049d118787d6f63499026d3b08c0dd5840b774c82349fc6d7b4",
+      "sub": "9a244b6b9515de5510604d8dc0fb1a6d93a1a18a52ae2565c83e1470bdeee36d",
+      "rem": "8ebe60b55b0ab05c135c3486ec959dfd89da990304c9f7696e5edfadf4433152",
+      "lcm": "c5c0fcd5248e38a498f0c9c682b3b88a4299590b3173035a813de9ac62321d97",
+      "is_perm": "546489031481dd830db47dbf89ef28aecdab52f0eb82825ff138c965ccf44401",
+      "require_limit": "e9585ac26d5f5030a51e6120ae291e6638a85fd72432be1acdbdc1413a71ec08",
+      "require_bijective": "6d511a2b6bdbd9cb7db58b3b7817e0124f47b8b75531413f60255e4b7815c751",
+      "reverse_tail": "56d697ed24ace7ad41ebdffe6d2cbf0e1443be3ac59ffdd436c2fb693296b883",
+      "all_between": "4b800ca3f1cd855df06f149c48ec943a29bdd74da4fb9e92dabed4f030a6e299",
+      "merge_visited": "8e5bb2a0726b05875a0974d42d213b1614bcb43845b78e716e025e4a1b72925e",
+      "at_seq": "683aa7bd582eb8d5480392f4f20f97d48f117531b3150ea70a423e99367b9221",
+      "pack": "5ed3ce0746ec6573f626fc824d4944420415226df4d2cd90aece5702e2e36ae1",
+      "at_perm": "683aa7bd582eb8d5480392f4f20f97d48f117531b3150ea70a423e99367b9221",
+      "reject": "493c3a8920dfee8d5f685b97bcd13ef4025ce57d8ef1788f1895e37aef29b2c6",
+      "probe.cards": "8685fcb7b903c7bae2a3f8792c9ed7285e62503732a00611144bc342ebcc763a"
+    },
+    "constants_hash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+    "world_hash": "90a711c49d8691800a4135876d090a42392767d52112ac471284bc817a21f7a4"
+  }
+}

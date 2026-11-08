@@ -1,0 +1,2320 @@
+{
+ "examples": [
+  {
+   "id": "lamps",
+   "inputs": [
+    {
+     "f": [
+      {
+       "f": [
+        {
+         "f": [
+          {
+           "t": "str",
+           "v": "A"
+          },
+          {
+           "t": "str",
+           "v": "red"
+          }
+         ],
+         "t": "Step",
+         "tag": "step"
+        },
+        {
+         "f": [
+          {
+           "t": "str",
+           "v": "B"
+          },
+          {
+           "t": "str",
+           "v": "blue"
+          }
+         ],
+         "t": "Step",
+         "tag": "step"
+        },
+        {
+         "f": [
+          {
+           "t": "str",
+           "v": "B"
+          },
+          {
+           "t": "str",
+           "v": "red"
+          }
+         ],
+         "t": "Step",
+         "tag": "step"
+        }
+       ],
+       "t": "History",
+       "tag": "list"
+      },
+      {
+       "f": [],
+       "t": "Actions",
+       "tag": "list"
+      }
+     ],
+     "t": "ReceiverView",
+     "tag": "view"
+    }
+   ],
+   "judge_view": {
+    "public_inputs": [
+     {
+      "f": [
+       {
+        "f": [
+         {
+          "f": [
+           {
+            "t": "str",
+            "v": "A"
+           },
+           {
+            "t": "str",
+            "v": "red"
+           }
+          ],
+          "t": "Step",
+          "tag": "step"
+         },
+         {
+          "f": [
+           {
+            "t": "str",
+            "v": "B"
+           },
+           {
+            "t": "str",
+            "v": "blue"
+           }
+          ],
+          "t": "Step",
+          "tag": "step"
+         },
+         {
+          "f": [
+           {
+            "t": "str",
+            "v": "B"
+           },
+           {
+            "t": "str",
+            "v": "red"
+           }
+          ],
+          "t": "Step",
+          "tag": "step"
+         }
+        ],
+        "t": "History",
+        "tag": "list"
+       },
+       {
+        "f": [],
+        "t": "Actions",
+        "tag": "list"
+       }
+      ],
+      "t": "ReceiverView",
+      "tag": "view"
+     }
+    ],
+    "truth": {
+     "f": [
+      {
+       "t": "str",
+       "v": "R"
+      },
+      {
+       "f": [
+        {
+         "f": [
+          {
+           "t": "str",
+           "v": "A"
+          },
+          {
+           "t": "str",
+           "v": "red"
+          }
+         ],
+         "t": "Step",
+         "tag": "step"
+        },
+        {
+         "f": [
+          {
+           "t": "str",
+           "v": "B"
+          },
+          {
+           "t": "str",
+           "v": "blue"
+          }
+         ],
+         "t": "Step",
+         "tag": "step"
+        },
+        {
+         "f": [
+          {
+           "t": "str",
+           "v": "B"
+          },
+          {
+           "t": "str",
+           "v": "red"
+          }
+         ],
+         "t": "Step",
+         "tag": "step"
+        }
+       ],
+       "t": "History",
+       "tag": "list"
+      },
+      {
+       "f": [],
+       "t": "Actions",
+       "tag": "list"
+      }
+     ],
+     "t": "Truth",
+     "tag": "sealed"
+    }
+   }
+  },
+  {
+   "id": "Belief",
+   "inputs": [
+    {
+     "expression": {
+      "args": [
+       {
+        "node": "Lit",
+        "value": {
+         "f": [
+          {
+           "t": "int",
+           "v": 2
+          },
+          {
+           "t": "int",
+           "v": 3
+          }
+         ],
+         "t": "Rational",
+         "tag": "fraction"
+        }
+       },
+       {
+        "node": "Lit",
+        "value": {
+         "f": [
+          {
+           "t": "int",
+           "v": 1
+          },
+          {
+           "t": "int",
+           "v": 3
+          }
+         ],
+         "t": "Rational",
+         "tag": "fraction"
+        }
+       }
+      ],
+      "fn": "BeliefPair.pair",
+      "node": "Call"
+     }
+    }
+   ],
+   "judge_view": {
+    "public_inputs": [
+     {
+      "expression": {
+       "args": [
+        {
+         "node": "Lit",
+         "value": {
+          "f": [
+           {
+            "t": "int",
+            "v": 2
+           },
+           {
+            "t": "int",
+            "v": 3
+           }
+          ],
+          "t": "Rational",
+          "tag": "fraction"
+         }
+        },
+        {
+         "node": "Lit",
+         "value": {
+          "f": [
+           {
+            "t": "int",
+            "v": 1
+           },
+           {
+            "t": "int",
+            "v": 3
+           }
+          ],
+          "t": "Rational",
+          "tag": "fraction"
+         }
+        }
+       ],
+       "fn": "BeliefPair.pair",
+       "node": "Call"
+      }
+     }
+    ],
+    "truth": {
+     "f": [
+      {
+       "t": "str",
+       "v": "R"
+      },
+      {
+       "f": [],
+       "t": "History",
+       "tag": "list"
+      },
+      {
+       "f": [],
+       "t": "Actions",
+       "tag": "list"
+      }
+     ],
+     "t": "Truth",
+     "tag": "sealed"
+    }
+   }
+  },
+  {
+   "id": "update",
+   "inputs": [
+    {
+     "f": [
+      {
+       "f": [
+        {
+         "f": [
+          {
+           "t": "int",
+           "v": 1
+          },
+          {
+           "t": "int",
+           "v": 2
+          }
+         ],
+         "t": "Rational",
+         "tag": "fraction"
+        },
+        {
+         "f": [
+          {
+           "t": "int",
+           "v": 1
+          },
+          {
+           "t": "int",
+           "v": 2
+          }
+         ],
+         "t": "Rational",
+         "tag": "fraction"
+        }
+       ],
+       "t": "BeliefPair",
+       "tag": "pair"
+      }
+     ],
+     "t": "Belief",
+     "tag": "val"
+    },
+    {
+     "t": "str",
+     "v": "B"
+    },
+    {
+     "t": "str",
+     "v": "blue"
+    }
+   ],
+   "judge_view": {
+    "public_inputs": [
+     {
+      "f": [
+       {
+        "f": [
+         {
+          "f": [
+           {
+            "t": "int",
+            "v": 1
+           },
+           {
+            "t": "int",
+            "v": 2
+           }
+          ],
+          "t": "Rational",
+          "tag": "fraction"
+         },
+         {
+          "f": [
+           {
+            "t": "int",
+            "v": 1
+           },
+           {
+            "t": "int",
+            "v": 2
+           }
+          ],
+          "t": "Rational",
+          "tag": "fraction"
+         }
+        ],
+        "t": "BeliefPair",
+        "tag": "pair"
+       }
+      ],
+      "t": "Belief",
+      "tag": "val"
+     },
+     {
+      "t": "str",
+      "v": "B"
+     },
+     {
+      "t": "str",
+      "v": "blue"
+     }
+    ],
+    "truth": {
+     "f": [
+      {
+       "t": "str",
+       "v": "R"
+      },
+      {
+       "f": [
+        {
+         "f": [
+          {
+           "t": "str",
+           "v": "B"
+          },
+          {
+           "t": "str",
+           "v": "blue"
+          }
+         ],
+         "t": "Step",
+         "tag": "step"
+        }
+       ],
+       "t": "History",
+       "tag": "list"
+      },
+      {
+       "f": [],
+       "t": "Actions",
+       "tag": "list"
+      }
+     ],
+     "t": "Truth",
+     "tag": "sealed"
+    }
+   }
+  },
+  {
+   "id": "scan",
+   "inputs": [
+    {
+     "t": "fn",
+     "v": "update"
+    },
+    {
+     "f": [
+      {
+       "f": [
+        {
+         "f": [
+          {
+           "t": "int",
+           "v": 1
+          },
+          {
+           "t": "int",
+           "v": 2
+          }
+         ],
+         "t": "Rational",
+         "tag": "fraction"
+        },
+        {
+         "f": [
+          {
+           "t": "int",
+           "v": 1
+          },
+          {
+           "t": "int",
+           "v": 2
+          }
+         ],
+         "t": "Rational",
+         "tag": "fraction"
+        }
+       ],
+       "t": "BeliefPair",
+       "tag": "pair"
+      }
+     ],
+     "t": "Belief",
+     "tag": "val"
+    },
+    {
+     "f": [
+      {
+       "t": "str",
+       "v": "A"
+      },
+      {
+       "t": "str",
+       "v": "B"
+      },
+      {
+       "t": "str",
+       "v": "B"
+      },
+      {
+       "t": "str",
+       "v": "A"
+      },
+      {
+       "t": "str",
+       "v": "B"
+      },
+      {
+       "t": "str",
+       "v": "B"
+      }
+     ],
+     "t": "Modes",
+     "tag": "list"
+    },
+    {
+     "f": [
+      {
+       "t": "str",
+       "v": "red"
+      },
+      {
+       "t": "str",
+       "v": "blue"
+      },
+      {
+       "t": "str",
+       "v": "red"
+      },
+      {
+       "t": "str",
+       "v": "red"
+      },
+      {
+       "t": "str",
+       "v": "blue"
+      },
+      {
+       "t": "str",
+       "v": "red"
+      }
+     ],
+     "t": "Lamps",
+     "tag": "list"
+    }
+   ],
+   "judge_view": {
+    "public_inputs": [
+     {
+      "t": "fn",
+      "v": "update"
+     },
+     {
+      "f": [
+       {
+        "f": [
+         {
+          "f": [
+           {
+            "t": "int",
+            "v": 1
+           },
+           {
+            "t": "int",
+            "v": 2
+           }
+          ],
+          "t": "Rational",
+          "tag": "fraction"
+         },
+         {
+          "f": [
+           {
+            "t": "int",
+            "v": 1
+           },
+           {
+            "t": "int",
+            "v": 2
+           }
+          ],
+          "t": "Rational",
+          "tag": "fraction"
+         }
+        ],
+        "t": "BeliefPair",
+        "tag": "pair"
+       }
+      ],
+      "t": "Belief",
+      "tag": "val"
+     },
+     {
+      "f": [
+       {
+        "t": "str",
+        "v": "A"
+       },
+       {
+        "t": "str",
+        "v": "B"
+       },
+       {
+        "t": "str",
+        "v": "B"
+       },
+       {
+        "t": "str",
+        "v": "A"
+       },
+       {
+        "t": "str",
+        "v": "B"
+       },
+       {
+        "t": "str",
+        "v": "B"
+       }
+      ],
+      "t": "Modes",
+      "tag": "list"
+     },
+     {
+      "f": [
+       {
+        "t": "str",
+        "v": "red"
+       },
+       {
+        "t": "str",
+        "v": "blue"
+       },
+       {
+        "t": "str",
+        "v": "red"
+       },
+       {
+        "t": "str",
+        "v": "red"
+       },
+       {
+        "t": "str",
+        "v": "blue"
+       },
+       {
+        "t": "str",
+        "v": "red"
+       }
+      ],
+      "t": "Lamps",
+      "tag": "list"
+     }
+    ],
+    "truth": {
+     "f": [
+      {
+       "t": "str",
+       "v": "R"
+      },
+      {
+       "f": [
+        {
+         "f": [
+          {
+           "t": "str",
+           "v": "A"
+          },
+          {
+           "t": "str",
+           "v": "red"
+          }
+         ],
+         "t": "Step",
+         "tag": "step"
+        },
+        {
+         "f": [
+          {
+           "t": "str",
+           "v": "B"
+          },
+          {
+           "t": "str",
+           "v": "blue"
+          }
+         ],
+         "t": "Step",
+         "tag": "step"
+        },
+        {
+         "f": [
+          {
+           "t": "str",
+           "v": "B"
+          },
+          {
+           "t": "str",
+           "v": "red"
+          }
+         ],
+         "t": "Step",
+         "tag": "step"
+        },
+        {
+         "f": [
+          {
+           "t": "str",
+           "v": "A"
+          },
+          {
+           "t": "str",
+           "v": "red"
+          }
+         ],
+         "t": "Step",
+         "tag": "step"
+        },
+        {
+         "f": [
+          {
+           "t": "str",
+           "v": "B"
+          },
+          {
+           "t": "str",
+           "v": "blue"
+          }
+         ],
+         "t": "Step",
+         "tag": "step"
+        },
+        {
+         "f": [
+          {
+           "t": "str",
+           "v": "B"
+          },
+          {
+           "t": "str",
+           "v": "red"
+          }
+         ],
+         "t": "Step",
+         "tag": "step"
+        }
+       ],
+       "t": "History",
+       "tag": "list"
+      },
+      {
+       "f": [],
+       "t": "Actions",
+       "tag": "list"
+      }
+     ],
+     "t": "Truth",
+     "tag": "sealed"
+    }
+   }
+  },
+  {
+   "id": "confidence",
+   "inputs": [
+    {
+     "expression": {
+      "args": [
+       {
+        "node": "Lit",
+        "value": {
+         "t": "fn",
+         "v": "update"
+        }
+       },
+       {
+        "node": "Lit",
+        "value": {
+         "f": [
+          {
+           "f": [
+            {
+             "f": [
+              {
+               "t": "int",
+               "v": 1
+              },
+              {
+               "t": "int",
+               "v": 2
+              }
+             ],
+             "t": "Rational",
+             "tag": "fraction"
+            },
+            {
+             "f": [
+              {
+               "t": "int",
+               "v": 1
+              },
+              {
+               "t": "int",
+               "v": 2
+              }
+             ],
+             "t": "Rational",
+             "tag": "fraction"
+            }
+           ],
+           "t": "BeliefPair",
+           "tag": "pair"
+          }
+         ],
+         "t": "Belief",
+         "tag": "val"
+        }
+       },
+       {
+        "node": "Lit",
+        "value": {
+         "f": [
+          {
+           "t": "str",
+           "v": "A"
+          },
+          {
+           "t": "str",
+           "v": "A"
+          }
+         ],
+         "t": "Modes",
+         "tag": "list"
+        }
+       },
+       {
+        "node": "Lit",
+        "value": {
+         "f": [
+          {
+           "t": "str",
+           "v": "red"
+          },
+          {
+           "t": "str",
+           "v": "red"
+          }
+         ],
+         "t": "Lamps",
+         "tag": "list"
+        }
+       }
+      ],
+      "fn": "scan",
+      "node": "Call"
+     }
+    }
+   ],
+   "judge_view": {
+    "public_inputs": [
+     {
+      "expression": {
+       "args": [
+        {
+         "node": "Lit",
+         "value": {
+          "t": "fn",
+          "v": "update"
+         }
+        },
+        {
+         "node": "Lit",
+         "value": {
+          "f": [
+           {
+            "f": [
+             {
+              "f": [
+               {
+                "t": "int",
+                "v": 1
+               },
+               {
+                "t": "int",
+                "v": 2
+               }
+              ],
+              "t": "Rational",
+              "tag": "fraction"
+             },
+             {
+              "f": [
+               {
+                "t": "int",
+                "v": 1
+               },
+               {
+                "t": "int",
+                "v": 2
+               }
+              ],
+              "t": "Rational",
+              "tag": "fraction"
+             }
+            ],
+            "t": "BeliefPair",
+            "tag": "pair"
+           }
+          ],
+          "t": "Belief",
+          "tag": "val"
+         }
+        },
+        {
+         "node": "Lit",
+         "value": {
+          "f": [
+           {
+            "t": "str",
+            "v": "A"
+           },
+           {
+            "t": "str",
+            "v": "A"
+           }
+          ],
+          "t": "Modes",
+          "tag": "list"
+         }
+        },
+        {
+         "node": "Lit",
+         "value": {
+          "f": [
+           {
+            "t": "str",
+            "v": "red"
+           },
+           {
+            "t": "str",
+            "v": "red"
+           }
+          ],
+          "t": "Lamps",
+          "tag": "list"
+         }
+        }
+       ],
+       "fn": "scan",
+       "node": "Call"
+      }
+     }
+    ],
+    "truth": {
+     "f": [
+      {
+       "t": "str",
+       "v": "R"
+      },
+      {
+       "f": [
+        {
+         "f": [
+          {
+           "t": "str",
+           "v": "A"
+          },
+          {
+           "t": "str",
+           "v": "red"
+          }
+         ],
+         "t": "Step",
+         "tag": "step"
+        },
+        {
+         "f": [
+          {
+           "t": "str",
+           "v": "A"
+          },
+          {
+           "t": "str",
+           "v": "red"
+          }
+         ],
+         "t": "Step",
+         "tag": "step"
+        }
+       ],
+       "t": "History",
+       "tag": "list"
+      },
+      {
+       "f": [],
+       "t": "Actions",
+       "tag": "list"
+      }
+     ],
+     "t": "Truth",
+     "tag": "sealed"
+    }
+   }
+  },
+  {
+   "id": "Policy",
+   "inputs": [
+    {
+     "expression": {
+      "args": [
+       {
+        "node": "Lit",
+        "value": {
+         "t": "str",
+         "v": "A"
+        }
+       },
+       {
+        "args": [
+         {
+          "node": "Lit",
+          "value": {
+           "t": "str",
+           "v": "R"
+          }
+         }
+        ],
+        "fn": "node_leaf",
+        "node": "Call"
+       },
+       {
+        "args": [
+         {
+          "node": "Lit",
+          "value": {
+           "t": "str",
+           "v": "B"
+          }
+         }
+        ],
+        "fn": "node_leaf",
+        "node": "Call"
+       }
+      ],
+      "fn": "node_ask",
+      "node": "Call"
+     }
+    }
+   ],
+   "judge_view": {
+    "public_inputs": [
+     {
+      "expression": {
+       "args": [
+        {
+         "node": "Lit",
+         "value": {
+          "t": "str",
+          "v": "A"
+         }
+        },
+        {
+         "args": [
+          {
+           "node": "Lit",
+           "value": {
+            "t": "str",
+            "v": "R"
+           }
+          }
+         ],
+         "fn": "node_leaf",
+         "node": "Call"
+        },
+        {
+         "args": [
+          {
+           "node": "Lit",
+           "value": {
+            "t": "str",
+            "v": "B"
+           }
+          }
+         ],
+         "fn": "node_leaf",
+         "node": "Call"
+        }
+       ],
+       "fn": "node_ask",
+       "node": "Call"
+      }
+     }
+    ],
+    "truth": {
+     "f": [
+      {
+       "t": "str",
+       "v": "R"
+      },
+      {
+       "f": [],
+       "t": "History",
+       "tag": "list"
+      },
+      {
+       "f": [],
+       "t": "Actions",
+       "tag": "list"
+      }
+     ],
+     "t": "Truth",
+     "tag": "sealed"
+    }
+   }
+  },
+  {
+   "id": "value",
+   "inputs": [
+    {
+     "expression": {
+      "args": [
+       {
+        "args": [
+         {
+          "node": "Lit",
+          "value": {
+           "t": "str",
+           "v": "A"
+          }
+         },
+         {
+          "args": [
+           {
+            "node": "Lit",
+            "value": {
+             "t": "str",
+             "v": "R"
+            }
+           }
+          ],
+          "fn": "node_leaf",
+          "node": "Call"
+         },
+         {
+          "args": [
+           {
+            "node": "Lit",
+            "value": {
+             "t": "str",
+             "v": "B"
+            }
+           }
+          ],
+          "fn": "node_leaf",
+          "node": "Call"
+         }
+        ],
+        "fn": "node_ask",
+        "node": "Call"
+       }
+      ],
+      "fn": "Policy.make",
+      "node": "Call"
+     }
+    },
+    {
+     "f": [
+      {
+       "f": [
+        {
+         "f": [
+          {
+           "t": "int",
+           "v": 1
+          },
+          {
+           "t": "int",
+           "v": 2
+          }
+         ],
+         "t": "Rational",
+         "tag": "fraction"
+        },
+        {
+         "f": [
+          {
+           "t": "int",
+           "v": 1
+          },
+          {
+           "t": "int",
+           "v": 2
+          }
+         ],
+         "t": "Rational",
+         "tag": "fraction"
+        }
+       ],
+       "t": "BeliefPair",
+       "tag": "pair"
+      }
+     ],
+     "t": "Belief",
+     "tag": "val"
+    },
+    {
+     "t": "int",
+     "v": 3
+    }
+   ],
+   "judge_view": {
+    "public_inputs": [
+     {
+      "expression": {
+       "args": [
+        {
+         "args": [
+          {
+           "node": "Lit",
+           "value": {
+            "t": "str",
+            "v": "A"
+           }
+          },
+          {
+           "args": [
+            {
+             "node": "Lit",
+             "value": {
+              "t": "str",
+              "v": "R"
+             }
+            }
+           ],
+           "fn": "node_leaf",
+           "node": "Call"
+          },
+          {
+           "args": [
+            {
+             "node": "Lit",
+             "value": {
+              "t": "str",
+              "v": "B"
+             }
+            }
+           ],
+           "fn": "node_leaf",
+           "node": "Call"
+          }
+         ],
+         "fn": "node_ask",
+         "node": "Call"
+        }
+       ],
+       "fn": "Policy.make",
+       "node": "Call"
+      }
+     },
+     {
+      "f": [
+       {
+        "f": [
+         {
+          "f": [
+           {
+            "t": "int",
+            "v": 1
+           },
+           {
+            "t": "int",
+            "v": 2
+           }
+          ],
+          "t": "Rational",
+          "tag": "fraction"
+         },
+         {
+          "f": [
+           {
+            "t": "int",
+            "v": 1
+           },
+           {
+            "t": "int",
+            "v": 2
+           }
+          ],
+          "t": "Rational",
+          "tag": "fraction"
+         }
+        ],
+        "t": "BeliefPair",
+        "tag": "pair"
+       }
+      ],
+      "t": "Belief",
+      "tag": "val"
+     },
+     {
+      "t": "int",
+      "v": 3
+     }
+    ],
+    "truth": {
+     "f": [
+      {
+       "t": "str",
+       "v": "R"
+      },
+      {
+       "f": [],
+       "t": "History",
+       "tag": "list"
+      },
+      {
+       "f": [],
+       "t": "Actions",
+       "tag": "list"
+      }
+     ],
+     "t": "Truth",
+     "tag": "sealed"
+    }
+   }
+  },
+  {
+   "id": "optimize",
+   "inputs": [
+    {
+     "expression": {
+      "args": [
+       {
+        "node": "Lit",
+        "value": {
+         "t": "fn",
+         "v": "value"
+        }
+       },
+       {
+        "node": "Lit",
+        "value": {
+         "f": [
+          {
+           "f": [
+            {
+             "f": [
+              {
+               "t": "int",
+               "v": 1
+              },
+              {
+               "t": "int",
+               "v": 2
+              }
+             ],
+             "t": "Rational",
+             "tag": "fraction"
+            },
+            {
+             "f": [
+              {
+               "t": "int",
+               "v": 1
+              },
+              {
+               "t": "int",
+               "v": 2
+              }
+             ],
+             "t": "Rational",
+             "tag": "fraction"
+            }
+           ],
+           "t": "BeliefPair",
+           "tag": "pair"
+          }
+         ],
+         "t": "Belief",
+         "tag": "val"
+        }
+       },
+       {
+        "node": "Lit",
+        "value": {
+         "t": "int",
+         "v": 6
+        }
+       }
+      ],
+      "fn": "optimize",
+      "node": "Call"
+     }
+    },
+    {
+     "f": [
+      {
+       "f": [
+        {
+         "f": [
+          {
+           "t": "int",
+           "v": 1
+          },
+          {
+           "t": "int",
+           "v": 2
+          }
+         ],
+         "t": "Rational",
+         "tag": "fraction"
+        },
+        {
+         "f": [
+          {
+           "t": "int",
+           "v": 1
+          },
+          {
+           "t": "int",
+           "v": 2
+          }
+         ],
+         "t": "Rational",
+         "tag": "fraction"
+        }
+       ],
+       "t": "BeliefPair",
+       "tag": "pair"
+      }
+     ],
+     "t": "Belief",
+     "tag": "val"
+    },
+    {
+     "t": "int",
+     "v": 6
+    }
+   ],
+   "judge_view": {
+    "public_inputs": [
+     {
+      "expression": {
+       "args": [
+        {
+         "node": "Lit",
+         "value": {
+          "t": "fn",
+          "v": "value"
+         }
+        },
+        {
+         "node": "Lit",
+         "value": {
+          "f": [
+           {
+            "f": [
+             {
+              "f": [
+               {
+                "t": "int",
+                "v": 1
+               },
+               {
+                "t": "int",
+                "v": 2
+               }
+              ],
+              "t": "Rational",
+              "tag": "fraction"
+             },
+             {
+              "f": [
+               {
+                "t": "int",
+                "v": 1
+               },
+               {
+                "t": "int",
+                "v": 2
+               }
+              ],
+              "t": "Rational",
+              "tag": "fraction"
+             }
+            ],
+            "t": "BeliefPair",
+            "tag": "pair"
+           }
+          ],
+          "t": "Belief",
+          "tag": "val"
+         }
+        },
+        {
+         "node": "Lit",
+         "value": {
+          "t": "int",
+          "v": 6
+         }
+        }
+       ],
+       "fn": "optimize",
+       "node": "Call"
+      }
+     },
+     {
+      "f": [
+       {
+        "f": [
+         {
+          "f": [
+           {
+            "t": "int",
+            "v": 1
+           },
+           {
+            "t": "int",
+            "v": 2
+           }
+          ],
+          "t": "Rational",
+          "tag": "fraction"
+         },
+         {
+          "f": [
+           {
+            "t": "int",
+            "v": 1
+           },
+           {
+            "t": "int",
+            "v": 2
+           }
+          ],
+          "t": "Rational",
+          "tag": "fraction"
+         }
+        ],
+        "t": "BeliefPair",
+        "tag": "pair"
+       }
+      ],
+      "t": "Belief",
+      "tag": "val"
+     },
+     {
+      "t": "int",
+      "v": 6
+     }
+    ],
+    "truth": {
+     "f": [
+      {
+       "t": "str",
+       "v": "R"
+      },
+      {
+       "f": [],
+       "t": "History",
+       "tag": "list"
+      },
+      {
+       "f": [],
+       "t": "Actions",
+       "tag": "list"
+      }
+     ],
+     "t": "Truth",
+     "tag": "sealed"
+    }
+   }
+  },
+  {
+   "id": "first",
+   "inputs": [
+    {
+     "expression": {
+      "args": [
+       {
+        "node": "Lit",
+        "value": {
+         "t": "fn",
+         "v": "value"
+        }
+       },
+       {
+        "node": "Lit",
+        "value": {
+         "f": [
+          {
+           "f": [
+            {
+             "f": [
+              {
+               "t": "int",
+               "v": 1
+              },
+              {
+               "t": "int",
+               "v": 4
+              }
+             ],
+             "t": "Rational",
+             "tag": "fraction"
+            },
+            {
+             "f": [
+              {
+               "t": "int",
+               "v": 3
+              },
+              {
+               "t": "int",
+               "v": 4
+              }
+             ],
+             "t": "Rational",
+             "tag": "fraction"
+            }
+           ],
+           "t": "BeliefPair",
+           "tag": "pair"
+          }
+         ],
+         "t": "Belief",
+         "tag": "val"
+        }
+       },
+       {
+        "node": "Lit",
+        "value": {
+         "t": "int",
+         "v": 6
+        }
+       }
+      ],
+      "fn": "optimize",
+      "node": "Call"
+     }
+    }
+   ],
+   "judge_view": {
+    "public_inputs": [
+     {
+      "expression": {
+       "args": [
+        {
+         "node": "Lit",
+         "value": {
+          "t": "fn",
+          "v": "value"
+         }
+        },
+        {
+         "node": "Lit",
+         "value": {
+          "f": [
+           {
+            "f": [
+             {
+              "f": [
+               {
+                "t": "int",
+                "v": 1
+               },
+               {
+                "t": "int",
+                "v": 4
+               }
+              ],
+              "t": "Rational",
+              "tag": "fraction"
+             },
+             {
+              "f": [
+               {
+                "t": "int",
+                "v": 3
+               },
+               {
+                "t": "int",
+                "v": 4
+               }
+              ],
+              "t": "Rational",
+              "tag": "fraction"
+             }
+            ],
+            "t": "BeliefPair",
+            "tag": "pair"
+           }
+          ],
+          "t": "Belief",
+          "tag": "val"
+         }
+        },
+        {
+         "node": "Lit",
+         "value": {
+          "t": "int",
+          "v": 6
+         }
+        }
+       ],
+       "fn": "optimize",
+       "node": "Call"
+      }
+     }
+    ],
+    "truth": {
+     "f": [
+      {
+       "t": "str",
+       "v": "R"
+      },
+      {
+       "f": [],
+       "t": "History",
+       "tag": "list"
+      },
+      {
+       "f": [],
+       "t": "Actions",
+       "tag": "list"
+      }
+     ],
+     "t": "Truth",
+     "tag": "sealed"
+    }
+   }
+  },
+  {
+   "id": "regret",
+   "inputs": [
+    {
+     "f": [
+      {
+       "f": [
+        {
+         "t": "str",
+         "v": "B"
+        },
+        {
+         "f": [
+          {
+           "t": "str",
+           "v": "B"
+          },
+          {
+           "f": [
+            {
+             "t": "str",
+             "v": "B"
+            }
+           ],
+           "t": "PolicyNode",
+           "tag": "Leaf"
+          },
+          {
+           "f": [
+            {
+             "t": "str",
+             "v": "R"
+            }
+           ],
+           "t": "PolicyNode",
+           "tag": "Leaf"
+          }
+         ],
+         "t": "PolicyNode",
+         "tag": "Ask"
+        },
+        {
+         "f": [
+          {
+           "t": "str",
+           "v": "A"
+          },
+          {
+           "f": [
+            {
+             "t": "str",
+             "v": "R"
+            }
+           ],
+           "t": "PolicyNode",
+           "tag": "Leaf"
+          },
+          {
+           "f": [
+            {
+             "t": "str",
+             "v": "B"
+            }
+           ],
+           "t": "PolicyNode",
+           "tag": "Leaf"
+          }
+         ],
+         "t": "PolicyNode",
+         "tag": "Ask"
+        }
+       ],
+       "t": "PolicyNode",
+       "tag": "Ask"
+      }
+     ],
+     "t": "Policy",
+     "tag": "val"
+    },
+    {
+     "expression": {
+      "args": [
+       {
+        "node": "Lit",
+        "value": {
+         "t": "fn",
+         "v": "update"
+        }
+       },
+       {
+        "node": "Lit",
+        "value": {
+         "f": [
+          {
+           "f": [
+            {
+             "f": [
+              {
+               "t": "int",
+               "v": 1
+              },
+              {
+               "t": "int",
+               "v": 2
+              }
+             ],
+             "t": "Rational",
+             "tag": "fraction"
+            },
+            {
+             "f": [
+              {
+               "t": "int",
+               "v": 1
+              },
+              {
+               "t": "int",
+               "v": 2
+              }
+             ],
+             "t": "Rational",
+             "tag": "fraction"
+            }
+           ],
+           "t": "BeliefPair",
+           "tag": "pair"
+          }
+         ],
+         "t": "Belief",
+         "tag": "val"
+        }
+       },
+       {
+        "node": "Lit",
+        "value": {
+         "f": [
+          {
+           "t": "str",
+           "v": "A"
+          },
+          {
+           "t": "str",
+           "v": "B"
+          },
+          {
+           "t": "str",
+           "v": "B"
+          }
+         ],
+         "t": "Modes",
+         "tag": "list"
+        }
+       },
+       {
+        "node": "Lit",
+        "value": {
+         "f": [
+          {
+           "t": "str",
+           "v": "red"
+          },
+          {
+           "t": "str",
+           "v": "blue"
+          },
+          {
+           "t": "str",
+           "v": "red"
+          }
+         ],
+         "t": "Lamps",
+         "tag": "list"
+        }
+       }
+      ],
+      "fn": "scan",
+      "node": "Call"
+     }
+    },
+    {
+     "t": "int",
+     "v": 4
+    }
+   ],
+   "judge_view": {
+    "public_inputs": [
+     {
+      "f": [
+       {
+        "f": [
+         {
+          "t": "str",
+          "v": "B"
+         },
+         {
+          "f": [
+           {
+            "t": "str",
+            "v": "B"
+           },
+           {
+            "f": [
+             {
+              "t": "str",
+              "v": "B"
+             }
+            ],
+            "t": "PolicyNode",
+            "tag": "Leaf"
+           },
+           {
+            "f": [
+             {
+              "t": "str",
+              "v": "R"
+             }
+            ],
+            "t": "PolicyNode",
+            "tag": "Leaf"
+           }
+          ],
+          "t": "PolicyNode",
+          "tag": "Ask"
+         },
+         {
+          "f": [
+           {
+            "t": "str",
+            "v": "A"
+           },
+           {
+            "f": [
+             {
+              "t": "str",
+              "v": "R"
+             }
+            ],
+            "t": "PolicyNode",
+            "tag": "Leaf"
+           },
+           {
+            "f": [
+             {
+              "t": "str",
+              "v": "B"
+             }
+            ],
+            "t": "PolicyNode",
+            "tag": "Leaf"
+           }
+          ],
+          "t": "PolicyNode",
+          "tag": "Ask"
+         }
+        ],
+        "t": "PolicyNode",
+        "tag": "Ask"
+       }
+      ],
+      "t": "Policy",
+      "tag": "val"
+     },
+     {
+      "expression": {
+       "args": [
+        {
+         "node": "Lit",
+         "value": {
+          "t": "fn",
+          "v": "update"
+         }
+        },
+        {
+         "node": "Lit",
+         "value": {
+          "f": [
+           {
+            "f": [
+             {
+              "f": [
+               {
+                "t": "int",
+                "v": 1
+               },
+               {
+                "t": "int",
+                "v": 2
+               }
+              ],
+              "t": "Rational",
+              "tag": "fraction"
+             },
+             {
+              "f": [
+               {
+                "t": "int",
+                "v": 1
+               },
+               {
+                "t": "int",
+                "v": 2
+               }
+              ],
+              "t": "Rational",
+              "tag": "fraction"
+             }
+            ],
+            "t": "BeliefPair",
+            "tag": "pair"
+           }
+          ],
+          "t": "Belief",
+          "tag": "val"
+         }
+        },
+        {
+         "node": "Lit",
+         "value": {
+          "f": [
+           {
+            "t": "str",
+            "v": "A"
+           },
+           {
+            "t": "str",
+            "v": "B"
+           },
+           {
+            "t": "str",
+            "v": "B"
+           }
+          ],
+          "t": "Modes",
+          "tag": "list"
+         }
+        },
+        {
+         "node": "Lit",
+         "value": {
+          "f": [
+           {
+            "t": "str",
+            "v": "red"
+           },
+           {
+            "t": "str",
+            "v": "blue"
+           },
+           {
+            "t": "str",
+            "v": "red"
+           }
+          ],
+          "t": "Lamps",
+          "tag": "list"
+         }
+        }
+       ],
+       "fn": "scan",
+       "node": "Call"
+      }
+     },
+     {
+      "t": "int",
+      "v": 4
+     }
+    ],
+    "truth": {
+     "f": [
+      {
+       "t": "str",
+       "v": "R"
+      },
+      {
+       "f": [
+        {
+         "f": [
+          {
+           "t": "str",
+           "v": "A"
+          },
+          {
+           "t": "str",
+           "v": "red"
+          }
+         ],
+         "t": "Step",
+         "tag": "step"
+        },
+        {
+         "f": [
+          {
+           "t": "str",
+           "v": "B"
+          },
+          {
+           "t": "str",
+           "v": "blue"
+          }
+         ],
+         "t": "Step",
+         "tag": "step"
+        },
+        {
+         "f": [
+          {
+           "t": "str",
+           "v": "B"
+          },
+          {
+           "t": "str",
+           "v": "red"
+          }
+         ],
+         "t": "Step",
+         "tag": "step"
+        }
+       ],
+       "t": "History",
+       "tag": "list"
+      },
+      {
+       "f": [],
+       "t": "Actions",
+       "tag": "list"
+      }
+     ],
+     "t": "Truth",
+     "tag": "sealed"
+    }
+   }
+  },
+  {
+   "id": "scan:unpaired",
+   "inputs": [
+    {
+     "t": "fn",
+     "v": "update"
+    },
+    {
+     "f": [
+      {
+       "f": [
+        {
+         "f": [
+          {
+           "t": "int",
+           "v": 1
+          },
+          {
+           "t": "int",
+           "v": 2
+          }
+         ],
+         "t": "Rational",
+         "tag": "fraction"
+        },
+        {
+         "f": [
+          {
+           "t": "int",
+           "v": 1
+          },
+          {
+           "t": "int",
+           "v": 2
+          }
+         ],
+         "t": "Rational",
+         "tag": "fraction"
+        }
+       ],
+       "t": "BeliefPair",
+       "tag": "pair"
+      }
+     ],
+     "t": "Belief",
+     "tag": "val"
+    },
+    {
+     "f": [
+      {
+       "t": "str",
+       "v": "A"
+      }
+     ],
+     "t": "Modes",
+     "tag": "list"
+    },
+    {
+     "f": [],
+     "t": "Lamps",
+     "tag": "list"
+    }
+   ],
+   "judge_view": {
+    "public_inputs": [
+     {
+      "t": "fn",
+      "v": "update"
+     },
+     {
+      "f": [
+       {
+        "f": [
+         {
+          "f": [
+           {
+            "t": "int",
+            "v": 1
+           },
+           {
+            "t": "int",
+            "v": 2
+           }
+          ],
+          "t": "Rational",
+          "tag": "fraction"
+         },
+         {
+          "f": [
+           {
+            "t": "int",
+            "v": 1
+           },
+           {
+            "t": "int",
+            "v": 2
+           }
+          ],
+          "t": "Rational",
+          "tag": "fraction"
+         }
+        ],
+        "t": "BeliefPair",
+        "tag": "pair"
+       }
+      ],
+      "t": "Belief",
+      "tag": "val"
+     },
+     {
+      "f": [
+       {
+        "t": "str",
+        "v": "A"
+       }
+      ],
+      "t": "Modes",
+      "tag": "list"
+     },
+     {
+      "f": [],
+      "t": "Lamps",
+      "tag": "list"
+     }
+    ],
+    "truth": {
+     "f": [
+      {
+       "t": "str",
+       "v": "R"
+      },
+      {
+       "f": [],
+       "t": "History",
+       "tag": "list"
+      },
+      {
+       "f": [],
+       "t": "Actions",
+       "tag": "list"
+      }
+     ],
+     "t": "Truth",
+     "tag": "sealed"
+    }
+   }
+  }
+ ],
+ "version": 1,
+ "world": "hidden"
+}

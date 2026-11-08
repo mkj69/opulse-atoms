@@ -1,0 +1,709 @@
+{
+  "schema": "opulse.world/2",
+  "world": "pitch",
+  "version": 1,
+  "dialect": "legacy-v1",
+  "title": "Pitch",
+  "source": {
+    "published": "docs/assets/data/worlds/pitch.json",
+    "settings": {
+      "register_pitch(key, scale)": "C, major",
+      "recursion.direct_bound": 4
+    }
+  },
+  "params": {
+    "register_pitch(key, scale)": "C, major",
+    "recursion.direct_bound": 4,
+    "integer_mode": "exact",
+    "integer_bound": 2147483647,
+    "key": "C",
+    "scale": "major"
+  },
+  "constants": {
+    "key": "C",
+    "scale": "major"
+  },
+  "objects": [
+    {
+      "kind": "object",
+      "name": "int",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": {
+        "repr": "Python int",
+        "codec": "opulse.core.semantics:Semantics.operations"
+      },
+      "doc": "A given legacy world value."
+    },
+    {
+      "kind": "object",
+      "name": "bool",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": {
+        "repr": "Python bool",
+        "codec": "opulse.core.types:matches"
+      },
+      "doc": "A given legacy world value."
+    },
+    {
+      "kind": "object",
+      "name": "note",
+      "form": "refine",
+      "base": "int",
+      "tags": null,
+      "group": [],
+      "valid": {
+        "host": "opulse.tasks_v2.hosts:valid_note",
+        "digest": "3407c3e9f90d9972c35c64d771b57e9eea13c352c178078dd4729838f7f51354"
+      },
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": {
+        "repr": "Python int",
+        "codec": "opulse.worlds.pitch:_note"
+      },
+      "doc": "A MIDI pitch from 0 through 127."
+    },
+    {
+      "kind": "object",
+      "name": "melody",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": {
+        "repr": "tuple[tuple[int, int], ...]",
+        "codec": "opulse.worlds.pitch:_melody"
+      },
+      "doc": "An ordered sequence of MIDI pitches and positive beat durations."
+    }
+  ],
+  "operations": [
+    {
+      "kind": "operation",
+      "name": "add",
+      "symbol": "+",
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "b",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "a + b is integer addition.",
+      "errors": [
+        "overflow"
+      ],
+      "impl": {
+        "host": "opulse.core.semantics:Semantics.operations",
+        "digest": "b27269173b44c4f371ece11817d4e9379427db73e36906993274078129d1db6e"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "sub",
+      "symbol": "-",
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "b",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "a - b is integer subtraction.",
+      "errors": [
+        "overflow"
+      ],
+      "impl": {
+        "host": "opulse.core.semantics:Semantics.operations",
+        "digest": "b27269173b44c4f371ece11817d4e9379427db73e36906993274078129d1db6e"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "mod",
+      "symbol": "%",
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "b",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "a % b is the remainder a - b * (a / b), with the sign of a (-7 % 2 = -1); b = 0 gives NaN.",
+      "errors": [
+        "div_zero",
+        "overflow"
+      ],
+      "impl": {
+        "host": "opulse.core.semantics:Semantics.operations",
+        "digest": "b27269173b44c4f371ece11817d4e9379427db73e36906993274078129d1db6e"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "neg",
+      "symbol": "-",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "- a is the negation of a.",
+      "errors": [
+        "overflow"
+      ],
+      "impl": {
+        "host": "opulse.core.semantics:Semantics.operations",
+        "digest": "b27269173b44c4f371ece11817d4e9379427db73e36906993274078129d1db6e"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "pitch_transpose",
+      "symbol": "♯",
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "note",
+          "enter": "fold(make_note)"
+        },
+        {
+          "name": "b",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "note",
+        "enter": "bottom"
+      },
+      "rule": "a ♯ b moves MIDI note a by b semitones; a result outside 0 through 127 gives NaN.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds.pitch:register_pitch",
+        "digest": "73a27cf96c34a77c842249870632c04f458d748e590b597834dbc0c18712e650"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "pitch_octave_up",
+      "symbol": "⇈",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "note",
+          "enter": "fold(make_note)"
+        }
+      ],
+      "output": {
+        "sort": "note",
+        "enter": "bottom"
+      },
+      "rule": "a ⇈ raises MIDI note a by 12 semitones; a result above 127 gives NaN.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds.pitch:register_pitch",
+        "digest": "73a27cf96c34a77c842249870632c04f458d748e590b597834dbc0c18712e650"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "pitch_octave_down",
+      "symbol": "⇊",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "note",
+          "enter": "fold(make_note)"
+        }
+      ],
+      "output": {
+        "sort": "note",
+        "enter": "bottom"
+      },
+      "rule": "a ⇊ lowers MIDI note a by 12 semitones; a result below 0 gives NaN.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds.pitch:register_pitch",
+        "digest": "73a27cf96c34a77c842249870632c04f458d748e590b597834dbc0c18712e650"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "pitch_interval",
+      "symbol": "⟷",
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "note",
+          "enter": "fold(make_note)"
+        },
+        {
+          "name": "b",
+          "sort": "note",
+          "enter": "fold(make_note)"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "a ⟷ b is the signed number of semitones from note a to note b.",
+      "errors": [
+        "overflow",
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds.pitch:register_pitch",
+        "digest": "73a27cf96c34a77c842249870632c04f458d748e590b597834dbc0c18712e650"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "pitch_invert",
+      "symbol": "⇅",
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "melody",
+          "enter": "bottom"
+        },
+        {
+          "name": "b",
+          "sort": "note",
+          "enter": "fold(make_note)"
+        }
+      ],
+      "output": {
+        "sort": "melody",
+        "enter": "bottom"
+      },
+      "rule": "a ⇅ b reflects every pitch in melody a around MIDI note b and keeps durations; an out of range pitch gives NaN.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds.pitch:register_pitch",
+        "digest": "73a27cf96c34a77c842249870632c04f458d748e590b597834dbc0c18712e650"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "pitch_retrograde",
+      "symbol": "⟲",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "melody",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "melody",
+        "enter": "bottom"
+      },
+      "rule": "a ⟲ reverses the order of melody a, keeping each note with its duration.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds.pitch:register_pitch",
+        "digest": "73a27cf96c34a77c842249870632c04f458d748e590b597834dbc0c18712e650"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "pitch_scale_step",
+      "symbol": "♬",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "note",
+          "enter": "fold(make_note)"
+        }
+      ],
+      "output": {
+        "sort": "note",
+        "enter": "bottom"
+      },
+      "rule": "a ♬ is the next higher note in C major; no higher MIDI note gives NaN.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds.pitch:register_pitch",
+        "digest": "73a27cf96c34a77c842249870632c04f458d748e590b597834dbc0c18712e650"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": [
+        "key",
+        "scale"
+      ]
+    },
+    {
+      "kind": "operation",
+      "name": "pitch_major_triad",
+      "symbol": "△",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "note",
+          "enter": "fold(make_note)"
+        }
+      ],
+      "output": {
+        "sort": "melody",
+        "enter": "bottom"
+      },
+      "rule": "a △ builds a three note major triad at MIDI note a with intervals 0, 4, 7 and one beat each; an out of range pitch gives NaN.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds.pitch:register_pitch",
+        "digest": "73a27cf96c34a77c842249870632c04f458d748e590b597834dbc0c18712e650"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "pitch_minor_triad",
+      "symbol": "▽",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "note",
+          "enter": "fold(make_note)"
+        }
+      ],
+      "output": {
+        "sort": "melody",
+        "enter": "bottom"
+      },
+      "rule": "a ▽ builds a three note minor triad at MIDI note a with intervals 0, 3, 7 and one beat each; an out of range pitch gives NaN.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds.pitch:register_pitch",
+        "digest": "73a27cf96c34a77c842249870632c04f458d748e590b597834dbc0c18712e650"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "pitch_repeat",
+      "symbol": "⥁",
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "melody",
+          "enter": "bottom"
+        },
+        {
+          "name": "b",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "melody",
+        "enter": "bottom"
+      },
+      "rule": "a ⥁ b repeats melody a b times for b from 0 through 16; other counts give NaN.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds.pitch:register_pitch",
+        "digest": "73a27cf96c34a77c842249870632c04f458d748e590b597834dbc0c18712e650"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "pitch_concat",
+      "symbol": "⋈",
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "melody",
+          "enter": "bottom"
+        },
+        {
+          "name": "b",
+          "sort": "melody",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "melody",
+        "enter": "bottom"
+      },
+      "rule": "a ⋈ b plays melody a followed by melody b.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds.pitch:register_pitch",
+        "digest": "73a27cf96c34a77c842249870632c04f458d748e590b597834dbc0c18712e650"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "pitch_melody_equal",
+      "symbol": "≎",
+      "role": "decide",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "melody",
+          "enter": "bottom"
+        },
+        {
+          "name": "b",
+          "sort": "melody",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "a ≎ b is true when melodies a and b have the same pitches and beat durations.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds.pitch:register_pitch",
+        "digest": "73a27cf96c34a77c842249870632c04f458d748e590b597834dbc0c18712e650"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "pitch_note_equal",
+      "symbol": "≐",
+      "role": "decide",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "note",
+          "enter": "fold(make_note)"
+        },
+        {
+          "name": "b",
+          "sort": "note",
+          "enter": "fold(make_note)"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "a ≐ b is true when the two MIDI notes have the same pitch.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds.pitch:register_pitch",
+        "digest": "73a27cf96c34a77c842249870632c04f458d748e590b597834dbc0c18712e650"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    }
+  ],
+  "combinators": {
+    "nodes": [
+      "Var",
+      "Lit",
+      "Call",
+      "Case",
+      "Rec"
+    ],
+    "library": [],
+    "recursion": "legacy"
+  },
+  "observation": {
+    "truth": null,
+    "probes": [],
+    "capabilities": {
+      "learner": {
+        "channels": [
+          "results",
+          "errors",
+          "renders",
+          "traces",
+          "steps",
+          "memory"
+        ],
+        "probes": "all"
+      }
+    },
+    "show": {
+      "input": "values",
+      "result": "value"
+    },
+    "judge_view": "full_state"
+  },
+  "codec": {
+    "legacy_tags": {
+      "bool": "bool",
+      "int": "int",
+      "melody": "melody",
+      "nan": "Bottom",
+      "note": "note"
+    },
+    "aliases": {}
+  },
+  "lock": {
+    "host_digests": {
+      "add": "b27269173b44c4f371ece11817d4e9379427db73e36906993274078129d1db6e",
+      "sub": "b27269173b44c4f371ece11817d4e9379427db73e36906993274078129d1db6e",
+      "mod": "b27269173b44c4f371ece11817d4e9379427db73e36906993274078129d1db6e",
+      "neg": "b27269173b44c4f371ece11817d4e9379427db73e36906993274078129d1db6e",
+      "pitch_transpose": "73a27cf96c34a77c842249870632c04f458d748e590b597834dbc0c18712e650",
+      "pitch_octave_up": "73a27cf96c34a77c842249870632c04f458d748e590b597834dbc0c18712e650",
+      "pitch_octave_down": "73a27cf96c34a77c842249870632c04f458d748e590b597834dbc0c18712e650",
+      "pitch_interval": "73a27cf96c34a77c842249870632c04f458d748e590b597834dbc0c18712e650",
+      "pitch_invert": "73a27cf96c34a77c842249870632c04f458d748e590b597834dbc0c18712e650",
+      "pitch_retrograde": "73a27cf96c34a77c842249870632c04f458d748e590b597834dbc0c18712e650",
+      "pitch_scale_step": "73a27cf96c34a77c842249870632c04f458d748e590b597834dbc0c18712e650",
+      "pitch_major_triad": "73a27cf96c34a77c842249870632c04f458d748e590b597834dbc0c18712e650",
+      "pitch_minor_triad": "73a27cf96c34a77c842249870632c04f458d748e590b597834dbc0c18712e650",
+      "pitch_repeat": "73a27cf96c34a77c842249870632c04f458d748e590b597834dbc0c18712e650",
+      "pitch_concat": "73a27cf96c34a77c842249870632c04f458d748e590b597834dbc0c18712e650",
+      "pitch_melody_equal": "73a27cf96c34a77c842249870632c04f458d748e590b597834dbc0c18712e650",
+      "pitch_note_equal": "73a27cf96c34a77c842249870632c04f458d748e590b597834dbc0c18712e650",
+      "note.valid": "3407c3e9f90d9972c35c64d771b57e9eea13c352c178078dd4729838f7f51354"
+    },
+    "constants_hash": "7addcd50cf810759a5653ebc29e97a30ba1df0e55cd9ecb43c41400e9471216e",
+    "world_hash": "6510b086348d13515e8c831423aad5efd4d043cea5cf94659c208b95074b911d"
+  }
+}

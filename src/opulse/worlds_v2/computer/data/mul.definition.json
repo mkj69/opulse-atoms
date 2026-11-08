@@ -1,0 +1,259 @@
+{
+  "id": "computer@1/MUL",
+  "name": "MUL",
+  "kind": "operation",
+  "origin": "invented",
+  "layer": 1,
+  "depends_on": [
+    "add",
+    "dec",
+    "is_zero",
+    "write",
+    "jump"
+  ],
+  "spec": {
+    "kind": "operation",
+    "name": "MUL",
+    "role": "act",
+    "inputs": [
+      {
+        "name": "s",
+        "sort": "machine_state",
+        "enter": "bottom"
+      }
+    ],
+    "output": {
+      "sort": "machine_state",
+      "enter": "bottom"
+    },
+    "rule": "Set r0 to (initial r1 * initial r2) mod 256 by repeated addition; consume r2.",
+    "errors": [
+      "invalid"
+    ],
+    "cost": null,
+    "strict": true,
+    "reads_params": []
+  },
+  "body": {
+    "node": "Blocks",
+    "vars": [],
+    "entry": "init",
+    "blocks": [
+      [
+        "init",
+        {
+          "node": "Block",
+          "assigns": [
+            [
+              "s",
+              {
+                "node": "Call",
+                "fn": "write",
+                "args": [
+                  {
+                    "node": "Var",
+                    "name": "s"
+                  },
+                  {
+                    "node": "Lit",
+                    "value": {
+                      "t": "reg",
+                      "tag": "r0",
+                      "f": []
+                    }
+                  },
+                  {
+                    "node": "Lit",
+                    "value": {
+                      "t": "int",
+                      "v": 0
+                    }
+                  }
+                ]
+              }
+            ]
+          ],
+          "end": {
+            "node": "Jump",
+            "target": "test"
+          }
+        }
+      ],
+      [
+        "test",
+        {
+          "node": "Block",
+          "assigns": [],
+          "end": {
+            "node": "CondJump",
+            "cond": {
+              "node": "Test",
+              "expr": {
+                "node": "Call",
+                "fn": "is_zero",
+                "args": [
+                  {
+                    "node": "Var",
+                    "name": "s"
+                  },
+                  {
+                    "node": "Lit",
+                    "value": {
+                      "t": "reg",
+                      "tag": "r2",
+                      "f": []
+                    }
+                  }
+                ]
+              }
+            },
+            "then": "done",
+            "else_": "body"
+          }
+        }
+      ],
+      [
+        "body",
+        {
+          "node": "Block",
+          "assigns": [
+            [
+              "s",
+              {
+                "node": "Call",
+                "fn": "add",
+                "args": [
+                  {
+                    "node": "Var",
+                    "name": "s"
+                  },
+                  {
+                    "node": "Lit",
+                    "value": {
+                      "t": "reg",
+                      "tag": "r0",
+                      "f": []
+                    }
+                  },
+                  {
+                    "node": "Lit",
+                    "value": {
+                      "t": "reg",
+                      "tag": "r1",
+                      "f": []
+                    }
+                  }
+                ]
+              }
+            ],
+            [
+              "s",
+              {
+                "node": "Call",
+                "fn": "dec",
+                "args": [
+                  {
+                    "node": "Var",
+                    "name": "s"
+                  },
+                  {
+                    "node": "Lit",
+                    "value": {
+                      "t": "reg",
+                      "tag": "r2",
+                      "f": []
+                    }
+                  }
+                ]
+              }
+            ]
+          ],
+          "end": {
+            "node": "Jump",
+            "target": "test"
+          }
+        }
+      ],
+      [
+        "done",
+        {
+          "node": "Block",
+          "assigns": [],
+          "end": {
+            "node": "Halt",
+            "value": {
+              "node": "Var",
+              "name": "s"
+            }
+          }
+        }
+      ]
+    ]
+  },
+  "evidence": {
+    "method": "exhaustive",
+    "scope": {
+      "domain": "byte x byte",
+      "size": 65536,
+      "checked": {
+        "size": 65536,
+        "sha256": "45fbdfce2605d9ce6beb2f9ecd27ca2692c166f4a1bbd20bd6a26ed879a33790",
+        "bounds": {
+          "0": {
+            "min": 0,
+            "max": 255
+          },
+          "1": {
+            "min": 0,
+            "max": 255
+          }
+        }
+      },
+      "description": "(r1, r2) over all pairs; r0 = r3 = 0, mem zero, flags false; full machine state compared"
+    },
+    "seed": null,
+    "checks": [
+      "reference",
+      "contract",
+      "unfold_equivalence",
+      "step_formula"
+    ],
+    "world_hash": "68896c882f4416d85494a1596f08a2cf7ee2f80691e1519565828864b486d7c9",
+    "deps_hash": "8418981585dde6cca7399bb39b7314b780b6d5c014291ed5b56b4ce2cfc9d8e1",
+    "content_hash": "895c1cdcbc482cf7d2ab4e48f169ed7de6f89098578922e5f8491fccd8a9b987",
+    "extra": [
+      {
+        "method": "sampled",
+        "seed": 709,
+        "size": 128,
+        "description": "Random r0, r3, memory and flags; full state and steps compared"
+      }
+    ]
+  },
+  "contract": {
+    "guarantees": "r0 = initial r1 * initial r2 mod 256",
+    "may_change": [
+      "carry",
+      "r0",
+      "r2",
+      "zero"
+    ],
+    "keeps": [
+      "r1",
+      "r3",
+      "mem"
+    ]
+  },
+  "cost": {
+    "length": 17,
+    "steps": {
+      "min": 4,
+      "max": 1279,
+      "mean": 641.5,
+      "formula": "4 + 5 * initial_r2",
+      "over": "verification scope"
+    },
+    "reuse": 0
+  },
+  "status": "promoted"
+}

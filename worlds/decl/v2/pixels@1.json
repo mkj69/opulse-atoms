@@ -1,0 +1,1909 @@
+{
+  "schema": "opulse.world/2",
+  "world": "pixels",
+  "version": 1,
+  "dialect": "atoms-v2",
+  "title": "Pixel topology and shape",
+  "source": {
+    "title_zh": "点亮小岛：拓扑与形状",
+    "catalogue": "worlds/catalogue/depth/pixels.json"
+  },
+  "params": {},
+  "constants": {
+    "max_width": 32,
+    "max_height": 32
+  },
+  "objects": [
+    {
+      "kind": "object",
+      "name": "int",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "An integer."
+    },
+    {
+      "kind": "object",
+      "name": "bool",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "A Boolean card."
+    },
+    {
+      "kind": "object",
+      "name": "point",
+      "form": "compose",
+      "base": null,
+      "tags": {
+        "xy": {
+          "x": "int",
+          "y": "int"
+        }
+      },
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Pt<x, y>, origin in the upper left."
+    },
+    {
+      "kind": "object",
+      "name": "grid",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": {
+        "repr": "Card(grid, pixels, (mask,))",
+        "codec": "opulse.worlds_v2.pixels.hosts:to_card/from_card"
+      },
+      "doc": "Rectangular grid of 1..32 by 1..32 . or # pixels."
+    },
+    {
+      "kind": "object",
+      "name": "str",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": {
+        "repr": "Card(grid, pixels, (mask,))",
+        "codec": "opulse.worlds_v2.pixels.hosts:to_card/from_card"
+      },
+      "doc": "Finite text."
+    },
+    {
+      "kind": "object",
+      "name": "island",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Carrier sort for connected grids."
+    },
+    {
+      "kind": "object",
+      "name": "shape",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Carrier sort for cropped grids."
+    },
+    {
+      "kind": "object",
+      "name": "list",
+      "form": "compose",
+      "base": null,
+      "tags": {
+        "items": {
+          "items": "str"
+        }
+      },
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": {
+        "repr": "Card(grid, pixels, (mask,))",
+        "codec": "opulse.worlds_v2.pixels.hosts:to_card/from_card"
+      },
+      "doc": "Finite ordered sequence of values."
+    },
+    {
+      "kind": "object",
+      "name": "A0",
+      "form": "constant",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": {
+        "node": "Lit",
+        "value": {
+          "t": "grid",
+          "tag": "rows",
+          "f": [
+            {
+              "t": "list",
+              "tag": "items",
+              "f": [
+                {
+                  "t": "str",
+                  "v": "............"
+                },
+                {
+                  "t": "str",
+                  "v": ".#####......"
+                },
+                {
+                  "t": "str",
+                  "v": ".#...#......"
+                },
+                {
+                  "t": "str",
+                  "v": ".#.#.#..##.."
+                },
+                {
+                  "t": "str",
+                  "v": ".#...#..##.."
+                },
+                {
+                  "t": "str",
+                  "v": ".#####......"
+                },
+                {
+                  "t": "str",
+                  "v": ".........#.."
+                },
+                {
+                  "t": "str",
+                  "v": "...###..#..."
+                },
+                {
+                  "t": "str",
+                  "v": "...#.#..#..."
+                },
+                {
+                  "t": "str",
+                  "v": "...###......"
+                },
+                {
+                  "t": "str",
+                  "v": "............"
+                },
+                {
+                  "t": "str",
+                  "v": "............"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "host": {
+        "repr": "Card(grid, pixels, (mask,))",
+        "codec": "opulse.worlds_v2.pixels.hosts:to_card/from_card"
+      },
+      "doc": "Declared 12x12 reference grid A0."
+    },
+    {
+      "kind": "object",
+      "name": "A1",
+      "form": "constant",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": {
+        "node": "Lit",
+        "value": {
+          "t": "grid",
+          "tag": "rows",
+          "f": [
+            {
+              "t": "list",
+              "tag": "items",
+              "f": [
+                {
+                  "t": "str",
+                  "v": "............"
+                },
+                {
+                  "t": "str",
+                  "v": "............"
+                },
+                {
+                  "t": "str",
+                  "v": "............"
+                },
+                {
+                  "t": "str",
+                  "v": "........##.."
+                },
+                {
+                  "t": "str",
+                  "v": "........##.."
+                },
+                {
+                  "t": "str",
+                  "v": "............"
+                },
+                {
+                  "t": "str",
+                  "v": "............"
+                },
+                {
+                  "t": "str",
+                  "v": "............"
+                },
+                {
+                  "t": "str",
+                  "v": "............"
+                },
+                {
+                  "t": "str",
+                  "v": "............"
+                },
+                {
+                  "t": "str",
+                  "v": "............"
+                },
+                {
+                  "t": "str",
+                  "v": "............"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "host": {
+        "repr": "Card(grid, pixels, (mask,))",
+        "codec": "opulse.worlds_v2.pixels.hosts:to_card/from_card"
+      },
+      "doc": "Declared 12x12 reference grid A1."
+    },
+    {
+      "kind": "object",
+      "name": "B0",
+      "form": "constant",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": {
+        "node": "Lit",
+        "value": {
+          "t": "grid",
+          "tag": "rows",
+          "f": [
+            {
+              "t": "list",
+              "tag": "items",
+              "f": [
+                {
+                  "t": "str",
+                  "v": "............"
+                },
+                {
+                  "t": "str",
+                  "v": "......#####."
+                },
+                {
+                  "t": "str",
+                  "v": "......#...#."
+                },
+                {
+                  "t": "str",
+                  "v": "..##..#.#.#."
+                },
+                {
+                  "t": "str",
+                  "v": "...##.#...#."
+                },
+                {
+                  "t": "str",
+                  "v": "......#####."
+                },
+                {
+                  "t": "str",
+                  "v": "..#........."
+                },
+                {
+                  "t": "str",
+                  "v": "...#..###..."
+                },
+                {
+                  "t": "str",
+                  "v": "...#..#.#..."
+                },
+                {
+                  "t": "str",
+                  "v": "......###..."
+                },
+                {
+                  "t": "str",
+                  "v": "............"
+                },
+                {
+                  "t": "str",
+                  "v": "............"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "host": {
+        "repr": "Card(grid, pixels, (mask,))",
+        "codec": "opulse.worlds_v2.pixels.hosts:to_card/from_card"
+      },
+      "doc": "Declared 12x12 reference grid B0."
+    }
+  ],
+  "operations": [
+    {
+      "kind": "operation",
+      "name": "light",
+      "symbol": "light",
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "grid",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "point",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "grid",
+        "enter": "bottom"
+      },
+      "rule": "Set one in-range pixel to #.",
+      "errors": [
+        "range",
+        "invalid",
+        "empty",
+        "grid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.pixels.hosts:light",
+        "digest": "65d832341a657ceb8a68426a7008fe2e6d36d71d46ba18747a7ec3517f1d4a64"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "erase",
+      "symbol": "erase",
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "grid",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "point",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "grid",
+        "enter": "bottom"
+      },
+      "rule": "Set one in-range pixel to .",
+      "errors": [
+        "range",
+        "invalid",
+        "empty",
+        "grid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.pixels.hosts:erase",
+        "digest": "e43b8e71c33f0a1b3148a7520ee0349beb47dfe78143f5f04ea9470c3db43ac3"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "identity",
+      "symbol": "identity",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "shape",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "shape",
+        "enter": "bottom"
+      },
+      "rule": "Generic identity constructor, accessor or primitive.",
+      "errors": [
+        "range",
+        "invalid",
+        "empty",
+        "grid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.pixels.hosts:identity",
+        "digest": "be48c968b81561c9ba97d48094df815c9127d4873a7cd9fc95e3cd109d1a69fa"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "point",
+      "symbol": "point",
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "point",
+        "enter": "bottom"
+      },
+      "rule": "Generic point constructor, accessor or primitive.",
+      "errors": [
+        "range",
+        "invalid",
+        "empty",
+        "grid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.pixels.hosts:point",
+        "digest": "457658284ce40427be176b9bb471ed6e1fcf6d9f727db1949616c5a9a6a42ecd"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "x_coord",
+      "symbol": "x_coord",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "point",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Generic x_coord constructor, accessor or primitive.",
+      "errors": [
+        "range",
+        "invalid",
+        "empty",
+        "grid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.pixels.hosts:x_coord",
+        "digest": "0fa0b8db4f74ddd8c9ceaa0dc18e417cbcfdc0b5ffd9136f624b540c00a20ffd"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "y_coord",
+      "symbol": "y_coord",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "point",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Generic y_coord constructor, accessor or primitive.",
+      "errors": [
+        "range",
+        "invalid",
+        "empty",
+        "grid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.pixels.hosts:y_coord",
+        "digest": "fd48404830851a166652d4cbf2f964d3e09e0bf94def27fe78dff33880b61414"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "grid",
+      "symbol": "grid",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "list",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "grid",
+        "enter": "bottom"
+      },
+      "rule": "Construct and validate a rectangular grid.",
+      "errors": [
+        "range",
+        "invalid",
+        "empty",
+        "grid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.pixels.hosts:grid",
+        "digest": "ee8e4ceadc20d3b1a81604e203923f97b2611b396c2045652263528594c98a37"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "rows",
+      "symbol": "rows",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "grid",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "list",
+        "enter": "bottom"
+      },
+      "rule": "Generic rows constructor, accessor or primitive.",
+      "errors": [
+        "range",
+        "invalid",
+        "empty",
+        "grid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.pixels.hosts:rows",
+        "digest": "2eecf177edeaaeb80f2ead3cd0a1d7c02034afcad880cedd5d808c72005cbd08"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "width",
+      "symbol": "width",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "grid",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Generic width constructor, accessor or primitive.",
+      "errors": [
+        "range",
+        "invalid",
+        "empty",
+        "grid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.pixels.hosts:width",
+        "digest": "0795020dc762eef902abc20e2b656fb430cd82faca45c6f6daac77295f141b42"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "height",
+      "symbol": "height",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "grid",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Generic height constructor, accessor or primitive.",
+      "errors": [
+        "range",
+        "invalid",
+        "empty",
+        "grid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.pixels.hosts:height",
+        "digest": "69785c0bea38cbbcabd38cabe4991d5f23ac5ddcca5a174cfc1f2f9de41af5b2"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "cell",
+      "symbol": "cell",
+      "role": "decide",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "grid",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "point",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Generic cell constructor, accessor or primitive.",
+      "errors": [
+        "range",
+        "invalid",
+        "empty",
+        "grid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.pixels.hosts:cell",
+        "digest": "7194b91c38a5d12e70a09f97d12389c2e32b3335ddb2a39fb1a375bfccd0136c"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "empty_grid",
+      "symbol": "empty_grid",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "grid",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "grid",
+        "enter": "bottom"
+      },
+      "rule": "Generic empty_grid constructor, accessor or primitive.",
+      "errors": [
+        "range",
+        "invalid",
+        "empty",
+        "grid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.pixels.hosts:empty_grid",
+        "digest": "60df8772066838b54ea12cef95a5eff1bba7e2f33a1bd88f732314937a45df70"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "blank",
+      "symbol": "blank",
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "grid",
+        "enter": "bottom"
+      },
+      "rule": "Generic blank constructor, accessor or primitive.",
+      "errors": [
+        "range",
+        "invalid",
+        "empty",
+        "grid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.pixels.hosts:blank",
+        "digest": "5a536d8dffb5789e28ee07801707515ffb8d34cfd319004106498d256fe981dc"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "list4",
+      "symbol": "list4",
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "point",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "point",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg2",
+          "sort": "point",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg3",
+          "sort": "point",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "list",
+        "enter": "bottom"
+      },
+      "rule": "Generic list4 constructor, accessor or primitive.",
+      "errors": [
+        "range",
+        "invalid",
+        "empty",
+        "grid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.pixels.hosts:list4",
+        "digest": "f875405664e0f7d23bd75bf02cc2b68375c7e07d9afde021977cf61d09c83c16"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "list8",
+      "symbol": "list8",
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "shape",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "shape",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg2",
+          "sort": "shape",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg3",
+          "sort": "shape",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg4",
+          "sort": "shape",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg5",
+          "sort": "shape",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg6",
+          "sort": "shape",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg7",
+          "sort": "shape",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "list",
+        "enter": "bottom"
+      },
+      "rule": "Generic list8 constructor, accessor or primitive.",
+      "errors": [
+        "range",
+        "invalid",
+        "empty",
+        "grid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.pixels.hosts:list8",
+        "digest": "588ffaa765a7ed8dc4b45312bddfbb6b06063681ee5dd182e5e38491a80dc220"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "nth",
+      "symbol": "nth",
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "list",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "point",
+        "enter": "bottom"
+      },
+      "rule": "Generic nth constructor, accessor or primitive.",
+      "errors": [
+        "range",
+        "invalid",
+        "empty",
+        "grid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.pixels.hosts:nth",
+        "digest": "533ecafe91bb9b309ec4824c795c952607ce769454c8a741c2ed8bee15bd74eb"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "sorted_list",
+      "symbol": "sorted_list",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "list",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "list",
+        "enter": "bottom"
+      },
+      "rule": "Generic sorted_list constructor, accessor or primitive.",
+      "errors": [
+        "range",
+        "invalid",
+        "empty",
+        "grid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.pixels.hosts:sorted_list",
+        "digest": "920a469a413d565749a74c4916e6a643040d2f80af044b9ef188e5bc1ee868ed"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "min_int",
+      "symbol": "min_int",
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Generic min_int constructor, accessor or primitive.",
+      "errors": [
+        "range",
+        "invalid",
+        "empty",
+        "grid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.pixels.hosts:min_int",
+        "digest": "2038b381b6a68c60c1d7347d2f0c71038beb90f88c5b3d2b417caf9894a78d8a"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "max_int",
+      "symbol": "max_int",
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Generic max_int constructor, accessor or primitive.",
+      "errors": [
+        "range",
+        "invalid",
+        "empty",
+        "grid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.pixels.hosts:max_int",
+        "digest": "24e4d7a9bcb31910498ffd09efbc810076ee995df8700c0f67f626a41a1ee988"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "unwrap",
+      "symbol": "unwrap",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "island",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "grid",
+        "enter": "bottom"
+      },
+      "rule": "Generic unwrap constructor, accessor or primitive.",
+      "errors": [
+        "range",
+        "invalid",
+        "empty",
+        "grid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.pixels.hosts:unwrap",
+        "digest": "a47d85e50a5e8c806d161ccd9514cde226ea90073a9398cb4e32f82e1ceea195"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "add",
+      "symbol": "add",
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Generic add constructor, accessor or primitive.",
+      "errors": [
+        "range",
+        "invalid",
+        "empty",
+        "grid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.pixels.hosts:add",
+        "digest": "21045b258bdc9ecded3bec33908c4ff9ad3254b2a2b06e89d8b2b19cca94ba8d"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "sub",
+      "symbol": "sub",
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Generic sub constructor, accessor or primitive.",
+      "errors": [
+        "range",
+        "invalid",
+        "empty",
+        "grid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.pixels.hosts:sub",
+        "digest": "6be77d6dd9d8dfa7dc48000274be3fef1de89c3ba5a0b61bc9d348b8881dc0ca"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "lt",
+      "symbol": "lt",
+      "role": "decide",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Generic lt constructor, accessor or primitive.",
+      "errors": [
+        "range",
+        "invalid",
+        "empty",
+        "grid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.pixels.hosts:lt",
+        "digest": "6505c472d435e0d555fa7bec36e9ad8f25b6afaeeb3e2ca6612aa6794c27f82a"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "eq",
+      "symbol": "eq",
+      "role": "decide",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Generic eq constructor, accessor or primitive.",
+      "errors": [
+        "range",
+        "invalid",
+        "empty",
+        "grid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.pixels.hosts:eq",
+        "digest": "779e26ec9761a9e33a3ce7705c947a3e3b0fa4f168b13e0321dae644cca9c3d3"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "length",
+      "symbol": "length",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "list",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Generic length constructor, accessor or primitive.",
+      "errors": [
+        "range",
+        "invalid",
+        "empty",
+        "grid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.pixels.hosts:length",
+        "digest": "10d819d121d196ddae856f2a8bb9e911af41828ebf600976c11f3fbf098a1690"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "head",
+      "symbol": "head",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "list",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "point",
+        "enter": "bottom"
+      },
+      "rule": "Generic head constructor, accessor or primitive.",
+      "errors": [
+        "range",
+        "invalid",
+        "empty",
+        "grid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.pixels.hosts:head",
+        "digest": "a3026afaf2826f15ce2685622a7df8938730dda91186a475f65c6f3d46ebb345"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "tail",
+      "symbol": "tail",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "list",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "list",
+        "enter": "bottom"
+      },
+      "rule": "Generic tail constructor, accessor or primitive.",
+      "errors": [
+        "range",
+        "invalid",
+        "empty",
+        "grid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.pixels.hosts:tail",
+        "digest": "96d95075cb0fc7ecfcd6e608234ce8030b80998c6cc7c4a34917b0644fd541b9"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "cons",
+      "symbol": "cons",
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "point",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "list",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "list",
+        "enter": "bottom"
+      },
+      "rule": "Generic cons constructor, accessor or primitive.",
+      "errors": [
+        "range",
+        "invalid",
+        "empty",
+        "grid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.pixels.hosts:cons",
+        "digest": "cea7d71b8ca8f93d775fa6f993351f8d8498bc4751e641f0c7c667c6867171ff"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "concat",
+      "symbol": "concat",
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "list",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "list",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "list",
+        "enter": "bottom"
+      },
+      "rule": "Generic concat constructor, accessor or primitive.",
+      "errors": [
+        "range",
+        "invalid",
+        "empty",
+        "grid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.pixels.hosts:concat",
+        "digest": "a02e2a8e516dbffebcb5eb6dac4de1f71a41859872ffaafd3d4484f97001e5e9"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "member",
+      "symbol": "member",
+      "role": "decide",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "point",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "list",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Generic member constructor, accessor or primitive.",
+      "errors": [
+        "range",
+        "invalid",
+        "empty",
+        "grid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.pixels.hosts:member",
+        "digest": "66d69228f6a13fc12e0e0cff0056d47145fe02aa696f24101fe17a9fd61731a1"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "without",
+      "symbol": "without",
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "list",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "list",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "list",
+        "enter": "bottom"
+      },
+      "rule": "Generic without constructor, accessor or primitive.",
+      "errors": [
+        "range",
+        "invalid",
+        "empty",
+        "grid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.pixels.hosts:without",
+        "digest": "b972d1c498c921985becf1517ce031667d00eb4a3c1ec02de8ed432a3f876a64"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "is_empty",
+      "symbol": "is_empty",
+      "role": "decide",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "list",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Generic is_empty constructor, accessor or primitive.",
+      "errors": [
+        "range",
+        "invalid",
+        "empty",
+        "grid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.pixels.hosts:is_empty",
+        "digest": "62ccd671d5dcc5463ca9e6225892e0a6a8560f0db2504b723cf82a6d0b46681e"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "range_int",
+      "symbol": "range_int",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "list",
+        "enter": "bottom"
+      },
+      "rule": "Generic range_int constructor, accessor or primitive.",
+      "errors": [
+        "range",
+        "invalid",
+        "empty",
+        "grid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.pixels.hosts:range_int",
+        "digest": "1c34e4fbf7bce7cc8d6ba02bb29f382483610b7ac9e97408918251ddf5e087f0"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "text_min",
+      "symbol": "text_min",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "list",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "str",
+        "enter": "bottom"
+      },
+      "rule": "Generic text_min constructor, accessor or primitive.",
+      "errors": [
+        "range",
+        "invalid",
+        "empty",
+        "grid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.pixels.hosts:text_min",
+        "digest": "0c41af92bef0df79ecdd03c3825f97502fb3452bf01b4ea6e3f08108ff6f731c"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "fail",
+      "symbol": "fail",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "reason",
+          "sort": "str",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "str",
+        "enter": "bottom"
+      },
+      "rule": "Return an explicit domain failure.",
+      "errors": [
+        "invalid",
+        "range",
+        "empty",
+        "shape",
+        "disconnected"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.pixels.hosts:fail",
+        "digest": "869db738bfeade18502ad67f1342bb47871a57f56ed0b8776012b563d7f627c3"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "text_pad2",
+      "symbol": "text_pad2",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "str",
+        "enter": "bottom"
+      },
+      "rule": "Generic text_pad2 text constructor.",
+      "errors": [
+        "range",
+        "invalid",
+        "empty",
+        "grid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.pixels.hosts:text_pad2",
+        "digest": "74ea99af1138a25068e759447c443c3a8162e41291b6ad3ae049c969b3aa18a4"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "text_concat",
+      "symbol": "text_concat",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "str",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "str",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "str",
+        "enter": "bottom"
+      },
+      "rule": "Generic text_concat text constructor.",
+      "errors": [
+        "range",
+        "invalid",
+        "empty",
+        "grid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.pixels.hosts:text_concat",
+        "digest": "8424c75d4249542db56d2bba6a4b9f147ed39e06135469da43531d01673ba7c4"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "text_join",
+      "symbol": "text_join",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "str",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "list",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "str",
+        "enter": "bottom"
+      },
+      "rule": "Generic text_join text constructor.",
+      "errors": [
+        "range",
+        "invalid",
+        "empty",
+        "grid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.pixels.hosts:text_join",
+        "digest": "03b48c680d4ba96c2ec02851432dd30f82d54cb0a06738c228766ba90a877610"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    }
+  ],
+  "combinators": {
+    "nodes": [
+      "Var",
+      "Lit",
+      "Call",
+      "Let",
+      "Case",
+      "Rec"
+    ],
+    "library": [
+      {
+        "name": "then",
+        "params": [
+          "f",
+          "g",
+          "value"
+        ],
+        "op_params": [
+          "f",
+          "g"
+        ],
+        "body": {
+          "node": "Call",
+          "fn": "g",
+          "args": [
+            {
+              "node": "Call",
+              "fn": "f",
+              "args": [
+                {
+                  "node": "Var",
+                  "name": "value"
+                }
+              ]
+            }
+          ]
+        },
+        "unfold_rule": "substitute"
+      }
+    ],
+    "recursion": "fuel",
+    "given": [
+      {
+        "name": "then",
+        "params": [
+          "f",
+          "g",
+          "value"
+        ],
+        "op_params": [
+          "f",
+          "g"
+        ],
+        "body": {
+          "node": "Call",
+          "fn": "g",
+          "args": [
+            {
+              "node": "Call",
+              "fn": "f",
+              "args": [
+                {
+                  "node": "Var",
+                  "name": "value"
+                }
+              ]
+            }
+          ]
+        },
+        "unfold_rule": "substitute"
+      }
+    ]
+  },
+  "observation": {
+    "truth": "grid",
+    "probes": [
+      {
+        "name": "pixels",
+        "sort": "list",
+        "reads": "grid",
+        "reveals": [
+          "public pixel rows"
+        ],
+        "impl": {
+          "host": "opulse.worlds_v2.pixels.hosts:pixels",
+          "digest": "8722594a07a6a7f822b475b2885a179884c905e0d7eb145277d5d5eb7ebcab01"
+        }
+      },
+      {
+        "name": "area",
+        "sort": "int",
+        "reads": "grid",
+        "reveals": [
+          "lit pixel count"
+        ],
+        "impl": {
+          "host": "opulse.worlds_v2.pixels.hosts:area",
+          "digest": "4af911ac79fd1a19b1a2cd36864c3dd8691e1dc266ddd6e083f6909d8528c326"
+        }
+      }
+    ],
+    "capabilities": {
+      "learner": {
+        "probes": [
+          "pixels",
+          "area"
+        ]
+      }
+    },
+    "show": "Every pixel is public.",
+    "judge_view": "full_state"
+  },
+  "codec": {},
+  "lock": {
+    "host_digests": {
+      "light": "65d832341a657ceb8a68426a7008fe2e6d36d71d46ba18747a7ec3517f1d4a64",
+      "erase": "e43b8e71c33f0a1b3148a7520ee0349beb47dfe78143f5f04ea9470c3db43ac3",
+      "identity": "be48c968b81561c9ba97d48094df815c9127d4873a7cd9fc95e3cd109d1a69fa",
+      "point": "457658284ce40427be176b9bb471ed6e1fcf6d9f727db1949616c5a9a6a42ecd",
+      "x_coord": "0fa0b8db4f74ddd8c9ceaa0dc18e417cbcfdc0b5ffd9136f624b540c00a20ffd",
+      "y_coord": "fd48404830851a166652d4cbf2f964d3e09e0bf94def27fe78dff33880b61414",
+      "grid": "ee8e4ceadc20d3b1a81604e203923f97b2611b396c2045652263528594c98a37",
+      "rows": "2eecf177edeaaeb80f2ead3cd0a1d7c02034afcad880cedd5d808c72005cbd08",
+      "width": "0795020dc762eef902abc20e2b656fb430cd82faca45c6f6daac77295f141b42",
+      "height": "69785c0bea38cbbcabd38cabe4991d5f23ac5ddcca5a174cfc1f2f9de41af5b2",
+      "cell": "7194b91c38a5d12e70a09f97d12389c2e32b3335ddb2a39fb1a375bfccd0136c",
+      "empty_grid": "60df8772066838b54ea12cef95a5eff1bba7e2f33a1bd88f732314937a45df70",
+      "blank": "5a536d8dffb5789e28ee07801707515ffb8d34cfd319004106498d256fe981dc",
+      "list4": "f875405664e0f7d23bd75bf02cc2b68375c7e07d9afde021977cf61d09c83c16",
+      "list8": "588ffaa765a7ed8dc4b45312bddfbb6b06063681ee5dd182e5e38491a80dc220",
+      "nth": "533ecafe91bb9b309ec4824c795c952607ce769454c8a741c2ed8bee15bd74eb",
+      "sorted_list": "920a469a413d565749a74c4916e6a643040d2f80af044b9ef188e5bc1ee868ed",
+      "min_int": "2038b381b6a68c60c1d7347d2f0c71038beb90f88c5b3d2b417caf9894a78d8a",
+      "max_int": "24e4d7a9bcb31910498ffd09efbc810076ee995df8700c0f67f626a41a1ee988",
+      "unwrap": "a47d85e50a5e8c806d161ccd9514cde226ea90073a9398cb4e32f82e1ceea195",
+      "add": "21045b258bdc9ecded3bec33908c4ff9ad3254b2a2b06e89d8b2b19cca94ba8d",
+      "sub": "6be77d6dd9d8dfa7dc48000274be3fef1de89c3ba5a0b61bc9d348b8881dc0ca",
+      "lt": "6505c472d435e0d555fa7bec36e9ad8f25b6afaeeb3e2ca6612aa6794c27f82a",
+      "eq": "779e26ec9761a9e33a3ce7705c947a3e3b0fa4f168b13e0321dae644cca9c3d3",
+      "length": "10d819d121d196ddae856f2a8bb9e911af41828ebf600976c11f3fbf098a1690",
+      "head": "a3026afaf2826f15ce2685622a7df8938730dda91186a475f65c6f3d46ebb345",
+      "tail": "96d95075cb0fc7ecfcd6e608234ce8030b80998c6cc7c4a34917b0644fd541b9",
+      "cons": "cea7d71b8ca8f93d775fa6f993351f8d8498bc4751e641f0c7c667c6867171ff",
+      "concat": "a02e2a8e516dbffebcb5eb6dac4de1f71a41859872ffaafd3d4484f97001e5e9",
+      "member": "66d69228f6a13fc12e0e0cff0056d47145fe02aa696f24101fe17a9fd61731a1",
+      "without": "b972d1c498c921985becf1517ce031667d00eb4a3c1ec02de8ed432a3f876a64",
+      "is_empty": "62ccd671d5dcc5463ca9e6225892e0a6a8560f0db2504b723cf82a6d0b46681e",
+      "range_int": "1c34e4fbf7bce7cc8d6ba02bb29f382483610b7ac9e97408918251ddf5e087f0",
+      "text_min": "0c41af92bef0df79ecdd03c3825f97502fb3452bf01b4ea6e3f08108ff6f731c",
+      "fail": "869db738bfeade18502ad67f1342bb47871a57f56ed0b8776012b563d7f627c3",
+      "text_pad2": "74ea99af1138a25068e759447c443c3a8162e41291b6ad3ae049c969b3aa18a4",
+      "text_concat": "8424c75d4249542db56d2bba6a4b9f147ed39e06135469da43531d01673ba7c4",
+      "text_join": "03b48c680d4ba96c2ec02851432dd30f82d54cb0a06738c228766ba90a877610",
+      "probe.pixels": "8722594a07a6a7f822b475b2885a179884c905e0d7eb145277d5d5eb7ebcab01",
+      "probe.area": "4af911ac79fd1a19b1a2cd36864c3dd8691e1dc266ddd6e083f6909d8528c326"
+    },
+    "constants_hash": "c74e58684e0ff2d6bc99b86deec4840d56e55ed4bb8ebbb3cd20b4c03053369c",
+    "world_hash": "26dd6dceb9a5d4d050ae48fb0283296a7bb24e7c9636d199bc11f21de9fc8bd7"
+  }
+}

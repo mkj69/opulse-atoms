@@ -1,0 +1,1425 @@
+{
+  "schema": "opulse.world/2",
+  "world": "grammar",
+  "version": 1,
+  "dialect": "atoms-v2",
+  "title": "Two Trees for One Sentence",
+  "source": {
+    "kind": "catalogue",
+    "id": "grammar"
+  },
+  "params": {},
+  "constants": {},
+  "objects": [
+    {
+      "kind": "object",
+      "name": "Word",
+      "form": "given",
+      "base": null,
+      "tags": {
+        "tokens": {
+          "items": "any"
+        }
+      },
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Public ordered tokens, up to 48 tokens, 12 numerals, and eight parentheses levels."
+    },
+    {
+      "kind": "object",
+      "name": "Draft",
+      "form": "given",
+      "base": null,
+      "tags": {
+        "E": {},
+        "num": {
+          "digit": "int"
+        },
+        "+": {
+          "left": "Draft",
+          "right": "Draft"
+        },
+        "*": {
+          "left": "Draft",
+          "right": "Draft"
+        },
+        "group": {
+          "inner": "Draft"
+        }
+      },
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Incomplete E derivation with at most 40 rule nodes."
+    },
+    {
+      "kind": "object",
+      "name": "Rule",
+      "form": "given",
+      "base": null,
+      "tags": {
+        "num": {
+          "digit": "int"
+        },
+        "+": {},
+        "*": {},
+        "group": {}
+      },
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "One of num(1..9), add, mul, or group productions."
+    },
+    {
+      "kind": "object",
+      "name": "List",
+      "form": "given",
+      "base": null,
+      "tags": {
+        "items": {
+          "items": "any"
+        }
+      },
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Generic finite ordered list used by kernel recursion."
+    },
+    {
+      "kind": "object",
+      "name": "bool",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": ""
+    },
+    {
+      "kind": "object",
+      "name": "int",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": ""
+    },
+    {
+      "kind": "object",
+      "name": "str",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": ""
+    },
+    {
+      "kind": "object",
+      "name": "any",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": ""
+    },
+    {
+      "kind": "object",
+      "name": "Pair",
+      "form": "given",
+      "base": null,
+      "tags": {
+        "pair": {
+          "first": "any",
+          "second": "any"
+        }
+      },
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": ""
+    },
+    {
+      "kind": "object",
+      "name": "Hist",
+      "form": "given",
+      "base": null,
+      "tags": {
+        "entries": {
+          "items": "Pair"
+        }
+      },
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": ""
+    },
+    {
+      "kind": "object",
+      "name": "Witness",
+      "form": "given",
+      "base": null,
+      "tags": {
+        "triple": {
+          "items": "any"
+        }
+      },
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": ""
+    }
+  ],
+  "operations": [
+    {
+      "kind": "operation",
+      "name": "expand",
+      "symbol": "expand",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "Draft",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "List",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg2",
+          "sort": "Rule",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Draft",
+        "enter": "bottom"
+      },
+      "rule": "Expand exactly one E leaf by a grammar production, respecting 40 nodes and the public word bounds.",
+      "errors": [
+        "path",
+        "rule",
+        "not_leaf",
+        "size",
+        "depth"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.grammar.hosts:expand",
+        "digest": "2feebafc3db356b5a6a9979f67f58132f38a856f72a09035209cbf8788a10a6e"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "list0",
+      "symbol": "list0",
+      "role": "transform",
+      "inputs": [],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Construct an empty list.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.grammar.hosts:list0",
+        "digest": "5e6573089bcc6ac7f22067ec01fcab8d7fdd0aef4d04d62e182a963c92d1200a"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "list1",
+      "symbol": "list1",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Construct a singleton list.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.grammar.hosts:list1",
+        "digest": "dfd635e360c08362c458a0f4222229ebb60a3ea65a3e81a9ee3ef9ced092792c"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "list2",
+      "symbol": "list2",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "any",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Construct a two-element list.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.grammar.hosts:list2",
+        "digest": "678ba05fc0083f492f947e97b1d35536364c54026cbefbe6dc4c0ad419f0717c"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "list3",
+      "symbol": "list3",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "any",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "any",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg2",
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Construct a three-element list.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.grammar.hosts:list3",
+        "digest": "7409c43a9913e51fe519bd5595f3db5d124b05da4abb025400f8a35af44f4728"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "word_new",
+      "symbol": "word_new",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "List",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Word",
+        "enter": "bottom"
+      },
+      "rule": "Check and construct a bounded public token word.",
+      "errors": [
+        "size",
+        "depth",
+        "parenthesis",
+        "token"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.grammar.hosts:word_new",
+        "digest": "deaf8c5a08329243a106af70531f794dc8886e5a92e47b5b8537f2f924a0fb0e"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "length",
+      "symbol": "length",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Length of a word or list.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.grammar.hosts:length",
+        "digest": "aefff4e63df062d6928d88b037b942e1b2ffaa5ec8f99698d6544cbc051a102e"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "at",
+      "symbol": "at",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "any",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "any",
+        "enter": "bottom"
+      },
+      "rule": "Read the indexed item.",
+      "errors": [
+        "index"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.grammar.hosts:at",
+        "digest": "dfedf75d1bcaa35fbd229cd342484817cfba434e739dd9881fc81c8d6157729f"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "slice_word",
+      "symbol": "slice_word",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "Word",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg2",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Word",
+        "enter": "bottom"
+      },
+      "rule": "Slice a public word without reordering.",
+      "errors": [
+        "index"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.grammar.hosts:slice_word",
+        "digest": "c31db0b23534f8ff465f3f242bbb09533f2ca526ce596efe3bb174872d02bbaf"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "append",
+      "symbol": "append",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "List",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Append one value to a list.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.grammar.hosts:append",
+        "digest": "d433821225183b38eec3d9afdf4493432c126055f0f467a7701c3f603b513bb6"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "concat",
+      "symbol": "concat",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "any",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "any",
+        "enter": "bottom"
+      },
+      "rule": "Concatenate equally typed sequences.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.grammar.hosts:concat",
+        "digest": "d349845ce01846b9a59e6b7277f26dd06c726df2729f2dd5e2a736cbbe79f8d2"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "make_draft",
+      "symbol": "make_draft",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "str",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "List",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Draft",
+        "enter": "bottom"
+      },
+      "rule": "Construct a complete grammar node.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.grammar.hosts:make_draft",
+        "digest": "898f5b5cd1aeeffcd1dffb47b40e86ecce74e9fa7fa2e93cc8dfbec0844da1df"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "pair",
+      "symbol": "pair",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "any",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Pair",
+        "enter": "bottom"
+      },
+      "rule": "Construct a generic ordered pair.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.grammar.hosts:pair",
+        "digest": "2c6b877bb0b333c8565ef7c729acbf480cb0140e06379f9386bdf38bf84ac767"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "hist",
+      "symbol": "hist",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "List",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Hist",
+        "enter": "bottom"
+      },
+      "rule": "Construct a frequency sequence from ordered pairs.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.grammar.hosts:hist",
+        "digest": "76e7e48b09c1c6ac16f056eaf266024fa154308af995e706f6fd808c37a6a9f0"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "witness",
+      "symbol": "witness",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "List",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Witness",
+        "enter": "bottom"
+      },
+      "rule": "Construct a generic ordered triple.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.grammar.hosts:witness",
+        "digest": "090898a12894a1406139eb69a8afea55ddb8490a31ee532e6ed21bda0da13dff"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "sorted_items",
+      "symbol": "sorted_items",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "List",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Sort a finite list of integers.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.grammar.hosts:sorted_items",
+        "digest": "668e47223cbdaa3d0b5d230f611008b4f4d8044358df0f5e12fe70a69879939c"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "tag",
+      "symbol": "tag",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "str",
+        "enter": "bottom"
+      },
+      "rule": "Read a tagged constructor.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.grammar.hosts:tag",
+        "digest": "4db1d058092943b7e980d24b5c95ed60865b8251e71d1f592e2034dff53b43ed"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "field",
+      "symbol": "field",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "any",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "any",
+        "enter": "bottom"
+      },
+      "rule": "Read a tagged constructor field.",
+      "errors": [
+        "index"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.grammar.hosts:field",
+        "digest": "ceb0a191d8887bf9ac695de9f9ce2909a4e769660a0944248e94e22b17363d39"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "add",
+      "symbol": "add",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Integer add.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.grammar.hosts:add",
+        "digest": "63098273a7aaa630762d6f145dfcf9c61c8c9b290c6ebeb2a05fea5854ccb476"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "sub",
+      "symbol": "sub",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Integer sub.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.grammar.hosts:sub",
+        "digest": "b07ba893449469b6d3fa240947da26ef1674afcda0dc2c11521e3ba7fe1e3d7a"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "mul",
+      "symbol": "mul",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Integer mul.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.grammar.hosts:mul",
+        "digest": "e6f199c4b8fb3f7be5148cb2f471cab3559f7807bf4473002f957dcdb5ab05ab"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "mod",
+      "symbol": "mod",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Integer mod.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.grammar.hosts:mod",
+        "digest": "fd6e72dbda5ceaa1bd73e5e47d07e1d788a92a43dea176e5ece7f0e9f08b9647"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "div",
+      "symbol": "div",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Integer div.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.grammar.hosts:div",
+        "digest": "252141d834be6d2420e4c98d957ee4e55a9076590a76c0744784d4c7afe16c12"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "eq",
+      "symbol": "eq",
+      "role": "decide",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "any",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Structural eq comparison.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.grammar.hosts:eq",
+        "digest": "21d8b0dd9ce8350e7f6c76ab9f70fe300dfb801ae19cc6ba016997ce6291e9ba"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "lt",
+      "symbol": "lt",
+      "role": "decide",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "any",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Structural lt comparison.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.grammar.hosts:lt",
+        "digest": "442829d9f6c3c56e57c566439b456c028a073645b8950145b4c8dfe089e7bcd5"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "le",
+      "symbol": "le",
+      "role": "decide",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "any",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Structural le comparison.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.grammar.hosts:le",
+        "digest": "9c6c406126e9f6b3c28e8bc0770cf3ac45b47bfca82fd4538b555d9de8ff60f4"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "is_int",
+      "symbol": "is_int",
+      "role": "decide",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Test whether a token is an integer digit.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.grammar.hosts:is_int",
+        "digest": "7787634fc2eaab066f74f49378fd3abc5d07abc51244c37220e0ce7c927f7816"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "fail",
+      "symbol": "fail",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "str",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "any",
+        "enter": "bottom"
+      },
+      "rule": "Raise a declared domain failure.",
+      "errors": [
+        "rank",
+        "no_parse",
+        "none",
+        "target",
+        "family"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.grammar.hosts:fail",
+        "digest": "3c06b1c5929602a8d69e9f054023abedc9ecacce15512f21d885013e2866602e"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "minimum",
+      "symbol": "minimum",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "List",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Smallest value in a nonempty list.",
+      "errors": [
+        "empty"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.grammar.hosts:minimum",
+        "digest": "507f9d35d6b3d904b4275a4483c15eacc501d46b537cfd5c2ba7e0b28484c0a6"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "maximum",
+      "symbol": "maximum",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "List",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Largest value in a nonempty list.",
+      "errors": [
+        "empty"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.grammar.hosts:maximum",
+        "digest": "ac03f2ee03b71d1f9459787edb2275d97c274544172eb196e2c458bb062d62ee"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    }
+  ],
+  "combinators": {
+    "nodes": [
+      "Var",
+      "Lit",
+      "Call",
+      "Let",
+      "Case",
+      "Rec"
+    ],
+    "library": [
+      "seq",
+      {
+        "name": "bounded_rec",
+        "params": [
+          "leaf",
+          "join",
+          "w"
+        ],
+        "op_params": [
+          "leaf",
+          "join"
+        ],
+        "body": {
+          "node": "Rec",
+          "fn": "recurse",
+          "params": [
+            "span"
+          ],
+          "body": {
+            "node": "Case",
+            "arms": [
+              [
+                {
+                  "node": "Test",
+                  "expr": {
+                    "node": "Call",
+                    "fn": "le",
+                    "args": [
+                      {
+                        "node": "Call",
+                        "fn": "length",
+                        "args": [
+                          {
+                            "node": "Var",
+                            "name": "span"
+                          }
+                        ]
+                      },
+                      {
+                        "node": "Lit",
+                        "value": {
+                          "t": "int",
+                          "v": 1
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "node": "Call",
+                  "fn": "leaf",
+                  "args": [
+                    {
+                      "node": "Var",
+                      "name": "span"
+                    }
+                  ]
+                }
+              ]
+            ],
+            "default": {
+              "node": "Let",
+              "name": "mid",
+              "value": {
+                "node": "Call",
+                "fn": "sub",
+                "args": [
+                  {
+                    "node": "Call",
+                    "fn": "length",
+                    "args": [
+                      {
+                        "node": "Var",
+                        "name": "span"
+                      }
+                    ]
+                  },
+                  {
+                    "node": "Lit",
+                    "value": {
+                      "t": "int",
+                      "v": 1
+                    }
+                  }
+                ]
+              },
+              "body": {
+                "node": "Call",
+                "fn": "join",
+                "args": [
+                  {
+                    "node": "Var",
+                    "name": "span"
+                  },
+                  {
+                    "node": "Call",
+                    "fn": "recurse",
+                    "args": [
+                      {
+                        "node": "Call",
+                        "fn": "slice_word",
+                        "args": [
+                          {
+                            "node": "Var",
+                            "name": "span"
+                          },
+                          {
+                            "node": "Lit",
+                            "value": {
+                              "t": "int",
+                              "v": 0
+                            }
+                          },
+                          {
+                            "node": "Var",
+                            "name": "mid"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "node": "Call",
+                    "fn": "recurse",
+                    "args": [
+                      {
+                        "node": "Call",
+                        "fn": "slice_word",
+                        "args": [
+                          {
+                            "node": "Var",
+                            "name": "span"
+                          },
+                          {
+                            "node": "Var",
+                            "name": "mid"
+                          },
+                          {
+                            "node": "Call",
+                            "fn": "length",
+                            "args": [
+                              {
+                                "node": "Var",
+                                "name": "span"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          "args": [
+            {
+              "node": "Var",
+              "name": "w"
+            }
+          ],
+          "measure": {
+            "node": "Call",
+            "fn": "length",
+            "args": [
+              {
+                "node": "Var",
+                "name": "span"
+              }
+            ]
+          },
+          "memo": true
+        },
+        "unfold_rule": "substitute"
+      }
+    ],
+    "recursion": "measure"
+  },
+  "observation": {
+    "truth": "Draft",
+    "probes": [
+      {
+        "name": "yield_probe",
+        "sort": "Word",
+        "reads": "Draft",
+        "reveals": [
+          "public_word"
+        ],
+        "impl": {
+          "host": "opulse.worlds_v2.grammar.hosts:yield_probe",
+          "digest": "8ac4b764af4335285322b167cc999109f3e1a82c2f872fed8da0b5bd52bcb5c5"
+        }
+      }
+    ],
+    "capabilities": {
+      "learner": {
+        "channels": [
+          "public_word"
+        ],
+        "probes": [
+          "yield_probe"
+        ]
+      }
+    },
+    "show": {
+      "input": "public_word",
+      "result": "public_word"
+    },
+    "judge_view": "full_state"
+  },
+  "codec": {},
+  "lock": {
+    "host_digests": {
+      "expand": "2feebafc3db356b5a6a9979f67f58132f38a856f72a09035209cbf8788a10a6e",
+      "list0": "5e6573089bcc6ac7f22067ec01fcab8d7fdd0aef4d04d62e182a963c92d1200a",
+      "list1": "dfd635e360c08362c458a0f4222229ebb60a3ea65a3e81a9ee3ef9ced092792c",
+      "list2": "678ba05fc0083f492f947e97b1d35536364c54026cbefbe6dc4c0ad419f0717c",
+      "list3": "7409c43a9913e51fe519bd5595f3db5d124b05da4abb025400f8a35af44f4728",
+      "word_new": "deaf8c5a08329243a106af70531f794dc8886e5a92e47b5b8537f2f924a0fb0e",
+      "length": "aefff4e63df062d6928d88b037b942e1b2ffaa5ec8f99698d6544cbc051a102e",
+      "at": "dfedf75d1bcaa35fbd229cd342484817cfba434e739dd9881fc81c8d6157729f",
+      "slice_word": "c31db0b23534f8ff465f3f242bbb09533f2ca526ce596efe3bb174872d02bbaf",
+      "append": "d433821225183b38eec3d9afdf4493432c126055f0f467a7701c3f603b513bb6",
+      "concat": "d349845ce01846b9a59e6b7277f26dd06c726df2729f2dd5e2a736cbbe79f8d2",
+      "make_draft": "898f5b5cd1aeeffcd1dffb47b40e86ecce74e9fa7fa2e93cc8dfbec0844da1df",
+      "pair": "2c6b877bb0b333c8565ef7c729acbf480cb0140e06379f9386bdf38bf84ac767",
+      "hist": "76e7e48b09c1c6ac16f056eaf266024fa154308af995e706f6fd808c37a6a9f0",
+      "witness": "090898a12894a1406139eb69a8afea55ddb8490a31ee532e6ed21bda0da13dff",
+      "sorted_items": "668e47223cbdaa3d0b5d230f611008b4f4d8044358df0f5e12fe70a69879939c",
+      "tag": "4db1d058092943b7e980d24b5c95ed60865b8251e71d1f592e2034dff53b43ed",
+      "field": "ceb0a191d8887bf9ac695de9f9ce2909a4e769660a0944248e94e22b17363d39",
+      "add": "63098273a7aaa630762d6f145dfcf9c61c8c9b290c6ebeb2a05fea5854ccb476",
+      "sub": "b07ba893449469b6d3fa240947da26ef1674afcda0dc2c11521e3ba7fe1e3d7a",
+      "mul": "e6f199c4b8fb3f7be5148cb2f471cab3559f7807bf4473002f957dcdb5ab05ab",
+      "mod": "fd6e72dbda5ceaa1bd73e5e47d07e1d788a92a43dea176e5ece7f0e9f08b9647",
+      "div": "252141d834be6d2420e4c98d957ee4e55a9076590a76c0744784d4c7afe16c12",
+      "eq": "21d8b0dd9ce8350e7f6c76ab9f70fe300dfb801ae19cc6ba016997ce6291e9ba",
+      "lt": "442829d9f6c3c56e57c566439b456c028a073645b8950145b4c8dfe089e7bcd5",
+      "le": "9c6c406126e9f6b3c28e8bc0770cf3ac45b47bfca82fd4538b555d9de8ff60f4",
+      "is_int": "7787634fc2eaab066f74f49378fd3abc5d07abc51244c37220e0ce7c927f7816",
+      "fail": "3c06b1c5929602a8d69e9f054023abedc9ecacce15512f21d885013e2866602e",
+      "minimum": "507f9d35d6b3d904b4275a4483c15eacc501d46b537cfd5c2ba7e0b28484c0a6",
+      "maximum": "ac03f2ee03b71d1f9459787edb2275d97c274544172eb196e2c458bb062d62ee",
+      "probe.yield_probe": "8ac4b764af4335285322b167cc999109f3e1a82c2f872fed8da0b5bd52bcb5c5"
+    },
+    "constants_hash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+    "world_hash": "f7bb71d22c5362a49f1bc5fb48e86b52d637beb3ba6340d1d4ed431ac8a9c7ad"
+  }
+}

@@ -1,0 +1,4 @@
+Metric                  Expected       Worst case
+Calls                       7,200.00     14,400.00
+Input tokens            4,384,380.00  8,771,400.00
+Output tokens           2,160,000.00  14,745,600.00

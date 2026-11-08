@@ -1,0 +1,1181 @@
+{
+  "id": "roads",
+  "status": "design",
+  "sources": ["roads.json (depth pass design, 2026-11-04)", "worlds.md (round 2x numeric review, 2026-11-04)", "docs/assets/data/worlds_v2/roads.json"],
+  "graph": {
+    "name": "Metro",
+    "nodes": ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L"],
+    "edges": {"AB": 2, "AC": 4, "AD": 3, "BE": 3, "BF": 6, "CE": 1, "CF": 2, "DF": 2, "DG": 2, "EH": 3, "EI": 4, "FH": 2, "FI": 3, "FJ": 4, "GI": 2, "GJ": 3, "HK": 3, "HL": 8, "IK": 2, "IL": 5, "JK": 4, "JL": 3, "KL": 2}
+  },
+  "tower": [
+    {"layer": 0, "kind": "object", "name": "Roads", "declaration": "obj Roads<nodes: List<Text>, edges: List<(Text,Text,Int)>> given", "depends_on": [], "description": "A finite undirected graph with positive integer weights."},
+    {"layer": 0, "kind": "object", "name": "Edges", "declaration": "obj Edges<edge_ids: List<Text>> given", "depends_on": [], "description": "A sorted, duplicate-free set of public road IDs."},
+    {"layer": 0, "kind": "object", "name": "Worst", "declaration": "obj Worst<cost: Int, closures: Edges, route: T> given", "depends_on": [], "description": "The worst cost, its closed roads and a surviving route."},
+    {"layer": 0, "kind": "object", "name": "Metro", "declaration": "obj Metro: Roads given", "depends_on": [], "description": "Twelve junctions and 23 public, undirected, weighted roads."},
+    {"layer": 0, "kind": "operation", "name": "edge", "declaration": "op edge(g, u, v) -> Outcome<Int> given", "depends_on": [], "description": "Read a road's weight or return Bottom(no_edge)."},
+    {"layer": 0, "kind": "observation", "name": "?map", "declaration": "obs ?map{g} -> Roads given", "depends_on": [], "description": "Expose the current public graph."},
+    {"layer": 0, "kind": "combinator", "name": "@chain", "declaration": "comb @chain[f, g](x) -> Outcome<C> given", "depends_on": [], "description": "Run one step after another, preserving the first failure."},
+    {"layer": 0, "kind": "observation", "name": "?size", "declaration": "obs ?size{xs} -> Int given", "depends_on": [], "description": "Count an already visible finite list."},
+    {"layer": 1, "kind": "object", "name": "Route", "declaration": "obj Route<g, vertices: List<Text>> L1", "depends_on": ["Roads", "edge"], "description": "Check each edge and reject repeated junctions."},
+    {"layer": 2, "kind": "operation", "name": "cost", "declaration": "op cost(r: Route) -> Int L2", "depends_on": ["Route", "edge"], "description": "Add the weights along a valid route."},
+    {"layer": 3, "kind": "combinator", "name": "@explore", "declaration": "comb @explore[edge](g, s, t) -> List<Route> L3", "depends_on": ["Route", "edge"], "description": "Enumerate simple routes by visiting unvisited neighbors."},
+    {"layer": 4, "kind": "operation", "name": "best", "declaration": "op best(g, s, t) -> Outcome<Route> L4", "depends_on": ["@explore", "cost"], "description": "Choose least cost, then lexicographically first route."},
+    {"layer": 5, "kind": "observation", "name": "?optimal", "declaration": "obs ?optimal{r: Route} -> Bool L5", "depends_on": ["Route", "cost", "best"], "description": "Compare a route's cost with the best route's cost."},
+    {"layer": 6, "kind": "object", "name": "Closure", "declaration": "obj Closure<g, closed: Edges> L6", "depends_on": ["Roads", "Edges", "?map"], "description": "Represent a graph with a sorted set of closed roads."},
+    {"layer": 7, "kind": "operation", "name": "close", "declaration": "op close(g, blocked: Edges) -> Closure L7", "depends_on": ["Closure", "?map"], "description": "Remove closed roads from the public map."},
+    {"layer": 8, "kind": "combinator", "name": "@failures", "declaration": "comb @failures[close](g, b) -> List<Closure> L8", "depends_on": ["close", "?map"], "description": "Enumerate closures by size, then road IDs."},
+    {"layer": 9, "kind": "observation", "name": "?survives", "declaration": "obs ?survives{g, s, t, b} -> Bool L9", "depends_on": ["@failures", "@explore"], "description": "Check reachability under every permitted closure."},
+    {"layer": 10, "kind": "operation", "name": "worst", "declaration": "op worst(g, s, t, b) -> Outcome<Worst> L10", "depends_on": ["Worst", "@failures", "best", "cost"], "description": "Find the highest surviving shortest cost and first tied closure."},
+    {"layer": 11, "kind": "operation", "name": "mincut", "declaration": "op mincut(g, s, t) -> Outcome<Edges> L11", "depends_on": ["Edges", "?map"], "description": "Find the smallest separating edge set across all vertex partitions."},
+    {"layer": 12, "kind": "observation", "name": "?cut_certificate", "declaration": "obs ?cut_certificate{g, s, t} -> Bool L12", "depends_on": ["?survives", "mincut", "close", "@explore"], "description": "Check both the surviving lower bound and a disconnecting cut."}
+  ],
+  "notation3": {
+    "version": 1,
+    "worlds": {
+      "roads": {
+        "legend": [
+          {
+            "mark": "\\bbA",
+            "display": "\ud835\udd38",
+            "name": "Roads",
+            "kind": "object",
+            "layer": 0,
+            "origin": "given",
+            "forms": [
+              "graph"
+            ],
+            "signature": null
+          },
+          {
+            "mark": "\\bbD",
+            "display": "\ud835\udd3b",
+            "name": "Edge",
+            "kind": "object",
+            "layer": 0,
+            "origin": "given",
+            "forms": [
+              "road"
+            ],
+            "signature": null
+          },
+          {
+            "mark": "\\bbE",
+            "display": "\ud835\udd3c",
+            "name": "Edges",
+            "kind": "object",
+            "layer": 0,
+            "origin": "given",
+            "forms": [
+              "set"
+            ],
+            "signature": null
+          },
+          {
+            "mark": "\\bbG",
+            "display": "\ud835\udd3e",
+            "name": "Worst",
+            "kind": "object",
+            "layer": 0,
+            "origin": "given",
+            "forms": [
+              "record"
+            ],
+            "signature": null
+          },
+          {
+            "mark": "\\bbH",
+            "display": "\u210d",
+            "name": "Bottom",
+            "kind": "object",
+            "layer": 0,
+            "origin": "given",
+            "forms": [],
+            "signature": null
+          },
+          {
+            "mark": "\\bbI",
+            "display": "\ud835\udd40",
+            "name": "Metro",
+            "kind": "object",
+            "layer": 0,
+            "origin": "given",
+            "forms": [],
+            "signature": null
+          },
+          {
+            "mark": "\\bbJ",
+            "display": "\ud835\udd41",
+            "name": "List",
+            "kind": "object",
+            "layer": 0,
+            "origin": "given",
+            "forms": [
+              "items"
+            ],
+            "signature": null
+          },
+          {
+            "mark": "\\bbK",
+            "display": "\ud835\udd42",
+            "name": "Text",
+            "kind": "object",
+            "layer": 0,
+            "origin": "given",
+            "forms": [],
+            "signature": null
+          },
+          {
+            "mark": "\\bbZ",
+            "display": "\u2124",
+            "name": "Int",
+            "kind": "object",
+            "layer": 0,
+            "origin": "given",
+            "forms": [],
+            "signature": null
+          },
+          {
+            "mark": "\\bbB",
+            "display": "\ud835\udd39",
+            "name": "Bool",
+            "kind": "object",
+            "layer": 0,
+            "origin": "given",
+            "forms": [],
+            "signature": null
+          },
+          {
+            "mark": "\\bbL",
+            "display": "\ud835\udd43",
+            "name": "unknown",
+            "kind": "object",
+            "layer": 0,
+            "origin": "given",
+            "forms": [],
+            "signature": null
+          },
+          {
+            "mark": "\\bbM",
+            "display": "\ud835\udd44",
+            "name": "str",
+            "kind": "object",
+            "layer": 0,
+            "origin": "given",
+            "forms": [],
+            "signature": null
+          },
+          {
+            "mark": "\\bbO",
+            "display": "\ud835\udd46",
+            "name": "public_graph",
+            "kind": "object",
+            "layer": 0,
+            "origin": "given",
+            "forms": [],
+            "signature": null
+          },
+          {
+            "mark": "\\bbS",
+            "display": "\ud835\udd4a",
+            "name": "Reach",
+            "kind": "object",
+            "layer": 0,
+            "origin": "given",
+            "forms": [
+              "state"
+            ],
+            "signature": null
+          },
+          {
+            "mark": "\\bbT",
+            "display": "\ud835\udd4b",
+            "name": "Lift",
+            "kind": "object",
+            "layer": 0,
+            "origin": "given",
+            "forms": [
+              "val"
+            ],
+            "signature": null
+          },
+          {
+            "mark": "\\bbU",
+            "display": "\ud835\udd4c",
+            "name": "RouteRaw",
+            "kind": "object",
+            "layer": 0,
+            "origin": "given",
+            "forms": [
+              "route"
+            ],
+            "signature": null
+          },
+          {
+            "mark": "\\bbV",
+            "display": "\ud835\udd4d",
+            "name": "ClosureRaw",
+            "kind": "object",
+            "layer": 0,
+            "origin": "given",
+            "forms": [
+              "closed"
+            ],
+            "signature": null
+          },
+          {
+            "mark": "@",
+            "display": "@",
+            "name": "edge",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "@ : \\bbA \\x \\bbL \\x \\bbL -> \\bbZ",
+              "display": "@ : \ud835\udd38 \u00d7 \ud835\udd43 \u00d7 \ud835\udd43 \u2192 \u2124"
+            }
+          },
+          {
+            "mark": "#",
+            "display": "#",
+            "name": "map_view",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "# : \\bbA -> \\bbA",
+              "display": "# : \ud835\udd38 \u2192 \ud835\udd38"
+            }
+          },
+          {
+            "mark": "$",
+            "display": "$",
+            "name": "size",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "$ : \\bbJ -> \\bbZ",
+              "display": "$ : \ud835\udd41 \u2192 \u2124"
+            }
+          },
+          {
+            "mark": "&",
+            "display": "&",
+            "name": "items",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "mark": "\\spade",
+            "display": "\u2660",
+            "name": "empty",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\spade : \\bbJ -> \\bbB",
+              "display": "\u2660 : \ud835\udd41 \u2192 \ud835\udd39"
+            }
+          },
+          {
+            "mark": "\\wspade",
+            "display": "\u2664",
+            "name": "head",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\wspade : \\bbJ -> \\bbL",
+              "display": "\u2664 : \ud835\udd41 \u2192 \ud835\udd43"
+            }
+          },
+          {
+            "mark": "\\heart",
+            "display": "\u2665",
+            "name": "tail",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\heart : \\bbJ -> \\bbJ",
+              "display": "\u2665 : \ud835\udd41 \u2192 \ud835\udd41"
+            }
+          },
+          {
+            "mark": "\\wheart",
+            "display": "\u2661",
+            "name": "cons",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\wheart : \\bbL \\x \\bbJ -> \\bbJ",
+              "display": "\u2661 : \ud835\udd43 \u00d7 \ud835\udd41 \u2192 \ud835\udd41"
+            }
+          },
+          {
+            "mark": "\\dia",
+            "display": "\u2666",
+            "name": "append",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\dia : \\bbJ \\x \\bbJ -> \\bbJ",
+              "display": "\u2666 : \ud835\udd41 \u00d7 \ud835\udd41 \u2192 \ud835\udd41"
+            }
+          },
+          {
+            "mark": "\\wdia",
+            "display": "\u2662",
+            "name": "contains",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\wdia : \\bbL \\x \\bbJ -> \\bbB",
+              "display": "\u2662 : \ud835\udd43 \u00d7 \ud835\udd41 \u2192 \ud835\udd39"
+            }
+          },
+          {
+            "mark": "(==)",
+            "display": "(==)",
+            "name": "eq",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "(==) : \\bbL \\x \\bbL -> \\bbB",
+              "display": "(==) : \ud835\udd43 \u00d7 \ud835\udd43 \u2192 \ud835\udd39"
+            }
+          },
+          {
+            "mark": "(<)",
+            "display": "(<)",
+            "name": "lt",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "(<) : \\bbL \\x \\bbL -> \\bbB",
+              "display": "(<) : \ud835\udd43 \u00d7 \ud835\udd43 \u2192 \ud835\udd39"
+            }
+          },
+          {
+            "mark": "(+)",
+            "display": "(+)",
+            "name": "add",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "(+) : \\bbZ \\x \\bbZ -> \\bbZ",
+              "display": "(+) : \u2124 \u00d7 \u2124 \u2192 \u2124"
+            }
+          },
+          {
+            "mark": "(-)",
+            "display": "(-)",
+            "name": "sub",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "(-) : \\bbZ \\x \\bbZ -> \\bbZ",
+              "display": "(-) : \u2124 \u00d7 \u2124 \u2192 \u2124"
+            }
+          },
+          {
+            "mark": "\\club",
+            "display": "\u2663",
+            "name": "reverse",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\club : \\bbJ -> \\bbJ",
+              "display": "\u2663 : \ud835\udd41 \u2192 \ud835\udd41"
+            }
+          },
+          {
+            "mark": "\\wclub",
+            "display": "\u2667",
+            "name": "graph_nodes",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\wclub : \\bbA -> \\bbJ",
+              "display": "\u2667 : \ud835\udd38 \u2192 \ud835\udd41"
+            }
+          },
+          {
+            "mark": "\\sq",
+            "display": "\u25a0",
+            "name": "graph_edges",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\sq : \\bbA -> \\bbJ",
+              "display": "\u25a0 : \ud835\udd38 \u2192 \ud835\udd41"
+            }
+          },
+          {
+            "mark": "\\wsq",
+            "display": "\u25a1",
+            "name": "edge_id",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\wsq : \\bbD -> \\bbK",
+              "display": "\u25a1 : \ud835\udd3b \u2192 \ud835\udd42"
+            }
+          },
+          {
+            "mark": "\\dot",
+            "display": "\u25cf",
+            "name": "edge_set",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\dot : \\bbJ -> \\bbE",
+              "display": "\u25cf : \ud835\udd41 \u2192 \ud835\udd3c"
+            }
+          },
+          {
+            "mark": "\\wdot",
+            "display": "\u25cb",
+            "name": "route_raw",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\wdot : \\bbA \\x \\bbJ -> \\bbU",
+              "display": "\u25cb : \ud835\udd38 \u00d7 \ud835\udd41 \u2192 \ud835\udd4c"
+            }
+          },
+          {
+            "mark": "\\up",
+            "display": "\u25b2",
+            "name": "closure_raw",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\up : \\bbA \\x \\bbE -> \\bbV",
+              "display": "\u25b2 : \ud835\udd38 \u00d7 \ud835\udd3c \u2192 \ud835\udd4d"
+            }
+          },
+          {
+            "mark": "\\wup",
+            "display": "\u25b3",
+            "name": "worst_record",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\wup : \\bbZ \\x \\bbE \\x \\bbL -> \\bbG",
+              "display": "\u25b3 : \u2124 \u00d7 \ud835\udd3c \u00d7 \ud835\udd43 \u2192 \ud835\udd3e"
+            }
+          },
+          {
+            "mark": "\\dn",
+            "display": "\u25bc",
+            "name": "no_route",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "mark": "\\wdn",
+            "display": "\u25bd",
+            "name": "disconnected",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "mark": "\\lz",
+            "display": "\u25c6",
+            "name": "pair_before",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\lz : \\bbJ \\x \\bbJ -> \\bbB",
+              "display": "\u25c6 : \ud835\udd41 \u00d7 \ud835\udd41 \u2192 \ud835\udd39"
+            }
+          },
+          {
+            "mark": "\\wlz",
+            "display": "\u25c7",
+            "name": "RouteRaw.graph",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\wlz : \\bbU -> \\bbA",
+              "display": "\u25c7 : \ud835\udd4c \u2192 \ud835\udd38"
+            }
+          },
+          {
+            "mark": "\\st",
+            "display": "\u2605",
+            "name": "RouteRaw.vertices",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\st : \\bbU -> \\bbJ",
+              "display": "\u2605 : \ud835\udd4c \u2192 \ud835\udd41"
+            }
+          },
+          {
+            "mark": "\\wst",
+            "display": "\u2606",
+            "name": "ClosureRaw.base",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\wst : \\bbV -> \\bbA",
+              "display": "\u2606 : \ud835\udd4d \u2192 \ud835\udd38"
+            }
+          },
+          {
+            "mark": "\\dia_01",
+            "display": "\u2666\u2080\u2081",
+            "name": "ClosureRaw.closed_edges",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\dia_01 : \\bbV -> \\bbE",
+              "display": "\u2666\u2080\u2081 : \ud835\udd4d \u2192 \ud835\udd3c"
+            }
+          },
+          {
+            "mark": "\\dia_02",
+            "display": "\u2666\u2080\u2082",
+            "name": "road_fields",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\dia_02 : \\bbD -> \\bbJ",
+              "display": "\u2666\u2080\u2082 : \ud835\udd3b \u2192 \ud835\udd41"
+            }
+          },
+          {
+            "mark": "\\dia_03",
+            "display": "\u2666\u2080\u2083",
+            "name": "Edges.edge_ids",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\dia_03 : \\bbE -> \\bbJ",
+              "display": "\u2666\u2080\u2083 : \ud835\udd3c \u2192 \ud835\udd41"
+            }
+          },
+          {
+            "mark": "\\dia_04",
+            "display": "\u2666\u2080\u2084",
+            "name": "sort_frontier",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\dia_04 : \\bbJ -> \\bbJ",
+              "display": "\u2666\u2080\u2084 : \ud835\udd41 \u2192 \ud835\udd41"
+            }
+          },
+          {
+            "mark": "\\dia_05",
+            "display": "\u2666\u2080\u2085",
+            "name": "sort_texts",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\dia_05 : \\bbJ -> \\bbJ",
+              "display": "\u2666\u2080\u2085 : \ud835\udd41 \u2192 \ud835\udd41"
+            }
+          },
+          {
+            "mark": "\\dia_06",
+            "display": "\u2666\u2080\u2086",
+            "name": "reach_state",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\dia_06 : \\bbA \\x \\bbJ -> \\bbS",
+              "display": "\u2666\u2080\u2086 : \ud835\udd38 \u00d7 \ud835\udd41 \u2192 \ud835\udd4a"
+            }
+          },
+          {
+            "mark": "\\dia_07",
+            "display": "\u2666\u2080\u2087",
+            "name": "reach_graph",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\dia_07 : \\bbS -> \\bbA",
+              "display": "\u2666\u2080\u2087 : \ud835\udd4a \u2192 \ud835\udd38"
+            }
+          },
+          {
+            "mark": "\\dia_08",
+            "display": "\u2666\u2080\u2088",
+            "name": "reach_seen",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\dia_08 : \\bbS -> \\bbJ",
+              "display": "\u2666\u2080\u2088 : \ud835\udd4a \u2192 \ud835\udd41"
+            }
+          },
+          {
+            "mark": "\\dia_09",
+            "display": "\u2666\u2080\u2089",
+            "name": "sort_edge_sets",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\dia_09 : \\bbJ -> \\bbJ",
+              "display": "\u2666\u2080\u2089 : \ud835\udd41 \u2192 \ud835\udd41"
+            }
+          },
+          {
+            "mark": "\\dia_010",
+            "display": "\u2666\u2080\u2081\u2080",
+            "name": "defined",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\dia_010 : \\bbL -> \\bbB",
+              "display": "\u2666\u2080\u2081\u2080 : \ud835\udd43 \u2192 \ud835\udd39"
+            }
+          },
+          {
+            "mark": "\\dia_011",
+            "display": "\u2666\u2080\u2081\u2081",
+            "name": "distinct",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\dia_011 : \\bbJ -> \\bbB",
+              "display": "\u2666\u2080\u2081\u2081 : \ud835\udd41 \u2192 \ud835\udd39"
+            }
+          },
+          {
+            "mark": "\\dia_012",
+            "display": "\u2666\u2080\u2081\u2082",
+            "name": "subset",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\dia_012 : \\bbJ \\x \\bbJ -> \\bbB",
+              "display": "\u2666\u2080\u2081\u2082 : \ud835\udd41 \u00d7 \ud835\udd41 \u2192 \ud835\udd39"
+            }
+          },
+          {
+            "mark": "\\dia_013",
+            "display": "\u2666\u2080\u2081\u2083",
+            "name": "invalid_terminals",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "mark": "\\dia_014",
+            "display": "\u2666\u2080\u2081\u2084",
+            "name": "invalid_budget",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "mark": "\\dia_015",
+            "display": "\u2666\u2080\u2081\u2085",
+            "name": "capture",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\dia_015 : \\bbL -> \\bbT",
+              "display": "\u2666\u2080\u2081\u2085 : \ud835\udd43 \u2192 \ud835\udd4b"
+            }
+          },
+          {
+            "mark": "\\dia_016",
+            "display": "\u2666\u2080\u2081\u2086",
+            "name": "is_value",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\dia_016 : \\bbT -> \\bbB",
+              "display": "\u2666\u2080\u2081\u2086 : \ud835\udd4b \u2192 \ud835\udd39"
+            }
+          },
+          {
+            "mark": "\\dia_017",
+            "display": "\u2666\u2080\u2081\u2087",
+            "name": "unlift",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\dia_017 : \\bbT -> \\bbL",
+              "display": "\u2666\u2080\u2081\u2087 : \ud835\udd4b \u2192 \ud835\udd43"
+            }
+          },
+          {
+            "mark": "\\dia_018",
+            "display": "\u2666\u2080\u2081\u2088",
+            "name": "roads_from_parts",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\dia_018 : \\bbJ \\x \\bbJ -> \\bbA",
+              "display": "\u2666\u2080\u2081\u2088 : \ud835\udd41 \u00d7 \ud835\udd41 \u2192 \ud835\udd38"
+            }
+          },
+          {
+            "mark": "\\dia_019",
+            "display": "\u2666\u2080\u2081\u2089",
+            "name": "comb_positive",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\dia_019 : \\bbZ -> \\bbB",
+              "display": "\u2666\u2080\u2081\u2089 : \u2124 \u2192 \ud835\udd39"
+            }
+          },
+          {
+            "mark": "\\dia_020",
+            "display": "\u2666\u2080\u2082\u2080",
+            "name": "comb_dec",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\dia_020 : \\bbZ -> \\bbZ",
+              "display": "\u2666\u2080\u2082\u2080 : \u2124 \u2192 \u2124"
+            }
+          },
+          {
+            "mark": "\\dia_021",
+            "display": "\u2666\u2080\u2082\u2081",
+            "name": "fix_equal",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\dia_021 : \\bbL \\x \\bbL -> \\bbB",
+              "display": "\u2666\u2080\u2082\u2081 : \ud835\udd43 \u00d7 \ud835\udd43 \u2192 \ud835\udd39"
+            }
+          },
+          {
+            "mark": "\\dia_022",
+            "display": "\u2666\u2080\u2082\u2082",
+            "name": "road_nodes",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\dia_022 : \\bbA -> \\bbJ",
+              "display": "\u2666\u2080\u2082\u2082 : \ud835\udd38 \u2192 \ud835\udd41"
+            }
+          },
+          {
+            "mark": "\\dia_023",
+            "display": "\u2666\u2080\u2082\u2083",
+            "name": "road_edge",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\dia_023 : \\bbA \\x \\bbK \\x \\bbK -> \\bbZ",
+              "display": "\u2666\u2080\u2082\u2083 : \ud835\udd38 \u00d7 \ud835\udd42 \u00d7 \ud835\udd42 \u2192 \u2124"
+            }
+          },
+          {
+            "mark": "\\Gamma",
+            "display": "\u0393",
+            "name": "chain",
+            "kind": "combinator",
+            "layer": 0,
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "mark": "\\Delta",
+            "display": "\u0394",
+            "name": "fix",
+            "kind": "combinator",
+            "layer": 0,
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "mark": "\\hatA",
+            "display": "\u00c2",
+            "name": "map_view",
+            "kind": "observation",
+            "layer": 0,
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "mark": "\\hatC",
+            "display": "\u0108",
+            "name": "size",
+            "kind": "observation",
+            "layer": 0,
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "mark": "\\dia_024",
+            "display": "\u2666\u2080\u2082\u2084",
+            "name": "boundary",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\dia_024 : \\bbA \\x \\bbJ -> \\bbE",
+              "display": "\u2666\u2080\u2082\u2084 : \ud835\udd38 \u00d7 \ud835\udd41 \u2192 \ud835\udd3c"
+            }
+          },
+          {
+            "mark": "\\bbW",
+            "display": "\ud835\udd4e",
+            "name": "Outcome",
+            "kind": "object",
+            "layer": 0,
+            "origin": "given",
+            "forms": [],
+            "signature": null
+          },
+          {
+            "mark": "\\bbX",
+            "display": "\ud835\udd4f",
+            "name": "fn",
+            "kind": "object",
+            "layer": 0,
+            "origin": "given",
+            "forms": [],
+            "signature": null
+          },
+          {
+            "mark": "\\hatE",
+            "display": "\u00ca",
+            "name": "map",
+            "kind": "observation",
+            "layer": 0,
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "mark": "\\bbA_1",
+            "display": "\ud835\udd38\u2081",
+            "name": "Route",
+            "kind": "object",
+            "layer": 1,
+            "origin": "invented",
+            "forms": [
+              "val"
+            ],
+            "signature": null
+          },
+          {
+            "mark": "\\Gamma_1",
+            "display": "\u0393\u2081",
+            "name": "failures",
+            "kind": "combinator",
+            "layer": 1,
+            "origin": "invented",
+            "signature": {
+              "ascii": "^1\\Gamma_1 : \\bbX_a \\x \\bbX_a -> \\bbX_a",
+              "display": "\u00b9\u0393\u2081 : \ud835\udd4f\u2090 \u00d7 \ud835\udd4f\u2090 \u2192 \ud835\udd4f\u2090"
+            }
+          },
+          {
+            "mark": "\\sq_1",
+            "display": "\u25a0\u2081",
+            "name": "collect_ids",
+            "kind": "operation",
+            "layer": 1,
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "mark": "\\wsq_2",
+            "display": "\u25a1\u2082",
+            "name": "filter_closed",
+            "kind": "operation",
+            "layer": 1,
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "mark": "\\dot_3",
+            "display": "\u25cf\u2083",
+            "name": "road_ids",
+            "kind": "operation",
+            "layer": 1,
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "mark": "\\wup_4",
+            "display": "\u25b3\u2084",
+            "name": "Route.graph",
+            "kind": "operation",
+            "layer": 1,
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "mark": "\\dn_5",
+            "display": "\u25bc\u2085",
+            "name": "Route.vertices",
+            "kind": "operation",
+            "layer": 1,
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "mark": "\\up_6",
+            "display": "\u25b2\u2086",
+            "name": "cost",
+            "kind": "operation",
+            "layer": 2,
+            "origin": "invented",
+            "signature": {
+              "ascii": "^2\\up_6 : \\bbA_1 -> \\bbZ",
+              "display": "\u00b2\u25b2\u2086 : \ud835\udd38\u2081 \u2192 \u2124"
+            }
+          },
+          {
+            "mark": "\\Delta_2",
+            "display": "\u0394\u2082",
+            "name": "explore",
+            "kind": "combinator",
+            "layer": 2,
+            "origin": "invented",
+            "signature": {
+              "ascii": "^2\\Delta_2 : \\bbA \\x \\bbK \\x \\bbK -> \\bbJ",
+              "display": "\u00b2\u0394\u2082 : \ud835\udd38 \u00d7 \ud835\udd42 \u00d7 \ud835\udd42 \u2192 \ud835\udd41"
+            }
+          },
+          {
+            "mark": "\\bbD_2",
+            "display": "\ud835\udd3b\u2082",
+            "name": "Closure",
+            "kind": "object",
+            "layer": 2,
+            "origin": "invented",
+            "forms": [
+              "val"
+            ],
+            "signature": null
+          },
+          {
+            "mark": "\\st_7",
+            "display": "\u2605\u2087",
+            "name": "mincut",
+            "kind": "operation",
+            "layer": 2,
+            "origin": "invented",
+            "signature": {
+              "ascii": "^2\\st_7 : \\bbA \\x \\bbK \\x \\bbK -> \\bbW",
+              "display": "\u00b2\u2605\u2087 : \ud835\udd38 \u00d7 \ud835\udd42 \u00d7 \ud835\udd42 \u2192 \ud835\udd4e"
+            }
+          },
+          {
+            "mark": "\\wst_8",
+            "display": "\u2606\u2088",
+            "name": "reachable",
+            "kind": "operation",
+            "layer": 2,
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "mark": "\\dn_9",
+            "display": "\u25bc\u2089",
+            "name": "Closure.closed_edges",
+            "kind": "operation",
+            "layer": 2,
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "mark": "\\wsq_10",
+            "display": "\u25a1\u2081\u2080",
+            "name": "best",
+            "kind": "operation",
+            "layer": 3,
+            "origin": "invented",
+            "signature": {
+              "ascii": "^3\\wsq_10 : \\bbA \\x \\bbK \\x \\bbK -> \\bbW",
+              "display": "\u00b3\u25a1\u2081\u2080 : \ud835\udd38 \u00d7 \ud835\udd42 \u00d7 \ud835\udd42 \u2192 \ud835\udd4e"
+            }
+          },
+          {
+            "mark": "\\heart_11",
+            "display": "\u2665\u2081\u2081",
+            "name": "close",
+            "kind": "operation",
+            "layer": 3,
+            "origin": "invented",
+            "signature": {
+              "ascii": "^3\\heart_11 : \\bbA \\x \\bbE -> \\bbD_2",
+              "display": "\u00b3\u2665\u2081\u2081 : \ud835\udd38 \u00d7 \ud835\udd3c \u2192 \ud835\udd3b\u2082"
+            }
+          },
+          {
+            "mark": "\\hatA_1",
+            "display": "\u00c2\u2081",
+            "name": "optimal",
+            "kind": "observation",
+            "layer": 4,
+            "origin": "invented",
+            "signature": {
+              "ascii": "^4\\hatA_1 : \\bbA_1 -> \\bbB",
+              "display": "\u2074\u00c2\u2081 : \ud835\udd38\u2081 \u2192 \ud835\udd39"
+            }
+          },
+          {
+            "mark": "\\hatC_2",
+            "display": "\u0108\u2082",
+            "name": "survives",
+            "kind": "observation",
+            "layer": 4,
+            "origin": "invented",
+            "signature": {
+              "ascii": "^4\\hatC_2 : \\bbA \\x \\bbK \\x \\bbK \\x \\bbZ -> \\bbB",
+              "display": "\u2074\u0108\u2082 : \ud835\udd38 \u00d7 \ud835\udd42 \u00d7 \ud835\udd42 \u00d7 \u2124 \u2192 \ud835\udd39"
+            }
+          },
+          {
+            "mark": "\\wdot_12",
+            "display": "\u25cb\u2081\u2082",
+            "name": "worst",
+            "kind": "operation",
+            "layer": 4,
+            "origin": "invented",
+            "signature": {
+              "ascii": "^4\\wdot_12 : \\bbA \\x \\bbK \\x \\bbK \\x \\bbZ -> \\bbW",
+              "display": "\u2074\u25cb\u2081\u2082 : \ud835\udd38 \u00d7 \ud835\udd42 \u00d7 \ud835\udd42 \u00d7 \u2124 \u2192 \ud835\udd4e"
+            }
+          },
+          {
+            "mark": "\\hatE_3",
+            "display": "\u00ca\u2083",
+            "name": "cut_certificate",
+            "kind": "observation",
+            "layer": 5,
+            "origin": "invented",
+            "signature": {
+              "ascii": "^5\\hatE_3 : \\bbA \\x \\bbK \\x \\bbK -> \\bbB",
+              "display": "\u2075\u00ca\u2083 : \ud835\udd38 \u00d7 \ud835\udd42 \u00d7 \ud835\udd42 \u2192 \ud835\udd39"
+            }
+          }
+        ],
+        "formulas": {
+          "comb @chain[f, g](x) -> Outcome<C> given": {
+            "display": "\u0393",
+            "ascii": "\\Gamma",
+            "signature": {
+              "display": "\u0393 : () \u2192 \ud835\udd4e[\ud835\udd4f\u2090]",
+              "ascii": "\\Gamma : () -> \\bbW[\\bbX_a]"
+            }
+          },
+          "obj Edges<edge_ids: List<Text>> given": {
+            "display": "\ud835\udd3c",
+            "ascii": "\\bbE",
+            "signature": null
+          },
+          "obj Metro: Roads given": {
+            "display": "\ud835\udd40",
+            "ascii": "\\bbI",
+            "signature": null
+          },
+          "obj Roads<nodes: List<Text>, edges: List<(Text,Text,Int)>> given": {
+            "display": "\ud835\udd38",
+            "ascii": "\\bbA",
+            "signature": null
+          },
+          "obj Worst<cost: Int, closures: Edges, route: T> given": {
+            "display": "\ud835\udd3e",
+            "ascii": "\\bbG",
+            "signature": null
+          },
+          "obs ?map{g} -> Roads given": {
+            "display": "\u00ca",
+            "ascii": "\\hatE",
+            "signature": {
+              "display": "\u00ca : () \u2192 \ud835\udd38",
+              "ascii": "\\hatE : () -> \\bbA"
+            }
+          },
+          "obs ?size{xs} -> Int given": {
+            "display": "\u0108",
+            "ascii": "\\hatC",
+            "signature": {
+              "display": "\u0108 : () \u2192 \u2124",
+              "ascii": "\\hatC : () -> \\bbZ"
+            }
+          },
+          "op edge(g, u, v) -> Outcome<Int> given": {
+            "display": "@",
+            "ascii": "@",
+            "signature": {
+              "display": "@ : () \u2192 \ud835\udd4e[\u2124]",
+              "ascii": "@ : () -> \\bbW[\\bbZ]"
+            }
+          }
+        },
+        "prose": {},
+        "designs": [
+          "comb @explore[edge](g, s, t) -> List<Route> L3",
+          "comb @failures[close](g, b) -> List<Closure> L8",
+          "obj Closure<g, closed: Edges> L6",
+          "obj Route<g, vertices: List<Text>> L1",
+          "obs ?cut_certificate{g, s, t} -> Bool L12",
+          "obs ?optimal{r: Route} -> Bool L5",
+          "obs ?survives{g, s, t, b} -> Bool L9",
+          "op best(g, s, t) -> Outcome<Route> L4",
+          "op close(g, blocked: Edges) -> Closure L7",
+          "op cost(r: Route) -> Int L2",
+          "op mincut(g, s, t) -> Outcome<Edges> L11",
+          "op worst(g, s, t, b) -> Outcome<Worst> L10"
+        ],
+        "skipped": 0
+      }
+    },
+    "source": "atoms2/roads.json"
+  }
+}

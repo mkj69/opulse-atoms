@@ -1,0 +1,32 @@
+{
+  "accuracy": {
+    "adds_correct": {
+      "B0": 0.0,
+      "B1": 0.0,
+      "B2": 0.0
+    },
+    "joint_correct": {
+      "B0": 0.0,
+      "B1": 0.0,
+      "B2": 0.0
+    },
+    "value_correct": {
+      "B0": 1.0,
+      "B1": 1.0,
+      "B2": 1.0
+    }
+  },
+  "ci90": [
+    0.0,
+    0.0
+  ],
+  "ci95": [
+    0.0,
+    0.0
+  ],
+  "decision": "diagnostic (n=1 episodes < 40 pre-registered)",
+  "difference_B0_minus_B2": 0.0,
+  "forms": 3,
+  "included_pairs": 3,
+  "inclusion_rate": 1.0
+}

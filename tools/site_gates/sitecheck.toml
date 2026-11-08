@@ -1,0 +1,35 @@
+output = "sitecheck-out"
+limit = 100
+sitemap = true
+settle = 2.0
+browser_timeout = 150
+nav_selector = ".md-tabs__link, .md-nav__link"
+static_fallback = "noscript"
+
+# Only published mkdocs nav pages belong in navwalk. For lang, override this
+# list with --include '/*' to scan every English page, including world details.
+include = [
+  "/", "/learn/", "/learn/kinds/", "/learn/checks/",
+  "/play/", "/play/challenge/", "/play/ladders/", "/worlds/",
+  "/research/", "/research/protocols/", "/research/experiments/",
+  "/build/", "/build/world/", "/reference/", "/reference/spec/", "/reference/api/",
+  "/reference/notation-v3/", "/reference/glossary/", "/reference/provenance/",
+]
+
+lang_rules = [{ page = "*", scripts = ["cjk"], allow = [] }]
+
+# MkDocs Material asks the GitHub API for the repository's latest release to show a version
+# next to the repository link. The repository publishes no releases, so that one request
+# returns 404. Every other failed request stays an error.
+allow = [{ kind = "failed_request", message = "404 https://api.github.com/repos/mkj69/opulse-atoms/releases/latest" }]
+
+# sitecheck accepts a single widget_root for a navwalk invocation. These page
+# selectors are exercised with separate --include / --widget-root commands.
+[widget_roots]
+"/" = "[data-roads-home]"
+"/play/" = "[data-a2='computerLab']"
+"workshop" = "[data-a2='define']"
+"/play/challenge/" = "[data-roads-challenge]"
+"/learn/checks/" = "[data-a2-learn='checks']"
+"/worlds/" = "[data-worlds-v2]"
+"/reference/" = "#a2-reference-modes"

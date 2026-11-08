@@ -1,0 +1,43 @@
+{
+  "atoms_hash": "4b9ba0e597e34b68be40c97ef3ef6a91c8f97c2b1b9d79315950caa8001e608a",
+  "checks": [
+    "reference",
+    "unfold_equivalence",
+    "exact_steps"
+  ],
+  "content_hash": "4bfdcdadec517aa6edf6c680951b8ab3fc8051709560470e761ac98f38ceb365",
+  "definition_body_hash": "4a57d67f1765db087b4ccd13b624c235b85403a9a8ba7f7e8a4eab23fc1e6162",
+  "dependencies_hash": "e59bead7c7da5a07a587014ea710706c69425f0550380b4e62bccacc92f7c389",
+  "full_run": {
+    "date_utc": "2026-11-06T19:56:40.573389+00:00",
+    "inputs_sha256": "77b7f40815ddd942b84f362c618f3964893b928b80fb2b8664b3b3f747d24650",
+    "pairs_checked": 65536,
+    "process_count": 32
+  },
+  "schema": "opulse.computer2.mul_evidence/1",
+  "scope": {
+    "checked": {
+      "bounds": {
+        "0": {
+          "max": 255,
+          "min": 0
+        },
+        "1": {
+          "max": 255,
+          "min": 0
+        }
+      },
+      "sha256": "650bda99e01ed58c32637ed6f87dcd7d1e61b496bfa399343376f87538ebc3f9",
+      "size": 65536
+    },
+    "domain": "all B,C in 0..255; A=(13*C+7*B)%256, D=C^B, PC=(C+B)%256, z=(C^B)&1, mem[i]=(37*i+11)%256; one predetermined full machine per pair",
+    "size": 65536
+  },
+  "steps": {
+    "formula": "6 + 8*B",
+    "max": 2046,
+    "mean": 1026.0,
+    "min": 6
+  },
+  "world_hash": "45fdab99e5e0e093b3d1c3bd9af6412c81774b8e1f07215fe6936f7fbac2f672"
+}

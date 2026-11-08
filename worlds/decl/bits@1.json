@@ -1,0 +1,313 @@
+{
+  "schema": "opulse.world/2",
+  "world": "bits",
+  "version": 1,
+  "dialect": "legacy-v1",
+  "title": "Bits",
+  "source": {
+    "published": "docs/assets/data/worlds/bits.json",
+    "settings": {
+      "preset": "bits",
+      "recursion.style": "bits",
+      "recursion.direct_bound": 31,
+      "expressions.value_min / value_max": "0 / 31"
+    }
+  },
+  "params": {
+    "semantics": {
+      "mode": "exact",
+      "bound": 2147483647
+    },
+    "published_settings": {
+      "preset": "bits",
+      "recursion.style": "bits",
+      "recursion.direct_bound": 31,
+      "expressions.value_min / value_max": "0 / 31"
+    },
+    "recursion": {
+      "style": "bits",
+      "direct_bound": 31
+    },
+    "expressions": {
+      "value_min": 0,
+      "value_max": 31
+    }
+  },
+  "constants": {},
+  "objects": [
+    {
+      "kind": "object",
+      "name": "int",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": {
+        "repr": "Python int",
+        "codec": "legacy JSON {t: int, v: integer}"
+      },
+      "doc": "Legacy int values."
+    }
+  ],
+  "operations": [
+    {
+      "kind": "operation",
+      "name": "bit_and",
+      "symbol": "∧",
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "b",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "a ∧ b is bitwise AND on nonnegative integers.",
+      "errors": [
+        "overflow",
+        "negative_input"
+      ],
+      "impl": {
+        "host": "opulse.presets:register_preset",
+        "digest": "df77e39e7d4f856508501992d636fdf3e30e93e223906de517bdbfd6657b71cb"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "bit_or",
+      "symbol": "∨",
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "b",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "a ∨ b is bitwise OR on nonnegative integers.",
+      "errors": [
+        "overflow",
+        "negative_input"
+      ],
+      "impl": {
+        "host": "opulse.presets:register_preset",
+        "digest": "df77e39e7d4f856508501992d636fdf3e30e93e223906de517bdbfd6657b71cb"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "bit_xor",
+      "symbol": "⊻",
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "b",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "a ⊻ b is bitwise XOR on nonnegative integers.",
+      "errors": [
+        "overflow",
+        "negative_input"
+      ],
+      "impl": {
+        "host": "opulse.presets:register_preset",
+        "digest": "df77e39e7d4f856508501992d636fdf3e30e93e223906de517bdbfd6657b71cb"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "shift_left",
+      "symbol": "⇐",
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "b",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "a ⇐ b shifts nonnegative a left by b bits; counts above 31 give NaN.",
+      "errors": [
+        "overflow",
+        "negative_input",
+        "shift_count"
+      ],
+      "impl": {
+        "host": "opulse.presets:register_preset",
+        "digest": "df77e39e7d4f856508501992d636fdf3e30e93e223906de517bdbfd6657b71cb"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "shift_right",
+      "symbol": "⇒",
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "b",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "a ⇒ b shifts nonnegative a right by b bits.",
+      "errors": [
+        "overflow",
+        "negative_input"
+      ],
+      "impl": {
+        "host": "opulse.presets:register_preset",
+        "digest": "df77e39e7d4f856508501992d636fdf3e30e93e223906de517bdbfd6657b71cb"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "bit_count",
+      "symbol": "♯",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "a ♯ counts the one bits of nonnegative a; negative inputs give NaN.",
+      "errors": [
+        "overflow",
+        "negative_input"
+      ],
+      "impl": {
+        "host": "opulse.presets:register_preset",
+        "digest": "df77e39e7d4f856508501992d636fdf3e30e93e223906de517bdbfd6657b71cb"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    }
+  ],
+  "combinators": {
+    "nodes": [
+      "Var",
+      "Lit",
+      "Call",
+      "Case",
+      "Rec"
+    ],
+    "library": [],
+    "recursion": "legacy"
+  },
+  "observation": {
+    "truth": null,
+    "probes": [],
+    "capabilities": {
+      "learner": {
+        "channels": [
+          "results",
+          "errors",
+          "renders",
+          "traces",
+          "steps",
+          "memory"
+        ],
+        "probes": "all"
+      }
+    },
+    "show": {
+      "input": "values",
+      "result": "value"
+    },
+    "judge_view": "full_state"
+  },
+  "codec": {
+    "legacy_tags": {
+      "nan": "Bottom",
+      "int": "int"
+    }
+  },
+  "lock": {
+    "host_digests": {
+      "bit_and": "df77e39e7d4f856508501992d636fdf3e30e93e223906de517bdbfd6657b71cb",
+      "bit_or": "df77e39e7d4f856508501992d636fdf3e30e93e223906de517bdbfd6657b71cb",
+      "bit_xor": "df77e39e7d4f856508501992d636fdf3e30e93e223906de517bdbfd6657b71cb",
+      "shift_left": "df77e39e7d4f856508501992d636fdf3e30e93e223906de517bdbfd6657b71cb",
+      "shift_right": "df77e39e7d4f856508501992d636fdf3e30e93e223906de517bdbfd6657b71cb",
+      "bit_count": "df77e39e7d4f856508501992d636fdf3e30e93e223906de517bdbfd6657b71cb"
+    },
+    "constants_hash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+    "world_hash": "44ce6c060ec92e9728edd25edbed1bd97b08a7a4a96b30be57514861dfc3316f"
+  }
+}

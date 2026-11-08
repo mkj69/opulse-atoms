@@ -1,0 +1,1763 @@
+{
+  "schema": "opulse.atoms2_grammar_core/1",
+  "inputs_sha256": "18c7bb90f7ff05c9abbd47cdd33cb4f79217feeecb495423af064858092b3f48",
+  "input": "Word.tokens<2, \"+\", 2, \"*\", 2, \"+\", 2, \"*\", 2, \"+\", 2, \"*\", 2, \"+\", 2>",
+  "rows": {
+    "object": {
+      "name": "ExprTree",
+      "layer": 1,
+      "depends_on": [
+        "eq",
+        "field",
+        "le",
+        "length",
+        "tag",
+        "yield_probe"
+      ],
+      "declaration": {
+        "text": null,
+        "reparses": false,
+        "reason": "dependencies cannot be represented in their current order",
+        "label": "Design summary (printer unavailable: dependencies cannot be represented in their current order)"
+      },
+      "status": "bounded",
+      "scope": "100 finished trees from 50 three-numeral words and one unfinished draft",
+      "evidence": {
+        "method": "bounded",
+        "scope": {
+          "domain": "100 finished trees from 50 three-numeral words and one unfinished draft",
+          "size": 101,
+          "description": "bounded to three numerals",
+          "checked": {
+            "size": 101,
+            "sha256": "5f3926fa6b605079ef5bb154d9d403d0cde2aac622634a3f0047fd518ca524cd",
+            "bounds": {},
+            "by": "library"
+          }
+        },
+        "checks": [
+          "canon_total",
+          "canon_idempotent",
+          "canon_keeps_valid",
+          "respects_canon"
+        ],
+        "content_hash": "3b0a605206e800e8b00e6ba6a0b026cb14f2942bcedc4db8cf4f4b1c94cae985"
+      },
+      "content_hash": "3b0a605206e800e8b00e6ba6a0b026cb14f2942bcedc4db8cf4f4b1c94cae985",
+      "example": {
+        "input": "ExprTree.make(Draft.num<7>)",
+        "outcome": "Ok(ExprTree.val<Draft.num<7>>)",
+        "layer0_steps": 14,
+        "outside_checked_scope": true,
+        "trace": [
+          {
+            "call": "root",
+            "depth": 0,
+            "layer": 0,
+            "steps": 14,
+            "outcome": "Ok(ExprTree.val<Draft.num<7>>)"
+          },
+          {
+            "call": "ExprTree.make",
+            "depth": 1,
+            "layer": 1,
+            "steps": 14,
+            "outcome": "Ok(ExprTree.val<Draft.num<7>>)"
+          },
+          {
+            "call": "check_tree",
+            "depth": 2,
+            "layer": 1,
+            "steps": 8,
+            "outcome": "Ok(true)"
+          },
+          {
+            "call": "length",
+            "depth": 2,
+            "layer": 0,
+            "steps": 1,
+            "outcome": "Ok(1)"
+          },
+          {
+            "call": "le",
+            "depth": 2,
+            "layer": 0,
+            "steps": 1,
+            "outcome": "Ok(true)"
+          },
+          {
+            "call": "yield_probe",
+            "depth": 2,
+            "layer": 0,
+            "steps": 1,
+            "outcome": "Ok(Word.tokens<7>)"
+          },
+          {
+            "call": "length",
+            "depth": 2,
+            "layer": 0,
+            "steps": 1,
+            "outcome": "Ok(1)"
+          },
+          {
+            "call": "le",
+            "depth": 2,
+            "layer": 0,
+            "steps": 1,
+            "outcome": "Ok(true)"
+          },
+          {
+            "call": "ExprTree._pack",
+            "depth": 2,
+            "layer": 0,
+            "steps": 1,
+            "outcome": "Ok(ExprTree.val<Draft.num<7>>)"
+          },
+          {
+            "call": "tag",
+            "depth": 3,
+            "layer": 0,
+            "steps": 1,
+            "outcome": "Ok(\"num\")"
+          },
+          {
+            "call": "eq",
+            "depth": 3,
+            "layer": 0,
+            "steps": 1,
+            "outcome": "Ok(false)"
+          },
+          {
+            "call": "tag",
+            "depth": 3,
+            "layer": 0,
+            "steps": 1,
+            "outcome": "Ok(\"num\")"
+          }
+        ]
+      },
+      "failure": {
+        "input": "ExprTree.make(Draft.E<>)",
+        "outcome": "Bottom(invalid)",
+        "layer0_steps": 2,
+        "trace": [
+          {
+            "call": "root",
+            "depth": 0,
+            "layer": 0,
+            "steps": 2,
+            "outcome": "Bottom(invalid)"
+          },
+          {
+            "call": "ExprTree.make",
+            "depth": 1,
+            "layer": 1,
+            "steps": 2,
+            "outcome": "Bottom(invalid)"
+          },
+          {
+            "call": "check_tree",
+            "depth": 2,
+            "layer": 1,
+            "steps": 2,
+            "outcome": "Ok(false)"
+          },
+          {
+            "call": "ExprTree._invalid",
+            "depth": 2,
+            "layer": 0,
+            "steps": 0,
+            "outcome": "Bottom(invalid)"
+          },
+          {
+            "call": "tag",
+            "depth": 3,
+            "layer": 0,
+            "steps": 1,
+            "outcome": "Ok(\"E\")"
+          },
+          {
+            "call": "eq",
+            "depth": 3,
+            "layer": 0,
+            "steps": 1,
+            "outcome": "Ok(true)"
+          }
+        ]
+      }
+    },
+    "operation": {
+      "name": "split",
+      "layer": 1,
+      "depends_on": [
+        "add",
+        "append",
+        "at",
+        "eq",
+        "length",
+        "list0",
+        "sub"
+      ],
+      "declaration": {
+        "text": null,
+        "reparses": false,
+        "reason": "operation metadata has no compact ASCII declaration",
+        "label": "Design summary (printer unavailable: operation metadata has no compact ASCII declaration)"
+      },
+      "status": "bounded",
+      "scope": "54 plain and 27 grouped three-numeral words",
+      "evidence": {
+        "method": "bounded",
+        "scope": {
+          "domain": "54 plain and 27 grouped three-numeral words",
+          "size": 81,
+          "description": "bounded by the explicitly listed inputs",
+          "checked": {
+            "size": 81,
+            "sha256": "f1fc768b17cf38444a266dac51dc531cce4bd5e48d990033e326f077eae28c6c",
+            "bounds": {},
+            "by": "library"
+          }
+        },
+        "checks": [
+          "reference",
+          "unfold_equivalence"
+        ],
+        "content_hash": "db49c5c751612f636c36a88ba297ef28a20e228a735b49822e525d7f2bedb3a8"
+      },
+      "content_hash": "db49c5c751612f636c36a88ba297ef28a20e228a735b49822e525d7f2bedb3a8",
+      "example": {
+        "input": "split(Word.tokens<2, \"+\", 2, \"*\", 2, \"+\", 2, \"*\", 2, \"+\", 2, \"*\", 2, \"+\", 2>)",
+        "outcome": "Ok(List.items<1, 3, 5, 7, 9, 11, 13>)",
+        "layer0_steps": 141,
+        "outside_checked_scope": true,
+        "trace": [
+          {
+            "call": "root",
+            "depth": 0,
+            "layer": 0,
+            "steps": 141,
+            "outcome": "Ok(List.items<1, 3, 5, 7, 9, 11, 13>)"
+          },
+          {
+            "call": "split",
+            "depth": 1,
+            "layer": 1,
+            "steps": 141,
+            "outcome": "Ok(List.items<1, 3, 5, 7, 9, 11, 13>)"
+          },
+          {
+            "call": "list0",
+            "depth": 2,
+            "layer": 0,
+            "steps": 1,
+            "outcome": "Ok(List.items<>)"
+          },
+          {
+            "call": "scan",
+            "depth": 2,
+            "layer": 1,
+            "steps": 140,
+            "outcome": "Ok(List.items<1, 3, 5, 7, 9, 11, 13>)"
+          },
+          {
+            "call": "length",
+            "depth": 3,
+            "layer": 0,
+            "steps": 1,
+            "outcome": "Ok(15)"
+          },
+          {
+            "call": "eq",
+            "depth": 3,
+            "layer": 0,
+            "steps": 1,
+            "outcome": "Ok(false)"
+          },
+          {
+            "call": "at",
+            "depth": 3,
+            "layer": 0,
+            "steps": 1,
+            "outcome": "Ok(2)"
+          },
+          {
+            "call": "eq",
+            "depth": 3,
+            "layer": 0,
+            "steps": 1,
+            "outcome": "Ok(false)"
+          },
+          {
+            "call": "eq",
+            "depth": 3,
+            "layer": 0,
+            "steps": 1,
+            "outcome": "Ok(false)"
+          },
+          {
+            "call": "eq",
+            "depth": 3,
+            "layer": 0,
+            "steps": 1,
+            "outcome": "Ok(true)"
+          },
+          {
+            "call": "eq",
+            "depth": 3,
+            "layer": 0,
+            "steps": 1,
+            "outcome": "Ok(false)"
+          },
+          {
+            "call": "eq",
+            "depth": 3,
+            "layer": 0,
+            "steps": 1,
+            "outcome": "Ok(false)"
+          }
+        ]
+      }
+    },
+    "combinator": {
+      "name": "chart",
+      "layer": 2,
+      "depends_on": [
+        "add",
+        "at",
+        "eq",
+        "is_int",
+        "length",
+        "slice_word",
+        "split",
+        "sub"
+      ],
+      "declaration": {
+        "text": "comb @chart[leaf: A -> A, join: A -> A, wrap: A -> A, merge: A -> A, zero_slot: A -> A](w: A) -> A = rec memo recurse(span) = if eq(length(span), 0) then zero_slot() else (if eq(length(span), 1) then (if is_int(at(span, 0)) then leaf(at(span, 0)) else zero_slot()) else let positions = split(span) in let initial = if eq(at(span, 0), \"(\") then (if eq(at(span, length(span) - 1), \")\") then merge(zero_slot(), wrap(recurse(slice_word(span, 1, length(span) - 1)))) else zero_slot()) else zero_slot() in rec walk_splits(position, result) = if eq(position, length(positions)) then result else walk_splits(position + 1, merge(result, join(at(span, at(positions, position)), recurse(slice_word(span, 0, at(positions, position))), recurse(slice_word(span, at(positions, position) + 1, length(span)))))) measure length(positions) - position in walk_splits(0, initial)) measure length(span) in recurse(w) L2",
+        "reparses": true,
+        "reason": null,
+        "label": "Printed from the core definition (re-parses: yes)"
+      },
+      "status": "bounded",
+      "scope": "50 public three-numeral inputs and 32 algebra assignments (two operations per slot)",
+      "evidence": {
+        "method": "bounded",
+        "scope": {
+          "domain": "50 public three-numeral inputs and 32 algebra assignments (two operations per slot)",
+          "size": 50,
+          "description": "bounded to three numerals",
+          "op_family": {
+            "leaf": [
+              "one",
+              "one_alt"
+            ],
+            "join": [
+              "multiply",
+              "multiply_alt"
+            ],
+            "wrap": [
+              "identity",
+              "identity_alt"
+            ],
+            "merge": [
+              "combine_count",
+              "combine_count_alt"
+            ],
+            "zero_slot": [
+              "zero",
+              "zero_alt"
+            ]
+          },
+          "memo_steps": 228,
+          "memo_work": 207,
+          "plain_steps": 228,
+          "plain_work": 228,
+          "checked": {
+            "size": 50,
+            "sha256": "c8cf8cc1c4d289d8d4c25b7e6d2d316925a4519fc19e059c7af41ad27f2c78eb",
+            "bounds": {},
+            "by": "library"
+          }
+        },
+        "checks": [
+          "unfold_equivalence",
+          "reference"
+        ],
+        "content_hash": "775e1cf6013bfb9da1bbd37e33deff9ccc8742dd55e6c7e808a69caf6b5f77c7"
+      },
+      "content_hash": "775e1cf6013bfb9da1bbd37e33deff9ccc8742dd55e6c7e808a69caf6b5f77c7",
+      "example": {
+        "input": "@chart[one,multiply,identity,combine_count,zero](Word.tokens<2, \"+\", 2, \"*\", 2, \"+\", 2, \"*\", 2, \"+\", 2, \"*\", 2, \"+\", 2>)",
+        "outcome": "Ok(429)",
+        "layer0_steps": 59202,
+        "outside_checked_scope": true,
+        "trace": [
+          {
+            "call": "root",
+            "depth": 0,
+            "layer": 0,
+            "steps": 59202,
+            "outcome": "Ok(429)"
+          },
+          {
+            "call": "chart",
+            "depth": 1,
+            "layer": 2,
+            "steps": 59202,
+            "outcome": "Ok(429)"
+          },
+          {
+            "call": "recurse",
+            "depth": 2,
+            "layer": 2,
+            "steps": 59202,
+            "outcome": "Ok(429)"
+          },
+          {
+            "call": "length",
+            "depth": 3,
+            "layer": 0,
+            "steps": 1,
+            "outcome": "Ok(15)"
+          },
+          {
+            "call": "eq",
+            "depth": 3,
+            "layer": 0,
+            "steps": 1,
+            "outcome": "Ok(false)"
+          },
+          {
+            "call": "length",
+            "depth": 3,
+            "layer": 0,
+            "steps": 1,
+            "outcome": "Ok(15)"
+          },
+          {
+            "call": "eq",
+            "depth": 3,
+            "layer": 0,
+            "steps": 1,
+            "outcome": "Ok(false)"
+          },
+          {
+            "call": "split",
+            "depth": 3,
+            "layer": 1,
+            "steps": 141,
+            "outcome": "Ok(List.items<1, 3, 5, 7, 9, 11, 13>)"
+          },
+          {
+            "call": "at",
+            "depth": 3,
+            "layer": 0,
+            "steps": 1,
+            "outcome": "Ok(2)"
+          },
+          {
+            "call": "eq",
+            "depth": 3,
+            "layer": 0,
+            "steps": 1,
+            "outcome": "Ok(false)"
+          },
+          {
+            "call": "zero",
+            "depth": 3,
+            "layer": 1,
+            "steps": 0,
+            "outcome": "Ok(0)"
+          },
+          {
+            "call": "walk_splits",
+            "depth": 3,
+            "layer": 2,
+            "steps": 59055,
+            "outcome": "Ok(429)"
+          }
+        ]
+      }
+    },
+    "observation": {
+      "name": "parse_count",
+      "layer": 3,
+      "depends_on": [
+        "chart"
+      ],
+      "declaration": {
+        "text": "obs ?parse_count{w} = @chart[one, multiply, identity, combine_count, zero](w) L3",
+        "reparses": true,
+        "reason": null,
+        "label": "Printed from the core definition (re-parses: yes)"
+      },
+      "status": "bounded",
+      "scope": "54 plain and 27 grouped three-numeral public words, plus an equal-view copy",
+      "evidence": {
+        "method": "bounded",
+        "scope": {
+          "domain": "54 plain and 27 grouped three-numeral public words, plus an equal-view copy",
+          "size": 82,
+          "description": "bounded by the explicitly listed inputs",
+          "checked": {
+            "size": 82,
+            "sha256": "821689306ac1146452ebd05a27e78dc3db4aa398b739b80f3451f7c3e7af474a",
+            "bounds": {}
+          }
+        },
+        "checks": [
+          "dependency",
+          "facts_unchanged",
+          "non_interference",
+          "reference"
+        ],
+        "content_hash": "0178bd894d4af88c18287b6dd344e3d70bf475a795667a422632c2cd50ef100a"
+      },
+      "content_hash": "0178bd894d4af88c18287b6dd344e3d70bf475a795667a422632c2cd50ef100a",
+      "example": {
+        "input": "?parse_count{Word.tokens<2, \"+\", 2, \"*\", 2, \"+\", 2, \"*\", 2, \"+\", 2, \"*\", 2, \"+\", 2>}",
+        "outcome": "Ok(429)",
+        "layer0_steps": 59202,
+        "outside_checked_scope": true,
+        "trace": [
+          {
+            "call": "root",
+            "depth": 0,
+            "layer": 0,
+            "steps": 59202,
+            "outcome": "Ok(429)"
+          },
+          {
+            "call": "parse_count",
+            "depth": 1,
+            "layer": 3,
+            "steps": 59202,
+            "outcome": "Ok(429)"
+          },
+          {
+            "call": "chart",
+            "depth": 2,
+            "layer": 2,
+            "steps": 59202,
+            "outcome": "Ok(429)"
+          },
+          {
+            "call": "recurse",
+            "depth": 3,
+            "layer": 2,
+            "steps": 59202,
+            "outcome": "Ok(429)"
+          },
+          {
+            "call": "length",
+            "depth": 4,
+            "layer": 0,
+            "steps": 1,
+            "outcome": "Ok(15)"
+          },
+          {
+            "call": "eq",
+            "depth": 4,
+            "layer": 0,
+            "steps": 1,
+            "outcome": "Ok(false)"
+          },
+          {
+            "call": "length",
+            "depth": 4,
+            "layer": 0,
+            "steps": 1,
+            "outcome": "Ok(15)"
+          },
+          {
+            "call": "eq",
+            "depth": 4,
+            "layer": 0,
+            "steps": 1,
+            "outcome": "Ok(false)"
+          },
+          {
+            "call": "split",
+            "depth": 4,
+            "layer": 1,
+            "steps": 141,
+            "outcome": "Ok(List.items<1, 3, 5, 7, 9, 11, 13>)"
+          },
+          {
+            "call": "at",
+            "depth": 4,
+            "layer": 0,
+            "steps": 1,
+            "outcome": "Ok(2)"
+          },
+          {
+            "call": "eq",
+            "depth": 4,
+            "layer": 0,
+            "steps": 1,
+            "outcome": "Ok(false)"
+          },
+          {
+            "call": "zero",
+            "depth": 4,
+            "layer": 1,
+            "steps": 0,
+            "outcome": "Ok(0)"
+          }
+        ]
+      }
+    }
+  },
+  "digest": "25651d927e1a2683100b5b2184f32621616227436578411beaa63611cdb031ea",
+  "notation3": {
+    "version": 1,
+    "worlds": {
+      "grammar": {
+        "legend": [
+          {
+            "mark": "\\bbA",
+            "display": "\ud835\udd38",
+            "name": "Word",
+            "kind": "object",
+            "layer": 0,
+            "origin": "given",
+            "forms": [
+              "tokens"
+            ],
+            "signature": null
+          },
+          {
+            "mark": "\\bbD",
+            "display": "\ud835\udd3b",
+            "name": "Draft",
+            "kind": "object",
+            "layer": 0,
+            "origin": "given",
+            "forms": [],
+            "signature": null
+          },
+          {
+            "mark": "\\bbE",
+            "display": "\ud835\udd3c",
+            "name": "Rule",
+            "kind": "object",
+            "layer": 0,
+            "origin": "given",
+            "forms": [],
+            "signature": null
+          },
+          {
+            "mark": "\\bbG",
+            "display": "\ud835\udd3e",
+            "name": "List",
+            "kind": "object",
+            "layer": 0,
+            "origin": "given",
+            "forms": [
+              "items"
+            ],
+            "signature": null
+          },
+          {
+            "mark": "\\bbB",
+            "display": "\ud835\udd39",
+            "name": "bool",
+            "kind": "object",
+            "layer": 0,
+            "origin": "given",
+            "forms": [
+              "false",
+              "true"
+            ],
+            "signature": null
+          },
+          {
+            "mark": "\\bbZ",
+            "display": "\u2124",
+            "name": "int",
+            "kind": "object",
+            "layer": 0,
+            "origin": "given",
+            "forms": [],
+            "signature": null
+          },
+          {
+            "mark": "\\bbH",
+            "display": "\u210d",
+            "name": "str",
+            "kind": "object",
+            "layer": 0,
+            "origin": "given",
+            "forms": [],
+            "signature": null
+          },
+          {
+            "mark": "\\bbI",
+            "display": "\ud835\udd40",
+            "name": "any",
+            "kind": "object",
+            "layer": 0,
+            "origin": "given",
+            "forms": [],
+            "signature": null
+          },
+          {
+            "mark": "\\bbJ",
+            "display": "\ud835\udd41",
+            "name": "Pair",
+            "kind": "object",
+            "layer": 0,
+            "origin": "given",
+            "forms": [
+              "pair"
+            ],
+            "signature": null
+          },
+          {
+            "mark": "\\bbK",
+            "display": "\ud835\udd42",
+            "name": "Hist",
+            "kind": "object",
+            "layer": 0,
+            "origin": "given",
+            "forms": [
+              "entries"
+            ],
+            "signature": null
+          },
+          {
+            "mark": "\\bbL",
+            "display": "\ud835\udd43",
+            "name": "Witness",
+            "kind": "object",
+            "layer": 0,
+            "origin": "given",
+            "forms": [],
+            "signature": null
+          },
+          {
+            "mark": "@",
+            "display": "@",
+            "name": "expand",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "@ : \\bbD \\x \\bbG \\x \\bbE -> \\bbD",
+              "display": "@ : \ud835\udd3b \u00d7 \ud835\udd3e \u00d7 \ud835\udd3c \u2192 \ud835\udd3b"
+            }
+          },
+          {
+            "mark": "#",
+            "display": "#",
+            "name": "list0",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "mark": "$",
+            "display": "$",
+            "name": "list1",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "$ : \\bbI -> \\bbG",
+              "display": "$ : \ud835\udd40 \u2192 \ud835\udd3e"
+            }
+          },
+          {
+            "mark": "&",
+            "display": "&",
+            "name": "list2",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "& : \\bbI \\x \\bbI -> \\bbG",
+              "display": "& : \ud835\udd40 \u00d7 \ud835\udd40 \u2192 \ud835\udd3e"
+            }
+          },
+          {
+            "mark": "\\spade",
+            "display": "\u2660",
+            "name": "list3",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\spade : \\bbI \\x \\bbI \\x \\bbI -> \\bbG",
+              "display": "\u2660 : \ud835\udd40 \u00d7 \ud835\udd40 \u00d7 \ud835\udd40 \u2192 \ud835\udd3e"
+            }
+          },
+          {
+            "mark": "\\wspade",
+            "display": "\u2664",
+            "name": "word_new",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\wspade : \\bbG -> \\bbA",
+              "display": "\u2664 : \ud835\udd3e \u2192 \ud835\udd38"
+            }
+          },
+          {
+            "mark": "\\heart",
+            "display": "\u2665",
+            "name": "length",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\heart : \\bbI -> \\bbZ",
+              "display": "\u2665 : \ud835\udd40 \u2192 \u2124"
+            }
+          },
+          {
+            "mark": "\\wheart",
+            "display": "\u2661",
+            "name": "at",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\wheart : \\bbI \\x \\bbZ -> \\bbI",
+              "display": "\u2661 : \ud835\udd40 \u00d7 \u2124 \u2192 \ud835\udd40"
+            }
+          },
+          {
+            "mark": "\\dia",
+            "display": "\u2666",
+            "name": "slice_word",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\dia : \\bbA \\x \\bbZ \\x \\bbZ -> \\bbA",
+              "display": "\u2666 : \ud835\udd38 \u00d7 \u2124 \u00d7 \u2124 \u2192 \ud835\udd38"
+            }
+          },
+          {
+            "mark": "\\wdia",
+            "display": "\u2662",
+            "name": "append",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\wdia : \\bbG \\x \\bbI -> \\bbG",
+              "display": "\u2662 : \ud835\udd3e \u00d7 \ud835\udd40 \u2192 \ud835\udd3e"
+            }
+          },
+          {
+            "mark": "\\club",
+            "display": "\u2663",
+            "name": "concat",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\club : \\bbI \\x \\bbI -> \\bbI",
+              "display": "\u2663 : \ud835\udd40 \u00d7 \ud835\udd40 \u2192 \ud835\udd40"
+            }
+          },
+          {
+            "mark": "\\wclub",
+            "display": "\u2667",
+            "name": "make_draft",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\wclub : \\bbH \\x \\bbG -> \\bbD",
+              "display": "\u2667 : \u210d \u00d7 \ud835\udd3e \u2192 \ud835\udd3b"
+            }
+          },
+          {
+            "mark": "\\sq",
+            "display": "\u25a0",
+            "name": "pair",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\sq : \\bbI \\x \\bbI -> \\bbJ",
+              "display": "\u25a0 : \ud835\udd40 \u00d7 \ud835\udd40 \u2192 \ud835\udd41"
+            }
+          },
+          {
+            "mark": "\\wsq",
+            "display": "\u25a1",
+            "name": "hist",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\wsq : \\bbG -> \\bbK",
+              "display": "\u25a1 : \ud835\udd3e \u2192 \ud835\udd42"
+            }
+          },
+          {
+            "mark": "\\dot",
+            "display": "\u25cf",
+            "name": "witness",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\dot : \\bbG -> \\bbL",
+              "display": "\u25cf : \ud835\udd3e \u2192 \ud835\udd43"
+            }
+          },
+          {
+            "mark": "\\wdot",
+            "display": "\u25cb",
+            "name": "sorted_items",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\wdot : \\bbG -> \\bbG",
+              "display": "\u25cb : \ud835\udd3e \u2192 \ud835\udd3e"
+            }
+          },
+          {
+            "mark": "\\up",
+            "display": "\u25b2",
+            "name": "tag",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\up : \\bbI -> \\bbH",
+              "display": "\u25b2 : \ud835\udd40 \u2192 \u210d"
+            }
+          },
+          {
+            "mark": "\\wup",
+            "display": "\u25b3",
+            "name": "field",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\wup : \\bbI \\x \\bbZ -> \\bbI",
+              "display": "\u25b3 : \ud835\udd40 \u00d7 \u2124 \u2192 \ud835\udd40"
+            }
+          },
+          {
+            "mark": "(+)",
+            "display": "(+)",
+            "name": "add",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "(+) : \\bbZ \\x \\bbZ -> \\bbZ",
+              "display": "(+) : \u2124 \u00d7 \u2124 \u2192 \u2124"
+            }
+          },
+          {
+            "mark": "(-)",
+            "display": "(-)",
+            "name": "sub",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "(-) : \\bbZ \\x \\bbZ -> \\bbZ",
+              "display": "(-) : \u2124 \u00d7 \u2124 \u2192 \u2124"
+            }
+          },
+          {
+            "mark": "(*)",
+            "display": "(*)",
+            "name": "mul",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "(*) : \\bbZ \\x \\bbZ -> \\bbZ",
+              "display": "(*) : \u2124 \u00d7 \u2124 \u2192 \u2124"
+            }
+          },
+          {
+            "mark": "(%)",
+            "display": "(%)",
+            "name": "mod",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "(%) : \\bbZ \\x \\bbZ -> \\bbZ",
+              "display": "(%) : \u2124 \u00d7 \u2124 \u2192 \u2124"
+            }
+          },
+          {
+            "mark": "(/)",
+            "display": "(/)",
+            "name": "div",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "(/) : \\bbZ \\x \\bbZ -> \\bbZ",
+              "display": "(/) : \u2124 \u00d7 \u2124 \u2192 \u2124"
+            }
+          },
+          {
+            "mark": "(==)",
+            "display": "(==)",
+            "name": "eq",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "(==) : \\bbI \\x \\bbI -> \\bbB",
+              "display": "(==) : \ud835\udd40 \u00d7 \ud835\udd40 \u2192 \ud835\udd39"
+            }
+          },
+          {
+            "mark": "(<)",
+            "display": "(<)",
+            "name": "lt",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "(<) : \\bbI \\x \\bbI -> \\bbB",
+              "display": "(<) : \ud835\udd40 \u00d7 \ud835\udd40 \u2192 \ud835\udd39"
+            }
+          },
+          {
+            "mark": "(<=)",
+            "display": "(<=)",
+            "name": "le",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "(<=) : \\bbI \\x \\bbI -> \\bbB",
+              "display": "(<=) : \ud835\udd40 \u00d7 \ud835\udd40 \u2192 \ud835\udd39"
+            }
+          },
+          {
+            "mark": "\\dn",
+            "display": "\u25bc",
+            "name": "is_int",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\dn : \\bbI -> \\bbB",
+              "display": "\u25bc : \ud835\udd40 \u2192 \ud835\udd39"
+            }
+          },
+          {
+            "mark": "\\wdn",
+            "display": "\u25bd",
+            "name": "fail",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\wdn : \\bbH -> \\bbI",
+              "display": "\u25bd : \u210d \u2192 \ud835\udd40"
+            }
+          },
+          {
+            "mark": "\\lz",
+            "display": "\u25c6",
+            "name": "minimum",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\lz : \\bbG -> \\bbZ",
+              "display": "\u25c6 : \ud835\udd3e \u2192 \u2124"
+            }
+          },
+          {
+            "mark": "\\wlz",
+            "display": "\u25c7",
+            "name": "maximum",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\wlz : \\bbG -> \\bbZ",
+              "display": "\u25c7 : \ud835\udd3e \u2192 \u2124"
+            }
+          },
+          {
+            "mark": "\\Gamma",
+            "display": "\u0393",
+            "name": "seq",
+            "kind": "combinator",
+            "layer": 0,
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "mark": "\\Delta",
+            "display": "\u0394",
+            "name": "bounded_rec",
+            "kind": "combinator",
+            "layer": 0,
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "mark": "\\hatA",
+            "display": "\u00c2",
+            "name": "yield_probe",
+            "kind": "observation",
+            "layer": 0,
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "mark": "\\hatC",
+            "display": "\u0108",
+            "name": "yield",
+            "kind": "observation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\hatC : \\bbD -> \\bbA",
+              "display": "\u0108 : \ud835\udd3b \u2192 \ud835\udd38"
+            }
+          },
+          {
+            "mark": "\\bbM",
+            "display": "\ud835\udd44",
+            "name": "fn",
+            "kind": "object",
+            "layer": 0,
+            "origin": "given",
+            "forms": [],
+            "signature": null
+          },
+          {
+            "mark": "\\st",
+            "display": "\u2605",
+            "name": "bool.false",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "form_of": "bool",
+            "signature": null
+          },
+          {
+            "mark": "\\wst",
+            "display": "\u2606",
+            "name": "bool.true",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "form_of": "bool",
+            "signature": null
+          },
+          {
+            "mark": "\\bbA_1",
+            "display": "\ud835\udd38\u2081",
+            "name": "ExprTree",
+            "kind": "object",
+            "layer": 1,
+            "origin": "invented",
+            "forms": [],
+            "signature": null
+          },
+          {
+            "mark": "\\dn_1",
+            "display": "\u25bc\u2081",
+            "name": "split",
+            "kind": "operation",
+            "layer": 1,
+            "origin": "invented",
+            "signature": {
+              "ascii": "^1\\dn_1 : \\bbA -> \\bbG",
+              "display": "\u00b9\u25bc\u2081 : \ud835\udd38 \u2192 \ud835\udd3e"
+            }
+          },
+          {
+            "mark": "\\wsq_2",
+            "display": "\u25a1\u2082",
+            "name": "one",
+            "kind": "operation",
+            "layer": 1,
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "mark": "\\dot_3",
+            "display": "\u25cf\u2083",
+            "name": "identity",
+            "kind": "operation",
+            "layer": 1,
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "mark": "\\wdot_4",
+            "display": "\u25cb\u2084",
+            "name": "multiply",
+            "kind": "operation",
+            "layer": 1,
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "mark": "\\lz_5",
+            "display": "\u25c6\u2085",
+            "name": "combine_count",
+            "kind": "operation",
+            "layer": 1,
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "mark": "\\wlz_6",
+            "display": "\u25c7\u2086",
+            "name": "zero",
+            "kind": "operation",
+            "layer": 1,
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "mark": "\\st_7",
+            "display": "\u2605\u2087",
+            "name": "one_alt",
+            "kind": "operation",
+            "layer": 1,
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "mark": "\\wst_8",
+            "display": "\u2606\u2088",
+            "name": "identity_alt",
+            "kind": "operation",
+            "layer": 1,
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "mark": "\\sq_9",
+            "display": "\u25a0\u2089",
+            "name": "multiply_alt",
+            "kind": "operation",
+            "layer": 1,
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "mark": "\\wsq_10",
+            "display": "\u25a1\u2081\u2080",
+            "name": "combine_count_alt",
+            "kind": "operation",
+            "layer": 1,
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "mark": "\\dot_11",
+            "display": "\u25cf\u2081\u2081",
+            "name": "zero_alt",
+            "kind": "operation",
+            "layer": 1,
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "mark": "\\wdot_12",
+            "display": "\u25cb\u2081\u2082",
+            "name": "arithmetic",
+            "kind": "operation",
+            "layer": 1,
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "mark": "\\lz_13",
+            "display": "\u25c6\u2081\u2083",
+            "name": "arithmetic_alt",
+            "kind": "operation",
+            "layer": 1,
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "mark": "\\wlz_14",
+            "display": "\u25c7\u2081\u2084",
+            "name": "empty_values",
+            "kind": "operation",
+            "layer": 1,
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "mark": "\\st_15",
+            "display": "\u2605\u2081\u2085",
+            "name": "merge_values",
+            "kind": "operation",
+            "layer": 1,
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "mark": "\\wst_16",
+            "display": "\u2606\u2081\u2086",
+            "name": "histogram",
+            "kind": "operation",
+            "layer": 1,
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "mark": "\\sq_17",
+            "display": "\u25a0\u2081\u2087",
+            "name": "hist_keys",
+            "kind": "operation",
+            "layer": 1,
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "mark": "\\wsq_18",
+            "display": "\u25a1\u2081\u2088",
+            "name": "check_tree",
+            "kind": "operation",
+            "layer": 1,
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "mark": "\\dot_19",
+            "display": "\u25cf\u2081\u2089",
+            "name": "extract",
+            "kind": "operation",
+            "layer": 1,
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "mark": "\\wdot_20",
+            "display": "\u25cb\u2082\u2080",
+            "name": "group_values",
+            "kind": "operation",
+            "layer": 1,
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "mark": "\\dn_21",
+            "display": "\u25bc\u2082\u2081",
+            "name": "ExprTree.base",
+            "kind": "operation",
+            "layer": 1,
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "mark": "\\Gamma_1",
+            "display": "\u0393\u2081",
+            "name": "chart",
+            "kind": "combinator",
+            "layer": 2,
+            "origin": "invented",
+            "signature": {
+              "ascii": "^2\\Gamma_1 : \\bbX_a -> \\bbX_a",
+              "display": "\u00b2\u0393\u2081 : \ud835\udd4f\u2090 \u2192 \ud835\udd4f\u2090"
+            }
+          },
+          {
+            "mark": "\\Delta_2",
+            "display": "\u0394\u2082",
+            "name": "fold",
+            "kind": "combinator",
+            "layer": 2,
+            "origin": "invented",
+            "signature": {
+              "ascii": "^2\\Delta_2 : \\bbA_1 -> \\bbX_a",
+              "display": "\u00b2\u0394\u2082 : \ud835\udd38\u2081 \u2192 \ud835\udd4f\u2090"
+            }
+          },
+          {
+            "mark": "\\wlz_22",
+            "display": "\u25c7\u2082\u2082",
+            "name": "product_values",
+            "kind": "operation",
+            "layer": 2,
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "mark": "\\st_23",
+            "display": "\u2605\u2082\u2083",
+            "name": "inner",
+            "kind": "operation",
+            "layer": 2,
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "mark": "\\wst_24",
+            "display": "\u2606\u2082\u2084",
+            "name": "outer",
+            "kind": "operation",
+            "layer": 2,
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "mark": "\\sq_25",
+            "display": "\u25a0\u2082\u2085",
+            "name": "singleton_value",
+            "kind": "operation",
+            "layer": 3,
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "mark": "\\hatA_1",
+            "display": "\u00c2\u2081",
+            "name": "parse_count",
+            "kind": "observation",
+            "layer": 4,
+            "origin": "invented",
+            "signature": {
+              "ascii": "^4\\hatA_1 : \\bbA -> \\bbZ",
+              "display": "\u2074\u00c2\u2081 : \ud835\udd38 \u2192 \u2124"
+            }
+          },
+          {
+            "mark": "\\spade_26",
+            "display": "\u2660\u2082\u2086",
+            "name": "unrank",
+            "kind": "operation",
+            "layer": 4,
+            "origin": "invented",
+            "signature": {
+              "ascii": "^4\\spade_26 : \\bbA \\x \\bbZ -> \\bbA_1",
+              "display": "\u2074\u2660\u2082\u2086 : \ud835\udd38 \u00d7 \u2124 \u2192 \ud835\udd38\u2081"
+            }
+          },
+          {
+            "mark": "\\bbD_2",
+            "display": "\ud835\udd3b\u2082",
+            "name": "Ambiguity",
+            "kind": "object",
+            "layer": 5,
+            "origin": "invented",
+            "forms": [],
+            "signature": null
+          },
+          {
+            "mark": "\\wdn_27",
+            "display": "\u25bd\u2082\u2087",
+            "name": "gap",
+            "kind": "operation",
+            "layer": 5,
+            "origin": "invented",
+            "signature": {
+              "ascii": "^5\\wdn_27 : \\bbA -> \\bbZ",
+              "display": "\u2075\u25bd\u2082\u2087 : \ud835\udd38 \u2192 \u2124"
+            }
+          },
+          {
+            "mark": "\\hatC_2",
+            "display": "\u0108\u2082",
+            "name": "ambiguous",
+            "kind": "observation",
+            "layer": 6,
+            "origin": "invented",
+            "signature": {
+              "ascii": "^6\\hatC_2 : \\bbA -> \\bbB",
+              "display": "\u2076\u0108\u2082 : \ud835\udd38 \u2192 \ud835\udd39"
+            }
+          },
+          {
+            "mark": "\\wdot_28",
+            "display": "\u25cb\u2082\u2088",
+            "name": "invert_gap",
+            "kind": "operation",
+            "layer": 6,
+            "origin": "invented",
+            "signature": {
+              "ascii": "^6\\wdot_28 : \\bbZ \\x \\bbZ \\x \\bbZ -> \\bbA",
+              "display": "\u2076\u25cb\u2082\u2088 : \u2124 \u00d7 \u2124 \u00d7 \u2124 \u2192 \ud835\udd38"
+            }
+          },
+          {
+            "mark": "\\hatE_3",
+            "display": "\u00ca\u2083",
+            "name": "value_hist",
+            "kind": "observation",
+            "layer": 9,
+            "origin": "invented",
+            "signature": {
+              "ascii": "^9\\hatE_3 : \\bbA -> \\bbK",
+              "display": "\u2079\u00ca\u2083 : \ud835\udd38 \u2192 \ud835\udd42"
+            }
+          }
+        ],
+        "formulas": {
+          "?parse_count{Word.tokens<2, \"+\", 2, \"*\", 2, \"+\", 2, \"*\", 2, \"+\", 2, \"*\", 2, \"+\", 2>}": {
+            "display": "\u00c2\u2081\u27e8\ud835\udd38(2, \"+\", 2, \"*\", 2, \"+\", 2, \"*\", 2, \"+\", 2, \"*\", 2, \"+\", 2)\u27e9",
+            "ascii": "\\hatA_1<|\\bbA(2, \"+\", 2, \"*\", 2, \"+\", 2, \"*\", 2, \"+\", 2, \"*\", 2, \"+\", 2)|>",
+            "signature": null
+          },
+          "@chart[one,multiply,identity,combine_count,zero](Word.tokens<2, \"+\", 2, \"*\", 2, \"+\", 2, \"*\", 2, \"+\", 2, \"*\", 2, \"+\", 2>)": {
+            "display": "\u0393\u2081[\u25a1\u2082, \u25cb\u2084, \u25cf\u2083, \u25c6\u2085, \u25c7\u2086] \ud835\udd38(2, \"+\", 2, \"*\", 2, \"+\", 2, \"*\", 2, \"+\", 2, \"*\", 2, \"+\", 2)",
+            "ascii": "\\Gamma_1[\\wsq_2, \\wdot_4, \\dot_3, \\lz_5, \\wlz_6] \\bbA(2, \"+\", 2, \"*\", 2, \"+\", 2, \"*\", 2, \"+\", 2, \"*\", 2, \"+\", 2)",
+            "signature": null
+          },
+          "Bottom(invalid)": {
+            "display": "fail(\"invalid\")",
+            "ascii": "fail(\"invalid\")",
+            "signature": null
+          },
+          "ExprTree._invalid": {
+            "display": "\ud835\udd38\u2081",
+            "ascii": "\\bbA_1",
+            "signature": null
+          },
+          "ExprTree._pack": {
+            "display": "\ud835\udd38\u2081",
+            "ascii": "\\bbA_1",
+            "signature": null
+          },
+          "ExprTree.make": {
+            "display": "\ud835\udd38\u2081()",
+            "ascii": "\\bbA_1()",
+            "signature": null
+          },
+          "ExprTree.make(Draft.E<>)": {
+            "display": "\ud835\udd38\u2081(E)",
+            "ascii": "\\bbA_1(E)",
+            "signature": null
+          },
+          "ExprTree.make(Draft.num<7>)": {
+            "display": "\ud835\udd38\u2081 (\ud835\udd3b(7))",
+            "ascii": "\\bbA_1 (\\bbD(7))",
+            "signature": null
+          },
+          "Ok(\"E\")": {
+            "display": "\"E\"",
+            "ascii": "\"E\"",
+            "signature": null
+          },
+          "Ok(\"num\")": {
+            "display": "\"num\"",
+            "ascii": "\"num\"",
+            "signature": null
+          },
+          "Ok(0)": {
+            "display": "0",
+            "ascii": "0",
+            "signature": null
+          },
+          "Ok(1)": {
+            "display": "1",
+            "ascii": "1",
+            "signature": null
+          },
+          "Ok(15)": {
+            "display": "15",
+            "ascii": "15",
+            "signature": null
+          },
+          "Ok(2)": {
+            "display": "2",
+            "ascii": "2",
+            "signature": null
+          },
+          "Ok(429)": {
+            "display": "429",
+            "ascii": "429",
+            "signature": null
+          },
+          "Ok(ExprTree.val<Draft.num<7>>)": {
+            "display": "\ud835\udd38\u2081 (\ud835\udd3b(7))",
+            "ascii": "\\bbA_1 (\\bbD(7))",
+            "signature": null
+          },
+          "Ok(List.items<1, 3, 5, 7, 9, 11, 13>)": {
+            "display": "\ud835\udd3e(1, 3, 5, 7, 9, 11, 13)",
+            "ascii": "\\bbG(1, 3, 5, 7, 9, 11, 13)",
+            "signature": null
+          },
+          "Ok(List.items<>)": {
+            "display": "\ud835\udd3e()",
+            "ascii": "\\bbG()",
+            "signature": null
+          },
+          "Ok(Word.tokens<7>)": {
+            "display": "\ud835\udd38(7)",
+            "ascii": "\\bbA(7)",
+            "signature": null
+          },
+          "Ok(false)": {
+            "display": "\u22a5",
+            "ascii": "\\bot",
+            "signature": null
+          },
+          "Ok(true)": {
+            "display": "\u22a4",
+            "ascii": "\\top",
+            "signature": null
+          },
+          "Word.tokens<2, \"+\", 2, \"*\", 2, \"+\", 2, \"*\", 2, \"+\", 2, \"*\", 2, \"+\", 2>": {
+            "display": "\ud835\udd38(2, \"+\", 2, \"*\", 2, \"+\", 2, \"*\", 2, \"+\", 2, \"*\", 2, \"+\", 2)",
+            "ascii": "\\bbA(2, \"+\", 2, \"*\", 2, \"+\", 2, \"*\", 2, \"+\", 2, \"*\", 2, \"+\", 2)",
+            "signature": null
+          },
+          "at": {
+            "display": "at",
+            "ascii": "at",
+            "signature": null
+          },
+          "chart": {
+            "display": "chart",
+            "ascii": "chart",
+            "signature": null
+          },
+          "check_tree": {
+            "display": "check_tree",
+            "ascii": "check_tree",
+            "signature": null
+          },
+          "comb @chart[leaf: A -> A, join: A -> A, wrap: A -> A, merge: A -> A, zero_slot: A -> A](w: A) -> A = rec memo recurse(span) = if eq(length(span), 0) then zero_slot() else (if eq(length(span), 1) then (if is_int(at(span, 0)) then leaf(at(span, 0)) else zero_slot()) else let positions = split(span) in let initial = if eq(at(span, 0), \"(\") then (if eq(at(span, length(span) - 1), \")\") then merge(zero_slot(), wrap(recurse(slice_word(span, 1, length(span) - 1)))) else zero_slot()) else zero_slot() in rec walk_splits(position, result) = if eq(position, length(positions)) then result else walk_splits(position + 1, merge(result, join(at(span, at(positions, position)), recurse(slice_word(span, 0, at(positions, position))), recurse(slice_word(span, at(positions, position) + 1, length(span)))))) measure length(positions) - position in walk_splits(0, initial)) measure length(span) in recurse(w) L2": {
+            "display": "\u0393\u2081[\u2666\u2090, \u2666\u2091, \u2666\u2095, \u2666\u1d62, \u2666\u2c7c] w = { memo rec \u2666\u1d63(span) = { \u2666\u2c7c(), if \u2665 span == 0; { \u2666\u2090 (span \u2661 0), if \u25bc (span \u2661 0); \u2666\u2c7c(), else }, if \u2665 span == 1; let positions = \u25bc\u2081 span in let initial = { { \u2666\u2c7c() \u2666\u1d62 (\u2666\u2095 \u2666\u1d63 (\u2666(span, 1, \u2665 span - 1))), if span \u2661 (\u2665 span - 1) == \")\"; \u2666\u2c7c(), else }, if span \u2661 0 == \"(\"; \u2666\u2c7c(), else } in rec \u2666\u1d63(position, result) = { result, if position == \u2665 positions; \u2666\u1d63(position + 1, result \u2666\u1d62 \u2666\u2091(span \u2661 (positions \u2661 position), \u2666\u1d63 (\u2666(span, 0, positions \u2661 position)), \u2666\u1d63 (\u2666(span, positions \u2661 position + 1, \u2665 span)))), else } \u22a2 \u2193 \u2665 positions - position in \u2666\u1d63(0, initial), else } \u22a2 \u2193 \u2665 span in \u2666\u1d63(w) }",
+            "ascii": "\\Gamma_1[\\dia_a, \\dia_e, \\dia_h, \\dia_i, \\dia_j] w = { memo rec \\dia_r(span) = { \\dia_j(), if \\heart span == 0; { \\dia_a (span \\wheart 0), if \\dn (span \\wheart 0); \\dia_j(), else }, if \\heart span == 1; let positions = \\dn_1 span in let initial = { { \\dia_j() \\dia_i (\\dia_h \\dia_r (\\dia(span, 1, \\heart span - 1))), if span \\wheart (\\heart span - 1) == \")\"; \\dia_j(), else }, if span \\wheart 0 == \"(\"; \\dia_j(), else } in rec \\dia_r(position, result) = { result, if position == \\heart positions; \\dia_r(position + 1, result \\dia_i \\dia_e(span \\wheart (positions \\wheart position), \\dia_r (\\dia(span, 0, positions \\wheart position)), \\dia_r (\\dia(span, positions \\wheart position + 1, \\heart span)))), else } |- \\dec \\heart positions - position in \\dia_r(0, initial), else } |- \\dec \\heart span in \\dia_r(w) }",
+            "signature": null
+          },
+          "eq": {
+            "display": "eq",
+            "ascii": "eq",
+            "signature": null
+          },
+          "le": {
+            "display": "le",
+            "ascii": "le",
+            "signature": null
+          },
+          "length": {
+            "display": "length",
+            "ascii": "length",
+            "signature": null
+          },
+          "list0": {
+            "display": "list0",
+            "ascii": "list0",
+            "signature": null
+          },
+          "obs ?parse_count{w} = @chart[one, multiply, identity, combine_count, zero](w) L3": {
+            "display": "\u00c2\u2081\u27e8w\u27e9 = { \u0393\u2081[\u25a1\u2082, \u25cb\u2084, \u25cf\u2083, \u25c6\u2085, \u25c7\u2086] w }",
+            "ascii": "\\hatA_1<|w|> = { \\Gamma_1[\\wsq_2, \\wdot_4, \\dot_3, \\lz_5, \\wlz_6] w }",
+            "signature": null
+          },
+          "parse_count": {
+            "display": "parse_count",
+            "ascii": "parse_count",
+            "signature": null
+          },
+          "recurse": {
+            "display": "recurse",
+            "ascii": "recurse",
+            "signature": null
+          },
+          "root": {
+            "display": "root",
+            "ascii": "root",
+            "signature": null
+          },
+          "scan": {
+            "display": "scan",
+            "ascii": "scan",
+            "signature": null
+          },
+          "split": {
+            "display": "split",
+            "ascii": "split",
+            "signature": null
+          },
+          "split(Word.tokens<2, \"+\", 2, \"*\", 2, \"+\", 2, \"*\", 2, \"+\", 2, \"*\", 2, \"+\", 2>)": {
+            "display": "\u25bc\u2081 \ud835\udd38(2, \"+\", 2, \"*\", 2, \"+\", 2, \"*\", 2, \"+\", 2, \"*\", 2, \"+\", 2)",
+            "ascii": "\\dn_1 \\bbA(2, \"+\", 2, \"*\", 2, \"+\", 2, \"*\", 2, \"+\", 2, \"*\", 2, \"+\", 2)",
+            "signature": null
+          },
+          "tag": {
+            "display": "tag",
+            "ascii": "tag",
+            "signature": null
+          },
+          "walk_splits": {
+            "display": "walk_splits",
+            "ascii": "walk_splits",
+            "signature": null
+          },
+          "yield_probe": {
+            "display": "yield_probe",
+            "ascii": "yield_probe",
+            "signature": null
+          },
+          "zero": {
+            "display": "zero",
+            "ascii": "zero",
+            "signature": null
+          }
+        },
+        "prose": {
+          "comb @chart[leaf: A -> A, join: A -> A, wrap: A -> A, merge: A -> A, zero_slot: A -> A](w: A) -> A = rec memo recurse(span) = if eq(length(span), 0) then zero_slot() else (if eq(length(span), 1) then (if is_int(at(span, 0)) then leaf(at(span, 0)) else zero_slot()) else let positions = split(span) in let initial = if eq(at(span, 0), \"(\") then (if eq(at(span, length(span) - 1), \")\") then merge(zero_slot(), wrap(recurse(slice_word(span, 1, length(span) - 1)))) else zero_slot()) else zero_slot() in rec walk_splits(position, result) = if eq(position, length(positions)) then result else walk_splits(position + 1, merge(result, join(at(span, at(positions, position)), recurse(slice_word(span, 0, at(positions, position))), recurse(slice_word(span, at(positions, position) + 1, length(span)))))) measure length(positions) - position in walk_splits(0, initial)) measure length(span) in recurse(w) L2": [
+            [
+              "t",
+              "comb "
+            ],
+            [
+              "f",
+              "\u0393\u2081",
+              "\\Gamma_1"
+            ],
+            [
+              "t",
+              "[leaf: A -> A, join: A -> A, wrap: A -> A, merge: A -> A, zero_slot: A -> A](w: A) -> A = rec memo recurse(span) = if eq(length(span), 0) then zero_slot() else (if eq(length(span), 1) then (if is_int(at(span, 0)) then leaf(at(span, 0)) else zero_slot()) else let positions = split(span) in let initial = if eq(at(span, 0), \"(\") then (if eq(at(span, length(span) - 1), \")\") then merge(zero_slot(), wrap(recurse(slice_word(span, 1, length(span) - 1)))) else zero_slot()) else zero_slot() in rec walk_splits(position, result) = if eq(position, length(positions)) then result else walk_splits(position + 1, merge(result, join(at(span, at(positions, position)), recurse(slice_word(span, 0, at(positions, position))), recurse(slice_word(span, at(positions, position) + 1, length(span)))))) measure length(positions) - position in walk_splits(0, initial)) measure length(span) in recurse(w) L2"
+            ]
+          ],
+          "obs ?parse_count{w} = @chart[one, multiply, identity, combine_count, zero](w) L3": [
+            [
+              "t",
+              "obs "
+            ],
+            [
+              "f",
+              "\u00c2\u2081",
+              "\\hatA_1"
+            ],
+            [
+              "t",
+              "{w} = "
+            ],
+            [
+              "f",
+              "\u0393\u2081",
+              "\\Gamma_1"
+            ],
+            [
+              "t",
+              "[one, multiply, identity, combine_count, zero](w) L3"
+            ]
+          ]
+        },
+        "designs": [],
+        "skipped": 0
+      }
+    },
+    "source": "atoms2/grammar_core.json"
+  }
+}

@@ -1,0 +1,1089 @@
+{
+  "schema": "opulse.world/2",
+  "world": "melody",
+  "version": 1,
+  "dialect": "atoms-v2",
+  "title": "Melody: exact motif covers",
+  "source": "worlds/catalogue/depth/melody.json",
+  "params": {},
+  "constants": {},
+  "objects": [
+    {
+      "kind": "object",
+      "name": "Melody",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "A nonempty sequence of up to 64 pitched events."
+    },
+    {
+      "kind": "object",
+      "name": "Nat",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "An unbounded nonnegative integer."
+    },
+    {
+      "kind": "object",
+      "name": "List",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "A finite ordered sequence."
+    },
+    {
+      "kind": "object",
+      "name": "int",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Signed integer."
+    },
+    {
+      "kind": "object",
+      "name": "bool",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Truth value."
+    },
+    {
+      "kind": "object",
+      "name": "Event",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "A generic primitive value sort."
+    },
+    {
+      "kind": "object",
+      "name": "unknown",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "A generic primitive value sort."
+    },
+    {
+      "kind": "object",
+      "name": "public",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "A generic primitive value sort."
+    }
+  ],
+  "operations": [
+    {
+      "kind": "operation",
+      "name": "note_shift",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "Event",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Event",
+        "enter": "bottom"
+      },
+      "rule": "Shift a pitch by at most twelve semitones while preserving duration.",
+      "errors": [
+        "range",
+        "pitch",
+        "event"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.melody.hosts:note_shift",
+        "digest": "5fef11ce359bd5536ff34edc0298bea02edeb254071f99cf5d1e397ea88cabd2"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "transpose",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "Melody",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Melody",
+        "enter": "bottom"
+      },
+      "rule": "Shift all melody pitches without changing durations.",
+      "errors": [
+        "range",
+        "pitch",
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.melody.hosts:transpose",
+        "digest": "1050db7d20afb4009f390ad7cddcc2e7312d02b119dd610529f03bea59e4686b"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "slice_events",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "Melody",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "Nat",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg2",
+          "sort": "Nat",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Melody",
+        "enter": "bottom"
+      },
+      "rule": "Copy a nonempty contiguous slice.",
+      "errors": [
+        "range",
+        "slice",
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.melody.hosts:slice_events",
+        "digest": "ca26297bb5c2115873cbf870ce09118dfe4b542c78e6551d4d6a0c916ed410c5"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "concat",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "Melody",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "Melody",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Melody",
+        "enter": "bottom"
+      },
+      "rule": "Concatenate melodies within 64 events.",
+      "errors": [
+        "capacity",
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.melody.hosts:concat",
+        "digest": "acdc25e6ab8daea0b13490f1b86294de55d76196e16276586ea706761799a25e"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "list_length",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "List",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Nat",
+        "enter": "bottom"
+      },
+      "rule": "Return the length of a finite list.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.melody.hosts:list_length",
+        "digest": "8b44cc287cf7d456a55a01fa45b7aa0d045d937964ee6d619fac445294626604"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "list_get",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "List",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "Nat",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "unknown",
+        "enter": "bottom"
+      },
+      "rule": "Read an indexed list element.",
+      "errors": [
+        "invalid",
+        "range"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.melody.hosts:list_get",
+        "digest": "4c8a87b7d04504bc31b2bb832481e3808747cd7664c4548fae2c8a22398823d7"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "list_slice",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "List",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "Nat",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg2",
+          "sort": "Nat",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Copy the specified half-open interval.",
+      "errors": [
+        "invalid",
+        "range"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.melody.hosts:list_slice",
+        "digest": "5253ff8ac3c93d500567bb2bbb81c04686df9ee5e20ffecfaafad0e6884ee342"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "list_cons",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "unknown",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "List",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Prepend an element to a list.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.melody.hosts:list_cons",
+        "digest": "5da932a19ca8ee22b66b871584c59b5ebf807fc59442a5dd867bbbb11bc0572b"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "list_append",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "List",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "unknown",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Append an element to a list.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.melody.hosts:list_append",
+        "digest": "96c273312fbd09046daf990a936a5a3b88df527d3c4c9eb489636751cb851f0e"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "list_unique",
+      "symbol": null,
+      "role": "decide",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "List",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Check that all list elements are distinct.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.melody.hosts:list_unique",
+        "digest": "c224d69618f6df62400cef87b282ca731928708c3a8fe619992a3c2a482f8b19"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "list_contains",
+      "symbol": null,
+      "role": "decide",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "List",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "unknown",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Test list membership.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.melody.hosts:list_contains",
+        "digest": "3bd8edb9fa6eb4e4c14e7f440fe4c45141095d6f4de5f7df5c157b4d2f3e2966"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "pair",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "unknown",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "unknown",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Construct an ordered pair.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.melody.hosts:pair",
+        "digest": "4483b710e7deb6cc16152ef55ad7dc2ff49bdcbdd8b233d3e44ea5e275e8650c"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "first",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "List",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "unknown",
+        "enter": "bottom"
+      },
+      "rule": "Read the first pair field.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.melody.hosts:first",
+        "digest": "c2ca7c922b043e68d8a4e105bdd54d1154016e924bf278afb97c49d4a891e383"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "second",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "List",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "unknown",
+        "enter": "bottom"
+      },
+      "rule": "Read the second pair field.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.melody.hosts:second",
+        "digest": "fc8a23f726b190df9ec4a5ec46a8eb9baad3971aa2754befdaff6a5d20c1b5cf"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "add",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Add two integers.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.melody.hosts:add",
+        "digest": "21045b258bdc9ecded3bec33908c4ff9ad3254b2a2b06e89d8b2b19cca94ba8d"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "sub",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Subtract two integers.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.melody.hosts:sub",
+        "digest": "6be77d6dd9d8dfa7dc48000274be3fef1de89c3ba5a0b61bc9d348b8881dc0ca"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "eq",
+      "symbol": null,
+      "role": "decide",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "unknown",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "unknown",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Compare values for structural equality.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.melody.hosts:eq",
+        "digest": "21d8b0dd9ce8350e7f6c76ab9f70fe300dfb801ae19cc6ba016997ce6291e9ba"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "lt",
+      "symbol": null,
+      "role": "decide",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Compare two integers strictly.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.melody.hosts:lt",
+        "digest": "6505c472d435e0d555fa7bec36e9ad8f25b6afaeeb3e2ca6612aa6794c27f82a"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "le",
+      "symbol": null,
+      "role": "decide",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Compare two integers inclusively.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.melody.hosts:le",
+        "digest": "02206a5daa9168496ae2badc1845bdc9fb8eabb5c3cf25a28e5c27e8684fafbf"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "list_lex_lt",
+      "symbol": null,
+      "role": "decide",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "List",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "List",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Compare two lists lexicographically.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.melody.hosts:list_lex_lt",
+        "digest": "cc1d6b66e1d829c75ec9899a35813814113d25c377173c0615205367565691ee"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    }
+  ],
+  "combinators": {
+    "nodes": [
+      "Var",
+      "Lit",
+      "Call",
+      "Let",
+      "Case",
+      "Rec"
+    ],
+    "library": [
+      {
+        "name": "map_notes",
+        "params": [
+          "f",
+          "melody"
+        ],
+        "op_params": [
+          "f"
+        ],
+        "body": {
+          "node": "Call",
+          "fn": "Melody.make",
+          "args": [
+            {
+              "node": "Rec",
+              "fn": "map_local",
+              "params": [
+                "index"
+              ],
+              "body": {
+                "node": "Case",
+                "arms": [
+                  [
+                    {
+                      "node": "Test",
+                      "expr": {
+                        "node": "Call",
+                        "fn": "eq",
+                        "args": [
+                          {
+                            "node": "Var",
+                            "name": "index"
+                          },
+                          {
+                            "node": "Call",
+                            "fn": "list_length",
+                            "args": [
+                              {
+                                "node": "Call",
+                                "fn": "events",
+                                "args": [
+                                  {
+                                    "node": "Var",
+                                    "name": "melody"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "node": "Lit",
+                      "value": {
+                        "t": "tuple",
+                        "v": []
+                      }
+                    }
+                  ]
+                ],
+                "default": {
+                  "node": "Call",
+                  "fn": "list_cons",
+                  "args": [
+                    {
+                      "node": "Call",
+                      "fn": "f",
+                      "args": [
+                        {
+                          "node": "Call",
+                          "fn": "list_get",
+                          "args": [
+                            {
+                              "node": "Call",
+                              "fn": "events",
+                              "args": [
+                                {
+                                  "node": "Var",
+                                  "name": "melody"
+                                }
+                              ]
+                            },
+                            {
+                              "node": "Var",
+                              "name": "index"
+                            }
+                          ]
+                        },
+                        {
+                          "node": "Var",
+                          "name": "index"
+                        }
+                      ]
+                    },
+                    {
+                      "node": "Call",
+                      "fn": "map_local",
+                      "args": [
+                        {
+                          "node": "Call",
+                          "fn": "add",
+                          "args": [
+                            {
+                              "node": "Var",
+                              "name": "index"
+                            },
+                            {
+                              "node": "Lit",
+                              "value": {
+                                "t": "int",
+                                "v": 1
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              "args": [
+                {
+                  "node": "Lit",
+                  "value": {
+                    "t": "int",
+                    "v": 0
+                  }
+                }
+              ],
+              "measure": {
+                "node": "Call",
+                "fn": "sub",
+                "args": [
+                  {
+                    "node": "Call",
+                    "fn": "list_length",
+                    "args": [
+                      {
+                        "node": "Call",
+                        "fn": "events",
+                        "args": [
+                          {
+                            "node": "Var",
+                            "name": "melody"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "node": "Var",
+                    "name": "index"
+                  }
+                ]
+              },
+              "memo": false
+            }
+          ]
+        },
+        "unfold_rule": "substitute"
+      }
+    ],
+    "recursion": "measure"
+  },
+  "observation": {
+    "truth": "public",
+    "probes": [
+      {
+        "name": "events",
+        "sort": "List",
+        "reads": "public",
+        "reveals": [
+          "pitch",
+          "duration"
+        ],
+        "impl": {
+          "host": "opulse.worlds_v2.melody.hosts:events",
+          "digest": "a6e285dd16170d23618f848300e3480d22ff59267b9a58c2f98887b95ac6ebab"
+        }
+      },
+      {
+        "name": "beats",
+        "sort": "Nat",
+        "reads": "public",
+        "reveals": [
+          "beats"
+        ],
+        "impl": {
+          "host": "opulse.worlds_v2.melody.hosts:beats",
+          "digest": "a72fc06726678dfd1f54b21c40f5de42f8fc0f7ae2dcdf7e1a7d0d5d8e9482a3"
+        }
+      },
+      {
+        "name": "score_view",
+        "sort": "List",
+        "reads": "public",
+        "reveals": [
+          "melody",
+          "library"
+        ],
+        "impl": {
+          "host": "opulse.worlds_v2.melody.hosts:score_view",
+          "digest": "c71ada005bd4eb8c8448f142a350d0359b9c99eaf14b0c13edc482572ddb66ea"
+        }
+      }
+    ],
+    "capabilities": {
+      "learner": {
+        "probes": [
+          "events",
+          "beats",
+          "score_view"
+        ],
+        "channels": [
+          "text",
+          "audio"
+        ]
+      }
+    },
+    "show": {
+      "input": "exact_events",
+      "result": "exact_values"
+    },
+    "judge_view": "full_state"
+  },
+  "codec": {
+    "value": "opulse.value/2"
+  },
+  "atom_cost_rules": {
+    "transpose": "one step per source event for valid calls; one step on invalid calls",
+    "slice_events": "one step per copied event for valid calls; one step on invalid calls"
+  },
+  "lock": {
+    "host_digests": {
+      "note_shift": "5fef11ce359bd5536ff34edc0298bea02edeb254071f99cf5d1e397ea88cabd2",
+      "transpose": "1050db7d20afb4009f390ad7cddcc2e7312d02b119dd610529f03bea59e4686b",
+      "slice_events": "ca26297bb5c2115873cbf870ce09118dfe4b542c78e6551d4d6a0c916ed410c5",
+      "concat": "acdc25e6ab8daea0b13490f1b86294de55d76196e16276586ea706761799a25e",
+      "list_length": "8b44cc287cf7d456a55a01fa45b7aa0d045d937964ee6d619fac445294626604",
+      "list_get": "4c8a87b7d04504bc31b2bb832481e3808747cd7664c4548fae2c8a22398823d7",
+      "list_slice": "5253ff8ac3c93d500567bb2bbb81c04686df9ee5e20ffecfaafad0e6884ee342",
+      "list_cons": "5da932a19ca8ee22b66b871584c59b5ebf807fc59442a5dd867bbbb11bc0572b",
+      "list_append": "96c273312fbd09046daf990a936a5a3b88df527d3c4c9eb489636751cb851f0e",
+      "list_unique": "c224d69618f6df62400cef87b282ca731928708c3a8fe619992a3c2a482f8b19",
+      "list_contains": "3bd8edb9fa6eb4e4c14e7f440fe4c45141095d6f4de5f7df5c157b4d2f3e2966",
+      "pair": "4483b710e7deb6cc16152ef55ad7dc2ff49bdcbdd8b233d3e44ea5e275e8650c",
+      "first": "c2ca7c922b043e68d8a4e105bdd54d1154016e924bf278afb97c49d4a891e383",
+      "second": "fc8a23f726b190df9ec4a5ec46a8eb9baad3971aa2754befdaff6a5d20c1b5cf",
+      "add": "21045b258bdc9ecded3bec33908c4ff9ad3254b2a2b06e89d8b2b19cca94ba8d",
+      "sub": "6be77d6dd9d8dfa7dc48000274be3fef1de89c3ba5a0b61bc9d348b8881dc0ca",
+      "eq": "21d8b0dd9ce8350e7f6c76ab9f70fe300dfb801ae19cc6ba016997ce6291e9ba",
+      "lt": "6505c472d435e0d555fa7bec36e9ad8f25b6afaeeb3e2ca6612aa6794c27f82a",
+      "le": "02206a5daa9168496ae2badc1845bdc9fb8eabb5c3cf25a28e5c27e8684fafbf",
+      "list_lex_lt": "cc1d6b66e1d829c75ec9899a35813814113d25c377173c0615205367565691ee",
+      "probe.events": "a6e285dd16170d23618f848300e3480d22ff59267b9a58c2f98887b95ac6ebab",
+      "probe.beats": "a72fc06726678dfd1f54b21c40f5de42f8fc0f7ae2dcdf7e1a7d0d5d8e9482a3",
+      "probe.score_view": "c71ada005bd4eb8c8448f142a350d0359b9c99eaf14b0c13edc482572ddb66ea"
+    },
+    "constants_hash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+    "world_hash": "192bb8e277b5124728228cdc6cb6198fb7130f8c86f8127ba59f76a9ecacb82d"
+  }
+}

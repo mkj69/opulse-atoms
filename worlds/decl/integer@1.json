@@ -1,0 +1,425 @@
+{
+  "schema": "opulse.world/2",
+  "world": "integer",
+  "version": 1,
+  "dialect": "legacy-v1",
+  "title": "Integers",
+  "source": {
+    "published": "docs/assets/data/worlds/integer.json",
+    "settings": {
+      "preset": "integer",
+      "recursion.style": "bounded_mod",
+      "recursion.modulus_min / modulus_max": "3 / 9",
+      "expressions.value_min / value_max": "0 / 100"
+    }
+  },
+  "params": {
+    "semantics": {
+      "mode": "exact",
+      "bound": 2147483647
+    },
+    "published_settings": {
+      "preset": "integer",
+      "recursion.style": "bounded_mod",
+      "recursion.modulus_min / modulus_max": "3 / 9",
+      "expressions.value_min / value_max": "0 / 100"
+    },
+    "recursion": {
+      "style": "bounded_mod",
+      "modulus_min": 3,
+      "modulus_max": 9
+    },
+    "expressions": {
+      "value_min": 0,
+      "value_max": 100
+    }
+  },
+  "constants": {},
+  "objects": [
+    {
+      "kind": "object",
+      "name": "int",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": {
+        "repr": "Python int",
+        "codec": "legacy JSON {t: int, v: integer}"
+      },
+      "doc": "Legacy int values."
+    }
+  ],
+  "operations": [
+    {
+      "kind": "operation",
+      "name": "add",
+      "symbol": "+",
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "b",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "a + b is integer addition.",
+      "errors": [
+        "overflow"
+      ],
+      "impl": {
+        "host": "opulse.core.semantics:Semantics.operations",
+        "digest": "b27269173b44c4f371ece11817d4e9379427db73e36906993274078129d1db6e"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "sub",
+      "symbol": "-",
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "b",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "a - b is integer subtraction.",
+      "errors": [
+        "overflow"
+      ],
+      "impl": {
+        "host": "opulse.core.semantics:Semantics.operations",
+        "digest": "b27269173b44c4f371ece11817d4e9379427db73e36906993274078129d1db6e"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "mul",
+      "symbol": "*",
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "b",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "a * b is integer multiplication.",
+      "errors": [
+        "overflow"
+      ],
+      "impl": {
+        "host": "opulse.core.semantics:Semantics.operations",
+        "digest": "b27269173b44c4f371ece11817d4e9379427db73e36906993274078129d1db6e"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "div",
+      "symbol": "/",
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "b",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "a / b divides and rounds toward zero (-7 / 2 = -3); b = 0 gives NaN.",
+      "errors": [
+        "div_zero",
+        "overflow"
+      ],
+      "impl": {
+        "host": "opulse.core.semantics:Semantics.operations",
+        "digest": "b27269173b44c4f371ece11817d4e9379427db73e36906993274078129d1db6e"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "mod",
+      "symbol": "%",
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "b",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "a % b is the remainder a - b * (a / b), with the sign of a (-7 % 2 = -1); b = 0 gives NaN.",
+      "errors": [
+        "div_zero",
+        "overflow"
+      ],
+      "impl": {
+        "host": "opulse.core.semantics:Semantics.operations",
+        "digest": "b27269173b44c4f371ece11817d4e9379427db73e36906993274078129d1db6e"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "neg",
+      "symbol": "-",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "- a is the negation of a.",
+      "errors": [
+        "overflow"
+      ],
+      "impl": {
+        "host": "opulse.core.semantics:Semantics.operations",
+        "digest": "b27269173b44c4f371ece11817d4e9379427db73e36906993274078129d1db6e"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "reverse",
+      "symbol": "@",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "a @ reverses the decimal digits of |a| and keeps the sign of a (120 @ = 21, -123 @ = -321).",
+      "errors": [
+        "overflow"
+      ],
+      "impl": {
+        "host": "opulse.core.semantics:Semantics.operations",
+        "digest": "b27269173b44c4f371ece11817d4e9379427db73e36906993274078129d1db6e"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "triangle",
+      "symbol": "#",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "# a is sign(a) * |a| * (|a| + 1) / 2, computed exactly; only its result is checked against the bound (# 4 = 10, # -4 = -10).",
+      "errors": [
+        "overflow"
+      ],
+      "impl": {
+        "host": "opulse.core.semantics:Semantics.operations",
+        "digest": "b27269173b44c4f371ece11817d4e9379427db73e36906993274078129d1db6e"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "popcount",
+      "symbol": "$",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "a $ is the number of 1 bits in the binary form of |a| (7 $ = 3).",
+      "errors": [
+        "overflow"
+      ],
+      "impl": {
+        "host": "opulse.core.semantics:Semantics.operations",
+        "digest": "b27269173b44c4f371ece11817d4e9379427db73e36906993274078129d1db6e"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "digitsum",
+      "symbol": "&",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "& a is sign(a) times the sum of the decimal digits of |a| (& -123 = -6).",
+      "errors": [
+        "overflow"
+      ],
+      "impl": {
+        "host": "opulse.core.semantics:Semantics.operations",
+        "digest": "b27269173b44c4f371ece11817d4e9379427db73e36906993274078129d1db6e"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    }
+  ],
+  "combinators": {
+    "nodes": [
+      "Var",
+      "Lit",
+      "Call",
+      "Case",
+      "Rec"
+    ],
+    "library": [],
+    "recursion": "legacy"
+  },
+  "observation": {
+    "truth": null,
+    "probes": [],
+    "capabilities": {
+      "learner": {
+        "channels": [
+          "results",
+          "errors",
+          "renders",
+          "traces",
+          "steps",
+          "memory"
+        ],
+        "probes": "all"
+      }
+    },
+    "show": {
+      "input": "values",
+      "result": "value"
+    },
+    "judge_view": "full_state"
+  },
+  "codec": {
+    "legacy_tags": {
+      "nan": "Bottom",
+      "int": "int"
+    }
+  },
+  "lock": {
+    "host_digests": {
+      "add": "b27269173b44c4f371ece11817d4e9379427db73e36906993274078129d1db6e",
+      "sub": "b27269173b44c4f371ece11817d4e9379427db73e36906993274078129d1db6e",
+      "mul": "b27269173b44c4f371ece11817d4e9379427db73e36906993274078129d1db6e",
+      "div": "b27269173b44c4f371ece11817d4e9379427db73e36906993274078129d1db6e",
+      "mod": "b27269173b44c4f371ece11817d4e9379427db73e36906993274078129d1db6e",
+      "neg": "b27269173b44c4f371ece11817d4e9379427db73e36906993274078129d1db6e",
+      "reverse": "b27269173b44c4f371ece11817d4e9379427db73e36906993274078129d1db6e",
+      "triangle": "b27269173b44c4f371ece11817d4e9379427db73e36906993274078129d1db6e",
+      "popcount": "b27269173b44c4f371ece11817d4e9379427db73e36906993274078129d1db6e",
+      "digitsum": "b27269173b44c4f371ece11817d4e9379427db73e36906993274078129d1db6e"
+    },
+    "constants_hash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+    "world_hash": "a2a060b277a1b2e7629cd069c3c7359e447ddd08a206f3bfa99f9bab8714d768"
+  }
+}

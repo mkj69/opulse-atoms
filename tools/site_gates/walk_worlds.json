@@ -1,0 +1,28 @@
+{
+  "pages": {
+    "worlds": "/worlds/"
+  },
+  "urls": [
+    "worlds"
+  ],
+  "steps": [
+    {
+      "wait": {
+        "text": "world designs;",
+        "timeout": 20
+      }
+    },
+    {
+      "assert_text": "shown of"
+    },
+    {
+      "fill": {
+        "selector": "[aria-label='Search worlds and tower definitions']",
+        "value": "__no_such_world__"
+      }
+    },
+    {
+      "assert_text": "No matching worlds. Try clearing a filter."
+    }
+  ]
+}

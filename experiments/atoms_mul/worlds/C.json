@@ -1,0 +1,97 @@
+{
+ "combinators": [
+  "var",
+  "lit",
+  "call",
+  "let",
+  "if",
+  "rec"
+ ],
+ "library": false,
+ "objects": [
+  "nat",
+  "bool"
+ ],
+ "observation": "inputs_results_errors_steps",
+ "open_kinds": [
+  "operation"
+ ],
+ "operations": [
+  {
+   "cost": 1,
+   "errors": "overflow if > 1000000000",
+   "inputs": [
+    "nat",
+    "nat"
+   ],
+   "name": "add",
+   "output": "nat",
+   "rule": "a + b"
+  },
+  {
+   "cost": 1,
+   "errors": "negative if a < b",
+   "inputs": [
+    "nat",
+    "nat"
+   ],
+   "name": "sub",
+   "output": "nat",
+   "rule": "a - b"
+  },
+  {
+   "cost": 1,
+   "errors": "overflow if > 1000000000",
+   "inputs": [
+    "nat"
+   ],
+   "name": "succ",
+   "output": "nat",
+   "rule": "a + 1"
+  },
+  {
+   "cost": 1,
+   "errors": "negative if a = 0",
+   "inputs": [
+    "nat"
+   ],
+   "name": "pred",
+   "output": "nat",
+   "rule": "a - 1"
+  },
+  {
+   "cost": 1,
+   "errors": "none",
+   "inputs": [
+    "nat"
+   ],
+   "name": "is_zero",
+   "output": "bool",
+   "rule": "a = 0"
+  },
+  {
+   "cost": 1,
+   "errors": "none",
+   "inputs": [
+    "nat",
+    "nat"
+   ],
+   "name": "eq",
+   "output": "bool",
+   "rule": "a = b"
+  },
+  {
+   "cost": 1,
+   "errors": "none",
+   "inputs": [
+    "nat",
+    "nat"
+   ],
+   "name": "lt",
+   "output": "bool",
+   "rule": "a < b"
+  }
+ ],
+ "version": 1,
+ "world": "atoms_mul_C"
+}

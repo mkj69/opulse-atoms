@@ -1,0 +1,564 @@
+{
+  "schema": "opulse.world/2",
+  "world": "computer",
+  "version": 1,
+  "dialect": "atoms-v2",
+  "title": "Harvard Byte Computer",
+  "source": {
+    "spec": "docs/spec/atoms-v2.md, section 15",
+    "published": null
+  },
+  "params": {},
+  "constants": {},
+  "objects": [
+    {
+      "kind": "object",
+      "name": "int",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": {
+        "repr": "Python int",
+        "codec": "identity"
+      },
+      "doc": "Integers; the base of byte."
+    },
+    {
+      "kind": "object",
+      "name": "bool",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": {
+        "repr": "Card(bool)",
+        "codec": "opulse.atoms.values:boolean"
+      },
+      "doc": "The sort with tags false and true."
+    },
+    {
+      "kind": "object",
+      "name": "array",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [
+        "n:int",
+        "T"
+      ],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": {
+        "repr": "Card(array[n,T], 'array', items)",
+        "codec": "tuple of n items"
+      },
+      "doc": "A fixed-length array of n values of sort T."
+    },
+    {
+      "kind": "object",
+      "name": "byte",
+      "form": "refine",
+      "base": "int",
+      "tags": null,
+      "group": [],
+      "valid": {
+        "host": "opulse.worlds_v2.computer.machine:byte_ok",
+        "digest": "1daa917e0d4396e456c31f015cc276234fb626bdd0e12b0fcb2c53b1212f3920"
+      },
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": {
+        "repr": "Python int",
+        "codec": "identity on valid bytes"
+      },
+      "doc": "An integer from 0 through 255; invalid entry is Bottom(invalid)."
+    },
+    {
+      "kind": "object",
+      "name": "reg",
+      "form": "compose",
+      "base": null,
+      "tags": {
+        "r0": {},
+        "r1": {},
+        "r2": {},
+        "r3": {}
+      },
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": {
+        "repr": "Card",
+        "codec": "opulse.worlds_v2.computer.machine:reg_index"
+      },
+      "doc": "A four-way register selector."
+    },
+    {
+      "kind": "object",
+      "name": "flag",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": {
+        "repr": "Card(bool)",
+        "codec": "opulse.atoms.values:boolean"
+      },
+      "doc": "An alias of the bool sort for machine flags."
+    },
+    {
+      "kind": "object",
+      "name": "machine_state",
+      "form": "compose",
+      "base": null,
+      "tags": {
+        "machine": {
+          "regs": "array[4,byte]",
+          "mem": "array[256,byte]",
+          "zero": "bool",
+          "carry": "bool"
+        }
+      },
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": true,
+      "interface": [
+        "read",
+        "write",
+        "load",
+        "store",
+        "add",
+        "dec",
+        "is_zero"
+      ],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": {
+        "repr": "State(regs,mem,zero,carry)",
+        "codec": "opulse.worlds_v2.computer.machine:to_card/from_card"
+      },
+      "doc": "Four byte registers, 256 memory bytes and two flags."
+    },
+    {
+      "kind": "object",
+      "name": "flags",
+      "form": "compose",
+      "base": null,
+      "tags": {
+        "flags": {
+          "zero": "bool",
+          "carry": "bool"
+        }
+      },
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": {
+        "repr": "Card",
+        "codec": "opulse.worlds_v2.computer.machine:flags"
+      },
+      "doc": "A pair of observable boolean flags."
+    }
+  ],
+  "operations": [
+    {
+      "kind": "operation",
+      "name": "read",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "s",
+          "sort": "machine_state",
+          "enter": "bottom"
+        },
+        {
+          "name": "r",
+          "sort": "reg",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "byte",
+        "enter": "bottom"
+      },
+      "rule": "Return the byte in the selected register; state and flags are unchanged.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.computer.machine:read",
+        "digest": "12badebbf9cc4ed388d4c790ef78f13b3ef828f3de3e9a73d56aa5a8cad188fc"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "write",
+      "symbol": null,
+      "role": "act",
+      "inputs": [
+        {
+          "name": "s",
+          "sort": "machine_state",
+          "enter": "bottom"
+        },
+        {
+          "name": "r",
+          "sort": "reg",
+          "enter": "bottom"
+        },
+        {
+          "name": "b",
+          "sort": "byte",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "machine_state",
+        "enter": "bottom"
+      },
+      "rule": "Set the selected register to the byte; preserve all other registers, memory, zero and carry.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.computer.machine:write",
+        "digest": "5054a512888454dc96db84bf7694d10008e9f50d81a991ae4690e276bfc34e6b"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "load",
+      "symbol": null,
+      "role": "act",
+      "inputs": [
+        {
+          "name": "s",
+          "sort": "machine_state",
+          "enter": "bottom"
+        },
+        {
+          "name": "r",
+          "sort": "reg",
+          "enter": "bottom"
+        },
+        {
+          "name": "a",
+          "sort": "byte",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "machine_state",
+        "enter": "bottom"
+      },
+      "rule": "Set the selected register to mem[address]; preserve memory and both flags.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.computer.machine:load",
+        "digest": "e5a69b8040446f60361023e30c248843ab573658146180a984cced032edbc3d0"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "store",
+      "symbol": null,
+      "role": "act",
+      "inputs": [
+        {
+          "name": "s",
+          "sort": "machine_state",
+          "enter": "bottom"
+        },
+        {
+          "name": "r",
+          "sort": "reg",
+          "enter": "bottom"
+        },
+        {
+          "name": "a",
+          "sort": "byte",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "machine_state",
+        "enter": "bottom"
+      },
+      "rule": "Set mem[address] to the selected register's byte; preserve registers and both flags.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.computer.machine:store",
+        "digest": "0340da429af13b619825d2f94544b7a98da3912f453ce14b7f50391a5db7e4ce"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "add",
+      "symbol": null,
+      "role": "act",
+      "inputs": [
+        {
+          "name": "s",
+          "sort": "machine_state",
+          "enter": "bottom"
+        },
+        {
+          "name": "rd",
+          "sort": "reg",
+          "enter": "bottom"
+        },
+        {
+          "name": "rs",
+          "sort": "reg",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "machine_state",
+        "enter": "bottom"
+      },
+      "rule": "Set rd to (rd + rs) mod 256; carry is true iff the sum exceeds 255; zero is true iff the result equals 0; other registers and memory are unchanged.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.computer.machine:add",
+        "digest": "1f1ada29f74b23dd0963910d3f49cbb3a4bad28deb6249470b72c65f19e49f35"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "dec",
+      "symbol": null,
+      "role": "act",
+      "inputs": [
+        {
+          "name": "s",
+          "sort": "machine_state",
+          "enter": "bottom"
+        },
+        {
+          "name": "r",
+          "sort": "reg",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "machine_state",
+        "enter": "bottom"
+      },
+      "rule": "Set r to (r - 1) mod 256; zero is true iff the result equals 0; carry is true iff the old r was 0 (borrow); other registers and memory are unchanged.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.computer.machine:dec",
+        "digest": "b669a38fd76581b7fb78264b1afe41175ea34b85e6d046e4a8c6836b60696d95"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "is_zero",
+      "symbol": null,
+      "role": "decide",
+      "inputs": [
+        {
+          "name": "s",
+          "sort": "machine_state",
+          "enter": "bottom"
+        },
+        {
+          "name": "r",
+          "sort": "reg",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Return true iff the selected register is 0; state and flags are unchanged.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.computer.machine:is_zero",
+        "digest": "8faf8df53907e5fb3d551bc6ada6bba55213cad185e221e2948e4b865afc8db9"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    }
+  ],
+  "combinators": {
+    "nodes": [
+      "Var",
+      "Lit",
+      "Call",
+      "Let",
+      "Blocks",
+      "Jump",
+      "CondJump",
+      "Halt"
+    ],
+    "library": [],
+    "recursion": "none"
+  },
+  "observation": {
+    "truth": "machine_state",
+    "probes": [
+      {
+        "name": "read",
+        "sort": "byte",
+        "reads": "machine_state",
+        "reveals": [
+          "regs"
+        ],
+        "impl": {
+          "host": "opulse.worlds_v2.computer.machine:read",
+          "digest": "12badebbf9cc4ed388d4c790ef78f13b3ef828f3de3e9a73d56aa5a8cad188fc"
+        }
+      },
+      {
+        "name": "flags",
+        "sort": "flags",
+        "reads": "machine_state",
+        "reveals": [
+          "zero",
+          "carry"
+        ],
+        "impl": {
+          "host": "opulse.worlds_v2.computer.machine:flags",
+          "digest": "08a30036df463a8511c18a8830799749127d6c8a9f53eb98c3e5ce64ec02141f"
+        }
+      }
+    ],
+    "views": {
+      "io": [
+        "r1",
+        "r2",
+        "r0"
+      ],
+      "all_registers": [
+        "r0",
+        "r1",
+        "r2",
+        "r3"
+      ]
+    },
+    "capabilities": {
+      "learner": {
+        "channels": [
+          "results",
+          "errors",
+          "renders",
+          "traces",
+          "steps",
+          "memory"
+        ],
+        "probes": "all"
+      }
+    },
+    "show": {
+      "input": "io",
+      "result": "io"
+    },
+    "judge_view": "full_state",
+    "contract_projection": [
+      "r0"
+    ]
+  },
+  "codec": {
+    "machine_state": "opulse.worlds_v2.computer.machine:to_card/from_card"
+  },
+  "lock": {
+    "host_digests": {
+      "read": "12badebbf9cc4ed388d4c790ef78f13b3ef828f3de3e9a73d56aa5a8cad188fc",
+      "write": "5054a512888454dc96db84bf7694d10008e9f50d81a991ae4690e276bfc34e6b",
+      "load": "e5a69b8040446f60361023e30c248843ab573658146180a984cced032edbc3d0",
+      "store": "0340da429af13b619825d2f94544b7a98da3912f453ce14b7f50391a5db7e4ce",
+      "add": "1f1ada29f74b23dd0963910d3f49cbb3a4bad28deb6249470b72c65f19e49f35",
+      "dec": "b669a38fd76581b7fb78264b1afe41175ea34b85e6d046e4a8c6836b60696d95",
+      "is_zero": "8faf8df53907e5fb3d551bc6ada6bba55213cad185e221e2948e4b865afc8db9",
+      "byte.valid": "1daa917e0d4396e456c31f015cc276234fb626bdd0e12b0fcb2c53b1212f3920",
+      "probe.read": "12badebbf9cc4ed388d4c790ef78f13b3ef828f3de3e9a73d56aa5a8cad188fc",
+      "probe.flags": "08a30036df463a8511c18a8830799749127d6c8a9f53eb98c3e5ce64ec02141f"
+    },
+    "constants_hash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+    "world_hash": "68896c882f4416d85494a1596f08a2cf7ee2f80691e1519565828864b486d7c9"
+  }
+}

@@ -1,0 +1,590 @@
+{
+  "schema": "opulse.world/2",
+  "world": "clock",
+  "version": 2,
+  "dialect": "atoms-v2",
+  "title": "Hours (true clock)",
+  "source": {
+    "published": "docs/assets/data/worlds/clock.json",
+    "settings": {
+      "preset": "clock",
+      "semantics.modulus": 12,
+      "recursion.style": "bounded_mod",
+      "recursion.modulus_min / modulus_max": "3 / 9",
+      "expressions.value_min / value_max": "0 / 11"
+    }
+  },
+  "params": {
+    "semantics": {
+      "mode": "modular",
+      "bound": 2147483647,
+      "modulus": 12
+    },
+    "published_settings": {
+      "preset": "clock",
+      "semantics.modulus": 12,
+      "recursion.style": "bounded_mod",
+      "recursion.modulus_min / modulus_max": "3 / 9",
+      "expressions.value_min / value_max": "0 / 11"
+    },
+    "recursion": {
+      "style": "bounded_mod",
+      "modulus_min": 3,
+      "modulus_max": 9
+    },
+    "expressions": {
+      "value_min": 0,
+      "value_max": 11
+    }
+  },
+  "constants": {},
+  "objects": [
+    {
+      "kind": "object",
+      "name": "int",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": {
+        "repr": "Python int",
+        "codec": "legacy JSON {t: int, v: integer}"
+      },
+      "doc": "Legacy int values."
+    },
+    {
+      "kind": "object",
+      "name": "hour",
+      "form": "refine",
+      "base": "int",
+      "tags": null,
+      "group": [],
+      "valid": {
+        "node": "Case",
+        "arms": [
+          [
+            {
+              "node": "And",
+              "left": {
+                "node": "Test",
+                "expr": {
+                  "node": "Call",
+                  "fn": "nonnegative",
+                  "args": [
+                    {
+                      "node": "Var",
+                      "name": "x"
+                    }
+                  ]
+                }
+              },
+              "right": {
+                "node": "Test",
+                "expr": {
+                  "node": "Call",
+                  "fn": "below_twelve",
+                  "args": [
+                    {
+                      "node": "Var",
+                      "name": "x"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "node": "Lit",
+              "value": {
+                "t": "bool",
+                "tag": "true",
+                "f": []
+              }
+            }
+          ]
+        ],
+        "default": {
+          "node": "Lit",
+          "value": {
+            "t": "bool",
+            "tag": "false",
+            "f": []
+          }
+        }
+      },
+      "canon": {
+        "node": "Call",
+        "fn": "int_mod_twelve",
+        "args": [
+          {
+            "node": "Var",
+            "name": "x"
+          }
+        ]
+      },
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Canonical hours from 0 through 11."
+    },
+    {
+      "kind": "object",
+      "name": "bool",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": {
+        "repr": "Python bool",
+        "codec": "legacy JSON {t: bool, v: boolean}"
+      },
+      "doc": "Legacy bool values."
+    }
+  ],
+  "operations": [
+    {
+      "kind": "operation",
+      "name": "add",
+      "symbol": "+",
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "hour",
+          "enter": "normalize"
+        },
+        {
+          "name": "b",
+          "sort": "hour",
+          "enter": "normalize"
+        }
+      ],
+      "output": {
+        "sort": "hour",
+        "enter": "normalize"
+      },
+      "rule": "a + b is integer addition. Inputs and outputs are canonical hours modulo 12.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.core.semantics:Semantics.operations",
+        "digest": "b27269173b44c4f371ece11817d4e9379427db73e36906993274078129d1db6e"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "sub",
+      "symbol": "-",
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "hour",
+          "enter": "normalize"
+        },
+        {
+          "name": "b",
+          "sort": "hour",
+          "enter": "normalize"
+        }
+      ],
+      "output": {
+        "sort": "hour",
+        "enter": "normalize"
+      },
+      "rule": "a - b is integer subtraction. Inputs and outputs are canonical hours modulo 12.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.core.semantics:Semantics.operations",
+        "digest": "b27269173b44c4f371ece11817d4e9379427db73e36906993274078129d1db6e"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "mul",
+      "symbol": "*",
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "hour",
+          "enter": "normalize"
+        },
+        {
+          "name": "b",
+          "sort": "hour",
+          "enter": "normalize"
+        }
+      ],
+      "output": {
+        "sort": "hour",
+        "enter": "normalize"
+      },
+      "rule": "a * b is integer multiplication. Inputs and outputs are canonical hours modulo 12.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.core.semantics:Semantics.operations",
+        "digest": "b27269173b44c4f371ece11817d4e9379427db73e36906993274078129d1db6e"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "div",
+      "symbol": "/",
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "hour",
+          "enter": "normalize"
+        },
+        {
+          "name": "b",
+          "sort": "hour",
+          "enter": "normalize"
+        }
+      ],
+      "output": {
+        "sort": "hour",
+        "enter": "normalize"
+      },
+      "rule": "a / b divides and rounds toward zero (-7 / 2 = -3); b = 0 gives Bottom(div_zero). Inputs and outputs are canonical hours modulo 12.",
+      "errors": [
+        "div_zero"
+      ],
+      "impl": {
+        "host": "opulse.core.semantics:Semantics.operations",
+        "digest": "b27269173b44c4f371ece11817d4e9379427db73e36906993274078129d1db6e"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "mod",
+      "symbol": "%",
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "hour",
+          "enter": "normalize"
+        },
+        {
+          "name": "b",
+          "sort": "hour",
+          "enter": "normalize"
+        }
+      ],
+      "output": {
+        "sort": "hour",
+        "enter": "normalize"
+      },
+      "rule": "a % b is the remainder a - b * (a / b), with the sign of a (-7 % 2 = -1); b = 0 gives Bottom(div_zero). Inputs and outputs are canonical hours modulo 12.",
+      "errors": [
+        "div_zero"
+      ],
+      "impl": {
+        "host": "opulse.core.semantics:Semantics.operations",
+        "digest": "b27269173b44c4f371ece11817d4e9379427db73e36906993274078129d1db6e"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "neg",
+      "symbol": "-",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "hour",
+          "enter": "normalize"
+        }
+      ],
+      "output": {
+        "sort": "hour",
+        "enter": "normalize"
+      },
+      "rule": "- a is the negation of a. Inputs and outputs are canonical hours modulo 12.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.core.semantics:Semantics.operations",
+        "digest": "b27269173b44c4f371ece11817d4e9379427db73e36906993274078129d1db6e"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "reverse",
+      "symbol": "@",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "hour",
+          "enter": "normalize"
+        }
+      ],
+      "output": {
+        "sort": "hour",
+        "enter": "normalize"
+      },
+      "rule": "a @ reverses the decimal digits of |a| and keeps the sign of a (120 @ = 21, -123 @ = -321). Inputs and outputs are canonical hours modulo 12. Operates on the 0..11 representation.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.core.semantics:Semantics.operations",
+        "digest": "b27269173b44c4f371ece11817d4e9379427db73e36906993274078129d1db6e"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "triangle",
+      "symbol": "#",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "hour",
+          "enter": "normalize"
+        }
+      ],
+      "output": {
+        "sort": "hour",
+        "enter": "normalize"
+      },
+      "rule": "# a is sign(a) * |a| * (|a| + 1) / 2, computed exactly; only its result is checked against the bound (# 4 = 10, # -4 = -10). Inputs and outputs are canonical hours modulo 12. Operates on the 0..11 representation.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.core.semantics:Semantics.operations",
+        "digest": "b27269173b44c4f371ece11817d4e9379427db73e36906993274078129d1db6e"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "popcount",
+      "symbol": "$",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "hour",
+          "enter": "normalize"
+        }
+      ],
+      "output": {
+        "sort": "hour",
+        "enter": "normalize"
+      },
+      "rule": "a $ is the number of 1 bits in the binary form of |a| (7 $ = 3). Inputs and outputs are canonical hours modulo 12. Operates on the 0..11 representation.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.core.semantics:Semantics.operations",
+        "digest": "b27269173b44c4f371ece11817d4e9379427db73e36906993274078129d1db6e"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "digitsum",
+      "symbol": "&",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "hour",
+          "enter": "normalize"
+        }
+      ],
+      "output": {
+        "sort": "hour",
+        "enter": "normalize"
+      },
+      "rule": "& a is sign(a) times the sum of the decimal digits of |a| (& -123 = -6). Inputs and outputs are canonical hours modulo 12. Operates on the 0..11 representation.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.core.semantics:Semantics.operations",
+        "digest": "b27269173b44c4f371ece11817d4e9379427db73e36906993274078129d1db6e"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "nonnegative",
+      "symbol": null,
+      "role": "decide",
+      "inputs": [
+        {
+          "name": "n",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "True when n is at least zero.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.tasks_v2.decl:nonnegative",
+        "digest": "a5eb4c216080f1926625a325231cc42669d52fd2dc7c5c67765bb21a772cd559"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "below_twelve",
+      "symbol": null,
+      "role": "decide",
+      "inputs": [
+        {
+          "name": "n",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "True when n is less than twelve.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.tasks_v2.decl:below_twelve",
+        "digest": "95026183fafd2884ae502c2b4e9568fd33d6b4b5713420cf74f6025035c88f9e"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "int_mod_twelve",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "n",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Return the Euclidean remainder of n modulo 12, in 0..11.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.tasks_v2.decl:int_mod_twelve",
+        "digest": "00069f77eeeab17918602c797bf7ea94a0a08160237188e98852bb20c39d34f5"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    }
+  ],
+  "combinators": {
+    "nodes": [
+      "Var",
+      "Lit",
+      "Call",
+      "Case",
+      "Rec"
+    ],
+    "library": [],
+    "recursion": "legacy"
+  },
+  "observation": {
+    "truth": null,
+    "probes": [],
+    "capabilities": {
+      "learner": {
+        "channels": [
+          "results",
+          "errors",
+          "renders",
+          "traces",
+          "steps",
+          "memory"
+        ],
+        "probes": "all"
+      }
+    },
+    "show": {
+      "input": "values",
+      "result": "value"
+    },
+    "judge_view": "full_state"
+  },
+  "codec": {
+    "legacy_tags": {
+      "int": "hour",
+      "nan": "Bottom"
+    }
+  },
+  "lock": {
+    "host_digests": {
+      "add": "b27269173b44c4f371ece11817d4e9379427db73e36906993274078129d1db6e",
+      "sub": "b27269173b44c4f371ece11817d4e9379427db73e36906993274078129d1db6e",
+      "mul": "b27269173b44c4f371ece11817d4e9379427db73e36906993274078129d1db6e",
+      "div": "b27269173b44c4f371ece11817d4e9379427db73e36906993274078129d1db6e",
+      "mod": "b27269173b44c4f371ece11817d4e9379427db73e36906993274078129d1db6e",
+      "neg": "b27269173b44c4f371ece11817d4e9379427db73e36906993274078129d1db6e",
+      "reverse": "b27269173b44c4f371ece11817d4e9379427db73e36906993274078129d1db6e",
+      "triangle": "b27269173b44c4f371ece11817d4e9379427db73e36906993274078129d1db6e",
+      "popcount": "b27269173b44c4f371ece11817d4e9379427db73e36906993274078129d1db6e",
+      "digitsum": "b27269173b44c4f371ece11817d4e9379427db73e36906993274078129d1db6e",
+      "nonnegative": "a5eb4c216080f1926625a325231cc42669d52fd2dc7c5c67765bb21a772cd559",
+      "below_twelve": "95026183fafd2884ae502c2b4e9568fd33d6b4b5713420cf74f6025035c88f9e",
+      "int_mod_twelve": "00069f77eeeab17918602c797bf7ea94a0a08160237188e98852bb20c39d34f5"
+    },
+    "constants_hash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+    "world_hash": "e02dc8b9bcd4943e4832db44b3bef16578cdcd6e13bbc0be886ebd55898c51b1"
+  }
+}

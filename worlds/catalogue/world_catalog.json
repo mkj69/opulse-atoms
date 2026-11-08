@@ -1,0 +1,1993 @@
+{
+  "title": "Opulse world catalogue (v1 design draft)",
+  "status": "Design proposal, not an implementation claim for the old site. Validate all new definitions against their locked versions.",
+  "rules": [
+    "Each world has only finite values. Finite words may have any length, but an infinite language is not one object. Layer 0 integers, rational numbers and finite sequences must declare types, input and output bounds, failures and costs.",
+    "An equals sign in an example means Ok(the right-hand side). Invalid input or action yields Bottom(reason). Insufficient budget yields Unknown(resource), which equals no value. A distribution has finite rational weights combined into canonical form; samples do not decide correctness.",
+    "Expressions containing secret true state are for authors and judges only, not learner prompts. A learner sees only the question's show output and their authorized probes.",
+    "Blackboard bold letters such as 𝕏⟨…⟩ denote objects and values. ♠ (native) and ♦ (derived) denote operations. Arrows with slots ⟦…⟧ denote combinators. ○ (native) and ◉ (derived) ⦅…⦆ denote observations. Each layer adds just one card and later layers may refer to earlier cards. Slots accept only typed operations (an explicit λ may wrap an authorized observation), not observations directly. A constructor returns an object before an operation is called on it. Visual shorthand needs a lossless expansion.",
+    "Full state includes side effects, errors, budgets and real layer 0 costs. Promotion must agree with expansion on full state within the declared scope. Exhaustive checks cover only the stated finite inputs and answer domains. Sound, images and animation are lossy displays, not judges.",
+    "An observer may infer only from their authorized probes and history. Displays, errors, traces, caches, timing and feedback must be isolated per person. Old prompts and semantics keep their old version and are never retroactively treated as new.",
+    "Size, date, pitch and inventory limits marked as v1/initial display type domains are real limits, not suggestions. Out-of-range input gives Bottom(range/size); insufficient budget separately gives Unknown(resource). Integer multipliers and similar ranges marked initial checks are certificate scopes only: they do not restrict finite integer inputs or prove correctness outside the scope. Extending type limits requires another version and proof."
+  ],
+  "waves": [
+    {
+      "wave": 1,
+      "label": "First seven: action, shadows, rhythm, pixels, dice, versions, circuits",
+      "ids": [
+        "action",
+        "shadows",
+        "rhythm",
+        "pixels",
+        "dice",
+        "versions",
+        "circuits"
+      ]
+    },
+    {
+      "wave": 2,
+      "label": "Next seven: integer, lists, hidden, molecules, grammar, automata, permutation",
+      "ids": [
+        "integer",
+        "lists",
+        "hidden",
+        "molecules",
+        "grammar",
+        "automata",
+        "permutation"
+      ]
+    },
+    {
+      "wave": 3,
+      "label": "Last six: text, melody, geometry, roads, kitchen, calendar",
+      "ids": [
+        "text",
+        "melody",
+        "geometry",
+        "roads",
+        "kitchen",
+        "calendar"
+      ]
+    },
+    {
+      "wave": 4,
+      "label": "Open-kind comparison: each world opens only some kinds",
+      "ids": [
+        "comb_only",
+        "obs_only",
+        "op_only",
+        "obj_op",
+        "obj_only",
+        "comb_obs"
+      ]
+    }
+  ],
+  "current_worlds": [
+    {
+      "old": "successor",
+      "decision": "Merge into integer",
+      "reason": "Successor from zero introduces arithmetic; it does not need a separate world."
+    },
+    {
+      "old": "integer",
+      "decision": "Keep, redesign as integer",
+      "reason": "Keep expandable arithmetic and canonical fractions, not digit tricks as the main thread."
+    },
+    {
+      "old": "clock",
+      "decision": "Remove as a separate world; split into rhythm/calendar",
+      "reason": "Old raw integer input differs from new canonical clock times. Old tasks retain their old version."
+    },
+    {
+      "old": "bits",
+      "decision": "Merge into circuits",
+      "reason": "Fixed-width bits are circuit materials; wiring is the main subject."
+    },
+    {
+      "old": "strings",
+      "decision": "Keep, redesign as text",
+      "reason": "Replace integer-like string puzzles with word boundaries and canonical sentence joining."
+    },
+    {
+      "old": "lists",
+      "decision": "Keep, redesign as lists",
+      "reason": "Build nonempty lists, folds and reversals in dependent layers."
+    },
+    {
+      "old": "logic",
+      "decision": "Merge into circuits",
+      "reason": "Truth tables remain, but the new object is a wireable DAG."
+    },
+    {
+      "old": "perm",
+      "decision": "Keep, redesign as permutation",
+      "reason": "Typed card positions, cycles and orbits replace packed parameters."
+    },
+    {
+      "old": "rel",
+      "decision": "Merge into roads",
+      "reason": "Lock the version and use a multivalued graph instead of a mutable single-target table."
+    },
+    {
+      "old": "grid",
+      "decision": "Merge into pixels",
+      "reason": "Black-and-white islands are the initial display; color grids can be added in a later version."
+    },
+    {
+      "old": "pitch",
+      "decision": "Keep, redesign as melody",
+      "reason": "Questions and answers with pitch and duration replace a MIDI integer panel."
+    },
+    {
+      "old": "action",
+      "decision": "Keep, redesign as action",
+      "reason": "Front probes and real actions lead the first wave. The old full-state display stays in its old version."
+    }
+  ],
+  "worlds": [
+    {
+      "id": "action",
+      "name": "Sealed Maze Robot",
+      "pitch": "Look ahead, then build a step that avoids walls.",
+      "modality": "Physical action",
+      "wave": 1,
+      "layer0": {
+        "objects": "𝔹⟨position,direction,walls,water⟩; initially a 3-cell road, positions 0..2, facing east. Position cannot overlap a wall or water, and walls and water do not overlap. Wall and water locations are hidden; the example has a wall at 2. Only the judge can read true state.",
+        "operations": "♠forward moves one step if the cell ahead has no wall or water; otherwise Bottom(blocked).",
+        "combinators": "→⟦f,g⟧ performs two actions in strict order and stops if the first fails.",
+        "observations": "○front_wall⦅current true state⦆ and ○front_water⦅current true state⦆ are restricted probes. Outside the road counts as wall, not water. They reveal only two booleans about the cell ahead, not the input true state or full map to the learner."
+      },
+      "story": [
+        {
+          "layer": 1,
+          "kind": "observation",
+          "symbol": "◉walkable",
+          "name": "Can move forward",
+          "definition": "Read only the two front probes; true only when both are false.",
+          "example": "◉walkable⦅false,false⦆",
+          "value": "true"
+        },
+        {
+          "layer": 2,
+          "kind": "operation",
+          "symbol": "♦safe_step",
+          "name": "Safe step",
+          "definition": "Ask ◉walkable first. If false, return Bottom(blocked); if true, call ♠forward.",
+          "example": "♦safe_step(𝔹⟨0,E,{2},∅⟩)",
+          "value": "𝔹⟨1,E,{2},∅⟩"
+        },
+        {
+          "layer": 3,
+          "kind": "object",
+          "symbol": "ℝ⟨start,[actions],end⟩",
+          "name": "Valid route",
+          "definition": "Expand ♦safe_step from the start in order. Seal the route only if every prefix succeeds. The route seals the start's true state; do not present a route with a secret map as a public path containing only positions. This example is for judge verification only.",
+          "example": "ℝ⟨𝔹⟨0,E,{2},∅⟩,[♦safe_step]⟩",
+          "value": "ℝ⟨𝔹⟨0,E,{2},∅⟩,[♦safe_step],𝔹⟨1,E,{2},∅⟩⟩"
+        },
+        {
+          "layer": 4,
+          "kind": "combinator",
+          "symbol": "↝⟦step,test⟧",
+          "name": "Walk until blocked",
+          "definition": "Slot test is the permission-bound state→boolean operation λs.◉walkable⦅○front_wall⦅s⦆,○front_water⦅s⦆⦆. Probe before moving, for at most 2 steps; use layer 3 ℝ internally to check every traversed prefix. At the limit, return the final state. Do not give the learner the route's true state.",
+          "example": "↝⟦♦safe_step,λs.◉walkable⦅○front_wall⦅s⦆,○front_water⦅s⦆⦆⟧(𝔹⟨0,E,{2},∅⟩,2)",
+          "value": "𝔹⟨1,E,{2},∅⟩"
+        }
+      ],
+      "emerges": "A constructed sensor changes a reusable action, rather than merely renaming a route.",
+      "checking": "Replay true state step by step; provide the strategy only the authorized two front bits. Enumerate this 3-cell road, two-step actions and all probe histories. Compare full state, including errors, costs, caches and feedback. Old action full-map tasks retain their old version.",
+      "size": "Medium; initially 3 cells, at most 2 steps."
+    },
+    {
+      "id": "shadows",
+      "name": "Guess the Blocks from Shadows",
+      "pitch": "The same shadow can come from different blocks.",
+      "modality": "3D vision",
+      "wave": 1,
+      "layer0": {
+        "objects": "𝕍⟨occupied cells⟩; eight cells in a 2×2×2 grid, with the set in canonical order.",
+        "operations": "♠put(V,x,y,z) fills one cell; out-of-range coordinates give Bottom(range).",
+        "combinators": "→⟦f,g⟧ places two blocks in order.",
+        "observations": "○top⦅V⦆ returns only the cells projected onto (x,y); ○side⦅V⦆ returns only those projected onto (y,z). Each question states which view is available."
+      },
+      "story": [
+        {
+          "layer": 1,
+          "kind": "observation",
+          "symbol": "◉top_area",
+          "name": "Shadow area",
+          "definition": "Count cells in ○top only, without reading the volume.",
+          "example": "◉top_area⦅𝕍⟨{(0,0,0),(0,0,1)}⟩⦆",
+          "value": "1"
+        },
+        {
+          "layer": 2,
+          "kind": "object",
+          "symbol": "𝕀⟨top,candidate solids⟩",
+          "name": "Shadow information set",
+          "definition": "Enumerate every solid in the eight cells; keep only those whose ○top matches the given shadow, and check the projection size with layer 1 ◉top_area. Here bottom=(0,0,0) and top=(0,0,1).",
+          "example": "𝕀⟨{(0,0)}⟩",
+          "value": "𝕀⟨{(0,0)},{{bottom},{top},{bottom,top}}⟩"
+        },
+        {
+          "layer": 3,
+          "kind": "operation",
+          "symbol": "♦forced",
+          "name": "Required block",
+          "definition": "Return true only if the cell occurs in every candidate solid in the information set; do not guess from the actual solid.",
+          "example": "♦forced(𝕀⟨{(0,0)},{{bottom},{top},{bottom,top}}⟩,(0,0,0))",
+          "value": "false"
+        },
+        {
+          "layer": 4,
+          "kind": "combinator",
+          "symbol": "⇉⟦top_probe,side_probe⟧",
+          "name": "Combine two views",
+          "definition": "The operation slots are the permission-bound probe calls λv.○top⦅v⦆ and λv.○side⦅v⦆. Build the layer 2 information set from the top shadow, then filter candidates by the side shadow. Do not call the second probe unless that view is available.",
+          "example": "⇉⟦λv.○top⦅v⦆,λv.○side⦅v⦆⟧(𝕍⟨{(0,0,0)}⟩)",
+          "value": "𝕀⟨{(0,0)},{{bottom}}⟩"
+        }
+      ],
+      "emerges": "A shadow does not identify the object. Another view may rule out a possible solid.",
+      "checking": "Enumerate all 256 true solids and their 16 possible top shadows. Recompute information sets from projections; check single-view and two-view permissions separately. Screen rotation adds no probe.",
+      "size": "Small; 256 solids."
+    },
+    {
+      "id": "rhythm",
+      "name": "Polyrhythm and phase inference",
+      "pitch": "Move an accent by one cell to change the rhythm.",
+      "modality": "Time and sound",
+      "wave": 1,
+      "layer0": {
+        "objects": "ℝ⟨8-cell sequence⟩; each cell is 0 for silence, 1 for light and 2 for heavy; the first cell has index 0.",
+        "operations": "♠left(R,k) rotates left by k cells, with k in 0..7.",
+        "combinators": "→⟦f,g⟧ changes the same rhythm in sequence.",
+        "observations": "○cells⦅R⦆ gives eight numbers; playback is a lossy display."
+      },
+      "story": [
+        {
+          "layer": 1,
+          "kind": "object",
+          "symbol": "𝔹⟨R⟩",
+          "name": "Rhythm with an accent",
+          "definition": "At least one of the eight cells is 2. Preserve the starting point; do not treat a rotated rhythm as identical without reason.",
+          "example": "𝔹⟨[0,2,0,0,0,0,0,0]⟩",
+          "value": "𝔹⟨[0,2,0,0,0,0,0,0]⟩"
+        },
+        {
+          "layer": 2,
+          "kind": "operation",
+          "symbol": "♦start_heavy",
+          "name": "Start on an accent",
+          "definition": "Find the first 2 and use ♠left to rotate it to cell 0; without a 2, return Bottom(no_accent).",
+          "example": "♦start_heavy(𝔹⟨[0,2,0,0,0,0,0,0]⟩)",
+          "value": "𝔹⟨[2,0,0,0,0,0,0,0]⟩"
+        },
+        {
+          "layer": 3,
+          "kind": "combinator",
+          "symbol": "⇉⟦f,g⟧",
+          "name": "Overlay two rhythms",
+          "definition": "Each slot produces eight cells from the same rhythm. Take the larger value in each cell to make one rhythm.",
+          "example": "⇉⟦♦start_heavy,♠left(0)⟧(𝔹⟨[0,2,0,0,0,0,0,0]⟩)",
+          "value": "ℝ⟨[2,2,0,0,0,0,0,0]⟩"
+        },
+        {
+          "layer": 4,
+          "kind": "observation",
+          "symbol": "◉offbeat",
+          "name": "Offbeat accent count",
+          "definition": "Count 2s at indices 1, 3, 5 and 7 from ○cells.",
+          "example": "◉offbeat⦅⇉⟦♦start_heavy,♠left(0)⟧(𝔹⟨[0,2,0,0,0,0,0,0]⟩)⦆",
+          "value": "1"
+        }
+      ],
+      "emerges": "Phase and simultaneous rhythms differ from pitch; playback does not decide correctness.",
+      "checking": "Compare all 3^8 rhythms cell by cell. Slot signatures are 𝔹→ℝ and failures propagate strictly. Audio plays only canonical events.",
+      "size": "Small; 6561 rhythms."
+    },
+    {
+      "id": "pixels",
+      "name": "Pixel topology and shape",
+      "pitch": "Connected lit pixels form an island.",
+      "modality": "2D images",
+      "wave": 1,
+      "layer0": {
+        "objects": "𝔾⟨lit cells⟩; a 3×3 black-and-white grid with coordinates 0..2.",
+        "operations": "♠light(G,p) lights one cell; out-of-range coordinates give Bottom(range).",
+        "combinators": "→⟦f,g⟧ lights cells in sequence.",
+        "observations": "○pixels⦅G⦆ reveals the on/off state of nine cells."
+      },
+      "story": [
+        {
+          "layer": 1,
+          "kind": "observation",
+          "symbol": "◉islands",
+          "name": "Count islands",
+          "definition": "Count connected components of public lit cells using only horizontal and vertical adjacency.",
+          "example": "◉islands⦅𝔾⟨{(0,0),(2,2)}⟩⦆",
+          "value": "2"
+        },
+        {
+          "layer": 2,
+          "kind": "object",
+          "symbol": "𝕀⟨cell set⟩",
+          "name": "One island",
+          "definition": "A nonempty set of cells for which layer 1 ◉islands equals 1. Check at construction; otherwise Bottom(disconnected).",
+          "example": "𝕀⟨{(0,0),(1,0)}⟩",
+          "value": "𝕀⟨{(0,0),(1,0)}⟩"
+        },
+        {
+          "layer": 3,
+          "kind": "operation",
+          "symbol": "♦grow",
+          "name": "Grow an island",
+          "definition": "Start with 𝕀, add its four-neighbor cells and discard out-of-range cells. The result is still an island.",
+          "example": "♦grow(𝕀⟨{(0,0)}⟩)",
+          "value": "𝕀⟨{(0,0),(0,1),(1,0)}⟩"
+        },
+        {
+          "layer": 4,
+          "kind": "combinator",
+          "symbol": "⇉⟦f,g⟧",
+          "name": "Combine two islands",
+          "definition": "Each slot takes an island and produces another. Unite lit cells into a grid; the two islands need not form one connected island.",
+          "example": "⇉⟦♦grow,♦grow⟧(𝕀⟨{(0,0)}⟩,𝕀⟨{(2,2)}⟩)",
+          "value": "𝔾⟨{(0,0),(0,1),(1,0),(1,2),(2,1),(2,2)}⟩"
+        }
+      ],
+      "emerges": "An island can become input for growth and combining grids. The old color grid is folded into this initial path.",
+      "checking": "Check adjacency, island validity and growth on all 512 grids. Only this finite family receives a full-domain certificate. A color extension needs its own version.",
+      "size": "Small; 512 grids."
+    },
+    {
+      "id": "dice",
+      "name": "Hidden Dice and Absorbing Walk",
+      "pitch": "Define independent dice rather than sampling thirty-six times.",
+      "modality": "Probability and tables",
+      "wave": 1,
+      "layer0": {
+        "objects": "𝔻⟨face value⟩ ranges over 1..6. The primitive dist[T] is finite, combines equal values, has positive rational weights and sums to 1.",
+        "operations": "♠roll() returns a distribution with weight 1/6 on each face.",
+        "combinators": "↦⟦f⟧(dist) binds each branch; f returns a distribution and every branch incurs its actual cost.",
+        "observations": "○mass⦅dist,finite event set⦆ computes the rational probability of an event."
+      },
+      "story": [
+        {
+          "layer": 1,
+          "kind": "combinator",
+          "symbol": "⇉⟦f,g⟧",
+          "name": "Independent product",
+          "definition": "f and g each produce a distribution from no input. Two binds form ordered pairs, multiply weights and combine identical pairs.",
+          "example": "○mass⦅⇉⟦♠roll,♠roll⟧(),{(𝔻⟨1⟩,𝔻⟨1⟩)}⦆",
+          "value": "1/36"
+        },
+        {
+          "layer": 2,
+          "kind": "object",
+          "symbol": "𝔼⟨set of face pairs⟩",
+          "name": "Seven-point event",
+          "definition": "Select the six pairs summing to 7 from the finite answer domain of the preceding layer, and seal them as a reusable event.",
+          "example": "𝔼⟨{(1,6),(2,5),(3,4),(4,3),(5,2),(6,1)}⟩",
+          "value": "𝔼⟨{(1,6),(2,5),(3,4),(4,3),(5,2),(6,1)}⟩"
+        },
+        {
+          "layer": 3,
+          "kind": "operation",
+          "symbol": "♦sum",
+          "name": "Sum faces",
+          "definition": "Turn a pair of face values into their integer sum. Map each pair without changing total weight.",
+          "example": "♦sum(𝔻⟨2⟩,𝔻⟨5⟩)",
+          "value": "7"
+        },
+        {
+          "layer": 4,
+          "kind": "observation",
+          "symbol": "◉seven",
+          "name": "Exactly seven",
+          "definition": "Use the layer 3 sum and layer 2 event to select six branches from the layer 1 distribution, then add their weights with ○mass.",
+          "example": "◉seven⦅⇉⟦♠roll,♠roll⟧()⦆",
+          "value": "1/6"
+        }
+      ],
+      "emerges": "Independence does not mean reusing the same random result twice. Distributions are ordinary finite values.",
+      "checking": "Check all 36 pairs and the sum of rational weights. Expressions return distributions; they do not secretly roll physical dice.",
+      "size": "Small; 36 pairs."
+    },
+    {
+      "id": "versions",
+      "name": "Two Editors, One Draft",
+      "pitch": "Two edits to one base draft can produce a checkable conflict.",
+      "modality": "Collaboration and text state",
+      "wave": 1,
+      "layer0": {
+        "objects": "𝕋⟨ancestor id,path→short text⟩; initial paths /a and /b, with text 0, x or y; finite immutable versions. A merge result is 𝕄⟨base:ancestor id,paths:complete values by path⟩, where each path has ordinary text or conflict(base,left,right). Child versions and parent ids remain in the full-state ledger.",
+        "operations": "♠edit(T,path,text) makes a child version, preserving its parent id and old content.",
+        "combinators": "→⟦f,g⟧ edits one branch in sequence.",
+        "observations": "○read⦅T⦆ exposes the parent id and each path's content, not another editor's branch."
+      },
+      "story": [
+        {
+          "layer": 1,
+          "kind": "object",
+          "symbol": "ℙ⟨path,old,new⟩",
+          "name": "Conditional patch",
+          "definition": "Apply only when the current path content equals old. Paths and text are finite and paths use canonical order. apply(ℙ) is a typed edit operation expanded from this object.",
+          "example": "ℙ⟨{new:x,path:/a,old:0}⟩",
+          "value": "ℙ⟨/a,0,x⟩"
+        },
+        {
+          "layer": 2,
+          "kind": "combinator",
+          "symbol": "⇉⟦left,right⟧",
+          "name": "Merge from one ancestor",
+          "definition": "Each operation slot edits the same ancestor with a layer 1 patch. Compare three versions per path. Take the new value when edits agree or only one side changed. If both sides differ, preserve conflict(base,left,right) at that path and merge the others.",
+          "example": "⇉⟦apply(ℙ⟨/a,0,x⟩),apply(ℙ⟨/b,0,y⟩)⟧(𝕋⟨r,{/a:0,/b:0}⟩)",
+          "value": "𝕄⟨base:r,paths:{/a:x,/b:y}⟩"
+        },
+        {
+          "layer": 3,
+          "kind": "observation",
+          "symbol": "◉changes",
+          "name": "Changed paths",
+          "definition": "Use only the public ancestor and merge result to list paths with changed content or conflicts.",
+          "example": "◉changes⦅𝕄⟨base:r,paths:{/a:x,/b:y}⟩,𝕋⟨r,{/a:0,/b:0}⟩⦆",
+          "value": "{/a,/b}"
+        },
+        {
+          "layer": 4,
+          "kind": "operation",
+          "symbol": "♦take_left",
+          "name": "Resolve with left",
+          "definition": "Visit paths from ◉changes and take the left value only at conflict-tagged paths. Leave other paths unchanged. A conflict is a value, not Bottom.",
+          "example": "♦take_left(⇉⟦apply(ℙ⟨/a,0,x⟩),apply(ℙ⟨/a,0,y⟩)⟧(𝕋⟨r,{/a:0,/b:0}⟩))",
+          "value": "𝕄⟨base:r,paths:{/a:x,/b:0}⟩"
+        }
+      ],
+      "emerges": "Edits from the same ancestor cannot be replaced by ordinary concatenation. Conflicts remain usable data.",
+      "checking": "Compute the full result and provenance per path. Enumerate two paths, three texts and their patches. Include ancestor id, sorting, conflicts and real costs in full state.",
+      "size": "Medium; 2 paths, 3 texts per path."
+    },
+    {
+      "id": "circuits",
+      "name": "Boolean circuits",
+      "pitch": "AND and NOT gates can be wired into XOR.",
+      "modality": "Circuits and logic",
+      "wave": 1,
+      "layer0": {
+        "objects": "ℂ⟨input pins,AND/NOT gates,directed wires,output pins⟩; a finite acyclic graph of at most 12 gates with matching ports. AND/NOT are typed layer 0 wiring constructors.",
+        "operations": "♠eval(C,bits) computes all outputs in topological order.",
+        "combinators": "→⟦f,g⟧ connects f's outputs to matching inputs of g; a cycle gives Bottom(cycle).",
+        "observations": "○out⦅C,bits⦆ reads only the specified output pin. Circuit structure is public only as permitted by the question."
+      },
+      "story": [
+        {
+          "layer": 1,
+          "kind": "operation",
+          "symbol": "♦or",
+          "name": "Wire an OR gate",
+          "definition": "Use NOT(NOT(a) AND NOT(b)). Compute on bit inputs and wire the same four-gate pattern through matching graph ports. Record every underlying gate cost.",
+          "example": "♦or(0,1)",
+          "value": "1"
+        },
+        {
+          "layer": 2,
+          "kind": "combinator",
+          "symbol": "⇉⟦left,right⟧",
+          "name": "Parallel branches",
+          "definition": "Copy the same inputs, evaluate two acyclic circuits separately and produce a typed pair of output pins.",
+          "example": "⇉⟦AND(a,NOT(b)),AND(NOT(a),b)⟧(1,0)",
+          "value": "(1,0)"
+        },
+        {
+          "layer": 3,
+          "kind": "object",
+          "symbol": "𝕏⟨DAG⟩",
+          "name": "XOR circuit",
+          "definition": "Connect the preceding parallel branches to ♦or and seal a valid two-input, one-output DAG. A truth table is not the circuit structure. ♦or expands to three NOT gates and one AND gate; each branch has one NOT and one AND, for eight gates total.",
+          "example": "♠eval(𝕏⟨♦or(⇉⟦AND(a,NOT(b)),AND(NOT(a),b)⟧)⟩,(1,0))",
+          "value": "1"
+        },
+        {
+          "layer": 4,
+          "kind": "observation",
+          "symbol": "◉table",
+          "name": "Circuit truth table",
+          "definition": "Use ○out to read a two-input circuit on 00, 01, 10 and 11.",
+          "example": "◉table⦅𝕏⟨XOR DAG⟩⦆",
+          "value": "(0,1,1,0)"
+        }
+      ],
+      "emerges": "Circuits with the same truth table can have different gate counts and wiring. A wired object can be used in larger circuits.",
+      "checking": "Check acyclicity and pin types for each graph. Check all four two-input rows, but do not treat them as proof for arbitrary slot circuit families. Account for actual gate calls.",
+      "size": "Medium; initially at most 12 gates and four rows for two inputs."
+    },
+    {
+      "id": "integer",
+      "name": "Arithmetic from integers",
+      "pitch": "Build multiplication from repeated successor steps, then construct fractions.",
+      "modality": "Numbers and symbols",
+      "wave": 1,
+      "layer0": {
+        "objects": "ℤ⟨integer⟩ and ℤ⟨0⟩; arithmetic atoms use locked integer semantics, not the old version's implicit folding.",
+        "operations": "♠succ(n)=n+1, ♠add(a,b)=a+b and ♠gcd(a,b) is the nonnegative greatest common divisor. Division by zero gives Bottom(div0).",
+        "combinators": "→⟦f,g⟧ calls operations in strict sequence.",
+        "observations": "○value⦅n⦆ exposes the integer value."
+      },
+      "story": [
+        {
+          "layer": 1,
+          "kind": "object",
+          "symbol": "ℕ⟨n⟩",
+          "name": "Nonnegative number",
+          "definition": "Select n≥0 from the integers; construction fails on negative values.",
+          "example": "ℕ⟨♠succ(0)⟩",
+          "value": "ℕ⟨1⟩"
+        },
+        {
+          "layer": 2,
+          "kind": "combinator",
+          "symbol": "↻⟦step⟧",
+          "name": "Repeat n times",
+          "definition": "Given ℕ⟨n⟩, call a step of type A→A exactly n times in order, charging the real cost of each call.",
+          "example": "↻⟦♠succ⟧(0,ℕ⟨3⟩)",
+          "value": "3"
+        },
+        {
+          "layer": 3,
+          "kind": "operation",
+          "symbol": "♦mul_nat",
+          "name": "Construct multiplication",
+          "definition": "Start from 0 and repeat ↻⟦♠add(a,·)⟧ b times; a and b are both ℕ.",
+          "example": "♦mul_nat(ℕ⟨3⟩,ℕ⟨2⟩)",
+          "value": "6"
+        },
+        {
+          "layer": 4,
+          "kind": "object",
+          "symbol": "ℚ⟨numerator/denominator⟩",
+          "name": "Reduced fraction",
+          "definition": "Require a nonzero denominator; reduce with ♠gcd and make the denominator positive. Charge for both normalization steps.",
+          "example": "ℚ⟨♦mul_nat(ℕ⟨1⟩,ℕ⟨2⟩)/4⟩",
+          "value": "ℚ⟨1/2⟩"
+        },
+        {
+          "layer": 5,
+          "kind": "observation",
+          "symbol": "◉whole",
+          "name": "Is it an integer?",
+          "definition": "Check whether the public denominator of a canonical fraction is 1; normalize ℚ⟨2/4⟩ to ℚ⟨1/2⟩ first.",
+          "example": "◉whole⦅ℚ⟨2/4⟩⦆",
+          "value": "false"
+        }
+      ],
+      "emerges": "Compare native multiplication with its expansion; canonical equality of fractions illustrates object normalization. Successor does not need a separate world.",
+      "checking": "Replay each given integer example exactly. Bounded exhaustive checks initially cover n≤6 and numerators and denominators -6..6; they do not establish unbounded correctness. Compare costs, failures and full state as well as values.",
+      "size": "Small to medium; initial multipliers 0..6 and numerators and denominators -6..6."
+    },
+    {
+      "id": "lists",
+      "name": "Tools from empty lists",
+      "pitch": "Build a list and then fold it.",
+      "modality": "Sequences and recursion",
+      "wave": 2,
+      "layer0": {
+        "objects": "𝕃⟨finite integer sequence⟩; nil and cons are strict finite constructors.",
+        "operations": "♠cons(x,xs) prepends an item; ♠head/♠tail give Bottom(empty) on an empty list.",
+        "combinators": "→⟦f,g⟧ calls operations in order.",
+        "observations": "○items⦅xs⦆ reveals item values and order."
+      },
+      "story": [
+        {
+          "layer": 1,
+          "kind": "object",
+          "symbol": "ℕ𝕃⟨head,tail⟩",
+          "name": "Nonempty list",
+          "definition": "Select a public list with at least one item and seal its head and tail. Construction fails for an empty list. An explicit conversion can use it as 𝕃 input.",
+          "example": "ℕ𝕃⟨♠cons(1,[2])⟩",
+          "value": "ℕ𝕃⟨1,[2]⟩"
+        },
+        {
+          "layer": 2,
+          "kind": "combinator",
+          "symbol": "↘⟦combine⟧",
+          "name": "Fold",
+          "definition": "Process each item from left to right. combine has signature integer×A→A; an empty list yields seed directly, and A keeps the same type throughout the call. Explicitly expand layer 1 ℕ𝕃 into a list, then prepend to the empty seed.",
+          "example": "↘⟦(x,acc)↦♠cons(x,acc)⟧(ℕ𝕃⟨1,[2]⟩,[])",
+          "value": "[2,1]"
+        },
+        {
+          "layer": 3,
+          "kind": "operation",
+          "symbol": "♦reverse",
+          "name": "Reverse",
+          "definition": "Reuse ↘, prepending each current item to the accumulated list.",
+          "example": "♦reverse(ℕ𝕃⟨1,[2]⟩)",
+          "value": "[2,1]"
+        },
+        {
+          "layer": 4,
+          "kind": "observation",
+          "symbol": "◉palindrome",
+          "name": "Palindrome?",
+          "definition": "Compare the public item-by-item outputs of ○items and ♦reverse.",
+          "example": "◉palindrome⦅[1,2,1]⦆",
+          "value": "true"
+        }
+      ],
+      "emerges": "A recursive structure lets the same fold construct a new operation; this is not merely a number loop.",
+      "checking": "Structural induction proves the result for general finite lists. Initial exhaustive input and answer checks cover length≤4 and items 0..2. Propagate empty-list failures as specified.",
+      "size": "Small; initial length≤4."
+    },
+    {
+      "id": "hidden",
+      "name": "Sealed Cards and Budgeted Channels",
+      "pitch": "Use a signal light to calculate a guess without seeing the card.",
+      "modality": "Multiple people, hidden information and probability",
+      "wave": 2,
+      "layer0": {
+        "objects": "𝕊⟨hidden card R/B,light red/blue,guess R/B⟩; each card has prior 1/2. Public protocol: R always lights red; B lights red or blue with probability 1/2 each. The receiver cannot read the card.",
+        "operations": "♠signal(type) returns that finite rational distribution; ♠guess(signal,choice) records a choice.",
+        "combinators": "↦⟦f⟧(dist) binds branches and combines identical values without broadening branch permissions.",
+        "observations": "○receiver⦅S⦆ reveals only the light color and the receiver's own action history; ○judge⦅S⦆ reveals the actual card only to the judge."
+      },
+      "story": [
+        {
+          "layer": 1,
+          "kind": "observation",
+          "symbol": "◉posterior",
+          "name": "After a red light",
+          "definition": "Use only the visible light, public prior and protocol to normalize the conditional probability of R.",
+          "example": "◉posterior⦅red⦆",
+          "value": "2/3"
+        },
+        {
+          "layer": 2,
+          "kind": "object",
+          "symbol": "𝕀⟨light color,{card:weight}⟩",
+          "name": "Possible cards",
+          "definition": "Seal the layer 1 posterior as a rational distribution. It is not the actual card and cannot store it.",
+          "example": "𝕀⟨red,{R:2/3,B:1/3}⟩",
+          "value": "𝕀⟨red,{R:2/3,B:1/3}⟩"
+        },
+        {
+          "layer": 3,
+          "kind": "combinator",
+          "symbol": "↝⟦on_red,on_blue⟧",
+          "name": "Branch on the light",
+          "definition": "Call one slot based only on the receiver's observation; each slot may use the corresponding 𝕀 weights to choose a guess.",
+          "example": "↝⟦guess higher-weight card,guess higher-weight card⟧(red)",
+          "value": "R"
+        },
+        {
+          "layer": 4,
+          "kind": "operation",
+          "symbol": "♦win_rate",
+          "name": "Strategy win rate",
+          "definition": "Use only the public prior and signaling protocol to enumerate weights for each card and light, then run the layer 3 strategy and sum the probability of correct guesses. Do not read the actual hidden card or return per-branch true cards.",
+          "example": "♦win_rate(↝⟦guess higher-weight card,guess higher-weight card⟧)",
+          "value": "3/4"
+        }
+      ],
+      "emerges": "The same actual outcome need not support the same knowledge. This world combines sealed cards and red-blue signals without duplicating a privacy model.",
+      "checking": "Enumerate two cards, two lights and the finite strategy table; verify rational posteriors and win rates. Isolate errors, traces, caches, feedback and visible timing. Compare global judge states while giving receivers only their own information sets.",
+      "size": "Medium; 2 cards, 2 lights, 4 deterministic guessing strategies."
+    },
+    {
+      "id": "molecules",
+      "name": "Valence workshop",
+      "pitch": "Respect each atom's bond capacity before building a molecule.",
+      "modality": "Structures and assembly",
+      "wave": 2,
+      "layer0": {
+        "objects": "𝔄⟨numbered graph of at most 4 C/H/O atoms and single bonds⟩; C permits 4 bonds, O permits 2 and H permits 1. This is a valence-count toy, not a claim about real chemistry.",
+        "operations": "♠attach(graph,new_atom,old_atom) adds one single bond; excess valence or a duplicate edge gives Bottom(valence).",
+        "combinators": "→⟦f,g⟧ adds bonds in order and does not skip failures.",
+        "observations": "○atoms⦅graph⦆ gives vertices, edges and remaining bond capacities; renamed vertices are equal only by canonical graph equality."
+      },
+      "story": [
+        {
+          "layer": 1,
+          "kind": "object",
+          "symbol": "𝕄⟨graph⟩",
+          "name": "Valid molecule",
+          "definition": "Choose a finite connected graph with no atom over capacity; enumerate isomorphic renumberings and select the least encoding. A single atom with open valence is valid.",
+          "example": "𝕄⟨{vertices:[C],edges:[]}⟩",
+          "value": "𝕄⟨C⟩"
+        },
+        {
+          "layer": 2,
+          "kind": "operation",
+          "symbol": "♦add_OH",
+          "name": "Attach OH",
+          "definition": "Use ♠attach to add O to C, then H to the new O; both steps must succeed.",
+          "example": "♦add_OH(𝕄⟨C⟩)",
+          "value": "𝕄⟨C—O—H⟩"
+        },
+        {
+          "layer": 3,
+          "kind": "observation",
+          "symbol": "◉has_OH",
+          "name": "Has OH?",
+          "definition": "Inspect only the public graph. Check for a bond between O and H whose O is also bonded to C.",
+          "example": "◉has_OH⦅♦add_OH(𝕄⟨C⟩)⦆",
+          "value": "true"
+        },
+        {
+          "layer": 4,
+          "kind": "combinator",
+          "symbol": "↝⟦decorate,finish⟧",
+          "name": "Decorate, then finish",
+          "definition": "Run decorate, recheck molecule validity and use layer 3 ◉has_OH to require OH; otherwise Bottom(no_OH). Run finish and recheck. In the example, finish adds H to the original C, with arguments (graph,new atom,old atom).",
+          "example": "↝⟦♦add_OH,λg.♠attach(g,H,original C)⟧(𝕄⟨C⟩)",
+          "value": "𝕄⟨H—C—O—H⟩"
+        }
+      ],
+      "emerges": "Object validity constrains later operations; a molecule is not an arbitrary drawing.",
+      "checking": "Check each atom's valence, each edge's connectivity and graph isomorphism under fixed-number enumeration. Initially check every prefix with at most 4 atoms. Do not infer real taste or stability.",
+      "size": "Medium; initially ≤4 atoms."
+    },
+    {
+      "id": "grammar",
+      "name": "Two Trees for One Sentence",
+      "pitch": "One sentence can have two different derivations.",
+      "modality": "Language and structure",
+      "wave": 2,
+      "layer0": {
+        "objects": "𝔾⟨rules S→a or S→SS,finite derivation tree⟩; unfinished trees have at most 7 rule nodes; complete trees contain 1..4 instances of a.",
+        "operations": "♠expand(tree,leaf,rule) expands one S leaf. More than 7 rule nodes or 4 instances of a gives Bottom(size).",
+        "combinators": "→⟦f,g⟧ expands specified leaves in order.",
+        "observations": "○yield⦅tree⦆ returns the string formed by the leaves, not an unauthorized construction order."
+      },
+      "story": [
+        {
+          "layer": 1,
+          "kind": "object",
+          "symbol": "𝕋⟨tree⟩",
+          "name": "Sentence tree",
+          "definition": "Every internal node uses S→SS and every terminal uses S→a; check each rule at construction.",
+          "example": "𝕋⟨S→SS(S→a,S→a)⟩",
+          "value": "𝕋⟨SS(a,a)⟩"
+        },
+        {
+          "layer": 2,
+          "kind": "combinator",
+          "symbol": "↘⟦leaf,split⟧",
+          "name": "Find all derivations",
+          "definition": "Typed slots are leaf:character→𝕋 and split:𝕋×𝕋→𝕋. For words of length 1..4, recurse over every nonempty split, call the layer 1 valid-tree constructor and combine canonical finite tree sets.",
+          "example": "↘⟦λc.𝕋⟨S→c⟩,λl,r.𝕋⟨S→SS(l,r)⟩⟧('aa')",
+          "value": "{SS(a,a)}"
+        },
+        {
+          "layer": 3,
+          "kind": "observation",
+          "symbol": "◉parses",
+          "name": "Parse count",
+          "definition": "Run layer 2 on the public string and count valid layer 1 trees, without reading the author's privately selected tree.",
+          "example": "◉parses⦅'aaa'⦆",
+          "value": "2"
+        },
+        {
+          "layer": 4,
+          "kind": "operation",
+          "symbol": "♦ambiguous",
+          "name": "Find ambiguity",
+          "definition": "Convert a layer 3 count greater than 1 into a boolean for later word-filtering tasks.",
+          "example": "♦ambiguous('aaa')",
+          "value": "true"
+        }
+      ],
+      "emerges": "A string differs from its derivation tree. This replaces the earlier candidate grammar, which had no ambiguity.",
+      "checking": "Enumerate all binary derivation trees and strings with 1..4 instances of a. Do not claim to enumerate natural languages or infinite trees.",
+      "size": "Small; at most 4 instances of a."
+    },
+    {
+      "id": "automata",
+      "name": "Finite binary DFA language laboratory",
+      "pitch": "Two small machines can read in sync to recognize another language.",
+      "modality": "Symbols and state machines",
+      "wave": 2,
+      "layer0": {
+        "objects": "𝔸⟨Q,{a,b},δ,q0,F⟩; total transition function and canonical state numbering, initially at most 2 states per machine. In the example ends_a starts at N, with a→A and b→N, accepting only A; even_len starts at E, toggling E↔O on either symbol and accepting only E; never_accept has one rejecting state with self-loops.",
+        "operations": "♠step(A,q,c)=δ(q,c).",
+        "combinators": "↦⟦step⟧(q,word) folds left over a finite word, one character at a time.",
+        "observations": "○accept⦅A,word⦆ tells whether the final state is in F."
+      },
+      "story": [
+        {
+          "layer": 1,
+          "kind": "object",
+          "symbol": "ℙ⟨A,B⟩",
+          "name": "Paired machine",
+          "definition": "States are Q_A×Q_B, the start is the start pair, and accepting states are pairs where both accept. Build transitions pairwise using ♠step and number states canonically.",
+          "example": "start of ℙ⟨ends_a,even_len⟩",
+          "value": "(not ending in a,even)"
+        },
+        {
+          "layer": 2,
+          "kind": "combinator",
+          "symbol": "⇉⟦stepA,stepB⟧",
+          "name": "Synchronized step",
+          "definition": "Both slots read the same character and update a pair of states together; do not finish reading in one machine before starting the other.",
+          "example": "⇉⟦♠step(ends_a),♠step(even_len)⟧((not ending in a,even),a)",
+          "value": "(ending in a,odd)"
+        },
+        {
+          "layer": 3,
+          "kind": "operation",
+          "symbol": "♦both",
+          "name": "Meet both conditions",
+          "definition": "Use layer 2 for the transitions of ℙ, run a finite word, then inspect the paired accepting states.",
+          "example": "♦both(ends_a,even_len,'ba')",
+          "value": "true"
+        },
+        {
+          "layer": 4,
+          "kind": "observation",
+          "symbol": "◉empty",
+          "name": "Does it accept no words?",
+          "definition": "Traverse the new machine's finite reachable states from its start. Return true only if no accepting state is reachable.",
+          "example": "◉empty⦅ℙ⟨ends_a,never_accept⟩⦆",
+          "value": "true"
+        }
+      ],
+      "emerges": "Finite-state reachability certifies a claim about all finite words rather than just sampled words. The product machine can be synchronized again.",
+      "checking": "Run BFS on at most 4 product states; check all transitions and accepting states to show reachability covers all words. Lock canonical states and slot signatures.",
+      "size": "Medium; at most 2 states per machine and 4 in the product."
+    },
+    {
+      "id": "permutation",
+      "name": "Twelve-card permutation group",
+      "pitch": "Swap cards repeatedly and count when the arrangement returns.",
+      "modality": "Cards and spatial order",
+      "wave": 2,
+      "layer0": {
+        "objects": "ℙ⟨permutation of 1,2,3⟩; values are card numbers in three positions.",
+        "operations": "♠swap(P,i,j) exchanges typed positions i and j.",
+        "combinators": "→⟦f,g⟧ runs f then g, with an explicit action order.",
+        "observations": "○cards⦅P⦆ reveals the positions of all three cards."
+      },
+      "story": [
+        {
+          "layer": 1,
+          "kind": "object",
+          "symbol": "ℂ⟨cycle positions⟩",
+          "name": "Cycle of positions",
+          "definition": "Use at least two distinct positions and put the smallest first. [1,2,3] sends the card originally in position 1 to 2, 2 to 3 and 3 to 1. The object's .apply interface expands to ♠swap(2,3) followed by ♠swap(1,2).",
+          "example": "ℂ⟨[1,2,3]⟩.apply(ℙ⟨1,2,3⟩)",
+          "value": "ℙ⟨3,1,2⟩"
+        },
+        {
+          "layer": 2,
+          "kind": "operation",
+          "symbol": "♦undo",
+          "name": "Undo a cycle",
+          "definition": "Reverse the cycle and return the canonical inverse. Use layer 1 .apply to restore the original arrangement.",
+          "example": "♦undo(ℂ⟨[1,2,3]⟩).apply(ℙ⟨3,1,2⟩)",
+          "value": "ℙ⟨1,2,3⟩"
+        },
+        {
+          "layer": 3,
+          "kind": "combinator",
+          "symbol": "↻⟦move⟧",
+          "name": "Trace an orbit",
+          "definition": "Repeatedly run the same move from one arrangement. Verify each step can return to the prior state using layer 2 ♦undo. Stop at the first repetition and return every arrangement before it. Slot move:ℙ→ℙ explicitly wraps the cycle object's interface and accepts only such bijections.",
+          "example": "↻⟦λp.ℂ⟨[1,2,3]⟩.apply(p)⟧(ℙ⟨1,2,3⟩)",
+          "value": "[ℙ⟨1,2,3⟩,ℙ⟨3,1,2⟩,ℙ⟨2,3,1⟩]"
+        },
+        {
+          "layer": 4,
+          "kind": "observation",
+          "symbol": "◉period",
+          "name": "Period",
+          "definition": "Count arrangements in the preceding orbit.",
+          "example": "◉period⦅↻⟦λp.ℂ⟨[1,2,3]⟩.apply(p)⟧(ℙ⟨1,2,3⟩)⦆",
+          "value": "3"
+        }
+      ],
+      "emerges": "A cycle length records actual actions, not just permutation parity. Orbits can be inputs to later tasks.",
+      "checking": "Check all 6 permutations of three cards. The slot must be bijective; this return-to-start version excludes non-bijections. Check swap order against expansion.",
+      "size": "Small; 6 permutations."
+    },
+    {
+      "id": "text",
+      "name": "Weighted Word Lattice",
+      "pitch": "How can one long string be divided into words?",
+      "modality": "Text and reading",
+      "wave": 3,
+      "layer0": {
+        "objects": "𝕊⟨finite text⟩; initially only a, b and space, at most 8 Unicode code points. The empty string is valid.",
+        "operations": "♠concat(s,t) appends text; exceeding the length limit gives Bottom(size).",
+        "combinators": "⇢⟦char_step⟧(s) maps code points, producing valid text.",
+        "observations": "○chars⦅s⦆ gives code points and positions; do not infer boundaries from displayed glyph widths."
+      },
+      "story": [
+        {
+          "layer": 1,
+          "kind": "object",
+          "symbol": "𝕎⟨s⟩",
+          "name": "Word",
+          "definition": "Select a nonempty string without spaces from text; an empty word fails.",
+          "example": "𝕎⟨'ab'⟩",
+          "value": "𝕎⟨'ab'⟩"
+        },
+        {
+          "layer": 2,
+          "kind": "operation",
+          "symbol": "♦split",
+          "name": "Split on spaces",
+          "definition": "Scan public code points and take maximal contiguous nonempty, nonspace spans. Make a layer 1 𝕎 for each span.",
+          "example": "♦split('a  b')",
+          "value": "[𝕎⟨'a'⟩,𝕎⟨'b'⟩]"
+        },
+        {
+          "layer": 3,
+          "kind": "combinator",
+          "symbol": "↝⟦normalize⟧",
+          "name": "Join words into a sentence",
+          "definition": "Apply a valid word transformation in the slot to each 𝕎, then join with one space. Excess length still fails.",
+          "example": "↝⟦identity⟧(♦split('a  b'))",
+          "value": "'a b'"
+        },
+        {
+          "layer": 4,
+          "kind": "observation",
+          "symbol": "◉starts",
+          "name": "Word start positions",
+          "definition": "For the canonical sentence above, use ○chars to find the 0-based position of each word's first code point.",
+          "example": "◉starts⦅↝⟦identity⟧(♦split('a  b'))⦆",
+          "value": "[0,2]"
+        }
+      ],
+      "emerges": "A character list does not supply word boundaries. Character and word sequences can be converted in both directions, but repeated original spaces disappear.",
+      "checking": "Check all strings of lengths 0..8 over the three-character alphabet, totaling 1+3+…+3^8; verify lengths, code-point scans and canonical sentences. Display width is not a code-point count.",
+      "size": "Small; length≤8."
+    },
+    {
+      "id": "melody",
+      "name": "Melody: exact motif covers",
+      "pitch": "Answer one phrase with another, preserving pitch and duration.",
+      "modality": "Music and pitch",
+      "wave": 3,
+      "layer0": {
+        "objects": "𝕄⟨[(pitch,duration)]⟩; pitch 60..72, duration 1 or 2 beats; initially at most 4 events.",
+        "operations": "♠transpose(m,k) adds k to each pitch, with integer k in -12..12. Pitch overflow gives Bottom(pitch), out-of-range k gives Bottom(range); duration does not change.",
+        "combinators": "⇢⟦note_step⟧(m) transforms each event; the slot must preserve duration.",
+        "observations": "○events⦅m⦆ exposes pitches and durations; playback is a lossy preview."
+      },
+      "story": [
+        {
+          "layer": 1,
+          "kind": "object",
+          "symbol": "𝔽⟨motif⟩",
+          "name": "Two-note motif",
+          "definition": "Select an event sequence of exactly length 2 from a melody, preserving durations.",
+          "example": "𝔽⟨[(60,1),(62,2)]⟩",
+          "value": "𝔽⟨[(60,1),(62,2)]⟩"
+        },
+        {
+          "layer": 2,
+          "kind": "operation",
+          "symbol": "♦answer_up",
+          "name": "Answer two semitones higher",
+          "definition": "Apply ♠transpose(+2) to a motif; propagate out-of-range failure.",
+          "example": "♦answer_up(𝔽⟨[(60,1),(62,2)]⟩)",
+          "value": "𝔽⟨[(62,1),(64,2)]⟩"
+        },
+        {
+          "layer": 3,
+          "kind": "combinator",
+          "symbol": "↝⟦reply⟧",
+          "name": "Call and response",
+          "definition": "Apply reply to the same motif, then join the original and reply in time. More than 4 events fails.",
+          "example": "↝⟦♦answer_up⟧(𝔽⟨[(60,1),(62,2)]⟩)",
+          "value": "𝕄⟨[(60,1),(62,2),(62,1),(64,2)]⟩"
+        },
+        {
+          "layer": 4,
+          "kind": "observation",
+          "symbol": "◉contour",
+          "name": "Contour with durations",
+          "definition": "For adjacent public pitches, report rising, equal or falling, plus the starting note's duration for each segment. Do not drop the time axis.",
+          "example": "◉contour⦅↝⟦♦answer_up⟧(𝔽⟨[(60,1),(62,2)]⟩)⦆",
+          "value": "[(up,1),(level,2),(up,1)]"
+        }
+      ],
+      "emerges": "Pitch and duration are separate axes. Unlike the eight-cell rhythm, this world builds transposable call-and-response phrases.",
+      "checking": "Replay finite events one by one. Initially check bounded inputs of at most 4 notes, 13 pitches and 2 durations. Audio does not judge tuning.",
+      "size": "Small to medium; at most 4 notes."
+    },
+    {
+      "id": "geometry",
+      "name": "Exact Lattice Polygons with Holes",
+      "pitch": "Three ordered points enclose area and determine direction.",
+      "modality": "Vectors and geometry",
+      "wave": 3,
+      "layer0": {
+        "objects": "ℙ⟨(x,y)⟩; lattice points with coordinates 0..4. Ordered point sequences are finite inputs.",
+        "operations": "♠move(p,dx,dy) translates a point, with integer dx and dy each in -4..4; outside the grid gives Bottom(range).",
+        "combinators": "→⟦f,g⟧ moves the same point in sequence.",
+        "observations": "○points⦅point sequence⦆ gives exact coordinates; SVG is only a drawing."
+      },
+      "story": [
+        {
+          "layer": 1,
+          "kind": "object",
+          "symbol": "𝕋⟨A,B,C⟩",
+          "name": "Nondegenerate triangle",
+          "definition": "Select three ordered, noncollinear lattice points; zero cross product gives Bottom(flat).",
+          "example": "𝕋⟨(0,0),(2,0),(0,2)⟩",
+          "value": "𝕋⟨(0,0),(2,0),(0,2)⟩"
+        },
+        {
+          "layer": 2,
+          "kind": "operation",
+          "symbol": "♦area2",
+          "name": "Twice the area",
+          "definition": "For the layer 1 triangle, compute |(B−A)×(C−A)| using integers only.",
+          "example": "♦area2(𝕋⟨(0,0),(2,0),(0,2)⟩)",
+          "value": "4"
+        },
+        {
+          "layer": 3,
+          "kind": "combinator",
+          "symbol": "↝⟦moveA,moveB⟧",
+          "name": "Translate twice",
+          "definition": "Apply two equal-displacement slots to the three points in sequence. Rebuild a layer 1 triangle each time, check bounds and noncollinearity, and use layer 2 ♦area2 to confirm unchanged area after each step.",
+          "example": "↝⟦λp.♠move(p,+1,0),λp.♠move(p,0,+1)⟧(𝕋⟨(0,0),(2,0),(0,2)⟩)",
+          "value": "𝕋⟨(1,1),(3,1),(1,3)⟩"
+        },
+        {
+          "layer": 4,
+          "kind": "observation",
+          "symbol": "◉ccw",
+          "name": "Counterclockwise?",
+          "definition": "Read the three public points and test whether the signed cross product is positive; triangles can have equal area but opposite orientation.",
+          "example": "◉ccw⦅↝⟦λp.♠move(p,+1,0),λp.♠move(p,0,+1)⟧(𝕋⟨(0,0),(2,0),(0,2)⟩)⦆",
+          "value": "true"
+        }
+      ],
+      "emerges": "An ordered closed path has direction and exact area, unlike the area of a black-and-white pixel region.",
+      "checking": "Check cross products, bounds and coordinates for up to 25^3 ordered triples drawn from 25 points. Do not use floating-point area.",
+      "size": "Small; 25 points."
+    },
+    {
+      "id": "roads",
+      "name": "Road Closures and Cut Certificates",
+      "pitch": "Record every step to give evidence for a shortest route.",
+      "modality": "Maps and paths",
+      "wave": 3,
+      "layer0": {
+        "objects": "𝔾⟨undirected weighted edges among A,B,C,D⟩; each pair has no edge or weight 1 or 2, giving 3^6 graphs.",
+        "operations": "♠edge(G,u,v) returns the weight or Bottom(no_edge).",
+        "combinators": "→⟦f,g⟧ joins two steps in order and fails immediately on a missing edge.",
+        "observations": "○map⦅G⦆ gives all public edges and weights."
+      },
+      "story": [
+        {
+          "layer": 1,
+          "kind": "object",
+          "symbol": "ℙ⟨G,[vertices]⟩",
+          "name": "Valid path",
+          "definition": "At least two vertices, with an edge between adjacent vertices and no repeated vertices. Check each edge at construction.",
+          "example": "ℙ⟨{AB:1,BD:2,AD:2},[A,B,D]⟩",
+          "value": "ℙ⟨{AB:1,BD:2,AD:2},[A,B,D]⟩"
+        },
+        {
+          "layer": 2,
+          "kind": "operation",
+          "symbol": "♦cost",
+          "name": "Path cost",
+          "definition": "Add public edge weights along a valid layer 1 path.",
+          "example": "♦cost(ℙ⟨{AB:1,BD:2,AD:2},[A,B,D]⟩)",
+          "value": "3"
+        },
+        {
+          "layer": 3,
+          "kind": "combinator",
+          "symbol": "⇉⟦routeA,routeB⟧",
+          "name": "Choose one of two routes",
+          "definition": "Two operation slots build valid paths from (graph,start,end). The example's via_B and direct are operations using layer 1 path checks. Use ♦cost to choose the cheaper one, breaking ties by lexicographic vertex sequence.",
+          "example": "⇉⟦via_B,direct⟧({AB:1,BD:2,AD:2},A,D)",
+          "value": "ℙ⟨{AB:1,BD:2,AD:2},[A,D]⟩"
+        },
+        {
+          "layer": 4,
+          "kind": "observation",
+          "symbol": "◉shortest",
+          "name": "Is it shortest?",
+          "definition": "Enumerate every simple path with the same endpoints and compare its ♦cost with the chosen layer 3 path; return a boolean and checkable witness.",
+          "example": "◉shortest⦅ℙ⟨{AB:1,BD:2,AD:2},[A,D]⟩⦆",
+          "value": "true"
+        }
+      ],
+      "emerges": "A displayable path is evidence. Multivalued relations and two road-network candidates share one world.",
+      "checking": "Enumerate simple paths on all 729 graphs. Cross-check shortest paths independently by dynamic programming. Answers include path and weight, not just a boolean.",
+      "size": "Small to medium; 4 vertices and 729 graphs."
+    },
+    {
+      "id": "kitchen",
+      "name": "Timed Kitchen and Verifiable Schedules",
+      "pitch": "Every step needs sufficient ingredients before bread can be made.",
+      "modality": "Resources and production",
+      "wave": 3,
+      "layer0": {
+        "objects": "𝕀⟨flour,water,dough,bread⟩; four nonnegative counts, initially each in 0..2.",
+        "operations": "♠mix consumes 1 flour and 1 water to make 1 dough; ♠bake consumes 1 dough to make 1 bread; insufficient stock gives Bottom(stock).",
+        "combinators": "→⟦f,g⟧ performs actions in strict order.",
+        "observations": "○stock⦅I⦆ gives four public stock counts."
+      },
+      "story": [
+        {
+          "layer": 1,
+          "kind": "object",
+          "symbol": "ℙ⟨start,[steps]⟩",
+          "name": "Valid work order",
+          "definition": "Every prefix has nonnegative stock; matching final stock alone does not prove validity. The final state is a computable public interface.",
+          "example": "ℙ⟨𝕀⟨1,1,0,0⟩,[♠mix,♠bake]⟩.end",
+          "value": "𝕀⟨0,0,0,1⟩"
+        },
+        {
+          "layer": 2,
+          "kind": "operation",
+          "symbol": "♦bread",
+          "name": "Make one bread",
+          "definition": "Reuse the layer 1 valid [mix,bake] work order and execute both steps, charging for both.",
+          "example": "♦bread(𝕀⟨1,1,0,0⟩)",
+          "value": "𝕀⟨0,0,0,1⟩"
+        },
+        {
+          "layer": 3,
+          "kind": "observation",
+          "symbol": "◉can_bread",
+          "name": "Can make another?",
+          "definition": "Check only whether ○stock has at least 1 flour and 1 water. This applies specifically to the ♦bread recipe.",
+          "example": "◉can_bread⦅𝕀⟨1,2,0,0⟩⦆",
+          "value": "true"
+        },
+        {
+          "layer": 4,
+          "kind": "combinator",
+          "symbol": "↝⟦make,test⟧",
+          "name": "Make batches",
+          "definition": "Slot test is the operation λi.◉can_bread⦅i⦆. Check before using make; run at most n times and return current stock on stopping or reaching the limit.",
+          "example": "↝⟦♦bread,λi.◉can_bread⦅i⦆⟧(𝕀⟨2,2,0,0⟩,2)",
+          "value": "𝕀⟨0,0,0,2⟩"
+        }
+      ],
+      "emerges": "A work order is valid at each step, not just by its final inventory.",
+      "checking": "Enumerate inputs with each stock≤2 and plans of length≤4, checking each prefix. Macro costs must match individual steps; resource exhaustion must not masquerade as lack of stock.",
+      "size": "Small; 4 stock items and work orders of at most 4 steps."
+    },
+    {
+      "id": "calendar",
+      "name": "Across leap day: century settlements",
+      "pitch": "Step through dates to see the February and leap-year rules.",
+      "modality": "Calendar and time",
+      "wave": 3,
+      "layer0": {
+        "objects": "𝔻⟨year,month,day⟩; only valid Gregorian dates from 2000-01-01 through 2099-12-31. The first date is a Saturday.",
+        "operations": "♠next(d) advances one day, with Bottom(range) outside the domain. Leap years follow the 4/100/400 divisibility rule.",
+        "combinators": "↻⟦day_step⟧(d,n) performs exactly n steps with n in 0..7; a longer daily journey needs another version.",
+        "observations": "○weekday⦅d⦆ computes the weekday day by day from the anchor without using the host's local timezone."
+      },
+      "story": [
+        {
+          "layer": 1,
+          "kind": "object",
+          "symbol": "𝕃⟨date⟩",
+          "name": "Leap day",
+          "definition": "Select February 29 from valid dates; 2000 is a leap year, while 2100 is outside this version's range.",
+          "example": "𝕃⟨2000-02-29⟩",
+          "value": "𝕃⟨2000-02-29⟩"
+        },
+        {
+          "layer": 2,
+          "kind": "operation",
+          "symbol": "♦week_later",
+          "name": "A week later",
+          "definition": "Reuse ↻⟦♠next⟧ seven times. If the world boundary is crossed, propagate the final step's failure.",
+          "example": "♦week_later(𝕃⟨2000-02-29⟩)",
+          "value": "𝔻⟨2000-03-07⟩"
+        },
+        {
+          "layer": 3,
+          "kind": "observation",
+          "symbol": "◉workday",
+          "name": "Workday?",
+          "definition": "Return true for Monday through Friday using only ○weekday; do not guess holidays.",
+          "example": "◉workday⦅2000-03-07⦆",
+          "value": "true"
+        },
+        {
+          "layer": 4,
+          "kind": "combinator",
+          "symbol": "↝⟦advance,test⟧",
+          "name": "Next workday",
+          "definition": "Slot test is the operation λd.◉workday⦅d⦆. Advance one day before testing, at most 3 times. If none qualifies, give Bottom(no_workday); a spent budget still gives Unknown.",
+          "example": "↝⟦♠next,λd.◉workday⦅d⦆⟧(♦week_later(𝕃⟨2000-02-29⟩))",
+          "value": "𝔻⟨2000-03-08⟩"
+        }
+      ],
+      "emerges": "This uses real Gregorian limits, not a 12-cell clock. A leap-day object exposes reasoning across months.",
+      "checking": "Compute each day with explicit Gregorian rules and check every valid date in 2000..2099. Check all workday searches of at most 3 days without reading the platform timezone.",
+      "size": "Medium; about 36525 days."
+    },
+    {
+      "id": "computer",
+      "name": "Deep Eight-Bit Computer",
+      "pitch": "Build multiplication, then dot products, on a machine with increment and decrement.",
+      "modality": "Machines and programs",
+      "wave": 2,
+      "layer0": {
+        "objects": "𝔹𝕪⟨0..255⟩ is a byte; ℝ𝕖𝕘⟨A|B|C|D⟩ is a register name; 𝕄⟨A,B,C,D,memory[256],next line⟩ is machine state, with registers as its cells.",
+        "operations": "♠add adds two bytes, wrapping into 0..255; ♠dec subtracts one; ♠load reads memory; ♠store writes memory. Each costs 1 step.",
+        "combinators": "⇥⟦f,g⟧ runs f then g; ⤳⟦test⟧ branches conditionally. A program is a separate card and cannot change itself during execution.",
+        "observations": "○out⦅𝕄⦆ shows only result register A; ○regs⦅𝕄⦆ shows all registers, depending on the question."
+      },
+      "story": [
+        {
+          "layer": 1,
+          "kind": "combinator",
+          "symbol": "⟳⟦body⟧",
+          "name": "Repeat while B is nonzero",
+          "definition": "Combine ⤳ and ⇥: stop when B is 0; otherwise run body and return to the start.",
+          "example": "⟳⟦A←A+C; B←B−1⟧(A=0,B=3,C=4)",
+          "value": "A=12, B=0"
+        },
+        {
+          "layer": 2,
+          "kind": "operation",
+          "symbol": "♦mul",
+          "name": "Multiplication",
+          "definition": "Put a in C and b in B, clear A, then use ⟳ to add C repeatedly. All 65,536 input pairs are checked against full machine state.",
+          "example": "♦mul(20, 13)",
+          "value": "4 (260 wraps into 0..255)"
+        },
+        {
+          "layer": 3,
+          "kind": "object",
+          "symbol": "𝕍⟨start address,length⟩",
+          "name": "Array segment in memory",
+          "definition": "Seal a contiguous memory segment; only get and len are available externally. Start address plus length cannot exceed 256.",
+          "example": "get 1 on 𝕍⟨16,3⟩ in memory 16..18 = [2,3,4]",
+          "value": "3"
+        },
+        {
+          "layer": 4,
+          "kind": "operation",
+          "symbol": "♦dot",
+          "name": "Dot product",
+          "definition": "Use ⟳ to traverse two 𝕍 arrays, multiply each pair using ♦mul and accumulate with ♠add.",
+          "example": "♦dot(𝕍[1,2,3], 𝕍[4,5,6])",
+          "value": "32"
+        },
+        {
+          "layer": 5,
+          "kind": "observation",
+          "symbol": "◉fits⦅a,b⦆",
+          "name": "Does the product fit?",
+          "definition": "Use only learner-visible inputs to test whether a×b is below 256, which determines whether ♦mul wraps.",
+          "example": "◉fits⦅20,13⦆",
+          "value": "false"
+        }
+      ],
+      "emerges": "Native and constructed multiplication have equal results but different step counts; compare both.",
+      "checking": "State is finite: exhaustively check all 65,536 pairs for 8-bit multiplication and compare full machine states. Check dot products over arrays of length at most 4 within the declared range.",
+      "size": "Medium; 4 registers and 256 memory cells."
+    },
+    {
+      "id": "comb_only",
+      "name": "Conflict scheduling by combinators alone",
+      "pitch": "Ten shifts with twelve jobs each. Open only combinators and use fixed local operations to build exact conflict schedules.",
+      "modality": "Conflicting jobs",
+      "wave": 4,
+      "story": [
+        {
+          "layer": 1,
+          "kind": "combinator",
+          "name": "map"
+        },
+        {
+          "layer": 2,
+          "kind": "combinator",
+          "name": "fold"
+        },
+        {
+          "layer": 3,
+          "kind": "combinator",
+          "name": "until"
+        },
+        {
+          "layer": 4,
+          "kind": "combinator",
+          "name": "closure"
+        },
+        {
+          "layer": 5,
+          "kind": "combinator",
+          "name": "divide"
+        },
+        {
+          "layer": 6,
+          "kind": "combinator",
+          "name": "components"
+        },
+        {
+          "layer": 7,
+          "kind": "combinator",
+          "name": "branch"
+        },
+        {
+          "layer": 8,
+          "kind": "combinator",
+          "name": "opt"
+        }
+      ]
+    },
+    {
+      "id": "obs_only",
+      "name": "Blind Corridor: Invent Observations Only",
+      "pitch": "The true position in a 64-cell inspection corridor is sealed. Priors, sensors, forbidden regions, routes and risk definitions are public and selectable. Actions, containers and program structure are fixed; learners can derive posteriors, credible sets, risk certificates and audit observations only from their own logs.",
+      "modality": "Probability and public logs",
+      "wave": 4,
+      "layer0": {
+        "objects": [
+          "obj State<position: Fin64, history: Trace, private_draws: List<Fin100>> sealed given -- true author/judge state; learners never read position or private_draws",
+          "obj Trace<actions: Text, readings: Text> sealed given -- public personal log: 0..80 actions and exactly one more reading; actions are L/R/S and readings are 0..7",
+          "obj Vec64<Rational> given -- fixed-length vector of 64 canonical rational numbers at positions 0..63; each public prior is 1/64",
+          "obj List<T> given -- finite list; Tuple, Bool, Rational and Fin64 are fixed primitive objects",
+          "obj PublicConfig<prior: Enum, protocol: Enum, region: List<Fin64>, routes: List<Text>, risk_mode: Enum, credible_mode: Enum> given -- all fields are public and fixed for one task; prior=uniform/edge/even, protocol=legacy/sharp/parity, region=1..64 distinct cell numbers, routes=1..8 distinct nonempty LRS routes of length 1..4, risk_mode=ever/terminal/at_least_two, credible_mode=ranked/window"
+        ],
+        "operations": [
+          "op move(p: Fin64,a: Action) -> Fin64 = clamp(p+delta(a),0,63) given -- L=-1, R=1, S=0; stop at an endpoint on overflow",
+          "op emit(p: Fin64,draw: Fin100,c: PublicConfig) -> Fin8 given -- use an independent private uniform draw and public configuration to produce an eight-color reading; generate the initial reading by the same rule",
+          "op step(s: State,a: Action,c: PublicConfig) -> State given -- record the action publicly after move, then use the subject's next private draw to append a reading under c.emit; no draw gives Bottom(exhausted_draws)",
+          "op add/mul/div/le/eq/at/sum/sort_pairs/first/len(...) given -- generic exact arithmetic, indexing, sums, prefixes, lengths and key-based sorting of pairs on public finite structures; sorting uses an explicit key, not sealed state"
+        ],
+        "combinators": [
+          "comb @chain[f: A -> B,g: B -> C](x: A) -> C = g(f(x)) given -- sequential execution; do not skip failures",
+          "comb @fold[f: (A,B) -> A](initial: A,items: List<B>) -> A given -- left fold over a public finite list; slots accept given typed operations, not observations passed as operations",
+          "comb @trace_rec[f: (A,Action,Fin8) -> A](base: A,v: Trace,t: Fin80) -> A given -- frame-by-frame recursion derived from the Trace object's structure: start from base at frame 0 and recur over public (action,reading) pairs through t; the slot accepts only a pure public typed function or an explicit permission-bound lambda, not an observation disguised as an operation",
+          "comb @repeat[f: A -> A](x: A,n: Fin80) -> A given -- repeat a fixed operation at most 80 times"
+        ],
+        "observations": [
+          "obs ?frame{v: Trace,t: Fin80} -> Fin8 given -- reveals: the subject's eight-color reading at history index t; errors report only public out-of-range access",
+          "obs ?issued{v: Trace,t: Fin79} -> Action given -- reveals: the subject's action at history index t; not the next true position",
+          "obs ?prior{c: PublicConfig,p: Fin64} -> Rational given -- uniform=1/64; edge=(64-p)/2080; even=1/32 at even cells and 0 at odd cells; independent of hidden position",
+          "obs ?protocol{c: PublicConfig,p: Fin64,y: Fin8} -> Rational given -- b=(p xor (p>>3)) mod 8; legacy offsets 0/1/7/other have weights 63/17/10/2 per hundred; sharp offsets 0/1/7 have weights 75/13/12 per hundred and all others zero; parity emits only 0/1, with weight 7/10 when it equals p mod 2 and 3/10 otherwise; each p row sums to 1 and zero likelihood is observable",
+          "obs ?public_config{v: Trace} -> PublicConfig given -- reveals the task configuration without position or private_draws"
+        ]
+      },
+      "story": [
+        {
+          "layer": 1,
+          "kind": "observation",
+          "decl": "obs ?weight{v,t,p,c} = ?protocol{c,p,?frame{v,t}} L1",
+          "example": "?weight{Trace<\"RRRLS\",\"633043\">,5,15}",
+          "value": "1/50",
+          "name": "weight",
+          "symbol": "?weight"
+        },
+        {
+          "layer": 2,
+          "kind": "observation",
+          "decl": "obs ?belief{v,t,p,c} = F_t[p]/sum(F_t) where F_0[p]=?prior{c,p}*?weight{v,0,p,c}; F_t[p]=?weight{v,t,p,c}*sum(F_(t-1)[r] for r in 0..63 if move(r,?issued{v,t-1})=p) L2; sum(F_t)=0 gives Bottom(impossible_public_trace), never uniform fallback",
+          "example": "?belief{Trace<\"RRRLS\",\"633043\">,5,16}",
+          "value": "170/42891341",
+          "name": "belief",
+          "symbol": "?belief"
+        },
+        {
+          "layer": 3,
+          "kind": "observation",
+          "decl": "obs ?ranked{v,t,n,c} = first(n,sort_pairs([(p,?belief{v,t,p,c}) for p in 0..63],key=(-weight,p))) L3",
+          "example": "?ranked{Trace<\"RRRLS\",\"633043\">,5,8}",
+          "value": "17,53,60,25,3,39,32,4",
+          "name": "ranked",
+          "symbol": "?ranked"
+        },
+        {
+          "layer": 4,
+          "kind": "observation",
+          "decl": "obs ?credible{v,t,q,c} = if c.credible_mode=ranked then shortest ranked prefix with mass>=q else shortest contiguous interval [left,right) with mass>=q (ties: smallest left); return (cells,exact mass) L4",
+          "example": "?credible{Trace<\"RRRLS\",\"633043\">,5,9/10}",
+          "value": "17,53|42507990/42891341",
+          "name": "credible",
+          "symbol": "?credible"
+        },
+        {
+          "layer": 5,
+          "kind": "observation",
+          "decl": "obs ?risk_interval{v,t,q,route,c} = [H,H+1-M] where (cells,M)=?credible{v,t,q,c}, H=sum(?belief{v,t,p,c} for p in cells if hit(p,route,c)); hit uses @fold[move] on public route prefixes, and c.risk_mode: ever=any prefix in c.region, terminal=last prefix in c.region, at_least_two=count of prefix visits>=2 L5",
+          "example": "?risk_interval{Trace<\"RRRLS\",\"633043\">,5,9/10,\"RRRR\"}",
+          "value": "[0,383351/42891341]",
+          "name": "risk_interval",
+          "symbol": "?risk_interval"
+        },
+        {
+          "layer": 6,
+          "kind": "observation",
+          "decl": "obs ?certified{v,t,q,route,cap,c} = if upper(?risk_interval{v,t,q,route,c})<=cap then SAFE else if lower(?risk_interval{v,t,q,route,c})>cap then UNSAFE else UNKNOWN L6",
+          "example": "?certified{Trace<\"RRRLS\",\"633043\">,5,9/10,\"RRRR\",1/5}",
+          "value": "SAFE",
+          "name": "certified",
+          "symbol": "?certified"
+        },
+        {
+          "layer": 7,
+          "kind": "observation",
+          "decl": "obs ?choice{v,t,q,cap,c} = first(r in c.routes where ?certified{v,t,q,r,cap,c}=SAFE,default=NONE) L7",
+          "example": "?choice{Trace<\"RRRLS\",\"633043\">,5,9/10,1/5}",
+          "value": "RRRR",
+          "name": "choice",
+          "symbol": "?choice"
+        },
+        {
+          "layer": 8,
+          "kind": "observation",
+          "decl": "obs ?audit{v,t,q,cap,c} = (?choice{v,t,q,cap,c},labels(?certified{v,t,q,r,cap,c} for r in c.routes),?risk_interval{v,t,q,?choice{v,t,q,cap,c},c} or NONE) L8",
+          "example": "?audit{Trace<\"RRRLS\",\"633043\">,5,9/10,1/5}",
+          "value": "RRRR|SSSSS|[0,383351/42891341]",
+          "name": "audit",
+          "symbol": "?audit"
+        },
+        {
+          "layer": 9,
+          "kind": "observation",
+          "decl": "obs ?status{v,t,c} = if sum_{p0=0..63}(?prior{c,p0}*product_{j=0..t}(?protocol{c,position_at(p0,v,j),?frame{v,j}}))=0 then IMPOSSIBLE else POSSIBLE L9",
+          "example": "?status{Trace<\"\",\"7\">,0,PublicConfig<protocol=parity>}",
+          "value": "IMPOSSIBLE",
+          "name": "status",
+          "symbol": "?status"
+        },
+        {
+          "layer": 10,
+          "kind": "observation",
+          "decl": "obs ?exact_risk{v,t,route,c} = sum(?belief{v,t,p,c} for p in 0..63 if hit(p,route,c)) L10",
+          "example": "?exact_risk{Trace<\"LR\",\"010\">,2,\"LL\",PublicConfig<prior=even,protocol=parity,region=[0,1,2,8,9,10],risk_mode=at_least_two>}",
+          "value": "107/1528",
+          "name": "exact_risk",
+          "symbol": "?exact_risk"
+        }
+      ],
+      "emerges": "The true position in a 64-cell inspection corridor is sealed. Priors, sensors, forbidden regions, routes and risk definitions are public and selectable. Actions, containers and program structure are fixed; learners can derive posteriors, credible sets, risk certificates and audit observations only from their own logs.",
+      "checking": "Check exact rational values and risk certificates layer by layer against finite public histories.",
+      "size": "64 hidden cells, up to 81 readings and eight public route candidates"
+    },
+    {
+      "id": "op_only",
+      "name": "Relation Networks: Operations Only",
+      "pitch": "Open only operations to check closure, strongly connected quotient graphs and longest-route certificates in finite relation graphs.",
+      "modality": "Text and relation graphs",
+      "wave": 4,
+      "layer0": {
+        "objects": "Fixed public types including Rel, Profile and Edge.",
+        "operations": "Public relation construction, composition, transposition and quotient-graph operations.",
+        "combinators": "Fixed @fix2 and @dag_fold.",
+        "observations": "?has, ?count, ?maxdepth and ?longest_count."
+      },
+      "story": [
+        {
+          "kind": "operation",
+          "name": "step"
+        },
+        {
+          "kind": "operation",
+          "name": "expand"
+        },
+        {
+          "kind": "operation",
+          "name": "reach"
+        },
+        {
+          "kind": "operation",
+          "name": "mutual"
+        },
+        {
+          "kind": "operation",
+          "name": "condense"
+        },
+        {
+          "kind": "operation",
+          "name": "advance"
+        },
+        {
+          "kind": "operation",
+          "name": "profile"
+        },
+        {
+          "kind": "operation",
+          "name": "critical"
+        },
+        {
+          "kind": "operation",
+          "name": "backbone"
+        }
+      ]
+    },
+    {
+      "id": "obj_op",
+      "name": "Idealized periodic schedules and blackout windows",
+      "pitch": "Deterministic, idealized second-level periodic schedules (not real irregular airline timetables): build canonical congruence objects, noncoprime CRT, compiled plans and overlapping blackout windows from rhythms with different phases. Four periods meet 778377600 seconds apart. Only objects and operations are open; combinators and observations are fixed.",
+      "modality": "Text and exact integer certificates",
+      "wave": 4,
+      "layer0": {
+        "objects": "Bounded integers, booleans, text, finite lists, closed intervals and explicit results.",
+        "operations": "Bounded arithmetic, comparison, Euclidean algorithm and finite list access.",
+        "combinators": "Fixed @fold, @map and @until.",
+        "observations": "Fixed ?value, ?status and ?range."
+      },
+      "story": [
+        {
+          "layer": 1,
+          "kind": "object",
+          "symbol": "Cycle<...>",
+          "name": "Cycle"
+        },
+        {
+          "layer": 2,
+          "kind": "operation",
+          "symbol": "join(...)",
+          "name": "join"
+        },
+        {
+          "layer": 3,
+          "kind": "object",
+          "symbol": "Plan<...>",
+          "name": "Plan"
+        },
+        {
+          "layer": 4,
+          "kind": "operation",
+          "symbol": "compile(...)",
+          "name": "compile"
+        },
+        {
+          "layer": 5,
+          "kind": "object",
+          "symbol": "Window<...>",
+          "name": "Window"
+        },
+        {
+          "layer": 6,
+          "kind": "operation",
+          "symbol": "first_hit(...)",
+          "name": "first_hit"
+        },
+        {
+          "layer": 7,
+          "kind": "object",
+          "symbol": "Blackout<...>",
+          "name": "Blackout"
+        },
+        {
+          "layer": 8,
+          "kind": "operation",
+          "symbol": "clear_hit(...)",
+          "name": "clear_hit"
+        }
+      ]
+    },
+    {
+      "id": "obj_only",
+      "name": "Exact polynomial root atlases from sealed representations",
+      "pitch": "Invent only sealed objects and verify real-root certificates with expanded integer and list primitives.",
+      "modality": "Exact arithmetic and text",
+      "wave": 4,
+      "layer0": {
+        "objects": "Exact integers, booleans, lists and public records.",
+        "operations": "Exact integer arithmetic, list access and sealed-object construction.",
+        "combinators": "Fixed finite map, fold, structural, branch and bounded iteration.",
+        "observations": "Public value and acceptance only."
+      },
+      "story": [
+        {
+          "kind": "object",
+          "name": "Rat"
+        },
+        {
+          "kind": "object",
+          "name": "SparsePoly"
+        },
+        {
+          "kind": "object",
+          "name": "Span"
+        },
+        {
+          "kind": "object",
+          "name": "BernsteinPatch"
+        },
+        {
+          "kind": "object",
+          "name": "SignTile"
+        },
+        {
+          "kind": "object",
+          "name": "SignCover"
+        },
+        {
+          "kind": "object",
+          "name": "RootBracket"
+        },
+        {
+          "kind": "object",
+          "name": "RootAtlas"
+        }
+      ]
+    },
+    {
+      "id": "comb_obs",
+      "name": "Closed warehouse dispatch with authorized observation",
+      "pitch": "Compose sensing and dispatch without inventing physical actions or reading sealed terrain.",
+      "modality": "Text warehouse grid and private scan log",
+      "wave": 4,
+      "layer0": {
+        "objects": "Fixed Run, Cell, Event and Path values.",
+        "operations": "Fixed scan, move, charge, pick and deliver actions.",
+        "combinators": "Sequential composition, bounded repetition and known-only search.",
+        "observations": "Authorized state probes, never sealed terrain."
+      },
+      "story": [
+        {
+          "layer": 1,
+          "kind": "combinator",
+          "name": "chart",
+          "symbol": "@chart[scan]",
+          "definition": "Scan into the private map and pay its real cost."
+        },
+        {
+          "layer": 2,
+          "kind": "observation",
+          "name": "frontier",
+          "symbol": "?frontier{...}",
+          "definition": "Identify a known cell with nearby unknown cells."
+        },
+        {
+          "layer": 3,
+          "kind": "combinator",
+          "name": "walk",
+          "symbol": "@walk[scan,move]",
+          "definition": "Follow only a route through known free cells."
+        },
+        {
+          "layer": 4,
+          "kind": "observation",
+          "name": "route_len",
+          "symbol": "?route_len{...}",
+          "definition": "Measure a known route without declaring unknown terrain unreachable."
+        },
+        {
+          "layer": 5,
+          "kind": "combinator",
+          "name": "explore",
+          "symbol": "@explore[scan,move,charge]",
+          "definition": "Explore bounded frontiers and return for charging when necessary."
+        },
+        {
+          "layer": 6,
+          "kind": "observation",
+          "name": "reserve",
+          "symbol": "?reserve{...}",
+          "definition": "Compute known-route depot reserve with a two-unit margin."
+        },
+        {
+          "layer": 7,
+          "kind": "combinator",
+          "name": "dispatch",
+          "symbol": "@dispatch[scan,move,charge,pick,deliver]",
+          "definition": "Plan feasible cargo groups and execute multi-sortie delivery."
+        },
+        {
+          "layer": 8,
+          "kind": "observation",
+          "name": "audit",
+          "symbol": "?audit{...}",
+          "definition": "Replay authorized actions, inventory and return reserves."
+        }
+      ],
+      "emerges": "Open combinators and observations support adaptive multi-order dispatch.",
+      "checking": "Kernel-replayed examples and finite verification evidence.",
+      "size": "64x64 cells, three orders."
+    }
+  ],
+  "coverage": {
+    "gaps": "This version lacks real tactile pressure/friction sensors, handwriting movement traces, continuous video, colorimetry and smell or taste data. Rhythm and melody are judged only by canonical events; sound is lossy playback, not verified acoustics or touch. M11 tactile-brick seam failures would leak unseen edges; M12 handwriting has reversal but no reusable stroke motion; M14 animation checking costs overlap with pixels. Do not label integers as sensory data just to fill a category. Reconsider these worlds only with defined sensor permissions, finite sampling specifications and lossless judging interfaces.",
+    "kind_columns": [
+      "object",
+      "operation",
+      "combinator",
+      "observation"
+    ],
+    "by_world": [
+      {
+        "id": "action",
+        "modality": "Physical action",
+        "highlights": [
+          "observation",
+          "combinator"
+        ]
+      },
+      {
+        "id": "shadows",
+        "modality": "3D vision",
+        "highlights": [
+          "observation",
+          "object"
+        ]
+      },
+      {
+        "id": "rhythm",
+        "modality": "Time and sound",
+        "highlights": [
+          "combinator",
+          "observation"
+        ]
+      },
+      {
+        "id": "pixels",
+        "modality": "2D images",
+        "highlights": [
+          "object",
+          "observation"
+        ]
+      },
+      {
+        "id": "dice",
+        "modality": "Probability and tables",
+        "highlights": [
+          "combinator"
+        ]
+      },
+      {
+        "id": "versions",
+        "modality": "Collaboration and text state",
+        "highlights": [
+          "combinator",
+          "object"
+        ]
+      },
+      {
+        "id": "circuits",
+        "modality": "Circuits and logic",
+        "highlights": [
+          "operation",
+          "object"
+        ]
+      },
+      {
+        "id": "integer",
+        "modality": "Numbers and symbols",
+        "highlights": [
+          "operation",
+          "object"
+        ]
+      },
+      {
+        "id": "lists",
+        "modality": "Sequences and recursion",
+        "highlights": [
+          "combinator"
+        ]
+      },
+      {
+        "id": "hidden",
+        "modality": "Multiple people, hidden information and probability",
+        "highlights": [
+          "observation",
+          "object"
+        ]
+      },
+      {
+        "id": "molecules",
+        "modality": "Structures and assembly",
+        "highlights": [
+          "object"
+        ]
+      },
+      {
+        "id": "grammar",
+        "modality": "Language and structure",
+        "highlights": [
+          "object",
+          "observation"
+        ]
+      },
+      {
+        "id": "automata",
+        "modality": "Symbols and state machines",
+        "highlights": [
+          "object",
+          "combinator"
+        ]
+      },
+      {
+        "id": "permutation",
+        "modality": "Cards and spatial order",
+        "highlights": [
+          "object",
+          "combinator"
+        ]
+      },
+      {
+        "id": "text",
+        "modality": "Text and reading",
+        "highlights": [
+          "object"
+        ]
+      },
+      {
+        "id": "melody",
+        "modality": "Music and pitch",
+        "highlights": [
+          "combinator"
+        ]
+      },
+      {
+        "id": "geometry",
+        "modality": "Vectors and geometry",
+        "highlights": [
+          "object"
+        ]
+      },
+      {
+        "id": "roads",
+        "modality": "Maps and paths",
+        "highlights": [
+          "object",
+          "observation"
+        ]
+      },
+      {
+        "id": "kitchen",
+        "modality": "Resources and production",
+        "highlights": [
+          "object",
+          "operation"
+        ]
+      },
+      {
+        "id": "calendar",
+        "modality": "Calendar and time",
+        "highlights": [
+          "operation",
+          "observation"
+        ]
+      },
+      {
+        "id": "comb_only",
+        "modality": "Conflicting jobs",
+        "highlights": [
+          "combinator"
+        ]
+      },
+      {
+        "id": "obs_only",
+        "modality": "Probability and public logs",
+        "highlights": [
+          "observation"
+        ]
+      }
+    ]
+  },
+  "adjudication": [
+    "exact found action's private-state costs high, while creation/delight chose it for the first wave. Keep it, but initially limit it to three cells and two steps; store the old full-map version separately and audit channels per person first.",
+    "creation chose integer/lists for long towers, while delight found arithmetic plain. Keep them in wave two to contrast given and constructed operations without displacing the sensory worlds of wave one.",
+    "delight wanted tactile bricks, handwriting and braids; skeptic noted that touch was only a label and neither stroke order nor braid equivalence was supported. Drop all three from this version; keep shadows and rhythm for sensory tasks.",
+    "creation liked syntax trees, but skeptic noted the original grammar was unambiguous. Replace it with bounded S→a|SS, where 'aaa' has two trees, for wave two.",
+    "creation liked valence; exact worried about graph-isomorphism costs. Limit graphs to four vertices and give explicit canonical numbering. Treat it as a valence-count toy, not real chemistry.",
+    "delight liked the small ecosystem, but skeptic found predators never changed and dice already handled distributions. Omit it from this version; reconsider only with rules for changing predators.",
+    "delight preferred chords, while creation/skeptic found that a three-note set had no voice movement. Keep chords for a later melody chapter, not a separate world.",
+    "exact valued the calendar's exhaustive checks; creation worried it was just adding seven. Include leap days and day-by-day rules in wave three; do not keep clock's old integer panel.",
+    "creation supported circuits; skeptic worried XOR repeated logic. Keep real DAGs, gate counts and parallel ports; use old logic questions only to introduce circuit truth tables.",
+    "delight supported voxels and sealed cards; exact stressed avoiding leaks. Shadows answer only what is knowable, and red-blue signals join sealed cards. Observations and every side channel are part of the design contract.",
+    "exact liked road networks, creation liked path witnesses, and skeptic opposed two duplicate worlds. Combine weighted M3, certificate S1 and old rel in one four-vertex road world.",
+    "skeptic saw overlap between pixels and grid, while creation wanted two worlds. Keep one black-and-white island world initially and reserve color grids for an extension; do not count two worlds.",
+    "delight wanted pitch to stay; skeptic thought it was numerical transposition. Keep only motifs with durations, call-and-response and contour. Eight-cell rhythm remains separate because its tasks differ.",
+    "creation chose automata; exact worried example words would be mistaken for universal certificates. Put them in wave two and prove claims about all finite words with finite-state reachability, not sampling.",
+    "skeptic approved version merging; exact worried about infinite histories. Use only finite immutable versions with locked ancestors. Conflicts are explicit values, not failures."
+  ],
+  "dropped": [
+    {
+      "candidate": "Old successor",
+      "decision": "Merge into integer",
+      "reason": "Keep the teaching sequence from successor at zero to multiplication without duplicating a world."
+    },
+    {
+      "candidate": "Old clock",
+      "decision": "Merge into rhythm and calendar",
+      "reason": "Drop the unchanged integer tricks. Cyclic rhythm and real Gregorian dates have separate problems; old tasks keep their old version."
+    },
+    {
+      "candidate": "Old bits",
+      "decision": "Merge into circuits",
+      "reason": "Fixed-width bits and masks can be circuit materials; bare bit operations lack a separate long tower."
+    },
+    {
+      "candidate": "Old logic",
+      "decision": "Merge into circuits",
+      "reason": "Use boolean truth values to introduce circuits. DAG wiring adds a structure beyond repeated boolean functions."
+    },
+    {
+      "candidate": "Old rel",
+      "decision": "Merge into roads",
+      "reason": "Freeze the version and use a multivalued graph; a mutable single-target relation cannot reuse the old certificate."
+    },
+    {
+      "candidate": "Old grid and M1 pixels",
+      "decision": "Merge into pixels",
+      "reason": "Start with cheap exhaustive checks on 3×3 black-and-white islands; color patches can follow in an extension."
+    },
+    {
+      "candidate": "M3 road network and S1 road network",
+      "decision": "Merge into roads",
+      "reason": "Weighted edges and path witnesses need only one world."
+    },
+    {
+      "candidate": "M6 chords and voices",
+      "decision": "Merge into later melody work",
+      "reason": "The current three-note set has no bass or voice movement; do not call transposition voice leading."
+    },
+    {
+      "candidate": "M7 color mixing",
+      "decision": "Defer",
+      "reason": "Average colors often fall outside a five-level palette, and screen colors are not exact values."
+    },
+    {
+      "candidate": "M9 glyphs and typesetting",
+      "decision": "Defer",
+      "reason": "Two fixed I/O glyph sets leave only table lookup; a revival needs a constructible layout structure."
+    },
+    {
+      "candidate": "M10 rational motion",
+      "decision": "Merge into later action work",
+      "reason": "Half-cell collisions could extend action; this version is only a straight-line subset of robot motion."
+    },
+    {
+      "candidate": "M11 tactile seams",
+      "decision": "Defer",
+      "reason": "The original same-value seam does not match a convex-concave account. Success/failure leaks hidden edges, and touch is not modeled."
+    },
+    {
+      "candidate": "M12 handwriting traces",
+      "decision": "Defer",
+      "reason": "Different stroke orders with the same ink are useful, but current segment counts and reversal do not support reusable strokes. This could later merge with geometry."
+    },
+    {
+      "candidate": "M13 weather cells",
+      "decision": "Defer",
+      "reason": "Full animation would break the center-only probe experiment; there is no useful multilayer construction sequence."
+    },
+    {
+      "candidate": "M14 flipbook animation",
+      "decision": "Defer",
+      "reason": "Six frames make the state space large and feedback expensive. Event counting duplicates pixels and time."
+    },
+    {
+      "candidate": "S4 red-blue signals",
+      "decision": "Merge into hidden",
+      "reason": "Put the real rational posterior in sealed cards instead of duplicating per-subject privacy audits."
+    },
+    {
+      "candidate": "S6 two-person small market",
+      "decision": "Defer",
+      "reason": "Quotes and conservation of money and goods work, but one fixed buyer and seller offer little variety and require a second hidden channel. Reconsider with strategies for multiple goods."
+    },
+    {
+      "candidate": "S11 box pushing",
+      "decision": "Merge into later action work",
+      "reason": "Corner evidence proves only some deadlocks. This duplicates exploration actions; over-budget does not mean unreachable."
+    },
+    {
+      "candidate": "S13 three-strand braids",
+      "decision": "Defer",
+      "reason": "A crossing list with local cancellations does not establish braid equivalence. An invariant is not a complete recognizer."
+    },
+    {
+      "candidate": "S14 small ecosystem",
+      "decision": "Defer",
+      "reason": "Predator numbers never change, and probability binding repeats dice. First revise the actual interaction rules."
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "pages": {"reference": "/reference/"},
+  "urls": ["reference"],
+  "steps": [
+    {"wait": {"text": "Hide fixpoint kernel trace", "timeout": 15}},
+    {"click_text": "Hide fixpoint kernel trace"},
+    {"click_text": "Explore fixpoint kernel trace"},
+    {"assert_text": "ATOM BOUNDARY / INTERACTIVE TRACE"},
+    {"assert_text": "OK Unchanged"}
+  ]
+}

@@ -1,0 +1,109 @@
+.roads-card { margin: 1.5rem 0 2rem; padding: clamp(1rem, 4vw, 2rem); border: 1px solid var(--a2-line, #7c8793); border-radius: 18px; background: var(--a2-panel, rgba(128,128,128,.06)); }
+.roads-card h2 { margin: .3em 0 .6em; }
+.roads-eyebrow { font-size: .75rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.roads-player { padding: 1rem; margin: 1rem 0; min-height: 4.2rem; border-left: 3px solid var(--op-amber, #ca8500); background: var(--a2-panel-2, rgba(128,128,128,.12)); }
+.roads-badge { margin: .7rem 0 .1rem; }
+.roads-chain { display: flex; flex-wrap: wrap; align-items: center; gap: .25rem; font: 700 .9rem/1.5 monospace; }
+.roads-chain-step { background: transparent; color: inherit; border: 2px solid transparent; border-radius: 8px; cursor: pointer; padding: .3rem; }
+.roads-chain-step.is-current { border-color: var(--op-amber, #ca8500); background: var(--a2-focus-bg, rgba(220,150,0,.14)); }
+.roads-chain-step.is-current .a2-tok-invented { background: var(--md-default-bg-color); }
+.roads-chain-step .a2-tok, .roads-learn > p code, .roads-layers li .a2-x { white-space: nowrap; }
+.roads-chain-step .a2-tok, .roads-layers li .a2-x { display: inline-block; }
+.md-typeset ol.roads-dependency-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 235px), 1fr)); gap: .45rem .8rem; list-style: none; margin: .7rem 0 1.2rem; padding: 0; }
+.roads-dependency-list li, .roads-path li { min-width: 0; }
+.roads-dependency-list li { border: 1px solid var(--a2-line); border-radius: 8px; padding: .35rem .55rem; }
+.roads-prerequisites { display: block; margin-top: .2rem; font-size: .78rem; line-height: 1.6; overflow-wrap: anywhere; }
+.roads-prerequisites .a2-tok { display: inline-flex; vertical-align: middle; }
+.roads-controls button:disabled { opacity: .5; cursor: not-allowed; }
+.roads-player p { margin: .5rem 0; }
+.roads-player [data-roads-answer] { font-weight: 700; color: var(--op-cyan, #008c9c); }
+.roads-map-wrap { max-width: 100%; overflow-x: auto; border: 1px solid var(--a2-line, #7c8793); border-radius: 12px; background: var(--a2-panel, rgba(128,128,128,.06)); }
+.roads-map-wrap svg { display: block; width: 100%; min-width: 620px; height: auto; }
+.roads-map-and-notes { display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(14rem, 1fr); gap: 1.2rem; align-items: start; }
+.roads-map-home { min-width: 0; }
+.roads-map-notes { min-width: 0; border-left: 3px solid var(--op-cyan, #008c9c); padding: .1rem 0 .1rem 1rem; }
+.roads-map-notes p { margin: .6rem 0 1rem; }
+.roads-map-cue { display: none; }
+.roads-map-zoom { display: none; }
+.roads-card p .a2-expr { display: inline; white-space: normal; overflow-wrap: normal; }
+.roads-card p .a2-expr .a2-x { display: inline-block; }
+.roads-card [data-roads-report], .roads-card [data-roads-all] { overflow-wrap: anywhere; }
+.roads-edge-line { stroke: color-mix(in srgb, var(--md-default-fg-color, #203044) 60%, transparent); stroke-width: 4; }
+.roads-edge.is-route .roads-edge-line { stroke: var(--op-amber, #ca8500); stroke-width: 7; }
+.roads-edge.is-best .roads-edge-line { stroke: var(--op-cyan, #008c9c); stroke-width: 6; stroke-dasharray: 9 5; }
+.roads-edge.is-closed .roads-edge-line { stroke: #cf5966; stroke-width: 7; stroke-dasharray: 3 6; }
+.roads-edge-hit { stroke: transparent; stroke-width: 22; }
+.roads-labels { pointer-events: none; }
+.roads-map-challenge .roads-label-control { pointer-events: auto; cursor: pointer; }
+.roads-label-chip { fill: var(--md-default-bg-color, #fff); stroke: var(--a2-line, #86939e); stroke-width: .7; }
+.roads-edge-label { fill: var(--md-default-fg-color, #203044); font: 700 12px sans-serif; text-anchor: middle; dominant-baseline: middle; }
+.roads-node circle { fill: var(--md-default-bg-color, #fff); stroke: var(--md-default-fg-color, #203044); stroke-width: 2; }
+.roads-node.is-route circle { stroke: var(--op-amber, #ca8500); stroke-width: 5; }
+.roads-node.is-best circle { stroke: var(--op-cyan, #008c9c); stroke-width: 5; }
+.roads-node text { fill: var(--md-default-fg-color, #203044); text-anchor: middle; dominant-baseline: central; font: 700 13px sans-serif; pointer-events: none; }
+.roads-map-challenge .roads-edge, .roads-map-challenge .roads-node { cursor: pointer; }
+.roads-map-keyboard { margin: .5rem 0; font-size: .78rem; }
+.roads-map-keyboard summary { cursor: pointer; }
+.roads-map-keyboard summary:focus-visible { outline: 3px solid var(--op-amber); outline-offset: 3px; }
+.roads-map-controls { display: flex; flex-wrap: wrap; gap: .4rem; margin: .5rem 0; }
+.roads-map-controls button { font: inherit; font-size: .72rem; padding: .2rem .45rem; color: var(--a2-ink);
+  border: 1px solid var(--a2-line); background: var(--a2-panel); border-radius: 4px; cursor: pointer; }
+.roads-map-controls button[aria-pressed="true"] { border-width: 2px; border-color: var(--op-amber); }
+.roads-map-controls button:focus-visible { outline: 3px solid var(--op-amber); outline-offset: 2px; }
+.roads-scope { border-left: 3px solid var(--op-cyan, #008c9c); padding: .65rem 1rem; background: var(--a2-panel, rgba(128,128,128,.06)); font-size: .85rem; }
+.roads-road-list { margin: .8rem 0; font-size: .85rem; }
+.roads-road-list summary { cursor: pointer; }
+.roads-controls { display: flex; gap: .7rem; flex-wrap: wrap; align-items: center; }
+.roads-computed { color: var(--op-cyan, #008c9c); }
+.md-typeset ol.roads-layers { list-style: none; margin: 1.5rem 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: .7rem; }
+.md-typeset ol.roads-path { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); list-style: none; gap: .45rem; padding: 0; margin: .65rem 0; }
+.roads-path li { margin: 0; }
+.roads-path button { cursor: pointer; border: 1px solid var(--a2-line); border-radius: 5px; padding: .15rem .25rem; background: var(--a2-panel); color: inherit; font: inherit; }
+.roads-path button:focus-visible { outline: 3px solid var(--op-amber); }
+.roads-inventory { margin: .75rem 0; }
+.roads-inventory summary { cursor: pointer; font-weight: 600; }
+.roads-inventory summary:focus-visible { outline: 3px solid var(--op-amber); }
+.roads-given { border: 1px solid var(--a2-line, #7c8793); border-radius: 8px; padding: .5rem .8rem; margin: 1rem 0; }
+.roads-given summary { cursor: pointer; font-weight: 600; }
+.roads-given summary:focus-visible { outline: 3px solid var(--op-amber); }
+.roads-layers li { min-width: 0; padding: .8rem; border: 1px solid var(--a2-line, #7c8793); border-radius: 10px; opacity: .72; }
+.roads-layers li.is-required { opacity: 1; border: 2px solid var(--op-amber, #ca8500); background: var(--a2-focus-bg, rgba(220,150,0,.1)); }
+.roads-layers li.is-selected { opacity: 1; border: 2px solid var(--op-amber, #ca8500); background: var(--a2-focus-bg, rgba(220,150,0,.1)); }
+.roads-role { display: inline-block; margin-left: .65rem; font: 700 .72rem/1.4 sans-serif; text-transform: uppercase; letter-spacing: .06em; }
+.roads-layers li.is-required .roads-role::before { content: ""; display: inline-block; width: .5rem; height: .5rem; margin-right: .4rem; border: 2px solid currentColor; transform: rotate(45deg); }
+.roads-layers li.is-selected .roads-role::before { content: ""; display: inline-block; width: .5rem; height: .5rem; margin-right: .4rem; border: 2px solid currentColor; border-radius: 50%; }
+.roads-layers li button { display: block; width: 100%; text-align: left; border: 0; background: transparent; color: inherit; cursor: pointer; font: inherit; }
+.roads-layers li button:focus-visible, .roads-card button:focus-visible { outline: 3px solid var(--op-amber); outline-offset: 3px; }
+.roads-layers li p { margin: .5rem 0; font-size: .85rem; }
+.roads-layers li .a2-badge { display: block; width: max-content; margin: .5rem 0 .2rem; }
+.roads-layers li .a2-tok-given { color: var(--a2-chip-ink, #fff); }
+.roads-layers li code { display: block; white-space: normal; overflow-wrap: anywhere; font-size: .72rem; }
+.roads-challenge label { display: block; margin: 1rem 0; }
+.roads-challenge input { display: block; width: 100%; max-width: 30rem; box-sizing: border-box; padding: .65rem; border: 1px solid var(--a2-line, #7c8793); border-radius: 6px; background: var(--a2-panel, transparent); color: inherit; font: inherit; }
+.roads-challenge input:focus-visible { outline: 3px solid var(--op-amber); }
+.roads-card code, .roads-learn code { white-space: normal; overflow-wrap: anywhere; }
+.roads-design-limit code, .roads-learn p code { white-space: nowrap; overflow-wrap: normal; word-break: normal; }
+.roads-case-list { max-height: 26rem; overflow: auto; padding-left: 2rem; border: 1px solid var(--a2-line, #7c8793); font: .78rem/1.6 var(--a2-mono, monospace); }
+.roads-case-list li { overflow-wrap: anywhere; padding: .2rem; }
+.md-typeset #watch-the-introduction { font-size: clamp(1.55rem, 2.5vw, 2rem); margin-top: 2rem; }
+.op-video-section { display: grid; grid-template-columns: minmax(0, 2fr) minmax(14rem, 1fr); gap: 1.5rem; align-items: start; margin: 1rem 0 2rem; }
+.op-video { width: 100%; aspect-ratio: 16 / 9; background: #101820; border-radius: 12px; overflow: hidden; }
+.op-video video { display: block; width: 100%; height: 100%; object-fit: contain; }
+.op-video-notes { border-left: 3px solid var(--op-amber, #ca8500); padding: .5rem 0 .5rem 1rem; }
+@media (max-width: 800px) { .roads-map-and-notes, .op-video-section { grid-template-columns: minmax(0, 1fr); } }
+@media (prefers-reduced-motion: reduce) { .roads-layers li { transition: none; } }
+@media (max-width: 600px) {
+  .roads-chain { font-size: .78rem; gap: .1rem; }
+  .roads-chain-step { padding: .15rem; }
+  .roads-card { margin-top: .8rem; }
+  .roads-map-home svg { min-width: 620px; }
+  .roads-map-challenge svg { min-width: 0; }
+  .roads-map-challenge.is-zoomed svg { min-width: 720px; }
+  .roads-map-zoom, .roads-map-cue { display: block; }
+  .roads-map-zoom { margin: .5rem 0; }
+  .roads-map-notes { order: -1; }
+}
+.roads-card [data-roads-play][hidden] { display: none; }
+.md-main__inner:not([data-op-layout="app"]) > .md-content > .md-content__inner.md-typeset > p,
+.first-tower > p, .roads-card > p { max-width: min(72ch, 680px); }
+.md-typeset .first-tower .first-tower-intro { max-width: min(72ch, 680px); }

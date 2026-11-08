@@ -1,0 +1,1136 @@
+{
+  "schema": "opulse.world/2",
+  "world": "rhythm",
+  "version": 1,
+  "dialect": "atoms-v2",
+  "title": "Polyrhythm and phase inference",
+  "source": {
+    "kind": "catalogue",
+    "title_zh": "复节拍与相位推断"
+  },
+  "params": {},
+  "constants": {
+    "max_cells": 512,
+    "events": [
+      0,
+      1,
+      2
+    ]
+  },
+  "objects": [
+    {
+      "kind": "object",
+      "name": "any",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Polymorphic input of a generic primitive."
+    },
+    {
+      "kind": "object",
+      "name": "list",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Generic finite tuple list."
+    },
+    {
+      "kind": "object",
+      "name": "int",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": ""
+    },
+    {
+      "kind": "object",
+      "name": "bool",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": ""
+    },
+    {
+      "kind": "object",
+      "name": "rhythm",
+      "form": "compose",
+      "base": null,
+      "tags": {
+        "beats": {
+          "items": "int"
+        }
+      },
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [
+        "left",
+        "cells"
+      ],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Origin-preserving 1 to 512 ternary cells."
+    }
+  ],
+  "operations": [
+    {
+      "kind": "operation",
+      "name": "left",
+      "symbol": "left",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "rhythm",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "rhythm",
+        "enter": "bottom"
+      },
+      "rule": "Rotate any integral offset modulo the length; preserve the valid rhythm, accented, or cycle subtype.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.rhythm.hosts:left",
+        "digest": "9875f7d9f286478f82e87c2621daf9e1e4e5555257cb102a8b7e710a1deea456"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "identity",
+      "symbol": "identity",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "any",
+        "enter": "bottom"
+      },
+      "rule": "Return the input unchanged.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.rhythm.hosts:identity",
+        "digest": "b84fc23ad6567e6354f1bfc2587c5db8c37ebf26c639c3876e13dc1a57c3d486"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "make_rhythm",
+      "symbol": "make_rhythm",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "list",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "rhythm",
+        "enter": "bottom"
+      },
+      "rule": "Construct a validated rhythm from cells.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.rhythm.hosts:make_rhythm",
+        "digest": "5b5f40f6652e7d8bc289e19bee1b61eca118cf456e8537b818665be64625c9d6"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "length",
+      "symbol": "length",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "List or card length.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.rhythm.hosts:length",
+        "digest": "89455f2109add690a69aa2ccd4a38ae76159420647bc2cf0c23a6736cfd7ac7d"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "at",
+      "symbol": "at",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "any",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "any",
+        "enter": "bottom"
+      },
+      "rule": "Index a list or card.",
+      "errors": [
+        "range"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.rhythm.hosts:at",
+        "digest": "31a219ba4001a217813974022ca3af25c71c56963cf5e59646f4470bf96a3319"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "index_of",
+      "symbol": "index_of",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "list",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "First occurrence or -1.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.rhythm.hosts:index_of",
+        "digest": "eae38e80c2dbf727f15cb3774537e533d899535bf0e8f08d1076c57960469f43"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "append",
+      "symbol": "append",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "list",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "list",
+        "enter": "bottom"
+      },
+      "rule": "Append one item to a tuple list.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.rhythm.hosts:append",
+        "digest": "2f05ce48d992d89de00a17be26b5be52e4ae01b3f91a7c2dbfb4b62d8660e1b8"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "prefix",
+      "symbol": "prefix",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "list",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "list",
+        "enter": "bottom"
+      },
+      "rule": "Take the first count items of a tuple list.",
+      "errors": [
+        "range"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.rhythm.hosts:prefix",
+        "digest": "1a2870425a307d87fce602991719204a7c7c2e8b6040de5b12f46fe711107c4f"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "repeat",
+      "symbol": "repeat",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "list",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "list",
+        "enter": "bottom"
+      },
+      "rule": "Repeat a tuple list within 512 cells.",
+      "errors": [
+        "range"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.rhythm.hosts:repeat",
+        "digest": "310b8a2738b680facf9b8ed6f55b45b500c8df0661f1daf8450fb9a8894e1cf8"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "indices",
+      "symbol": "indices",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "list",
+        "enter": "bottom"
+      },
+      "rule": "List all indices below count (at most 512).",
+      "errors": [
+        "range"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.rhythm.hosts:indices",
+        "digest": "7ceeaebf7dd9696dd2c7d131cfb1e10641dddde78f60f4ea08d862fe5aaf7928"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "unique",
+      "symbol": "unique",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "list",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "list",
+        "enter": "bottom"
+      },
+      "rule": "Remove duplicate list entries preserving first occurrence.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.rhythm.hosts:unique",
+        "digest": "5e168d182fdd889f69bbe5d47872976dac5fcceb7bffc1b9b6e4d3568e72ebc0"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "sorted_list",
+      "symbol": "sorted_list",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "list",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "list",
+        "enter": "bottom"
+      },
+      "rule": "Sort a list lexicographically.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.rhythm.hosts:sorted_list",
+        "digest": "2d9547729e653d1cc25fc149a24342c79c1255975034c46ee4134de5a6a53cb2"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "minimum",
+      "symbol": "minimum",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "list",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "any",
+        "enter": "bottom"
+      },
+      "rule": "Take the lexicographic minimum.",
+      "errors": [
+        "empty"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.rhythm.hosts:minimum",
+        "digest": "20ec779e4fc1a4b5206ff4fd8455547decba8b2d5b8a9dd61bb803518fbf6527"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "first",
+      "symbol": "first",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "any",
+        "enter": "bottom"
+      },
+      "rule": "First tuple element.",
+      "errors": [
+        "range"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.rhythm.hosts:first",
+        "digest": "ab7e4726140911b7e599d23070eb1f9b105a25b2481541acfdd7f317674c2fb2"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "second",
+      "symbol": "second",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "any",
+        "enter": "bottom"
+      },
+      "rule": "Second tuple element.",
+      "errors": [
+        "range"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.rhythm.hosts:second",
+        "digest": "3c466e4be991e8cb7542b557cfef1c75dcdc033e1c2f4073a2e9bfa18f77509d"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "pair",
+      "symbol": "pair",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "any",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "any",
+        "enter": "bottom"
+      },
+      "rule": "Construct a pair.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.rhythm.hosts:pair",
+        "digest": "17b250e4e7b103cb33f6fd21f9dc2e6edee97d915306c569ec6997cb8d76df89"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "triple",
+      "symbol": "triple",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "any",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "any",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg2",
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "any",
+        "enter": "bottom"
+      },
+      "rule": "Construct a triple.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.rhythm.hosts:triple",
+        "digest": "e56294e70fecb17e6efec73767b6044a7de915c0c13bbcf194ff75e5d3df60ff"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "quad",
+      "symbol": "quad",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "any",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "any",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg2",
+          "sort": "any",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg3",
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "any",
+        "enter": "bottom"
+      },
+      "rule": "Construct a quadruple.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.rhythm.hosts:quad",
+        "digest": "b5c3700b00c92d17280b2305484e9b8b164b1dc3e134009d9539480a4bc6a694"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "add",
+      "symbol": "add",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Add integers.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.rhythm.hosts:add",
+        "digest": "8791dc79d2a763f7c7d786b5b94da93930950a453831f6ca597c1a2942292683"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "sub",
+      "symbol": "sub",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Subtract integers.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.rhythm.hosts:sub",
+        "digest": "ddca5f8f33776970d91cc282d73dc94e2b175a78f4fcfde78ad39f094a1e42d4"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "mod",
+      "symbol": "mod",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Integer remainder.",
+      "errors": [
+        "range"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.rhythm.hosts:mod",
+        "digest": "f9b68413f3721476655c6c526abb031c7224a7fff69b715d60c6699f40790ca5"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "div",
+      "symbol": "div",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Integer quotient.",
+      "errors": [
+        "range"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.rhythm.hosts:div",
+        "digest": "324cea319b73bed2c8e8f4092eddf33f75a176e26d826169952eb8e39ee62b32"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "lcm",
+      "symbol": "lcm",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Least common multiple up to 512.",
+      "errors": [
+        "range"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.rhythm.hosts:lcm",
+        "digest": "8d723e1ea4115fafcfbb1dd6eed8adc0a8052391e9f952965e03a1770d82cc25"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "eq",
+      "symbol": "eq",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "any",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Structural equality.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.rhythm.hosts:eq",
+        "digest": "ecf6dc1d853c4f54349af2c8ff99d02b1f14427a826820d11da7946cd1209e95"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "ne",
+      "symbol": "ne",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "any",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Structural inequality.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.rhythm.hosts:ne",
+        "digest": "80a6766974c533caa632e8f017fe2e1f91a45a38d9adeba14da647d0aeceecec"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "lt",
+      "symbol": "lt",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "any",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Less than.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.rhythm.hosts:lt",
+        "digest": "61ba0d19441157fbcd24a0da2beb7ae4831dfe95dbb16a4e72c6fff0cf9d6654"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "le",
+      "symbol": "le",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "any",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Less than or equal.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.rhythm.hosts:le",
+        "digest": "935c76455bf38ce88f005c3fd3192a6e500d29d5a41ced7f18fdde0dd31f8c0e"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "maximum",
+      "symbol": "maximum",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Maximum of two cells.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.rhythm.hosts:maximum",
+        "digest": "ae7c557efa7174295e4bad611ca7548acc7cfa5c6a5e3ec1e188f308945a07cb"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "no_accent",
+      "symbol": "no_accent",
+      "role": "transform",
+      "inputs": [],
+      "output": {
+        "sort": "any",
+        "enter": "bottom"
+      },
+      "rule": "Fail when no heavy event exists.",
+      "errors": [
+        "no_accent"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.rhythm.hosts:no_accent",
+        "digest": "e5a4f493e84851270eb15865e025bc06374e111a9a0b28f74dc89b045653fe14"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "invalid",
+      "symbol": "invalid",
+      "role": "transform",
+      "inputs": [],
+      "output": {
+        "sort": "any",
+        "enter": "bottom"
+      },
+      "rule": "Fail when the phase-search bound is violated.",
+      "errors": [
+        "range"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.rhythm.hosts:invalid",
+        "digest": "55493a1f100aef4cf026674c8e09c122d3fffccee49b7fd58f0607fd674b4898"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    }
+  ],
+  "combinators": {
+    "nodes": [
+      "Var",
+      "Lit",
+      "Call",
+      "Let",
+      "Case",
+      "Rec"
+    ],
+    "library": [
+      {
+        "name": "seq",
+        "params": [
+          "f",
+          "g",
+          "x"
+        ],
+        "op_params": [
+          "f",
+          "g"
+        ],
+        "body": {
+          "node": "Call",
+          "fn": "g",
+          "args": [
+            {
+              "node": "Call",
+              "fn": "f",
+              "args": [
+                {
+                  "node": "Var",
+                  "name": "x"
+                }
+              ]
+            }
+          ]
+        },
+        "unfold_rule": "substitute"
+      }
+    ],
+    "recursion": "measure"
+  },
+  "observation": {
+    "truth": "rhythm",
+    "probes": [
+      {
+        "name": "cells",
+        "reads": "rhythm",
+        "sort": "list",
+        "reveals": [
+          "all_cells"
+        ],
+        "impl": {
+          "host": "opulse.worlds_v2.rhythm.hosts:cells",
+          "digest": "873e7a9782222f3545fe9b59725203e2228396e39b75896ee6b3be5e81370283"
+        }
+      }
+    ],
+    "capabilities": {
+      "learner": {
+        "probes": [
+          "cells"
+        ]
+      },
+      "judge": {
+        "probes": "all"
+      }
+    },
+    "show": "Discrete cells; audio is a lossy display.",
+    "judge_view": "full_state"
+  },
+  "codec": {},
+  "lock": {
+    "host_digests": {
+      "left": "9875f7d9f286478f82e87c2621daf9e1e4e5555257cb102a8b7e710a1deea456",
+      "identity": "b84fc23ad6567e6354f1bfc2587c5db8c37ebf26c639c3876e13dc1a57c3d486",
+      "make_rhythm": "5b5f40f6652e7d8bc289e19bee1b61eca118cf456e8537b818665be64625c9d6",
+      "length": "89455f2109add690a69aa2ccd4a38ae76159420647bc2cf0c23a6736cfd7ac7d",
+      "at": "31a219ba4001a217813974022ca3af25c71c56963cf5e59646f4470bf96a3319",
+      "index_of": "eae38e80c2dbf727f15cb3774537e533d899535bf0e8f08d1076c57960469f43",
+      "append": "2f05ce48d992d89de00a17be26b5be52e4ae01b3f91a7c2dbfb4b62d8660e1b8",
+      "prefix": "1a2870425a307d87fce602991719204a7c7c2e8b6040de5b12f46fe711107c4f",
+      "repeat": "310b8a2738b680facf9b8ed6f55b45b500c8df0661f1daf8450fb9a8894e1cf8",
+      "indices": "7ceeaebf7dd9696dd2c7d131cfb1e10641dddde78f60f4ea08d862fe5aaf7928",
+      "unique": "5e168d182fdd889f69bbe5d47872976dac5fcceb7bffc1b9b6e4d3568e72ebc0",
+      "sorted_list": "2d9547729e653d1cc25fc149a24342c79c1255975034c46ee4134de5a6a53cb2",
+      "minimum": "20ec779e4fc1a4b5206ff4fd8455547decba8b2d5b8a9dd61bb803518fbf6527",
+      "first": "ab7e4726140911b7e599d23070eb1f9b105a25b2481541acfdd7f317674c2fb2",
+      "second": "3c466e4be991e8cb7542b557cfef1c75dcdc033e1c2f4073a2e9bfa18f77509d",
+      "pair": "17b250e4e7b103cb33f6fd21f9dc2e6edee97d915306c569ec6997cb8d76df89",
+      "triple": "e56294e70fecb17e6efec73767b6044a7de915c0c13bbcf194ff75e5d3df60ff",
+      "quad": "b5c3700b00c92d17280b2305484e9b8b164b1dc3e134009d9539480a4bc6a694",
+      "add": "8791dc79d2a763f7c7d786b5b94da93930950a453831f6ca597c1a2942292683",
+      "sub": "ddca5f8f33776970d91cc282d73dc94e2b175a78f4fcfde78ad39f094a1e42d4",
+      "mod": "f9b68413f3721476655c6c526abb031c7224a7fff69b715d60c6699f40790ca5",
+      "div": "324cea319b73bed2c8e8f4092eddf33f75a176e26d826169952eb8e39ee62b32",
+      "lcm": "8d723e1ea4115fafcfbb1dd6eed8adc0a8052391e9f952965e03a1770d82cc25",
+      "eq": "ecf6dc1d853c4f54349af2c8ff99d02b1f14427a826820d11da7946cd1209e95",
+      "ne": "80a6766974c533caa632e8f017fe2e1f91a45a38d9adeba14da647d0aeceecec",
+      "lt": "61ba0d19441157fbcd24a0da2beb7ae4831dfe95dbb16a4e72c6fff0cf9d6654",
+      "le": "935c76455bf38ce88f005c3fd3192a6e500d29d5a41ced7f18fdde0dd31f8c0e",
+      "maximum": "ae7c557efa7174295e4bad611ca7548acc7cfa5c6a5e3ec1e188f308945a07cb",
+      "no_accent": "e5a4f493e84851270eb15865e025bc06374e111a9a0b28f74dc89b045653fe14",
+      "invalid": "55493a1f100aef4cf026674c8e09c122d3fffccee49b7fd58f0607fd674b4898",
+      "probe.cells": "873e7a9782222f3545fe9b59725203e2228396e39b75896ee6b3be5e81370283"
+    },
+    "constants_hash": "037996147fbdd26928d0819b82a4db0dac0fa29678e7373c9861c52ecdce7086",
+    "world_hash": "4fa3a9ff82d09f2ead3166f82d28dca15c5e1e9f3879263bc6921e493283fc3e"
+  }
+}

@@ -1,0 +1,548 @@
+{
+ "episodes": [
+  {
+   "group": "K1",
+   "episode": 0,
+   "stage1_accuracy": 1.0,
+   "stage2_accuracy": 1.0,
+   "invented_kinds": [
+    "operation"
+   ],
+   "reuse_per_kind": {
+    "operation": 1.0
+   },
+   "total_length": 8938,
+   "mean_steps": 294.75,
+   "mean_boundary_steps": 232,
+   "api_errors": 0
+  },
+  {
+   "group": "K1",
+   "episode": 1,
+   "stage1_accuracy": 1.0,
+   "stage2_accuracy": 1.0,
+   "invented_kinds": [
+    "operation"
+   ],
+   "reuse_per_kind": {
+    "operation": 1.0
+   },
+   "total_length": 8938,
+   "mean_steps": 294.75,
+   "mean_boundary_steps": 232,
+   "api_errors": 0
+  },
+  {
+   "group": "K2",
+   "episode": 0,
+   "stage1_accuracy": 1.0,
+   "stage2_accuracy": 1.0,
+   "invented_kinds": [
+    "operation"
+   ],
+   "reuse_per_kind": {
+    "object": 0.0,
+    "operation": 1.0
+   },
+   "total_length": 8938,
+   "mean_steps": 294.75,
+   "mean_boundary_steps": 232,
+   "api_errors": 0
+  },
+  {
+   "group": "K2",
+   "episode": 1,
+   "stage1_accuracy": 1.0,
+   "stage2_accuracy": 1.0,
+   "invented_kinds": [
+    "operation"
+   ],
+   "reuse_per_kind": {
+    "object": 0.0,
+    "operation": 1.0
+   },
+   "total_length": 8938,
+   "mean_steps": 294.75,
+   "mean_boundary_steps": 232,
+   "api_errors": 0
+  },
+  {
+   "group": "K3",
+   "episode": 0,
+   "stage1_accuracy": 1.0,
+   "stage2_accuracy": 1.0,
+   "invented_kinds": [
+    "operation"
+   ],
+   "reuse_per_kind": {
+    "combinator": 0.0,
+    "object": 0.0,
+    "operation": 1.0
+   },
+   "total_length": 8938,
+   "mean_steps": 294.75,
+   "mean_boundary_steps": 232,
+   "api_errors": 0
+  },
+  {
+   "group": "K3",
+   "episode": 1,
+   "stage1_accuracy": 1.0,
+   "stage2_accuracy": 1.0,
+   "invented_kinds": [
+    "operation"
+   ],
+   "reuse_per_kind": {
+    "combinator": 0.0,
+    "object": 0.0,
+    "operation": 1.0
+   },
+   "total_length": 8938,
+   "mean_steps": 294.75,
+   "mean_boundary_steps": 232,
+   "api_errors": 0
+  },
+  {
+   "group": "K4",
+   "episode": 0,
+   "stage1_accuracy": 1.0,
+   "stage2_accuracy": 1.0,
+   "invented_kinds": [
+    "operation"
+   ],
+   "reuse_per_kind": {
+    "combinator": 0.0,
+    "law": 0.0,
+    "object": 0.0,
+    "operation": 1.0
+   },
+   "total_length": 8938,
+   "mean_steps": 294.75,
+   "mean_boundary_steps": 232,
+   "api_errors": 0
+  },
+  {
+   "group": "K4",
+   "episode": 1,
+   "stage1_accuracy": 1.0,
+   "stage2_accuracy": 1.0,
+   "invented_kinds": [
+    "operation"
+   ],
+   "reuse_per_kind": {
+    "combinator": 0.0,
+    "law": 0.0,
+    "object": 0.0,
+    "operation": 1.0
+   },
+   "total_length": 8938,
+   "mean_steps": 294.75,
+   "mean_boundary_steps": 232,
+   "api_errors": 0
+  },
+  {
+   "group": "K5",
+   "episode": 0,
+   "stage1_accuracy": 1.0,
+   "stage2_accuracy": 1.0,
+   "invented_kinds": [
+    "operation"
+   ],
+   "reuse_per_kind": {
+    "combinator": 0.0,
+    "law": 0.0,
+    "object": 0.0,
+    "observation": 0.0,
+    "operation": 1.0
+   },
+   "total_length": 8938,
+   "mean_steps": 294.75,
+   "mean_boundary_steps": 232,
+   "api_errors": 0
+  },
+  {
+   "group": "K5",
+   "episode": 1,
+   "stage1_accuracy": 1.0,
+   "stage2_accuracy": 1.0,
+   "invented_kinds": [
+    "operation"
+   ],
+   "reuse_per_kind": {
+    "combinator": 0.0,
+    "law": 0.0,
+    "object": 0.0,
+    "observation": 0.0,
+    "operation": 1.0
+   },
+   "total_length": 8938,
+   "mean_steps": 294.75,
+   "mean_boundary_steps": 232,
+   "api_errors": 0
+  },
+  {
+   "group": "K6",
+   "episode": 0,
+   "stage1_accuracy": 1.0,
+   "stage2_accuracy": 1.0,
+   "invented_kinds": [
+    "operation"
+   ],
+   "reuse_per_kind": {
+    "bridge": 0.0,
+    "combinator": 0.0,
+    "law": 0.0,
+    "object": 0.0,
+    "observation": 0.0,
+    "operation": 1.0
+   },
+   "total_length": 8938,
+   "mean_steps": 294.75,
+   "mean_boundary_steps": 232,
+   "api_errors": 0
+  },
+  {
+   "group": "K6",
+   "episode": 1,
+   "stage1_accuracy": 1.0,
+   "stage2_accuracy": 1.0,
+   "invented_kinds": [
+    "operation"
+   ],
+   "reuse_per_kind": {
+    "bridge": 0.0,
+    "combinator": 0.0,
+    "law": 0.0,
+    "object": 0.0,
+    "observation": 0.0,
+    "operation": 1.0
+   },
+   "total_length": 8938,
+   "mean_steps": 294.75,
+   "mean_boundary_steps": 232,
+   "api_errors": 0
+  }
+ ],
+ "groups": {
+  "K1": {
+   "episodes": 2,
+   "eligible": 2,
+   "stage1_accuracy": 1.0,
+   "stage2_accuracy": 1.0,
+   "invented_kinds": [
+    "operation"
+   ],
+   "reuse_per_kind": {
+    "operation": 1.0
+   },
+   "median_total_length": 8938.0,
+   "median_steps": 294.75,
+   "median_boundary_steps": 232.0,
+   "api_errors": 0
+  },
+  "K2": {
+   "episodes": 2,
+   "eligible": 2,
+   "stage1_accuracy": 1.0,
+   "stage2_accuracy": 1.0,
+   "invented_kinds": [
+    "operation"
+   ],
+   "reuse_per_kind": {
+    "object": 0.0,
+    "operation": 1.0
+   },
+   "median_total_length": 8938.0,
+   "median_steps": 294.75,
+   "median_boundary_steps": 232.0,
+   "api_errors": 0
+  },
+  "K3": {
+   "episodes": 2,
+   "eligible": 2,
+   "stage1_accuracy": 1.0,
+   "stage2_accuracy": 1.0,
+   "invented_kinds": [
+    "operation"
+   ],
+   "reuse_per_kind": {
+    "combinator": 0.0,
+    "object": 0.0,
+    "operation": 1.0
+   },
+   "median_total_length": 8938.0,
+   "median_steps": 294.75,
+   "median_boundary_steps": 232.0,
+   "api_errors": 0
+  },
+  "K4": {
+   "episodes": 2,
+   "eligible": 2,
+   "stage1_accuracy": 1.0,
+   "stage2_accuracy": 1.0,
+   "invented_kinds": [
+    "operation"
+   ],
+   "reuse_per_kind": {
+    "combinator": 0.0,
+    "law": 0.0,
+    "object": 0.0,
+    "operation": 1.0
+   },
+   "median_total_length": 8938.0,
+   "median_steps": 294.75,
+   "median_boundary_steps": 232.0,
+   "api_errors": 0,
+   "laws": {
+    "saved": 0,
+    "verified": 0,
+    "promoted": 0,
+    "scopes": [],
+    "rewrite_steps": 0
+   }
+  },
+  "K5": {
+   "episodes": 2,
+   "eligible": 2,
+   "stage1_accuracy": 1.0,
+   "stage2_accuracy": 1.0,
+   "invented_kinds": [
+    "operation"
+   ],
+   "reuse_per_kind": {
+    "combinator": 0.0,
+    "law": 0.0,
+    "object": 0.0,
+    "observation": 0.0,
+    "operation": 1.0
+   },
+   "median_total_length": 8938.0,
+   "median_steps": 294.75,
+   "median_boundary_steps": 232.0,
+   "api_errors": 0,
+   "observations": {
+    "saved": 0,
+    "verified": 0,
+    "promoted": 0,
+    "scopes": []
+   }
+  },
+  "K6": {
+   "episodes": 2,
+   "eligible": 2,
+   "stage1_accuracy": 1.0,
+   "stage2_accuracy": 1.0,
+   "invented_kinds": [
+    "operation"
+   ],
+   "reuse_per_kind": {
+    "bridge": 0.0,
+    "combinator": 0.0,
+    "law": 0.0,
+    "object": 0.0,
+    "observation": 0.0,
+    "operation": 1.0
+   },
+   "median_total_length": 8938.0,
+   "median_steps": 294.75,
+   "median_boundary_steps": 232.0,
+   "api_errors": 0,
+   "observations": {
+    "saved": 0,
+    "verified": 0,
+    "promoted": 0,
+    "scopes": []
+   },
+   "bridges": {
+    "saved": 0,
+    "verified": 0,
+    "promoted": 0,
+    "scopes": []
+   }
+  }
+ },
+ "comparisons": {
+  "K2-K1": {
+   "bootstrap": null,
+   "decision": "diagnostic",
+   "length_ratio": {
+    "ratio": 1.0,
+    "ci95": [
+     1.0,
+     1.0
+    ]
+   },
+   "steps_ratio": {
+    "ratio": 1.0,
+    "ci95": [
+     1.0,
+     1.0
+    ]
+   }
+  },
+  "K3-K2": {
+   "bootstrap": null,
+   "decision": "diagnostic",
+   "length_ratio": {
+    "ratio": 1.0,
+    "ci95": [
+     1.0,
+     1.0
+    ]
+   },
+   "steps_ratio": {
+    "ratio": 1.0,
+    "ci95": [
+     1.0,
+     1.0
+    ]
+   }
+  },
+  "K4-K3": {
+   "bootstrap": null,
+   "decision": "diagnostic",
+   "length_ratio": {
+    "ratio": 1.0,
+    "ci95": [
+     1.0,
+     1.0
+    ]
+   },
+   "steps_ratio": {
+    "ratio": 1.0,
+    "ci95": [
+     1.0,
+     1.0
+    ]
+   }
+  },
+  "K5-K4": {
+   "bootstrap": null,
+   "decision": "diagnostic",
+   "length_ratio": {
+    "ratio": 1.0,
+    "ci95": [
+     1.0,
+     1.0
+    ]
+   },
+   "steps_ratio": {
+    "ratio": 1.0,
+    "ci95": [
+     1.0,
+     1.0
+    ]
+   }
+  },
+  "K6-K5": {
+   "bootstrap": null,
+   "decision": "diagnostic",
+   "length_ratio": {
+    "ratio": 1.0,
+    "ci95": [
+     1.0,
+     1.0
+    ]
+   },
+   "steps_ratio": {
+    "ratio": 1.0,
+    "ci95": [
+     1.0,
+     1.0
+    ]
+   }
+  }
+ },
+ "primary": {
+  "bootstrap": null,
+  "decision": "diagnostic",
+  "length_ratio": {
+   "ratio": 1.0,
+   "ci95": [
+    1.0,
+    1.0
+   ]
+  },
+  "steps_ratio": {
+   "ratio": 1.0,
+   "ci95": [
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "secondary": {
+  "bootstrap": null,
+  "decision": "diagnostic",
+  "length_ratio": {
+   "ratio": 1.0,
+   "ci95": [
+    1.0,
+    1.0
+   ]
+  },
+  "steps_ratio": {
+   "ratio": 1.0,
+   "ci95": [
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "optional_secondary": {
+  "bootstrap": null,
+  "decision": "diagnostic",
+  "length_ratio": {
+   "ratio": 1.0,
+   "ci95": [
+    1.0,
+    1.0
+   ]
+  },
+  "steps_ratio": {
+   "ratio": 1.0,
+   "ci95": [
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "descriptive_secondary": {
+  "K5-K4": {
+   "bootstrap": null,
+   "decision": "diagnostic",
+   "length_ratio": {
+    "ratio": 1.0,
+    "ci95": [
+     1.0,
+     1.0
+    ]
+   },
+   "steps_ratio": {
+    "ratio": 1.0,
+    "ci95": [
+     1.0,
+     1.0
+    ]
+   }
+  },
+  "K6-K5": {
+   "bootstrap": null,
+   "decision": "diagnostic",
+   "length_ratio": {
+    "ratio": 1.0,
+    "ci95": [
+     1.0,
+     1.0
+    ]
+   },
+   "steps_ratio": {
+    "ratio": 1.0,
+    "ci95": [
+     1.0,
+     1.0
+    ]
+   }
+  }
+ }
+}

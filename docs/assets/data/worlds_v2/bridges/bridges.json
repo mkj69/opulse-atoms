@@ -1,0 +1,3211 @@
+{
+  "notation3": {
+    "version": 1,
+    "worlds": {
+      "integer@2": {
+        "designs": [
+          "Translate a pair (integer numerator, positive denominator) to a reduced integer-world fraction. Pair and fraction addition cross-multiply numerators and canonicalize the result."
+        ],
+        "formulas": {
+          "~to_frac": {
+            "ascii": "\\squig_1",
+            "display": "↝₁",
+            "signature": null
+          },
+          "~to_frac(Pair<-3, 2>)": {
+            "ascii": "\\squig_1 (\\bbE(-3, 2))",
+            "display": "↝₁ (𝔼(-3, 2))",
+            "signature": null
+          },
+          "~to_frac(Pair<3, 0>)": {
+            "ascii": "\\squig_1 (\\bbE(3, 0))",
+            "display": "↝₁ (𝔼(3, 0))",
+            "signature": null
+          },
+          "~to_frac(Pair<4, 3>)": {
+            "ascii": "\\squig_1 (\\bbE(4, 3))",
+            "display": "↝₁ (𝔼(4, 3))",
+            "signature": null
+          }
+        },
+        "legend": [
+          {
+            "display": "ℤ",
+            "forms": [],
+            "kind": "object",
+            "layer": 0,
+            "mark": "\\bbZ",
+            "name": "int",
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "display": "𝔹",
+            "forms": [
+              "false",
+              "true"
+            ],
+            "kind": "object",
+            "layer": 0,
+            "mark": "\\bbB",
+            "name": "bool",
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "display": "𝔸",
+            "forms": [],
+            "kind": "object",
+            "layer": 0,
+            "mark": "\\bbA",
+            "name": "str",
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "display": "𝔻",
+            "forms": [
+              "items"
+            ],
+            "kind": "object",
+            "layer": 0,
+            "mark": "\\bbD",
+            "name": "list",
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "display": "𝔼",
+            "forms": [
+              "items"
+            ],
+            "kind": "object",
+            "layer": 0,
+            "mark": "\\bbE",
+            "name": "pair",
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "display": "𝔾",
+            "forms": [
+              "val"
+            ],
+            "kind": "object",
+            "layer": 0,
+            "mark": "\\bbG",
+            "name": "frac",
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "display": "ℍ",
+            "forms": [
+              "val"
+            ],
+            "kind": "object",
+            "layer": 0,
+            "mark": "\\bbH",
+            "name": "cf",
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "display": "𝕀",
+            "forms": [],
+            "kind": "object",
+            "layer": 0,
+            "mark": "\\bbI",
+            "name": "any",
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "display": "𝕁",
+            "forms": [
+              "val"
+            ],
+            "kind": "object",
+            "layer": 0,
+            "mark": "\\bbJ",
+            "name": "nat",
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "display": "@",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "@",
+            "name": "succ",
+            "origin": "given",
+            "signature": {
+              "ascii": "@ : \\bbZ -> \\bbZ",
+              "display": "@ : ℤ → ℤ"
+            }
+          },
+          {
+            "display": "(+)",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "(+)",
+            "name": "add",
+            "origin": "given",
+            "signature": {
+              "ascii": "(+) : \\bbZ \\x \\bbZ -> \\bbZ",
+              "display": "(+) : ℤ × ℤ → ℤ"
+            }
+          },
+          {
+            "display": "#",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "#",
+            "name": "neg",
+            "origin": "given",
+            "signature": {
+              "ascii": "# : \\bbZ -> \\bbZ",
+              "display": "# : ℤ → ℤ"
+            }
+          },
+          {
+            "display": "$",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "$",
+            "name": "gcd",
+            "origin": "given",
+            "signature": {
+              "ascii": "$ : \\bbZ \\x \\bbZ -> \\bbZ",
+              "display": "$ : ℤ × ℤ → ℤ"
+            }
+          },
+          {
+            "display": "(<)",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "(<)",
+            "name": "lt",
+            "origin": "given",
+            "signature": {
+              "ascii": "(<) : \\bbZ \\x \\bbZ -> \\bbB",
+              "display": "(<) : ℤ × ℤ → 𝔹"
+            }
+          },
+          {
+            "display": "(<=)",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "(<=)",
+            "name": "le",
+            "origin": "given",
+            "signature": {
+              "ascii": "(<=) : \\bbZ \\x \\bbZ -> \\bbB",
+              "display": "(<=) : ℤ × ℤ → 𝔹"
+            }
+          },
+          {
+            "display": "(==)",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "(==)",
+            "name": "eq",
+            "origin": "given",
+            "signature": {
+              "ascii": "(==) : \\bbZ \\x \\bbZ -> \\bbB",
+              "display": "(==) : ℤ × ℤ → 𝔹"
+            }
+          },
+          {
+            "display": "(!=)",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "(!=)",
+            "name": "ne",
+            "origin": "given",
+            "signature": {
+              "ascii": "(!=) : \\bbZ \\x \\bbZ -> \\bbB",
+              "display": "(!=) : ℤ × ℤ → 𝔹"
+            }
+          },
+          {
+            "display": "(-)",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "(-)",
+            "name": "sub",
+            "origin": "given",
+            "signature": {
+              "ascii": "(-) : \\bbZ \\x \\bbZ -> \\bbZ",
+              "display": "(-) : ℤ × ℤ → ℤ"
+            }
+          },
+          {
+            "display": "&",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "&",
+            "name": "quotient",
+            "origin": "given",
+            "signature": {
+              "ascii": "& : \\bbZ \\x \\bbZ -> \\bbZ",
+              "display": "& : ℤ × ℤ → ℤ"
+            }
+          },
+          {
+            "display": "♠",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "\\spade",
+            "name": "failure",
+            "origin": "given",
+            "signature": {
+              "ascii": "\\spade : \\bbA -> \\bbZ",
+              "display": "♠ : 𝔸 → ℤ"
+            }
+          },
+          {
+            "display": "♤",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "\\wspade",
+            "name": "pair",
+            "note": "constructor of 𝔼",
+            "origin": "given",
+            "signature": {
+              "ascii": "\\wspade : \\bbZ \\x \\bbZ -> \\bbE",
+              "display": "♤ : ℤ × ℤ → 𝔼"
+            }
+          },
+          {
+            "display": "♥",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "\\heart",
+            "name": "first",
+            "origin": "given",
+            "signature": {
+              "ascii": "\\heart : \\bbE -> \\bbZ",
+              "display": "♥ : 𝔼 → ℤ"
+            }
+          },
+          {
+            "display": "♡",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "\\wheart",
+            "name": "second",
+            "origin": "given",
+            "signature": {
+              "ascii": "\\wheart : \\bbE -> \\bbZ",
+              "display": "♡ : 𝔼 → ℤ"
+            }
+          },
+          {
+            "display": "♦",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "\\dia",
+            "name": "list_empty",
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "display": "♢",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "\\wdia",
+            "name": "cons",
+            "origin": "given",
+            "signature": {
+              "ascii": "\\wdia : \\bbZ \\x \\bbD -> \\bbD",
+              "display": "♢ : ℤ × 𝔻 → 𝔻"
+            }
+          },
+          {
+            "display": "♣",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "\\club",
+            "name": "append",
+            "origin": "given",
+            "signature": {
+              "ascii": "\\club : \\bbD \\x \\bbZ -> \\bbD",
+              "display": "♣ : 𝔻 × ℤ → 𝔻"
+            }
+          },
+          {
+            "display": "♧",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "\\wclub",
+            "name": "is_empty",
+            "origin": "given",
+            "signature": {
+              "ascii": "\\wclub : \\bbD -> \\bbB",
+              "display": "♧ : 𝔻 → 𝔹"
+            }
+          },
+          {
+            "display": "■",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "\\sq",
+            "name": "head",
+            "origin": "given",
+            "signature": {
+              "ascii": "\\sq : \\bbD -> \\bbZ",
+              "display": "■ : 𝔻 → ℤ"
+            }
+          },
+          {
+            "display": "□",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "\\wsq",
+            "name": "tail",
+            "origin": "given",
+            "signature": {
+              "ascii": "\\wsq : \\bbD -> \\bbD",
+              "display": "□ : 𝔻 → 𝔻"
+            }
+          },
+          {
+            "display": "●",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "\\dot",
+            "name": "length",
+            "origin": "given",
+            "signature": {
+              "ascii": "\\dot : \\bbD -> \\bbZ",
+              "display": "● : 𝔻 → ℤ"
+            }
+          },
+          {
+            "display": "○",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "\\wdot",
+            "name": "numerator",
+            "origin": "given",
+            "signature": {
+              "ascii": "\\wdot : \\bbG -> \\bbZ",
+              "display": "○ : 𝔾 → ℤ"
+            }
+          },
+          {
+            "display": "▲",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "\\up",
+            "name": "denominator",
+            "origin": "given",
+            "signature": {
+              "ascii": "\\up : \\bbG -> \\bbZ",
+              "display": "▲ : 𝔾 → ℤ"
+            }
+          },
+          {
+            "display": "△",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "\\wup",
+            "name": "digits",
+            "origin": "given",
+            "signature": {
+              "ascii": "\\wup : \\bbH -> \\bbD",
+              "display": "△ : ℍ → 𝔻"
+            }
+          },
+          {
+            "display": "▼",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "\\dn",
+            "name": "count",
+            "origin": "given",
+            "signature": {
+              "ascii": "\\dn : \\bbJ -> \\bbZ",
+              "display": "▼ : 𝕁 → ℤ"
+            }
+          },
+          {
+            "display": "▽",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "\\wdn",
+            "name": "is_cf_data",
+            "origin": "given",
+            "signature": {
+              "ascii": "\\wdn : \\bbI -> \\bbB",
+              "display": "▽ : 𝕀 → 𝔹"
+            }
+          },
+          {
+            "display": "◆",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "\\lz",
+            "name": "is_pair",
+            "origin": "given",
+            "signature": {
+              "ascii": "\\lz : \\bbI -> \\bbB",
+              "display": "◆ : 𝕀 → 𝔹"
+            }
+          },
+          {
+            "display": "◇",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "\\wlz",
+            "name": "is_base",
+            "origin": "given",
+            "signature": {
+              "ascii": "\\wlz : \\bbI \\x \\bbA -> \\bbB",
+              "display": "◇ : 𝕀 × 𝔸 → 𝔹"
+            }
+          },
+          {
+            "display": "Γ",
+            "kind": "combinator",
+            "layer": 0,
+            "mark": "\\Gamma",
+            "name": "sequence",
+            "origin": "given",
+            "signature": {
+              "ascii": "\\Gamma : \\bbX_a -> \\bbX_e",
+              "display": "Γ : 𝕏ₐ → 𝕏ₑ"
+            }
+          },
+          {
+            "display": "Â",
+            "kind": "observation",
+            "layer": 0,
+            "mark": "\\hatA",
+            "name": "value",
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "display": "𝕂",
+            "forms": [],
+            "kind": "object",
+            "layer": 0,
+            "mark": "\\bbK",
+            "name": "fn",
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "display": "★",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "\\st",
+            "name": "cf.base",
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "display": "☆",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "\\wst",
+            "name": "nat.base",
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "display": "♦₀₁",
+            "form_of": "bool",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "\\dia_01",
+            "name": "bool.false",
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "display": "♦₀₂",
+            "form_of": "bool",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "\\dia_02",
+            "name": "bool.true",
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "display": "Â₁",
+            "kind": "observation",
+            "layer": 1,
+            "mark": "\\hatA_1",
+            "name": "whole",
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "display": "Γ₁",
+            "kind": "combinator",
+            "layer": 1,
+            "mark": "\\Gamma_1",
+            "name": "fold_frac",
+            "origin": "invented",
+            "signature": {
+              "ascii": "^1\\Gamma_1 : \\bbX_a \\x \\bbX_a -> \\bbX_a",
+              "display": "¹Γ₁ : 𝕏ₐ × 𝕏ₐ → 𝕏ₐ"
+            }
+          },
+          {
+            "display": "♦₁",
+            "kind": "operation",
+            "layer": 1,
+            "mark": "\\dia_1",
+            "name": "cf_divmod",
+            "origin": "invented",
+            "signature": {
+              "ascii": "^1\\dia_1 : \\bbZ \\x \\bbZ -> \\bbE",
+              "display": "¹♦₁ : ℤ × ℤ → 𝔼"
+            }
+          },
+          {
+            "display": "≡₁",
+            "kind": "law",
+            "layer": 1,
+            "mark": "\\eqv_1",
+            "name": "add_comm",
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "display": "≡₂",
+            "kind": "law",
+            "layer": 1,
+            "mark": "\\eqv_2",
+            "name": "gcd_comm",
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "display": "𝔸₁",
+            "kind": "template",
+            "layer": 1,
+            "mark": "\\bbA_1",
+            "name": "Quot",
+            "origin": "invented",
+            "produces": "object",
+            "signature": null
+          },
+          {
+            "display": "□₂",
+            "kind": "operation",
+            "layer": 1,
+            "mark": "\\wsq_2",
+            "name": "abs_int",
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "display": "●₃",
+            "kind": "operation",
+            "layer": 1,
+            "mark": "\\dot_3",
+            "name": "canonical_tail",
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "display": "○₄",
+            "kind": "operation",
+            "layer": 1,
+            "mark": "\\wdot_4",
+            "name": "expand",
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "display": "◆₅",
+            "kind": "operation",
+            "layer": 1,
+            "mark": "\\lz_5",
+            "name": "quot_valid",
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "display": "◇₆",
+            "kind": "operation",
+            "layer": 1,
+            "mark": "\\wlz_6",
+            "name": "reduce_ratio",
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "display": "↝₁",
+            "kind": "bridge",
+            "layer": 1,
+            "mark": "\\squig_1",
+            "name": "to_frac",
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "display": "Δ₂",
+            "kind": "combinator",
+            "layer": 2,
+            "mark": "\\Delta_2",
+            "name": "repeat",
+            "origin": "invented",
+            "signature": {
+              "ascii": "^2\\Delta_2 : \\bbX_a \\x \\bbJ -> \\bbX_a",
+              "display": "²Δ₂ : 𝕏ₐ × 𝕁 → 𝕏ₐ"
+            }
+          },
+          {
+            "display": "𝔸₂",
+            "forms": [
+              "val"
+            ],
+            "kind": "object",
+            "layer": 2,
+            "mark": "\\bbA_2",
+            "name": "quot_frac",
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "display": "★₇",
+            "kind": "operation",
+            "layer": 2,
+            "mark": "\\st_7",
+            "name": "mod12",
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "display": "♧₈",
+            "kind": "operation",
+            "layer": 3,
+            "mark": "\\wclub_8",
+            "name": "mul",
+            "origin": "invented",
+            "signature": {
+              "ascii": "^3\\wclub_8 : \\bbZ \\x \\bbZ -> \\bbZ",
+              "display": "³♧₈ : ℤ × ℤ → ℤ"
+            }
+          },
+          {
+            "display": "Θ₃",
+            "kind": "combinator",
+            "layer": 3,
+            "mark": "\\Theta_3",
+            "name": "convergents",
+            "origin": "invented",
+            "signature": {
+              "ascii": "^3\\Theta_3 : \\bbH -> \\bbD",
+              "display": "³Θ₃ : ℍ → 𝔻"
+            }
+          },
+          {
+            "display": "𝔼₃",
+            "forms": [
+              "val"
+            ],
+            "kind": "object",
+            "layer": 3,
+            "mark": "\\bbE_3",
+            "name": "hour",
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "display": "♦₉",
+            "kind": "operation",
+            "layer": 4,
+            "mark": "\\dia_9",
+            "name": "qadd",
+            "origin": "invented",
+            "signature": {
+              "ascii": "^4\\dia_9 : \\bbG \\x \\bbG -> \\bbG",
+              "display": "⁴♦₉ : 𝔾 × 𝔾 → 𝔾"
+            }
+          },
+          {
+            "display": "♠₁₀",
+            "kind": "operation",
+            "layer": 4,
+            "mark": "\\spade_10",
+            "name": "qmul",
+            "origin": "invented",
+            "signature": {
+              "ascii": "^4\\spade_10 : \\bbG \\x \\bbG -> \\bbG",
+              "display": "⁴♠₁₀ : 𝔾 × 𝔾 → 𝔾"
+            }
+          },
+          {
+            "display": "≡₃",
+            "kind": "law",
+            "layer": 4,
+            "mark": "\\eqv_3",
+            "name": "mul_comm",
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "display": "≡₄",
+            "kind": "law",
+            "layer": 4,
+            "mark": "\\eqv_4",
+            "name": "mul_distrib",
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "display": "●₁₁",
+            "kind": "operation",
+            "layer": 4,
+            "mark": "\\dot_11",
+            "name": "cf_step",
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "display": "○₁₂",
+            "kind": "operation",
+            "layer": 4,
+            "mark": "\\wdot_12",
+            "name": "lcm",
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "display": "Ĉ₂",
+            "kind": "observation",
+            "layer": 5,
+            "mark": "\\hatC_2",
+            "name": "bounded_convergent",
+            "origin": "invented",
+            "signature": {
+              "ascii": "^5\\hatC_2 : \\bbE -> \\bbG",
+              "display": "⁵Ĉ₂ : 𝔼 → 𝔾"
+            }
+          },
+          {
+            "display": "≡₅",
+            "kind": "law",
+            "layer": 5,
+            "mark": "\\eqv_5",
+            "name": "gcd_mul_lcm",
+            "origin": "invented",
+            "signature": null
+          }
+        ],
+        "prose": {
+          "~to_frac(Pair<-3, 2>)": [
+            [
+              "f",
+              "↝₁",
+              "\\squig_1"
+            ],
+            [
+              "t",
+              "(Pair<-3, 2>)"
+            ]
+          ],
+          "~to_frac(Pair<3, 0>)": [
+            [
+              "f",
+              "↝₁",
+              "\\squig_1"
+            ],
+            [
+              "t",
+              "(Pair<3, 0>)"
+            ]
+          ],
+          "~to_frac(Pair<4, 3>)": [
+            [
+              "f",
+              "↝₁",
+              "\\squig_1"
+            ],
+            [
+              "t",
+              "(Pair<4, 3>)"
+            ]
+          ]
+        },
+        "skipped": 0
+      },
+      "rhythm@1": {
+        "designs": [
+          "Map each 0 to an unlit '.', and each light (1) or heavy (2) beat to a lit '#'. The resulting grid has one row. Rotation left by k shifts its columns left by k modulo width."
+        ],
+        "formulas": {
+          "~beat_row": {
+            "ascii": "\\squig_1",
+            "display": "↝₁",
+            "signature": null
+          },
+          "~beat_row(Rhythm<0, 0, 0, 0, 0, 0, 0, 0, 0>)": {
+            "ascii": "\\squig_1 (\\bbE(0, 0, 0, 0, 0, 0, 0, 0, 0))",
+            "display": "↝₁ (𝔼(0, 0, 0, 0, 0, 0, 0, 0, 0))",
+            "signature": null
+          },
+          "~beat_row(Rhythm<0, 0, 0, 0>)": {
+            "ascii": "\\squig_1 (\\bbE(0, 0, 0, 0))",
+            "display": "↝₁ (𝔼(0, 0, 0, 0))",
+            "signature": null
+          },
+          "~beat_row(Rhythm<2, 0, 1, 0, 2>)": {
+            "ascii": "\\squig_1 (\\bbE(2, 0, 1, 0, 2))",
+            "display": "↝₁ (𝔼(2, 0, 1, 0, 2))",
+            "signature": null
+          }
+        },
+        "legend": [
+          {
+            "display": "𝔸",
+            "forms": [],
+            "kind": "object",
+            "layer": 0,
+            "mark": "\\bbA",
+            "name": "any",
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "display": "𝔻",
+            "forms": [],
+            "kind": "object",
+            "layer": 0,
+            "mark": "\\bbD",
+            "name": "list",
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "display": "ℤ",
+            "forms": [],
+            "kind": "object",
+            "layer": 0,
+            "mark": "\\bbZ",
+            "name": "int",
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "display": "𝔹",
+            "forms": [
+              "false",
+              "true"
+            ],
+            "kind": "object",
+            "layer": 0,
+            "mark": "\\bbB",
+            "name": "bool",
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "display": "𝔼",
+            "forms": [
+              "beats"
+            ],
+            "kind": "object",
+            "layer": 0,
+            "mark": "\\bbE",
+            "name": "rhythm",
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "display": "@",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "@",
+            "name": "left",
+            "origin": "given",
+            "signature": {
+              "ascii": "@ : \\bbE \\x \\bbZ -> \\bbE",
+              "display": "@ : 𝔼 × ℤ → 𝔼"
+            }
+          },
+          {
+            "display": "#",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "#",
+            "name": "identity",
+            "origin": "given",
+            "signature": {
+              "ascii": "# : \\bbA -> \\bbA",
+              "display": "# : 𝔸 → 𝔸"
+            }
+          },
+          {
+            "display": "$",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "$",
+            "name": "make_rhythm",
+            "origin": "given",
+            "signature": {
+              "ascii": "$ : \\bbD -> \\bbE",
+              "display": "$ : 𝔻 → 𝔼"
+            }
+          },
+          {
+            "display": "&",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "&",
+            "name": "length",
+            "origin": "given",
+            "signature": {
+              "ascii": "& : \\bbA -> \\bbZ",
+              "display": "& : 𝔸 → ℤ"
+            }
+          },
+          {
+            "display": "♠",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "\\spade",
+            "name": "at",
+            "origin": "given",
+            "signature": {
+              "ascii": "\\spade : \\bbA \\x \\bbZ -> \\bbA",
+              "display": "♠ : 𝔸 × ℤ → 𝔸"
+            }
+          },
+          {
+            "display": "♤",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "\\wspade",
+            "name": "index_of",
+            "origin": "given",
+            "signature": {
+              "ascii": "\\wspade : \\bbD \\x \\bbA -> \\bbZ",
+              "display": "♤ : 𝔻 × 𝔸 → ℤ"
+            }
+          },
+          {
+            "display": "♥",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "\\heart",
+            "name": "append",
+            "origin": "given",
+            "signature": {
+              "ascii": "\\heart : \\bbD \\x \\bbA -> \\bbD",
+              "display": "♥ : 𝔻 × 𝔸 → 𝔻"
+            }
+          },
+          {
+            "display": "♡",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "\\wheart",
+            "name": "prefix",
+            "origin": "given",
+            "signature": {
+              "ascii": "\\wheart : \\bbD \\x \\bbZ -> \\bbD",
+              "display": "♡ : 𝔻 × ℤ → 𝔻"
+            }
+          },
+          {
+            "display": "♦",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "\\dia",
+            "name": "repeat",
+            "origin": "given",
+            "signature": {
+              "ascii": "\\dia : \\bbD \\x \\bbZ -> \\bbD",
+              "display": "♦ : 𝔻 × ℤ → 𝔻"
+            }
+          },
+          {
+            "display": "♢",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "\\wdia",
+            "name": "indices",
+            "origin": "given",
+            "signature": {
+              "ascii": "\\wdia : \\bbZ -> \\bbD",
+              "display": "♢ : ℤ → 𝔻"
+            }
+          },
+          {
+            "display": "♣",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "\\club",
+            "name": "unique",
+            "origin": "given",
+            "signature": {
+              "ascii": "\\club : \\bbD -> \\bbD",
+              "display": "♣ : 𝔻 → 𝔻"
+            }
+          },
+          {
+            "display": "♧",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "\\wclub",
+            "name": "sorted_list",
+            "origin": "given",
+            "signature": {
+              "ascii": "\\wclub : \\bbD -> \\bbD",
+              "display": "♧ : 𝔻 → 𝔻"
+            }
+          },
+          {
+            "display": "■",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "\\sq",
+            "name": "minimum",
+            "origin": "given",
+            "signature": {
+              "ascii": "\\sq : \\bbD -> \\bbA",
+              "display": "■ : 𝔻 → 𝔸"
+            }
+          },
+          {
+            "display": "□",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "\\wsq",
+            "name": "first",
+            "origin": "given",
+            "signature": {
+              "ascii": "\\wsq : \\bbA -> \\bbA",
+              "display": "□ : 𝔸 → 𝔸"
+            }
+          },
+          {
+            "display": "●",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "\\dot",
+            "name": "second",
+            "origin": "given",
+            "signature": {
+              "ascii": "\\dot : \\bbA -> \\bbA",
+              "display": "● : 𝔸 → 𝔸"
+            }
+          },
+          {
+            "display": "○",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "\\wdot",
+            "name": "pair",
+            "origin": "given",
+            "signature": {
+              "ascii": "\\wdot : \\bbA \\x \\bbA -> \\bbA",
+              "display": "○ : 𝔸 × 𝔸 → 𝔸"
+            }
+          },
+          {
+            "display": "▲",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "\\up",
+            "name": "triple",
+            "origin": "given",
+            "signature": {
+              "ascii": "\\up : \\bbA \\x \\bbA \\x \\bbA -> \\bbA",
+              "display": "▲ : 𝔸 × 𝔸 × 𝔸 → 𝔸"
+            }
+          },
+          {
+            "display": "△",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "\\wup",
+            "name": "quad",
+            "origin": "given",
+            "signature": {
+              "ascii": "\\wup : \\bbA \\x \\bbA \\x \\bbA \\x \\bbA -> \\bbA",
+              "display": "△ : 𝔸 × 𝔸 × 𝔸 × 𝔸 → 𝔸"
+            }
+          },
+          {
+            "display": "(+)",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "(+)",
+            "name": "add",
+            "origin": "given",
+            "signature": {
+              "ascii": "(+) : \\bbZ \\x \\bbZ -> \\bbZ",
+              "display": "(+) : ℤ × ℤ → ℤ"
+            }
+          },
+          {
+            "display": "(-)",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "(-)",
+            "name": "sub",
+            "origin": "given",
+            "signature": {
+              "ascii": "(-) : \\bbZ \\x \\bbZ -> \\bbZ",
+              "display": "(-) : ℤ × ℤ → ℤ"
+            }
+          },
+          {
+            "display": "(%)",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "(%)",
+            "name": "mod",
+            "origin": "given",
+            "signature": {
+              "ascii": "(%) : \\bbZ \\x \\bbZ -> \\bbZ",
+              "display": "(%) : ℤ × ℤ → ℤ"
+            }
+          },
+          {
+            "display": "(/)",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "(/)",
+            "name": "div",
+            "origin": "given",
+            "signature": {
+              "ascii": "(/) : \\bbZ \\x \\bbZ -> \\bbZ",
+              "display": "(/) : ℤ × ℤ → ℤ"
+            }
+          },
+          {
+            "display": "▼",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "\\dn",
+            "name": "lcm",
+            "origin": "given",
+            "signature": {
+              "ascii": "\\dn : \\bbZ \\x \\bbZ -> \\bbZ",
+              "display": "▼ : ℤ × ℤ → ℤ"
+            }
+          },
+          {
+            "display": "(==)",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "(==)",
+            "name": "eq",
+            "origin": "given",
+            "signature": {
+              "ascii": "(==) : \\bbA \\x \\bbA -> \\bbB",
+              "display": "(==) : 𝔸 × 𝔸 → 𝔹"
+            }
+          },
+          {
+            "display": "(!=)",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "(!=)",
+            "name": "ne",
+            "origin": "given",
+            "signature": {
+              "ascii": "(!=) : \\bbA \\x \\bbA -> \\bbB",
+              "display": "(!=) : 𝔸 × 𝔸 → 𝔹"
+            }
+          },
+          {
+            "display": "(<)",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "(<)",
+            "name": "lt",
+            "origin": "given",
+            "signature": {
+              "ascii": "(<) : \\bbA \\x \\bbA -> \\bbB",
+              "display": "(<) : 𝔸 × 𝔸 → 𝔹"
+            }
+          },
+          {
+            "display": "(<=)",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "(<=)",
+            "name": "le",
+            "origin": "given",
+            "signature": {
+              "ascii": "(<=) : \\bbA \\x \\bbA -> \\bbB",
+              "display": "(<=) : 𝔸 × 𝔸 → 𝔹"
+            }
+          },
+          {
+            "display": "▽",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "\\wdn",
+            "name": "maximum",
+            "origin": "given",
+            "signature": {
+              "ascii": "\\wdn : \\bbZ \\x \\bbZ -> \\bbZ",
+              "display": "▽ : ℤ × ℤ → ℤ"
+            }
+          },
+          {
+            "display": "◆",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "\\lz",
+            "name": "no_accent",
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "display": "◇",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "\\wlz",
+            "name": "invalid",
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "display": "Γ",
+            "kind": "combinator",
+            "layer": 0,
+            "mark": "\\Gamma",
+            "name": "seq",
+            "origin": "given",
+            "signature": {
+              "ascii": "\\Gamma : \\bbX_a -> \\bbX_a",
+              "display": "Γ : 𝕏ₐ → 𝕏ₐ"
+            }
+          },
+          {
+            "display": "Â",
+            "kind": "observation",
+            "layer": 0,
+            "mark": "\\hatA",
+            "name": "cells",
+            "origin": "given",
+            "signature": {
+              "ascii": "\\hatA : \\bbE -> \\bbD",
+              "display": "Â : 𝔼 → 𝔻"
+            }
+          },
+          {
+            "display": "𝔾",
+            "forms": [],
+            "kind": "object",
+            "layer": 0,
+            "mark": "\\bbG",
+            "name": "Fin",
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "display": "ℍ",
+            "forms": [
+              "pair"
+            ],
+            "kind": "object",
+            "layer": 0,
+            "mark": "\\bbH",
+            "name": "Pair",
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "display": "𝕀",
+            "forms": [],
+            "kind": "object",
+            "layer": 0,
+            "mark": "\\bbI",
+            "name": "fn",
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "display": "𝕁",
+            "forms": [],
+            "kind": "object",
+            "layer": 0,
+            "mark": "\\bbJ",
+            "name": "tuple",
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "display": "★",
+            "form_of": "bool",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "\\st",
+            "name": "bool.false",
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "display": "☆",
+            "form_of": "bool",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "\\wst",
+            "name": "bool.true",
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "display": "𝔸₁",
+            "forms": [
+              "val"
+            ],
+            "kind": "object",
+            "layer": 1,
+            "mark": "\\bbA_1",
+            "name": "accented",
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "display": "Γ₁",
+            "kind": "combinator",
+            "layer": 1,
+            "mark": "\\Gamma_1",
+            "name": "stack",
+            "origin": "invented",
+            "signature": {
+              "ascii": "^1\\Gamma_1 : \\bbX_a -> \\bbX_a",
+              "display": "¹Γ₁ : 𝕏ₐ → 𝕏ₐ"
+            }
+          },
+          {
+            "display": "Â₁",
+            "kind": "observation",
+            "layer": 1,
+            "mark": "\\hatA_1",
+            "name": "offbeat",
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "display": "𝔻₂",
+            "forms": [
+              "val"
+            ],
+            "kind": "object",
+            "layer": 1,
+            "mark": "\\bbD_2",
+            "name": "cycle",
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "display": "Δ₂",
+            "kind": "combinator",
+            "layer": 1,
+            "mark": "\\Delta_2",
+            "name": "orbit",
+            "origin": "invented",
+            "signature": {
+              "ascii": "^1\\Delta_2 : \\bbX_a -> \\bbX_a",
+              "display": "¹Δ₂ : 𝕏ₐ → 𝕏ₐ"
+            }
+          },
+          {
+            "display": "↝₁",
+            "kind": "bridge",
+            "layer": 1,
+            "mark": "\\squig_1",
+            "name": "beat_row",
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "display": "▼₁",
+            "kind": "operation",
+            "layer": 2,
+            "mark": "\\dn_1",
+            "name": "start_heavy",
+            "origin": "invented",
+            "signature": {
+              "ascii": "^2\\dn_1 : \\bbA_1 -> \\bbA_1",
+              "display": "²▼₁ : 𝔸₁ → 𝔸₁"
+            }
+          },
+          {
+            "display": "□₂",
+            "kind": "operation",
+            "layer": 2,
+            "mark": "\\wsq_2",
+            "name": "phase_score",
+            "origin": "invented",
+            "signature": {
+              "ascii": "^2\\wsq_2 : \\bbD_2 \\x \\bbD_2 \\x \\bbZ -> \\bbH",
+              "display": "²□₂ : 𝔻₂ × 𝔻₂ × ℤ → ℍ"
+            }
+          },
+          {
+            "display": "Θ₃",
+            "kind": "combinator",
+            "layer": 2,
+            "mark": "\\Theta_3",
+            "name": "weave",
+            "origin": "invented",
+            "signature": {
+              "ascii": "^2\\Theta_3 : \\bbD_2 \\x \\bbD_2 -> \\bbD_2",
+              "display": "²Θ₃ : 𝔻₂ × 𝔻₂ → 𝔻₂"
+            }
+          },
+          {
+            "display": "▽₃",
+            "kind": "operation",
+            "layer": 2,
+            "mark": "\\wdn_3",
+            "name": "silence_weak",
+            "origin": "invented",
+            "signature": {
+              "ascii": "^2\\wdn_3 : \\bbD_2 -> \\bbD_2",
+              "display": "²▽₃ : 𝔻₂ → 𝔻₂"
+            }
+          },
+          {
+            "display": "Ĉ₂",
+            "kind": "observation",
+            "layer": 3,
+            "mark": "\\hatC_2",
+            "name": "best_fit",
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "display": "○₄",
+            "kind": "operation",
+            "layer": 3,
+            "mark": "\\wdot_4",
+            "name": "infer_phase",
+            "origin": "invented",
+            "signature": {
+              "ascii": "^3\\wdot_4 : \\bbD_2 \\x \\bbD_2 \\x \\bbD_2 \\x \\bbZ -> \\bbD",
+              "display": "³○₄ : 𝔻₂ × 𝔻₂ × 𝔻₂ × ℤ → 𝔻"
+            }
+          },
+          {
+            "display": "Ê₃",
+            "kind": "observation",
+            "layer": 4,
+            "mark": "\\hatE_3",
+            "name": "phase_count",
+            "origin": "invented",
+            "signature": null
+          }
+        ],
+        "prose": {
+          "~beat_row(Rhythm<0, 0, 0, 0, 0, 0, 0, 0, 0>)": [
+            [
+              "f",
+              "↝₁",
+              "\\squig_1"
+            ],
+            [
+              "t",
+              "(Rhythm<0, 0, 0, 0, 0, 0, 0, 0, 0>)"
+            ]
+          ],
+          "~beat_row(Rhythm<0, 0, 0, 0>)": [
+            [
+              "f",
+              "↝₁",
+              "\\squig_1"
+            ],
+            [
+              "t",
+              "(Rhythm<0, 0, 0, 0>)"
+            ]
+          ],
+          "~beat_row(Rhythm<2, 0, 1, 0, 2>)": [
+            [
+              "f",
+              "↝₁",
+              "\\squig_1"
+            ],
+            [
+              "t",
+              "(Rhythm<2, 0, 1, 0, 2>)"
+            ]
+          ]
+        },
+        "skipped": 0
+      }
+    }
+  },
+  "story": [
+    {
+      "body_sha256": "ebb20831b9e983f618cd023555464263a15f3a767dd00ab4864b9c1091943ff5",
+      "definition": "Map each 0 to an unlit '.', and each light (1) or heavy (2) beat to a lit '#'. The resulting grid has one row. Rotation left by k shifts its columns left by k modulo width.",
+      "definition_zh": "将零拍变成未点亮的点，将轻拍与重拍变成点亮的井号；左旋对应列的循环左移。",
+      "design_decl": "Map each 0 to an unlit '.', and each light (1) or heavy (2) beat to a lit '#'. The resulting grid has one row. Rotation left by k shifts its columns left by k modulo width.",
+      "design_text": "Map each 0 to an unlit '.', and each light (1) or heavy (2) beat to a lit '#'. The resulting grid has one row. Rotation left by k shifts its columns left by k modulo width.",
+      "evidence": {
+        "atoms_hash": "862a26654142029adbf25b46f7a73ca740acd96f880b24d6fa5ebcbb8b65cb39",
+        "checks": [
+          "commutes",
+          "total_on_domain"
+        ],
+        "content_hash": "128b426247d3c8270b6bef6bfce8d5543a7bb52a704ce6684e0036a5d39368d8",
+        "deps_hash": "157229990b7f8b3495e05e2ddfbab2c01857bd6221d81a6a17bcd30b963e8312",
+        "method": "bounded",
+        "scope": {
+          "all_rotation_residues_checked": 73812,
+          "attached": {
+            "pixels@1": {
+              "atoms_hash": "14e055751d6035a7ee50e885463f533e2bb0c35c740eddd3f0c025a9f66d5695",
+              "definitions": {
+                "beat_to_row": "f5b9870da79638035b4e74bf1883b5fa9462cc7f072decb69f6034306aea2d07",
+                "shift_one": "c925b4031d6885a64eb88d865652da4a62299955518c7b7bfe5481041ff89b73"
+              },
+              "world_hash": "39d05c42d430f2569b6f8e209b8c6d140f523da22f5e7ac58c8ce49b4574f152"
+            }
+          },
+          "checked": {
+            "bounds": {},
+            "by": "library",
+            "sha256": "78aa4fc10c5bd8bdd48dc5802de135d8430ac0de58854ac80dbd37bf38486201",
+            "size": 39
+          },
+          "domain": "all rhythm beat tuples of length 1..3, cells in {0,1,2}; rotate_one/shift_one (k=1); separate exhaustive sweep: length 1..8, all k residues",
+          "domain_size": 39,
+          "pairs_checked": 39,
+          "rotation_sweep_domain": "all beat tuples length 1..8, cells {0,1,2}, k=0..length-1",
+          "size": 39,
+          "skipped": 0,
+          "source_world_hash": "86b3a13173529d13aeeaea76aa04bf6b1c63a1849590ef1b2ca7dc0a59817504",
+          "target_world_hash": "39d05c42d430f2569b6f8e209b8c6d140f523da22f5e7ac58c8ce49b4574f152"
+        },
+        "seed": null,
+        "world_hash": "86b3a13173529d13aeeaea76aa04bf6b1c63a1849590ef1b2ca7dc0a59817504"
+      },
+      "example_steps": {
+        "max": 2,
+        "min": 1
+      },
+      "examples": [
+        {
+          "outcome": {
+            "ok": {
+              "f": [
+                {
+                  "f": [
+                    {
+                      "t": "str",
+                      "v": "#.#.#"
+                    }
+                  ],
+                  "t": "list",
+                  "tag": "items"
+                }
+              ],
+              "t": "grid",
+              "tag": "rows"
+            }
+          },
+          "steps": 2,
+          "text": "~beat_row(Rhythm<2, 0, 1, 0, 2>)",
+          "trace": {
+            "children": [
+              {
+                "children": [
+                  {
+                    "children": [],
+                    "given": true,
+                    "inputs": [
+                      {
+                        "f": [
+                          {
+                            "t": "int",
+                            "v": 2
+                          },
+                          {
+                            "t": "int",
+                            "v": 0
+                          },
+                          {
+                            "t": "int",
+                            "v": 1
+                          },
+                          {
+                            "t": "int",
+                            "v": 0
+                          },
+                          {
+                            "t": "int",
+                            "v": 2
+                          }
+                        ],
+                        "t": "rhythm",
+                        "tag": "beats"
+                      }
+                    ],
+                    "kind": "operation",
+                    "layer": 0,
+                    "name": "rhythm@1:beat_domain",
+                    "outcome": {
+                      "ok": {
+                        "f": [],
+                        "t": "bool",
+                        "tag": "true"
+                      }
+                    },
+                    "steps": 1
+                  },
+                  {
+                    "children": [],
+                    "given": true,
+                    "inputs": [
+                      {
+                        "f": [
+                          {
+                            "t": "int",
+                            "v": 2
+                          },
+                          {
+                            "t": "int",
+                            "v": 0
+                          },
+                          {
+                            "t": "int",
+                            "v": 1
+                          },
+                          {
+                            "t": "int",
+                            "v": 0
+                          },
+                          {
+                            "t": "int",
+                            "v": 2
+                          }
+                        ],
+                        "t": "rhythm",
+                        "tag": "beats"
+                      }
+                    ],
+                    "kind": "operation",
+                    "layer": 0,
+                    "name": "pixels@1:beat_to_row",
+                    "outcome": {
+                      "ok": {
+                        "f": [
+                          {
+                            "f": [
+                              {
+                                "t": "str",
+                                "v": "#.#.#"
+                              }
+                            ],
+                            "t": "list",
+                            "tag": "items"
+                          }
+                        ],
+                        "t": "grid",
+                        "tag": "rows"
+                      }
+                    },
+                    "steps": 1
+                  }
+                ],
+                "given": false,
+                "inputs": [
+                  {
+                    "f": [
+                      {
+                        "t": "int",
+                        "v": 2
+                      },
+                      {
+                        "t": "int",
+                        "v": 0
+                      },
+                      {
+                        "t": "int",
+                        "v": 1
+                      },
+                      {
+                        "t": "int",
+                        "v": 0
+                      },
+                      {
+                        "t": "int",
+                        "v": 2
+                      }
+                    ],
+                    "t": "rhythm",
+                    "tag": "beats"
+                  }
+                ],
+                "kind": "bridge",
+                "layer": 1,
+                "name": "beat_row",
+                "outcome": {
+                  "ok": {
+                    "f": [
+                      {
+                        "f": [
+                          {
+                            "t": "str",
+                            "v": "#.#.#"
+                          }
+                        ],
+                        "t": "list",
+                        "tag": "items"
+                      }
+                    ],
+                    "t": "grid",
+                    "tag": "rows"
+                  }
+                },
+                "steps": 2
+              }
+            ],
+            "given": false,
+            "inputs": [],
+            "kind": "root",
+            "layer": 0,
+            "name": null,
+            "outcome": {
+              "ok": {
+                "f": [
+                  {
+                    "f": [
+                      {
+                        "t": "str",
+                        "v": "#.#.#"
+                      }
+                    ],
+                    "t": "list",
+                    "tag": "items"
+                  }
+                ],
+                "t": "grid",
+                "tag": "rows"
+              }
+            },
+            "steps": 2
+          }
+        },
+        {
+          "outcome": {
+            "ok": {
+              "f": [
+                {
+                  "f": [
+                    {
+                      "t": "str",
+                      "v": "...."
+                    }
+                  ],
+                  "t": "list",
+                  "tag": "items"
+                }
+              ],
+              "t": "grid",
+              "tag": "rows"
+            }
+          },
+          "steps": 2,
+          "text": "~beat_row(Rhythm<0, 0, 0, 0>)",
+          "trace": {
+            "children": [
+              {
+                "children": [
+                  {
+                    "children": [],
+                    "given": true,
+                    "inputs": [
+                      {
+                        "f": [
+                          {
+                            "t": "int",
+                            "v": 0
+                          },
+                          {
+                            "t": "int",
+                            "v": 0
+                          },
+                          {
+                            "t": "int",
+                            "v": 0
+                          },
+                          {
+                            "t": "int",
+                            "v": 0
+                          }
+                        ],
+                        "t": "rhythm",
+                        "tag": "beats"
+                      }
+                    ],
+                    "kind": "operation",
+                    "layer": 0,
+                    "name": "rhythm@1:beat_domain",
+                    "outcome": {
+                      "ok": {
+                        "f": [],
+                        "t": "bool",
+                        "tag": "true"
+                      }
+                    },
+                    "steps": 1
+                  },
+                  {
+                    "children": [],
+                    "given": true,
+                    "inputs": [
+                      {
+                        "f": [
+                          {
+                            "t": "int",
+                            "v": 0
+                          },
+                          {
+                            "t": "int",
+                            "v": 0
+                          },
+                          {
+                            "t": "int",
+                            "v": 0
+                          },
+                          {
+                            "t": "int",
+                            "v": 0
+                          }
+                        ],
+                        "t": "rhythm",
+                        "tag": "beats"
+                      }
+                    ],
+                    "kind": "operation",
+                    "layer": 0,
+                    "name": "pixels@1:beat_to_row",
+                    "outcome": {
+                      "ok": {
+                        "f": [
+                          {
+                            "f": [
+                              {
+                                "t": "str",
+                                "v": "...."
+                              }
+                            ],
+                            "t": "list",
+                            "tag": "items"
+                          }
+                        ],
+                        "t": "grid",
+                        "tag": "rows"
+                      }
+                    },
+                    "steps": 1
+                  }
+                ],
+                "given": false,
+                "inputs": [
+                  {
+                    "f": [
+                      {
+                        "t": "int",
+                        "v": 0
+                      },
+                      {
+                        "t": "int",
+                        "v": 0
+                      },
+                      {
+                        "t": "int",
+                        "v": 0
+                      },
+                      {
+                        "t": "int",
+                        "v": 0
+                      }
+                    ],
+                    "t": "rhythm",
+                    "tag": "beats"
+                  }
+                ],
+                "kind": "bridge",
+                "layer": 1,
+                "name": "beat_row",
+                "outcome": {
+                  "ok": {
+                    "f": [
+                      {
+                        "f": [
+                          {
+                            "t": "str",
+                            "v": "...."
+                          }
+                        ],
+                        "t": "list",
+                        "tag": "items"
+                      }
+                    ],
+                    "t": "grid",
+                    "tag": "rows"
+                  }
+                },
+                "steps": 2
+              }
+            ],
+            "given": false,
+            "inputs": [],
+            "kind": "root",
+            "layer": 0,
+            "name": null,
+            "outcome": {
+              "ok": {
+                "f": [
+                  {
+                    "f": [
+                      {
+                        "t": "str",
+                        "v": "...."
+                      }
+                    ],
+                    "t": "list",
+                    "tag": "items"
+                  }
+                ],
+                "t": "grid",
+                "tag": "rows"
+              }
+            },
+            "steps": 2
+          }
+        },
+        {
+          "outcome": {
+            "bottom": "outside_domain"
+          },
+          "steps": 1,
+          "text": "~beat_row(Rhythm<0, 0, 0, 0, 0, 0, 0, 0, 0>)",
+          "trace": {
+            "children": [
+              {
+                "children": [
+                  {
+                    "children": [],
+                    "given": true,
+                    "inputs": [
+                      {
+                        "f": [
+                          {
+                            "t": "int",
+                            "v": 0
+                          },
+                          {
+                            "t": "int",
+                            "v": 0
+                          },
+                          {
+                            "t": "int",
+                            "v": 0
+                          },
+                          {
+                            "t": "int",
+                            "v": 0
+                          },
+                          {
+                            "t": "int",
+                            "v": 0
+                          },
+                          {
+                            "t": "int",
+                            "v": 0
+                          },
+                          {
+                            "t": "int",
+                            "v": 0
+                          },
+                          {
+                            "t": "int",
+                            "v": 0
+                          },
+                          {
+                            "t": "int",
+                            "v": 0
+                          }
+                        ],
+                        "t": "rhythm",
+                        "tag": "beats"
+                      }
+                    ],
+                    "kind": "operation",
+                    "layer": 0,
+                    "name": "rhythm@1:beat_domain",
+                    "outcome": {
+                      "ok": {
+                        "f": [],
+                        "t": "bool",
+                        "tag": "false"
+                      }
+                    },
+                    "steps": 1
+                  }
+                ],
+                "given": false,
+                "inputs": [
+                  {
+                    "f": [
+                      {
+                        "t": "int",
+                        "v": 0
+                      },
+                      {
+                        "t": "int",
+                        "v": 0
+                      },
+                      {
+                        "t": "int",
+                        "v": 0
+                      },
+                      {
+                        "t": "int",
+                        "v": 0
+                      },
+                      {
+                        "t": "int",
+                        "v": 0
+                      },
+                      {
+                        "t": "int",
+                        "v": 0
+                      },
+                      {
+                        "t": "int",
+                        "v": 0
+                      },
+                      {
+                        "t": "int",
+                        "v": 0
+                      },
+                      {
+                        "t": "int",
+                        "v": 0
+                      }
+                    ],
+                    "t": "rhythm",
+                    "tag": "beats"
+                  }
+                ],
+                "kind": "bridge",
+                "layer": 1,
+                "name": "beat_row",
+                "outcome": {
+                  "bottom": "outside_domain"
+                },
+                "steps": 1
+              }
+            ],
+            "given": false,
+            "inputs": [],
+            "kind": "root",
+            "layer": 0,
+            "name": null,
+            "outcome": {
+              "bottom": "outside_domain"
+            },
+            "steps": 1
+          }
+        }
+      ],
+      "kind": "bridge",
+      "name": "beat_row",
+      "source_world": "rhythm@1",
+      "status": "promoted",
+      "symbol": "~beat_row",
+      "target_world": "pixels@1",
+      "title": "Beat row",
+      "title_zh": "节拍行"
+    },
+    {
+      "body_sha256": "26e903ff7153717c6e87add2b79b6e59b4f740b088ffe6ec7e5f00780c806f74",
+      "definition": "Translate a pair (integer numerator, positive denominator) to a reduced integer-world fraction. Pair and fraction addition cross-multiply numerators and canonicalize the result.",
+      "definition_zh": "将整数分子与正整数分母的数对化为最简分数；两侧加法交叉相乘并约分。",
+      "design_decl": "Translate a pair (integer numerator, positive denominator) to a reduced integer-world fraction. Pair and fraction addition cross-multiply numerators and canonicalize the result.",
+      "design_text": "Translate a pair (integer numerator, positive denominator) to a reduced integer-world fraction. Pair and fraction addition cross-multiply numerators and canonicalize the result.",
+      "evidence": {
+        "atoms_hash": "4b702cd9b4a6a656d522bc7de5b82585bcd75b522c01afef38e96127ca5b3d94",
+        "checks": [
+          "commutes",
+          "total_on_domain"
+        ],
+        "content_hash": "4553c7a6de8b5fb6bd32a8c740dc114544b7d8d45a138a68d0a5f82380b6e198",
+        "deps_hash": "9bc474176956908e841a74d28355cb245b32776c405a4ab482a20b15d05ee761",
+        "method": "bounded",
+        "scope": {
+          "checked": {
+            "bounds": {},
+            "by": "library",
+            "sha256": "06d220d85451db127bc234a140809bcdae58da135473ccd623aadfa9efd5096f",
+            "size": 27
+          },
+          "domain": "pair<Int, Nat> numerator -4..4, denominator 1..3; pair_add/frac_add on ordered pairs whose sum retains denominator 1..3",
+          "domain_size": 27,
+          "pairs_checked": 681,
+          "size": 27,
+          "skipped": 48
+        },
+        "seed": null,
+        "world_hash": "6301b722a0d698386040e30d2099bbce99e72083cbaa1809f478796443f65216"
+      },
+      "example_steps": {
+        "max": 11,
+        "min": 1
+      },
+      "examples": [
+        {
+          "outcome": {
+            "ok": {
+              "f": [
+                {
+                  "f": [
+                    {
+                      "t": "int",
+                      "v": -3
+                    },
+                    {
+                      "t": "int",
+                      "v": 2
+                    }
+                  ],
+                  "t": "pair",
+                  "tag": "items"
+                }
+              ],
+              "t": "frac",
+              "tag": "val"
+            }
+          },
+          "steps": 11,
+          "text": "~to_frac(Pair<-3, 2>)",
+          "trace": {
+            "children": [
+              {
+                "children": [
+                  {
+                    "children": [],
+                    "given": true,
+                    "inputs": [
+                      {
+                        "f": [
+                          {
+                            "t": "int",
+                            "v": -3
+                          },
+                          {
+                            "t": "int",
+                            "v": 2
+                          }
+                        ],
+                        "t": "pair",
+                        "tag": "items"
+                      }
+                    ],
+                    "kind": "operation",
+                    "layer": 0,
+                    "name": "pair_domain",
+                    "outcome": {
+                      "ok": {
+                        "f": [],
+                        "t": "bool",
+                        "tag": "true"
+                      }
+                    },
+                    "steps": 1
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [],
+                        "given": true,
+                        "inputs": [
+                          {
+                            "f": [
+                              {
+                                "t": "int",
+                                "v": -3
+                              },
+                              {
+                                "t": "int",
+                                "v": 2
+                              }
+                            ],
+                            "t": "pair",
+                            "tag": "items"
+                          }
+                        ],
+                        "kind": "operation",
+                        "layer": 0,
+                        "name": "second",
+                        "outcome": {
+                          "ok": {
+                            "t": "int",
+                            "v": 2
+                          }
+                        },
+                        "steps": 1
+                      },
+                      {
+                        "children": [],
+                        "given": true,
+                        "inputs": [
+                          {
+                            "t": "int",
+                            "v": 2
+                          },
+                          {
+                            "t": "int",
+                            "v": 0
+                          }
+                        ],
+                        "kind": "operation",
+                        "layer": 0,
+                        "name": "ne",
+                        "outcome": {
+                          "ok": {
+                            "f": [],
+                            "t": "bool",
+                            "tag": "true"
+                          }
+                        },
+                        "steps": 1
+                      },
+                      {
+                        "children": [],
+                        "given": true,
+                        "inputs": [
+                          {
+                            "f": [
+                              {
+                                "t": "int",
+                                "v": -3
+                              },
+                              {
+                                "t": "int",
+                                "v": 2
+                              }
+                            ],
+                            "t": "pair",
+                            "tag": "items"
+                          }
+                        ],
+                        "kind": "operation",
+                        "layer": 0,
+                        "name": "first",
+                        "outcome": {
+                          "ok": {
+                            "t": "int",
+                            "v": -3
+                          }
+                        },
+                        "steps": 1
+                      },
+                      {
+                        "children": [],
+                        "given": true,
+                        "inputs": [
+                          {
+                            "f": [
+                              {
+                                "t": "int",
+                                "v": -3
+                              },
+                              {
+                                "t": "int",
+                                "v": 2
+                              }
+                            ],
+                            "t": "pair",
+                            "tag": "items"
+                          }
+                        ],
+                        "kind": "operation",
+                        "layer": 0,
+                        "name": "second",
+                        "outcome": {
+                          "ok": {
+                            "t": "int",
+                            "v": 2
+                          }
+                        },
+                        "steps": 1
+                      },
+                      {
+                        "children": [],
+                        "given": true,
+                        "inputs": [
+                          {
+                            "t": "int",
+                            "v": -3
+                          },
+                          {
+                            "t": "int",
+                            "v": 2
+                          }
+                        ],
+                        "kind": "operation",
+                        "layer": 0,
+                        "name": "gcd",
+                        "outcome": {
+                          "ok": {
+                            "t": "int",
+                            "v": 1
+                          }
+                        },
+                        "steps": 1
+                      },
+                      {
+                        "children": [],
+                        "given": true,
+                        "inputs": [
+                          {
+                            "t": "int",
+                            "v": -3
+                          },
+                          {
+                            "t": "int",
+                            "v": 1
+                          }
+                        ],
+                        "kind": "operation",
+                        "layer": 0,
+                        "name": "quotient",
+                        "outcome": {
+                          "ok": {
+                            "t": "int",
+                            "v": -3
+                          }
+                        },
+                        "steps": 1
+                      },
+                      {
+                        "children": [],
+                        "given": true,
+                        "inputs": [
+                          {
+                            "t": "int",
+                            "v": 2
+                          },
+                          {
+                            "t": "int",
+                            "v": 1
+                          }
+                        ],
+                        "kind": "operation",
+                        "layer": 0,
+                        "name": "quotient",
+                        "outcome": {
+                          "ok": {
+                            "t": "int",
+                            "v": 2
+                          }
+                        },
+                        "steps": 1
+                      },
+                      {
+                        "children": [],
+                        "given": true,
+                        "inputs": [
+                          {
+                            "t": "int",
+                            "v": 2
+                          },
+                          {
+                            "t": "int",
+                            "v": 0
+                          }
+                        ],
+                        "kind": "operation",
+                        "layer": 0,
+                        "name": "lt",
+                        "outcome": {
+                          "ok": {
+                            "f": [],
+                            "t": "bool",
+                            "tag": "false"
+                          }
+                        },
+                        "steps": 1
+                      },
+                      {
+                        "children": [],
+                        "given": true,
+                        "inputs": [
+                          {
+                            "t": "int",
+                            "v": -3
+                          },
+                          {
+                            "t": "int",
+                            "v": 2
+                          }
+                        ],
+                        "kind": "operation",
+                        "layer": 0,
+                        "name": "pair",
+                        "outcome": {
+                          "ok": {
+                            "f": [
+                              {
+                                "t": "int",
+                                "v": -3
+                              },
+                              {
+                                "t": "int",
+                                "v": 2
+                              }
+                            ],
+                            "t": "pair",
+                            "tag": "items"
+                          }
+                        },
+                        "steps": 1
+                      },
+                      {
+                        "children": [],
+                        "given": true,
+                        "inputs": [
+                          {
+                            "f": [
+                              {
+                                "t": "int",
+                                "v": -3
+                              },
+                              {
+                                "t": "int",
+                                "v": 2
+                              }
+                            ],
+                            "t": "pair",
+                            "tag": "items"
+                          }
+                        ],
+                        "kind": "object",
+                        "layer": 0,
+                        "name": "frac._pack",
+                        "outcome": {
+                          "ok": {
+                            "f": [
+                              {
+                                "f": [
+                                  {
+                                    "t": "int",
+                                    "v": -3
+                                  },
+                                  {
+                                    "t": "int",
+                                    "v": 2
+                                  }
+                                ],
+                                "t": "pair",
+                                "tag": "items"
+                              }
+                            ],
+                            "t": "frac",
+                            "tag": "val"
+                          }
+                        },
+                        "steps": 1
+                      }
+                    ],
+                    "given": false,
+                    "inputs": [
+                      {
+                        "f": [
+                          {
+                            "t": "int",
+                            "v": -3
+                          },
+                          {
+                            "t": "int",
+                            "v": 2
+                          }
+                        ],
+                        "t": "pair",
+                        "tag": "items"
+                      }
+                    ],
+                    "kind": "object",
+                    "layer": 1,
+                    "name": "frac.make",
+                    "outcome": {
+                      "ok": {
+                        "f": [
+                          {
+                            "f": [
+                              {
+                                "t": "int",
+                                "v": -3
+                              },
+                              {
+                                "t": "int",
+                                "v": 2
+                              }
+                            ],
+                            "t": "pair",
+                            "tag": "items"
+                          }
+                        ],
+                        "t": "frac",
+                        "tag": "val"
+                      }
+                    },
+                    "steps": 10
+                  }
+                ],
+                "given": false,
+                "inputs": [
+                  {
+                    "f": [
+                      {
+                        "t": "int",
+                        "v": -3
+                      },
+                      {
+                        "t": "int",
+                        "v": 2
+                      }
+                    ],
+                    "t": "pair",
+                    "tag": "items"
+                  }
+                ],
+                "kind": "bridge",
+                "layer": 2,
+                "name": "to_frac",
+                "outcome": {
+                  "ok": {
+                    "f": [
+                      {
+                        "f": [
+                          {
+                            "t": "int",
+                            "v": -3
+                          },
+                          {
+                            "t": "int",
+                            "v": 2
+                          }
+                        ],
+                        "t": "pair",
+                        "tag": "items"
+                      }
+                    ],
+                    "t": "frac",
+                    "tag": "val"
+                  }
+                },
+                "steps": 11
+              }
+            ],
+            "given": false,
+            "inputs": [],
+            "kind": "root",
+            "layer": 0,
+            "name": null,
+            "outcome": {
+              "ok": {
+                "f": [
+                  {
+                    "f": [
+                      {
+                        "t": "int",
+                        "v": -3
+                      },
+                      {
+                        "t": "int",
+                        "v": 2
+                      }
+                    ],
+                    "t": "pair",
+                    "tag": "items"
+                  }
+                ],
+                "t": "frac",
+                "tag": "val"
+              }
+            },
+            "steps": 11
+          }
+        },
+        {
+          "outcome": {
+            "ok": {
+              "f": [
+                {
+                  "f": [
+                    {
+                      "t": "int",
+                      "v": 4
+                    },
+                    {
+                      "t": "int",
+                      "v": 3
+                    }
+                  ],
+                  "t": "pair",
+                  "tag": "items"
+                }
+              ],
+              "t": "frac",
+              "tag": "val"
+            }
+          },
+          "steps": 11,
+          "text": "~to_frac(Pair<4, 3>)",
+          "trace": {
+            "children": [
+              {
+                "children": [
+                  {
+                    "children": [],
+                    "given": true,
+                    "inputs": [
+                      {
+                        "f": [
+                          {
+                            "t": "int",
+                            "v": 4
+                          },
+                          {
+                            "t": "int",
+                            "v": 3
+                          }
+                        ],
+                        "t": "pair",
+                        "tag": "items"
+                      }
+                    ],
+                    "kind": "operation",
+                    "layer": 0,
+                    "name": "pair_domain",
+                    "outcome": {
+                      "ok": {
+                        "f": [],
+                        "t": "bool",
+                        "tag": "true"
+                      }
+                    },
+                    "steps": 1
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [],
+                        "given": true,
+                        "inputs": [
+                          {
+                            "f": [
+                              {
+                                "t": "int",
+                                "v": 4
+                              },
+                              {
+                                "t": "int",
+                                "v": 3
+                              }
+                            ],
+                            "t": "pair",
+                            "tag": "items"
+                          }
+                        ],
+                        "kind": "operation",
+                        "layer": 0,
+                        "name": "second",
+                        "outcome": {
+                          "ok": {
+                            "t": "int",
+                            "v": 3
+                          }
+                        },
+                        "steps": 1
+                      },
+                      {
+                        "children": [],
+                        "given": true,
+                        "inputs": [
+                          {
+                            "t": "int",
+                            "v": 3
+                          },
+                          {
+                            "t": "int",
+                            "v": 0
+                          }
+                        ],
+                        "kind": "operation",
+                        "layer": 0,
+                        "name": "ne",
+                        "outcome": {
+                          "ok": {
+                            "f": [],
+                            "t": "bool",
+                            "tag": "true"
+                          }
+                        },
+                        "steps": 1
+                      },
+                      {
+                        "children": [],
+                        "given": true,
+                        "inputs": [
+                          {
+                            "f": [
+                              {
+                                "t": "int",
+                                "v": 4
+                              },
+                              {
+                                "t": "int",
+                                "v": 3
+                              }
+                            ],
+                            "t": "pair",
+                            "tag": "items"
+                          }
+                        ],
+                        "kind": "operation",
+                        "layer": 0,
+                        "name": "first",
+                        "outcome": {
+                          "ok": {
+                            "t": "int",
+                            "v": 4
+                          }
+                        },
+                        "steps": 1
+                      },
+                      {
+                        "children": [],
+                        "given": true,
+                        "inputs": [
+                          {
+                            "f": [
+                              {
+                                "t": "int",
+                                "v": 4
+                              },
+                              {
+                                "t": "int",
+                                "v": 3
+                              }
+                            ],
+                            "t": "pair",
+                            "tag": "items"
+                          }
+                        ],
+                        "kind": "operation",
+                        "layer": 0,
+                        "name": "second",
+                        "outcome": {
+                          "ok": {
+                            "t": "int",
+                            "v": 3
+                          }
+                        },
+                        "steps": 1
+                      },
+                      {
+                        "children": [],
+                        "given": true,
+                        "inputs": [
+                          {
+                            "t": "int",
+                            "v": 4
+                          },
+                          {
+                            "t": "int",
+                            "v": 3
+                          }
+                        ],
+                        "kind": "operation",
+                        "layer": 0,
+                        "name": "gcd",
+                        "outcome": {
+                          "ok": {
+                            "t": "int",
+                            "v": 1
+                          }
+                        },
+                        "steps": 1
+                      },
+                      {
+                        "children": [],
+                        "given": true,
+                        "inputs": [
+                          {
+                            "t": "int",
+                            "v": 4
+                          },
+                          {
+                            "t": "int",
+                            "v": 1
+                          }
+                        ],
+                        "kind": "operation",
+                        "layer": 0,
+                        "name": "quotient",
+                        "outcome": {
+                          "ok": {
+                            "t": "int",
+                            "v": 4
+                          }
+                        },
+                        "steps": 1
+                      },
+                      {
+                        "children": [],
+                        "given": true,
+                        "inputs": [
+                          {
+                            "t": "int",
+                            "v": 3
+                          },
+                          {
+                            "t": "int",
+                            "v": 1
+                          }
+                        ],
+                        "kind": "operation",
+                        "layer": 0,
+                        "name": "quotient",
+                        "outcome": {
+                          "ok": {
+                            "t": "int",
+                            "v": 3
+                          }
+                        },
+                        "steps": 1
+                      },
+                      {
+                        "children": [],
+                        "given": true,
+                        "inputs": [
+                          {
+                            "t": "int",
+                            "v": 3
+                          },
+                          {
+                            "t": "int",
+                            "v": 0
+                          }
+                        ],
+                        "kind": "operation",
+                        "layer": 0,
+                        "name": "lt",
+                        "outcome": {
+                          "ok": {
+                            "f": [],
+                            "t": "bool",
+                            "tag": "false"
+                          }
+                        },
+                        "steps": 1
+                      },
+                      {
+                        "children": [],
+                        "given": true,
+                        "inputs": [
+                          {
+                            "t": "int",
+                            "v": 4
+                          },
+                          {
+                            "t": "int",
+                            "v": 3
+                          }
+                        ],
+                        "kind": "operation",
+                        "layer": 0,
+                        "name": "pair",
+                        "outcome": {
+                          "ok": {
+                            "f": [
+                              {
+                                "t": "int",
+                                "v": 4
+                              },
+                              {
+                                "t": "int",
+                                "v": 3
+                              }
+                            ],
+                            "t": "pair",
+                            "tag": "items"
+                          }
+                        },
+                        "steps": 1
+                      },
+                      {
+                        "children": [],
+                        "given": true,
+                        "inputs": [
+                          {
+                            "f": [
+                              {
+                                "t": "int",
+                                "v": 4
+                              },
+                              {
+                                "t": "int",
+                                "v": 3
+                              }
+                            ],
+                            "t": "pair",
+                            "tag": "items"
+                          }
+                        ],
+                        "kind": "object",
+                        "layer": 0,
+                        "name": "frac._pack",
+                        "outcome": {
+                          "ok": {
+                            "f": [
+                              {
+                                "f": [
+                                  {
+                                    "t": "int",
+                                    "v": 4
+                                  },
+                                  {
+                                    "t": "int",
+                                    "v": 3
+                                  }
+                                ],
+                                "t": "pair",
+                                "tag": "items"
+                              }
+                            ],
+                            "t": "frac",
+                            "tag": "val"
+                          }
+                        },
+                        "steps": 1
+                      }
+                    ],
+                    "given": false,
+                    "inputs": [
+                      {
+                        "f": [
+                          {
+                            "t": "int",
+                            "v": 4
+                          },
+                          {
+                            "t": "int",
+                            "v": 3
+                          }
+                        ],
+                        "t": "pair",
+                        "tag": "items"
+                      }
+                    ],
+                    "kind": "object",
+                    "layer": 1,
+                    "name": "frac.make",
+                    "outcome": {
+                      "ok": {
+                        "f": [
+                          {
+                            "f": [
+                              {
+                                "t": "int",
+                                "v": 4
+                              },
+                              {
+                                "t": "int",
+                                "v": 3
+                              }
+                            ],
+                            "t": "pair",
+                            "tag": "items"
+                          }
+                        ],
+                        "t": "frac",
+                        "tag": "val"
+                      }
+                    },
+                    "steps": 10
+                  }
+                ],
+                "given": false,
+                "inputs": [
+                  {
+                    "f": [
+                      {
+                        "t": "int",
+                        "v": 4
+                      },
+                      {
+                        "t": "int",
+                        "v": 3
+                      }
+                    ],
+                    "t": "pair",
+                    "tag": "items"
+                  }
+                ],
+                "kind": "bridge",
+                "layer": 2,
+                "name": "to_frac",
+                "outcome": {
+                  "ok": {
+                    "f": [
+                      {
+                        "f": [
+                          {
+                            "t": "int",
+                            "v": 4
+                          },
+                          {
+                            "t": "int",
+                            "v": 3
+                          }
+                        ],
+                        "t": "pair",
+                        "tag": "items"
+                      }
+                    ],
+                    "t": "frac",
+                    "tag": "val"
+                  }
+                },
+                "steps": 11
+              }
+            ],
+            "given": false,
+            "inputs": [],
+            "kind": "root",
+            "layer": 0,
+            "name": null,
+            "outcome": {
+              "ok": {
+                "f": [
+                  {
+                    "f": [
+                      {
+                        "t": "int",
+                        "v": 4
+                      },
+                      {
+                        "t": "int",
+                        "v": 3
+                      }
+                    ],
+                    "t": "pair",
+                    "tag": "items"
+                  }
+                ],
+                "t": "frac",
+                "tag": "val"
+              }
+            },
+            "steps": 11
+          }
+        },
+        {
+          "outcome": {
+            "bottom": "outside_domain"
+          },
+          "steps": 1,
+          "text": "~to_frac(Pair<3, 0>)",
+          "trace": {
+            "children": [
+              {
+                "children": [
+                  {
+                    "children": [],
+                    "given": true,
+                    "inputs": [
+                      {
+                        "f": [
+                          {
+                            "t": "int",
+                            "v": 3
+                          },
+                          {
+                            "t": "int",
+                            "v": 0
+                          }
+                        ],
+                        "t": "pair",
+                        "tag": "items"
+                      }
+                    ],
+                    "kind": "operation",
+                    "layer": 0,
+                    "name": "pair_domain",
+                    "outcome": {
+                      "ok": {
+                        "f": [],
+                        "t": "bool",
+                        "tag": "false"
+                      }
+                    },
+                    "steps": 1
+                  }
+                ],
+                "given": false,
+                "inputs": [
+                  {
+                    "f": [
+                      {
+                        "t": "int",
+                        "v": 3
+                      },
+                      {
+                        "t": "int",
+                        "v": 0
+                      }
+                    ],
+                    "t": "pair",
+                    "tag": "items"
+                  }
+                ],
+                "kind": "bridge",
+                "layer": 2,
+                "name": "to_frac",
+                "outcome": {
+                  "bottom": "outside_domain"
+                },
+                "steps": 1
+              }
+            ],
+            "given": false,
+            "inputs": [],
+            "kind": "root",
+            "layer": 0,
+            "name": null,
+            "outcome": {
+              "bottom": "outside_domain"
+            },
+            "steps": 1
+          }
+        }
+      ],
+      "kind": "bridge",
+      "name": "to_frac",
+      "source_world": "integer@2",
+      "status": "promoted",
+      "symbol": "~to_frac",
+      "target_world": "integer@2",
+      "title": "Canonical fraction",
+      "title_zh": "最简分数"
+    }
+  ]
+}

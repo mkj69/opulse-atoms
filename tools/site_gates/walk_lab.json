@@ -1,0 +1,13 @@
+{
+  "pages": {"lab": "/play/"},
+  "urls": ["lab"],
+  "steps": [
+    {"wait": {"text": "Try 256 fuel", "timeout": 15}},
+    {"wait": {"text": "Modular results match", "timeout": 20}},
+    {"click_text": "Toggle final byte"},
+    {"assert_text": "Final input byte switched to"},
+    {"click_text": "Try 256 fuel"},
+    {"click_text": "Run machine"},
+    {"wait": {"text": "Fuel exhausted: no final result at this fuel.", "timeout": 15}}
+  ]
+}

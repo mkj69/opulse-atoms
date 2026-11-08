@@ -1,0 +1,2370 @@
+{
+  "cards": [
+    {
+      "dependencies": [
+        "le",
+        "value"
+      ],
+      "display_name": "Nat",
+      "evidence": {
+        "checks": [
+          "canon_total",
+          "canon_idempotent",
+          "canon_keeps_valid",
+          "respects_canon"
+        ],
+        "content_hash": "e670f19eb4a93cdc96c1ac5a52d31057d1bb587f35a480bed3a495aa26834058",
+        "method": "bounded",
+        "scope": {
+          "checked": {
+            "bounds": {
+              "0": {
+                "max": 40,
+                "min": -20
+              }
+            },
+            "by": "library",
+            "sha256": "9cf2799531e97c533c59592110ac2a303cb3e3afd763eeb98e771d6c2d5f91f7",
+            "size": 61
+          },
+          "domain": "bound explicit finite inputs, 61 cases; integers -20..40",
+          "size": 61
+        }
+      },
+      "example": {
+        "args": [
+          {
+            "t": "int",
+            "v": 5
+          }
+        ],
+        "call": "Nat<5>",
+        "outcome": {
+          "ok": {
+            "f": [
+              {
+                "t": "int",
+                "v": 5
+              }
+            ],
+            "t": "nat",
+            "tag": "val"
+          }
+        },
+        "steps": 3,
+        "target": "nat.make",
+        "trace": {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [],
+                  "given": true,
+                  "inputs": [
+                    {
+                      "t": "int",
+                      "v": 5
+                    }
+                  ],
+                  "kind": "observation",
+                  "layer": 0,
+                  "name": "value",
+                  "outcome": {
+                    "ok": {
+                      "t": "int",
+                      "v": 5
+                    }
+                  },
+                  "steps": 1
+                },
+                {
+                  "children": [],
+                  "given": true,
+                  "inputs": [
+                    {
+                      "t": "int",
+                      "v": 0
+                    },
+                    {
+                      "t": "int",
+                      "v": 5
+                    }
+                  ],
+                  "kind": "operation",
+                  "layer": 0,
+                  "name": "le",
+                  "outcome": {
+                    "ok": {
+                      "f": [],
+                      "t": "bool",
+                      "tag": "true"
+                    }
+                  },
+                  "steps": 1
+                },
+                {
+                  "children": [],
+                  "given": true,
+                  "inputs": [
+                    {
+                      "t": "int",
+                      "v": 5
+                    }
+                  ],
+                  "kind": "object",
+                  "layer": 0,
+                  "name": "nat._pack",
+                  "outcome": {
+                    "ok": {
+                      "f": [
+                        {
+                          "t": "int",
+                          "v": 5
+                        }
+                      ],
+                      "t": "nat",
+                      "tag": "val"
+                    }
+                  },
+                  "steps": 1
+                }
+              ],
+              "given": false,
+              "inputs": [
+                {
+                  "t": "int",
+                  "v": 5
+                }
+              ],
+              "kind": "object",
+              "layer": 1,
+              "name": "nat.make",
+              "outcome": {
+                "ok": {
+                  "f": [
+                    {
+                      "t": "int",
+                      "v": 5
+                    }
+                  ],
+                  "t": "nat",
+                  "tag": "val"
+                }
+              },
+              "steps": 3
+            }
+          ],
+          "given": false,
+          "inputs": [],
+          "kind": "root",
+          "layer": 0,
+          "name": null,
+          "outcome": {
+            "ok": {
+              "f": [
+                {
+                  "t": "int",
+                  "v": 5
+                }
+              ],
+              "t": "nat",
+              "tag": "val"
+            }
+          },
+          "steps": 3
+        }
+      },
+      "invented_dependencies": [],
+      "kind": "object",
+      "layer": 1,
+      "name": "nat",
+      "record_summary": "Natural numbers keep nonnegative integers.",
+      "status": "promoted",
+      "summary_label": "Core summary"
+    },
+    {
+      "dependencies": [
+        "eq",
+        "nat.base",
+        "sub"
+      ],
+      "display_name": "repeat",
+      "evidence": {
+        "checks": [
+          "unfold_equivalence",
+          "reference"
+        ],
+        "content_hash": "db548fc752e5f01408af73f39229373ff6543e60203d02135e5bcfe19dcf289a",
+        "method": "bounded",
+        "scope": {
+          "checked": {
+            "bounds": {
+              "0": {
+                "max": 2,
+                "min": -2
+              }
+            },
+            "by": "library",
+            "sha256": "194566900946140f99d0ab3734c2ed6018f625667c63020fa2e1ead8fb095671",
+            "size": 50
+          },
+          "domain": "bound seeds -2..2 and counts 0..9; 50 input tuples, slots ('succ', 'neg')",
+          "op_family": [
+            "succ",
+            "neg"
+          ],
+          "size": 50
+        }
+      },
+      "example": {
+        "args": [
+          {
+            "t": "fn",
+            "v": "succ"
+          },
+          {
+            "t": "int",
+            "v": -2
+          },
+          {
+            "f": [
+              {
+                "t": "int",
+                "v": 5
+              }
+            ],
+            "t": "nat",
+            "tag": "val"
+          }
+        ],
+        "call": "@repeat[succ](-2, Nat<5>)",
+        "outcome": {
+          "ok": {
+            "t": "int",
+            "v": 3
+          }
+        },
+        "steps": 19,
+        "target": "repeat",
+        "trace": {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [],
+                      "given": true,
+                      "inputs": [
+                        {
+                          "f": [
+                            {
+                              "t": "int",
+                              "v": 5
+                            }
+                          ],
+                          "t": "nat",
+                          "tag": "val"
+                        }
+                      ],
+                      "kind": "object",
+                      "layer": 0,
+                      "name": "nat._stored",
+                      "outcome": {
+                        "ok": {
+                          "t": "int",
+                          "v": 5
+                        }
+                      },
+                      "steps": 1
+                    },
+                    {
+                      "children": [],
+                      "given": true,
+                      "inputs": [
+                        {
+                          "t": "int",
+                          "v": 5
+                        }
+                      ],
+                      "kind": "observation",
+                      "layer": 0,
+                      "name": "value",
+                      "outcome": {
+                        "ok": {
+                          "t": "int",
+                          "v": 5
+                        }
+                      },
+                      "steps": 1
+                    },
+                    {
+                      "children": [],
+                      "given": true,
+                      "inputs": [
+                        {
+                          "t": "int",
+                          "v": 0
+                        },
+                        {
+                          "t": "int",
+                          "v": 5
+                        }
+                      ],
+                      "kind": "operation",
+                      "layer": 0,
+                      "name": "le",
+                      "outcome": {
+                        "ok": {
+                          "f": [],
+                          "t": "bool",
+                          "tag": "true"
+                        }
+                      },
+                      "steps": 1
+                    }
+                  ],
+                  "given": false,
+                  "inputs": [
+                    {
+                      "f": [
+                        {
+                          "t": "int",
+                          "v": 5
+                        }
+                      ],
+                      "t": "nat",
+                      "tag": "val"
+                    }
+                  ],
+                  "kind": "object",
+                  "layer": 1,
+                  "name": "nat.base",
+                  "outcome": {
+                    "ok": {
+                      "t": "int",
+                      "v": 5
+                    }
+                  },
+                  "steps": 3
+                },
+                {
+                  "children": [
+                    {
+                      "children": [],
+                      "given": true,
+                      "inputs": [
+                        {
+                          "t": "int",
+                          "v": 5
+                        },
+                        {
+                          "t": "int",
+                          "v": 0
+                        }
+                      ],
+                      "kind": "operation",
+                      "layer": 0,
+                      "name": "eq",
+                      "outcome": {
+                        "ok": {
+                          "f": [],
+                          "t": "bool",
+                          "tag": "false"
+                        }
+                      },
+                      "steps": 1
+                    },
+                    {
+                      "children": [],
+                      "given": true,
+                      "inputs": [
+                        {
+                          "t": "int",
+                          "v": 5
+                        },
+                        {
+                          "t": "int",
+                          "v": 1
+                        }
+                      ],
+                      "kind": "operation",
+                      "layer": 0,
+                      "name": "sub",
+                      "outcome": {
+                        "ok": {
+                          "t": "int",
+                          "v": 4
+                        }
+                      },
+                      "steps": 1
+                    },
+                    {
+                      "children": [],
+                      "given": true,
+                      "inputs": [
+                        {
+                          "t": "int",
+                          "v": -2
+                        }
+                      ],
+                      "kind": "operation",
+                      "layer": 0,
+                      "name": "succ",
+                      "outcome": {
+                        "ok": {
+                          "t": "int",
+                          "v": -1
+                        }
+                      },
+                      "steps": 1
+                    },
+                    {
+                      "children": [],
+                      "elided": 17,
+                      "given": false,
+                      "inputs": [
+                        {
+                          "t": "int",
+                          "v": 4
+                        },
+                        {
+                          "t": "int",
+                          "v": -1
+                        }
+                      ],
+                      "kind": "operation",
+                      "layer": 2,
+                      "name": "loop",
+                      "outcome": {
+                        "ok": {
+                          "t": "int",
+                          "v": 3
+                        }
+                      },
+                      "steps": 13
+                    }
+                  ],
+                  "given": false,
+                  "inputs": [
+                    {
+                      "t": "int",
+                      "v": 5
+                    },
+                    {
+                      "t": "int",
+                      "v": -2
+                    }
+                  ],
+                  "kind": "operation",
+                  "layer": 2,
+                  "name": "loop",
+                  "outcome": {
+                    "ok": {
+                      "t": "int",
+                      "v": 3
+                    }
+                  },
+                  "steps": 16
+                }
+              ],
+              "given": false,
+              "inputs": [
+                {
+                  "fn": "succ"
+                },
+                {
+                  "t": "int",
+                  "v": -2
+                },
+                {
+                  "f": [
+                    {
+                      "t": "int",
+                      "v": 5
+                    }
+                  ],
+                  "t": "nat",
+                  "tag": "val"
+                }
+              ],
+              "kind": "combinator",
+              "layer": 2,
+              "name": "repeat",
+              "outcome": {
+                "ok": {
+                  "t": "int",
+                  "v": 3
+                }
+              },
+              "steps": 19
+            }
+          ],
+          "given": false,
+          "inputs": [],
+          "kind": "root",
+          "layer": 0,
+          "name": null,
+          "outcome": {
+            "ok": {
+              "t": "int",
+              "v": 3
+            }
+          },
+          "steps": 19
+        }
+      },
+      "invented_dependencies": [
+        "nat"
+      ],
+      "kind": "combinator",
+      "layer": 2,
+      "name": "repeat",
+      "record_summary": "Repeat applies a supplied operation to a seed the requested number of times.",
+      "status": "promoted",
+      "summary_label": "Core summary"
+    },
+    {
+      "dependencies": [
+        "add",
+        "eq",
+        "lt",
+        "nat.make",
+        "ne",
+        "neg",
+        "repeat",
+        "sub",
+        "succ",
+        "value"
+      ],
+      "display_name": "mul",
+      "evidence": {
+        "checks": [
+          "reference",
+          "unfold_equivalence"
+        ],
+        "content_hash": "e9d6da257a6a1860adea915e7051982d256b4dc7fd5e94ef4267d4dfaef2f2ae",
+        "method": "bounded",
+        "scope": {
+          "checked": {
+            "bounds": {
+              "0": {
+                "max": 6,
+                "min": -6
+              },
+              "1": {
+                "max": 6,
+                "min": -6
+              }
+            },
+            "by": "library",
+            "sha256": "03cefb9bfa4087808c2654ccddb73ac35c91f9739ececaca447dae23e8c51da9",
+            "size": 169
+          },
+          "domain": "bound explicit finite inputs, 169 cases; signed pairs -6..6",
+          "size": 169
+        }
+      },
+      "example": {
+        "args": [
+          {
+            "t": "int",
+            "v": -6
+          },
+          {
+            "t": "int",
+            "v": 5
+          }
+        ],
+        "call": "mul(-6, 5)",
+        "outcome": {
+          "ok": {
+            "t": "int",
+            "v": -30
+          }
+        },
+        "steps": 47,
+        "target": "mul",
+        "trace": {
+          "children": [
+            {
+              "children": [],
+              "elided": 62,
+              "given": false,
+              "inputs": [
+                {
+                  "t": "int",
+                  "v": -6
+                },
+                {
+                  "t": "int",
+                  "v": 5
+                }
+              ],
+              "kind": "operation",
+              "layer": 3,
+              "name": "mul",
+              "outcome": {
+                "ok": {
+                  "t": "int",
+                  "v": -30
+                }
+              },
+              "steps": 47
+            }
+          ],
+          "given": false,
+          "inputs": [],
+          "kind": "root",
+          "layer": 0,
+          "name": null,
+          "outcome": {
+            "ok": {
+              "t": "int",
+              "v": -30
+            }
+          },
+          "steps": 47
+        }
+      },
+      "invented_dependencies": [
+        "nat",
+        "repeat"
+      ],
+      "kind": "operation",
+      "layer": 3,
+      "name": "mul",
+      "record_summary": "Multiplication counts ticks, adds the left magnitude once per tick, and negates the result when input signs differ.",
+      "status": "promoted",
+      "summary_label": "Core summary"
+    },
+    {
+      "dependencies": [
+        "first",
+        "gcd",
+        "lt",
+        "ne",
+        "neg",
+        "pair",
+        "quotient",
+        "second"
+      ],
+      "display_name": "Frac",
+      "evidence": {
+        "checks": [
+          "canon_total",
+          "canon_idempotent",
+          "canon_keeps_valid",
+          "respects_canon"
+        ],
+        "content_hash": "e68abf4ae2ba969503b3caf5bf9b54113cfe3e5b20da2314d9a287411fd7dadf",
+        "method": "bounded",
+        "scope": {
+          "checked": {
+            "bounds": {},
+            "by": "library",
+            "sha256": "4ada75e11d620edaadaffd9755476e74321ae06f82466fac5eaed047e9f82634",
+            "size": 169
+          },
+          "domain": "bound explicit finite inputs, 169 cases; integer pairs -6..6",
+          "size": 169
+        }
+      },
+      "example": {
+        "args": [
+          {
+            "f": [
+              {
+                "t": "int",
+                "v": -3
+              },
+              {
+                "t": "int",
+                "v": 4
+              }
+            ],
+            "t": "pair",
+            "tag": "items"
+          }
+        ],
+        "call": "Frac<-3, 4>",
+        "outcome": {
+          "ok": {
+            "f": [
+              {
+                "f": [
+                  {
+                    "t": "int",
+                    "v": -3
+                  },
+                  {
+                    "t": "int",
+                    "v": 4
+                  }
+                ],
+                "t": "pair",
+                "tag": "items"
+              }
+            ],
+            "t": "frac",
+            "tag": "val"
+          }
+        },
+        "steps": 10,
+        "target": "frac.make",
+        "trace": {
+          "children": [
+            {
+              "children": [],
+              "elided": 10,
+              "given": false,
+              "inputs": [
+                {
+                  "f": [
+                    {
+                      "t": "int",
+                      "v": -3
+                    },
+                    {
+                      "t": "int",
+                      "v": 4
+                    }
+                  ],
+                  "t": "pair",
+                  "tag": "items"
+                }
+              ],
+              "kind": "object",
+              "layer": 1,
+              "name": "frac.make",
+              "outcome": {
+                "ok": {
+                  "f": [
+                    {
+                      "f": [
+                        {
+                          "t": "int",
+                          "v": -3
+                        },
+                        {
+                          "t": "int",
+                          "v": 4
+                        }
+                      ],
+                      "t": "pair",
+                      "tag": "items"
+                    }
+                  ],
+                  "t": "frac",
+                  "tag": "val"
+                }
+              },
+              "steps": 10
+            }
+          ],
+          "given": false,
+          "inputs": [],
+          "kind": "root",
+          "layer": 0,
+          "name": null,
+          "outcome": {
+            "ok": {
+              "f": [
+                {
+                  "f": [
+                    {
+                      "t": "int",
+                      "v": -3
+                    },
+                    {
+                      "t": "int",
+                      "v": 4
+                    }
+                  ],
+                  "t": "pair",
+                  "tag": "items"
+                }
+              ],
+              "t": "frac",
+              "tag": "val"
+            }
+          },
+          "steps": 10
+        }
+      },
+      "invented_dependencies": [],
+      "kind": "object",
+      "layer": 1,
+      "name": "frac",
+      "record_summary": "Fractions reject a zero denominator and reduce numerator and denominator with a consistent sign.",
+      "status": "promoted",
+      "summary_label": "Core summary"
+    },
+    {
+      "dependencies": [
+        "denominator",
+        "frac.make",
+        "mul",
+        "numerator",
+        "pair"
+      ],
+      "display_name": "qmul",
+      "evidence": {
+        "checks": [
+          "reference",
+          "unfold_equivalence"
+        ],
+        "content_hash": "0c24e6f58c0ef14c43a8e883cbae3578d209f63aded2a83b0d6dd0b37004ba28",
+        "method": "bounded",
+        "scope": {
+          "checked": {
+            "bounds": {},
+            "by": "library",
+            "sha256": "04d5a9ff8faf0236edfd02338d635192f62164edbf0b1256dfcf48df4d59a47d",
+            "size": 100
+          },
+          "domain": "bound explicit finite inputs, 100 cases; all 10x10 canonical fraction pairs",
+          "size": 100
+        }
+      },
+      "example": {
+        "args": [
+          {
+            "f": [
+              {
+                "f": [
+                  {
+                    "t": "int",
+                    "v": -1
+                  },
+                  {
+                    "t": "int",
+                    "v": 2
+                  }
+                ],
+                "t": "pair",
+                "tag": "items"
+              }
+            ],
+            "t": "frac",
+            "tag": "val"
+          },
+          {
+            "f": [
+              {
+                "f": [
+                  {
+                    "t": "int",
+                    "v": 2
+                  },
+                  {
+                    "t": "int",
+                    "v": 3
+                  }
+                ],
+                "t": "pair",
+                "tag": "items"
+              }
+            ],
+            "t": "frac",
+            "tag": "val"
+          }
+        ],
+        "call": "qmul(Frac<-1, 2>, Frac<2, 3>)",
+        "outcome": {
+          "ok": {
+            "f": [
+              {
+                "f": [
+                  {
+                    "t": "int",
+                    "v": -1
+                  },
+                  {
+                    "t": "int",
+                    "v": 3
+                  }
+                ],
+                "t": "pair",
+                "tag": "items"
+              }
+            ],
+            "t": "frac",
+            "tag": "val"
+          }
+        },
+        "steps": 89,
+        "target": "qmul",
+        "trace": {
+          "children": [
+            {
+              "children": [],
+              "elided": 118,
+              "given": false,
+              "inputs": [
+                {
+                  "f": [
+                    {
+                      "f": [
+                        {
+                          "t": "int",
+                          "v": -1
+                        },
+                        {
+                          "t": "int",
+                          "v": 2
+                        }
+                      ],
+                      "t": "pair",
+                      "tag": "items"
+                    }
+                  ],
+                  "t": "frac",
+                  "tag": "val"
+                },
+                {
+                  "f": [
+                    {
+                      "f": [
+                        {
+                          "t": "int",
+                          "v": 2
+                        },
+                        {
+                          "t": "int",
+                          "v": 3
+                        }
+                      ],
+                      "t": "pair",
+                      "tag": "items"
+                    }
+                  ],
+                  "t": "frac",
+                  "tag": "val"
+                }
+              ],
+              "kind": "operation",
+              "layer": 4,
+              "name": "qmul",
+              "outcome": {
+                "ok": {
+                  "f": [
+                    {
+                      "f": [
+                        {
+                          "t": "int",
+                          "v": -1
+                        },
+                        {
+                          "t": "int",
+                          "v": 3
+                        }
+                      ],
+                      "t": "pair",
+                      "tag": "items"
+                    }
+                  ],
+                  "t": "frac",
+                  "tag": "val"
+                }
+              },
+              "steps": 89
+            }
+          ],
+          "given": false,
+          "inputs": [],
+          "kind": "root",
+          "layer": 0,
+          "name": null,
+          "outcome": {
+            "ok": {
+              "f": [
+                {
+                  "f": [
+                    {
+                      "t": "int",
+                      "v": -1
+                    },
+                    {
+                      "t": "int",
+                      "v": 3
+                    }
+                  ],
+                  "t": "pair",
+                  "tag": "items"
+                }
+              ],
+              "t": "frac",
+              "tag": "val"
+            }
+          },
+          "steps": 89
+        }
+      },
+      "invented_dependencies": [
+        "frac",
+        "mul"
+      ],
+      "kind": "operation",
+      "layer": 4,
+      "name": "qmul",
+      "record_summary": "Fraction multiplication multiplies the numerators and denominators, then constructs a reduced fraction.",
+      "status": "promoted",
+      "summary_label": "Core summary"
+    },
+    {
+      "dependencies": [
+        "value"
+      ],
+      "display_name": "seen_value",
+      "evidence": {
+        "checks": [
+          "dependency",
+          "facts_unchanged",
+          "reference",
+          "non_interference"
+        ],
+        "content_hash": "e3c238239ca0b682f822cc8c6bb2016f9f5d7feb12d00dda7ded80cb3426ff85",
+        "method": "bounded",
+        "scope": {
+          "checked": {
+            "bounds": {
+              "0": {
+                "max": 10,
+                "min": -10
+              }
+            },
+            "by": "library",
+            "sha256": "f5bd280e8a3b018842b42c3e498fbf4de85501978cb42b6a497a812f41e22a15",
+            "size": 21
+          },
+          "domain": "integer values -10..10",
+          "size": 21
+        }
+      },
+      "example": {
+        "args": [
+          {
+            "t": "int",
+            "v": 3
+          }
+        ],
+        "call": "?seen_value{3}",
+        "input_from": [
+          {
+            "args": [
+              {
+                "f": [
+                  {
+                    "f": [
+                      {
+                        "t": "int",
+                        "v": -1
+                      },
+                      {
+                        "t": "int",
+                        "v": 2
+                      }
+                    ],
+                    "t": "pair",
+                    "tag": "items"
+                  }
+                ],
+                "t": "frac",
+                "tag": "val"
+              },
+              {
+                "f": [
+                  {
+                    "f": [
+                      {
+                        "t": "int",
+                        "v": 2
+                      },
+                      {
+                        "t": "int",
+                        "v": 3
+                      }
+                    ],
+                    "t": "pair",
+                    "tag": "items"
+                  }
+                ],
+                "t": "frac",
+                "tag": "val"
+              }
+            ],
+            "call": "qmul(Frac<-1, 2>, Frac<2, 3>)",
+            "outcome": {
+              "ok": {
+                "f": [
+                  {
+                    "f": [
+                      {
+                        "t": "int",
+                        "v": -1
+                      },
+                      {
+                        "t": "int",
+                        "v": 3
+                      }
+                    ],
+                    "t": "pair",
+                    "tag": "items"
+                  }
+                ],
+                "t": "frac",
+                "tag": "val"
+              }
+            },
+            "steps": 89,
+            "target": "qmul",
+            "trace": {
+              "children": [
+                {
+                  "children": [],
+                  "elided": 118,
+                  "given": false,
+                  "inputs": [
+                    {
+                      "f": [
+                        {
+                          "f": [
+                            {
+                              "t": "int",
+                              "v": -1
+                            },
+                            {
+                              "t": "int",
+                              "v": 2
+                            }
+                          ],
+                          "t": "pair",
+                          "tag": "items"
+                        }
+                      ],
+                      "t": "frac",
+                      "tag": "val"
+                    },
+                    {
+                      "f": [
+                        {
+                          "f": [
+                            {
+                              "t": "int",
+                              "v": 2
+                            },
+                            {
+                              "t": "int",
+                              "v": 3
+                            }
+                          ],
+                          "t": "pair",
+                          "tag": "items"
+                        }
+                      ],
+                      "t": "frac",
+                      "tag": "val"
+                    }
+                  ],
+                  "kind": "operation",
+                  "layer": 4,
+                  "name": "qmul",
+                  "outcome": {
+                    "ok": {
+                      "f": [
+                        {
+                          "f": [
+                            {
+                              "t": "int",
+                              "v": -1
+                            },
+                            {
+                              "t": "int",
+                              "v": 3
+                            }
+                          ],
+                          "t": "pair",
+                          "tag": "items"
+                        }
+                      ],
+                      "t": "frac",
+                      "tag": "val"
+                    }
+                  },
+                  "steps": 89
+                }
+              ],
+              "given": false,
+              "inputs": [],
+              "kind": "root",
+              "layer": 0,
+              "name": null,
+              "outcome": {
+                "ok": {
+                  "f": [
+                    {
+                      "f": [
+                        {
+                          "t": "int",
+                          "v": -1
+                        },
+                        {
+                          "t": "int",
+                          "v": 3
+                        }
+                      ],
+                      "t": "pair",
+                      "tag": "items"
+                    }
+                  ],
+                  "t": "frac",
+                  "tag": "val"
+                }
+              },
+              "steps": 89
+            }
+          },
+          {
+            "args": [
+              {
+                "f": [
+                  {
+                    "f": [
+                      {
+                        "t": "int",
+                        "v": -1
+                      },
+                      {
+                        "t": "int",
+                        "v": 3
+                      }
+                    ],
+                    "t": "pair",
+                    "tag": "items"
+                  }
+                ],
+                "t": "frac",
+                "tag": "val"
+              }
+            ],
+            "call": "denominator(Frac<-1, 3>)",
+            "outcome": {
+              "ok": {
+                "t": "int",
+                "v": 3
+              }
+            },
+            "steps": 1,
+            "target": "denominator",
+            "trace": {
+              "children": [
+                {
+                  "children": [],
+                  "given": true,
+                  "inputs": [
+                    {
+                      "f": [
+                        {
+                          "f": [
+                            {
+                              "t": "int",
+                              "v": -1
+                            },
+                            {
+                              "t": "int",
+                              "v": 3
+                            }
+                          ],
+                          "t": "pair",
+                          "tag": "items"
+                        }
+                      ],
+                      "t": "frac",
+                      "tag": "val"
+                    }
+                  ],
+                  "kind": "operation",
+                  "layer": 0,
+                  "name": "denominator",
+                  "outcome": {
+                    "ok": {
+                      "t": "int",
+                      "v": 3
+                    }
+                  },
+                  "steps": 1
+                }
+              ],
+              "given": false,
+              "inputs": [],
+              "kind": "root",
+              "layer": 0,
+              "name": null,
+              "outcome": {
+                "ok": {
+                  "t": "int",
+                  "v": 3
+                }
+              },
+              "steps": 1
+            }
+          }
+        ],
+        "outcome": {
+          "ok": {
+            "t": "int",
+            "v": 3
+          }
+        },
+        "steps": 1,
+        "target": "seen_value",
+        "trace": {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [],
+                  "given": true,
+                  "inputs": [
+                    {
+                      "t": "int",
+                      "v": 3
+                    }
+                  ],
+                  "kind": "observation",
+                  "layer": 0,
+                  "name": "value",
+                  "outcome": {
+                    "ok": {
+                      "t": "int",
+                      "v": 3
+                    }
+                  },
+                  "steps": 1
+                }
+              ],
+              "given": false,
+              "inputs": [
+                {
+                  "t": "int",
+                  "v": 3
+                }
+              ],
+              "kind": "observation",
+              "layer": 1,
+              "name": "seen_value",
+              "outcome": {
+                "ok": {
+                  "t": "int",
+                  "v": 3
+                }
+              },
+              "steps": 1
+            }
+          ],
+          "given": false,
+          "inputs": [],
+          "kind": "root",
+          "layer": 0,
+          "name": null,
+          "outcome": {
+            "ok": {
+              "t": "int",
+              "v": 3
+            }
+          },
+          "steps": 1
+        }
+      },
+      "invented_dependencies": [],
+      "kind": "observation",
+      "layer": 1,
+      "name": "seen_value",
+      "record_summary": "obs ?seen_value{value} = ?value{value} L1",
+      "status": "promoted",
+      "summary_label": "Printed from the core definition (re-parses: yes)"
+    }
+  ],
+  "failing": {
+    "args": [
+      {
+        "f": [
+          {
+            "t": "int",
+            "v": 1
+          },
+          {
+            "t": "int",
+            "v": 0
+          }
+        ],
+        "t": "pair",
+        "tag": "items"
+      }
+    ],
+    "call": "Frac<1, 0>",
+    "outcome": {
+      "bottom": "invalid"
+    },
+    "steps": 2,
+    "target": "frac.make",
+    "trace": {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [],
+              "given": true,
+              "inputs": [
+                {
+                  "f": [
+                    {
+                      "t": "int",
+                      "v": 1
+                    },
+                    {
+                      "t": "int",
+                      "v": 0
+                    }
+                  ],
+                  "t": "pair",
+                  "tag": "items"
+                }
+              ],
+              "kind": "operation",
+              "layer": 0,
+              "name": "second",
+              "outcome": {
+                "ok": {
+                  "t": "int",
+                  "v": 0
+                }
+              },
+              "steps": 1
+            },
+            {
+              "children": [],
+              "given": true,
+              "inputs": [
+                {
+                  "t": "int",
+                  "v": 0
+                },
+                {
+                  "t": "int",
+                  "v": 0
+                }
+              ],
+              "kind": "operation",
+              "layer": 0,
+              "name": "ne",
+              "outcome": {
+                "ok": {
+                  "f": [],
+                  "t": "bool",
+                  "tag": "false"
+                }
+              },
+              "steps": 1
+            },
+            {
+              "children": [],
+              "given": true,
+              "inputs": [],
+              "kind": "object",
+              "layer": 0,
+              "name": "frac._invalid",
+              "outcome": {
+                "bottom": "invalid"
+              },
+              "steps": 0
+            }
+          ],
+          "given": false,
+          "inputs": [
+            {
+              "f": [
+                {
+                  "t": "int",
+                  "v": 1
+                },
+                {
+                  "t": "int",
+                  "v": 0
+                }
+              ],
+              "t": "pair",
+              "tag": "items"
+            }
+          ],
+          "kind": "object",
+          "layer": 1,
+          "name": "frac.make",
+          "outcome": {
+            "bottom": "invalid"
+          },
+          "steps": 2
+        }
+      ],
+      "given": false,
+      "inputs": [],
+      "kind": "root",
+      "layer": 0,
+      "name": null,
+      "outcome": {
+        "bottom": "invalid"
+      },
+      "steps": 2
+    }
+  },
+  "inputs_sha256": "fec61db8ef6a62eaef0e70b2f98cfc60fd04d9583fadbed431efc42094a2c777",
+  "notation3": {
+    "source": "atoms2/first_tower.json",
+    "version": 1,
+    "worlds": {
+      "integer": {
+        "designs": [
+          "Fraction multiplication multiplies the numerators and denominators, then constructs a reduced fraction.",
+          "Fractions reject a zero denominator and reduce numerator and denominator with a consistent sign.",
+          "Multiplication counts ticks, adds the left magnitude once per tick, and negates the result when input signs differ.",
+          "Natural numbers keep nonnegative integers.",
+          "Repeat applies a supplied operation to a seed the requested number of times."
+        ],
+        "formulas": {
+          "?seen_value{3}": {
+            "ascii": "\\hatC_2<|3|>",
+            "display": "\u0108\u2082\u27e83\u27e9",
+            "signature": null
+          },
+          "@repeat[succ](-2, Nat<5>)": {
+            "ascii": "(-2) \\Delta_2[@] \\bbJ(5)",
+            "display": "(-2) \u0394\u2082[@] \ud835\udd41(5)",
+            "signature": null
+          },
+          "Frac<-3, 4>": {
+            "ascii": "\\bbG(-3, 4)",
+            "display": "\ud835\udd3e(-3, 4)",
+            "signature": null
+          },
+          "Frac<1, 0>": {
+            "ascii": "\\bbG(1, 0)",
+            "display": "\ud835\udd3e(1, 0)",
+            "signature": null
+          },
+          "Nat<5>": {
+            "ascii": "\\bbJ(5)",
+            "display": "\ud835\udd41(5)",
+            "signature": null
+          },
+          "denominator(Frac<-1, 3>)": {
+            "ascii": "\\up \\bbG(-1, 3)",
+            "display": "\u25b2 \ud835\udd3e(-1, 3)",
+            "signature": null
+          },
+          "mul(-6, 5)": {
+            "ascii": "(-6) \\dia_9 5",
+            "display": "(-6) \u2666\u2089 5",
+            "signature": null
+          },
+          "obs ?seen_value{value} = ?value{value} L1": {
+            "ascii": "\\hatC_2<|value|> = { \\hatA<|value|> }",
+            "display": "\u0108\u2082\u27e8value\u27e9 = { \u00c2\u27e8value\u27e9 }",
+            "signature": null
+          },
+          "qmul(Frac<-1, 2>, Frac<2, 3>)": {
+            "ascii": "\\bbG(-1, 2) \\heart_11 \\bbG(2, 3)",
+            "display": "\ud835\udd3e(-1, 2) \u2665\u2081\u2081 \ud835\udd3e(2, 3)",
+            "signature": null
+          }
+        },
+        "legend": [
+          {
+            "display": "\u2124",
+            "forms": [],
+            "kind": "object",
+            "layer": 0,
+            "mark": "\\bbZ",
+            "name": "int",
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "display": "\ud835\udd39",
+            "forms": [
+              "false",
+              "true"
+            ],
+            "kind": "object",
+            "layer": 0,
+            "mark": "\\bbB",
+            "name": "bool",
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "display": "\ud835\udd38",
+            "forms": [],
+            "kind": "object",
+            "layer": 0,
+            "mark": "\\bbA",
+            "name": "str",
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "display": "\ud835\udd3b",
+            "forms": [
+              "items"
+            ],
+            "kind": "object",
+            "layer": 0,
+            "mark": "\\bbD",
+            "name": "list",
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "display": "\ud835\udd3c",
+            "forms": [
+              "items"
+            ],
+            "kind": "object",
+            "layer": 0,
+            "mark": "\\bbE",
+            "name": "pair",
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "display": "\ud835\udd3e",
+            "forms": [
+              "val"
+            ],
+            "kind": "object",
+            "layer": 0,
+            "mark": "\\bbG",
+            "name": "frac",
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "display": "\u210d",
+            "forms": [
+              "val"
+            ],
+            "kind": "object",
+            "layer": 0,
+            "mark": "\\bbH",
+            "name": "cf",
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "display": "\ud835\udd40",
+            "forms": [],
+            "kind": "object",
+            "layer": 0,
+            "mark": "\\bbI",
+            "name": "any",
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "display": "\ud835\udd41",
+            "forms": [
+              "val"
+            ],
+            "kind": "object",
+            "layer": 0,
+            "mark": "\\bbJ",
+            "name": "nat",
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "display": "@",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "@",
+            "name": "succ",
+            "origin": "given",
+            "signature": {
+              "ascii": "@ : \\bbZ -> \\bbZ",
+              "display": "@ : \u2124 \u2192 \u2124"
+            }
+          },
+          {
+            "display": "(+)",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "(+)",
+            "name": "add",
+            "origin": "given",
+            "signature": {
+              "ascii": "(+) : \\bbZ \\x \\bbZ -> \\bbZ",
+              "display": "(+) : \u2124 \u00d7 \u2124 \u2192 \u2124"
+            }
+          },
+          {
+            "display": "#",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "#",
+            "name": "neg",
+            "origin": "given",
+            "signature": {
+              "ascii": "# : \\bbZ -> \\bbZ",
+              "display": "# : \u2124 \u2192 \u2124"
+            }
+          },
+          {
+            "display": "$",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "$",
+            "name": "gcd",
+            "origin": "given",
+            "signature": {
+              "ascii": "$ : \\bbZ \\x \\bbZ -> \\bbZ",
+              "display": "$ : \u2124 \u00d7 \u2124 \u2192 \u2124"
+            }
+          },
+          {
+            "display": "(<)",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "(<)",
+            "name": "lt",
+            "origin": "given",
+            "signature": {
+              "ascii": "(<) : \\bbZ \\x \\bbZ -> \\bbB",
+              "display": "(<) : \u2124 \u00d7 \u2124 \u2192 \ud835\udd39"
+            }
+          },
+          {
+            "display": "(<=)",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "(<=)",
+            "name": "le",
+            "origin": "given",
+            "signature": {
+              "ascii": "(<=) : \\bbZ \\x \\bbZ -> \\bbB",
+              "display": "(<=) : \u2124 \u00d7 \u2124 \u2192 \ud835\udd39"
+            }
+          },
+          {
+            "display": "(==)",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "(==)",
+            "name": "eq",
+            "origin": "given",
+            "signature": {
+              "ascii": "(==) : \\bbZ \\x \\bbZ -> \\bbB",
+              "display": "(==) : \u2124 \u00d7 \u2124 \u2192 \ud835\udd39"
+            }
+          },
+          {
+            "display": "(!=)",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "(!=)",
+            "name": "ne",
+            "origin": "given",
+            "signature": {
+              "ascii": "(!=) : \\bbZ \\x \\bbZ -> \\bbB",
+              "display": "(!=) : \u2124 \u00d7 \u2124 \u2192 \ud835\udd39"
+            }
+          },
+          {
+            "display": "(-)",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "(-)",
+            "name": "sub",
+            "origin": "given",
+            "signature": {
+              "ascii": "(-) : \\bbZ \\x \\bbZ -> \\bbZ",
+              "display": "(-) : \u2124 \u00d7 \u2124 \u2192 \u2124"
+            }
+          },
+          {
+            "display": "&",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "&",
+            "name": "quotient",
+            "origin": "given",
+            "signature": {
+              "ascii": "& : \\bbZ \\x \\bbZ -> \\bbZ",
+              "display": "& : \u2124 \u00d7 \u2124 \u2192 \u2124"
+            }
+          },
+          {
+            "display": "\u2660",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "\\spade",
+            "name": "failure",
+            "origin": "given",
+            "signature": {
+              "ascii": "\\spade : \\bbA -> \\bbZ",
+              "display": "\u2660 : \ud835\udd38 \u2192 \u2124"
+            }
+          },
+          {
+            "display": "\u2664",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "\\wspade",
+            "name": "pair",
+            "note": "constructor of \ud835\udd3c",
+            "origin": "given",
+            "signature": {
+              "ascii": "\\wspade : \\bbZ \\x \\bbZ -> \\bbE",
+              "display": "\u2664 : \u2124 \u00d7 \u2124 \u2192 \ud835\udd3c"
+            }
+          },
+          {
+            "display": "\u2665",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "\\heart",
+            "name": "first",
+            "origin": "given",
+            "signature": {
+              "ascii": "\\heart : \\bbE -> \\bbZ",
+              "display": "\u2665 : \ud835\udd3c \u2192 \u2124"
+            }
+          },
+          {
+            "display": "\u2661",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "\\wheart",
+            "name": "second",
+            "origin": "given",
+            "signature": {
+              "ascii": "\\wheart : \\bbE -> \\bbZ",
+              "display": "\u2661 : \ud835\udd3c \u2192 \u2124"
+            }
+          },
+          {
+            "display": "\u2666",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "\\dia",
+            "name": "list_empty",
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "display": "\u2662",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "\\wdia",
+            "name": "cons",
+            "origin": "given",
+            "signature": {
+              "ascii": "\\wdia : \\bbZ \\x \\bbD -> \\bbD",
+              "display": "\u2662 : \u2124 \u00d7 \ud835\udd3b \u2192 \ud835\udd3b"
+            }
+          },
+          {
+            "display": "\u2663",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "\\club",
+            "name": "append",
+            "origin": "given",
+            "signature": {
+              "ascii": "\\club : \\bbD \\x \\bbZ -> \\bbD",
+              "display": "\u2663 : \ud835\udd3b \u00d7 \u2124 \u2192 \ud835\udd3b"
+            }
+          },
+          {
+            "display": "\u2667",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "\\wclub",
+            "name": "is_empty",
+            "origin": "given",
+            "signature": {
+              "ascii": "\\wclub : \\bbD -> \\bbB",
+              "display": "\u2667 : \ud835\udd3b \u2192 \ud835\udd39"
+            }
+          },
+          {
+            "display": "\u25a0",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "\\sq",
+            "name": "head",
+            "origin": "given",
+            "signature": {
+              "ascii": "\\sq : \\bbD -> \\bbZ",
+              "display": "\u25a0 : \ud835\udd3b \u2192 \u2124"
+            }
+          },
+          {
+            "display": "\u25a1",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "\\wsq",
+            "name": "tail",
+            "origin": "given",
+            "signature": {
+              "ascii": "\\wsq : \\bbD -> \\bbD",
+              "display": "\u25a1 : \ud835\udd3b \u2192 \ud835\udd3b"
+            }
+          },
+          {
+            "display": "\u25cf",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "\\dot",
+            "name": "length",
+            "origin": "given",
+            "signature": {
+              "ascii": "\\dot : \\bbD -> \\bbZ",
+              "display": "\u25cf : \ud835\udd3b \u2192 \u2124"
+            }
+          },
+          {
+            "display": "\u25cb",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "\\wdot",
+            "name": "numerator",
+            "origin": "given",
+            "signature": {
+              "ascii": "\\wdot : \\bbG -> \\bbZ",
+              "display": "\u25cb : \ud835\udd3e \u2192 \u2124"
+            }
+          },
+          {
+            "display": "\u25b2",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "\\up",
+            "name": "denominator",
+            "origin": "given",
+            "signature": {
+              "ascii": "\\up : \\bbG -> \\bbZ",
+              "display": "\u25b2 : \ud835\udd3e \u2192 \u2124"
+            }
+          },
+          {
+            "display": "\u25b3",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "\\wup",
+            "name": "digits",
+            "origin": "given",
+            "signature": {
+              "ascii": "\\wup : \\bbH -> \\bbD",
+              "display": "\u25b3 : \u210d \u2192 \ud835\udd3b"
+            }
+          },
+          {
+            "display": "\u25bc",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "\\dn",
+            "name": "count",
+            "origin": "given",
+            "signature": {
+              "ascii": "\\dn : \\bbJ -> \\bbZ",
+              "display": "\u25bc : \ud835\udd41 \u2192 \u2124"
+            }
+          },
+          {
+            "display": "\u25bd",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "\\wdn",
+            "name": "is_cf_data",
+            "origin": "given",
+            "signature": {
+              "ascii": "\\wdn : \\bbI -> \\bbB",
+              "display": "\u25bd : \ud835\udd40 \u2192 \ud835\udd39"
+            }
+          },
+          {
+            "display": "\u25c6",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "\\lz",
+            "name": "is_pair",
+            "origin": "given",
+            "signature": {
+              "ascii": "\\lz : \\bbI -> \\bbB",
+              "display": "\u25c6 : \ud835\udd40 \u2192 \ud835\udd39"
+            }
+          },
+          {
+            "display": "\u25c7",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "\\wlz",
+            "name": "is_base",
+            "origin": "given",
+            "signature": {
+              "ascii": "\\wlz : \\bbI \\x \\bbA -> \\bbB",
+              "display": "\u25c7 : \ud835\udd40 \u00d7 \ud835\udd38 \u2192 \ud835\udd39"
+            }
+          },
+          {
+            "display": "\u0393",
+            "kind": "combinator",
+            "layer": 0,
+            "mark": "\\Gamma",
+            "name": "sequence",
+            "origin": "given",
+            "signature": {
+              "ascii": "\\Gamma : \\bbX_a -> \\bbX_e",
+              "display": "\u0393 : \ud835\udd4f\u2090 \u2192 \ud835\udd4f\u2091"
+            }
+          },
+          {
+            "display": "\u00c2",
+            "kind": "observation",
+            "layer": 0,
+            "mark": "\\hatA",
+            "name": "value",
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "display": "\ud835\udd42",
+            "forms": [],
+            "kind": "object",
+            "layer": 0,
+            "mark": "\\bbK",
+            "name": "fn",
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "display": "\u2605",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "\\st",
+            "name": "cf.base",
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "display": "\u2606",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "\\wst",
+            "name": "nat.base",
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "display": "\u2666\u2080\u2081",
+            "form_of": "bool",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "\\dia_01",
+            "name": "bool.false",
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "display": "\u2666\u2080\u2082",
+            "form_of": "bool",
+            "kind": "operation",
+            "layer": 0,
+            "mark": "\\dia_02",
+            "name": "bool.true",
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "display": "\u00c2\u2081",
+            "kind": "observation",
+            "layer": 1,
+            "mark": "\\hatA_1",
+            "name": "whole",
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "display": "\u0393\u2081",
+            "kind": "combinator",
+            "layer": 1,
+            "mark": "\\Gamma_1",
+            "name": "fold_frac",
+            "origin": "invented",
+            "signature": {
+              "ascii": "^1\\Gamma_1 : \\bbX_a \\x \\bbX_a -> \\bbX_a",
+              "display": "\u00b9\u0393\u2081 : \ud835\udd4f\u2090 \u00d7 \ud835\udd4f\u2090 \u2192 \ud835\udd4f\u2090"
+            }
+          },
+          {
+            "display": "\u2666\u2081",
+            "kind": "operation",
+            "layer": 1,
+            "mark": "\\dia_1",
+            "name": "cf_divmod",
+            "origin": "invented",
+            "signature": {
+              "ascii": "^1\\dia_1 : \\bbZ \\x \\bbZ -> \\bbE",
+              "display": "\u00b9\u2666\u2081 : \u2124 \u00d7 \u2124 \u2192 \ud835\udd3c"
+            }
+          },
+          {
+            "display": "\u2261\u2081",
+            "kind": "law",
+            "layer": 1,
+            "mark": "\\eqv_1",
+            "name": "add_comm",
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "display": "\u2261\u2082",
+            "kind": "law",
+            "layer": 1,
+            "mark": "\\eqv_2",
+            "name": "gcd_comm",
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "display": "\ud835\udd38\u2081",
+            "kind": "template",
+            "layer": 1,
+            "mark": "\\bbA_1",
+            "name": "Quot",
+            "origin": "invented",
+            "produces": "object",
+            "signature": null
+          },
+          {
+            "display": "\u25a1\u2082",
+            "kind": "operation",
+            "layer": 1,
+            "mark": "\\wsq_2",
+            "name": "abs_int",
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "display": "\u25cf\u2083",
+            "kind": "operation",
+            "layer": 1,
+            "mark": "\\dot_3",
+            "name": "canonical_tail",
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "display": "\u25cb\u2084",
+            "kind": "operation",
+            "layer": 1,
+            "mark": "\\wdot_4",
+            "name": "expand",
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "display": "\u25c6\u2085",
+            "kind": "operation",
+            "layer": 1,
+            "mark": "\\lz_5",
+            "name": "quot_valid",
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "display": "\u25c7\u2086",
+            "kind": "operation",
+            "layer": 1,
+            "mark": "\\wlz_6",
+            "name": "reduce_ratio",
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "display": "\u0108\u2082",
+            "kind": "observation",
+            "layer": 1,
+            "mark": "\\hatC_2",
+            "name": "seen_value",
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "display": "\u0394\u2082",
+            "kind": "combinator",
+            "layer": 2,
+            "mark": "\\Delta_2",
+            "name": "repeat",
+            "origin": "invented",
+            "signature": {
+              "ascii": "^2\\Delta_2 : \\bbX_a \\x \\bbJ -> \\bbX_a",
+              "display": "\u00b2\u0394\u2082 : \ud835\udd4f\u2090 \u00d7 \ud835\udd41 \u2192 \ud835\udd4f\u2090"
+            }
+          },
+          {
+            "display": "\ud835\udd38\u2082",
+            "forms": [
+              "val"
+            ],
+            "kind": "object",
+            "layer": 2,
+            "mark": "\\bbA_2",
+            "name": "quot_frac",
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "display": "\u2605\u2087",
+            "kind": "operation",
+            "layer": 2,
+            "mark": "\\st_7",
+            "name": "mod12",
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "display": "\u2606\u2088",
+            "kind": "operation",
+            "layer": 2,
+            "mark": "\\wst_8",
+            "name": "loop",
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "display": "\u2666\u2089",
+            "kind": "operation",
+            "layer": 3,
+            "mark": "\\dia_9",
+            "name": "mul",
+            "origin": "invented",
+            "signature": {
+              "ascii": "^3\\dia_9 : \\bbZ \\x \\bbZ -> \\bbZ",
+              "display": "\u00b3\u2666\u2089 : \u2124 \u00d7 \u2124 \u2192 \u2124"
+            }
+          },
+          {
+            "display": "\u0398\u2083",
+            "kind": "combinator",
+            "layer": 3,
+            "mark": "\\Theta_3",
+            "name": "convergents",
+            "origin": "invented",
+            "signature": {
+              "ascii": "^3\\Theta_3 : \\bbH -> \\bbD",
+              "display": "\u00b3\u0398\u2083 : \u210d \u2192 \ud835\udd3b"
+            }
+          },
+          {
+            "display": "\ud835\udd3c\u2083",
+            "forms": [
+              "val"
+            ],
+            "kind": "object",
+            "layer": 3,
+            "mark": "\\bbE_3",
+            "name": "hour",
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "display": "\u2660\u2081\u2080",
+            "kind": "operation",
+            "layer": 4,
+            "mark": "\\spade_10",
+            "name": "qadd",
+            "origin": "invented",
+            "signature": {
+              "ascii": "^4\\spade_10 : \\bbG \\x \\bbG -> \\bbG",
+              "display": "\u2074\u2660\u2081\u2080 : \ud835\udd3e \u00d7 \ud835\udd3e \u2192 \ud835\udd3e"
+            }
+          },
+          {
+            "display": "\u2665\u2081\u2081",
+            "kind": "operation",
+            "layer": 4,
+            "mark": "\\heart_11",
+            "name": "qmul",
+            "origin": "invented",
+            "signature": {
+              "ascii": "^4\\heart_11 : \\bbG \\x \\bbG -> \\bbG",
+              "display": "\u2074\u2665\u2081\u2081 : \ud835\udd3e \u00d7 \ud835\udd3e \u2192 \ud835\udd3e"
+            }
+          },
+          {
+            "display": "\u2261\u2083",
+            "kind": "law",
+            "layer": 4,
+            "mark": "\\eqv_3",
+            "name": "mul_comm",
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "display": "\u2261\u2084",
+            "kind": "law",
+            "layer": 4,
+            "mark": "\\eqv_4",
+            "name": "mul_distrib",
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "display": "\u25cb\u2081\u2082",
+            "kind": "operation",
+            "layer": 4,
+            "mark": "\\wdot_12",
+            "name": "cf_step",
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "display": "\u25c6\u2081\u2083",
+            "kind": "operation",
+            "layer": 4,
+            "mark": "\\lz_13",
+            "name": "lcm",
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "display": "\u00ca\u2083",
+            "kind": "observation",
+            "layer": 5,
+            "mark": "\\hatE_3",
+            "name": "bounded_convergent",
+            "origin": "invented",
+            "signature": {
+              "ascii": "^5\\hatE_3 : \\bbE -> \\bbG",
+              "display": "\u2075\u00ca\u2083 : \ud835\udd3c \u2192 \ud835\udd3e"
+            }
+          },
+          {
+            "display": "\u2261\u2085",
+            "kind": "law",
+            "layer": 5,
+            "mark": "\\eqv_5",
+            "name": "gcd_mul_lcm",
+            "origin": "invented",
+            "signature": null
+          }
+        ],
+        "prose": {},
+        "skipped": 0
+      }
+    }
+  },
+  "schema": "opulse.first_tower/1",
+  "world": "integer"
+}

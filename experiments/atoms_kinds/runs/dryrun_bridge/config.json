@@ -1,0 +1,25 @@
+{
+ "episodes": 1,
+ "fuel": 200000,
+ "groups": [
+  "K6"
+ ],
+ "hashes": {
+  "atoms_kinds/ascii.py": "35a89e11a4cb83dfec412cd6c3f8861715e8ccd810f241e8fba71b359d844725",
+  "atoms_kinds/harness.py": "9f62fc3c6d9ddea1f86f63bdddf522dbe2810b8b3b7212a0a0e9e0e81a38b527",
+  "atoms_kinds/policies.py": "cbcd6bcbf22c59205c5da5b0758a4706881b4154d7e7be2483f43f957a722d2b",
+  "atoms_kinds/world.py": "b6f9a6b9744603860baad8c0484a17cdf499fad71056bbeab520e7eb2c01d4b5",
+  "tasks/stage1.json": "e935521cd8dd356616fbab510b25333e2e954b75a3b0e3299fb72f8a92de5d26",
+  "tasks/stage2.json": "b172cbe9be4eeb487c7cfa07bd1b8ac6b04ee8fa513a99252d2b0119e74906f7",
+  "world_K1": "b5eae355008f4de34d11efe3491a861e5d936ed55143d8920d62b29f411be60b",
+  "world_K2": "fc61fff01d20cf702151897803e5bb542a1aef303f44a6bd1f4a9588f5703432",
+  "world_K3": "d0668543fcef7334d36977736508559c33d1cab18231dc9a4281221fe887a9d5",
+  "world_K4": "cfa15dcbb03def4bb20adf5e9fa983c8d5bd571fb9ffefd36dd73d38bb1ad5be",
+  "world_K5": "fb7ee5704d27d45dd6903936900024279d707343982ae044482f5cc12d58395e",
+  "world_K6": "f98652e3f5de7ea05975d715ea4042af9be6c2aad6ba2077099096e0488d9680"
+ },
+ "max_attempts": 3,
+ "model": null,
+ "policy": "bridge",
+ "track": "kinds"
+}

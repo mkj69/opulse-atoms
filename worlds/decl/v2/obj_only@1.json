@@ -1,0 +1,1547 @@
+{
+  "schema": "opulse.world/2",
+  "world": "obj_only",
+  "version": 1,
+  "dialect": "atoms-v2",
+  "title": "Exact polynomial root atlases from sealed representations",
+  "source": {
+    "title_zh": "表示锻造所：精确多项式根地图"
+  },
+  "params": {},
+  "constants": {
+    "max_degree": 256,
+    "max_subdivision_depth": 20
+  },
+  "objects": [
+    {
+      "doc": "Signed exact integer",
+      "name": "int",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null
+    },
+    {
+      "doc": "Boolean",
+      "name": "bool",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null
+    },
+    {
+      "doc": "Public exact rational spelling",
+      "name": "str",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null
+    },
+    {
+      "doc": "Finite public certificate tree",
+      "name": "raw",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null
+    },
+    {
+      "doc": "Finite sequence",
+      "name": "list",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null
+    },
+    {
+      "doc": "Finite pair",
+      "name": "pair",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null
+    },
+    {
+      "doc": "Opaque public value",
+      "name": "unknown",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null
+    }
+  ],
+  "operations": [
+    {
+      "name": "add",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "int",
+          "enter": "bottom",
+          "name": "arg0"
+        },
+        {
+          "sort": "int",
+          "enter": "bottom",
+          "name": "arg1"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Validate and normalize a public finite object representation.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_only.hosts:add",
+        "digest": "1b4a726bba57757dfdf3f8828d88d4fc796f64bcf39eee78531fd64e2bc3d52c"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "name": "sub",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "int",
+          "enter": "bottom",
+          "name": "arg0"
+        },
+        {
+          "sort": "int",
+          "enter": "bottom",
+          "name": "arg1"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Validate and normalize a public finite object representation.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_only.hosts:sub",
+        "digest": "2e2d4c81cf1b565bd57bec3b5bf509edb1715c83f9aefbc9a8dda9f3879e8832"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "name": "mul",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "int",
+          "enter": "bottom",
+          "name": "arg0"
+        },
+        {
+          "sort": "int",
+          "enter": "bottom",
+          "name": "arg1"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Validate and normalize a public finite object representation.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_only.hosts:mul",
+        "digest": "e47b683e4cc2be1f027a5b47a9a281cfe32b40578941826502acb34712bf8037"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "name": "neg",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "int",
+          "enter": "bottom",
+          "name": "arg0"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Validate and normalize a public finite object representation.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_only.hosts:neg",
+        "digest": "b1a2aab956e8c9d39f94c6c66503643026cdea3354faa7cfb43cc53f69a3cc2e"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "name": "gcd",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "int",
+          "enter": "bottom",
+          "name": "arg0"
+        },
+        {
+          "sort": "int",
+          "enter": "bottom",
+          "name": "arg1"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Validate and normalize a public finite object representation.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_only.hosts:integer_gcd",
+        "digest": "4c2a49174f9fc3119dabeac286413dd25d6fc5ab914bbcfc46259be6a99a28da"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "name": "div_exact",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "int",
+          "enter": "bottom",
+          "name": "arg0"
+        },
+        {
+          "sort": "int",
+          "enter": "bottom",
+          "name": "arg1"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Validate and normalize a public finite object representation.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_only.hosts:div_exact",
+        "digest": "34e5e71e2fc5fc5a042b64804cc5251573b1c0b5e21a18c9433c4c8adb5f8e9c"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "name": "pow",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "int",
+          "enter": "bottom",
+          "name": "arg0"
+        },
+        {
+          "sort": "int",
+          "enter": "bottom",
+          "name": "arg1"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Validate and normalize a public finite object representation.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_only.hosts:power",
+        "digest": "af36d978b547fa7c13976ca56ec8787c524b17364bd6cbb36171ecf965e1392f"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "name": "binom",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "int",
+          "enter": "bottom",
+          "name": "arg0"
+        },
+        {
+          "sort": "int",
+          "enter": "bottom",
+          "name": "arg1"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Validate and normalize a public finite object representation.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_only.hosts:binom",
+        "digest": "b6391d0e44e2fa31bf951df37f3e8ce4b82c9ece539566e8333cc5e50de68f6b"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "name": "lt",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "int",
+          "enter": "bottom",
+          "name": "arg0"
+        },
+        {
+          "sort": "int",
+          "enter": "bottom",
+          "name": "arg1"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Validate and normalize a public finite object representation.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_only.hosts:lt",
+        "digest": "eea552f9b647b8dbfe4d5f9dbc4ce7037fb6a5ecf23c3e23a885ca022d10da66"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "name": "eq",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "raw",
+          "enter": "bottom",
+          "name": "arg0"
+        },
+        {
+          "sort": "raw",
+          "enter": "bottom",
+          "name": "arg1"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Validate and normalize a public finite object representation.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_only.hosts:eq",
+        "digest": "3dba116352f52f3f02ed03c483c7afafcbbb4b0c2934996b58e3be2e784debfd"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "name": "is_empty",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "list",
+          "enter": "bottom",
+          "name": "arg0"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Validate and normalize a public finite object representation.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_only.hosts:is_empty",
+        "digest": "e028d911165426451f24c68f9ce8f5894be2d195a80fc054b134d0fe75f9342d"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "name": "head",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "list",
+          "enter": "bottom",
+          "name": "arg0"
+        }
+      ],
+      "output": {
+        "sort": "raw",
+        "enter": "bottom"
+      },
+      "rule": "Validate and normalize a public finite object representation.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_only.hosts:head",
+        "digest": "170e602d6bc066c22957f60af2eb55964a428bc1466f6b82a4d703499be5b99e"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "name": "tail",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "list",
+          "enter": "bottom",
+          "name": "arg0"
+        }
+      ],
+      "output": {
+        "sort": "list",
+        "enter": "bottom"
+      },
+      "rule": "Validate and normalize a public finite object representation.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_only.hosts:tail",
+        "digest": "a230f47b01f3688702c3cfb3ac66c262c1b5c5d793466752cded5c68194f33be"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "name": "list_length",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "list",
+          "enter": "bottom",
+          "name": "arg0"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Validate and normalize a public finite object representation.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_only.hosts:list_length",
+        "digest": "5749fb0c9dcf8989a6c7778ec500e6f5138a6b527d613e47c98e9b8a5c11c18c"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "name": "cons",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "raw",
+          "enter": "bottom",
+          "name": "arg0"
+        },
+        {
+          "sort": "list",
+          "enter": "bottom",
+          "name": "arg1"
+        }
+      ],
+      "output": {
+        "sort": "list",
+        "enter": "bottom"
+      },
+      "rule": "Validate and normalize a public finite object representation.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_only.hosts:cons",
+        "digest": "0724551887980f3dfe35ddc3540c48d0f8b5d0ba79b098e71ff1e3e794713c5c"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "name": "bounded_count",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "int",
+          "enter": "bottom",
+          "name": "arg0"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Validate and normalize a public finite object representation.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_only.hosts:bounded_count",
+        "digest": "1947916388371e14c0770fe32ebdfefef7d548f997c03890cdcd2e64d4886847"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "name": "sort",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "list",
+          "enter": "bottom",
+          "name": "arg0"
+        }
+      ],
+      "output": {
+        "sort": "list",
+        "enter": "bottom"
+      },
+      "rule": "Validate and normalize a public finite object representation.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_only.hosts:sort",
+        "digest": "2578125370a850affe8d1e90486c01385cb835832304a7bc8df13c2ea6baa936"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "name": "read",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "unknown",
+          "enter": "bottom",
+          "name": "arg0"
+        },
+        {
+          "sort": "str",
+          "enter": "bottom",
+          "name": "arg1"
+        }
+      ],
+      "output": {
+        "sort": "unknown",
+        "enter": "bottom"
+      },
+      "rule": "Validate and normalize a public finite object representation.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_only.hosts:read",
+        "digest": "11e2bf3f1dfba28c79a9ddb40184606ba87b469c9e2c5fb7da3afc25a17a96be"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "name": "make_record",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "str",
+          "enter": "bottom",
+          "name": "arg0"
+        },
+        {
+          "sort": "str",
+          "enter": "bottom",
+          "name": "arg1"
+        },
+        {
+          "sort": "list",
+          "enter": "bottom",
+          "name": "arg2"
+        }
+      ],
+      "output": {
+        "sort": "raw",
+        "enter": "bottom"
+      },
+      "rule": "Validate and normalize a public finite object representation.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_only.hosts:make_record",
+        "digest": "eeac7e612685faec04fbcd85b02b5086ae5f7e79a0cda1b1ef714f7d2012cdc5"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "name": "field",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "unknown",
+          "enter": "bottom",
+          "name": "arg0"
+        },
+        {
+          "sort": "int",
+          "enter": "bottom",
+          "name": "arg1"
+        }
+      ],
+      "output": {
+        "sort": "unknown",
+        "enter": "bottom"
+      },
+      "rule": "Validate and normalize a public finite object representation.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_only.hosts:field",
+        "digest": "31ffe9372fe448b79eb386b5d513004e4494819aadc08269924e6154189ed520"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "name": "tag",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "unknown",
+          "enter": "bottom",
+          "name": "arg0"
+        }
+      ],
+      "output": {
+        "sort": "str",
+        "enter": "bottom"
+      },
+      "rule": "Validate and normalize a public finite object representation.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_only.hosts:tag",
+        "digest": "f9a9c1d8f37a0ad76d87c1270ff9a9ccbaacc2167f109a142f2ea7ea1c96f6cb"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "name": "field_count",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "unknown",
+          "enter": "bottom",
+          "name": "arg0"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Validate and normalize a public finite object representation.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_only.hosts:field_count",
+        "digest": "e7e402c808ac18db468823df14646362019aefcf8d0f0e8be5a515f7f4a07220"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "name": "rat_parse",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "unknown",
+          "enter": "bottom",
+          "name": "arg0"
+        }
+      ],
+      "output": {
+        "sort": "pair",
+        "enter": "bottom"
+      },
+      "rule": "Validate and normalize a public finite object representation.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_only.hosts:rat_parse",
+        "digest": "6a501b35df3d632593f2bc9b2d36720eb92fc742ba66cdbd49f609c9328dd650"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "name": "rat_format",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "pair",
+          "enter": "bottom",
+          "name": "arg0"
+        }
+      ],
+      "output": {
+        "sort": "str",
+        "enter": "bottom"
+      },
+      "rule": "Validate and normalize a public finite object representation.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_only.hosts:rat_format",
+        "digest": "eecca1b99110984302b4b4482aea4bc37ceb41a773ac1e29a47d798d18952be2"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "name": "rat_add",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "pair",
+          "enter": "bottom",
+          "name": "arg0"
+        },
+        {
+          "sort": "pair",
+          "enter": "bottom",
+          "name": "arg1"
+        }
+      ],
+      "output": {
+        "sort": "pair",
+        "enter": "bottom"
+      },
+      "rule": "Validate and normalize a public finite object representation.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_only.hosts:rat_add",
+        "digest": "6cd0af1f3482397c40d4d5a6b916f3772edd27f8ac1193249f20aa522477b16d"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "name": "rat_mul",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "pair",
+          "enter": "bottom",
+          "name": "arg0"
+        },
+        {
+          "sort": "pair",
+          "enter": "bottom",
+          "name": "arg1"
+        }
+      ],
+      "output": {
+        "sort": "pair",
+        "enter": "bottom"
+      },
+      "rule": "Validate and normalize a public finite object representation.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_only.hosts:rat_mul",
+        "digest": "eccc9b70970b9bae49b28fe86371207066cebe0bd793d159bdcb3ab0bb25e1ea"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "name": "rat_div",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "pair",
+          "enter": "bottom",
+          "name": "arg0"
+        },
+        {
+          "sort": "pair",
+          "enter": "bottom",
+          "name": "arg1"
+        }
+      ],
+      "output": {
+        "sort": "pair",
+        "enter": "bottom"
+      },
+      "rule": "Validate and normalize a public finite object representation.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_only.hosts:rat_div",
+        "digest": "e059ff4f4ad3fdcacc61e38530ce6b49281e7a71c427993ead8eca9c88537812"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "name": "rat_pow",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "pair",
+          "enter": "bottom",
+          "name": "arg0"
+        },
+        {
+          "sort": "int",
+          "enter": "bottom",
+          "name": "arg1"
+        }
+      ],
+      "output": {
+        "sort": "pair",
+        "enter": "bottom"
+      },
+      "rule": "Validate and normalize a public finite object representation.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_only.hosts:rat_pow",
+        "digest": "722732c17930f7e5d74b04b7f27b91058e4e99348aac7e528d736ebf40a341ef"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "name": "rat_lt",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "pair",
+          "enter": "bottom",
+          "name": "arg0"
+        },
+        {
+          "sort": "pair",
+          "enter": "bottom",
+          "name": "arg1"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Validate and normalize a public finite object representation.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_only.hosts:rat_lt",
+        "digest": "7219f9ee9762ff6985cdcd0822c49c3b7bd7b11db903ad8bed3c8662b74365a3"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "name": "rat_eq",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "pair",
+          "enter": "bottom",
+          "name": "arg0"
+        },
+        {
+          "sort": "pair",
+          "enter": "bottom",
+          "name": "arg1"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Validate and normalize a public finite object representation.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_only.hosts:rat_eq",
+        "digest": "12c0cfb6d9171bcbb3c737b4f9b26a759655a19bb7da05bafa0d7035a2a7da9f"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "name": "is_ok",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "unknown",
+          "enter": "bottom",
+          "name": "arg0"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Validate and normalize a public finite object representation.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_only.hosts:is_ok",
+        "digest": "2593f6ae3ba6bb8b08d0c14b7efcecc6c0c97c154a31f5cc975bf85239d84e78"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    }
+  ],
+  "combinators": {
+    "nodes": [
+      "Var",
+      "Lit",
+      "Call",
+      "Let",
+      "Case",
+      "Rec",
+      "Blocks"
+    ],
+    "recursion": "measure",
+    "library": [
+      {
+        "name": "map",
+        "params": [
+          "f",
+          "xs"
+        ],
+        "op_params": [
+          "f"
+        ],
+        "body": {
+          "node": "Rec",
+          "fn": "map_items",
+          "params": [
+            "rest"
+          ],
+          "body": {
+            "node": "Case",
+            "arms": [
+              [
+                {
+                  "node": "Test",
+                  "expr": {
+                    "node": "Call",
+                    "fn": "is_empty",
+                    "args": [
+                      {
+                        "node": "Var",
+                        "name": "rest"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "node": "Lit",
+                  "value": {
+                    "t": "tuple",
+                    "v": []
+                  }
+                }
+              ]
+            ],
+            "default": {
+              "node": "Call",
+              "fn": "cons",
+              "args": [
+                {
+                  "node": "Call",
+                  "fn": "f",
+                  "args": [
+                    {
+                      "node": "Call",
+                      "fn": "head",
+                      "args": [
+                        {
+                          "node": "Var",
+                          "name": "rest"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "node": "Call",
+                  "fn": "map_items",
+                  "args": [
+                    {
+                      "node": "Call",
+                      "fn": "tail",
+                      "args": [
+                        {
+                          "node": "Var",
+                          "name": "rest"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "args": [
+            {
+              "node": "Var",
+              "name": "xs"
+            }
+          ],
+          "measure": {
+            "node": "Call",
+            "fn": "list_length",
+            "args": [
+              {
+                "node": "Var",
+                "name": "rest"
+              }
+            ]
+          },
+          "memo": false
+        },
+        "unfold_rule": "substitute"
+      },
+      {
+        "name": "fold",
+        "params": [
+          "f",
+          "init",
+          "xs"
+        ],
+        "op_params": [
+          "f"
+        ],
+        "body": {
+          "node": "Rec",
+          "fn": "fold_items",
+          "params": [
+            "rest",
+            "acc"
+          ],
+          "body": {
+            "node": "Case",
+            "arms": [
+              [
+                {
+                  "node": "Test",
+                  "expr": {
+                    "node": "Call",
+                    "fn": "is_empty",
+                    "args": [
+                      {
+                        "node": "Var",
+                        "name": "rest"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "node": "Var",
+                  "name": "acc"
+                }
+              ]
+            ],
+            "default": {
+              "node": "Call",
+              "fn": "fold_items",
+              "args": [
+                {
+                  "node": "Call",
+                  "fn": "tail",
+                  "args": [
+                    {
+                      "node": "Var",
+                      "name": "rest"
+                    }
+                  ]
+                },
+                {
+                  "node": "Call",
+                  "fn": "f",
+                  "args": [
+                    {
+                      "node": "Var",
+                      "name": "acc"
+                    },
+                    {
+                      "node": "Call",
+                      "fn": "head",
+                      "args": [
+                        {
+                          "node": "Var",
+                          "name": "rest"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "args": [
+            {
+              "node": "Var",
+              "name": "xs"
+            },
+            {
+              "node": "Var",
+              "name": "init"
+            }
+          ],
+          "measure": {
+            "node": "Call",
+            "fn": "list_length",
+            "args": [
+              {
+                "node": "Var",
+                "name": "rest"
+              }
+            ]
+          },
+          "memo": false
+        },
+        "unfold_rule": "substitute"
+      },
+      {
+        "name": "structural",
+        "params": [
+          "f",
+          "init",
+          "xs"
+        ],
+        "op_params": [
+          "f"
+        ],
+        "body": {
+          "node": "Rec",
+          "fn": "fold_items",
+          "params": [
+            "rest",
+            "acc"
+          ],
+          "body": {
+            "node": "Case",
+            "arms": [
+              [
+                {
+                  "node": "Test",
+                  "expr": {
+                    "node": "Call",
+                    "fn": "is_empty",
+                    "args": [
+                      {
+                        "node": "Var",
+                        "name": "rest"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "node": "Var",
+                  "name": "acc"
+                }
+              ]
+            ],
+            "default": {
+              "node": "Call",
+              "fn": "fold_items",
+              "args": [
+                {
+                  "node": "Call",
+                  "fn": "tail",
+                  "args": [
+                    {
+                      "node": "Var",
+                      "name": "rest"
+                    }
+                  ]
+                },
+                {
+                  "node": "Call",
+                  "fn": "f",
+                  "args": [
+                    {
+                      "node": "Var",
+                      "name": "acc"
+                    },
+                    {
+                      "node": "Call",
+                      "fn": "head",
+                      "args": [
+                        {
+                          "node": "Var",
+                          "name": "rest"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "args": [
+            {
+              "node": "Var",
+              "name": "xs"
+            },
+            {
+              "node": "Var",
+              "name": "init"
+            }
+          ],
+          "measure": {
+            "node": "Call",
+            "fn": "list_length",
+            "args": [
+              {
+                "node": "Var",
+                "name": "rest"
+              }
+            ]
+          },
+          "memo": false
+        },
+        "unfold_rule": "substitute"
+      },
+      {
+        "name": "branch",
+        "params": [
+          "t",
+          "f",
+          "g",
+          "x"
+        ],
+        "op_params": [
+          "t",
+          "f",
+          "g"
+        ],
+        "body": {
+          "node": "Case",
+          "arms": [
+            [
+              {
+                "node": "Test",
+                "expr": {
+                  "node": "Call",
+                  "fn": "t",
+                  "args": [
+                    {
+                      "node": "Var",
+                      "name": "x"
+                    }
+                  ]
+                }
+              },
+              {
+                "node": "Call",
+                "fn": "f",
+                "args": [
+                  {
+                    "node": "Var",
+                    "name": "x"
+                  }
+                ]
+              }
+            ]
+          ],
+          "default": {
+            "node": "Call",
+            "fn": "g",
+            "args": [
+              {
+                "node": "Var",
+                "name": "x"
+              }
+            ]
+          }
+        },
+        "unfold_rule": "substitute"
+      },
+      {
+        "name": "bounded",
+        "params": [
+          "f",
+          "x",
+          "n"
+        ],
+        "op_params": [
+          "f"
+        ],
+        "body": {
+          "node": "Case",
+          "arms": [
+            [
+              {
+                "node": "Test",
+                "expr": {
+                  "node": "Call",
+                  "fn": "bounded_count",
+                  "args": [
+                    {
+                      "node": "Var",
+                      "name": "n"
+                    }
+                  ]
+                }
+              },
+              {
+                "node": "Rec",
+                "fn": "bounded_loop",
+                "params": [
+                  "remaining",
+                  "current"
+                ],
+                "body": {
+                  "node": "Case",
+                  "arms": [
+                    [
+                      {
+                        "node": "Test",
+                        "expr": {
+                          "node": "Call",
+                          "fn": "eq",
+                          "args": [
+                            {
+                              "node": "Var",
+                              "name": "remaining"
+                            },
+                            {
+                              "node": "Lit",
+                              "value": {
+                                "t": "int",
+                                "v": 0
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "node": "Var",
+                        "name": "current"
+                      }
+                    ]
+                  ],
+                  "default": {
+                    "node": "Call",
+                    "fn": "bounded_loop",
+                    "args": [
+                      {
+                        "node": "Call",
+                        "fn": "sub",
+                        "args": [
+                          {
+                            "node": "Var",
+                            "name": "remaining"
+                          },
+                          {
+                            "node": "Lit",
+                            "value": {
+                              "t": "int",
+                              "v": 1
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "node": "Call",
+                        "fn": "f",
+                        "args": [
+                          {
+                            "node": "Var",
+                            "name": "current"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                },
+                "args": [
+                  {
+                    "node": "Var",
+                    "name": "n"
+                  },
+                  {
+                    "node": "Var",
+                    "name": "x"
+                  }
+                ],
+                "measure": {
+                  "node": "Var",
+                  "name": "remaining"
+                },
+                "memo": false
+              }
+            ]
+          ],
+          "default": {
+            "node": "Lit",
+            "value": {
+              "t": "bottom",
+              "v": "depth_limit"
+            }
+          }
+        },
+        "unfold_rule": "substitute"
+      }
+    ]
+  },
+  "observation": {
+    "truth": "unknown",
+    "probes": [
+      {
+        "name": "value",
+        "sort": "str",
+        "reads": "unknown",
+        "reveals": [
+          "value"
+        ],
+        "impl": {
+          "host": "opulse.worlds_v2.obj_only.hosts:value",
+          "digest": "e1d73924564dff6fd4d9aa6c455f1bc7331970e174a63b5d67d12939a847edec"
+        }
+      },
+      {
+        "name": "accepted",
+        "sort": "bool",
+        "reads": "unknown",
+        "reveals": [
+          "accepted"
+        ],
+        "impl": {
+          "host": "opulse.worlds_v2.obj_only.hosts:accepted",
+          "digest": "948776a558c6a1d8eed2683f223d4e5286bde464ad86c36f4641c369302ed42d"
+        }
+      }
+    ],
+    "capabilities": {},
+    "show": {},
+    "judge_view": "full_state"
+  },
+  "codec": {},
+  "open_kinds": [
+    "object"
+  ],
+  "lock": {
+    "host_digests": {
+      "add": "1b4a726bba57757dfdf3f8828d88d4fc796f64bcf39eee78531fd64e2bc3d52c",
+      "sub": "2e2d4c81cf1b565bd57bec3b5bf509edb1715c83f9aefbc9a8dda9f3879e8832",
+      "mul": "e47b683e4cc2be1f027a5b47a9a281cfe32b40578941826502acb34712bf8037",
+      "neg": "b1a2aab956e8c9d39f94c6c66503643026cdea3354faa7cfb43cc53f69a3cc2e",
+      "gcd": "4c2a49174f9fc3119dabeac286413dd25d6fc5ab914bbcfc46259be6a99a28da",
+      "div_exact": "34e5e71e2fc5fc5a042b64804cc5251573b1c0b5e21a18c9433c4c8adb5f8e9c",
+      "pow": "af36d978b547fa7c13976ca56ec8787c524b17364bd6cbb36171ecf965e1392f",
+      "binom": "b6391d0e44e2fa31bf951df37f3e8ce4b82c9ece539566e8333cc5e50de68f6b",
+      "lt": "eea552f9b647b8dbfe4d5f9dbc4ce7037fb6a5ecf23c3e23a885ca022d10da66",
+      "eq": "3dba116352f52f3f02ed03c483c7afafcbbb4b0c2934996b58e3be2e784debfd",
+      "is_empty": "e028d911165426451f24c68f9ce8f5894be2d195a80fc054b134d0fe75f9342d",
+      "head": "170e602d6bc066c22957f60af2eb55964a428bc1466f6b82a4d703499be5b99e",
+      "tail": "a230f47b01f3688702c3cfb3ac66c262c1b5c5d793466752cded5c68194f33be",
+      "list_length": "5749fb0c9dcf8989a6c7778ec500e6f5138a6b527d613e47c98e9b8a5c11c18c",
+      "cons": "0724551887980f3dfe35ddc3540c48d0f8b5d0ba79b098e71ff1e3e794713c5c",
+      "bounded_count": "1947916388371e14c0770fe32ebdfefef7d548f997c03890cdcd2e64d4886847",
+      "sort": "2578125370a850affe8d1e90486c01385cb835832304a7bc8df13c2ea6baa936",
+      "read": "11e2bf3f1dfba28c79a9ddb40184606ba87b469c9e2c5fb7da3afc25a17a96be",
+      "make_record": "eeac7e612685faec04fbcd85b02b5086ae5f7e79a0cda1b1ef714f7d2012cdc5",
+      "field": "31ffe9372fe448b79eb386b5d513004e4494819aadc08269924e6154189ed520",
+      "tag": "f9a9c1d8f37a0ad76d87c1270ff9a9ccbaacc2167f109a142f2ea7ea1c96f6cb",
+      "field_count": "e7e402c808ac18db468823df14646362019aefcf8d0f0e8be5a515f7f4a07220",
+      "rat_parse": "6a501b35df3d632593f2bc9b2d36720eb92fc742ba66cdbd49f609c9328dd650",
+      "rat_format": "eecca1b99110984302b4b4482aea4bc37ceb41a773ac1e29a47d798d18952be2",
+      "rat_add": "6cd0af1f3482397c40d4d5a6b916f3772edd27f8ac1193249f20aa522477b16d",
+      "rat_mul": "eccc9b70970b9bae49b28fe86371207066cebe0bd793d159bdcb3ab0bb25e1ea",
+      "rat_div": "e059ff4f4ad3fdcacc61e38530ce6b49281e7a71c427993ead8eca9c88537812",
+      "rat_pow": "722732c17930f7e5d74b04b7f27b91058e4e99348aac7e528d736ebf40a341ef",
+      "rat_lt": "7219f9ee9762ff6985cdcd0822c49c3b7bd7b11db903ad8bed3c8662b74365a3",
+      "rat_eq": "12c0cfb6d9171bcbb3c737b4f9b26a759655a19bb7da05bafa0d7035a2a7da9f",
+      "is_ok": "2593f6ae3ba6bb8b08d0c14b7efcecc6c0c97c154a31f5cc975bf85239d84e78",
+      "probe.value": "e1d73924564dff6fd4d9aa6c455f1bc7331970e174a63b5d67d12939a847edec",
+      "probe.accepted": "948776a558c6a1d8eed2683f223d4e5286bde464ad86c36f4641c369302ed42d"
+    },
+    "constants_hash": "17bc0b7f6d638b92f7d4105bf009a5f0c07d1db3de10a755c122f00b7aa09fc1",
+    "world_hash": "e5b8cc4d394be155168fc860127c399c90d1c8029cee328414d5bd37c47f7481"
+  }
+}

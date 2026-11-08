@@ -1,0 +1,1246 @@
+{
+  "schema": "opulse.world/2",
+  "world": "geometry",
+  "version": 1,
+  "dialect": "atoms-v2",
+  "title": "Exact Lattice Polygons with Holes",
+  "source": {
+    "title_zh": "晶格多边形与洞的精确几何"
+  },
+  "params": {
+    "min_coord": 0,
+    "max_coord": 32,
+    "max_vertices": 24,
+    "max_holes": 4
+  },
+  "constants": {
+    "coordinate_bounds": [
+      0,
+      32
+    ],
+    "max_path_length": 24
+  },
+  "objects": [
+    {
+      "kind": "object",
+      "name": "int",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Exact integer arithmetic."
+    },
+    {
+      "kind": "object",
+      "name": "bool",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Boolean decisions."
+    },
+    {
+      "kind": "object",
+      "name": "Text",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Orientation labels."
+    },
+    {
+      "kind": "object",
+      "name": "Point",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "A point in the 33 by 33 integer lattice."
+    },
+    {
+      "kind": "object",
+      "name": "Path",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "An ordered sequence of up to 24 bounded points."
+    },
+    {
+      "kind": "object",
+      "name": "List",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "A finite structural sequence."
+    }
+  ],
+  "operations": [
+    {
+      "kind": "operation",
+      "name": "point",
+      "symbol": "point",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "x",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "y",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Point",
+        "enter": "bottom"
+      },
+      "rule": "Construct a bounded integer point.",
+      "errors": [
+        "range"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.geometry.hosts:point",
+        "digest": "fe1826cf2a09109f997e522591c241d6a738f612471f78694aaa669a29c85f6e"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "move",
+      "symbol": "move",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "p",
+          "sort": "Point",
+          "enter": "bottom"
+        },
+        {
+          "name": "dx",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "dy",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Point",
+        "enter": "bottom"
+      },
+      "rule": "Translate a point and check the -32..32 displacement and 0..32 output bounds.",
+      "errors": [
+        "range"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.geometry.hosts:move",
+        "digest": "c4d8da19edafa52b2f7dfca89bdf2620bc5f9e703f3c702901432821fbf4874b"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "turn",
+      "symbol": "turn",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "p",
+          "sort": "Point",
+          "enter": "bottom"
+        },
+        {
+          "name": "q",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Point",
+        "enter": "bottom"
+      },
+      "rule": "Rotate by 0..3 quarter-turns around (16,16).",
+      "errors": [
+        "range"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.geometry.hosts:turn",
+        "digest": "d18229421d40c803550acaf23c4ad2caff7c2053cbc8ea50c1589fbdf72e0f18"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "flip",
+      "symbol": "flip",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "p",
+          "sort": "Point",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Point",
+        "enter": "bottom"
+      },
+      "rule": "Reflect across x=16.",
+      "errors": [
+        "range"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.geometry.hosts:flip",
+        "digest": "f1949db434192397c0418616c53c89f4813d67cf2e04c45f0483bac027f35b05"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "cross",
+      "symbol": "cross",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "Point",
+          "enter": "bottom"
+        },
+        {
+          "name": "b",
+          "sort": "Point",
+          "enter": "bottom"
+        },
+        {
+          "name": "c",
+          "sort": "Point",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Exact signed integer orientation of three bounded points.",
+      "errors": [
+        "range"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.geometry.hosts:cross",
+        "digest": "9b8eaabcfd34c52c6a21619d4f3c5663552a53d1ff234c0043920809a415028b"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "segments_meet",
+      "symbol": "segments_meet",
+      "role": "decide",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "Point",
+          "enter": "bottom"
+        },
+        {
+          "name": "b",
+          "sort": "Point",
+          "enter": "bottom"
+        },
+        {
+          "name": "c",
+          "sort": "Point",
+          "enter": "bottom"
+        },
+        {
+          "name": "d",
+          "sort": "Point",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Exact orientation and collinear-overlap test, including endpoints.",
+      "errors": [
+        "range"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.geometry.hosts:segments_meet",
+        "digest": "01800fa37edfef1ec3c508e9ddeab3ae0e2ec67f5d370e7dfad277b865ab0bb5"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "x",
+      "symbol": "x",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "p",
+          "sort": "Point",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Read a point's first coordinate.",
+      "errors": [
+        "range"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.geometry.hosts:x",
+        "digest": "901072e955db69d1ab9784f6f24fabd6f78e40c682be511c1a5a24af63b9fa4e"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "y",
+      "symbol": "y",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "p",
+          "sort": "Point",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Read a point's second coordinate.",
+      "errors": [
+        "range"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.geometry.hosts:y",
+        "digest": "f8dd6def8ed5c33259a1e7c4bdf49dc1d45576349ba3a1bb4a0349cc4ea5a323"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "at",
+      "symbol": "at",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "items",
+          "sort": "List",
+          "enter": "bottom"
+        },
+        {
+          "name": "index",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Index a finite sequence.",
+      "errors": [
+        "index"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.geometry.hosts:at",
+        "digest": "89cf3862d8ae4b5677aaed771918c1ad8f905dc69807f278c0d8c55e8dc59051"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "length",
+      "symbol": "length",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "items",
+          "sort": "List",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Count finite sequence elements.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.geometry.hosts:length",
+        "digest": "c8c761103a3929451cbde237d35f865293b7ca50539477dcc4128f754f1d434e"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "empty",
+      "symbol": "empty",
+      "role": "decide",
+      "inputs": [
+        {
+          "name": "items",
+          "sort": "List",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Check whether a sequence is empty.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.geometry.hosts:empty",
+        "digest": "b6ac5753a1313b928e00039cfceaf277974922d17a080407531e009045a43c76"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "head",
+      "symbol": "head",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "items",
+          "sort": "List",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Read the first sequence element.",
+      "errors": [
+        "index"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.geometry.hosts:head",
+        "digest": "58de831214c724ddb37fb0f9667473df1caae1ae3d0057b7040766aa6ffc001b"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "tail",
+      "symbol": "tail",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "items",
+          "sort": "List",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Return all but the first sequence element.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.geometry.hosts:tail",
+        "digest": "827e830cc4c0c1c8b6b137360fc2e0495a922c202a6a987d917263db7a9fbae3"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "cons",
+      "symbol": "cons",
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "item",
+          "sort": "List",
+          "enter": "bottom"
+        },
+        {
+          "name": "items",
+          "sort": "List",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Prepend one item to a sequence.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.geometry.hosts:cons",
+        "digest": "0ad1ddc58561e33a9f3e4a19ea971fe255b7fdc49bbb81ff01fada409690b28c"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "append",
+      "symbol": "append",
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "items",
+          "sort": "List",
+          "enter": "bottom"
+        },
+        {
+          "name": "item",
+          "sort": "List",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Append one item to a sequence.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.geometry.hosts:append",
+        "digest": "7539c523ecf85f18cccdacad1aec8db259199b207af2e4c8e8672982345bd146"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "reverse",
+      "symbol": "reverse",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "items",
+          "sort": "List",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Reverse a finite sequence.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.geometry.hosts:reverse",
+        "digest": "92c98c3f6e46fe1ce990c6b511b923928c62f912a0e2a5441c633ae2b8c044e7"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "eq",
+      "symbol": "eq",
+      "role": "relate",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "List",
+          "enter": "bottom"
+        },
+        {
+          "name": "b",
+          "sort": "List",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Structural equality.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.geometry.hosts:eq",
+        "digest": "ca493701ae75b4cb43de723c3f633745ee1ee5ebf8db9e47775df8ca669182fd"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "lt",
+      "symbol": "lt",
+      "role": "relate",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "b",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Compare exact integers.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.geometry.hosts:lt",
+        "digest": "3f9702a366c61b71bef2e2145baeef60f64b0f801ced58f1c2051977b1ea95e1"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "le",
+      "symbol": "le",
+      "role": "relate",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "b",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Compare exact integers inclusively.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.geometry.hosts:le",
+        "digest": "72ab1d5d26e494291a5db07292f7ccee82964d18d30bbc7682f053ba444aefaa"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "add",
+      "symbol": "add",
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "b",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Add exact integers.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.geometry.hosts:add",
+        "digest": "8a24c7effc803ea119376d0847bfb0c5f8080b0ecdac2c829aef8cca1c6cf925"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "sub",
+      "symbol": "sub",
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "b",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Subtract exact integers.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.geometry.hosts:sub",
+        "digest": "7092f2612d8abc590a41b30ef0a4a34c681b512ea956c8e584fe19523cc54c1b"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "mul",
+      "symbol": "mul",
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "b",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Multiply exact integers.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.geometry.hosts:mul",
+        "digest": "2042076318b1ec58936465dc1a35b8e46cfc9a6ea8467aea37f8c0505ead0509"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "div",
+      "symbol": "div",
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "b",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Divide exact integers when the divisor is nonzero.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.geometry.hosts:div",
+        "digest": "1b0fdf47060a8382c18bead7ac4a89070f0ef53822160dac6ca7b9154e02ad8c"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "absolute",
+      "symbol": "absolute",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Absolute value of an integer.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.geometry.hosts:absolute",
+        "digest": "819015170dab342cbccb67325f2fb9e4149e9a912f445fd159fd996a36b1b803"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "gcd",
+      "symbol": "gcd",
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "b",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Greatest common divisor of two integers.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.geometry.hosts:gcd",
+        "digest": "de938ce6bb75190c61899e720a5fc7137891edff1f7742063dad8d6ec1c3aa7f"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "minimum",
+      "symbol": "minimum",
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "b",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Minimum of two ordered scalars.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.geometry.hosts:minimum",
+        "digest": "dc55ac6fa7a20aadf85f6420b2dd5e9cb094a892299ea3def7aedf1b26c4a9f3"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "maximum",
+      "symbol": "maximum",
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "a",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "b",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Maximum of two ordered scalars.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.geometry.hosts:maximum",
+        "digest": "9a629d882c44a0e47638a50c4aea0b1219e3529f0ab67060d1a33405e93ec5f6"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "rotate",
+      "symbol": "rotate",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "items",
+          "sort": "List",
+          "enter": "bottom"
+        },
+        {
+          "name": "count",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Rotate a finite sequence by the given index.",
+      "errors": [
+        "index"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.geometry.hosts:rotate",
+        "digest": "9b0707b11ae9f21a4aaa8a6230f9a4cdf3a84fa89832338839e6d65b2b026b2c"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "concat",
+      "symbol": "concat",
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "first",
+          "sort": "List",
+          "enter": "bottom"
+        },
+        {
+          "name": "second",
+          "sort": "List",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Concatenate finite lists.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.geometry.hosts:concat",
+        "digest": "f7d9246f677d38b551b8b51f2d129d306c5dbfbf9d6381169efacee3ad6b54de"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "singleton",
+      "symbol": "singleton",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "item",
+          "sort": "List",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Form a one-element list.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.geometry.hosts:singleton",
+        "digest": "a9dc76b34b87a85e6666503b2a768cdd0af987a78a98440ed4f530d895703d67"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "sorted_items",
+      "symbol": "sorted_items",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "items",
+          "sort": "List",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Sort a finite list lexicographically by its structural components.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.geometry.hosts:sorted_items",
+        "digest": "aff3f7e695e1d3885d83a66bd43d34b6e4264b7caf4750cc8f2e981e83d013ba"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "path",
+      "symbol": "path",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "vertices",
+          "sort": "List",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Path",
+        "enter": "bottom"
+      },
+      "rule": "Construct an ordered path of at most 24 bounded points.",
+      "errors": [
+        "range",
+        "size"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.geometry.hosts:path",
+        "digest": "1750ddd54eb4552551c4405b36d7c054ba695721d46cf048f1068f2233c4069a"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    }
+  ],
+  "combinators": {
+    "nodes": [
+      "Var",
+      "Lit",
+      "Call",
+      "Let",
+      "Case",
+      "Rec"
+    ],
+    "library": [
+      {
+        "name": "then",
+        "params": [
+          "f",
+          "g",
+          "p"
+        ],
+        "op_params": [
+          "f",
+          "g"
+        ],
+        "body": {
+          "node": "Call",
+          "fn": "g",
+          "args": [
+            {
+              "node": "Call",
+              "fn": "f",
+              "args": [
+                {
+                  "node": "Var",
+                  "name": "p"
+                }
+              ]
+            }
+          ]
+        },
+        "unfold_rule": "substitute"
+      }
+    ],
+    "recursion": "measure"
+  },
+  "observation": {
+    "truth": "Path",
+    "probes": [
+      {
+        "name": "points",
+        "sort": "Path",
+        "reads": "Path",
+        "reveals": [
+          "vertices"
+        ],
+        "impl": {
+          "host": "opulse.worlds_v2.geometry.hosts:points",
+          "digest": "ca10f0e2c3bf4ec96a2a1618b6e3cdf2d67b419629cb740074caa93f8f311178"
+        }
+      }
+    ],
+    "capabilities": {
+      "learner": {
+        "channels": [
+          "results",
+          "errors",
+          "renders",
+          "traces",
+          "steps"
+        ],
+        "probes": "all"
+      }
+    },
+    "show": {
+      "input": "points",
+      "result": "points"
+    },
+    "judge_view": "full_state"
+  },
+  "codec": {},
+  "lock": {
+    "host_digests": {
+      "point": "fe1826cf2a09109f997e522591c241d6a738f612471f78694aaa669a29c85f6e",
+      "move": "c4d8da19edafa52b2f7dfca89bdf2620bc5f9e703f3c702901432821fbf4874b",
+      "turn": "d18229421d40c803550acaf23c4ad2caff7c2053cbc8ea50c1589fbdf72e0f18",
+      "flip": "f1949db434192397c0418616c53c89f4813d67cf2e04c45f0483bac027f35b05",
+      "cross": "9b8eaabcfd34c52c6a21619d4f3c5663552a53d1ff234c0043920809a415028b",
+      "segments_meet": "01800fa37edfef1ec3c508e9ddeab3ae0e2ec67f5d370e7dfad277b865ab0bb5",
+      "x": "901072e955db69d1ab9784f6f24fabd6f78e40c682be511c1a5a24af63b9fa4e",
+      "y": "f8dd6def8ed5c33259a1e7c4bdf49dc1d45576349ba3a1bb4a0349cc4ea5a323",
+      "at": "89cf3862d8ae4b5677aaed771918c1ad8f905dc69807f278c0d8c55e8dc59051",
+      "length": "c8c761103a3929451cbde237d35f865293b7ca50539477dcc4128f754f1d434e",
+      "empty": "b6ac5753a1313b928e00039cfceaf277974922d17a080407531e009045a43c76",
+      "head": "58de831214c724ddb37fb0f9667473df1caae1ae3d0057b7040766aa6ffc001b",
+      "tail": "827e830cc4c0c1c8b6b137360fc2e0495a922c202a6a987d917263db7a9fbae3",
+      "cons": "0ad1ddc58561e33a9f3e4a19ea971fe255b7fdc49bbb81ff01fada409690b28c",
+      "append": "7539c523ecf85f18cccdacad1aec8db259199b207af2e4c8e8672982345bd146",
+      "reverse": "92c98c3f6e46fe1ce990c6b511b923928c62f912a0e2a5441c633ae2b8c044e7",
+      "eq": "ca493701ae75b4cb43de723c3f633745ee1ee5ebf8db9e47775df8ca669182fd",
+      "lt": "3f9702a366c61b71bef2e2145baeef60f64b0f801ced58f1c2051977b1ea95e1",
+      "le": "72ab1d5d26e494291a5db07292f7ccee82964d18d30bbc7682f053ba444aefaa",
+      "add": "8a24c7effc803ea119376d0847bfb0c5f8080b0ecdac2c829aef8cca1c6cf925",
+      "sub": "7092f2612d8abc590a41b30ef0a4a34c681b512ea956c8e584fe19523cc54c1b",
+      "mul": "2042076318b1ec58936465dc1a35b8e46cfc9a6ea8467aea37f8c0505ead0509",
+      "div": "1b0fdf47060a8382c18bead7ac4a89070f0ef53822160dac6ca7b9154e02ad8c",
+      "absolute": "819015170dab342cbccb67325f2fb9e4149e9a912f445fd159fd996a36b1b803",
+      "gcd": "de938ce6bb75190c61899e720a5fc7137891edff1f7742063dad8d6ec1c3aa7f",
+      "minimum": "dc55ac6fa7a20aadf85f6420b2dd5e9cb094a892299ea3def7aedf1b26c4a9f3",
+      "maximum": "9a629d882c44a0e47638a50c4aea0b1219e3529f0ab67060d1a33405e93ec5f6",
+      "rotate": "9b0707b11ae9f21a4aaa8a6230f9a4cdf3a84fa89832338839e6d65b2b026b2c",
+      "concat": "f7d9246f677d38b551b8b51f2d129d306c5dbfbf9d6381169efacee3ad6b54de",
+      "singleton": "a9dc76b34b87a85e6666503b2a768cdd0af987a78a98440ed4f530d895703d67",
+      "sorted_items": "aff3f7e695e1d3885d83a66bd43d34b6e4264b7caf4750cc8f2e981e83d013ba",
+      "path": "1750ddd54eb4552551c4405b36d7c054ba695721d46cf048f1068f2233c4069a",
+      "probe.points": "ca10f0e2c3bf4ec96a2a1618b6e3cdf2d67b419629cb740074caa93f8f311178"
+    },
+    "constants_hash": "5a0a0c526146584666d7261a105b473e4e007c1e7f443418a64f83fc9c6ea8a0",
+    "world_hash": "3546e6d99b6fc51da68ff0b270e04e8ec114bc64b84b8642d750db4df9fb5ce1"
+  }
+}

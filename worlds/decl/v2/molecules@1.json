@@ -1,0 +1,1990 @@
+{
+  "schema": "opulse.world/2",
+  "world": "molecules",
+  "version": 1,
+  "dialect": "atoms-v2",
+  "title": "Valence workshop",
+  "source": {
+    "title_zh": "价键工坊"
+  },
+  "params": {
+    "max_heavy": 8,
+    "max_total": 32,
+    "valence": {
+      "C": 4,
+      "O": 2,
+      "H": 1
+    }
+  },
+  "constants": {},
+  "objects": [
+    {
+      "kind": "object",
+      "name": "Graph",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "A numbered C/O heavy-atom graph with single bonds and attached hydrogen counts."
+    },
+    {
+      "kind": "object",
+      "name": "C",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Carbon has valence four."
+    },
+    {
+      "kind": "object",
+      "name": "O",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Oxygen has valence two."
+    },
+    {
+      "kind": "object",
+      "name": "H",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Hydrogen has valence one and attaches to a heavy atom."
+    },
+    {
+      "kind": "object",
+      "name": "int",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": ""
+    },
+    {
+      "kind": "object",
+      "name": "str",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": ""
+    },
+    {
+      "kind": "object",
+      "name": "bool",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": ""
+    },
+    {
+      "kind": "object",
+      "name": "List",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": ""
+    },
+    {
+      "kind": "object",
+      "name": "Pair",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": ""
+    },
+    {
+      "kind": "object",
+      "name": "Triple",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": ""
+    },
+    {
+      "kind": "object",
+      "name": "AtomsView",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": ""
+    },
+    {
+      "kind": "object",
+      "name": "Record",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Finite public record of profile, count, and witnesses."
+    }
+  ],
+  "operations": [
+    {
+      "kind": "operation",
+      "name": "attach",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "g",
+          "sort": "Graph",
+          "enter": "bottom"
+        },
+        {
+          "name": "atom",
+          "sort": "str",
+          "enter": "bottom"
+        },
+        {
+          "name": "old",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Graph",
+        "enter": "bottom"
+      },
+      "rule": "Attach a heavy atom or an H at an existing vertex, checking all valences and bounds.",
+      "errors": [
+        "invalid",
+        "index",
+        "element",
+        "size",
+        "valence"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.molecules.hosts:attach",
+        "digest": "177bee97d1378888baae0112e294487fc11787eedad8033b54182319dbfa0ad2"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "link",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "g",
+          "sort": "Graph",
+          "enter": "bottom"
+        },
+        {
+          "name": "left",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "right",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Graph",
+        "enter": "bottom"
+      },
+      "rule": "Insert an absent undirected heavy-heavy single bond.",
+      "errors": [
+        "invalid",
+        "index",
+        "edge",
+        "valence"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.molecules.hosts:link",
+        "digest": "786f62e5cceb17197b7b52c9385acfaed0d87518ddf4ac6b04681270b7b8e279"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "identity",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "g",
+          "sort": "Graph",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Graph",
+        "enter": "bottom"
+      },
+      "rule": "Preserve every vertex number and hydrogen count.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.molecules.hosts:identity",
+        "digest": "d1c05c2e38238f4b7899e29bcb1f83d413cfeb9f375576547cccd23ac3f3bdaf"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "atoms",
+      "symbol": null,
+      "role": "decide",
+      "inputs": [
+        {
+          "name": "g",
+          "sort": "Graph",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "AtomsView",
+        "enter": "bottom"
+      },
+      "rule": "Reveal every label, attached H count, free valence and numbered edge.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.molecules.hosts:atoms",
+        "digest": "e75641f6f5494e36eb043ec06f8eb0c421f60ece34474778ef8811756deece39"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "count",
+      "symbol": null,
+      "role": "decide",
+      "inputs": [
+        {
+          "name": "xs",
+          "sort": "List",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Reveal the length of a finite list without discarding failures.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.molecules.hosts:count",
+        "digest": "80b42e0760a4aae23d3bf56fa873b49d569e035f65b2419e0c1a79bc46fe246c"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "group_sizes",
+      "symbol": null,
+      "role": "decide",
+      "inputs": [
+        {
+          "name": "groups",
+          "sort": "List",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Reveal sorted group keys and their sizes.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.molecules.hosts:group_sizes",
+        "digest": "b9864153159a268fa088667c7b8293a3649ab3a2eaea34cfe934cbd6d44a03af"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "graph_valid",
+      "symbol": null,
+      "role": "decide",
+      "inputs": [
+        {
+          "sort": "Graph",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Check the given Graph object's bounds, shape and valence.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.molecules.hosts:graph_valid",
+        "digest": "c2d1caf348175e6c99ade6d73319d764b0ee10079b1f7d93d0b5b0f1e9b225fb"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "graph_raw",
+      "symbol": null,
+      "role": "combine",
+      "inputs": [
+        {
+          "sort": "List",
+          "enter": "bottom"
+        },
+        {
+          "sort": "List",
+          "enter": "bottom"
+        },
+        {
+          "sort": "List",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Graph",
+        "enter": "bottom"
+      },
+      "rule": "Construct a graph card prior to validating the given Graph sort.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.molecules.hosts:graph_raw",
+        "digest": "05a0bca2cf78fa128a5e3089387db7bda07d1a21112dbeb3e7052267bba83402"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "graph_create",
+      "symbol": null,
+      "role": "combine",
+      "inputs": [
+        {
+          "sort": "List",
+          "enter": "bottom"
+        },
+        {
+          "sort": "List",
+          "enter": "bottom"
+        },
+        {
+          "sort": "List",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Graph",
+        "enter": "bottom"
+      },
+      "rule": "Construct a valid graph from three lists.",
+      "errors": [
+        "invalid",
+        "element",
+        "edge",
+        "size",
+        "valence"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.molecules.hosts:graph_create",
+        "digest": "9b49d8f3c7db4378f0d3ce46d52677ab1a70c9bff06cb2ba5dcc332265abdf9d"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "graph_key",
+      "symbol": null,
+      "role": "decide",
+      "inputs": [
+        {
+          "sort": "Graph",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "str",
+        "enter": "bottom"
+      },
+      "rule": "Serialize a numbered graph in slash-separated code notation.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.molecules.hosts:graph_key",
+        "digest": "1f68cede7926d3b3e597b40036cccfa29b41b41777058b20bfd234a4beb002d4"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "graph_labels",
+      "symbol": null,
+      "role": "decide",
+      "inputs": [
+        {
+          "sort": "Graph",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Read the public heavy-atom label list.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.molecules.hosts:graph_labels",
+        "digest": "2f94b78c9bb9b5622098adb798bdb9bc893a2919b6172d2ecd1fea4523ebf22f"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "graph_edges",
+      "symbol": null,
+      "role": "decide",
+      "inputs": [
+        {
+          "sort": "Graph",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Read the public sorted edge list.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.molecules.hosts:graph_edges",
+        "digest": "41dcc17afb9faf684a3cd37c0399f5606bc0bf2bd968e39203d73ae3e1ef9ee1"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "graph_hydrogen",
+      "symbol": null,
+      "role": "decide",
+      "inputs": [
+        {
+          "sort": "Graph",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Read the public per-vertex hydrogen list.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.molecules.hosts:graph_hydrogen",
+        "digest": "5e51f14d767b96f7664c6fdcb779698a0bcf47d4836ceaa97c1983e8b1db32a1"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "list_make",
+      "symbol": null,
+      "role": "combine",
+      "inputs": [],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Construct the empty list.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.molecules.hosts:list_make",
+        "digest": "4e97a7f1c99230f17f7c7d616d04e25441214b69771b3c7bfb73fa2b87ffe7d5"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "list_get",
+      "symbol": null,
+      "role": "decide",
+      "inputs": [
+        {
+          "sort": "List",
+          "enter": "bottom"
+        },
+        {
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "str",
+        "enter": "bottom"
+      },
+      "rule": "Read an indexed list element of any sort.",
+      "errors": [
+        "index"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.molecules.hosts:list_get",
+        "digest": "f2c1060e3d49e4be3a00f47d0560962a50f38b91eef7c55a2d7d648f6c860d0d"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "list_append",
+      "symbol": null,
+      "role": "combine",
+      "inputs": [
+        {
+          "sort": "List",
+          "enter": "bottom"
+        },
+        {
+          "sort": "str",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Append an element of any sort.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.molecules.hosts:list_append",
+        "digest": "17194735fa7a3f79f6fdc39039c8f5fbc9d8ec5e20529319bd69b6997ab7705d"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "list_prepend",
+      "symbol": null,
+      "role": "combine",
+      "inputs": [
+        {
+          "sort": "List",
+          "enter": "bottom"
+        },
+        {
+          "sort": "str",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Prepend one arbitrary value to a finite list.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.molecules.hosts:list_prepend",
+        "digest": "4ff5ada15a3db57a43d827345732f312a13ed74543ebd983203143a9e21ca001"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "list_sort",
+      "symbol": null,
+      "role": "combine",
+      "inputs": [
+        {
+          "sort": "List",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Sort finite comparable values.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.molecules.hosts:list_sort",
+        "digest": "443b46f8a9f9d03c5fc0348762828b0a80b506b22f171f1c5fb0a05853a7e28d"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "list_unique",
+      "symbol": null,
+      "role": "combine",
+      "inputs": [
+        {
+          "sort": "List",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Keep the first occurrence of each value.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.molecules.hosts:list_unique",
+        "digest": "995fbb339a2c4668a123a3691746a884b3a2238ad01844ddb1a2285fdff65329"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "list_permutations",
+      "symbol": null,
+      "role": "combine",
+      "inputs": [
+        {
+          "sort": "List",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Enumerate permutations of up to eight list items.",
+      "errors": [
+        "size"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.molecules.hosts:list_permutations",
+        "digest": "ab77738c288cd00497edbb7d9c65c1948bdc8f6cf12c4dd6de3209adfd6d4222"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "list_permute",
+      "symbol": null,
+      "role": "combine",
+      "inputs": [
+        {
+          "sort": "List",
+          "enter": "bottom"
+        },
+        {
+          "sort": "List",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Return a list in the specified permutation order.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.molecules.hosts:list_permute",
+        "digest": "bf82712f1a493542a850d03ea87ba1aceaaa800c5fa03c0b1d2559a606e1791b"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "list_reindex_pairs",
+      "symbol": null,
+      "role": "combine",
+      "inputs": [
+        {
+          "sort": "List",
+          "enter": "bottom"
+        },
+        {
+          "sort": "List",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Reindex a finite list of integer pairs by a permutation.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.molecules.hosts:list_reindex_pairs",
+        "digest": "e399ffd87bba8c64758ad0ad9d8ed362cf8befde27752a11ca4b8c4b3cbbae70"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "list_label_permutations",
+      "symbol": null,
+      "role": "combine",
+      "inputs": [
+        {
+          "sort": "List",
+          "enter": "bottom"
+        },
+        {
+          "sort": "List",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Enumerate permutations of paired label and hydrogen-count groups in sorted order.",
+      "errors": [
+        "size"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.molecules.hosts:list_label_permutations",
+        "digest": "d275f36664ef0b55593d1f3f4efdece5ebd052927c42ff59854dd736e166fe0f"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "list_combinations",
+      "symbol": null,
+      "role": "combine",
+      "inputs": [
+        {
+          "sort": "List",
+          "enter": "bottom"
+        },
+        {
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Enumerate fixed-length subsets of a finite list.",
+      "errors": [
+        "size"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.molecules.hosts:list_combinations",
+        "digest": "759eda2682ccdbcb31f515cda54b3b2e49b8a56cbf5171d99961b4212de2fb42"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "list_range",
+      "symbol": null,
+      "role": "combine",
+      "inputs": [
+        {
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Enumerate 0 through size minus one, size at most 32.",
+      "errors": [
+        "size"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.molecules.hosts:list_range",
+        "digest": "42ec1049382b5c851a4d89917979f07e322dff4c8ef8c74cf55420716747813d"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "list_repeat",
+      "symbol": null,
+      "role": "combine",
+      "inputs": [
+        {
+          "sort": "str",
+          "enter": "bottom"
+        },
+        {
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Repeat any value a bounded number of times.",
+      "errors": [
+        "size"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.molecules.hosts:list_repeat",
+        "digest": "99e430eb1fc62ed388266145af9549201a1c238c183ebcb522e8f4ac666c8845"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "list_replace",
+      "symbol": null,
+      "role": "combine",
+      "inputs": [
+        {
+          "sort": "List",
+          "enter": "bottom"
+        },
+        {
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "sort": "str",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Replace an indexed list item of any sort.",
+      "errors": [
+        "index"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.molecules.hosts:list_replace",
+        "digest": "bab555cf74e682a061650b58c8d20d663a82899159bd0718240a2c5e0c9f8e91"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "list_index",
+      "symbol": null,
+      "role": "decide",
+      "inputs": [
+        {
+          "sort": "List",
+          "enter": "bottom"
+        },
+        {
+          "sort": "str",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Find a member's first list index.",
+      "errors": [
+        "missing"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.molecules.hosts:list_index",
+        "digest": "8ad20261072814fda782f09b6f67ddf30a90ecc2758150560f28c33de8cf7700"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "list_contains",
+      "symbol": null,
+      "role": "decide",
+      "inputs": [
+        {
+          "sort": "List",
+          "enter": "bottom"
+        },
+        {
+          "sort": "str",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Decide list membership.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.molecules.hosts:list_contains",
+        "digest": "36f171928e88997161fdf60710dacfbadfba8c38334c9946b2b788bb72d2de14"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "list_insert_pair",
+      "symbol": null,
+      "role": "combine",
+      "inputs": [
+        {
+          "sort": "List",
+          "enter": "bottom"
+        },
+        {
+          "sort": "Pair",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Insert a key-value pair if its key is new, retaining sorted keys.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.molecules.hosts:list_insert_pair",
+        "digest": "d7b34bb2a11d61564af1b577e9ba4414e7a2bdcd64da587471734dbdabf4c6df"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "list_rights",
+      "symbol": null,
+      "role": "combine",
+      "inputs": [
+        {
+          "sort": "List",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Project the right fields of a pair list.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.molecules.hosts:list_rights",
+        "digest": "33c4a3c1d915ceceb6be1ae8536a5b500a6d82bd9e8f9a21d04bac1cff22aacb"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "list_groups_insert",
+      "symbol": null,
+      "role": "combine",
+      "inputs": [
+        {
+          "sort": "List",
+          "enter": "bottom"
+        },
+        {
+          "sort": "str",
+          "enter": "bottom"
+        },
+        {
+          "sort": "str",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Append a value to its equal-key list, creating the key if absent.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.molecules.hosts:list_groups_insert",
+        "digest": "ef1af50697661698bcf0b813ca4432d5c5a00dc407e2ca55c68f25ea019f0b32"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "list_sort_groups",
+      "symbol": null,
+      "role": "combine",
+      "inputs": [
+        {
+          "sort": "List",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Sort pair-list groups by their key and sort their member lists.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.molecules.hosts:list_sort_groups",
+        "digest": "3dcd5e0e6d8441db871adcec16568c3a0320f5e5df94b1de1f3b744764b51fec"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "pair_make",
+      "symbol": null,
+      "role": "combine",
+      "inputs": [
+        {
+          "sort": "str",
+          "enter": "bottom"
+        },
+        {
+          "sort": "str",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Pair",
+        "enter": "bottom"
+      },
+      "rule": "Construct a pair of arbitrary values.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.molecules.hosts:pair_make",
+        "digest": "7afe26809d87e9b0d5fb525b7174ed3b08e629b1e19dc80bddd649320de1451e"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "pair_left",
+      "symbol": null,
+      "role": "decide",
+      "inputs": [
+        {
+          "sort": "Pair",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "str",
+        "enter": "bottom"
+      },
+      "rule": "Read a pair's left value.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.molecules.hosts:pair_left",
+        "digest": "11fbfec0ddffcbd86b79acd6cc2a08ef12bc0213adfb05372b9584deb034d630"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "pair_right",
+      "symbol": null,
+      "role": "decide",
+      "inputs": [
+        {
+          "sort": "Pair",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "str",
+        "enter": "bottom"
+      },
+      "rule": "Read a pair's right value.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.molecules.hosts:pair_right",
+        "digest": "ab44d05085fb7d8ec3ce5577220c6f1af49b6f470cbe3dffcc71a5ecf27e8354"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "triple_get",
+      "symbol": null,
+      "role": "decide",
+      "inputs": [
+        {
+          "sort": "Triple",
+          "enter": "bottom"
+        },
+        {
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "str",
+        "enter": "bottom"
+      },
+      "rule": "Read one of three triple fields.",
+      "errors": [
+        "index"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.molecules.hosts:triple_get",
+        "digest": "af6690891d50500a52aa5e2730a2785da4e59be351826a446c2621e7f3474e1c"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "view_vertices",
+      "symbol": null,
+      "role": "decide",
+      "inputs": [
+        {
+          "sort": "AtomsView",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Read granted observation vertex records.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.molecules.hosts:view_vertices",
+        "digest": "a35ba89d91da55ef6898e16d0039e955384e5325631f2246970d00a495ea741f"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "view_edges",
+      "symbol": null,
+      "role": "decide",
+      "inputs": [
+        {
+          "sort": "AtomsView",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Read granted observation edge records.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.molecules.hosts:view_edges",
+        "digest": "339d6e46834454c577b03303a7962fdd5e0d2adc116a784b2730e7f3d614dd50"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "plus",
+      "symbol": null,
+      "role": "combine",
+      "inputs": [
+        {
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Add two small integers.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.molecules.hosts:plus",
+        "digest": "999ce22de83e6e0be48b01c2f9cf131f12a44d83316e7dcff3357139010139ad"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "minus",
+      "symbol": null,
+      "role": "combine",
+      "inputs": [
+        {
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Subtract two small integers.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.molecules.hosts:minus",
+        "digest": "9735a192050f9fb20c0d1eb31c1afeb3c8918b6b748d1032ee4b3c0cecea47b0"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "small_half",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Return the floor of one half of a nonnegative small integer.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.molecules.hosts:small_half",
+        "digest": "6777b540ac5dc7724f356a100213687623c4def61dece155b984b6143a4bdb9f"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "equal",
+      "symbol": null,
+      "role": "decide",
+      "inputs": [
+        {
+          "sort": "str",
+          "enter": "bottom"
+        },
+        {
+          "sort": "str",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Decide equality for any two values.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.molecules.hosts:equal",
+        "digest": "9ef47e6d0fb7d1f617e7fd1a9634e6978fb5eeda2aa8fb3ef94f17cfa02365fb"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "less",
+      "symbol": null,
+      "role": "decide",
+      "inputs": [
+        {
+          "sort": "str",
+          "enter": "bottom"
+        },
+        {
+          "sort": "str",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Compare two comparable values.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.molecules.hosts:less",
+        "digest": "63ed3bf57fc66d9b020e1e62bcd27a413bb86cc92614780e8c2250a8fc3f2e81"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "text_join",
+      "symbol": null,
+      "role": "combine",
+      "inputs": [
+        {
+          "sort": "List",
+          "enter": "bottom"
+        },
+        {
+          "sort": "str",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "str",
+        "enter": "bottom"
+      },
+      "rule": "Join strings with a separator.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.molecules.hosts:text_join",
+        "digest": "3f565a5da223d7fe16db3a7a9e1eb3268b688f889f1d31e4d07762a3e4b20a04"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "text_concat",
+      "symbol": null,
+      "role": "combine",
+      "inputs": [
+        {
+          "sort": "str",
+          "enter": "bottom"
+        },
+        {
+          "sort": "str",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "str",
+        "enter": "bottom"
+      },
+      "rule": "Concatenate two strings.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.molecules.hosts:text_concat",
+        "digest": "8424c75d4249542db56d2bba6a4b9f147ed39e06135469da43531d01673ba7c4"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "text_of_int",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "str",
+        "enter": "bottom"
+      },
+      "rule": "Write an integer in ASCII decimal notation.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.molecules.hosts:text_of_int",
+        "digest": "3acc5be692dd4d28de0df01ad594bdcdd317ec4abc34ca1a3db2cb7cbafab2b7"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "list_add_unique",
+      "symbol": null,
+      "role": "combine",
+      "inputs": [
+        {
+          "sort": "List",
+          "enter": "bottom"
+        },
+        {
+          "sort": "str",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Append only if a value is absent.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.molecules.hosts:list_add_unique",
+        "digest": "a0774aaf30e6518ee5a89081e3660c17d97dac84c4e9060499c6d8275e48dc04"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "list_take",
+      "symbol": null,
+      "role": "combine",
+      "inputs": [
+        {
+          "sort": "List",
+          "enter": "bottom"
+        },
+        {
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Take at most the first n list items.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.molecules.hosts:list_take",
+        "digest": "4ebbab4deb5cd160a12821b8ff39f2590cb560fe5fe6f84237b53ca266560166"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "record_make",
+      "symbol": null,
+      "role": "combine",
+      "inputs": [
+        {
+          "sort": "str",
+          "enter": "bottom"
+        },
+        {
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "sort": "List",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Record",
+        "enter": "bottom"
+      },
+      "rule": "Construct a three-field immutable record.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.molecules.hosts:record_make",
+        "digest": "997dddc28840bc5227a9531a16b1a8692f840d1d576f6c42f0dffdfa17cfa443"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "value_less",
+      "symbol": null,
+      "role": "combine",
+      "inputs": [
+        {
+          "sort": "str",
+          "enter": "bottom"
+        },
+        {
+          "sort": "str",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Lexicographically compare immutable value fields.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.molecules.hosts:value_less",
+        "digest": "67620ca0a114b1a1c1adf671dfbda46816aaa040436ddcc7c40cf0368fea0db5"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "always_fail",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "str",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "str",
+        "enter": "bottom"
+      },
+      "rule": "Raise a named domain failure.",
+      "errors": [
+        "invalid",
+        "empty",
+        "enumeration_bound",
+        "size"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.molecules.hosts:always_fail",
+        "digest": "f75373eb569bbb3fb1db90e1dc115dbf38d5a8aee35889cdd580ea4084f96aa9"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    }
+  ],
+  "combinators": {
+    "nodes": [
+      "Var",
+      "Lit",
+      "Call",
+      "Let",
+      "Case",
+      "Rec"
+    ],
+    "library": [
+      {
+        "name": "chain",
+        "params": [
+          "first",
+          "second",
+          "graph"
+        ],
+        "op_params": [
+          "first",
+          "second"
+        ],
+        "body": {
+          "node": "Call",
+          "fn": "second",
+          "args": [
+            {
+              "node": "Call",
+              "fn": "first",
+              "args": [
+                {
+                  "node": "Var",
+                  "name": "graph"
+                }
+              ]
+            }
+          ]
+        },
+        "unfold_rule": "substitute"
+      }
+    ],
+    "recursion": "measure",
+    "given_rules": {
+      "chain": {
+        "name": "chain",
+        "params": [
+          "first",
+          "second",
+          "graph"
+        ],
+        "op_params": [
+          "first",
+          "second"
+        ],
+        "body": {
+          "node": "Call",
+          "fn": "second",
+          "args": [
+            {
+              "node": "Call",
+              "fn": "first",
+              "args": [
+                {
+                  "node": "Var",
+                  "name": "graph"
+                }
+              ]
+            }
+          ]
+        },
+        "unfold_rule": "substitute"
+      }
+    }
+  },
+  "observation": {
+    "truth": "Graph",
+    "probes": [
+      {
+        "name": "atoms",
+        "sort": "AtomsView",
+        "reads": "Graph",
+        "reveals": [
+          "labels",
+          "hydrogen counts",
+          "remaining valences",
+          "edges"
+        ],
+        "impl": {
+          "host": "opulse.worlds_v2.molecules.hosts:atoms",
+          "digest": "e75641f6f5494e36eb043ec06f8eb0c421f60ece34474778ef8811756deece39"
+        }
+      },
+      {
+        "name": "count",
+        "sort": "int",
+        "reads": "Graph",
+        "reveals": [
+          "finite list length"
+        ],
+        "impl": {
+          "host": "opulse.worlds_v2.molecules.hosts:count",
+          "digest": "80b42e0760a4aae23d3bf56fa873b49d569e035f65b2419e0c1a79bc46fe246c"
+        }
+      },
+      {
+        "name": "group_sizes",
+        "sort": "List",
+        "reads": "Graph",
+        "reveals": [
+          "sorted group keys and sizes"
+        ],
+        "impl": {
+          "host": "opulse.worlds_v2.molecules.hosts:group_sizes",
+          "digest": "b9864153159a268fa088667c7b8293a3649ab3a2eaea34cfe934cbd6d44a03af"
+        }
+      }
+    ],
+    "capabilities": {
+      "learner": {
+        "probes": [
+          "atoms",
+          "count",
+          "group_sizes"
+        ]
+      }
+    },
+    "show": {
+      "input": "public graph or group",
+      "result": "granted probes"
+    },
+    "judge_view": "full_state"
+  },
+  "codec": {},
+  "lock": {
+    "host_digests": {
+      "attach": "177bee97d1378888baae0112e294487fc11787eedad8033b54182319dbfa0ad2",
+      "link": "786f62e5cceb17197b7b52c9385acfaed0d87518ddf4ac6b04681270b7b8e279",
+      "identity": "d1c05c2e38238f4b7899e29bcb1f83d413cfeb9f375576547cccd23ac3f3bdaf",
+      "atoms": "e75641f6f5494e36eb043ec06f8eb0c421f60ece34474778ef8811756deece39",
+      "count": "80b42e0760a4aae23d3bf56fa873b49d569e035f65b2419e0c1a79bc46fe246c",
+      "group_sizes": "b9864153159a268fa088667c7b8293a3649ab3a2eaea34cfe934cbd6d44a03af",
+      "graph_valid": "c2d1caf348175e6c99ade6d73319d764b0ee10079b1f7d93d0b5b0f1e9b225fb",
+      "graph_raw": "05a0bca2cf78fa128a5e3089387db7bda07d1a21112dbeb3e7052267bba83402",
+      "graph_create": "9b49d8f3c7db4378f0d3ce46d52677ab1a70c9bff06cb2ba5dcc332265abdf9d",
+      "graph_key": "1f68cede7926d3b3e597b40036cccfa29b41b41777058b20bfd234a4beb002d4",
+      "graph_labels": "2f94b78c9bb9b5622098adb798bdb9bc893a2919b6172d2ecd1fea4523ebf22f",
+      "graph_edges": "41dcc17afb9faf684a3cd37c0399f5606bc0bf2bd968e39203d73ae3e1ef9ee1",
+      "graph_hydrogen": "5e51f14d767b96f7664c6fdcb779698a0bcf47d4836ceaa97c1983e8b1db32a1",
+      "list_make": "4e97a7f1c99230f17f7c7d616d04e25441214b69771b3c7bfb73fa2b87ffe7d5",
+      "list_get": "f2c1060e3d49e4be3a00f47d0560962a50f38b91eef7c55a2d7d648f6c860d0d",
+      "list_append": "17194735fa7a3f79f6fdc39039c8f5fbc9d8ec5e20529319bd69b6997ab7705d",
+      "list_prepend": "4ff5ada15a3db57a43d827345732f312a13ed74543ebd983203143a9e21ca001",
+      "list_sort": "443b46f8a9f9d03c5fc0348762828b0a80b506b22f171f1c5fb0a05853a7e28d",
+      "list_unique": "995fbb339a2c4668a123a3691746a884b3a2238ad01844ddb1a2285fdff65329",
+      "list_permutations": "ab77738c288cd00497edbb7d9c65c1948bdc8f6cf12c4dd6de3209adfd6d4222",
+      "list_permute": "bf82712f1a493542a850d03ea87ba1aceaaa800c5fa03c0b1d2559a606e1791b",
+      "list_reindex_pairs": "e399ffd87bba8c64758ad0ad9d8ed362cf8befde27752a11ca4b8c4b3cbbae70",
+      "list_label_permutations": "d275f36664ef0b55593d1f3f4efdece5ebd052927c42ff59854dd736e166fe0f",
+      "list_combinations": "759eda2682ccdbcb31f515cda54b3b2e49b8a56cbf5171d99961b4212de2fb42",
+      "list_range": "42ec1049382b5c851a4d89917979f07e322dff4c8ef8c74cf55420716747813d",
+      "list_repeat": "99e430eb1fc62ed388266145af9549201a1c238c183ebcb522e8f4ac666c8845",
+      "list_replace": "bab555cf74e682a061650b58c8d20d663a82899159bd0718240a2c5e0c9f8e91",
+      "list_index": "8ad20261072814fda782f09b6f67ddf30a90ecc2758150560f28c33de8cf7700",
+      "list_contains": "36f171928e88997161fdf60710dacfbadfba8c38334c9946b2b788bb72d2de14",
+      "list_insert_pair": "d7b34bb2a11d61564af1b577e9ba4414e7a2bdcd64da587471734dbdabf4c6df",
+      "list_rights": "33c4a3c1d915ceceb6be1ae8536a5b500a6d82bd9e8f9a21d04bac1cff22aacb",
+      "list_groups_insert": "ef1af50697661698bcf0b813ca4432d5c5a00dc407e2ca55c68f25ea019f0b32",
+      "list_sort_groups": "3dcd5e0e6d8441db871adcec16568c3a0320f5e5df94b1de1f3b744764b51fec",
+      "pair_make": "7afe26809d87e9b0d5fb525b7174ed3b08e629b1e19dc80bddd649320de1451e",
+      "pair_left": "11fbfec0ddffcbd86b79acd6cc2a08ef12bc0213adfb05372b9584deb034d630",
+      "pair_right": "ab44d05085fb7d8ec3ce5577220c6f1af49b6f470cbe3dffcc71a5ecf27e8354",
+      "triple_get": "af6690891d50500a52aa5e2730a2785da4e59be351826a446c2621e7f3474e1c",
+      "view_vertices": "a35ba89d91da55ef6898e16d0039e955384e5325631f2246970d00a495ea741f",
+      "view_edges": "339d6e46834454c577b03303a7962fdd5e0d2adc116a784b2730e7f3d614dd50",
+      "plus": "999ce22de83e6e0be48b01c2f9cf131f12a44d83316e7dcff3357139010139ad",
+      "minus": "9735a192050f9fb20c0d1eb31c1afeb3c8918b6b748d1032ee4b3c0cecea47b0",
+      "small_half": "6777b540ac5dc7724f356a100213687623c4def61dece155b984b6143a4bdb9f",
+      "equal": "9ef47e6d0fb7d1f617e7fd1a9634e6978fb5eeda2aa8fb3ef94f17cfa02365fb",
+      "less": "63ed3bf57fc66d9b020e1e62bcd27a413bb86cc92614780e8c2250a8fc3f2e81",
+      "text_join": "3f565a5da223d7fe16db3a7a9e1eb3268b688f889f1d31e4d07762a3e4b20a04",
+      "text_concat": "8424c75d4249542db56d2bba6a4b9f147ed39e06135469da43531d01673ba7c4",
+      "text_of_int": "3acc5be692dd4d28de0df01ad594bdcdd317ec4abc34ca1a3db2cb7cbafab2b7",
+      "list_add_unique": "a0774aaf30e6518ee5a89081e3660c17d97dac84c4e9060499c6d8275e48dc04",
+      "list_take": "4ebbab4deb5cd160a12821b8ff39f2590cb560fe5fe6f84237b53ca266560166",
+      "record_make": "997dddc28840bc5227a9531a16b1a8692f840d1d576f6c42f0dffdfa17cfa443",
+      "value_less": "67620ca0a114b1a1c1adf671dfbda46816aaa040436ddcc7c40cf0368fea0db5",
+      "always_fail": "f75373eb569bbb3fb1db90e1dc115dbf38d5a8aee35889cdd580ea4084f96aa9",
+      "probe.atoms": "e75641f6f5494e36eb043ec06f8eb0c421f60ece34474778ef8811756deece39",
+      "probe.count": "80b42e0760a4aae23d3bf56fa873b49d569e035f65b2419e0c1a79bc46fe246c",
+      "probe.group_sizes": "b9864153159a268fa088667c7b8293a3649ab3a2eaea34cfe934cbd6d44a03af"
+    },
+    "constants_hash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+    "world_hash": "6b1875f54712abe491759586ebd322474e46de48ceb2020e4306280f8a424f2c"
+  }
+}

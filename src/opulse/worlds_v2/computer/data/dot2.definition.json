@@ -1,0 +1,348 @@
+{
+  "schema": "opulse.definition/2",
+  "id": "computer@1/DOT2",
+  "name": "DOT2",
+  "kind": "operation",
+  "origin": "invented",
+  "layer": 2,
+  "depends_on": [
+    "MUL",
+    "add",
+    "load",
+    "read",
+    "write"
+  ],
+  "spec": {
+    "name": "DOT2",
+    "role": "act",
+    "inputs": [
+      {
+        "sort": "machine_state",
+        "enter": "bottom"
+      }
+    ],
+    "output": {
+      "sort": "machine_state",
+      "enter": "bottom"
+    },
+    "rule": "Set r0 to (mem[0]*mem[1] + mem[2]*mem[3]) mod 256.",
+    "errors": [
+      "invalid"
+    ],
+    "cost": 1,
+    "strict": true,
+    "reads_params": []
+  },
+  "body": {
+    "node": "Blocks",
+    "vars": [
+      [
+        "saved",
+        {
+          "node": "Lit",
+          "value": {
+            "t": "int",
+            "v": 0
+          }
+        }
+      ]
+    ],
+    "entry": "dot",
+    "blocks": [
+      [
+        "dot",
+        {
+          "node": "Block",
+          "assigns": [
+            [
+              "s",
+              {
+                "node": "Call",
+                "fn": "load",
+                "args": [
+                  {
+                    "node": "Var",
+                    "name": "s"
+                  },
+                  {
+                    "node": "Lit",
+                    "value": {
+                      "t": "reg",
+                      "tag": "r1",
+                      "f": []
+                    }
+                  },
+                  {
+                    "node": "Lit",
+                    "value": {
+                      "t": "int",
+                      "v": 0
+                    }
+                  }
+                ]
+              }
+            ],
+            [
+              "s",
+              {
+                "node": "Call",
+                "fn": "load",
+                "args": [
+                  {
+                    "node": "Var",
+                    "name": "s"
+                  },
+                  {
+                    "node": "Lit",
+                    "value": {
+                      "t": "reg",
+                      "tag": "r2",
+                      "f": []
+                    }
+                  },
+                  {
+                    "node": "Lit",
+                    "value": {
+                      "t": "int",
+                      "v": 1
+                    }
+                  }
+                ]
+              }
+            ],
+            [
+              "s",
+              {
+                "node": "Call",
+                "fn": "MUL",
+                "args": [
+                  {
+                    "node": "Var",
+                    "name": "s"
+                  }
+                ]
+              }
+            ],
+            [
+              "saved",
+              {
+                "node": "Call",
+                "fn": "read",
+                "args": [
+                  {
+                    "node": "Var",
+                    "name": "s"
+                  },
+                  {
+                    "node": "Lit",
+                    "value": {
+                      "t": "reg",
+                      "tag": "r0",
+                      "f": []
+                    }
+                  }
+                ]
+              }
+            ],
+            [
+              "s",
+              {
+                "node": "Call",
+                "fn": "write",
+                "args": [
+                  {
+                    "node": "Var",
+                    "name": "s"
+                  },
+                  {
+                    "node": "Lit",
+                    "value": {
+                      "t": "reg",
+                      "tag": "r3",
+                      "f": []
+                    }
+                  },
+                  {
+                    "node": "Var",
+                    "name": "saved"
+                  }
+                ]
+              }
+            ],
+            [
+              "s",
+              {
+                "node": "Call",
+                "fn": "load",
+                "args": [
+                  {
+                    "node": "Var",
+                    "name": "s"
+                  },
+                  {
+                    "node": "Lit",
+                    "value": {
+                      "t": "reg",
+                      "tag": "r1",
+                      "f": []
+                    }
+                  },
+                  {
+                    "node": "Lit",
+                    "value": {
+                      "t": "int",
+                      "v": 2
+                    }
+                  }
+                ]
+              }
+            ],
+            [
+              "s",
+              {
+                "node": "Call",
+                "fn": "load",
+                "args": [
+                  {
+                    "node": "Var",
+                    "name": "s"
+                  },
+                  {
+                    "node": "Lit",
+                    "value": {
+                      "t": "reg",
+                      "tag": "r2",
+                      "f": []
+                    }
+                  },
+                  {
+                    "node": "Lit",
+                    "value": {
+                      "t": "int",
+                      "v": 3
+                    }
+                  }
+                ]
+              }
+            ],
+            [
+              "s",
+              {
+                "node": "Call",
+                "fn": "MUL",
+                "args": [
+                  {
+                    "node": "Var",
+                    "name": "s"
+                  }
+                ]
+              }
+            ],
+            [
+              "s",
+              {
+                "node": "Call",
+                "fn": "add",
+                "args": [
+                  {
+                    "node": "Var",
+                    "name": "s"
+                  },
+                  {
+                    "node": "Lit",
+                    "value": {
+                      "t": "reg",
+                      "tag": "r0",
+                      "f": []
+                    }
+                  },
+                  {
+                    "node": "Lit",
+                    "value": {
+                      "t": "reg",
+                      "tag": "r3",
+                      "f": []
+                    }
+                  }
+                ]
+              }
+            ]
+          ],
+          "end": {
+            "node": "Halt",
+            "value": {
+              "node": "Var",
+              "name": "s"
+            }
+          }
+        }
+      ]
+    ]
+  },
+  "evidence": {
+    "method": "bounded",
+    "scope": {
+      "domain": "mem[0:4] in [0, bound); all other bytes and registers zero",
+      "size": 4096,
+      "bound": 8,
+      "checked": {
+        "size": 4096,
+        "sha256": "e4f8a3b3bfe1e947e7d0c2e1c9eac124d5282d2cc4f46303d633cbd58c63671f",
+        "bounds": {
+          "0": {
+            "min": 0,
+            "max": 7
+          },
+          "1": {
+            "min": 0,
+            "max": 7
+          },
+          "2": {
+            "min": 0,
+            "max": 7
+          },
+          "3": {
+            "min": 0,
+            "max": 7
+          }
+        }
+      },
+      "description": "Full final state and projected arithmetic checked for every four-tuple"
+    },
+    "seed": null,
+    "checks": [
+      "reference",
+      "contract",
+      "unfold_equivalence",
+      "step_formula"
+    ],
+    "world_hash": "68896c882f4416d85494a1596f08a2cf7ee2f80691e1519565828864b486d7c9",
+    "deps_hash": "f872ef44b0f17f24dbe1620db49ee73a42cb1cb9fbbaa06a2edf0ea3f4f4445b",
+    "content_hash": "433dcaba90689a873763c6845e32711ce2f18b86730f3f92aac09e24f9764e77"
+  },
+  "contract": {
+    "guarantees": "r0 = (mem[0]*mem[1] + mem[2]*mem[3]) mod 256",
+    "may_change": [
+      "r0",
+      "r1",
+      "r2",
+      "r3",
+      "zero",
+      "carry"
+    ],
+    "keeps": [
+      "mem"
+    ]
+  },
+  "cost": {
+    "length": 34,
+    "steps": {
+      "min": 15,
+      "max": 85,
+      "mean": 50.0,
+      "over": "verification scope"
+    },
+    "reuse": 2
+  },
+  "status": "verified"
+}

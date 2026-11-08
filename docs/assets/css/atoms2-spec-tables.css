@@ -1,0 +1,11 @@
+.md-typeset .a2-spec-table-cue { margin: .85rem 0 .2rem; font-size: .78rem; font-weight: 700; color: var(--md-default-fg-color); }
+.md-typeset .a2-spec-table-scroll { display: block; max-width: 100%; overflow-x: auto; overscroll-behavior-inline: contain; padding-inline: .8rem; }
+.md-typeset .a2-spec-table-scroll > table:not([class]) {
+  display: table; min-width: 42rem; width: max-content; max-width: none; margin: 0; overflow: visible;
+}
+.md-typeset .a2-spec-table-scroll:focus-visible { outline: 3px solid var(--md-accent-fg-color); outline-offset: 2px; }
+@media (min-width: 48rem) {
+  .md-typeset .a2-spec-table-cue { display: none; }
+  .md-typeset .a2-spec-table-scroll { padding-inline: 0; }
+  .md-typeset .a2-spec-table-scroll > table:not([class]) { min-width: 100%; width: 100%; }
+}

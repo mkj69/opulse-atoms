@@ -1,0 +1,17 @@
+{
+ "episodes": 1,
+ "fuel": 200000,
+ "groups": [
+  "B"
+ ],
+ "hashes": {
+  "tasks/machine_stage1.json": "37d936cefcb2a8f41ecafa840205579be7be55197f4fee62be869b50bd312a86",
+  "tasks/machine_stage2.json": "e4f97d405ad1c023307500180d102be1ef3cafa2c831a9c7abaa82f08441e3be",
+  "worlds/decl/computer@1.json": "eed2bb7b4a7f3c593beea8f79307048efb1bfcd78ebb73e95871a8c08ada17b0",
+  "worlds/decl/computer_a": "fa08ed5902c9f4731e9997f56a39d49771edf3aecac2c54ecc56ada42c207484"
+ },
+ "max_attempts": 3,
+ "model": null,
+ "policy": "flaky",
+ "track": "machine"
+}

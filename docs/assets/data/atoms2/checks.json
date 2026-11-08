@@ -1,0 +1,922 @@
+{
+  "source":"Design record: hidden world, depth pass (11-04). Design only, not a runtime artifact.",
+  "scenario":"Two agents inspect the same sealed card through different permitted projections. This is a teaching illustration, not a sampled channel run.",
+  "truth":{"card":"R","history":"Modes<A,B,B>, Lamps<red,blue,red>"},
+  "agents":[
+    {"name":"Agent 1","probe":"?lamps{view}","reading":"Lamps<red,blue,red>","permission":"Read the lamp history only. Cannot call signal or inspect Truth.card."},
+    {"name":"Agent 2","probe":"?modes{view}","reading":"Modes<A,B,B>","permission":"Read the selected modes only. Cannot inspect the card or another agent's probe."}
+  ],
+  "definition":"obs ?lamps{view: ReceiverView} -> Lamps = project_lamps(view.history) L1",
+  "edited":"obs ?lamps{view: ReceiverView} -> Lamps = last_two_lamps(view.history) L1",
+  "scope":"illustrative certificate: exhaustive on all 2-card, 1-step histories; NOT a verified artifact",
+  "evidence":[
+    {"method":"Exhaustive","scope":"All members of a declared finite domain, if every case was run. Outside that domain, no claim."},
+    {"method":"Bounded","scope":"Every case within stated limits, such as history length at most 3; not every history."},
+    {"method":"Seeded sample","scope":"A reproducible selected subset with a recorded seed. Not sufficient for promotion."}
+  ],
+  "trace":{"definition":"apply(Base12<>, Patches</a:0->Q,/l:1->R>)","source":"Design record: versions world, depth pass (11-04). Illustrative local model."},
+  "walkthrough":{
+    "scope":"Design exercise, not a completed kernel run. Proposed finite contract: versions documents with 12 paths, 2 revisions and 2 patch steps. The judge checks the whole document and charged layer-0 calls; the learner sees only the declared read interface.",
+    "inventions":[
+      {"kind":"object","declaration":"obj Revision = Quot[Pair<Doc, Int>, canon_revision] L1","check":"Validate the typed pair and a terminating canonicalizer; reject malformed documents.","call":"Construct Revision<Doc<12>, 2> and unfold its canonicalizer to given calls.","verify":"Exhaustively check canonicalization idempotence, validity and interface equivalence for every member of the finite contract.","promote":"Store the object with its exact domain, hash and interface contract; only then show construction as one boundary step."},
+      {"kind":"operation","declaration":"op apply_guarded(r: Revision, p: Patch) -> Revision = apply_if_old_values_match(r, p) L2","check":"Resolve Revision, Patch and the given guard and update operations; check result sort.","call":"On a stale second guard, unfold to Bottom(guard), with no committed changes.","verify":"Exhaustively compare both Ok and Bottom with an independent guarded-update table over the finite contract, including full state and cost.","promote":"Store the operation with the checked guard and cost contract; outside the scope, unfold or refuse the short step."},
+      {"kind":"combinator","declaration":"comb @apply_chain[step](r: Revision, ps: List<Patch>) -> Revision = @bounded_rec[step](r, ps) L3","check":"Check the plugged step's type, decreasing remaining-patch count and finite fuel.","call":"Unfold both patch steps; a stale second guard leaves the whole chain uncommitted.","verify":"Bounded check for every listed step operation and patch sequence of length at most 2, comparing unfoldings including failures and costs.","promote":"Keep the operation-family and length bound with the promoted combinator; never widen to arbitrary steps."},
+      {"kind":"observation","declaration":"obs ?revision{r: Revision} -> Int = read_revision(r) L2","check":"Check it reads only a granted layer-0 revision probe on Revision, not the sealed document or a combinator.","call":"Read the revision from an existing Revision value without changing the state; a prior successful chain could produce such a value but is not a dependency of this observation.","verify":"Exhaustively check permission safety, noninterference, determinism and equality to the full-state judge projection on the finite contract.","promote":"Store the declared visible channel and scope; the hidden document stays available only to the judge."}
+    ]
+  },
+  "notation3": {
+    "version": 1,
+    "worlds": {
+      "integer": {
+        "legend": [
+          {
+            "mark": "\\bbZ",
+            "display": "\u2124",
+            "name": "int",
+            "kind": "object",
+            "layer": 0,
+            "origin": "given",
+            "forms": [],
+            "signature": null
+          },
+          {
+            "mark": "\\bbB",
+            "display": "\ud835\udd39",
+            "name": "bool",
+            "kind": "object",
+            "layer": 0,
+            "origin": "given",
+            "forms": [
+              "false",
+              "true"
+            ],
+            "signature": null
+          },
+          {
+            "mark": "\\bbA",
+            "display": "\ud835\udd38",
+            "name": "str",
+            "kind": "object",
+            "layer": 0,
+            "origin": "given",
+            "forms": [],
+            "signature": null
+          },
+          {
+            "mark": "\\bbD",
+            "display": "\ud835\udd3b",
+            "name": "list",
+            "kind": "object",
+            "layer": 0,
+            "origin": "given",
+            "forms": [
+              "items"
+            ],
+            "signature": null
+          },
+          {
+            "mark": "\\bbE",
+            "display": "\ud835\udd3c",
+            "name": "pair",
+            "kind": "object",
+            "layer": 0,
+            "origin": "given",
+            "forms": [
+              "items"
+            ],
+            "signature": null
+          },
+          {
+            "mark": "\\bbG",
+            "display": "\ud835\udd3e",
+            "name": "frac",
+            "kind": "object",
+            "layer": 0,
+            "origin": "given",
+            "forms": [
+              "val"
+            ],
+            "signature": null
+          },
+          {
+            "mark": "\\bbH",
+            "display": "\u210d",
+            "name": "cf",
+            "kind": "object",
+            "layer": 0,
+            "origin": "given",
+            "forms": [
+              "val"
+            ],
+            "signature": null
+          },
+          {
+            "mark": "\\bbI",
+            "display": "\ud835\udd40",
+            "name": "any",
+            "kind": "object",
+            "layer": 0,
+            "origin": "given",
+            "forms": [],
+            "signature": null
+          },
+          {
+            "mark": "\\bbJ",
+            "display": "\ud835\udd41",
+            "name": "nat",
+            "kind": "object",
+            "layer": 0,
+            "origin": "given",
+            "forms": [
+              "val"
+            ],
+            "signature": null
+          },
+          {
+            "mark": "@",
+            "display": "@",
+            "name": "succ",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "@ : \\bbZ -> \\bbZ",
+              "display": "@ : \u2124 \u2192 \u2124"
+            }
+          },
+          {
+            "mark": "(+)",
+            "display": "(+)",
+            "name": "add",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "(+) : \\bbZ \\x \\bbZ -> \\bbZ",
+              "display": "(+) : \u2124 \u00d7 \u2124 \u2192 \u2124"
+            }
+          },
+          {
+            "mark": "#",
+            "display": "#",
+            "name": "neg",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "# : \\bbZ -> \\bbZ",
+              "display": "# : \u2124 \u2192 \u2124"
+            }
+          },
+          {
+            "mark": "$",
+            "display": "$",
+            "name": "gcd",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "$ : \\bbZ \\x \\bbZ -> \\bbZ",
+              "display": "$ : \u2124 \u00d7 \u2124 \u2192 \u2124"
+            }
+          },
+          {
+            "mark": "(<)",
+            "display": "(<)",
+            "name": "lt",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "(<) : \\bbZ \\x \\bbZ -> \\bbB",
+              "display": "(<) : \u2124 \u00d7 \u2124 \u2192 \ud835\udd39"
+            }
+          },
+          {
+            "mark": "(<=)",
+            "display": "(<=)",
+            "name": "le",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "(<=) : \\bbZ \\x \\bbZ -> \\bbB",
+              "display": "(<=) : \u2124 \u00d7 \u2124 \u2192 \ud835\udd39"
+            }
+          },
+          {
+            "mark": "(==)",
+            "display": "(==)",
+            "name": "eq",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "(==) : \\bbZ \\x \\bbZ -> \\bbB",
+              "display": "(==) : \u2124 \u00d7 \u2124 \u2192 \ud835\udd39"
+            }
+          },
+          {
+            "mark": "(!=)",
+            "display": "(!=)",
+            "name": "ne",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "(!=) : \\bbZ \\x \\bbZ -> \\bbB",
+              "display": "(!=) : \u2124 \u00d7 \u2124 \u2192 \ud835\udd39"
+            }
+          },
+          {
+            "mark": "(-)",
+            "display": "(-)",
+            "name": "sub",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "(-) : \\bbZ \\x \\bbZ -> \\bbZ",
+              "display": "(-) : \u2124 \u00d7 \u2124 \u2192 \u2124"
+            }
+          },
+          {
+            "mark": "&",
+            "display": "&",
+            "name": "quotient",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "& : \\bbZ \\x \\bbZ -> \\bbZ",
+              "display": "& : \u2124 \u00d7 \u2124 \u2192 \u2124"
+            }
+          },
+          {
+            "mark": "\\spade",
+            "display": "\u2660",
+            "name": "failure",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\spade : \\bbA -> \\bbZ",
+              "display": "\u2660 : \ud835\udd38 \u2192 \u2124"
+            }
+          },
+          {
+            "mark": "\\wspade",
+            "display": "\u2664",
+            "name": "pair",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "note": "constructor of \ud835\udd3c",
+            "signature": {
+              "ascii": "\\wspade : \\bbZ \\x \\bbZ -> \\bbE",
+              "display": "\u2664 : \u2124 \u00d7 \u2124 \u2192 \ud835\udd3c"
+            }
+          },
+          {
+            "mark": "\\heart",
+            "display": "\u2665",
+            "name": "first",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\heart : \\bbE -> \\bbZ",
+              "display": "\u2665 : \ud835\udd3c \u2192 \u2124"
+            }
+          },
+          {
+            "mark": "\\wheart",
+            "display": "\u2661",
+            "name": "second",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\wheart : \\bbE -> \\bbZ",
+              "display": "\u2661 : \ud835\udd3c \u2192 \u2124"
+            }
+          },
+          {
+            "mark": "\\dia",
+            "display": "\u2666",
+            "name": "list_empty",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "mark": "\\wdia",
+            "display": "\u2662",
+            "name": "cons",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\wdia : \\bbZ \\x \\bbD -> \\bbD",
+              "display": "\u2662 : \u2124 \u00d7 \ud835\udd3b \u2192 \ud835\udd3b"
+            }
+          },
+          {
+            "mark": "\\club",
+            "display": "\u2663",
+            "name": "append",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\club : \\bbD \\x \\bbZ -> \\bbD",
+              "display": "\u2663 : \ud835\udd3b \u00d7 \u2124 \u2192 \ud835\udd3b"
+            }
+          },
+          {
+            "mark": "\\wclub",
+            "display": "\u2667",
+            "name": "is_empty",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\wclub : \\bbD -> \\bbB",
+              "display": "\u2667 : \ud835\udd3b \u2192 \ud835\udd39"
+            }
+          },
+          {
+            "mark": "\\sq",
+            "display": "\u25a0",
+            "name": "head",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\sq : \\bbD -> \\bbZ",
+              "display": "\u25a0 : \ud835\udd3b \u2192 \u2124"
+            }
+          },
+          {
+            "mark": "\\wsq",
+            "display": "\u25a1",
+            "name": "tail",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\wsq : \\bbD -> \\bbD",
+              "display": "\u25a1 : \ud835\udd3b \u2192 \ud835\udd3b"
+            }
+          },
+          {
+            "mark": "\\dot",
+            "display": "\u25cf",
+            "name": "length",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\dot : \\bbD -> \\bbZ",
+              "display": "\u25cf : \ud835\udd3b \u2192 \u2124"
+            }
+          },
+          {
+            "mark": "\\wdot",
+            "display": "\u25cb",
+            "name": "numerator",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\wdot : \\bbG -> \\bbZ",
+              "display": "\u25cb : \ud835\udd3e \u2192 \u2124"
+            }
+          },
+          {
+            "mark": "\\up",
+            "display": "\u25b2",
+            "name": "denominator",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\up : \\bbG -> \\bbZ",
+              "display": "\u25b2 : \ud835\udd3e \u2192 \u2124"
+            }
+          },
+          {
+            "mark": "\\wup",
+            "display": "\u25b3",
+            "name": "digits",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\wup : \\bbH -> \\bbD",
+              "display": "\u25b3 : \u210d \u2192 \ud835\udd3b"
+            }
+          },
+          {
+            "mark": "\\dn",
+            "display": "\u25bc",
+            "name": "count",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\dn : \\bbJ -> \\bbZ",
+              "display": "\u25bc : \ud835\udd41 \u2192 \u2124"
+            }
+          },
+          {
+            "mark": "\\wdn",
+            "display": "\u25bd",
+            "name": "is_cf_data",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\wdn : \\bbI -> \\bbB",
+              "display": "\u25bd : \ud835\udd40 \u2192 \ud835\udd39"
+            }
+          },
+          {
+            "mark": "\\lz",
+            "display": "\u25c6",
+            "name": "is_pair",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\lz : \\bbI -> \\bbB",
+              "display": "\u25c6 : \ud835\udd40 \u2192 \ud835\udd39"
+            }
+          },
+          {
+            "mark": "\\wlz",
+            "display": "\u25c7",
+            "name": "is_base",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\wlz : \\bbI \\x \\bbA -> \\bbB",
+              "display": "\u25c7 : \ud835\udd40 \u00d7 \ud835\udd38 \u2192 \ud835\udd39"
+            }
+          },
+          {
+            "mark": "\\Gamma",
+            "display": "\u0393",
+            "name": "sequence",
+            "kind": "combinator",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\Gamma : \\bbX_a -> \\bbX_e",
+              "display": "\u0393 : \ud835\udd4f\u2090 \u2192 \ud835\udd4f\u2091"
+            }
+          },
+          {
+            "mark": "\\hatA",
+            "display": "\u00c2",
+            "name": "value",
+            "kind": "observation",
+            "layer": 0,
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "mark": "\\bbK",
+            "display": "\ud835\udd42",
+            "name": "fn",
+            "kind": "object",
+            "layer": 0,
+            "origin": "given",
+            "forms": [],
+            "signature": null
+          },
+          {
+            "mark": "\\st",
+            "display": "\u2605",
+            "name": "cf.base",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "mark": "\\wst",
+            "display": "\u2606",
+            "name": "nat.base",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "mark": "\\bbL",
+            "display": "\ud835\udd43",
+            "name": "ReceiverView",
+            "kind": "object",
+            "layer": 0,
+            "origin": "given",
+            "forms": [],
+            "signature": null
+          },
+          {
+            "mark": "\\bbM",
+            "display": "\ud835\udd44",
+            "name": "Lamps",
+            "kind": "object",
+            "layer": 0,
+            "origin": "given",
+            "forms": [],
+            "signature": null
+          },
+          {
+            "mark": "\\bbO",
+            "display": "\ud835\udd46",
+            "name": "Patch",
+            "kind": "object",
+            "layer": 0,
+            "origin": "given",
+            "forms": [],
+            "signature": null
+          },
+          {
+            "mark": "\\dia_01",
+            "display": "\u2666\u2080\u2081",
+            "name": "bool.false",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "form_of": "bool",
+            "signature": null
+          },
+          {
+            "mark": "\\dia_02",
+            "display": "\u2666\u2080\u2082",
+            "name": "bool.true",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "form_of": "bool",
+            "signature": null
+          },
+          {
+            "mark": "\\hatA_1",
+            "display": "\u00c2\u2081",
+            "name": "whole",
+            "kind": "observation",
+            "layer": 1,
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "mark": "\\Gamma_1",
+            "display": "\u0393\u2081",
+            "name": "fold_frac",
+            "kind": "combinator",
+            "layer": 1,
+            "origin": "invented",
+            "signature": {
+              "ascii": "^1\\Gamma_1 : \\bbX_a \\x \\bbX_a -> \\bbX_a",
+              "display": "\u00b9\u0393\u2081 : \ud835\udd4f\u2090 \u00d7 \ud835\udd4f\u2090 \u2192 \ud835\udd4f\u2090"
+            }
+          },
+          {
+            "mark": "\\dia_1",
+            "display": "\u2666\u2081",
+            "name": "cf_divmod",
+            "kind": "operation",
+            "layer": 1,
+            "origin": "invented",
+            "signature": {
+              "ascii": "^1\\dia_1 : \\bbZ \\x \\bbZ -> \\bbE",
+              "display": "\u00b9\u2666\u2081 : \u2124 \u00d7 \u2124 \u2192 \ud835\udd3c"
+            }
+          },
+          {
+            "mark": "\\eqv_1",
+            "display": "\u2261\u2081",
+            "name": "add_comm",
+            "kind": "law",
+            "layer": 1,
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "mark": "\\eqv_2",
+            "display": "\u2261\u2082",
+            "name": "gcd_comm",
+            "kind": "law",
+            "layer": 1,
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "mark": "\\bbA_1",
+            "display": "\ud835\udd38\u2081",
+            "name": "Quot",
+            "kind": "template",
+            "layer": 1,
+            "origin": "invented",
+            "produces": "object",
+            "signature": null
+          },
+          {
+            "mark": "\\wsq_2",
+            "display": "\u25a1\u2082",
+            "name": "abs_int",
+            "kind": "operation",
+            "layer": 1,
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "mark": "\\dot_3",
+            "display": "\u25cf\u2083",
+            "name": "canonical_tail",
+            "kind": "operation",
+            "layer": 1,
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "mark": "\\wdot_4",
+            "display": "\u25cb\u2084",
+            "name": "expand",
+            "kind": "operation",
+            "layer": 1,
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "mark": "\\lz_5",
+            "display": "\u25c6\u2085",
+            "name": "quot_valid",
+            "kind": "operation",
+            "layer": 1,
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "mark": "\\wlz_6",
+            "display": "\u25c7\u2086",
+            "name": "reduce_ratio",
+            "kind": "operation",
+            "layer": 1,
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "mark": "\\hatC_2",
+            "display": "\u0108\u2082",
+            "name": "lamps",
+            "kind": "observation",
+            "layer": 1,
+            "origin": "invented",
+            "signature": {
+              "ascii": "^1\\hatC_2 : \\bbL -> \\bbM",
+              "display": "\u00b9\u0108\u2082 : \ud835\udd43 \u2192 \ud835\udd44"
+            }
+          },
+          {
+            "mark": "\\bbA_2",
+            "display": "\ud835\udd38\u2082",
+            "name": "Revision",
+            "kind": "object",
+            "layer": 1,
+            "origin": "invented",
+            "forms": [],
+            "signature": null
+          },
+          {
+            "mark": "\\Delta_2",
+            "display": "\u0394\u2082",
+            "name": "repeat",
+            "kind": "combinator",
+            "layer": 2,
+            "origin": "invented",
+            "signature": {
+              "ascii": "^2\\Delta_2 : \\bbX_a \\x \\bbJ -> \\bbX_a",
+              "display": "\u00b2\u0394\u2082 : \ud835\udd4f\u2090 \u00d7 \ud835\udd41 \u2192 \ud835\udd4f\u2090"
+            }
+          },
+          {
+            "mark": "\\bbE_3",
+            "display": "\ud835\udd3c\u2083",
+            "name": "quot_frac",
+            "kind": "object",
+            "layer": 2,
+            "origin": "invented",
+            "forms": [
+              "val"
+            ],
+            "signature": null
+          },
+          {
+            "mark": "\\st_7",
+            "display": "\u2605\u2087",
+            "name": "mod12",
+            "kind": "operation",
+            "layer": 2,
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "mark": "\\wclub_8",
+            "display": "\u2667\u2088",
+            "name": "apply_guarded",
+            "kind": "operation",
+            "layer": 2,
+            "origin": "invented",
+            "signature": {
+              "ascii": "^2\\wclub_8 : \\bbA_2 \\x \\bbO -> \\bbA_2",
+              "display": "\u00b2\u2667\u2088 : \ud835\udd38\u2082 \u00d7 \ud835\udd46 \u2192 \ud835\udd38\u2082"
+            }
+          },
+          {
+            "mark": "\\hatE_3",
+            "display": "\u00ca\u2083",
+            "name": "revision",
+            "kind": "observation",
+            "layer": 2,
+            "origin": "invented",
+            "signature": {
+              "ascii": "^2\\hatE_3 : \\bbA_2 -> \\bbZ",
+              "display": "\u00b2\u00ca\u2083 : \ud835\udd38\u2082 \u2192 \u2124"
+            }
+          },
+          {
+            "mark": "\\dia_9",
+            "display": "\u2666\u2089",
+            "name": "mul",
+            "kind": "operation",
+            "layer": 3,
+            "origin": "invented",
+            "signature": {
+              "ascii": "^3\\dia_9 : \\bbZ \\x \\bbZ -> \\bbZ",
+              "display": "\u00b3\u2666\u2089 : \u2124 \u00d7 \u2124 \u2192 \u2124"
+            }
+          },
+          {
+            "mark": "\\Theta_3",
+            "display": "\u0398\u2083",
+            "name": "convergents",
+            "kind": "combinator",
+            "layer": 3,
+            "origin": "invented",
+            "signature": {
+              "ascii": "^3\\Theta_3 : \\bbH -> \\bbD",
+              "display": "\u00b3\u0398\u2083 : \u210d \u2192 \ud835\udd3b"
+            }
+          },
+          {
+            "mark": "\\bbG_4",
+            "display": "\ud835\udd3e\u2084",
+            "name": "hour",
+            "kind": "object",
+            "layer": 3,
+            "origin": "invented",
+            "forms": [
+              "val"
+            ],
+            "signature": null
+          },
+          {
+            "mark": "\\Lambda_4",
+            "display": "\u039b\u2084",
+            "name": "apply_chain",
+            "kind": "combinator",
+            "layer": 3,
+            "origin": "invented",
+            "signature": {
+              "ascii": "^3\\Lambda_4 : \\bbA_2 \\x \\bbD -> \\bbA_2",
+              "display": "\u00b3\u039b\u2084 : \ud835\udd38\u2082 \u00d7 \ud835\udd3b \u2192 \ud835\udd38\u2082"
+            }
+          },
+          {
+            "mark": "\\spade_10",
+            "display": "\u2660\u2081\u2080",
+            "name": "qadd",
+            "kind": "operation",
+            "layer": 4,
+            "origin": "invented",
+            "signature": {
+              "ascii": "^4\\spade_10 : \\bbG \\x \\bbG -> \\bbG",
+              "display": "\u2074\u2660\u2081\u2080 : \ud835\udd3e \u00d7 \ud835\udd3e \u2192 \ud835\udd3e"
+            }
+          },
+          {
+            "mark": "\\heart_11",
+            "display": "\u2665\u2081\u2081",
+            "name": "qmul",
+            "kind": "operation",
+            "layer": 4,
+            "origin": "invented",
+            "signature": {
+              "ascii": "^4\\heart_11 : \\bbG \\x \\bbG -> \\bbG",
+              "display": "\u2074\u2665\u2081\u2081 : \ud835\udd3e \u00d7 \ud835\udd3e \u2192 \ud835\udd3e"
+            }
+          },
+          {
+            "mark": "\\eqv_3",
+            "display": "\u2261\u2083",
+            "name": "mul_comm",
+            "kind": "law",
+            "layer": 4,
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "mark": "\\eqv_4",
+            "display": "\u2261\u2084",
+            "name": "mul_distrib",
+            "kind": "law",
+            "layer": 4,
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "mark": "\\wdot_12",
+            "display": "\u25cb\u2081\u2082",
+            "name": "cf_step",
+            "kind": "operation",
+            "layer": 4,
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "mark": "\\lz_13",
+            "display": "\u25c6\u2081\u2083",
+            "name": "lcm",
+            "kind": "operation",
+            "layer": 4,
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "mark": "\\hatG_4",
+            "display": "\u011c\u2084",
+            "name": "bounded_convergent",
+            "kind": "observation",
+            "layer": 5,
+            "origin": "invented",
+            "signature": {
+              "ascii": "^5\\hatG_4 : \\bbE -> \\bbG",
+              "display": "\u2075\u011c\u2084 : \ud835\udd3c \u2192 \ud835\udd3e"
+            }
+          },
+          {
+            "mark": "\\eqv_5",
+            "display": "\u2261\u2085",
+            "name": "gcd_mul_lcm",
+            "kind": "law",
+            "layer": 5,
+            "origin": "invented",
+            "signature": null
+          }
+        ],
+        "formulas": {},
+        "prose": {
+          "obs ?lamps{view: ReceiverView} -> Lamps = project_lamps(view.history) L1": [
+            [
+              "t",
+              "obs "
+            ],
+            [
+              "f",
+              "\u0108\u2082",
+              "\\hatC_2"
+            ],
+            [
+              "t",
+              "{view: ReceiverView} -> Lamps = project_lamps(view.history) L1"
+            ]
+          ]
+        },
+        "designs": [
+          "?lamps{view}",
+          "?modes{view}",
+          "Construct Revision<Doc<12>, 2> and unfold its canonicalizer to given calls.",
+          "Lamps<red,blue,red>",
+          "Modes<A,B,B>",
+          "On a stale second guard, unfold to Bottom(guard), with no committed changes.",
+          "Read the revision from an existing Revision value without changing the state; a prior successful chain could produce such a value but is not a dependency of this observation.",
+          "Unfold both patch steps; a stale second guard leaves the whole chain uncommitted.",
+          "apply(Base12<>, Patches</a:0->Q,/l:1->R>)",
+          "comb @apply_chain[step](r: Revision, ps: List<Patch>) -> Revision = @bounded_rec[step](r, ps) L3",
+          "obj Revision = Quot[Pair<Doc, Int>, canon_revision] L1",
+          "obs ?lamps{view: ReceiverView} -> Lamps = project_lamps(view.history) L1",
+          "obs ?revision{r: Revision} -> Int = read_revision(r) L2",
+          "op apply_guarded(r: Revision, p: Patch) -> Revision = apply_if_old_values_match(r, p) L2"
+        ],
+        "skipped": 0
+      }
+    },
+    "source": "atoms2/checks.json"
+  }
+}

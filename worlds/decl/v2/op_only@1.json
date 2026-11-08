@@ -1,0 +1,1108 @@
+{
+  "schema": "opulse.world/2",
+  "world": "op_only",
+  "version": 1,
+  "dialect": "atoms-v2",
+  "title": "Relation Networks: Operations Only",
+  "source": {
+    "design": "op_only.json"
+  },
+  "params": {},
+  "constants": {},
+  "objects": [
+    {
+      "kind": "object",
+      "name": "Nat",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": ""
+    },
+    {
+      "kind": "object",
+      "name": "Bool",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": ""
+    },
+    {
+      "kind": "object",
+      "name": "List",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": ""
+    },
+    {
+      "kind": "object",
+      "name": "BitSet",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": ""
+    },
+    {
+      "kind": "object",
+      "name": "Edge",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": ""
+    },
+    {
+      "kind": "object",
+      "name": "Gates",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": ""
+    },
+    {
+      "kind": "object",
+      "name": "Rel",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": ""
+    },
+    {
+      "kind": "object",
+      "name": "Profile",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": ""
+    },
+    {
+      "kind": "object",
+      "name": "Switch",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": ""
+    },
+    {
+      "kind": "object",
+      "name": "int",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": ""
+    },
+    {
+      "kind": "object",
+      "name": "bool",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": ""
+    },
+    {
+      "kind": "object",
+      "name": "any",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": ""
+    }
+  ],
+  "operations": [
+    {
+      "kind": "operation",
+      "name": "id",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "Rel",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Rel",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public id operator; counted as a layer-zero call.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.op_only.hosts:identity",
+        "digest": "307e7950c04dd4abd43de5cbccca48d57efeaa42409c769e5bf9e82119a3e56d"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "union",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "Rel",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "Rel",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Rel",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public union operator; counted as a layer-zero call.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.op_only.hosts:union",
+        "digest": "9fc9140cfda6f7f616947d6d9f2aed55e0c9bf2d89c5e7c58822b5a18f3f6938"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "compose",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "Rel",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "Rel",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Rel",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public compose operator; counted as a layer-zero call.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.op_only.hosts:compose",
+        "digest": "5ed1a5319f8b41f8399b139496da398981e4f579c7e5945c3d1bd5c568f17a1d"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "transpose",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "Rel",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Rel",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public transpose operator; counted as a layer-zero call.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.op_only.hosts:transpose",
+        "digest": "e443972a3b992842874ccf78afd38332ad40dd3247c415ac615c5bc82ab4c084"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "intersect",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "Rel",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "Rel",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Rel",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public intersect operator; counted as a layer-zero call.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.op_only.hosts:intersect",
+        "digest": "6a42e943fc487b152af7a0b8eb967c025de8c9be79deb3f4d84f3fdac1e2de08"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "subtract",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "Rel",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "Rel",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Rel",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public subtract operator; counted as a layer-zero call.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.op_only.hosts:subtract",
+        "digest": "175045469854e175c9a706116cebc253a7b8aca5ae719fb1c3123df27ff8d55a"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "quotient",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "Rel",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "Rel",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Rel",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public quotient operator; counted as a layer-zero call.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.op_only.hosts:quotient",
+        "digest": "5554da185b86a6aaeb31f90b5c382ea00accac87e767a5313894c92afdaeafec"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "braid",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg2",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg3",
+          "sort": "Gates",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Rel",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public braid operator; counted as a layer-zero call.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.op_only.hosts:braid",
+        "digest": "a595af17875a4f6a86ee583d3873a3d48e262947a965f5242dfe1edc79a9775f"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "switch_net",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg2",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Rel",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public switch_net operator; counted as a layer-zero call.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.op_only.hosts:switch_net",
+        "digest": "10e349c2edcf940f59ff392b7179553678d580b47acb0b92ad3064f115fa3947"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "fix2_host",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "any",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "Rel",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg2",
+          "sort": "Rel",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Rel",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public fix2_host operator; counted as a layer-zero call.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.op_only.hosts:fix2",
+        "digest": "83433d7a34ba8b073c5a37ac2a7be0bd760c6f907b008e2e4f839423df5c26ab"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "dag_fold_host",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "any",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "Rel",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Profile",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public dag_fold_host operator; counted as a layer-zero call.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.op_only.hosts:dag_fold",
+        "digest": "29c63538523cad027538e78bb6f96684a746da9116d15266b7364622532a986d"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "set_profile",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "Profile",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg2",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg3",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Profile",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public set_profile operator; counted as a layer-zero call.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.op_only.hosts:set_profile",
+        "digest": "9fc21c369a754cabcd540abe701edbaf3179177340f043f18b75678d82a766f2"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "filter_edges",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "any",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "Rel",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg2",
+          "sort": "Profile",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg3",
+          "sort": "Profile",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Rel",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public filter_edges operator; counted as a layer-zero call.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.op_only.hosts:filter_edges",
+        "digest": "61abbfa034d93ee2df41cbcd62ddf6b12681b0f8f5d609e11bb9d6273159883b"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "source",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "Edge",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public source operator; counted as a layer-zero call.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.op_only.hosts:source",
+        "digest": "79dc7278d023d5013aa677d6eae3317e393cb2658d1b8532b56358b97f030322"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "target",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "Edge",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public target operator; counted as a layer-zero call.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.op_only.hosts:target",
+        "digest": "0b1e1e96eaf08f982aacb2ad17aadb9ace7342590d73d822696dcc5c90374a5d"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "depth_at",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "Profile",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public depth_at operator; counted as a layer-zero call.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.op_only.hosts:depth_at",
+        "digest": "a30ce3f83ed9ffa8fcb366b80b8cc1b0aa69466ea76045a9bcad32d14b83e30c"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "ways_at",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "Profile",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public ways_at operator; counted as a layer-zero call.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.op_only.hosts:ways_at",
+        "digest": "83cce3f1d84923b88e671c3b9e476a9e08c95bbbd8a52ed7d3276fb691525724"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "add",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public add operator; counted as a layer-zero call.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.op_only.hosts:add",
+        "digest": "63098273a7aaa630762d6f145dfcf9c61c8c9b290c6ebeb2a05fea5854ccb476"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "mul",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public mul operator; counted as a layer-zero call.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.op_only.hosts:mul",
+        "digest": "e6f199c4b8fb3f7be5148cb2f471cab3559f7807bf4473002f957dcdb5ab05ab"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "eq",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public eq operator; counted as a layer-zero call.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.op_only.hosts:eq",
+        "digest": "21d8b0dd9ce8350e7f6c76ab9f70fe300dfb801ae19cc6ba016997ce6291e9ba"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "lt",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Fixed public lt operator; counted as a layer-zero call.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.op_only.hosts:lt",
+        "digest": "442829d9f6c3c56e57c566439b456c028a073645b8950145b4c8dfe089e7bcd5"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    }
+  ],
+  "combinators": {
+    "nodes": [
+      "Var",
+      "Lit",
+      "Call",
+      "Let",
+      "Case"
+    ],
+    "library": [
+      {
+        "name": "fix2",
+        "params": [
+          "expand",
+          "seed",
+          "r"
+        ],
+        "op_params": [
+          "expand"
+        ],
+        "body": {
+          "node": "Call",
+          "fn": "fix2_host",
+          "args": [
+            {
+              "node": "Var",
+              "name": "expand"
+            },
+            {
+              "node": "Var",
+              "name": "seed"
+            },
+            {
+              "node": "Var",
+              "name": "r"
+            }
+          ]
+        },
+        "unfold_rule": "substitute"
+      },
+      {
+        "name": "dag_fold",
+        "params": [
+          "advance",
+          "d"
+        ],
+        "op_params": [
+          "advance"
+        ],
+        "body": {
+          "node": "Call",
+          "fn": "dag_fold_host",
+          "args": [
+            {
+              "node": "Var",
+              "name": "advance"
+            },
+            {
+              "node": "Var",
+              "name": "d"
+            }
+          ]
+        },
+        "unfold_rule": "substitute"
+      },
+      {
+        "name": "each",
+        "params": [
+          "predicate",
+          "d",
+          "forward",
+          "backward"
+        ],
+        "op_params": [
+          "predicate"
+        ],
+        "body": {
+          "node": "Call",
+          "fn": "filter_edges",
+          "args": [
+            {
+              "node": "Var",
+              "name": "predicate"
+            },
+            {
+              "node": "Var",
+              "name": "d"
+            },
+            {
+              "node": "Var",
+              "name": "forward"
+            },
+            {
+              "node": "Var",
+              "name": "backward"
+            }
+          ]
+        },
+        "unfold_rule": "substitute"
+      }
+    ],
+    "recursion": "none"
+  },
+  "observation": {
+    "truth": "Rel",
+    "probes": [
+      {
+        "name": "has",
+        "sort": "bool",
+        "reads": "Rel",
+        "reveals": [
+          "public_relation"
+        ],
+        "impl": {
+          "host": "opulse.worlds_v2.op_only.hosts:has",
+          "digest": "3f755874bcaa6dff4fe8798d0b67d73b19feac6b6afa9abad3fae7d77586cd85"
+        }
+      },
+      {
+        "name": "count",
+        "sort": "int",
+        "reads": "Rel",
+        "reveals": [
+          "public_relation"
+        ],
+        "impl": {
+          "host": "opulse.worlds_v2.op_only.hosts:count",
+          "digest": "3d7cdabeeea348fddb289bc5f337f5ddf348c44d6b9506d4870b574b54eb3390"
+        }
+      },
+      {
+        "name": "maxdepth",
+        "sort": "int",
+        "reads": "Rel",
+        "reveals": [
+          "public_relation"
+        ],
+        "impl": {
+          "host": "opulse.worlds_v2.op_only.hosts:maxdepth",
+          "digest": "42206dee4f0caf0f0e28eeb9dffc9bbce6e365fe5d82080b40f9704cb674a31d"
+        }
+      },
+      {
+        "name": "longest_count",
+        "sort": "int",
+        "reads": "Rel",
+        "reveals": [
+          "public_relation"
+        ],
+        "impl": {
+          "host": "opulse.worlds_v2.op_only.hosts:longest_count",
+          "digest": "cadce1f4d71e4efae1586ac291546cf0fc73c01284ff8384f258d5a5dc0288d5"
+        }
+      }
+    ],
+    "capabilities": {
+      "learner": {
+        "probes": "all"
+      },
+      "judge": {
+        "probes": "all"
+      }
+    },
+    "show": [
+      "has",
+      "count",
+      "maxdepth",
+      "longest_count"
+    ],
+    "judge_view": "full"
+  },
+  "codec": {},
+  "open_kinds": [
+    "operation"
+  ],
+  "lock": {
+    "host_digests": {
+      "id": "307e7950c04dd4abd43de5cbccca48d57efeaa42409c769e5bf9e82119a3e56d",
+      "union": "9fc9140cfda6f7f616947d6d9f2aed55e0c9bf2d89c5e7c58822b5a18f3f6938",
+      "compose": "5ed1a5319f8b41f8399b139496da398981e4f579c7e5945c3d1bd5c568f17a1d",
+      "transpose": "e443972a3b992842874ccf78afd38332ad40dd3247c415ac615c5bc82ab4c084",
+      "intersect": "6a42e943fc487b152af7a0b8eb967c025de8c9be79deb3f4d84f3fdac1e2de08",
+      "subtract": "175045469854e175c9a706116cebc253a7b8aca5ae719fb1c3123df27ff8d55a",
+      "quotient": "5554da185b86a6aaeb31f90b5c382ea00accac87e767a5313894c92afdaeafec",
+      "braid": "a595af17875a4f6a86ee583d3873a3d48e262947a965f5242dfe1edc79a9775f",
+      "switch_net": "10e349c2edcf940f59ff392b7179553678d580b47acb0b92ad3064f115fa3947",
+      "fix2_host": "83433d7a34ba8b073c5a37ac2a7be0bd760c6f907b008e2e4f839423df5c26ab",
+      "dag_fold_host": "29c63538523cad027538e78bb6f96684a746da9116d15266b7364622532a986d",
+      "set_profile": "9fc21c369a754cabcd540abe701edbaf3179177340f043f18b75678d82a766f2",
+      "filter_edges": "61abbfa034d93ee2df41cbcd62ddf6b12681b0f8f5d609e11bb9d6273159883b",
+      "source": "79dc7278d023d5013aa677d6eae3317e393cb2658d1b8532b56358b97f030322",
+      "target": "0b1e1e96eaf08f982aacb2ad17aadb9ace7342590d73d822696dcc5c90374a5d",
+      "depth_at": "a30ce3f83ed9ffa8fcb366b80b8cc1b0aa69466ea76045a9bcad32d14b83e30c",
+      "ways_at": "83cce3f1d84923b88e671c3b9e476a9e08c95bbbd8a52ed7d3276fb691525724",
+      "add": "63098273a7aaa630762d6f145dfcf9c61c8c9b290c6ebeb2a05fea5854ccb476",
+      "mul": "e6f199c4b8fb3f7be5148cb2f471cab3559f7807bf4473002f957dcdb5ab05ab",
+      "eq": "21d8b0dd9ce8350e7f6c76ab9f70fe300dfb801ae19cc6ba016997ce6291e9ba",
+      "lt": "442829d9f6c3c56e57c566439b456c028a073645b8950145b4c8dfe089e7bcd5",
+      "probe.has": "3f755874bcaa6dff4fe8798d0b67d73b19feac6b6afa9abad3fae7d77586cd85",
+      "probe.count": "3d7cdabeeea348fddb289bc5f337f5ddf348c44d6b9506d4870b574b54eb3390",
+      "probe.maxdepth": "42206dee4f0caf0f0e28eeb9dffc9bbce6e365fe5d82080b40f9704cb674a31d",
+      "probe.longest_count": "cadce1f4d71e4efae1586ac291546cf0fc73c01284ff8384f258d5a5dc0288d5"
+    },
+    "constants_hash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+    "world_hash": "28bc6c8899f9ce8a994d6720937c574aaf274b6c1c9591f8e2c10ce834edd9db"
+  }
+}

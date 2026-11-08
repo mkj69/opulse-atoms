@@ -1,0 +1,37 @@
+{
+  "pages": {
+    "home": "/"
+  },
+  "urls": [
+    "home"
+  ],
+  "steps": [
+    {
+      "wait": {
+        "text": "Play recorded steps",
+        "timeout": 15
+      }
+    },
+    {
+      "click_text": "Play recorded steps"
+    },
+    {
+      "wait": {
+        "text": "Answer: false",
+        "timeout": 15
+      }
+    },
+    {
+      "click_text": "Replay recorded steps"
+    },
+    {
+      "wait": {
+        "text": "Answer: false",
+        "timeout": 15
+      }
+    },
+    {
+      "assert_text": "Answer: false. This route is valid, but a cheaper route exists."
+    }
+  ]
+}

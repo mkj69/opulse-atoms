@@ -1,0 +1,6074 @@
+{
+ "examples": {
+  "Order:0": {
+   "inputs": [
+    {
+     "t": "int",
+     "v": 1
+    },
+    {
+     "t": "int",
+     "v": 0
+    },
+    {
+     "t": "int",
+     "v": 1
+    },
+    {
+     "t": "int",
+     "v": 6
+    }
+   ],
+   "judge_view": [
+    {
+     "t": "int",
+     "v": 1
+    },
+    {
+     "t": "int",
+     "v": 0
+    },
+    {
+     "t": "int",
+     "v": 1
+    },
+    {
+     "t": "int",
+     "v": 6
+    }
+   ]
+  },
+  "Plan:0": {
+   "inputs": [
+    {
+     "f": [
+      {
+       "t": "int",
+       "v": 0
+      },
+      {
+       "f": [
+        {
+         "f": [
+          {
+           "t": "str",
+           "v": "flour"
+          },
+          {
+           "t": "int",
+           "v": 0
+          },
+          {
+           "t": "int",
+           "v": 2
+          }
+         ],
+         "t": "List",
+         "tag": "list"
+        },
+        {
+         "f": [
+          {
+           "t": "str",
+           "v": "water"
+          },
+          {
+           "t": "int",
+           "v": 0
+          },
+          {
+           "t": "int",
+           "v": 1
+          }
+         ],
+         "t": "List",
+         "tag": "list"
+        }
+       ],
+       "t": "List",
+       "tag": "list"
+      },
+      {
+       "f": [],
+       "t": "List",
+       "tag": "list"
+      }
+     ],
+     "t": "State",
+     "tag": "state"
+    },
+    {
+     "f": [
+      {
+       "f": [
+        {
+         "t": "str",
+         "v": "mix"
+        }
+       ],
+       "t": "List",
+       "tag": "list"
+      },
+      {
+       "f": [],
+       "t": "List",
+       "tag": "list"
+      },
+      {
+       "f": [
+        {
+         "t": "str",
+         "v": "bake_bread"
+        }
+       ],
+       "t": "List",
+       "tag": "list"
+      },
+      {
+       "f": [],
+       "t": "List",
+       "tag": "list"
+      },
+      {
+       "f": [],
+       "t": "List",
+       "tag": "list"
+      }
+     ],
+     "t": "List",
+     "tag": "list"
+    }
+   ],
+   "judge_view": [
+    {
+     "f": [
+      {
+       "t": "int",
+       "v": 0
+      },
+      {
+       "f": [
+        {
+         "f": [
+          {
+           "t": "str",
+           "v": "flour"
+          },
+          {
+           "t": "int",
+           "v": 0
+          },
+          {
+           "t": "int",
+           "v": 2
+          }
+         ],
+         "t": "List",
+         "tag": "list"
+        },
+        {
+         "f": [
+          {
+           "t": "str",
+           "v": "water"
+          },
+          {
+           "t": "int",
+           "v": 0
+          },
+          {
+           "t": "int",
+           "v": 1
+          }
+         ],
+         "t": "List",
+         "tag": "list"
+        }
+       ],
+       "t": "List",
+       "tag": "list"
+      },
+      {
+       "f": [],
+       "t": "List",
+       "tag": "list"
+      }
+     ],
+     "t": "State",
+     "tag": "state"
+    },
+    {
+     "f": [
+      {
+       "f": [
+        {
+         "t": "str",
+         "v": "mix"
+        }
+       ],
+       "t": "List",
+       "tag": "list"
+      },
+      {
+       "f": [],
+       "t": "List",
+       "tag": "list"
+      },
+      {
+       "f": [
+        {
+         "t": "str",
+         "v": "bake_bread"
+        }
+       ],
+       "t": "List",
+       "tag": "list"
+      },
+      {
+       "f": [],
+       "t": "List",
+       "tag": "list"
+      },
+      {
+       "f": [],
+       "t": "List",
+       "tag": "list"
+      }
+     ],
+     "t": "List",
+     "tag": "list"
+    }
+   ]
+  },
+  "best:0": {
+   "inputs": [
+    {
+     "t": "fn",
+     "v": "score"
+    },
+    {
+     "f": [
+      {
+       "f": [
+        {
+         "f": [
+          {
+           "f": [
+            {
+             "t": "int",
+             "v": 0
+            },
+            {
+             "f": [
+              {
+               "f": [
+                {
+                 "t": "str",
+                 "v": "flour"
+                },
+                {
+                 "t": "int",
+                 "v": 0
+                },
+                {
+                 "t": "int",
+                 "v": 2
+                }
+               ],
+               "t": "List",
+               "tag": "list"
+              },
+              {
+               "f": [
+                {
+                 "t": "str",
+                 "v": "water"
+                },
+                {
+                 "t": "int",
+                 "v": 0
+                },
+                {
+                 "t": "int",
+                 "v": 1
+                }
+               ],
+               "t": "List",
+               "tag": "list"
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "State",
+           "tag": "state"
+          },
+          {
+           "f": [
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "mix"
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "bake_bread"
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [
+            {
+             "t": "int",
+             "v": 5
+            },
+            {
+             "f": [
+              {
+               "f": [
+                {
+                 "t": "str",
+                 "v": "bread"
+                },
+                {
+                 "t": "int",
+                 "v": 5
+                },
+                {
+                 "t": "int",
+                 "v": 1
+                }
+               ],
+               "t": "List",
+               "tag": "list"
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "State",
+           "tag": "state"
+          }
+         ],
+         "t": "PlanData",
+         "tag": "record"
+        }
+       ],
+       "t": "Plan",
+       "tag": "val"
+      }
+     ],
+     "t": "List",
+     "tag": "list"
+    },
+    {
+     "f": [
+      {
+       "f": [
+        {
+         "t": "int",
+         "v": 1
+        },
+        {
+         "t": "int",
+         "v": 0
+        },
+        {
+         "t": "int",
+         "v": 0
+        },
+        {
+         "t": "int",
+         "v": 5
+        }
+       ],
+       "t": "OrderData",
+       "tag": "order"
+      }
+     ],
+     "t": "Order",
+     "tag": "val"
+    }
+   ],
+   "judge_view": [
+    {
+     "t": "fn",
+     "v": "score"
+    },
+    {
+     "f": [
+      {
+       "f": [
+        {
+         "f": [
+          {
+           "f": [
+            {
+             "t": "int",
+             "v": 0
+            },
+            {
+             "f": [
+              {
+               "f": [
+                {
+                 "t": "str",
+                 "v": "flour"
+                },
+                {
+                 "t": "int",
+                 "v": 0
+                },
+                {
+                 "t": "int",
+                 "v": 2
+                }
+               ],
+               "t": "List",
+               "tag": "list"
+              },
+              {
+               "f": [
+                {
+                 "t": "str",
+                 "v": "water"
+                },
+                {
+                 "t": "int",
+                 "v": 0
+                },
+                {
+                 "t": "int",
+                 "v": 1
+                }
+               ],
+               "t": "List",
+               "tag": "list"
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "State",
+           "tag": "state"
+          },
+          {
+           "f": [
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "mix"
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "bake_bread"
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [
+            {
+             "t": "int",
+             "v": 5
+            },
+            {
+             "f": [
+              {
+               "f": [
+                {
+                 "t": "str",
+                 "v": "bread"
+                },
+                {
+                 "t": "int",
+                 "v": 5
+                },
+                {
+                 "t": "int",
+                 "v": 1
+                }
+               ],
+               "t": "List",
+               "tag": "list"
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "State",
+           "tag": "state"
+          }
+         ],
+         "t": "PlanData",
+         "tag": "record"
+        }
+       ],
+       "t": "Plan",
+       "tag": "val"
+      }
+     ],
+     "t": "List",
+     "tag": "list"
+    },
+    {
+     "f": [
+      {
+       "f": [
+        {
+         "t": "int",
+         "v": 1
+        },
+        {
+         "t": "int",
+         "v": 0
+        },
+        {
+         "t": "int",
+         "v": 0
+        },
+        {
+         "t": "int",
+         "v": 5
+        }
+       ],
+       "t": "OrderData",
+       "tag": "order"
+      }
+     ],
+     "t": "Order",
+     "tag": "val"
+    }
+   ]
+  },
+  "earliest:0": {
+   "inputs": [
+    {
+     "f": [
+      {
+       "f": [
+        {
+         "t": "int",
+         "v": 0
+        },
+        {
+         "f": [
+          {
+           "f": [
+            {
+             "t": "str",
+             "v": "flour"
+            },
+            {
+             "t": "int",
+             "v": 0
+            },
+            {
+             "t": "int",
+             "v": 2
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [
+            {
+             "t": "str",
+             "v": "water"
+            },
+            {
+             "t": "int",
+             "v": 0
+            },
+            {
+             "t": "int",
+             "v": 1
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          }
+         ],
+         "t": "List",
+         "tag": "list"
+        },
+        {
+         "f": [],
+         "t": "List",
+         "tag": "list"
+        }
+       ],
+       "t": "State",
+       "tag": "state"
+      },
+      {
+       "f": [
+        {
+         "f": [
+          {
+           "t": "int",
+           "v": 1
+          },
+          {
+           "t": "int",
+           "v": 0
+          },
+          {
+           "t": "int",
+           "v": 0
+          },
+          {
+           "t": "int",
+           "v": 4
+          }
+         ],
+         "t": "OrderData",
+         "tag": "order"
+        }
+       ],
+       "t": "Order",
+       "tag": "val"
+      }
+     ],
+     "t": "Query",
+     "tag": "query"
+    }
+   ],
+   "judge_view": [
+    {
+     "f": [
+      {
+       "f": [
+        {
+         "t": "int",
+         "v": 0
+        },
+        {
+         "f": [
+          {
+           "f": [
+            {
+             "t": "str",
+             "v": "flour"
+            },
+            {
+             "t": "int",
+             "v": 0
+            },
+            {
+             "t": "int",
+             "v": 2
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [
+            {
+             "t": "str",
+             "v": "water"
+            },
+            {
+             "t": "int",
+             "v": 0
+            },
+            {
+             "t": "int",
+             "v": 1
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          }
+         ],
+         "t": "List",
+         "tag": "list"
+        },
+        {
+         "f": [],
+         "t": "List",
+         "tag": "list"
+        }
+       ],
+       "t": "State",
+       "tag": "state"
+      },
+      {
+       "f": [
+        {
+         "f": [
+          {
+           "t": "int",
+           "v": 1
+          },
+          {
+           "t": "int",
+           "v": 0
+          },
+          {
+           "t": "int",
+           "v": 0
+          },
+          {
+           "t": "int",
+           "v": 4
+          }
+         ],
+         "t": "OrderData",
+         "tag": "order"
+        }
+       ],
+       "t": "Order",
+       "tag": "val"
+      }
+     ],
+     "t": "Query",
+     "tag": "query"
+    }
+   ]
+  },
+  "filter_plans:0": {
+   "inputs": [
+    {
+     "t": "fn",
+     "v": "meets"
+    },
+    {
+     "f": [
+      {
+       "f": [
+        {
+         "f": [
+          {
+           "f": [
+            {
+             "t": "int",
+             "v": 0
+            },
+            {
+             "f": [
+              {
+               "f": [
+                {
+                 "t": "str",
+                 "v": "flour"
+                },
+                {
+                 "t": "int",
+                 "v": 0
+                },
+                {
+                 "t": "int",
+                 "v": 2
+                }
+               ],
+               "t": "List",
+               "tag": "list"
+              },
+              {
+               "f": [
+                {
+                 "t": "str",
+                 "v": "water"
+                },
+                {
+                 "t": "int",
+                 "v": 0
+                },
+                {
+                 "t": "int",
+                 "v": 1
+                }
+               ],
+               "t": "List",
+               "tag": "list"
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "State",
+           "tag": "state"
+          },
+          {
+           "f": [
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [
+            {
+             "t": "int",
+             "v": 5
+            },
+            {
+             "f": [
+              {
+               "f": [
+                {
+                 "t": "str",
+                 "v": "flour"
+                },
+                {
+                 "t": "int",
+                 "v": 0
+                },
+                {
+                 "t": "int",
+                 "v": 2
+                }
+               ],
+               "t": "List",
+               "tag": "list"
+              },
+              {
+               "f": [
+                {
+                 "t": "str",
+                 "v": "water"
+                },
+                {
+                 "t": "int",
+                 "v": 0
+                },
+                {
+                 "t": "int",
+                 "v": 1
+                }
+               ],
+               "t": "List",
+               "tag": "list"
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "State",
+           "tag": "state"
+          }
+         ],
+         "t": "PlanData",
+         "tag": "record"
+        }
+       ],
+       "t": "Plan",
+       "tag": "val"
+      },
+      {
+       "f": [
+        {
+         "f": [
+          {
+           "f": [
+            {
+             "t": "int",
+             "v": 0
+            },
+            {
+             "f": [
+              {
+               "f": [
+                {
+                 "t": "str",
+                 "v": "flour"
+                },
+                {
+                 "t": "int",
+                 "v": 0
+                },
+                {
+                 "t": "int",
+                 "v": 2
+                }
+               ],
+               "t": "List",
+               "tag": "list"
+              },
+              {
+               "f": [
+                {
+                 "t": "str",
+                 "v": "water"
+                },
+                {
+                 "t": "int",
+                 "v": 0
+                },
+                {
+                 "t": "int",
+                 "v": 1
+                }
+               ],
+               "t": "List",
+               "tag": "list"
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "State",
+           "tag": "state"
+          },
+          {
+           "f": [
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "mix"
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [
+            {
+             "t": "int",
+             "v": 5
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [
+              {
+               "f": [
+                {
+                 "t": "str",
+                 "v": "mix"
+                },
+                {
+                 "t": "int",
+                 "v": 6
+                }
+               ],
+               "t": "List",
+               "tag": "list"
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "State",
+           "tag": "state"
+          }
+         ],
+         "t": "PlanData",
+         "tag": "record"
+        }
+       ],
+       "t": "Plan",
+       "tag": "val"
+      },
+      {
+       "f": [
+        {
+         "f": [
+          {
+           "f": [
+            {
+             "t": "int",
+             "v": 0
+            },
+            {
+             "f": [
+              {
+               "f": [
+                {
+                 "t": "str",
+                 "v": "flour"
+                },
+                {
+                 "t": "int",
+                 "v": 0
+                },
+                {
+                 "t": "int",
+                 "v": 2
+                }
+               ],
+               "t": "List",
+               "tag": "list"
+              },
+              {
+               "f": [
+                {
+                 "t": "str",
+                 "v": "water"
+                },
+                {
+                 "t": "int",
+                 "v": 0
+                },
+                {
+                 "t": "int",
+                 "v": 1
+                }
+               ],
+               "t": "List",
+               "tag": "list"
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "State",
+           "tag": "state"
+          },
+          {
+           "f": [
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "mix"
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [
+            {
+             "t": "int",
+             "v": 5
+            },
+            {
+             "f": [
+              {
+               "f": [
+                {
+                 "t": "str",
+                 "v": "dough"
+                },
+                {
+                 "t": "int",
+                 "v": 5
+                },
+                {
+                 "t": "int",
+                 "v": 1
+                }
+               ],
+               "t": "List",
+               "tag": "list"
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "State",
+           "tag": "state"
+          }
+         ],
+         "t": "PlanData",
+         "tag": "record"
+        }
+       ],
+       "t": "Plan",
+       "tag": "val"
+      },
+      {
+       "f": [
+        {
+         "f": [
+          {
+           "f": [
+            {
+             "t": "int",
+             "v": 0
+            },
+            {
+             "f": [
+              {
+               "f": [
+                {
+                 "t": "str",
+                 "v": "flour"
+                },
+                {
+                 "t": "int",
+                 "v": 0
+                },
+                {
+                 "t": "int",
+                 "v": 2
+                }
+               ],
+               "t": "List",
+               "tag": "list"
+              },
+              {
+               "f": [
+                {
+                 "t": "str",
+                 "v": "water"
+                },
+                {
+                 "t": "int",
+                 "v": 0
+                },
+                {
+                 "t": "int",
+                 "v": 1
+                }
+               ],
+               "t": "List",
+               "tag": "list"
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "State",
+           "tag": "state"
+          },
+          {
+           "f": [
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "mix"
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [
+            {
+             "t": "int",
+             "v": 5
+            },
+            {
+             "f": [
+              {
+               "f": [
+                {
+                 "t": "str",
+                 "v": "dough"
+                },
+                {
+                 "t": "int",
+                 "v": 4
+                },
+                {
+                 "t": "int",
+                 "v": 1
+                }
+               ],
+               "t": "List",
+               "tag": "list"
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "State",
+           "tag": "state"
+          }
+         ],
+         "t": "PlanData",
+         "tag": "record"
+        }
+       ],
+       "t": "Plan",
+       "tag": "val"
+      },
+      {
+       "f": [
+        {
+         "f": [
+          {
+           "f": [
+            {
+             "t": "int",
+             "v": 0
+            },
+            {
+             "f": [
+              {
+               "f": [
+                {
+                 "t": "str",
+                 "v": "flour"
+                },
+                {
+                 "t": "int",
+                 "v": 0
+                },
+                {
+                 "t": "int",
+                 "v": 2
+                }
+               ],
+               "t": "List",
+               "tag": "list"
+              },
+              {
+               "f": [
+                {
+                 "t": "str",
+                 "v": "water"
+                },
+                {
+                 "t": "int",
+                 "v": 0
+                },
+                {
+                 "t": "int",
+                 "v": 1
+                }
+               ],
+               "t": "List",
+               "tag": "list"
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "State",
+           "tag": "state"
+          },
+          {
+           "f": [
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "mix"
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "bake_bread"
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [
+            {
+             "t": "int",
+             "v": 5
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [
+              {
+               "f": [
+                {
+                 "t": "str",
+                 "v": "bake_bread"
+                },
+                {
+                 "t": "int",
+                 "v": 7
+                }
+               ],
+               "t": "List",
+               "tag": "list"
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "State",
+           "tag": "state"
+          }
+         ],
+         "t": "PlanData",
+         "tag": "record"
+        }
+       ],
+       "t": "Plan",
+       "tag": "val"
+      },
+      {
+       "f": [
+        {
+         "f": [
+          {
+           "f": [
+            {
+             "t": "int",
+             "v": 0
+            },
+            {
+             "f": [
+              {
+               "f": [
+                {
+                 "t": "str",
+                 "v": "flour"
+                },
+                {
+                 "t": "int",
+                 "v": 0
+                },
+                {
+                 "t": "int",
+                 "v": 2
+                }
+               ],
+               "t": "List",
+               "tag": "list"
+              },
+              {
+               "f": [
+                {
+                 "t": "str",
+                 "v": "water"
+                },
+                {
+                 "t": "int",
+                 "v": 0
+                },
+                {
+                 "t": "int",
+                 "v": 1
+                }
+               ],
+               "t": "List",
+               "tag": "list"
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "State",
+           "tag": "state"
+          },
+          {
+           "f": [
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "mix"
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [
+            {
+             "t": "int",
+             "v": 5
+            },
+            {
+             "f": [
+              {
+               "f": [
+                {
+                 "t": "str",
+                 "v": "dough"
+                },
+                {
+                 "t": "int",
+                 "v": 3
+                },
+                {
+                 "t": "int",
+                 "v": 1
+                }
+               ],
+               "t": "List",
+               "tag": "list"
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "State",
+           "tag": "state"
+          }
+         ],
+         "t": "PlanData",
+         "tag": "record"
+        }
+       ],
+       "t": "Plan",
+       "tag": "val"
+      },
+      {
+       "f": [
+        {
+         "f": [
+          {
+           "f": [
+            {
+             "t": "int",
+             "v": 0
+            },
+            {
+             "f": [
+              {
+               "f": [
+                {
+                 "t": "str",
+                 "v": "flour"
+                },
+                {
+                 "t": "int",
+                 "v": 0
+                },
+                {
+                 "t": "int",
+                 "v": 2
+                }
+               ],
+               "t": "List",
+               "tag": "list"
+              },
+              {
+               "f": [
+                {
+                 "t": "str",
+                 "v": "water"
+                },
+                {
+                 "t": "int",
+                 "v": 0
+                },
+                {
+                 "t": "int",
+                 "v": 1
+                }
+               ],
+               "t": "List",
+               "tag": "list"
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "State",
+           "tag": "state"
+          },
+          {
+           "f": [
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "mix"
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "bake_bread"
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [
+            {
+             "t": "int",
+             "v": 5
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [
+              {
+               "f": [
+                {
+                 "t": "str",
+                 "v": "bake_bread"
+                },
+                {
+                 "t": "int",
+                 "v": 6
+                }
+               ],
+               "t": "List",
+               "tag": "list"
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "State",
+           "tag": "state"
+          }
+         ],
+         "t": "PlanData",
+         "tag": "record"
+        }
+       ],
+       "t": "Plan",
+       "tag": "val"
+      },
+      {
+       "f": [
+        {
+         "f": [
+          {
+           "f": [
+            {
+             "t": "int",
+             "v": 0
+            },
+            {
+             "f": [
+              {
+               "f": [
+                {
+                 "t": "str",
+                 "v": "flour"
+                },
+                {
+                 "t": "int",
+                 "v": 0
+                },
+                {
+                 "t": "int",
+                 "v": 2
+                }
+               ],
+               "t": "List",
+               "tag": "list"
+              },
+              {
+               "f": [
+                {
+                 "t": "str",
+                 "v": "water"
+                },
+                {
+                 "t": "int",
+                 "v": 0
+                },
+                {
+                 "t": "int",
+                 "v": 1
+                }
+               ],
+               "t": "List",
+               "tag": "list"
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "State",
+           "tag": "state"
+          },
+          {
+           "f": [
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "mix"
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [
+            {
+             "t": "int",
+             "v": 5
+            },
+            {
+             "f": [
+              {
+               "f": [
+                {
+                 "t": "str",
+                 "v": "dough"
+                },
+                {
+                 "t": "int",
+                 "v": 2
+                },
+                {
+                 "t": "int",
+                 "v": 1
+                }
+               ],
+               "t": "List",
+               "tag": "list"
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "State",
+           "tag": "state"
+          }
+         ],
+         "t": "PlanData",
+         "tag": "record"
+        }
+       ],
+       "t": "Plan",
+       "tag": "val"
+      },
+      {
+       "f": [
+        {
+         "f": [
+          {
+           "f": [
+            {
+             "t": "int",
+             "v": 0
+            },
+            {
+             "f": [
+              {
+               "f": [
+                {
+                 "t": "str",
+                 "v": "flour"
+                },
+                {
+                 "t": "int",
+                 "v": 0
+                },
+                {
+                 "t": "int",
+                 "v": 2
+                }
+               ],
+               "t": "List",
+               "tag": "list"
+              },
+              {
+               "f": [
+                {
+                 "t": "str",
+                 "v": "water"
+                },
+                {
+                 "t": "int",
+                 "v": 0
+                },
+                {
+                 "t": "int",
+                 "v": 1
+                }
+               ],
+               "t": "List",
+               "tag": "list"
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "State",
+           "tag": "state"
+          },
+          {
+           "f": [
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "mix"
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "bake_bread"
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [
+            {
+             "t": "int",
+             "v": 5
+            },
+            {
+             "f": [
+              {
+               "f": [
+                {
+                 "t": "str",
+                 "v": "bread"
+                },
+                {
+                 "t": "int",
+                 "v": 5
+                },
+                {
+                 "t": "int",
+                 "v": 1
+                }
+               ],
+               "t": "List",
+               "tag": "list"
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "State",
+           "tag": "state"
+          }
+         ],
+         "t": "PlanData",
+         "tag": "record"
+        }
+       ],
+       "t": "Plan",
+       "tag": "val"
+      }
+     ],
+     "t": "List",
+     "tag": "list"
+    },
+    {
+     "f": [
+      {
+       "f": [
+        {
+         "t": "int",
+         "v": 1
+        },
+        {
+         "t": "int",
+         "v": 0
+        },
+        {
+         "t": "int",
+         "v": 0
+        },
+        {
+         "t": "int",
+         "v": 5
+        }
+       ],
+       "t": "OrderData",
+       "tag": "order"
+      }
+     ],
+     "t": "Order",
+     "tag": "val"
+    }
+   ],
+   "judge_view": [
+    {
+     "t": "fn",
+     "v": "meets"
+    },
+    {
+     "f": [
+      {
+       "f": [
+        {
+         "f": [
+          {
+           "f": [
+            {
+             "t": "int",
+             "v": 0
+            },
+            {
+             "f": [
+              {
+               "f": [
+                {
+                 "t": "str",
+                 "v": "flour"
+                },
+                {
+                 "t": "int",
+                 "v": 0
+                },
+                {
+                 "t": "int",
+                 "v": 2
+                }
+               ],
+               "t": "List",
+               "tag": "list"
+              },
+              {
+               "f": [
+                {
+                 "t": "str",
+                 "v": "water"
+                },
+                {
+                 "t": "int",
+                 "v": 0
+                },
+                {
+                 "t": "int",
+                 "v": 1
+                }
+               ],
+               "t": "List",
+               "tag": "list"
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "State",
+           "tag": "state"
+          },
+          {
+           "f": [
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [
+            {
+             "t": "int",
+             "v": 5
+            },
+            {
+             "f": [
+              {
+               "f": [
+                {
+                 "t": "str",
+                 "v": "flour"
+                },
+                {
+                 "t": "int",
+                 "v": 0
+                },
+                {
+                 "t": "int",
+                 "v": 2
+                }
+               ],
+               "t": "List",
+               "tag": "list"
+              },
+              {
+               "f": [
+                {
+                 "t": "str",
+                 "v": "water"
+                },
+                {
+                 "t": "int",
+                 "v": 0
+                },
+                {
+                 "t": "int",
+                 "v": 1
+                }
+               ],
+               "t": "List",
+               "tag": "list"
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "State",
+           "tag": "state"
+          }
+         ],
+         "t": "PlanData",
+         "tag": "record"
+        }
+       ],
+       "t": "Plan",
+       "tag": "val"
+      },
+      {
+       "f": [
+        {
+         "f": [
+          {
+           "f": [
+            {
+             "t": "int",
+             "v": 0
+            },
+            {
+             "f": [
+              {
+               "f": [
+                {
+                 "t": "str",
+                 "v": "flour"
+                },
+                {
+                 "t": "int",
+                 "v": 0
+                },
+                {
+                 "t": "int",
+                 "v": 2
+                }
+               ],
+               "t": "List",
+               "tag": "list"
+              },
+              {
+               "f": [
+                {
+                 "t": "str",
+                 "v": "water"
+                },
+                {
+                 "t": "int",
+                 "v": 0
+                },
+                {
+                 "t": "int",
+                 "v": 1
+                }
+               ],
+               "t": "List",
+               "tag": "list"
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "State",
+           "tag": "state"
+          },
+          {
+           "f": [
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "mix"
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [
+            {
+             "t": "int",
+             "v": 5
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [
+              {
+               "f": [
+                {
+                 "t": "str",
+                 "v": "mix"
+                },
+                {
+                 "t": "int",
+                 "v": 6
+                }
+               ],
+               "t": "List",
+               "tag": "list"
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "State",
+           "tag": "state"
+          }
+         ],
+         "t": "PlanData",
+         "tag": "record"
+        }
+       ],
+       "t": "Plan",
+       "tag": "val"
+      },
+      {
+       "f": [
+        {
+         "f": [
+          {
+           "f": [
+            {
+             "t": "int",
+             "v": 0
+            },
+            {
+             "f": [
+              {
+               "f": [
+                {
+                 "t": "str",
+                 "v": "flour"
+                },
+                {
+                 "t": "int",
+                 "v": 0
+                },
+                {
+                 "t": "int",
+                 "v": 2
+                }
+               ],
+               "t": "List",
+               "tag": "list"
+              },
+              {
+               "f": [
+                {
+                 "t": "str",
+                 "v": "water"
+                },
+                {
+                 "t": "int",
+                 "v": 0
+                },
+                {
+                 "t": "int",
+                 "v": 1
+                }
+               ],
+               "t": "List",
+               "tag": "list"
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "State",
+           "tag": "state"
+          },
+          {
+           "f": [
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "mix"
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [
+            {
+             "t": "int",
+             "v": 5
+            },
+            {
+             "f": [
+              {
+               "f": [
+                {
+                 "t": "str",
+                 "v": "dough"
+                },
+                {
+                 "t": "int",
+                 "v": 5
+                },
+                {
+                 "t": "int",
+                 "v": 1
+                }
+               ],
+               "t": "List",
+               "tag": "list"
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "State",
+           "tag": "state"
+          }
+         ],
+         "t": "PlanData",
+         "tag": "record"
+        }
+       ],
+       "t": "Plan",
+       "tag": "val"
+      },
+      {
+       "f": [
+        {
+         "f": [
+          {
+           "f": [
+            {
+             "t": "int",
+             "v": 0
+            },
+            {
+             "f": [
+              {
+               "f": [
+                {
+                 "t": "str",
+                 "v": "flour"
+                },
+                {
+                 "t": "int",
+                 "v": 0
+                },
+                {
+                 "t": "int",
+                 "v": 2
+                }
+               ],
+               "t": "List",
+               "tag": "list"
+              },
+              {
+               "f": [
+                {
+                 "t": "str",
+                 "v": "water"
+                },
+                {
+                 "t": "int",
+                 "v": 0
+                },
+                {
+                 "t": "int",
+                 "v": 1
+                }
+               ],
+               "t": "List",
+               "tag": "list"
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "State",
+           "tag": "state"
+          },
+          {
+           "f": [
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "mix"
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [
+            {
+             "t": "int",
+             "v": 5
+            },
+            {
+             "f": [
+              {
+               "f": [
+                {
+                 "t": "str",
+                 "v": "dough"
+                },
+                {
+                 "t": "int",
+                 "v": 4
+                },
+                {
+                 "t": "int",
+                 "v": 1
+                }
+               ],
+               "t": "List",
+               "tag": "list"
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "State",
+           "tag": "state"
+          }
+         ],
+         "t": "PlanData",
+         "tag": "record"
+        }
+       ],
+       "t": "Plan",
+       "tag": "val"
+      },
+      {
+       "f": [
+        {
+         "f": [
+          {
+           "f": [
+            {
+             "t": "int",
+             "v": 0
+            },
+            {
+             "f": [
+              {
+               "f": [
+                {
+                 "t": "str",
+                 "v": "flour"
+                },
+                {
+                 "t": "int",
+                 "v": 0
+                },
+                {
+                 "t": "int",
+                 "v": 2
+                }
+               ],
+               "t": "List",
+               "tag": "list"
+              },
+              {
+               "f": [
+                {
+                 "t": "str",
+                 "v": "water"
+                },
+                {
+                 "t": "int",
+                 "v": 0
+                },
+                {
+                 "t": "int",
+                 "v": 1
+                }
+               ],
+               "t": "List",
+               "tag": "list"
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "State",
+           "tag": "state"
+          },
+          {
+           "f": [
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "mix"
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "bake_bread"
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [
+            {
+             "t": "int",
+             "v": 5
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [
+              {
+               "f": [
+                {
+                 "t": "str",
+                 "v": "bake_bread"
+                },
+                {
+                 "t": "int",
+                 "v": 7
+                }
+               ],
+               "t": "List",
+               "tag": "list"
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "State",
+           "tag": "state"
+          }
+         ],
+         "t": "PlanData",
+         "tag": "record"
+        }
+       ],
+       "t": "Plan",
+       "tag": "val"
+      },
+      {
+       "f": [
+        {
+         "f": [
+          {
+           "f": [
+            {
+             "t": "int",
+             "v": 0
+            },
+            {
+             "f": [
+              {
+               "f": [
+                {
+                 "t": "str",
+                 "v": "flour"
+                },
+                {
+                 "t": "int",
+                 "v": 0
+                },
+                {
+                 "t": "int",
+                 "v": 2
+                }
+               ],
+               "t": "List",
+               "tag": "list"
+              },
+              {
+               "f": [
+                {
+                 "t": "str",
+                 "v": "water"
+                },
+                {
+                 "t": "int",
+                 "v": 0
+                },
+                {
+                 "t": "int",
+                 "v": 1
+                }
+               ],
+               "t": "List",
+               "tag": "list"
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "State",
+           "tag": "state"
+          },
+          {
+           "f": [
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "mix"
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [
+            {
+             "t": "int",
+             "v": 5
+            },
+            {
+             "f": [
+              {
+               "f": [
+                {
+                 "t": "str",
+                 "v": "dough"
+                },
+                {
+                 "t": "int",
+                 "v": 3
+                },
+                {
+                 "t": "int",
+                 "v": 1
+                }
+               ],
+               "t": "List",
+               "tag": "list"
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "State",
+           "tag": "state"
+          }
+         ],
+         "t": "PlanData",
+         "tag": "record"
+        }
+       ],
+       "t": "Plan",
+       "tag": "val"
+      },
+      {
+       "f": [
+        {
+         "f": [
+          {
+           "f": [
+            {
+             "t": "int",
+             "v": 0
+            },
+            {
+             "f": [
+              {
+               "f": [
+                {
+                 "t": "str",
+                 "v": "flour"
+                },
+                {
+                 "t": "int",
+                 "v": 0
+                },
+                {
+                 "t": "int",
+                 "v": 2
+                }
+               ],
+               "t": "List",
+               "tag": "list"
+              },
+              {
+               "f": [
+                {
+                 "t": "str",
+                 "v": "water"
+                },
+                {
+                 "t": "int",
+                 "v": 0
+                },
+                {
+                 "t": "int",
+                 "v": 1
+                }
+               ],
+               "t": "List",
+               "tag": "list"
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "State",
+           "tag": "state"
+          },
+          {
+           "f": [
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "mix"
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "bake_bread"
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [
+            {
+             "t": "int",
+             "v": 5
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [
+              {
+               "f": [
+                {
+                 "t": "str",
+                 "v": "bake_bread"
+                },
+                {
+                 "t": "int",
+                 "v": 6
+                }
+               ],
+               "t": "List",
+               "tag": "list"
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "State",
+           "tag": "state"
+          }
+         ],
+         "t": "PlanData",
+         "tag": "record"
+        }
+       ],
+       "t": "Plan",
+       "tag": "val"
+      },
+      {
+       "f": [
+        {
+         "f": [
+          {
+           "f": [
+            {
+             "t": "int",
+             "v": 0
+            },
+            {
+             "f": [
+              {
+               "f": [
+                {
+                 "t": "str",
+                 "v": "flour"
+                },
+                {
+                 "t": "int",
+                 "v": 0
+                },
+                {
+                 "t": "int",
+                 "v": 2
+                }
+               ],
+               "t": "List",
+               "tag": "list"
+              },
+              {
+               "f": [
+                {
+                 "t": "str",
+                 "v": "water"
+                },
+                {
+                 "t": "int",
+                 "v": 0
+                },
+                {
+                 "t": "int",
+                 "v": 1
+                }
+               ],
+               "t": "List",
+               "tag": "list"
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "State",
+           "tag": "state"
+          },
+          {
+           "f": [
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "mix"
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [
+            {
+             "t": "int",
+             "v": 5
+            },
+            {
+             "f": [
+              {
+               "f": [
+                {
+                 "t": "str",
+                 "v": "dough"
+                },
+                {
+                 "t": "int",
+                 "v": 2
+                },
+                {
+                 "t": "int",
+                 "v": 1
+                }
+               ],
+               "t": "List",
+               "tag": "list"
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "State",
+           "tag": "state"
+          }
+         ],
+         "t": "PlanData",
+         "tag": "record"
+        }
+       ],
+       "t": "Plan",
+       "tag": "val"
+      },
+      {
+       "f": [
+        {
+         "f": [
+          {
+           "f": [
+            {
+             "t": "int",
+             "v": 0
+            },
+            {
+             "f": [
+              {
+               "f": [
+                {
+                 "t": "str",
+                 "v": "flour"
+                },
+                {
+                 "t": "int",
+                 "v": 0
+                },
+                {
+                 "t": "int",
+                 "v": 2
+                }
+               ],
+               "t": "List",
+               "tag": "list"
+              },
+              {
+               "f": [
+                {
+                 "t": "str",
+                 "v": "water"
+                },
+                {
+                 "t": "int",
+                 "v": 0
+                },
+                {
+                 "t": "int",
+                 "v": 1
+                }
+               ],
+               "t": "List",
+               "tag": "list"
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "State",
+           "tag": "state"
+          },
+          {
+           "f": [
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "mix"
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "bake_bread"
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [
+            {
+             "t": "int",
+             "v": 5
+            },
+            {
+             "f": [
+              {
+               "f": [
+                {
+                 "t": "str",
+                 "v": "bread"
+                },
+                {
+                 "t": "int",
+                 "v": 5
+                },
+                {
+                 "t": "int",
+                 "v": 1
+                }
+               ],
+               "t": "List",
+               "tag": "list"
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "State",
+           "tag": "state"
+          }
+         ],
+         "t": "PlanData",
+         "tag": "record"
+        }
+       ],
+       "t": "Plan",
+       "tag": "val"
+      }
+     ],
+     "t": "List",
+     "tag": "list"
+    },
+    {
+     "f": [
+      {
+       "f": [
+        {
+         "t": "int",
+         "v": 1
+        },
+        {
+         "t": "int",
+         "v": 0
+        },
+        {
+         "t": "int",
+         "v": 0
+        },
+        {
+         "t": "int",
+         "v": 5
+        }
+       ],
+       "t": "OrderData",
+       "tag": "order"
+      }
+     ],
+     "t": "Order",
+     "tag": "val"
+    }
+   ]
+  },
+  "meets:0": {
+   "inputs": [
+    {
+     "f": [
+      {
+       "f": [
+        {
+         "f": [
+          {
+           "t": "int",
+           "v": 0
+          },
+          {
+           "f": [
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "egg"
+              },
+              {
+               "t": "int",
+               "v": 0
+              },
+              {
+               "t": "int",
+               "v": 2
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "flour"
+              },
+              {
+               "t": "int",
+               "v": 0
+              },
+              {
+               "t": "int",
+               "v": 4
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "milk"
+              },
+              {
+               "t": "int",
+               "v": 0
+              },
+              {
+               "t": "int",
+               "v": 2
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "water"
+              },
+              {
+               "t": "int",
+               "v": 0
+              },
+              {
+               "t": "int",
+               "v": 1
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [],
+           "t": "List",
+           "tag": "list"
+          }
+         ],
+         "t": "State",
+         "tag": "state"
+        },
+        {
+         "f": [
+          {
+           "f": [
+            {
+             "t": "str",
+             "v": "simmer"
+            },
+            {
+             "t": "str",
+             "v": "whisk"
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [
+            {
+             "t": "str",
+             "v": "bake_cake"
+            },
+            {
+             "t": "str",
+             "v": "mix"
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [
+            {
+             "t": "str",
+             "v": "bake_bread"
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [
+            {
+             "t": "str",
+             "v": "plate"
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          }
+         ],
+         "t": "List",
+         "tag": "list"
+        },
+        {
+         "f": [
+          {
+           "t": "int",
+           "v": 6
+          },
+          {
+           "f": [
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "bread"
+              },
+              {
+               "t": "int",
+               "v": 6
+              },
+              {
+               "t": "int",
+               "v": 1
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "dessert"
+              },
+              {
+               "t": "int",
+               "v": 6
+              },
+              {
+               "t": "int",
+               "v": 1
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "flour"
+              },
+              {
+               "t": "int",
+               "v": 0
+              },
+              {
+               "t": "int",
+               "v": 1
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [],
+           "t": "List",
+           "tag": "list"
+          }
+         ],
+         "t": "State",
+         "tag": "state"
+        }
+       ],
+       "t": "PlanData",
+       "tag": "record"
+      }
+     ],
+     "t": "Plan",
+     "tag": "val"
+    },
+    {
+     "f": [
+      {
+       "f": [
+        {
+         "t": "int",
+         "v": 1
+        },
+        {
+         "t": "int",
+         "v": 0
+        },
+        {
+         "t": "int",
+         "v": 1
+        },
+        {
+         "t": "int",
+         "v": 6
+        }
+       ],
+       "t": "OrderData",
+       "tag": "order"
+      }
+     ],
+     "t": "Order",
+     "tag": "val"
+    }
+   ],
+   "judge_view": [
+    {
+     "f": [
+      {
+       "f": [
+        {
+         "f": [
+          {
+           "t": "int",
+           "v": 0
+          },
+          {
+           "f": [
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "egg"
+              },
+              {
+               "t": "int",
+               "v": 0
+              },
+              {
+               "t": "int",
+               "v": 2
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "flour"
+              },
+              {
+               "t": "int",
+               "v": 0
+              },
+              {
+               "t": "int",
+               "v": 4
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "milk"
+              },
+              {
+               "t": "int",
+               "v": 0
+              },
+              {
+               "t": "int",
+               "v": 2
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "water"
+              },
+              {
+               "t": "int",
+               "v": 0
+              },
+              {
+               "t": "int",
+               "v": 1
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [],
+           "t": "List",
+           "tag": "list"
+          }
+         ],
+         "t": "State",
+         "tag": "state"
+        },
+        {
+         "f": [
+          {
+           "f": [
+            {
+             "t": "str",
+             "v": "simmer"
+            },
+            {
+             "t": "str",
+             "v": "whisk"
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [
+            {
+             "t": "str",
+             "v": "bake_cake"
+            },
+            {
+             "t": "str",
+             "v": "mix"
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [
+            {
+             "t": "str",
+             "v": "bake_bread"
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [
+            {
+             "t": "str",
+             "v": "plate"
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          }
+         ],
+         "t": "List",
+         "tag": "list"
+        },
+        {
+         "f": [
+          {
+           "t": "int",
+           "v": 6
+          },
+          {
+           "f": [
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "bread"
+              },
+              {
+               "t": "int",
+               "v": 6
+              },
+              {
+               "t": "int",
+               "v": 1
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "dessert"
+              },
+              {
+               "t": "int",
+               "v": 6
+              },
+              {
+               "t": "int",
+               "v": 1
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "flour"
+              },
+              {
+               "t": "int",
+               "v": 0
+              },
+              {
+               "t": "int",
+               "v": 1
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [],
+           "t": "List",
+           "tag": "list"
+          }
+         ],
+         "t": "State",
+         "tag": "state"
+        }
+       ],
+       "t": "PlanData",
+       "tag": "record"
+      }
+     ],
+     "t": "Plan",
+     "tag": "val"
+    },
+    {
+     "f": [
+      {
+       "f": [
+        {
+         "t": "int",
+         "v": 1
+        },
+        {
+         "t": "int",
+         "v": 0
+        },
+        {
+         "t": "int",
+         "v": 1
+        },
+        {
+         "t": "int",
+         "v": 6
+        }
+       ],
+       "t": "OrderData",
+       "tag": "order"
+      }
+     ],
+     "t": "Order",
+     "tag": "val"
+    }
+   ]
+  },
+  "min_flour:0": {
+   "inputs": [
+    {
+     "f": [
+      {
+       "f": [
+        {
+         "t": "int",
+         "v": 0
+        },
+        {
+         "f": [
+          {
+           "f": [
+            {
+             "t": "str",
+             "v": "egg"
+            },
+            {
+             "t": "int",
+             "v": 0
+            },
+            {
+             "t": "int",
+             "v": 2
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [
+            {
+             "t": "str",
+             "v": "flour"
+            },
+            {
+             "t": "int",
+             "v": 0
+            },
+            {
+             "t": "int",
+             "v": 4
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [
+            {
+             "t": "str",
+             "v": "milk"
+            },
+            {
+             "t": "int",
+             "v": 0
+            },
+            {
+             "t": "int",
+             "v": 2
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [
+            {
+             "t": "str",
+             "v": "water"
+            },
+            {
+             "t": "int",
+             "v": 0
+            },
+            {
+             "t": "int",
+             "v": 1
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          }
+         ],
+         "t": "List",
+         "tag": "list"
+        },
+        {
+         "f": [],
+         "t": "List",
+         "tag": "list"
+        }
+       ],
+       "t": "State",
+       "tag": "state"
+      },
+      {
+       "f": [
+        {
+         "f": [
+          {
+           "t": "int",
+           "v": 0
+          },
+          {
+           "t": "int",
+           "v": 0
+          },
+          {
+           "t": "int",
+           "v": 0
+          },
+          {
+           "t": "int",
+           "v": 0
+          }
+         ],
+         "t": "OrderData",
+         "tag": "order"
+        }
+       ],
+       "t": "Order",
+       "tag": "val"
+      }
+     ],
+     "t": "Query",
+     "tag": "query"
+    }
+   ],
+   "judge_view": [
+    {
+     "f": [
+      {
+       "f": [
+        {
+         "t": "int",
+         "v": 0
+        },
+        {
+         "f": [
+          {
+           "f": [
+            {
+             "t": "str",
+             "v": "egg"
+            },
+            {
+             "t": "int",
+             "v": 0
+            },
+            {
+             "t": "int",
+             "v": 2
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [
+            {
+             "t": "str",
+             "v": "flour"
+            },
+            {
+             "t": "int",
+             "v": 0
+            },
+            {
+             "t": "int",
+             "v": 4
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [
+            {
+             "t": "str",
+             "v": "milk"
+            },
+            {
+             "t": "int",
+             "v": 0
+            },
+            {
+             "t": "int",
+             "v": 2
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [
+            {
+             "t": "str",
+             "v": "water"
+            },
+            {
+             "t": "int",
+             "v": 0
+            },
+            {
+             "t": "int",
+             "v": 1
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          }
+         ],
+         "t": "List",
+         "tag": "list"
+        },
+        {
+         "f": [],
+         "t": "List",
+         "tag": "list"
+        }
+       ],
+       "t": "State",
+       "tag": "state"
+      },
+      {
+       "f": [
+        {
+         "f": [
+          {
+           "t": "int",
+           "v": 0
+          },
+          {
+           "t": "int",
+           "v": 0
+          },
+          {
+           "t": "int",
+           "v": 0
+          },
+          {
+           "t": "int",
+           "v": 0
+          }
+         ],
+         "t": "OrderData",
+         "tag": "order"
+        }
+       ],
+       "t": "Order",
+       "tag": "val"
+      }
+     ],
+     "t": "Query",
+     "tag": "query"
+    }
+   ]
+  },
+  "peak:0": {
+   "inputs": [
+    {
+     "f": [
+      {
+       "f": [
+        {
+         "f": [
+          {
+           "t": "int",
+           "v": 0
+          },
+          {
+           "f": [
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "egg"
+              },
+              {
+               "t": "int",
+               "v": 0
+              },
+              {
+               "t": "int",
+               "v": 2
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "flour"
+              },
+              {
+               "t": "int",
+               "v": 0
+              },
+              {
+               "t": "int",
+               "v": 4
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "milk"
+              },
+              {
+               "t": "int",
+               "v": 0
+              },
+              {
+               "t": "int",
+               "v": 2
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "water"
+              },
+              {
+               "t": "int",
+               "v": 0
+              },
+              {
+               "t": "int",
+               "v": 1
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [],
+           "t": "List",
+           "tag": "list"
+          }
+         ],
+         "t": "State",
+         "tag": "state"
+        },
+        {
+         "f": [
+          {
+           "f": [
+            {
+             "t": "str",
+             "v": "simmer"
+            },
+            {
+             "t": "str",
+             "v": "whisk"
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [
+            {
+             "t": "str",
+             "v": "bake_cake"
+            },
+            {
+             "t": "str",
+             "v": "mix"
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [
+            {
+             "t": "str",
+             "v": "bake_bread"
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [
+            {
+             "t": "str",
+             "v": "plate"
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          }
+         ],
+         "t": "List",
+         "tag": "list"
+        },
+        {
+         "f": [
+          {
+           "t": "int",
+           "v": 6
+          },
+          {
+           "f": [
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "bread"
+              },
+              {
+               "t": "int",
+               "v": 6
+              },
+              {
+               "t": "int",
+               "v": 1
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "dessert"
+              },
+              {
+               "t": "int",
+               "v": 6
+              },
+              {
+               "t": "int",
+               "v": 1
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "flour"
+              },
+              {
+               "t": "int",
+               "v": 0
+              },
+              {
+               "t": "int",
+               "v": 1
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [],
+           "t": "List",
+           "tag": "list"
+          }
+         ],
+         "t": "State",
+         "tag": "state"
+        }
+       ],
+       "t": "PlanData",
+       "tag": "record"
+      }
+     ],
+     "t": "Plan",
+     "tag": "val"
+    }
+   ],
+   "judge_view": [
+    {
+     "f": [
+      {
+       "f": [
+        {
+         "f": [
+          {
+           "t": "int",
+           "v": 0
+          },
+          {
+           "f": [
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "egg"
+              },
+              {
+               "t": "int",
+               "v": 0
+              },
+              {
+               "t": "int",
+               "v": 2
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "flour"
+              },
+              {
+               "t": "int",
+               "v": 0
+              },
+              {
+               "t": "int",
+               "v": 4
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "milk"
+              },
+              {
+               "t": "int",
+               "v": 0
+              },
+              {
+               "t": "int",
+               "v": 2
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "water"
+              },
+              {
+               "t": "int",
+               "v": 0
+              },
+              {
+               "t": "int",
+               "v": 1
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [],
+           "t": "List",
+           "tag": "list"
+          }
+         ],
+         "t": "State",
+         "tag": "state"
+        },
+        {
+         "f": [
+          {
+           "f": [
+            {
+             "t": "str",
+             "v": "simmer"
+            },
+            {
+             "t": "str",
+             "v": "whisk"
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [
+            {
+             "t": "str",
+             "v": "bake_cake"
+            },
+            {
+             "t": "str",
+             "v": "mix"
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [
+            {
+             "t": "str",
+             "v": "bake_bread"
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [
+            {
+             "t": "str",
+             "v": "plate"
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          }
+         ],
+         "t": "List",
+         "tag": "list"
+        },
+        {
+         "f": [
+          {
+           "t": "int",
+           "v": 6
+          },
+          {
+           "f": [
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "bread"
+              },
+              {
+               "t": "int",
+               "v": 6
+              },
+              {
+               "t": "int",
+               "v": 1
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "dessert"
+              },
+              {
+               "t": "int",
+               "v": 6
+              },
+              {
+               "t": "int",
+               "v": 1
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "flour"
+              },
+              {
+               "t": "int",
+               "v": 0
+              },
+              {
+               "t": "int",
+               "v": 1
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [],
+           "t": "List",
+           "tag": "list"
+          }
+         ],
+         "t": "State",
+         "tag": "state"
+        }
+       ],
+       "t": "PlanData",
+       "tag": "record"
+      }
+     ],
+     "t": "Plan",
+     "tag": "val"
+    }
+   ]
+  },
+  "reach:0": {
+   "inputs": [
+    {
+     "f": [
+      {
+       "t": "int",
+       "v": 0
+      },
+      {
+       "f": [
+        {
+         "f": [
+          {
+           "t": "str",
+           "v": "flour"
+          },
+          {
+           "t": "int",
+           "v": 0
+          },
+          {
+           "t": "int",
+           "v": 2
+          }
+         ],
+         "t": "List",
+         "tag": "list"
+        },
+        {
+         "f": [
+          {
+           "t": "str",
+           "v": "water"
+          },
+          {
+           "t": "int",
+           "v": 0
+          },
+          {
+           "t": "int",
+           "v": 1
+          }
+         ],
+         "t": "List",
+         "tag": "list"
+        }
+       ],
+       "t": "List",
+       "tag": "list"
+      },
+      {
+       "f": [],
+       "t": "List",
+       "tag": "list"
+      }
+     ],
+     "t": "State",
+     "tag": "state"
+    },
+    {
+     "t": "int",
+     "v": 1
+    }
+   ],
+   "judge_view": [
+    {
+     "f": [
+      {
+       "t": "int",
+       "v": 0
+      },
+      {
+       "f": [
+        {
+         "f": [
+          {
+           "t": "str",
+           "v": "flour"
+          },
+          {
+           "t": "int",
+           "v": 0
+          },
+          {
+           "t": "int",
+           "v": 2
+          }
+         ],
+         "t": "List",
+         "tag": "list"
+        },
+        {
+         "f": [
+          {
+           "t": "str",
+           "v": "water"
+          },
+          {
+           "t": "int",
+           "v": 0
+          },
+          {
+           "t": "int",
+           "v": 1
+          }
+         ],
+         "t": "List",
+         "tag": "list"
+        }
+       ],
+       "t": "List",
+       "tag": "list"
+      },
+      {
+       "f": [],
+       "t": "List",
+       "tag": "list"
+      }
+     ],
+     "t": "State",
+     "tag": "state"
+    },
+    {
+     "t": "int",
+     "v": 1
+    }
+   ]
+  },
+  "score:0": {
+   "inputs": [
+    {
+     "f": [
+      {
+       "f": [
+        {
+         "f": [
+          {
+           "t": "int",
+           "v": 0
+          },
+          {
+           "f": [
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "flour"
+              },
+              {
+               "t": "int",
+               "v": 0
+              },
+              {
+               "t": "int",
+               "v": 2
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "water"
+              },
+              {
+               "t": "int",
+               "v": 0
+              },
+              {
+               "t": "int",
+               "v": 1
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [],
+           "t": "List",
+           "tag": "list"
+          }
+         ],
+         "t": "State",
+         "tag": "state"
+        },
+        {
+         "f": [
+          {
+           "f": [
+            {
+             "t": "str",
+             "v": "mix"
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [
+            {
+             "t": "str",
+             "v": "bake_bread"
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [],
+           "t": "List",
+           "tag": "list"
+          }
+         ],
+         "t": "List",
+         "tag": "list"
+        },
+        {
+         "f": [
+          {
+           "t": "int",
+           "v": 5
+          },
+          {
+           "f": [
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "bread"
+              },
+              {
+               "t": "int",
+               "v": 5
+              },
+              {
+               "t": "int",
+               "v": 1
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [],
+           "t": "List",
+           "tag": "list"
+          }
+         ],
+         "t": "State",
+         "tag": "state"
+        }
+       ],
+       "t": "PlanData",
+       "tag": "record"
+      }
+     ],
+     "t": "Plan",
+     "tag": "val"
+    },
+    {
+     "f": [
+      {
+       "f": [
+        {
+         "t": "int",
+         "v": 1
+        },
+        {
+         "t": "int",
+         "v": 0
+        },
+        {
+         "t": "int",
+         "v": 0
+        },
+        {
+         "t": "int",
+         "v": 5
+        }
+       ],
+       "t": "OrderData",
+       "tag": "order"
+      }
+     ],
+     "t": "Order",
+     "tag": "val"
+    }
+   ],
+   "judge_view": [
+    {
+     "f": [
+      {
+       "f": [
+        {
+         "f": [
+          {
+           "t": "int",
+           "v": 0
+          },
+          {
+           "f": [
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "flour"
+              },
+              {
+               "t": "int",
+               "v": 0
+              },
+              {
+               "t": "int",
+               "v": 2
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "water"
+              },
+              {
+               "t": "int",
+               "v": 0
+              },
+              {
+               "t": "int",
+               "v": 1
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [],
+           "t": "List",
+           "tag": "list"
+          }
+         ],
+         "t": "State",
+         "tag": "state"
+        },
+        {
+         "f": [
+          {
+           "f": [
+            {
+             "t": "str",
+             "v": "mix"
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [
+            {
+             "t": "str",
+             "v": "bake_bread"
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [],
+           "t": "List",
+           "tag": "list"
+          }
+         ],
+         "t": "List",
+         "tag": "list"
+        },
+        {
+         "f": [
+          {
+           "t": "int",
+           "v": 5
+          },
+          {
+           "f": [
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "bread"
+              },
+              {
+               "t": "int",
+               "v": 5
+              },
+              {
+               "t": "int",
+               "v": 1
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [],
+           "t": "List",
+           "tag": "list"
+          }
+         ],
+         "t": "State",
+         "tag": "state"
+        }
+       ],
+       "t": "PlanData",
+       "tag": "record"
+      }
+     ],
+     "t": "Plan",
+     "tag": "val"
+    },
+    {
+     "f": [
+      {
+       "f": [
+        {
+         "t": "int",
+         "v": 1
+        },
+        {
+         "t": "int",
+         "v": 0
+        },
+        {
+         "t": "int",
+         "v": 0
+        },
+        {
+         "t": "int",
+         "v": 5
+        }
+       ],
+       "t": "OrderData",
+       "tag": "order"
+      }
+     ],
+     "t": "Order",
+     "tag": "val"
+    }
+   ]
+  },
+  "slot:0": {
+   "inputs": [
+    {
+     "f": [
+      {
+       "t": "str",
+       "v": "mix"
+      }
+     ],
+     "t": "List",
+     "tag": "list"
+    },
+    {
+     "f": [
+      {
+       "t": "int",
+       "v": 0
+      },
+      {
+       "f": [
+        {
+         "f": [
+          {
+           "t": "str",
+           "v": "flour"
+          },
+          {
+           "t": "int",
+           "v": 0
+          },
+          {
+           "t": "int",
+           "v": 2
+          }
+         ],
+         "t": "List",
+         "tag": "list"
+        },
+        {
+         "f": [
+          {
+           "t": "str",
+           "v": "water"
+          },
+          {
+           "t": "int",
+           "v": 0
+          },
+          {
+           "t": "int",
+           "v": 1
+          }
+         ],
+         "t": "List",
+         "tag": "list"
+        }
+       ],
+       "t": "List",
+       "tag": "list"
+      },
+      {
+       "f": [],
+       "t": "List",
+       "tag": "list"
+      }
+     ],
+     "t": "State",
+     "tag": "state"
+    }
+   ],
+   "judge_view": [
+    {
+     "f": [
+      {
+       "t": "str",
+       "v": "mix"
+      }
+     ],
+     "t": "List",
+     "tag": "list"
+    },
+    {
+     "f": [
+      {
+       "t": "int",
+       "v": 0
+      },
+      {
+       "f": [
+        {
+         "f": [
+          {
+           "t": "str",
+           "v": "flour"
+          },
+          {
+           "t": "int",
+           "v": 0
+          },
+          {
+           "t": "int",
+           "v": 2
+          }
+         ],
+         "t": "List",
+         "tag": "list"
+        },
+        {
+         "f": [
+          {
+           "t": "str",
+           "v": "water"
+          },
+          {
+           "t": "int",
+           "v": 0
+          },
+          {
+           "t": "int",
+           "v": 1
+          }
+         ],
+         "t": "List",
+         "tag": "list"
+        }
+       ],
+       "t": "List",
+       "tag": "list"
+      },
+      {
+       "f": [],
+       "t": "List",
+       "tag": "list"
+      }
+     ],
+     "t": "State",
+     "tag": "state"
+    }
+   ]
+  },
+  "slot:1": {
+   "inputs": [
+    {
+     "f": [
+      {
+       "t": "str",
+       "v": "bake_bread"
+      }
+     ],
+     "t": "List",
+     "tag": "list"
+    },
+    {
+     "f": [
+      {
+       "t": "int",
+       "v": 0
+      },
+      {
+       "f": [
+        {
+         "f": [
+          {
+           "t": "str",
+           "v": "flour"
+          },
+          {
+           "t": "int",
+           "v": 0
+          },
+          {
+           "t": "int",
+           "v": 2
+          }
+         ],
+         "t": "List",
+         "tag": "list"
+        },
+        {
+         "f": [
+          {
+           "t": "str",
+           "v": "water"
+          },
+          {
+           "t": "int",
+           "v": 0
+          },
+          {
+           "t": "int",
+           "v": 1
+          }
+         ],
+         "t": "List",
+         "tag": "list"
+        }
+       ],
+       "t": "List",
+       "tag": "list"
+      },
+      {
+       "f": [],
+       "t": "List",
+       "tag": "list"
+      }
+     ],
+     "t": "State",
+     "tag": "state"
+    }
+   ],
+   "judge_view": {
+    "f": [
+     {
+      "t": "int",
+      "v": 0
+     },
+     {
+      "f": [
+       {
+        "f": [
+         {
+          "t": "str",
+          "v": "flour"
+         },
+         {
+          "t": "int",
+          "v": 0
+         },
+         {
+          "t": "int",
+          "v": 2
+         }
+        ],
+        "t": "List",
+        "tag": "list"
+       },
+       {
+        "f": [
+         {
+          "t": "str",
+          "v": "water"
+         },
+         {
+          "t": "int",
+          "v": 0
+         },
+         {
+          "t": "int",
+          "v": 1
+         }
+        ],
+        "t": "List",
+        "tag": "list"
+       }
+      ],
+      "t": "List",
+      "tag": "list"
+     },
+     {
+      "f": [],
+      "t": "List",
+      "tag": "list"
+     }
+    ],
+    "t": "State",
+    "tag": "state"
+   }
+  },
+  "yield:0": {
+   "inputs": [
+    {
+     "f": [
+      {
+       "f": [
+        {
+         "f": [
+          {
+           "t": "int",
+           "v": 0
+          },
+          {
+           "f": [
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "egg"
+              },
+              {
+               "t": "int",
+               "v": 0
+              },
+              {
+               "t": "int",
+               "v": 2
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "flour"
+              },
+              {
+               "t": "int",
+               "v": 0
+              },
+              {
+               "t": "int",
+               "v": 4
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "milk"
+              },
+              {
+               "t": "int",
+               "v": 0
+              },
+              {
+               "t": "int",
+               "v": 2
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "water"
+              },
+              {
+               "t": "int",
+               "v": 0
+              },
+              {
+               "t": "int",
+               "v": 1
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [],
+           "t": "List",
+           "tag": "list"
+          }
+         ],
+         "t": "State",
+         "tag": "state"
+        },
+        {
+         "f": [
+          {
+           "f": [
+            {
+             "t": "str",
+             "v": "simmer"
+            },
+            {
+             "t": "str",
+             "v": "whisk"
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [
+            {
+             "t": "str",
+             "v": "bake_cake"
+            },
+            {
+             "t": "str",
+             "v": "mix"
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [
+            {
+             "t": "str",
+             "v": "bake_bread"
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [
+            {
+             "t": "str",
+             "v": "plate"
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          }
+         ],
+         "t": "List",
+         "tag": "list"
+        },
+        {
+         "f": [
+          {
+           "t": "int",
+           "v": 6
+          },
+          {
+           "f": [
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "bread"
+              },
+              {
+               "t": "int",
+               "v": 6
+              },
+              {
+               "t": "int",
+               "v": 1
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "dessert"
+              },
+              {
+               "t": "int",
+               "v": 6
+              },
+              {
+               "t": "int",
+               "v": 1
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "flour"
+              },
+              {
+               "t": "int",
+               "v": 0
+              },
+              {
+               "t": "int",
+               "v": 1
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [],
+           "t": "List",
+           "tag": "list"
+          }
+         ],
+         "t": "State",
+         "tag": "state"
+        }
+       ],
+       "t": "PlanData",
+       "tag": "record"
+      }
+     ],
+     "t": "Plan",
+     "tag": "val"
+    }
+   ],
+   "judge_view": [
+    {
+     "f": [
+      {
+       "f": [
+        {
+         "f": [
+          {
+           "t": "int",
+           "v": 0
+          },
+          {
+           "f": [
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "egg"
+              },
+              {
+               "t": "int",
+               "v": 0
+              },
+              {
+               "t": "int",
+               "v": 2
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "flour"
+              },
+              {
+               "t": "int",
+               "v": 0
+              },
+              {
+               "t": "int",
+               "v": 4
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "milk"
+              },
+              {
+               "t": "int",
+               "v": 0
+              },
+              {
+               "t": "int",
+               "v": 2
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "water"
+              },
+              {
+               "t": "int",
+               "v": 0
+              },
+              {
+               "t": "int",
+               "v": 1
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [],
+           "t": "List",
+           "tag": "list"
+          }
+         ],
+         "t": "State",
+         "tag": "state"
+        },
+        {
+         "f": [
+          {
+           "f": [
+            {
+             "t": "str",
+             "v": "simmer"
+            },
+            {
+             "t": "str",
+             "v": "whisk"
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [
+            {
+             "t": "str",
+             "v": "bake_cake"
+            },
+            {
+             "t": "str",
+             "v": "mix"
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [
+            {
+             "t": "str",
+             "v": "bake_bread"
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [
+            {
+             "t": "str",
+             "v": "plate"
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          }
+         ],
+         "t": "List",
+         "tag": "list"
+        },
+        {
+         "f": [
+          {
+           "t": "int",
+           "v": 6
+          },
+          {
+           "f": [
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "bread"
+              },
+              {
+               "t": "int",
+               "v": 6
+              },
+              {
+               "t": "int",
+               "v": 1
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "dessert"
+              },
+              {
+               "t": "int",
+               "v": 6
+              },
+              {
+               "t": "int",
+               "v": 1
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            },
+            {
+             "f": [
+              {
+               "t": "str",
+               "v": "flour"
+              },
+              {
+               "t": "int",
+               "v": 0
+              },
+              {
+               "t": "int",
+               "v": 1
+              }
+             ],
+             "t": "List",
+             "tag": "list"
+            }
+           ],
+           "t": "List",
+           "tag": "list"
+          },
+          {
+           "f": [],
+           "t": "List",
+           "tag": "list"
+          }
+         ],
+         "t": "State",
+         "tag": "state"
+        }
+       ],
+       "t": "PlanData",
+       "tag": "record"
+      }
+     ],
+     "t": "Plan",
+     "tag": "val"
+    }
+   ]
+  }
+ },
+ "version": 1,
+ "world": "kitchen"
+}

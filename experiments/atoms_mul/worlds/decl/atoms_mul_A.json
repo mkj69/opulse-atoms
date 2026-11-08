@@ -1,0 +1,266 @@
+{
+ "combinators": {
+  "library": [],
+  "nodes": [
+   "Var",
+   "Lit",
+   "Call",
+   "Let",
+   "Case",
+   "Rec"
+  ],
+  "recursion": "fuel"
+ },
+ "constants": {},
+ "dialect": "atoms-v2",
+ "lock": {
+  "host_digests": {
+   "atoms_mul.kernel.ops:add": "28c9d25ad4f22aef191ec7048c0098931fdd6dc18943b7af62ee0da88e75d889",
+   "atoms_mul.kernel.ops:eq": "28c9d25ad4f22aef191ec7048c0098931fdd6dc18943b7af62ee0da88e75d889",
+   "atoms_mul.kernel.ops:is_zero": "28c9d25ad4f22aef191ec7048c0098931fdd6dc18943b7af62ee0da88e75d889",
+   "atoms_mul.kernel.ops:lt": "28c9d25ad4f22aef191ec7048c0098931fdd6dc18943b7af62ee0da88e75d889",
+   "atoms_mul.kernel.ops:mul": "28c9d25ad4f22aef191ec7048c0098931fdd6dc18943b7af62ee0da88e75d889",
+   "atoms_mul.kernel.ops:nat_valid": "28c9d25ad4f22aef191ec7048c0098931fdd6dc18943b7af62ee0da88e75d889",
+   "atoms_mul.kernel.ops:pred": "28c9d25ad4f22aef191ec7048c0098931fdd6dc18943b7af62ee0da88e75d889",
+   "atoms_mul.kernel.ops:sub": "28c9d25ad4f22aef191ec7048c0098931fdd6dc18943b7af62ee0da88e75d889",
+   "atoms_mul.kernel.ops:succ": "28c9d25ad4f22aef191ec7048c0098931fdd6dc18943b7af62ee0da88e75d889"
+  }
+ },
+ "objects": [
+  {
+   "base": "int",
+   "canon": null,
+   "form": "refine",
+   "name": "nat",
+   "valid": {
+    "digest": "28c9d25ad4f22aef191ec7048c0098931fdd6dc18943b7af62ee0da88e75d889",
+    "host": "atoms_mul.kernel.ops:nat_valid"
+   }
+  },
+  {
+   "form": "given",
+   "host": "builtins:bool",
+   "name": "bool"
+  }
+ ],
+ "observation": {
+  "judge_view": "full_state",
+  "probes": [],
+  "show": {
+   "error": "errors",
+   "input": "inputs",
+   "result": "results",
+   "steps": "steps"
+  },
+  "truth": null
+ },
+ "open_kinds": [
+  "operation"
+ ],
+ "operations": [
+  {
+   "cost": 1,
+   "errors": [
+    "overflow if > 1000000000"
+   ],
+   "impl": {
+    "digest": "28c9d25ad4f22aef191ec7048c0098931fdd6dc18943b7af62ee0da88e75d889",
+    "host": "atoms_mul.kernel.ops:add"
+   },
+   "inputs": [
+    {
+     "enter": "bottom",
+     "sort": "nat"
+    },
+    {
+     "enter": "bottom",
+     "sort": "nat"
+    }
+   ],
+   "name": "add",
+   "output": {
+    "enter": "bottom",
+    "sort": "nat"
+   },
+   "role": "combine",
+   "rule": "a + b"
+  },
+  {
+   "cost": 1,
+   "errors": [
+    "negative if a < b"
+   ],
+   "impl": {
+    "digest": "28c9d25ad4f22aef191ec7048c0098931fdd6dc18943b7af62ee0da88e75d889",
+    "host": "atoms_mul.kernel.ops:sub"
+   },
+   "inputs": [
+    {
+     "enter": "bottom",
+     "sort": "nat"
+    },
+    {
+     "enter": "bottom",
+     "sort": "nat"
+    }
+   ],
+   "name": "sub",
+   "output": {
+    "enter": "bottom",
+    "sort": "nat"
+   },
+   "role": "combine",
+   "rule": "a - b"
+  },
+  {
+   "cost": 1,
+   "errors": [
+    "overflow if > 1000000000"
+   ],
+   "impl": {
+    "digest": "28c9d25ad4f22aef191ec7048c0098931fdd6dc18943b7af62ee0da88e75d889",
+    "host": "atoms_mul.kernel.ops:succ"
+   },
+   "inputs": [
+    {
+     "enter": "bottom",
+     "sort": "nat"
+    }
+   ],
+   "name": "succ",
+   "output": {
+    "enter": "bottom",
+    "sort": "nat"
+   },
+   "role": "transform",
+   "rule": "a + 1"
+  },
+  {
+   "cost": 1,
+   "errors": [
+    "negative if a = 0"
+   ],
+   "impl": {
+    "digest": "28c9d25ad4f22aef191ec7048c0098931fdd6dc18943b7af62ee0da88e75d889",
+    "host": "atoms_mul.kernel.ops:pred"
+   },
+   "inputs": [
+    {
+     "enter": "bottom",
+     "sort": "nat"
+    }
+   ],
+   "name": "pred",
+   "output": {
+    "enter": "bottom",
+    "sort": "nat"
+   },
+   "role": "transform",
+   "rule": "a - 1"
+  },
+  {
+   "cost": 1,
+   "errors": [],
+   "impl": {
+    "digest": "28c9d25ad4f22aef191ec7048c0098931fdd6dc18943b7af62ee0da88e75d889",
+    "host": "atoms_mul.kernel.ops:is_zero"
+   },
+   "inputs": [
+    {
+     "enter": "bottom",
+     "sort": "nat"
+    }
+   ],
+   "name": "is_zero",
+   "output": {
+    "enter": "bottom",
+    "sort": "bool"
+   },
+   "role": "decide",
+   "rule": "a = 0"
+  },
+  {
+   "cost": 1,
+   "errors": [],
+   "impl": {
+    "digest": "28c9d25ad4f22aef191ec7048c0098931fdd6dc18943b7af62ee0da88e75d889",
+    "host": "atoms_mul.kernel.ops:eq"
+   },
+   "inputs": [
+    {
+     "enter": "bottom",
+     "sort": "nat"
+    },
+    {
+     "enter": "bottom",
+     "sort": "nat"
+    }
+   ],
+   "name": "eq",
+   "output": {
+    "enter": "bottom",
+    "sort": "bool"
+   },
+   "role": "decide",
+   "rule": "a = b"
+  },
+  {
+   "cost": 1,
+   "errors": [],
+   "impl": {
+    "digest": "28c9d25ad4f22aef191ec7048c0098931fdd6dc18943b7af62ee0da88e75d889",
+    "host": "atoms_mul.kernel.ops:lt"
+   },
+   "inputs": [
+    {
+     "enter": "bottom",
+     "sort": "nat"
+    },
+    {
+     "enter": "bottom",
+     "sort": "nat"
+    }
+   ],
+   "name": "lt",
+   "output": {
+    "enter": "bottom",
+    "sort": "bool"
+   },
+   "role": "decide",
+   "rule": "a < b"
+  },
+  {
+   "cost": 1,
+   "errors": [
+    "overflow if > 1000000000"
+   ],
+   "impl": {
+    "digest": "28c9d25ad4f22aef191ec7048c0098931fdd6dc18943b7af62ee0da88e75d889",
+    "host": "atoms_mul.kernel.ops:mul"
+   },
+   "inputs": [
+    {
+     "enter": "bottom",
+     "sort": "nat"
+    },
+    {
+     "enter": "bottom",
+     "sort": "nat"
+    }
+   ],
+   "name": "mul",
+   "output": {
+    "enter": "bottom",
+    "sort": "nat"
+   },
+   "role": "combine",
+   "rule": "a * b"
+  }
+ ],
+ "params": {
+  "max_nat": 1000000000
+ },
+ "schema": "opulse.world/2",
+ "version": 1,
+ "world": "atoms_mul_A"
+}

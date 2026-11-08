@@ -1,0 +1,459 @@
+{
+ "accuracy_margin": 0.1,
+ "bootstrap_seed": 20261104,
+ "comparisons": {
+  "A-B": {
+   "boundary_steps": {
+    "ci90": [
+     0.0,
+     0.0
+    ],
+    "ci95": [
+     0.0,
+     0.0
+    ],
+    "difference": 0.0,
+    "n": [
+     2,
+     2
+    ]
+   },
+   "invention": {
+    "ci90": [
+     -1.0,
+     -1.0
+    ],
+    "ci95": [
+     -1.0,
+     -1.0
+    ],
+    "difference": -1,
+    "n": [
+     2,
+     2
+    ]
+   },
+   "reuse": {
+    "ci90": [
+     -1.0,
+     -1.0
+    ],
+    "ci95": [
+     -1.0,
+     -1.0
+    ],
+    "difference": -1.0,
+    "n": [
+     2,
+     2
+    ]
+   },
+   "stage1_accuracy": {
+    "ci90": [
+     0.0,
+     0.0
+    ],
+    "ci95": [
+     0.0,
+     0.0
+    ],
+    "difference": 0.0,
+    "n": [
+     2,
+     2
+    ]
+   },
+   "stage2_accuracy": {
+    "ci90": [
+     0.0,
+     0.0
+    ],
+    "ci95": [
+     0.0,
+     0.0
+    ],
+    "difference": 0.0,
+    "n": [
+     2,
+     2
+    ]
+   },
+   "total_length": {
+    "ci90": [
+     -13.0,
+     -13.0
+    ],
+    "ci95": [
+     -13.0,
+     -13.0
+    ],
+    "difference": -13,
+    "n": [
+     2,
+     2
+    ]
+   },
+   "total_steps": {
+    "ci90": [
+     -2091.9375,
+     -2091.9375
+    ],
+    "ci95": [
+     -2091.9375,
+     -2091.9375
+    ],
+    "difference": -2091.9375,
+    "n": [
+     2,
+     2
+    ]
+   }
+  },
+  "A-C": {
+   "boundary_steps": {
+    "ci90": [
+     -2091.9375,
+     -2091.9375
+    ],
+    "ci95": [
+     -2091.9375,
+     -2091.9375
+    ],
+    "difference": -2091.9375,
+    "n": [
+     2,
+     2
+    ]
+   },
+   "invention": {
+    "ci90": [
+     -1.0,
+     -1.0
+    ],
+    "ci95": [
+     -1.0,
+     -1.0
+    ],
+    "difference": -1,
+    "n": [
+     2,
+     2
+    ]
+   },
+   "reuse": null,
+   "stage1_accuracy": {
+    "ci90": [
+     0.0,
+     0.0
+    ],
+    "ci95": [
+     0.0,
+     0.0
+    ],
+    "difference": 0.0,
+    "n": [
+     2,
+     2
+    ]
+   },
+   "stage2_accuracy": {
+    "ci90": [
+     0.0,
+     0.0
+    ],
+    "ci95": [
+     0.0,
+     0.0
+    ],
+    "difference": 0.0,
+    "n": [
+     2,
+     2
+    ]
+   },
+   "total_length": {
+    "ci90": [
+     -522.0,
+     -522.0
+    ],
+    "ci95": [
+     -522.0,
+     -522.0
+    ],
+    "difference": -522,
+    "n": [
+     2,
+     2
+    ]
+   },
+   "total_steps": {
+    "ci90": [
+     -2091.9375,
+     -2091.9375
+    ],
+    "ci95": [
+     -2091.9375,
+     -2091.9375
+    ],
+    "difference": -2091.9375,
+    "n": [
+     2,
+     2
+    ]
+   }
+  },
+  "B-C": {
+   "boundary_steps": {
+    "ci90": [
+     -2091.9375,
+     -2091.9375
+    ],
+    "ci95": [
+     -2091.9375,
+     -2091.9375
+    ],
+    "difference": -2091.9375,
+    "n": [
+     2,
+     2
+    ]
+   },
+   "invention": {
+    "ci90": [
+     0.0,
+     0.0
+    ],
+    "ci95": [
+     0.0,
+     0.0
+    ],
+    "difference": 0,
+    "n": [
+     2,
+     2
+    ]
+   },
+   "reuse": null,
+   "stage1_accuracy": {
+    "ci90": [
+     0.0,
+     0.0
+    ],
+    "ci95": [
+     0.0,
+     0.0
+    ],
+    "difference": 0.0,
+    "n": [
+     2,
+     2
+    ]
+   },
+   "stage2_accuracy": {
+    "ci90": [
+     0.0,
+     0.0
+    ],
+    "ci95": [
+     0.0,
+     0.0
+    ],
+    "difference": 0.0,
+    "n": [
+     2,
+     2
+    ]
+   },
+   "total_length": {
+    "ci90": [
+     -509.0,
+     -509.0
+    ],
+    "ci95": [
+     -509.0,
+     -509.0
+    ],
+    "difference": -509,
+    "n": [
+     2,
+     2
+    ]
+   },
+   "total_steps": {
+    "ci90": [
+     0.0,
+     0.0
+    ],
+    "ci95": [
+     0.0,
+     0.0
+    ],
+    "difference": 0.0,
+    "n": [
+     2,
+     2
+    ]
+   }
+  }
+ },
+ "decision": "diagnostic",
+ "episodes": [
+  {
+   "api_errors": 0,
+   "boundary_steps": 58.5,
+   "episode": 0,
+   "group": "A",
+   "invention": 0,
+   "reuse": 0.0,
+   "stage1_accuracy": 1.0,
+   "stage2_accuracy": 1.0,
+   "total_length": 439,
+   "total_steps": 58.5
+  },
+  {
+   "api_errors": 0,
+   "boundary_steps": 58.5,
+   "episode": 1,
+   "group": "A",
+   "invention": 0,
+   "reuse": 0.0,
+   "stage1_accuracy": 1.0,
+   "stage2_accuracy": 1.0,
+   "total_length": 439,
+   "total_steps": 58.5
+  },
+  {
+   "api_errors": 0,
+   "boundary_steps": 58.5,
+   "episode": 0,
+   "group": "B",
+   "invention": 1,
+   "reuse": 1.0,
+   "stage1_accuracy": 1.0,
+   "stage2_accuracy": 1.0,
+   "total_length": 452,
+   "total_steps": 2150.4375
+  },
+  {
+   "api_errors": 0,
+   "boundary_steps": 58.5,
+   "episode": 1,
+   "group": "B",
+   "invention": 1,
+   "reuse": 1.0,
+   "stage1_accuracy": 1.0,
+   "stage2_accuracy": 1.0,
+   "total_length": 452,
+   "total_steps": 2150.4375
+  },
+  {
+   "api_errors": 0,
+   "boundary_steps": 2150.4375,
+   "episode": 0,
+   "group": "C",
+   "invention": 1,
+   "reuse": null,
+   "stage1_accuracy": 1.0,
+   "stage2_accuracy": 1.0,
+   "total_length": 961,
+   "total_steps": 2150.4375
+  },
+  {
+   "api_errors": 0,
+   "boundary_steps": 2150.4375,
+   "episode": 1,
+   "group": "C",
+   "invention": 1,
+   "reuse": null,
+   "stage1_accuracy": 1.0,
+   "stage2_accuracy": 1.0,
+   "total_length": 961,
+   "total_steps": 2150.4375
+  }
+ ],
+ "groups": {
+  "A": {
+   "api_errors": 0,
+   "episodes": 2,
+   "means": {
+    "boundary_steps": 58.5,
+    "invention": 0,
+    "reuse": 0.0,
+    "stage1_accuracy": 1.0,
+    "stage2_accuracy": 1.0,
+    "total_length": 439,
+    "total_steps": 58.5
+   },
+   "medians": {
+    "boundary_steps": 58.5,
+    "total_length": 439.0,
+    "total_steps": 58.5
+   },
+   "primary_episodes": 2
+  },
+  "B": {
+   "api_errors": 0,
+   "episodes": 2,
+   "means": {
+    "boundary_steps": 58.5,
+    "invention": 1,
+    "reuse": 1.0,
+    "stage1_accuracy": 1.0,
+    "stage2_accuracy": 1.0,
+    "total_length": 452,
+    "total_steps": 2150.4375
+   },
+   "medians": {
+    "boundary_steps": 58.5,
+    "total_length": 452.0,
+    "total_steps": 2150.4375
+   },
+   "primary_episodes": 2
+  },
+  "C": {
+   "api_errors": 0,
+   "episodes": 2,
+   "means": {
+    "boundary_steps": 2150.4375,
+    "invention": 1,
+    "reuse": null,
+    "stage1_accuracy": 1.0,
+    "stage2_accuracy": 1.0,
+    "total_length": 961,
+    "total_steps": 2150.4375
+   },
+   "medians": {
+    "boundary_steps": 2150.4375,
+    "total_length": 961.0,
+    "total_steps": 2150.4375
+   },
+   "primary_episodes": 2
+  }
+ },
+ "median_ratios_B_C": {
+  "boundary_steps": {
+   "ci95": [
+    0.02720376667538582,
+    0.02720376667538582
+   ],
+   "ratio": 0.02720376667538582
+  },
+  "total_length": {
+   "ci95": [
+    0.4703433922996878,
+    0.4703433922996878
+   ],
+   "ratio": 0.4703433922996878
+  },
+  "total_steps": {
+   "ci95": [
+    1.0,
+    1.0
+   ],
+   "ratio": 1.0
+  }
+ },
+ "reason": "n=2 eligible episodes per group < 40 pre-registered",
+ "relative_margin": 0.1,
+ "resamples": 10000
+}

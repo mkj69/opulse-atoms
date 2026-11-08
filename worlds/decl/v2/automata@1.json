@@ -1,0 +1,2204 @@
+{
+  "schema": "opulse.world/2",
+  "world": "automata",
+  "version": 1,
+  "dialect": "atoms-v2",
+  "title": "Finite binary DFA language laboratory",
+  "source": {
+    "title_zh": "有限语言实验室"
+  },
+  "params": {
+    "alphabet": [
+      "a",
+      "b"
+    ],
+    "max_input_states": 2000,
+    "max_product_states": 20000
+  },
+  "constants": {
+    "alphabet": [
+      "a",
+      "b"
+    ]
+  },
+  "objects": [
+    {
+      "kind": "object",
+      "name": "int",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Finite structural value."
+    },
+    {
+      "kind": "object",
+      "name": "str",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Finite structural value."
+    },
+    {
+      "kind": "object",
+      "name": "bool",
+      "form": "compose",
+      "base": null,
+      "tags": {
+        "false": {},
+        "true": {}
+      },
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Finite structural value."
+    },
+    {
+      "kind": "object",
+      "name": "word",
+      "form": "refine",
+      "base": "str",
+      "tags": null,
+      "group": [],
+      "valid": {
+        "host": "opulse.worlds_v2.automata.hosts:word_valid",
+        "digest": "7ac860bb90df7ddc2bca7a5fd8122959c50c3ab56c1c9cfd33c94914fccc5b48"
+      },
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Finite word over a,b."
+    },
+    {
+      "kind": "object",
+      "name": "states",
+      "form": "compose",
+      "base": null,
+      "tags": {
+        "list": {
+          "items": "int"
+        }
+      },
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Finite structural value."
+    },
+    {
+      "kind": "object",
+      "name": "rows",
+      "form": "compose",
+      "base": null,
+      "tags": {
+        "list": {
+          "items": "row"
+        }
+      },
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Finite structural value."
+    },
+    {
+      "kind": "object",
+      "name": "row",
+      "form": "compose",
+      "base": null,
+      "tags": {
+        "pair": {
+          "a": "int",
+          "b": "int"
+        }
+      },
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Finite structural value."
+    },
+    {
+      "kind": "object",
+      "name": "queue",
+      "form": "compose",
+      "base": null,
+      "tags": {
+        "list": {
+          "items": "int"
+        }
+      },
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Finite structural value."
+    },
+    {
+      "kind": "object",
+      "name": "visited",
+      "form": "compose",
+      "base": null,
+      "tags": {
+        "list": {
+          "items": "int"
+        }
+      },
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Finite structural value."
+    },
+    {
+      "kind": "object",
+      "name": "automaton",
+      "form": "compose",
+      "base": null,
+      "tags": {
+        "dfa": {
+          "count": "int",
+          "start": "int",
+          "finals": "states",
+          "rows": "rows"
+        }
+      },
+      "group": [],
+      "valid": {
+        "host": "opulse.worlds_v2.automata.hosts:machine_valid",
+        "digest": "4bb7a0a59eda5eff32761a57db1f0a16370cfbcc1d12a70b6a41cd143a31bc83"
+      },
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": {
+        "repr": "Card",
+        "codec": "opulse.worlds_v2.automata.hosts:to_card/from_card"
+      },
+      "doc": "Complete binary DFA with dense states; up to 20000 product states."
+    },
+    {
+      "kind": "object",
+      "name": "Mod7A",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Count a modulo 7."
+    },
+    {
+      "kind": "object",
+      "name": "Mod5A",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Count a modulo 5."
+    },
+    {
+      "kind": "object",
+      "name": "Mod35A",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Count a modulo 35."
+    },
+    {
+      "kind": "object",
+      "name": "Mod5B",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Count b modulo 5."
+    },
+    {
+      "kind": "object",
+      "name": "NoBB",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Reject words containing bb."
+    },
+    {
+      "kind": "object",
+      "name": "SeenB",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Accept words containing b."
+    },
+    {
+      "kind": "object",
+      "name": "EndsA",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Accept words ending in a."
+    },
+    {
+      "kind": "object",
+      "name": "EvenLen",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Accept even-length words."
+    },
+    {
+      "kind": "object",
+      "name": "NeverAccept",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Reject every word."
+    },
+    {
+      "kind": "object",
+      "name": "any",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Generic finite structural value."
+    },
+    {
+      "kind": "object",
+      "name": "signature",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Generic finite structural value."
+    },
+    {
+      "kind": "object",
+      "name": "entry",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Generic finite structural value."
+    },
+    {
+      "kind": "object",
+      "name": "frontier",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Generic finite structural value."
+    }
+  ],
+  "operations": [
+    {
+      "kind": "operation",
+      "name": "step",
+      "symbol": "step",
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "automaton",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg2",
+          "sort": "str",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "The total transition for one symbol.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.automata.hosts:step",
+        "digest": "70b9e6ab6ba38c53630982b35b5144f87c93349c11d9e1e196162d73dcaad4cd"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "count",
+      "symbol": "count",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "automaton",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Read the state count.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.automata.hosts:count",
+        "digest": "95c3dc4097564e35383b7c314938f3a4fef3038e1188da34640ae965534f41ef"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "start",
+      "symbol": "start",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "automaton",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Read the initial state.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.automata.hosts:start",
+        "digest": "67a9f62615d998ee0d6c416c2509a63e04bb009b847390afe1812ab63069a9de"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "final",
+      "symbol": "final",
+      "role": "decide",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "automaton",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Test membership in the final-state set.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.automata.hosts:final",
+        "digest": "c5b8ddaa72167d196c0b2ade5348a6a2b7a031fad4c169a870badb1d7cd0631e"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "make_machine",
+      "symbol": "make_machine",
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg2",
+          "sort": "states",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg3",
+          "sort": "rows",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "automaton",
+        "enter": "bottom"
+      },
+      "rule": "Construct and validate canonical total DFA data.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.automata.hosts:make_machine",
+        "digest": "570cc93b3fa761972edbe1f024499ac67da9de1fb17f40bd618bf02a32c313db"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "make_row",
+      "symbol": "make_row",
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "row",
+        "enter": "bottom"
+      },
+      "rule": "Construct one transition row.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.automata.hosts:make_row",
+        "digest": "9561c60cd31c6afdcef7b3d66f882de95932105c85e9a03010ce7955c3e2cdb7"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "empty",
+      "symbol": "empty",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "str",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "any",
+        "enter": "bottom"
+      },
+      "rule": "Construct an empty typed sequence.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.automata.hosts:empty",
+        "digest": "0357ca876cda7599edb98f96c989a755b2dd003e7e1e30a10a34fe083fa57dbb"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "cons",
+      "symbol": "cons",
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "any",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "any",
+        "enter": "bottom"
+      },
+      "rule": "Prepend an element to a typed sequence.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.automata.hosts:cons",
+        "digest": "756c41a63f988fc9230f821470c93cc9148eaf992a5aa994c962b8395580d596"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "cons_row",
+      "symbol": "cons_row",
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "row",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "rows",
+        "enter": "bottom"
+      },
+      "rule": "Prepend a row to a typed sequence.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.automata.hosts:cons_row",
+        "digest": "58e4dad85792c02967374f1402a2db15f4e6ce55a5a56c69920f2668b5bf94b3"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "head",
+      "symbol": "head",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "any",
+        "enter": "bottom"
+      },
+      "rule": "Read the first element.",
+      "errors": [
+        "invalid",
+        "empty"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.automata.hosts:head",
+        "digest": "96b30874520413566fc17d70bcaa1033445dea667e5c750f5bd5706deec87951"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "tail",
+      "symbol": "tail",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "any",
+        "enter": "bottom"
+      },
+      "rule": "Read the remaining sequence.",
+      "errors": [
+        "invalid",
+        "empty"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.automata.hosts:tail",
+        "digest": "161be7ac13bddebdef2c2de2d232c56c8c02feffc2cb8d75cf26a5ae0ed18f7b"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "length",
+      "symbol": "length",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Count elements of a sequence.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.automata.hosts:length",
+        "digest": "bbf1a3f6c6df6a30382999f1b138564ff7b97019d2324b6540502b5a437b7b0e"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "contains",
+      "symbol": "contains",
+      "role": "decide",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "any",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Test sequence membership.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.automata.hosts:contains",
+        "digest": "5ec169cd1021a302e40b2a6379efc655fc5abe6d05d3e2ab8150e09085f9a849"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "char_head",
+      "symbol": "char_head",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "word",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "str",
+        "enter": "bottom"
+      },
+      "rule": "Read first letter of a nonempty word.",
+      "errors": [
+        "invalid",
+        "empty"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.automata.hosts:char_head",
+        "digest": "8d2f46f93ea1b783e158b37e220a4b6e90e6367645d4bafc257c6da890a3a6cd"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "char_tail",
+      "symbol": "char_tail",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "word",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "word",
+        "enter": "bottom"
+      },
+      "rule": "Read remaining letters of a nonempty word.",
+      "errors": [
+        "invalid",
+        "empty"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.automata.hosts:char_tail",
+        "digest": "68f671cb3849c237be08315585a013a3fb641cab7554fcceb7d37a456d1882d0"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "word_length",
+      "symbol": "word_length",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "word",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Count word letters.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.automata.hosts:word_length",
+        "digest": "e89a59eae1e7717007229989ea87665d7d2295d0dca523747ee7ce9974c09f7d"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "add",
+      "symbol": "add",
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Integer addition.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.automata.hosts:add",
+        "digest": "82d52b971906e3b72e95576158010da795f8b779e24a44a2cf06fe423ff2d352"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "sub",
+      "symbol": "sub",
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Integer subtraction.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.automata.hosts:sub",
+        "digest": "e7807c5473f5c569514d7a26e3c78c88b64a901375bdc9b4b344a55613590e9c"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "mul",
+      "symbol": "mul",
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Integer multiplication.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.automata.hosts:mul",
+        "digest": "dca4e28414c9e6d65d2006f724827d0e1ec8a628bdf75ee33a1e081ff76b3231"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "div",
+      "symbol": "div",
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Integer floor division.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.automata.hosts:div",
+        "digest": "e6633b9cde9739ea1d1f59f98549d12a57cf4d072b3985f59df87796be38f1e1"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "mod",
+      "symbol": "mod",
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Integer remainder.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.automata.hosts:mod",
+        "digest": "519b6765b89e51075567116bfec8747a504aaec126ec306d2366ce5e839e1541"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "less",
+      "symbol": "less",
+      "role": "decide",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Compare two integers.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.automata.hosts:less",
+        "digest": "1ec981eb18a77021f0ff5dc9de62f23dc662d87a99d857d1ebf66a1d8fd4b4c3"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "equal",
+      "symbol": "equal",
+      "role": "decide",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "any",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Compare structural values.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.automata.hosts:equal",
+        "digest": "9ef47e6d0fb7d1f617e7fd1a9634e6978fb5eeda2aa8fb3ef94f17cfa02365fb"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "count_a",
+      "symbol": "count_a",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "rows",
+        "enter": "bottom"
+      },
+      "rule": "Construct complete a-modulo transitions.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.automata.hosts:count_a",
+        "digest": "9c801eca1d130a1626701716c93f354f2a7705ea099a86e7c1fee69700e46b12"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "count_b",
+      "symbol": "count_b",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "rows",
+        "enter": "bottom"
+      },
+      "rule": "Construct complete b-modulo transitions.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.automata.hosts:count_b",
+        "digest": "385d75aebb9f01fb97a0b67f6387432b14f2d355eed7a4b7d7853a19e1ca3e79"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "distinct_count",
+      "symbol": "distinct_count",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Count distinct explicit labels.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.automata.hosts:distinct_count",
+        "digest": "1c8d9dc0ccbc8007aeed35f7b170d03b829368fec39e5fb9ba86a54688483f94"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "at",
+      "symbol": "at",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "any",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "any",
+        "enter": "bottom"
+      },
+      "rule": "Index a finite list.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.automata.hosts:at",
+        "digest": "b3d51836937630ec3341226d6ffeea660a556edf669f3ee771df8bd2ee964479"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "index_of",
+      "symbol": "index_of",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "any",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Find the first index in a list.",
+      "errors": [
+        "invalid",
+        "missing"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.automata.hosts:index_of",
+        "digest": "8db7158a262d61f0fe39f2726a0f7b047908a0eca9302b681c05dcbff8af151b"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "append",
+      "symbol": "append",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "any",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "any",
+        "enter": "bottom"
+      },
+      "rule": "Append one element to a list.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.automata.hosts:append",
+        "digest": "61ae0e079067355362a34b6871e65b5919eef50ea26e19ce83ca43e6e63cf70b"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "sorted_unique",
+      "symbol": "sorted_unique",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "any",
+        "enter": "bottom"
+      },
+      "rule": "Sort and deduplicate a finite list.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.automata.hosts:sorted_unique",
+        "digest": "4032462c8ce80c0f887a0e52b7f5a43ae18fb2069e731367c376e544c4699244"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "less_equal",
+      "symbol": "less_equal",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Compare two integers.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.automata.hosts:less_equal",
+        "digest": "011a1ce87512f58e3a4989b1470b85d1bc29888bf9c1047df65caf13cf9cd8a7"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "join_word",
+      "symbol": "join_word",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "str",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "str",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "str",
+        "enter": "bottom"
+      },
+      "rule": "Append one alphabet letter.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.automata.hosts:join_word",
+        "digest": "30a0221741e8550baf1469986fc1928243460f9e2ded2e56c36acea980fed361"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "row_first",
+      "symbol": "row_first",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "row",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Generic finite structural constructor or accessor row_first.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.automata.hosts:row_first",
+        "digest": "c111cc4665497a7c287c07ab51fcee1adb42574833177a21879c9bebe910bc80"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "row_second",
+      "symbol": "row_second",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "row",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Generic finite structural constructor or accessor row_second.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.automata.hosts:row_second",
+        "digest": "4ae45c9b1e7b0b4c58ad6cb90c3c1508a6aa63a83ca66c949c85fac0db9dbad9"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "make_signature",
+      "symbol": "make_signature",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg2",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "signature",
+        "enter": "bottom"
+      },
+      "rule": "Generic finite structural constructor or accessor make_signature.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.automata.hosts:make_signature",
+        "digest": "90494812bbb4668366cd74b1919c80c0610e0f2afed6370e1c620466f1123cf2"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "make_entry",
+      "symbol": "make_entry",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "str",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "entry",
+        "enter": "bottom"
+      },
+      "rule": "Generic finite structural constructor or accessor make_entry.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.automata.hosts:make_entry",
+        "digest": "ba24323fa3ccebd73fa9829c875849850f5780faa5763cd076a7be164e1a1865"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "entry_state",
+      "symbol": "entry_state",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "entry",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Generic finite structural constructor or accessor entry_state.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.automata.hosts:entry_state",
+        "digest": "ebbc364de73b32a9bcec0fae72b8cf392297909b40e41121549fc595118ecc60"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "entry_word",
+      "symbol": "entry_word",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "entry",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "str",
+        "enter": "bottom"
+      },
+      "rule": "Generic finite structural constructor or accessor entry_word.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.automata.hosts:entry_word",
+        "digest": "f62d6fabe101909f2330581fc527f5f7c7b1560171f568e33a97118af6f38655"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "make_frontier",
+      "symbol": "make_frontier",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "any",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "frontier",
+        "enter": "bottom"
+      },
+      "rule": "Generic finite structural constructor or accessor make_frontier.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.automata.hosts:make_frontier",
+        "digest": "4b717da09656296615ae51d19a0432052d360c7448c6aabe39184de3abee98f3"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "frontier_queue",
+      "symbol": "frontier_queue",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "frontier",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "any",
+        "enter": "bottom"
+      },
+      "rule": "Generic finite structural constructor or accessor frontier_queue.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.automata.hosts:frontier_queue",
+        "digest": "16a3b663601c2686257a77e7a914159fa6899f5e804d546cb37338c4e4283cb5"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "frontier_seen",
+      "symbol": "frontier_seen",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "frontier",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "any",
+        "enter": "bottom"
+      },
+      "rule": "Generic finite structural constructor or accessor frontier_seen.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.automata.hosts:frontier_seen",
+        "digest": "7d08eeb67397a2d5fe592572a431131aac9d31164def72a60139ac8bbe0d141b"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "machine_valid_atom",
+      "symbol": "machine_valid_atom",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "automaton",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Generic finite structural constructor or accessor machine_valid_atom.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.automata.hosts:machine_valid_atom",
+        "digest": "d874c39dd1238a512d061ae9c257512c2f66472f1de4d65a8b425108aa9c63c1"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    }
+  ],
+  "combinators": {
+    "nodes": [
+      "Var",
+      "Lit",
+      "Call",
+      "Let",
+      "Case",
+      "Rec"
+    ],
+    "library": [
+      {
+        "name": "fold_word",
+        "params": [
+          "machine",
+          "state",
+          "word"
+        ],
+        "op_params": [],
+        "body": {
+          "node": "Rec",
+          "fn": "fold",
+          "params": [
+            "state",
+            "remaining"
+          ],
+          "body": {
+            "node": "Case",
+            "arms": [
+              [
+                {
+                  "node": "Test",
+                  "expr": {
+                    "node": "Call",
+                    "fn": "equal",
+                    "args": [
+                      {
+                        "node": "Call",
+                        "fn": "word_length",
+                        "args": [
+                          {
+                            "node": "Var",
+                            "name": "remaining"
+                          }
+                        ]
+                      },
+                      {
+                        "node": "Lit",
+                        "value": {
+                          "t": "int",
+                          "v": 0
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "node": "Var",
+                  "name": "state"
+                }
+              ]
+            ],
+            "default": {
+              "node": "Call",
+              "fn": "fold",
+              "args": [
+                {
+                  "node": "Call",
+                  "fn": "step",
+                  "args": [
+                    {
+                      "node": "Var",
+                      "name": "machine"
+                    },
+                    {
+                      "node": "Var",
+                      "name": "state"
+                    },
+                    {
+                      "node": "Call",
+                      "fn": "char_head",
+                      "args": [
+                        {
+                          "node": "Var",
+                          "name": "remaining"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "node": "Call",
+                  "fn": "char_tail",
+                  "args": [
+                    {
+                      "node": "Var",
+                      "name": "remaining"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "args": [
+            {
+              "node": "Var",
+              "name": "state"
+            },
+            {
+              "node": "Var",
+              "name": "word"
+            }
+          ],
+          "measure": {
+            "node": "Call",
+            "fn": "word_length",
+            "args": [
+              {
+                "node": "Var",
+                "name": "remaining"
+              }
+            ]
+          },
+          "memo": false
+        },
+        "unfold_rule": "substitute"
+      },
+      {
+        "name": "fold",
+        "params": [
+          "move",
+          "machine",
+          "state",
+          "word"
+        ],
+        "op_params": [
+          "move"
+        ],
+        "body": {
+          "node": "Rec",
+          "fn": "fold_remaining",
+          "params": [
+            "current",
+            "remaining"
+          ],
+          "body": {
+            "node": "Case",
+            "arms": [
+              [
+                {
+                  "node": "Test",
+                  "expr": {
+                    "node": "Call",
+                    "fn": "equal",
+                    "args": [
+                      {
+                        "node": "Call",
+                        "fn": "word_length",
+                        "args": [
+                          {
+                            "node": "Var",
+                            "name": "remaining"
+                          }
+                        ]
+                      },
+                      {
+                        "node": "Lit",
+                        "value": {
+                          "t": "int",
+                          "v": 0
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "node": "Var",
+                  "name": "current"
+                }
+              ]
+            ],
+            "default": {
+              "node": "Call",
+              "fn": "fold_remaining",
+              "args": [
+                {
+                  "node": "Call",
+                  "fn": "move",
+                  "args": [
+                    {
+                      "node": "Var",
+                      "name": "machine"
+                    },
+                    {
+                      "node": "Var",
+                      "name": "current"
+                    },
+                    {
+                      "node": "Call",
+                      "fn": "char_head",
+                      "args": [
+                        {
+                          "node": "Var",
+                          "name": "remaining"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "node": "Call",
+                  "fn": "char_tail",
+                  "args": [
+                    {
+                      "node": "Var",
+                      "name": "remaining"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "args": [
+            {
+              "node": "Var",
+              "name": "state"
+            },
+            {
+              "node": "Var",
+              "name": "word"
+            }
+          ],
+          "measure": {
+            "node": "Call",
+            "fn": "word_length",
+            "args": [
+              {
+                "node": "Var",
+                "name": "remaining"
+              }
+            ]
+          },
+          "memo": false
+        },
+        "unfold_rule": "substitute"
+      }
+    ],
+    "recursion": "fuel"
+  },
+  "observation": {
+    "truth": "automaton",
+    "probes": [
+      {
+        "name": "accept",
+        "sort": "bool",
+        "reads": "automaton",
+        "reveals": [
+          "final_state_after_word"
+        ],
+        "impl": {
+          "host": "opulse.worlds_v2.automata.hosts:accept",
+          "digest": "801f37ca188c671c352871dc3805863913785c55be0b51e0eb08387b8b98650a"
+        }
+      },
+      {
+        "name": "size",
+        "sort": "int",
+        "reads": "automaton",
+        "reveals": [
+          "state_count"
+        ],
+        "impl": {
+          "host": "opulse.worlds_v2.automata.hosts:count",
+          "digest": "95c3dc4097564e35383b7c314938f3a4fef3038e1188da34640ae965534f41ef"
+        }
+      },
+      {
+        "name": "step",
+        "sort": "int",
+        "reads": "automaton",
+        "reveals": [
+          "public_dfa_structure"
+        ],
+        "impl": {
+          "host": "opulse.worlds_v2.automata.hosts:step",
+          "digest": "70b9e6ab6ba38c53630982b35b5144f87c93349c11d9e1e196162d73dcaad4cd"
+        }
+      },
+      {
+        "name": "start",
+        "sort": "int",
+        "reads": "automaton",
+        "reveals": [
+          "public_dfa_structure"
+        ],
+        "impl": {
+          "host": "opulse.worlds_v2.automata.hosts:start",
+          "digest": "67a9f62615d998ee0d6c416c2509a63e04bb009b847390afe1812ab63069a9de"
+        }
+      },
+      {
+        "name": "final",
+        "sort": "bool",
+        "reads": "automaton",
+        "reveals": [
+          "public_dfa_structure"
+        ],
+        "impl": {
+          "host": "opulse.worlds_v2.automata.hosts:final",
+          "digest": "c5b8ddaa72167d196c0b2ade5348a6a2b7a031fad4c169a870badb1d7cd0631e"
+        }
+      },
+      {
+        "name": "count",
+        "sort": "int",
+        "reads": "automaton",
+        "reveals": [
+          "public_dfa_structure"
+        ],
+        "impl": {
+          "host": "opulse.worlds_v2.automata.hosts:count",
+          "digest": "95c3dc4097564e35383b7c314938f3a4fef3038e1188da34640ae965534f41ef"
+        }
+      },
+      {
+        "name": "machine_valid_atom",
+        "sort": "bool",
+        "reads": "automaton",
+        "reveals": [
+          "public_dfa_structure"
+        ],
+        "impl": {
+          "host": "opulse.worlds_v2.automata.hosts:machine_valid_atom",
+          "digest": "d874c39dd1238a512d061ae9c257512c2f66472f1de4d65a8b425108aa9c63c1"
+        }
+      }
+    ],
+    "capabilities": {
+      "learner": {
+        "channels": [
+          "results",
+          "errors",
+          "traces",
+          "steps"
+        ],
+        "probes": "all"
+      }
+    },
+    "show": {
+      "input": "automaton",
+      "result": "bool"
+    },
+    "judge_view": "full_state"
+  },
+  "codec": {
+    "automaton": "opulse.worlds_v2.automata.hosts:to_card/from_card"
+  },
+  "lock": {
+    "host_digests": {
+      "step": "70b9e6ab6ba38c53630982b35b5144f87c93349c11d9e1e196162d73dcaad4cd",
+      "count": "95c3dc4097564e35383b7c314938f3a4fef3038e1188da34640ae965534f41ef",
+      "start": "67a9f62615d998ee0d6c416c2509a63e04bb009b847390afe1812ab63069a9de",
+      "final": "c5b8ddaa72167d196c0b2ade5348a6a2b7a031fad4c169a870badb1d7cd0631e",
+      "make_machine": "570cc93b3fa761972edbe1f024499ac67da9de1fb17f40bd618bf02a32c313db",
+      "make_row": "9561c60cd31c6afdcef7b3d66f882de95932105c85e9a03010ce7955c3e2cdb7",
+      "empty": "0357ca876cda7599edb98f96c989a755b2dd003e7e1e30a10a34fe083fa57dbb",
+      "cons": "756c41a63f988fc9230f821470c93cc9148eaf992a5aa994c962b8395580d596",
+      "cons_row": "58e4dad85792c02967374f1402a2db15f4e6ce55a5a56c69920f2668b5bf94b3",
+      "head": "96b30874520413566fc17d70bcaa1033445dea667e5c750f5bd5706deec87951",
+      "tail": "161be7ac13bddebdef2c2de2d232c56c8c02feffc2cb8d75cf26a5ae0ed18f7b",
+      "length": "bbf1a3f6c6df6a30382999f1b138564ff7b97019d2324b6540502b5a437b7b0e",
+      "contains": "5ec169cd1021a302e40b2a6379efc655fc5abe6d05d3e2ab8150e09085f9a849",
+      "char_head": "8d2f46f93ea1b783e158b37e220a4b6e90e6367645d4bafc257c6da890a3a6cd",
+      "char_tail": "68f671cb3849c237be08315585a013a3fb641cab7554fcceb7d37a456d1882d0",
+      "word_length": "e89a59eae1e7717007229989ea87665d7d2295d0dca523747ee7ce9974c09f7d",
+      "add": "82d52b971906e3b72e95576158010da795f8b779e24a44a2cf06fe423ff2d352",
+      "sub": "e7807c5473f5c569514d7a26e3c78c88b64a901375bdc9b4b344a55613590e9c",
+      "mul": "dca4e28414c9e6d65d2006f724827d0e1ec8a628bdf75ee33a1e081ff76b3231",
+      "div": "e6633b9cde9739ea1d1f59f98549d12a57cf4d072b3985f59df87796be38f1e1",
+      "mod": "519b6765b89e51075567116bfec8747a504aaec126ec306d2366ce5e839e1541",
+      "less": "1ec981eb18a77021f0ff5dc9de62f23dc662d87a99d857d1ebf66a1d8fd4b4c3",
+      "equal": "9ef47e6d0fb7d1f617e7fd1a9634e6978fb5eeda2aa8fb3ef94f17cfa02365fb",
+      "count_a": "9c801eca1d130a1626701716c93f354f2a7705ea099a86e7c1fee69700e46b12",
+      "count_b": "385d75aebb9f01fb97a0b67f6387432b14f2d355eed7a4b7d7853a19e1ca3e79",
+      "distinct_count": "1c8d9dc0ccbc8007aeed35f7b170d03b829368fec39e5fb9ba86a54688483f94",
+      "at": "b3d51836937630ec3341226d6ffeea660a556edf669f3ee771df8bd2ee964479",
+      "index_of": "8db7158a262d61f0fe39f2726a0f7b047908a0eca9302b681c05dcbff8af151b",
+      "append": "61ae0e079067355362a34b6871e65b5919eef50ea26e19ce83ca43e6e63cf70b",
+      "sorted_unique": "4032462c8ce80c0f887a0e52b7f5a43ae18fb2069e731367c376e544c4699244",
+      "less_equal": "011a1ce87512f58e3a4989b1470b85d1bc29888bf9c1047df65caf13cf9cd8a7",
+      "join_word": "30a0221741e8550baf1469986fc1928243460f9e2ded2e56c36acea980fed361",
+      "row_first": "c111cc4665497a7c287c07ab51fcee1adb42574833177a21879c9bebe910bc80",
+      "row_second": "4ae45c9b1e7b0b4c58ad6cb90c3c1508a6aa63a83ca66c949c85fac0db9dbad9",
+      "make_signature": "90494812bbb4668366cd74b1919c80c0610e0f2afed6370e1c620466f1123cf2",
+      "make_entry": "ba24323fa3ccebd73fa9829c875849850f5780faa5763cd076a7be164e1a1865",
+      "entry_state": "ebbc364de73b32a9bcec0fae72b8cf392297909b40e41121549fc595118ecc60",
+      "entry_word": "f62d6fabe101909f2330581fc527f5f7c7b1560171f568e33a97118af6f38655",
+      "make_frontier": "4b717da09656296615ae51d19a0432052d360c7448c6aabe39184de3abee98f3",
+      "frontier_queue": "16a3b663601c2686257a77e7a914159fa6899f5e804d546cb37338c4e4283cb5",
+      "frontier_seen": "7d08eeb67397a2d5fe592572a431131aac9d31164def72a60139ac8bbe0d141b",
+      "machine_valid_atom": "d874c39dd1238a512d061ae9c257512c2f66472f1de4d65a8b425108aa9c63c1",
+      "word.valid": "7ac860bb90df7ddc2bca7a5fd8122959c50c3ab56c1c9cfd33c94914fccc5b48",
+      "automaton.valid": "4bb7a0a59eda5eff32761a57db1f0a16370cfbcc1d12a70b6a41cd143a31bc83",
+      "probe.accept": "801f37ca188c671c352871dc3805863913785c55be0b51e0eb08387b8b98650a",
+      "probe.size": "95c3dc4097564e35383b7c314938f3a4fef3038e1188da34640ae965534f41ef",
+      "probe.step": "70b9e6ab6ba38c53630982b35b5144f87c93349c11d9e1e196162d73dcaad4cd",
+      "probe.start": "67a9f62615d998ee0d6c416c2509a63e04bb009b847390afe1812ab63069a9de",
+      "probe.final": "c5b8ddaa72167d196c0b2ade5348a6a2b7a031fad4c169a870badb1d7cd0631e",
+      "probe.count": "95c3dc4097564e35383b7c314938f3a4fef3038e1188da34640ae965534f41ef",
+      "probe.machine_valid_atom": "d874c39dd1238a512d061ae9c257512c2f66472f1de4d65a8b425108aa9c63c1"
+    },
+    "constants_hash": "f8462c5bc5576f264bb7344c54314b2202897c2b579061dec49bf98b38e4a7ed",
+    "world_hash": "bbed1f336e209848823c39d6dd7a9b25f204521996942538f94961574b53bfa8"
+  }
+}

@@ -1,0 +1,55 @@
+{
+ "G3_diagnostic": {
+  "ci90": [
+   0.0,
+   0.0
+  ],
+  "ci95": [
+   0.0,
+   0.0
+  ],
+  "difference": 0,
+  "n": [
+   2,
+   2
+  ]
+ },
+ "decision": "diagnostic",
+ "primary_G2_over_G1_length": {
+  "ci90": [
+   0.6483516483516484,
+   0.6483516483516484
+  ],
+  "ci95": [
+   0.6483516483516484,
+   0.6483516483516484
+  ],
+  "ratio": 0.6483516483516484
+ },
+ "secondary_accuracy_G2_minus_G1": {
+  "ci90": [
+   0.0,
+   0.0
+  ],
+  "ci95": [
+   0.0,
+   0.0
+  ],
+  "difference": 0,
+  "n": [
+   2,
+   2
+  ]
+ },
+ "secondary_accuracy_noninferior": null,
+ "secondary_bridge_use_rate": {
+  "A": 0,
+  "B": 1,
+  "C": 1
+ },
+ "secondary_layer0_steps": {
+  "A": 1775.875,
+  "B": 1672.125,
+  "C": 776.25
+ }
+}

@@ -1,0 +1,1385 @@
+{
+  "combinators": {
+    "nodes": [
+      "Var",
+      "Lit",
+      "Call",
+      "Let",
+      "Case",
+      "Rec"
+    ],
+    "recursion": "measure"
+  },
+  "constants": {},
+  "dialect": "atoms-v2",
+  "lock": {},
+  "objects": [
+    {
+      "base": null,
+      "body": null,
+      "canon": null,
+      "canon_cost": "counted",
+      "equality": "canonical",
+      "form": "given",
+      "group": [],
+      "interface": [],
+      "name": "int",
+      "params": [],
+      "sealed": false,
+      "tags": null,
+      "valid": null
+    },
+    {
+      "base": null,
+      "body": null,
+      "canon": null,
+      "canon_cost": "counted",
+      "equality": "canonical",
+      "form": "given",
+      "group": [],
+      "interface": [],
+      "name": "str",
+      "params": [],
+      "sealed": false,
+      "tags": null,
+      "valid": null
+    },
+    {
+      "base": null,
+      "body": null,
+      "canon": null,
+      "canon_cost": "counted",
+      "equality": "canonical",
+      "form": "given",
+      "group": [],
+      "interface": [],
+      "name": "bool",
+      "params": [],
+      "sealed": false,
+      "tags": null,
+      "valid": null
+    },
+    {
+      "base": null,
+      "body": null,
+      "canon": null,
+      "canon_cost": "counted",
+      "equality": "canonical",
+      "form": "compose",
+      "group": [],
+      "interface": [],
+      "name": "list",
+      "params": [],
+      "sealed": false,
+      "tags": {
+        "items": {
+          "items": "any"
+        }
+      },
+      "valid": null
+    },
+    {
+      "base": null,
+      "body": null,
+      "canon": {
+        "digest": "b74e17149b399bc5a00bbd9540712bd714656a9952e385e24add6275d4be8ab5",
+        "host": "opulse.meta.code:canonicalize"
+      },
+      "canon_cost": "free",
+      "equality": "canonical",
+      "form": "compose",
+      "group": [],
+      "interface": [],
+      "name": "code",
+      "params": [],
+      "sealed": false,
+      "tags": {
+        "def": [
+          [
+            "kind",
+            "str"
+          ],
+          [
+            "sig",
+            "sig"
+          ],
+          [
+            "body",
+            "any"
+          ],
+          [
+            "atoms",
+            "list"
+          ],
+          [
+            "deps",
+            "list"
+          ]
+        ]
+      },
+      "valid": null
+    },
+    {
+      "base": null,
+      "body": null,
+      "canon": null,
+      "canon_cost": "counted",
+      "equality": "canonical",
+      "form": "compose",
+      "group": [],
+      "interface": [],
+      "name": "sig",
+      "params": [],
+      "sealed": false,
+      "tags": {
+        "bridge": [
+          [
+            "source",
+            "str"
+          ],
+          [
+            "target",
+            "str"
+          ],
+          [
+            "interface",
+            "list"
+          ],
+          [
+            "domain",
+            "opt"
+          ]
+        ],
+        "comb": [
+          [
+            "arity",
+            "int"
+          ],
+          [
+            "op_params",
+            "list"
+          ]
+        ],
+        "const": [],
+        "law": [
+          [
+            "vars",
+            "list"
+          ]
+        ],
+        "obs": [
+          [
+            "reads",
+            "list"
+          ]
+        ],
+        "op": [
+          [
+            "inputs",
+            "list"
+          ],
+          [
+            "output",
+            "edge"
+          ]
+        ],
+        "template": [
+          [
+            "params",
+            "list"
+          ],
+          [
+            "produces",
+            "str"
+          ]
+        ]
+      },
+      "valid": null
+    },
+    {
+      "base": null,
+      "body": null,
+      "canon": null,
+      "canon_cost": "counted",
+      "equality": "canonical",
+      "form": "compose",
+      "group": [],
+      "interface": [],
+      "name": "var",
+      "params": [],
+      "sealed": false,
+      "tags": {
+        "var": [
+          [
+            "name",
+            "str"
+          ],
+          [
+            "sort",
+            "str"
+          ]
+        ]
+      },
+      "valid": null
+    },
+    {
+      "base": null,
+      "body": null,
+      "canon": null,
+      "canon_cost": "counted",
+      "equality": "canonical",
+      "form": "compose",
+      "group": [],
+      "interface": [],
+      "name": "pair",
+      "params": [],
+      "sealed": false,
+      "tags": {
+        "pair": [
+          [
+            "source",
+            "str"
+          ],
+          [
+            "target",
+            "str"
+          ]
+        ]
+      },
+      "valid": null
+    },
+    {
+      "base": null,
+      "body": null,
+      "canon": null,
+      "canon_cost": "counted",
+      "equality": "canonical",
+      "form": "compose",
+      "group": [],
+      "interface": [],
+      "name": "param",
+      "params": [],
+      "sealed": false,
+      "tags": {
+        "param": [
+          [
+            "name",
+            "str"
+          ],
+          [
+            "kind_or_sort",
+            "str"
+          ]
+        ]
+      },
+      "valid": null
+    },
+    {
+      "base": null,
+      "body": null,
+      "canon": null,
+      "canon_cost": "counted",
+      "equality": "canonical",
+      "form": "compose",
+      "group": [],
+      "interface": [],
+      "name": "pattern",
+      "params": [],
+      "sealed": false,
+      "tags": {
+        "bool": [
+          [
+            "value",
+            "bool"
+          ]
+        ],
+        "bottom": [
+          [
+            "reason",
+            "str"
+          ]
+        ],
+        "definition": [
+          [
+            "name",
+            "str"
+          ],
+          [
+            "kind",
+            "str"
+          ],
+          [
+            "content_hash",
+            "str"
+          ]
+        ],
+        "entry": [
+          [
+            "key",
+            "str"
+          ],
+          [
+            "value",
+            "pattern"
+          ]
+        ],
+        "list": [
+          [
+            "items",
+            "list"
+          ]
+        ],
+        "map": [
+          [
+            "entries",
+            "list"
+          ]
+        ],
+        "node": [
+          [
+            "expr",
+            "expr"
+          ]
+        ],
+        "none": [],
+        "template": [
+          [
+            "pattern",
+            "pattern"
+          ],
+          [
+            "fallback",
+            "pattern"
+          ]
+        ],
+        "tuple": [
+          [
+            "items",
+            "list"
+          ]
+        ],
+        "value": [
+          [
+            "value",
+            "any"
+          ]
+        ]
+      },
+      "valid": null
+    },
+    {
+      "base": null,
+      "body": null,
+      "canon": null,
+      "canon_cost": "counted",
+      "equality": "canonical",
+      "form": "compose",
+      "group": [],
+      "interface": [],
+      "name": "origin",
+      "params": [],
+      "sealed": false,
+      "tags": {
+        "template": [
+          [
+            "template_code",
+            "code"
+          ],
+          [
+            "args",
+            "list"
+          ]
+        ]
+      },
+      "valid": null
+    },
+    {
+      "base": null,
+      "body": null,
+      "canon": null,
+      "canon_cost": "counted",
+      "equality": "canonical",
+      "form": "compose",
+      "group": [],
+      "interface": [],
+      "name": "expr",
+      "params": [],
+      "sealed": false,
+      "tags": {
+        "blocks": [
+          [
+            "vars",
+            "list"
+          ],
+          [
+            "entry",
+            "str"
+          ],
+          [
+            "blocks",
+            "list"
+          ]
+        ],
+        "call": [
+          [
+            "fn",
+            "str"
+          ],
+          [
+            "args",
+            "list"
+          ]
+        ],
+        "case": [
+          [
+            "arms",
+            "list"
+          ],
+          [
+            "default",
+            "opt"
+          ]
+        ],
+        "fn": [
+          [
+            "name",
+            "str"
+          ]
+        ],
+        "let": [
+          [
+            "name",
+            "str"
+          ],
+          [
+            "value",
+            "expr"
+          ],
+          [
+            "body",
+            "expr"
+          ]
+        ],
+        "lit": [
+          [
+            "value",
+            "any"
+          ]
+        ],
+        "rec": [
+          [
+            "fn",
+            "str"
+          ],
+          [
+            "params",
+            "list"
+          ],
+          [
+            "body",
+            "expr"
+          ],
+          [
+            "args",
+            "list"
+          ],
+          [
+            "measure",
+            "measure"
+          ]
+        ],
+        "var": [
+          [
+            "name",
+            "str"
+          ]
+        ]
+      },
+      "valid": null
+    },
+    {
+      "base": null,
+      "body": null,
+      "canon": null,
+      "canon_cost": "counted",
+      "equality": "canonical",
+      "form": "compose",
+      "group": [],
+      "interface": [],
+      "name": "cond",
+      "params": [],
+      "sealed": false,
+      "tags": {
+        "always": [],
+        "and": [
+          [
+            "l",
+            "cond"
+          ],
+          [
+            "r",
+            "cond"
+          ]
+        ],
+        "not": [
+          [
+            "c",
+            "cond"
+          ]
+        ],
+        "or": [
+          [
+            "l",
+            "cond"
+          ],
+          [
+            "r",
+            "cond"
+          ]
+        ],
+        "test": [
+          [
+            "expr",
+            "expr"
+          ]
+        ]
+      },
+      "valid": null
+    },
+    {
+      "base": null,
+      "body": null,
+      "canon": null,
+      "canon_cost": "counted",
+      "equality": "canonical",
+      "form": "compose",
+      "group": [],
+      "interface": [],
+      "name": "measure",
+      "params": [],
+      "sealed": false,
+      "tags": {
+        "fuel": [],
+        "legacy": [],
+        "node": [
+          [
+            "expr",
+            "expr"
+          ]
+        ]
+      },
+      "valid": null
+    },
+    {
+      "base": null,
+      "body": null,
+      "canon": null,
+      "canon_cost": "counted",
+      "equality": "canonical",
+      "form": "compose",
+      "group": [],
+      "interface": [],
+      "name": "opt",
+      "params": [],
+      "sealed": false,
+      "tags": {
+        "none": [],
+        "some": [
+          [
+            "value",
+            "expr"
+          ]
+        ]
+      },
+      "valid": null
+    },
+    {
+      "base": null,
+      "body": null,
+      "canon": null,
+      "canon_cost": "counted",
+      "equality": "canonical",
+      "form": "compose",
+      "group": [],
+      "interface": [],
+      "name": "arm",
+      "params": [],
+      "sealed": false,
+      "tags": {
+        "arm": [
+          [
+            "cond",
+            "cond"
+          ],
+          [
+            "body",
+            "expr"
+          ]
+        ]
+      },
+      "valid": null
+    },
+    {
+      "base": null,
+      "body": null,
+      "canon": null,
+      "canon_cost": "counted",
+      "equality": "canonical",
+      "form": "compose",
+      "group": [],
+      "interface": [],
+      "name": "bind",
+      "params": [],
+      "sealed": false,
+      "tags": {
+        "bind": [
+          [
+            "name",
+            "str"
+          ],
+          [
+            "value",
+            "expr"
+          ]
+        ]
+      },
+      "valid": null
+    },
+    {
+      "base": null,
+      "body": null,
+      "canon": null,
+      "canon_cost": "counted",
+      "equality": "canonical",
+      "form": "compose",
+      "group": [],
+      "interface": [],
+      "name": "block",
+      "params": [],
+      "sealed": false,
+      "tags": {
+        "block": [
+          [
+            "label",
+            "str"
+          ],
+          [
+            "assigns",
+            "list"
+          ],
+          [
+            "end",
+            "end"
+          ]
+        ]
+      },
+      "valid": null
+    },
+    {
+      "base": null,
+      "body": null,
+      "canon": null,
+      "canon_cost": "counted",
+      "equality": "canonical",
+      "form": "compose",
+      "group": [],
+      "interface": [],
+      "name": "end",
+      "params": [],
+      "sealed": false,
+      "tags": {
+        "cjump": [
+          [
+            "cond",
+            "cond"
+          ],
+          [
+            "then",
+            "str"
+          ],
+          [
+            "else",
+            "str"
+          ]
+        ],
+        "halt": [
+          [
+            "value",
+            "expr"
+          ]
+        ],
+        "jump": [
+          [
+            "target",
+            "str"
+          ]
+        ]
+      },
+      "valid": null
+    },
+    {
+      "base": null,
+      "body": null,
+      "canon": null,
+      "canon_cost": "counted",
+      "equality": "canonical",
+      "form": "compose",
+      "group": [],
+      "interface": [],
+      "name": "edge",
+      "params": [],
+      "sealed": false,
+      "tags": {
+        "edge": [
+          [
+            "sort",
+            "str"
+          ],
+          [
+            "enter",
+            "str"
+          ]
+        ]
+      },
+      "valid": null
+    },
+    {
+      "base": null,
+      "body": null,
+      "canon": null,
+      "canon_cost": "counted",
+      "equality": "canonical",
+      "form": "compose",
+      "group": [],
+      "interface": [],
+      "name": "atom",
+      "params": [],
+      "sealed": false,
+      "tags": {
+        "atom": [
+          [
+            "name",
+            "str"
+          ],
+          [
+            "digest",
+            "str"
+          ]
+        ]
+      },
+      "valid": null
+    }
+  ],
+  "observation": {
+    "judge_view": "full_state",
+    "show": "values",
+    "truth": null
+  },
+  "open_kinds": [
+    "bridge",
+    "combinator",
+    "law",
+    "object",
+    "observation",
+    "operation"
+  ],
+  "operations": [
+    {
+      "cost": 1,
+      "errors": [],
+      "impl": {
+        "digest": "63098273a7aaa630762d6f145dfcf9c61c8c9b290c6ebeb2a05fea5854ccb476",
+        "host": "opulse.meta.arith:add"
+      },
+      "inputs": [
+        {
+          "enter": "bottom",
+          "sort": "int"
+        },
+        {
+          "enter": "bottom",
+          "sort": "int"
+        }
+      ],
+      "name": "add",
+      "output": {
+        "enter": "bottom",
+        "sort": "int"
+      },
+      "reads_params": [],
+      "role": "combine",
+      "rule": "Integer addition",
+      "strict": true
+    },
+    {
+      "cost": 1,
+      "errors": [],
+      "impl": {
+        "digest": "b07ba893449469b6d3fa240947da26ef1674afcda0dc2c11521e3ba7fe1e3d7a",
+        "host": "opulse.meta.arith:sub"
+      },
+      "inputs": [
+        {
+          "enter": "bottom",
+          "sort": "int"
+        },
+        {
+          "enter": "bottom",
+          "sort": "int"
+        }
+      ],
+      "name": "sub",
+      "output": {
+        "enter": "bottom",
+        "sort": "int"
+      },
+      "reads_params": [],
+      "role": "combine",
+      "rule": "Integer subtraction",
+      "strict": true
+    },
+    {
+      "cost": 1,
+      "errors": [],
+      "impl": {
+        "digest": "e6f199c4b8fb3f7be5148cb2f471cab3559f7807bf4473002f957dcdb5ab05ab",
+        "host": "opulse.meta.arith:mul"
+      },
+      "inputs": [
+        {
+          "enter": "bottom",
+          "sort": "int"
+        },
+        {
+          "enter": "bottom",
+          "sort": "int"
+        }
+      ],
+      "name": "mul",
+      "output": {
+        "enter": "bottom",
+        "sort": "int"
+      },
+      "reads_params": [],
+      "role": "combine",
+      "rule": "Integer multiplication",
+      "strict": true
+    },
+    {
+      "cost": 1,
+      "errors": [
+        "div_zero"
+      ],
+      "impl": {
+        "digest": "af40a7fcaa47ed4f5e3defcb460ee23e6df042373bb1f6a1a64b955bd253563a",
+        "host": "opulse.meta.arith:div"
+      },
+      "inputs": [
+        {
+          "enter": "bottom",
+          "sort": "int"
+        },
+        {
+          "enter": "bottom",
+          "sort": "int"
+        }
+      ],
+      "name": "div",
+      "output": {
+        "enter": "bottom",
+        "sort": "int"
+      },
+      "reads_params": [],
+      "role": "combine",
+      "rule": "Floor division",
+      "strict": true
+    },
+    {
+      "cost": 1,
+      "errors": [],
+      "impl": {
+        "digest": "0460023a3d7c1ad5bfcf5e917b5bfe673a6581c6650382e3ccfd284ae98e4fdc",
+        "host": "opulse.meta.arith:is_zero"
+      },
+      "inputs": [
+        {
+          "enter": "bottom",
+          "sort": "int"
+        }
+      ],
+      "name": "is_zero",
+      "output": {
+        "enter": "bottom",
+        "sort": "bool"
+      },
+      "reads_params": [],
+      "role": "decide",
+      "rule": "Test zero",
+      "strict": true
+    },
+    {
+      "cost": 1,
+      "errors": [],
+      "impl": {
+        "digest": "88bf247c6913894bc9ba3c9229fa426cf8a0055ecaf4e1416d4a16df280a9ee9",
+        "host": "opulse.meta.worlds.code.hosts:eq"
+      },
+      "inputs": [
+        {
+          "enter": "bottom",
+          "sort": "any"
+        },
+        {
+          "enter": "bottom",
+          "sort": "any"
+        }
+      ],
+      "name": "eq",
+      "output": {
+        "enter": "bottom",
+        "sort": "bool"
+      },
+      "reads_params": [],
+      "role": "decide",
+      "rule": "Canonical equality",
+      "strict": true
+    },
+    {
+      "cost": 1,
+      "errors": [],
+      "impl": {
+        "digest": "1476ec921d2f95a73390c73a31f78170567492d682a89129f95d8bf6db3f2ea5",
+        "host": "opulse.meta.arith:lt"
+      },
+      "inputs": [
+        {
+          "enter": "bottom",
+          "sort": "int"
+        },
+        {
+          "enter": "bottom",
+          "sort": "int"
+        }
+      ],
+      "name": "lt",
+      "output": {
+        "enter": "bottom",
+        "sort": "bool"
+      },
+      "reads_params": [],
+      "role": "decide",
+      "rule": "Integer less than",
+      "strict": true
+    },
+    {
+      "cost": 1,
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "digest": "5f6d712a1b3e74014f03341f1d99e6dc0cfa9c51c54eb077d8fdb3e1fd3120a9",
+        "host": "opulse.meta.worlds.code.hosts:tag_of"
+      },
+      "inputs": [
+        {
+          "enter": "bottom",
+          "sort": "any"
+        }
+      ],
+      "name": "tag_of",
+      "output": {
+        "enter": "bottom",
+        "sort": "str"
+      },
+      "reads_params": [],
+      "role": "transform",
+      "rule": "Read card tag",
+      "strict": true
+    },
+    {
+      "cost": 1,
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "digest": "97238e224856c4db12aa0338d4a04cc2fb087c0e592fe6e40bb4514437d26c67",
+        "host": "opulse.meta.worlds.code.hosts:field"
+      },
+      "inputs": [
+        {
+          "enter": "bottom",
+          "sort": "any"
+        },
+        {
+          "enter": "bottom",
+          "sort": "int"
+        }
+      ],
+      "name": "field",
+      "output": {
+        "enter": "bottom",
+        "sort": "any"
+      },
+      "reads_params": [],
+      "role": "transform",
+      "rule": "Read card field",
+      "strict": true
+    },
+    {
+      "cost": 1,
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "digest": "957c5df6dbce214f1805029193d28cc9c78a19d38b62bccc1aeae2345893ebcc",
+        "host": "opulse.meta.worlds.code.hosts:with_field"
+      },
+      "inputs": [
+        {
+          "enter": "bottom",
+          "sort": "any"
+        },
+        {
+          "enter": "bottom",
+          "sort": "int"
+        },
+        {
+          "enter": "bottom",
+          "sort": "any"
+        }
+      ],
+      "name": "with_field",
+      "output": {
+        "enter": "bottom",
+        "sort": "any"
+      },
+      "reads_params": [],
+      "role": "transform",
+      "rule": "Replace card field",
+      "strict": true
+    },
+    {
+      "cost": 1,
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "digest": "7d4ea6763473e308630e2b7ee460c086c5c66349559b69cd62602d75935f8233",
+        "host": "opulse.meta.worlds.code.hosts:mk"
+      },
+      "inputs": [
+        {
+          "enter": "bottom",
+          "sort": "str"
+        },
+        {
+          "enter": "bottom",
+          "sort": "str"
+        },
+        {
+          "enter": "bottom",
+          "sort": "list"
+        }
+      ],
+      "name": "mk",
+      "output": {
+        "enter": "bottom",
+        "sort": "any"
+      },
+      "reads_params": [],
+      "role": "combine",
+      "rule": "Construct canonical card",
+      "strict": true
+    },
+    {
+      "cost": 1,
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "digest": "330c2268b9d7772f1509a92f76e30fe614db60565f6be351442b53547102cb29",
+        "host": "opulse.meta.worlds.code.hosts:list_len"
+      },
+      "inputs": [
+        {
+          "enter": "bottom",
+          "sort": "list"
+        }
+      ],
+      "name": "list_len",
+      "output": {
+        "enter": "bottom",
+        "sort": "int"
+      },
+      "reads_params": [],
+      "role": "transform",
+      "rule": "List length",
+      "strict": true
+    },
+    {
+      "cost": 1,
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "digest": "3b1dc2a07738e76847319864e880c0fcf2ccf16aaf1141835fa800c3caade88c",
+        "host": "opulse.meta.worlds.code.hosts:list_get"
+      },
+      "inputs": [
+        {
+          "enter": "bottom",
+          "sort": "list"
+        },
+        {
+          "enter": "bottom",
+          "sort": "int"
+        }
+      ],
+      "name": "list_get",
+      "output": {
+        "enter": "bottom",
+        "sort": "any"
+      },
+      "reads_params": [],
+      "role": "transform",
+      "rule": "List item",
+      "strict": true
+    },
+    {
+      "cost": 1,
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "digest": "f9de0752beb2903a6766b50e684986966fe4b490751c77f44da464648e8a0397",
+        "host": "opulse.meta.worlds.code.hosts:list_append"
+      },
+      "inputs": [
+        {
+          "enter": "bottom",
+          "sort": "list"
+        },
+        {
+          "enter": "bottom",
+          "sort": "any"
+        }
+      ],
+      "name": "list_append",
+      "output": {
+        "enter": "bottom",
+        "sort": "list"
+      },
+      "reads_params": [],
+      "role": "combine",
+      "rule": "Append list item",
+      "strict": true
+    },
+    {
+      "cost": 1,
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "digest": "f6d3b94f76808b07606e92748753d975638b1827043ec107f5a90fa00e406546",
+        "host": "opulse.meta.worlds.code.hosts:list_cons"
+      },
+      "inputs": [
+        {
+          "enter": "bottom",
+          "sort": "any"
+        },
+        {
+          "enter": "bottom",
+          "sort": "list"
+        }
+      ],
+      "name": "list_cons",
+      "output": {
+        "enter": "bottom",
+        "sort": "list"
+      },
+      "reads_params": [],
+      "role": "combine",
+      "rule": "Prepend list item",
+      "strict": true
+    },
+    {
+      "cost": 1,
+      "errors": [],
+      "impl": {
+        "digest": "728993aa2004605e69d2fdf95c05700cfc8ef3ef6b07035bb0a9b2ee4130dcc9",
+        "host": "opulse.meta.worlds.code.hosts:str_eq"
+      },
+      "inputs": [
+        {
+          "enter": "bottom",
+          "sort": "str"
+        },
+        {
+          "enter": "bottom",
+          "sort": "str"
+        }
+      ],
+      "name": "str_eq",
+      "output": {
+        "enter": "bottom",
+        "sort": "bool"
+      },
+      "reads_params": [],
+      "role": "decide",
+      "rule": "Text equality",
+      "strict": true
+    },
+    {
+      "cost": 1,
+      "errors": [],
+      "impl": {
+        "digest": "d3110e30f5df93fba6937441c96cae0ccfb7e2dbd2ef474551252309a9fc8524",
+        "host": "opulse.meta.worlds.code.hosts:size"
+      },
+      "inputs": [
+        {
+          "enter": "bottom",
+          "sort": "any"
+        }
+      ],
+      "name": "size",
+      "output": {
+        "enter": "bottom",
+        "sort": "int"
+      },
+      "reads_params": [],
+      "role": "transform",
+      "rule": "Card tree node count",
+      "strict": true
+    },
+    {
+      "cost": 1,
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "digest": "a3964a94bf478b8c9164aeba20a2c7411d71ab884c3f6cfccc5010d5aa58f660",
+        "host": "opulse.meta.worlds.code.hosts:code_hash"
+      },
+      "inputs": [
+        {
+          "enter": "bottom",
+          "sort": "code"
+        }
+      ],
+      "name": "code_hash",
+      "output": {
+        "enter": "bottom",
+        "sort": "str"
+      },
+      "reads_params": [],
+      "role": "transform",
+      "rule": "Content hash",
+      "strict": true
+    },
+    {
+      "cost": 0,
+      "errors": [
+        "arity",
+        "not_callable",
+        "foreign_code",
+        "ill_formed"
+      ],
+      "impl": {
+        "digest": "a847f066b675abc8ea62f7971605889e1c20a61d2df3db134aa59597a52326fc",
+        "host": "opulse.meta.engine:eval_atom"
+      },
+      "inputs": [
+        {
+          "enter": "bottom",
+          "sort": "code"
+        },
+        {
+          "enter": "bottom",
+          "sort": "list"
+        }
+      ],
+      "name": "eval",
+      "output": {
+        "enter": "bottom",
+        "sort": "any"
+      },
+      "reads_params": [],
+      "role": "transform",
+      "rule": "Metered evaluation on the shared engine",
+      "strict": true
+    },
+    {
+      "cost": 0,
+      "errors": [
+        "arity",
+        "not_callable",
+        "foreign_code",
+        "ill_formed"
+      ],
+      "impl": {
+        "digest": "2ee53b251792f24d6781f17ef6e86f59658beafac90acea496c4fdc96d82fcd9",
+        "host": "opulse.meta.engine:run_atom"
+      },
+      "inputs": [
+        {
+          "enter": "bottom",
+          "sort": "code"
+        },
+        {
+          "enter": "bottom",
+          "sort": "list"
+        },
+        {
+          "enter": "bottom",
+          "sort": "int"
+        }
+      ],
+      "name": "run",
+      "output": {
+        "enter": "bottom",
+        "sort": "any"
+      },
+      "reads_params": [],
+      "role": "transform",
+      "rule": "Metered evaluation with an inner step budget",
+      "strict": true
+    }
+  ],
+  "params": {},
+  "schema": "opulse.world/2",
+  "tags": {
+    "agents": 1,
+    "difficulty": "syntax up to semantics-preserving specialization",
+    "domain": "program",
+    "modalities": [
+      "text"
+    ],
+    "open_kinds": [
+      "object",
+      "operation",
+      "combinator",
+      "observation",
+      "law",
+      "bridge"
+    ],
+    "outcomes": "deterministic",
+    "reasoning": [
+      "compute",
+      "search",
+      "equivalence"
+    ],
+    "scale": "224 finite source programs; 17 invented definitions",
+    "star_kind": "operation",
+    "state": "stateless",
+    "uses": [
+      "evaluation",
+      "interpretability",
+      "teaching"
+    ],
+    "visibility": "full"
+  },
+  "version": 1,
+  "world": "code"
+}

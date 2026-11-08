@@ -1,0 +1,2243 @@
+{
+  "combinators": {
+    "library": [],
+    "nodes": [
+      "Var",
+      "Lit",
+      "Call",
+      "Let",
+      "Case",
+      "Rec"
+    ],
+    "recursion": "measure"
+  },
+  "constants": {},
+  "dialect": "atoms-v2",
+  "lock": {},
+  "objects": [
+    {
+      "base": null,
+      "body": null,
+      "canon": null,
+      "canon_cost": "counted",
+      "equality": "canonical",
+      "form": "given",
+      "group": [],
+      "interface": [],
+      "name": "world",
+      "params": [],
+      "sealed": false,
+      "tags": null,
+      "valid": null
+    },
+    {
+      "base": null,
+      "body": null,
+      "canon": null,
+      "canon_cost": "counted",
+      "equality": "canonical",
+      "form": "given",
+      "group": [],
+      "interface": [],
+      "name": "sort",
+      "params": [],
+      "sealed": false,
+      "tags": null,
+      "valid": null
+    },
+    {
+      "base": null,
+      "body": null,
+      "canon": null,
+      "canon_cost": "counted",
+      "equality": "canonical",
+      "form": "given",
+      "group": [],
+      "interface": [],
+      "name": "op",
+      "params": [],
+      "sealed": false,
+      "tags": null,
+      "valid": null
+    },
+    {
+      "base": null,
+      "body": null,
+      "canon": null,
+      "canon_cost": "counted",
+      "equality": "canonical",
+      "form": "given",
+      "group": [],
+      "interface": [],
+      "name": "row",
+      "params": [],
+      "sealed": false,
+      "tags": null,
+      "valid": null
+    },
+    {
+      "base": null,
+      "body": null,
+      "canon": null,
+      "canon_cost": "counted",
+      "equality": "canonical",
+      "form": "given",
+      "group": [],
+      "interface": [],
+      "name": "cell",
+      "params": [],
+      "sealed": false,
+      "tags": null,
+      "valid": null
+    },
+    {
+      "base": null,
+      "body": null,
+      "canon": null,
+      "canon_cost": "counted",
+      "equality": "canonical",
+      "form": "given",
+      "group": [],
+      "interface": [],
+      "name": "tag",
+      "params": [],
+      "sealed": false,
+      "tags": null,
+      "valid": null
+    },
+    {
+      "base": null,
+      "body": null,
+      "canon": null,
+      "canon_cost": "counted",
+      "equality": "canonical",
+      "form": "given",
+      "group": [],
+      "interface": [],
+      "name": "report",
+      "params": [],
+      "sealed": false,
+      "tags": null,
+      "valid": null
+    },
+    {
+      "base": null,
+      "body": null,
+      "canon": null,
+      "canon_cost": "counted",
+      "equality": "canonical",
+      "form": "given",
+      "group": [],
+      "interface": [],
+      "name": "list",
+      "params": [],
+      "sealed": false,
+      "tags": null,
+      "valid": null
+    },
+    {
+      "base": null,
+      "body": null,
+      "canon": null,
+      "canon_cost": "counted",
+      "equality": "canonical",
+      "form": "given",
+      "group": [],
+      "interface": [],
+      "name": "int",
+      "params": [],
+      "sealed": false,
+      "tags": null,
+      "valid": null
+    },
+    {
+      "base": null,
+      "body": null,
+      "canon": null,
+      "canon_cost": "counted",
+      "equality": "canonical",
+      "form": "given",
+      "group": [],
+      "interface": [],
+      "name": "str",
+      "params": [],
+      "sealed": false,
+      "tags": null,
+      "valid": null
+    },
+    {
+      "base": null,
+      "body": null,
+      "canon": null,
+      "canon_cost": "counted",
+      "equality": "canonical",
+      "form": "given",
+      "group": [],
+      "interface": [],
+      "name": "bool",
+      "params": [],
+      "sealed": false,
+      "tags": null,
+      "valid": null
+    },
+    {
+      "base": null,
+      "body": null,
+      "canon": null,
+      "canon_cost": "counted",
+      "equality": "canonical",
+      "form": "given",
+      "group": [],
+      "interface": [],
+      "name": "sig",
+      "params": [],
+      "sealed": false,
+      "tags": null,
+      "valid": null
+    },
+    {
+      "base": null,
+      "body": null,
+      "canon": null,
+      "canon_cost": "counted",
+      "equality": "canonical",
+      "form": "given",
+      "group": [],
+      "interface": [],
+      "name": "expr",
+      "params": [],
+      "sealed": false,
+      "tags": null,
+      "valid": null
+    },
+    {
+      "base": null,
+      "body": null,
+      "canon": null,
+      "canon_cost": "counted",
+      "equality": "canonical",
+      "form": "given",
+      "group": [],
+      "interface": [],
+      "name": "z",
+      "params": [],
+      "sealed": false,
+      "tags": null,
+      "valid": null
+    },
+    {
+      "base": null,
+      "body": null,
+      "canon": {
+        "digest": "b74e17149b399bc5a00bbd9540712bd714656a9952e385e24add6275d4be8ab5",
+        "host": "opulse.meta.code:canonicalize"
+      },
+      "canon_cost": "free",
+      "equality": "canonical",
+      "form": "compose",
+      "group": [],
+      "interface": [],
+      "name": "code",
+      "params": [],
+      "sealed": false,
+      "tags": {
+        "def": [
+          [
+            "kind",
+            "str"
+          ],
+          [
+            "sig",
+            "sig"
+          ],
+          [
+            "body",
+            "any"
+          ],
+          [
+            "atoms",
+            "list"
+          ],
+          [
+            "deps",
+            "list"
+          ]
+        ]
+      },
+      "valid": null
+    }
+  ],
+  "observation": {
+    "judge_view": "full_state",
+    "probes": [
+      {
+        "name": "wf",
+        "op": "wf"
+      },
+      {
+        "name": "world_hash",
+        "op": "world_hash"
+      }
+    ],
+    "show": {
+      "input": "World<...>",
+      "result": "value"
+    },
+    "truth": "world"
+  },
+  "open_kinds": [
+    "bridge",
+    "combinator",
+    "law",
+    "object",
+    "observation",
+    "operation"
+  ],
+  "operations": [
+    {
+      "cost": 1,
+      "errors": [],
+      "impl": {
+        "digest": "3828b07e0041f8c3561f6a306a439f253938c63efce52e923ee32e0c7030b470",
+        "host": "opulse.meta.cards:tag_of"
+      },
+      "inputs": [
+        {
+          "enter": "bottom",
+          "sort": "any"
+        }
+      ],
+      "name": "tag_of",
+      "output": {
+        "enter": "bottom",
+        "sort": "str"
+      },
+      "reads_params": [],
+      "role": "transform",
+      "rule": "Given card primitive tag_of",
+      "strict": true
+    },
+    {
+      "cost": 1,
+      "errors": [],
+      "impl": {
+        "digest": "aedda3df36644e965bf7e6508fc2ec7e86d1d2c3dd4886a81a5696a9979442f5",
+        "host": "opulse.meta.cards:field"
+      },
+      "inputs": [
+        {
+          "enter": "bottom",
+          "sort": "any"
+        },
+        {
+          "enter": "bottom",
+          "sort": "int"
+        }
+      ],
+      "name": "field",
+      "output": {
+        "enter": "bottom",
+        "sort": "any"
+      },
+      "reads_params": [],
+      "role": "transform",
+      "rule": "Given card primitive field",
+      "strict": true
+    },
+    {
+      "cost": 1,
+      "errors": [],
+      "impl": {
+        "digest": "0ac02f9f562d9a3fe75265223e68123c704d8e3fdf139bdb1ce8489239b0753f",
+        "host": "opulse.meta.code_world:with_field"
+      },
+      "inputs": [
+        {
+          "enter": "bottom",
+          "sort": "any"
+        },
+        {
+          "enter": "bottom",
+          "sort": "int"
+        },
+        {
+          "enter": "bottom",
+          "sort": "any"
+        }
+      ],
+      "name": "with_field",
+      "output": {
+        "enter": "bottom",
+        "sort": "any"
+      },
+      "reads_params": [],
+      "role": "transform",
+      "rule": "Given card primitive with_field",
+      "strict": true
+    },
+    {
+      "cost": 1,
+      "errors": [],
+      "impl": {
+        "digest": "9029f8fb70ba04bf57b3aa67d18b7056334301283b896638ca92e8a851f7aca7",
+        "host": "opulse.meta.code_world:mk"
+      },
+      "inputs": [
+        {
+          "enter": "bottom",
+          "sort": "str"
+        },
+        {
+          "enter": "bottom",
+          "sort": "str"
+        },
+        {
+          "enter": "bottom",
+          "sort": "list"
+        }
+      ],
+      "name": "mk",
+      "output": {
+        "enter": "bottom",
+        "sort": "any"
+      },
+      "reads_params": [],
+      "role": "transform",
+      "rule": "Given card primitive mk",
+      "strict": true
+    },
+    {
+      "cost": 1,
+      "errors": [],
+      "impl": {
+        "digest": "c53209d406dc8c37d887ad36da13dbf289ad085515ca2041491a5223e6b74cce",
+        "host": "opulse.meta.cards:list_len"
+      },
+      "inputs": [
+        {
+          "enter": "bottom",
+          "sort": "list"
+        }
+      ],
+      "name": "list_len",
+      "output": {
+        "enter": "bottom",
+        "sort": "int"
+      },
+      "reads_params": [],
+      "role": "transform",
+      "rule": "Given card primitive list_len",
+      "strict": true
+    },
+    {
+      "cost": 1,
+      "errors": [],
+      "impl": {
+        "digest": "ea72531112d91894664c8b75bde6d3ff3e67798121d6fb5b9f567344538b1bd0",
+        "host": "opulse.meta.cards:list_get"
+      },
+      "inputs": [
+        {
+          "enter": "bottom",
+          "sort": "list"
+        },
+        {
+          "enter": "bottom",
+          "sort": "int"
+        }
+      ],
+      "name": "list_get",
+      "output": {
+        "enter": "bottom",
+        "sort": "any"
+      },
+      "reads_params": [],
+      "role": "transform",
+      "rule": "Given card primitive list_get",
+      "strict": true
+    },
+    {
+      "cost": 1,
+      "errors": [],
+      "impl": {
+        "digest": "b431943f535d72a56142813e071b7595538bad558b5361fa3c4520382b57c5a2",
+        "host": "opulse.meta.cards:list_append"
+      },
+      "inputs": [
+        {
+          "enter": "bottom",
+          "sort": "list"
+        },
+        {
+          "enter": "bottom",
+          "sort": "any"
+        }
+      ],
+      "name": "list_append",
+      "output": {
+        "enter": "bottom",
+        "sort": "list"
+      },
+      "reads_params": [],
+      "role": "transform",
+      "rule": "Given card primitive list_append",
+      "strict": true
+    },
+    {
+      "cost": 1,
+      "errors": [],
+      "impl": {
+        "digest": "d723f4420a78e8c771d54c0b1d30f9be7a709f93084c7aef4fc65def835f178a",
+        "host": "opulse.meta.cards:list_concat"
+      },
+      "inputs": [
+        {
+          "enter": "bottom",
+          "sort": "list"
+        },
+        {
+          "enter": "bottom",
+          "sort": "list"
+        }
+      ],
+      "name": "list_concat",
+      "output": {
+        "enter": "bottom",
+        "sort": "list"
+      },
+      "reads_params": [],
+      "role": "transform",
+      "rule": "Given card primitive list_concat",
+      "strict": true
+    },
+    {
+      "cost": 1,
+      "errors": [],
+      "impl": {
+        "digest": "a4143506e4ad9d06958448a693c61b9416282c97282eb07a5dcc87e6ab19d91a",
+        "host": "opulse.meta.cards:str_eq"
+      },
+      "inputs": [
+        {
+          "enter": "bottom",
+          "sort": "str"
+        },
+        {
+          "enter": "bottom",
+          "sort": "str"
+        }
+      ],
+      "name": "str_eq",
+      "output": {
+        "enter": "bottom",
+        "sort": "bool"
+      },
+      "reads_params": [],
+      "role": "decide",
+      "rule": "Given card primitive str_eq",
+      "strict": true
+    },
+    {
+      "cost": 1,
+      "errors": [],
+      "impl": {
+        "digest": "ca71ae490b094252699ee1d83343798c2cdfc099ec9817114904c3ba23d98535",
+        "host": "opulse.meta.worlds.builder.hosts:eq"
+      },
+      "inputs": [
+        {
+          "enter": "bottom",
+          "sort": "any"
+        },
+        {
+          "enter": "bottom",
+          "sort": "any"
+        }
+      ],
+      "name": "eq",
+      "output": {
+        "enter": "bottom",
+        "sort": "bool"
+      },
+      "reads_params": [],
+      "role": "decide",
+      "rule": "Given card primitive eq",
+      "strict": true
+    },
+    {
+      "cost": 1,
+      "errors": [],
+      "impl": {
+        "digest": "a431147c976ec28ec7044b0d34d865a3d16b6a58c4d46e70623a45be99054b40",
+        "host": "opulse.meta.worlds.builder.hosts:int_add"
+      },
+      "inputs": [
+        {
+          "enter": "bottom",
+          "sort": "int"
+        },
+        {
+          "enter": "bottom",
+          "sort": "int"
+        }
+      ],
+      "name": "int_add",
+      "output": {
+        "enter": "bottom",
+        "sort": "int"
+      },
+      "reads_params": [],
+      "role": "transform",
+      "rule": "Given card primitive int_add",
+      "strict": true
+    },
+    {
+      "cost": 1,
+      "errors": [],
+      "impl": {
+        "digest": "aa751441eaeff0c33d6bb9cca327e018f569e5ccadfb301a288bd9a8fb871333",
+        "host": "opulse.meta.worlds.builder.hosts:int_sub"
+      },
+      "inputs": [
+        {
+          "enter": "bottom",
+          "sort": "int"
+        },
+        {
+          "enter": "bottom",
+          "sort": "int"
+        }
+      ],
+      "name": "int_sub",
+      "output": {
+        "enter": "bottom",
+        "sort": "int"
+      },
+      "reads_params": [],
+      "role": "transform",
+      "rule": "Given card primitive int_sub",
+      "strict": true
+    },
+    {
+      "cost": 1,
+      "errors": [],
+      "impl": {
+        "digest": "c7bc0ba1f42c17269841897ab8aeb6cba3f5aa21c69a883f233dd3b15d4d5194",
+        "host": "opulse.meta.worlds.builder.hosts:int_eq"
+      },
+      "inputs": [
+        {
+          "enter": "bottom",
+          "sort": "int"
+        },
+        {
+          "enter": "bottom",
+          "sort": "int"
+        }
+      ],
+      "name": "int_eq",
+      "output": {
+        "enter": "bottom",
+        "sort": "bool"
+      },
+      "reads_params": [],
+      "role": "decide",
+      "rule": "Given card primitive int_eq",
+      "strict": true
+    },
+    {
+      "cost": 1,
+      "errors": [],
+      "impl": {
+        "digest": "aa83ee3f827a35cfd0f041e0a78132fd6780db74edb68645977d4a0558350b98",
+        "host": "opulse.meta.worlds.builder.hosts:int_lt"
+      },
+      "inputs": [
+        {
+          "enter": "bottom",
+          "sort": "int"
+        },
+        {
+          "enter": "bottom",
+          "sort": "int"
+        }
+      ],
+      "name": "int_lt",
+      "output": {
+        "enter": "bottom",
+        "sort": "bool"
+      },
+      "reads_params": [],
+      "role": "decide",
+      "rule": "Given card primitive int_lt",
+      "strict": true
+    },
+    {
+      "cost": 1,
+      "errors": [],
+      "impl": {
+        "digest": "2f2f5149c9535dcc155dbce150eb6766b9962bcc41843df28c8f0ceb305f3ee9",
+        "host": "opulse.meta.worlds.builder.hosts:int_mul"
+      },
+      "inputs": [
+        {
+          "enter": "bottom",
+          "sort": "int"
+        },
+        {
+          "enter": "bottom",
+          "sort": "int"
+        }
+      ],
+      "name": "int_mul",
+      "output": {
+        "enter": "bottom",
+        "sort": "int"
+      },
+      "reads_params": [],
+      "role": "transform",
+      "rule": "Given card primitive int_mul",
+      "strict": true
+    },
+    {
+      "cost": 1,
+      "errors": [],
+      "impl": {
+        "digest": "968af10da5e23c44045d5d9b19cc2ba942077999f86cd13f7f21e69ca3628671",
+        "host": "opulse.meta.worlds.builder.hosts:int_div"
+      },
+      "inputs": [
+        {
+          "enter": "bottom",
+          "sort": "int"
+        },
+        {
+          "enter": "bottom",
+          "sort": "int"
+        }
+      ],
+      "name": "int_div",
+      "output": {
+        "enter": "bottom",
+        "sort": "int"
+      },
+      "reads_params": [],
+      "role": "transform",
+      "rule": "Given card primitive int_div",
+      "strict": true
+    },
+    {
+      "cost": 1,
+      "errors": [],
+      "impl": {
+        "digest": "d2a23e4ef596f02ba7eae8745379b9477896d6c28dbea0fdb4acd61377194e10",
+        "host": "opulse.meta.worlds.builder.hosts:int_mod"
+      },
+      "inputs": [
+        {
+          "enter": "bottom",
+          "sort": "int"
+        },
+        {
+          "enter": "bottom",
+          "sort": "int"
+        }
+      ],
+      "name": "int_mod",
+      "output": {
+        "enter": "bottom",
+        "sort": "int"
+      },
+      "reads_params": [],
+      "role": "transform",
+      "rule": "Given card primitive int_mod",
+      "strict": true
+    },
+    {
+      "cost": 1,
+      "errors": [],
+      "impl": {
+        "digest": "1faecbc25dd55cb24f8850319189d8f0e1b3712746f9af7e430915454a7b5aea",
+        "host": "opulse.meta.worlds.builder.hosts:int_text"
+      },
+      "inputs": [
+        {
+          "enter": "bottom",
+          "sort": "int"
+        }
+      ],
+      "name": "int_text",
+      "output": {
+        "enter": "bottom",
+        "sort": "str"
+      },
+      "reads_params": [],
+      "role": "transform",
+      "rule": "Given card primitive int_text",
+      "strict": true
+    },
+    {
+      "cost": 1,
+      "errors": [],
+      "impl": {
+        "digest": "4c0ea0fe4eedd593d3ac58679346b41ac78b5645aeb89ed83634955dbab04d1e",
+        "host": "opulse.meta.worlds.builder.hosts:str_concat"
+      },
+      "inputs": [
+        {
+          "enter": "bottom",
+          "sort": "str"
+        },
+        {
+          "enter": "bottom",
+          "sort": "str"
+        }
+      ],
+      "name": "str_concat",
+      "output": {
+        "enter": "bottom",
+        "sort": "str"
+      },
+      "reads_params": [],
+      "role": "transform",
+      "rule": "Given card primitive str_concat",
+      "strict": true
+    },
+    {
+      "cost": 1,
+      "errors": [],
+      "impl": {
+        "digest": "035eddd2fd4dcf78ac735582545bd589c6e795e2f7bbc08d1467cf31e920c4ed",
+        "host": "opulse.meta.worlds.builder.hosts:str_len"
+      },
+      "inputs": [
+        {
+          "enter": "bottom",
+          "sort": "str"
+        }
+      ],
+      "name": "str_len",
+      "output": {
+        "enter": "bottom",
+        "sort": "int"
+      },
+      "reads_params": [],
+      "role": "transform",
+      "rule": "Given card primitive str_len",
+      "strict": true
+    },
+    {
+      "cost": 1,
+      "errors": [],
+      "impl": {
+        "digest": "ecd7637e1327fa4b2d19dba8bfc41a0389ee6298c8e59d544591b190a8948abe",
+        "host": "opulse.meta.worlds.builder.hosts:list_index"
+      },
+      "inputs": [
+        {
+          "enter": "bottom",
+          "sort": "list"
+        },
+        {
+          "enter": "bottom",
+          "sort": "any"
+        }
+      ],
+      "name": "list_index",
+      "output": {
+        "enter": "bottom",
+        "sort": "int"
+      },
+      "reads_params": [],
+      "role": "transform",
+      "rule": "Given card primitive list_index",
+      "strict": true
+    },
+    {
+      "cost": 1,
+      "errors": [],
+      "impl": {
+        "digest": "9a40d82a885ba77bdccc96536eef1ff3e4ffc828a8280d8266f041573f8c4a98",
+        "host": "opulse.meta.worlds.builder.hosts:list_contains"
+      },
+      "inputs": [
+        {
+          "enter": "bottom",
+          "sort": "list"
+        },
+        {
+          "enter": "bottom",
+          "sort": "any"
+        }
+      ],
+      "name": "list_contains",
+      "output": {
+        "enter": "bottom",
+        "sort": "bool"
+      },
+      "reads_params": [],
+      "role": "transform",
+      "rule": "Given card primitive list_contains",
+      "strict": true
+    },
+    {
+      "cost": 1,
+      "errors": [],
+      "impl": {
+        "digest": "2db92ad8357f5cacb49d693c4092355090a01ec168a6f92d80dd5d8a4d8af4cd",
+        "host": "opulse.meta.worlds.builder.hosts:domain_values"
+      },
+      "inputs": [
+        {
+          "enter": "bottom",
+          "sort": "world"
+        },
+        {
+          "enter": "bottom",
+          "sort": "str"
+        }
+      ],
+      "name": "domain_values",
+      "output": {
+        "enter": "bottom",
+        "sort": "list"
+      },
+      "reads_params": [],
+      "role": "transform",
+      "rule": "Given card primitive domain_values",
+      "strict": true
+    },
+    {
+      "cost": 1,
+      "errors": [],
+      "impl": {
+        "digest": "3481eda42cdd2cc18e892906be57bba59cbd98b98a1240030a4f11b63de7a44b",
+        "host": "opulse.meta.worlds.builder.hosts:size"
+      },
+      "inputs": [
+        {
+          "enter": "bottom",
+          "sort": "world"
+        }
+      ],
+      "name": "size",
+      "output": {
+        "enter": "bottom",
+        "sort": "int"
+      },
+      "reads_params": [],
+      "role": "transform",
+      "rule": "Given card primitive size",
+      "strict": true
+    },
+    {
+      "cost": 1,
+      "errors": [],
+      "impl": {
+        "digest": "b3e99b4aefa356b7d5bc471cb4c31c4900e85a0dd3773c049ca07d646b56533d",
+        "host": "opulse.meta.worlds.builder.hosts:wf"
+      },
+      "inputs": [
+        {
+          "enter": "bottom",
+          "sort": "world"
+        }
+      ],
+      "name": "wf",
+      "output": {
+        "enter": "bottom",
+        "sort": "report"
+      },
+      "reads_params": [],
+      "role": "transform",
+      "rule": "Given card primitive wf",
+      "strict": true
+    },
+    {
+      "cost": 1,
+      "errors": [],
+      "impl": {
+        "digest": "91295d93411d01e838cbafe99ce59aee165068119fe33e77800a25dc2d074755",
+        "host": "opulse.meta.worlds.builder.hosts:world_hash"
+      },
+      "inputs": [
+        {
+          "enter": "bottom",
+          "sort": "world"
+        }
+      ],
+      "name": "world_hash",
+      "output": {
+        "enter": "bottom",
+        "sort": "str"
+      },
+      "reads_params": [],
+      "role": "transform",
+      "rule": "Given card primitive world_hash",
+      "strict": true
+    },
+    {
+      "cost": 1,
+      "errors": [],
+      "impl": {
+        "digest": "b386158b49c66959644aeb024c2bbf37f71eb30fa078d69bdb5d2a97f0821275",
+        "host": "opulse.meta.worlds.builder.hosts:call_in"
+      },
+      "inputs": [
+        {
+          "enter": "bottom",
+          "sort": "world"
+        },
+        {
+          "enter": "bottom",
+          "sort": "str"
+        },
+        {
+          "enter": "bottom",
+          "sort": "list"
+        }
+      ],
+      "name": "call_in",
+      "output": {
+        "enter": "bottom",
+        "sort": "any"
+      },
+      "reads_params": [],
+      "role": "transform",
+      "rule": "Given card primitive call_in",
+      "strict": true
+    },
+    {
+      "cost": 1,
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "digest": "249d7b0fc65abc2d14a42c30d94ba9aad4e8ea575b2dcdac3092fcd32d4caad3",
+        "host": "opulse.meta.code_world:code_hash"
+      },
+      "inputs": [
+        {
+          "enter": "bottom",
+          "sort": "code"
+        }
+      ],
+      "name": "code_hash",
+      "output": {
+        "enter": "bottom",
+        "sort": "str"
+      },
+      "reads_params": [],
+      "role": "transform",
+      "rule": "Content hash",
+      "strict": true
+    },
+    {
+      "cost": 0,
+      "errors": [
+        "arity",
+        "not_callable",
+        "foreign_code",
+        "ill_formed"
+      ],
+      "impl": {
+        "digest": "a847f066b675abc8ea62f7971605889e1c20a61d2df3db134aa59597a52326fc",
+        "host": "opulse.meta.engine:eval_atom"
+      },
+      "inputs": [
+        {
+          "enter": "bottom",
+          "sort": "code"
+        },
+        {
+          "enter": "bottom",
+          "sort": "list"
+        }
+      ],
+      "name": "eval",
+      "output": {
+        "enter": "bottom",
+        "sort": "any"
+      },
+      "reads_params": [],
+      "role": "transform",
+      "rule": "Metered evaluation on the shared engine",
+      "strict": true
+    },
+    {
+      "cost": 0,
+      "errors": [
+        "arity",
+        "not_callable",
+        "foreign_code",
+        "ill_formed"
+      ],
+      "impl": {
+        "digest": "2ee53b251792f24d6781f17ef6e86f59658beafac90acea496c4fdc96d82fcd9",
+        "host": "opulse.meta.engine:run_atom"
+      },
+      "inputs": [
+        {
+          "enter": "bottom",
+          "sort": "code"
+        },
+        {
+          "enter": "bottom",
+          "sort": "list"
+        },
+        {
+          "enter": "bottom",
+          "sort": "int"
+        }
+      ],
+      "name": "run",
+      "output": {
+        "enter": "bottom",
+        "sort": "any"
+      },
+      "reads_params": [],
+      "role": "transform",
+      "rule": "Metered evaluation with an inner step budget",
+      "strict": true
+    },
+    {
+      "cost": 1,
+      "errors": [],
+      "impl": {
+        "table": [
+          {
+            "inputs": [
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z0"
+              },
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z0"
+              }
+            ],
+            "out": {
+              "val": {
+                "f": [],
+                "t": "z",
+                "tag": "z0"
+              }
+            }
+          },
+          {
+            "inputs": [
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z0"
+              },
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z1"
+              }
+            ],
+            "out": {
+              "val": {
+                "f": [],
+                "t": "z",
+                "tag": "z1"
+              }
+            }
+          },
+          {
+            "inputs": [
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z0"
+              },
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z2"
+              }
+            ],
+            "out": {
+              "val": {
+                "f": [],
+                "t": "z",
+                "tag": "z2"
+              }
+            }
+          },
+          {
+            "inputs": [
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z0"
+              },
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z3"
+              }
+            ],
+            "out": {
+              "val": {
+                "f": [],
+                "t": "z",
+                "tag": "z3"
+              }
+            }
+          },
+          {
+            "inputs": [
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z0"
+              },
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z4"
+              }
+            ],
+            "out": {
+              "val": {
+                "f": [],
+                "t": "z",
+                "tag": "z4"
+              }
+            }
+          },
+          {
+            "inputs": [
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z1"
+              },
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z0"
+              }
+            ],
+            "out": {
+              "val": {
+                "f": [],
+                "t": "z",
+                "tag": "z1"
+              }
+            }
+          },
+          {
+            "inputs": [
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z1"
+              },
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z1"
+              }
+            ],
+            "out": {
+              "val": {
+                "f": [],
+                "t": "z",
+                "tag": "z2"
+              }
+            }
+          },
+          {
+            "inputs": [
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z1"
+              },
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z2"
+              }
+            ],
+            "out": {
+              "val": {
+                "f": [],
+                "t": "z",
+                "tag": "z3"
+              }
+            }
+          },
+          {
+            "inputs": [
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z1"
+              },
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z3"
+              }
+            ],
+            "out": {
+              "val": {
+                "f": [],
+                "t": "z",
+                "tag": "z4"
+              }
+            }
+          },
+          {
+            "inputs": [
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z1"
+              },
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z4"
+              }
+            ],
+            "out": {
+              "val": {
+                "f": [],
+                "t": "z",
+                "tag": "z0"
+              }
+            }
+          },
+          {
+            "inputs": [
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z2"
+              },
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z0"
+              }
+            ],
+            "out": {
+              "val": {
+                "f": [],
+                "t": "z",
+                "tag": "z2"
+              }
+            }
+          },
+          {
+            "inputs": [
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z2"
+              },
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z1"
+              }
+            ],
+            "out": {
+              "val": {
+                "f": [],
+                "t": "z",
+                "tag": "z3"
+              }
+            }
+          },
+          {
+            "inputs": [
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z2"
+              },
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z2"
+              }
+            ],
+            "out": {
+              "val": {
+                "f": [],
+                "t": "z",
+                "tag": "z4"
+              }
+            }
+          },
+          {
+            "inputs": [
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z2"
+              },
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z3"
+              }
+            ],
+            "out": {
+              "val": {
+                "f": [],
+                "t": "z",
+                "tag": "z0"
+              }
+            }
+          },
+          {
+            "inputs": [
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z2"
+              },
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z4"
+              }
+            ],
+            "out": {
+              "val": {
+                "f": [],
+                "t": "z",
+                "tag": "z1"
+              }
+            }
+          },
+          {
+            "inputs": [
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z3"
+              },
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z0"
+              }
+            ],
+            "out": {
+              "val": {
+                "f": [],
+                "t": "z",
+                "tag": "z3"
+              }
+            }
+          },
+          {
+            "inputs": [
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z3"
+              },
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z1"
+              }
+            ],
+            "out": {
+              "val": {
+                "f": [],
+                "t": "z",
+                "tag": "z4"
+              }
+            }
+          },
+          {
+            "inputs": [
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z3"
+              },
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z2"
+              }
+            ],
+            "out": {
+              "val": {
+                "f": [],
+                "t": "z",
+                "tag": "z0"
+              }
+            }
+          },
+          {
+            "inputs": [
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z3"
+              },
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z3"
+              }
+            ],
+            "out": {
+              "val": {
+                "f": [],
+                "t": "z",
+                "tag": "z1"
+              }
+            }
+          },
+          {
+            "inputs": [
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z3"
+              },
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z4"
+              }
+            ],
+            "out": {
+              "val": {
+                "f": [],
+                "t": "z",
+                "tag": "z2"
+              }
+            }
+          },
+          {
+            "inputs": [
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z4"
+              },
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z0"
+              }
+            ],
+            "out": {
+              "val": {
+                "f": [],
+                "t": "z",
+                "tag": "z4"
+              }
+            }
+          },
+          {
+            "inputs": [
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z4"
+              },
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z1"
+              }
+            ],
+            "out": {
+              "val": {
+                "f": [],
+                "t": "z",
+                "tag": "z0"
+              }
+            }
+          },
+          {
+            "inputs": [
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z4"
+              },
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z2"
+              }
+            ],
+            "out": {
+              "val": {
+                "f": [],
+                "t": "z",
+                "tag": "z1"
+              }
+            }
+          },
+          {
+            "inputs": [
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z4"
+              },
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z3"
+              }
+            ],
+            "out": {
+              "val": {
+                "f": [],
+                "t": "z",
+                "tag": "z2"
+              }
+            }
+          },
+          {
+            "inputs": [
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z4"
+              },
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z4"
+              }
+            ],
+            "out": {
+              "val": {
+                "f": [],
+                "t": "z",
+                "tag": "z3"
+              }
+            }
+          }
+        ]
+      },
+      "inputs": [
+        {
+          "enter": "bottom",
+          "sort": "z"
+        },
+        {
+          "enter": "bottom",
+          "sort": "z"
+        }
+      ],
+      "name": "add5",
+      "output": {
+        "enter": "bottom",
+        "sort": "z"
+      },
+      "reads_params": [],
+      "role": "combine",
+      "rule": "Finite table add5",
+      "strict": true
+    },
+    {
+      "cost": 1,
+      "errors": [],
+      "impl": {
+        "table": [
+          {
+            "inputs": [
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z0"
+              },
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z0"
+              }
+            ],
+            "out": {
+              "val": {
+                "f": [],
+                "t": "z",
+                "tag": "z0"
+              }
+            }
+          },
+          {
+            "inputs": [
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z0"
+              },
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z1"
+              }
+            ],
+            "out": {
+              "val": {
+                "f": [],
+                "t": "z",
+                "tag": "z0"
+              }
+            }
+          },
+          {
+            "inputs": [
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z0"
+              },
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z2"
+              }
+            ],
+            "out": {
+              "val": {
+                "f": [],
+                "t": "z",
+                "tag": "z0"
+              }
+            }
+          },
+          {
+            "inputs": [
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z0"
+              },
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z3"
+              }
+            ],
+            "out": {
+              "val": {
+                "f": [],
+                "t": "z",
+                "tag": "z0"
+              }
+            }
+          },
+          {
+            "inputs": [
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z0"
+              },
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z4"
+              }
+            ],
+            "out": {
+              "val": {
+                "f": [],
+                "t": "z",
+                "tag": "z0"
+              }
+            }
+          },
+          {
+            "inputs": [
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z1"
+              },
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z0"
+              }
+            ],
+            "out": {
+              "val": {
+                "f": [],
+                "t": "z",
+                "tag": "z0"
+              }
+            }
+          },
+          {
+            "inputs": [
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z1"
+              },
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z1"
+              }
+            ],
+            "out": {
+              "val": {
+                "f": [],
+                "t": "z",
+                "tag": "z1"
+              }
+            }
+          },
+          {
+            "inputs": [
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z1"
+              },
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z2"
+              }
+            ],
+            "out": {
+              "val": {
+                "f": [],
+                "t": "z",
+                "tag": "z2"
+              }
+            }
+          },
+          {
+            "inputs": [
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z1"
+              },
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z3"
+              }
+            ],
+            "out": {
+              "val": {
+                "f": [],
+                "t": "z",
+                "tag": "z3"
+              }
+            }
+          },
+          {
+            "inputs": [
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z1"
+              },
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z4"
+              }
+            ],
+            "out": {
+              "val": {
+                "f": [],
+                "t": "z",
+                "tag": "z4"
+              }
+            }
+          },
+          {
+            "inputs": [
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z2"
+              },
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z0"
+              }
+            ],
+            "out": {
+              "val": {
+                "f": [],
+                "t": "z",
+                "tag": "z0"
+              }
+            }
+          },
+          {
+            "inputs": [
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z2"
+              },
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z1"
+              }
+            ],
+            "out": {
+              "val": {
+                "f": [],
+                "t": "z",
+                "tag": "z2"
+              }
+            }
+          },
+          {
+            "inputs": [
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z2"
+              },
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z2"
+              }
+            ],
+            "out": {
+              "val": {
+                "f": [],
+                "t": "z",
+                "tag": "z4"
+              }
+            }
+          },
+          {
+            "inputs": [
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z2"
+              },
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z3"
+              }
+            ],
+            "out": {
+              "val": {
+                "f": [],
+                "t": "z",
+                "tag": "z1"
+              }
+            }
+          },
+          {
+            "inputs": [
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z2"
+              },
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z4"
+              }
+            ],
+            "out": {
+              "val": {
+                "f": [],
+                "t": "z",
+                "tag": "z3"
+              }
+            }
+          },
+          {
+            "inputs": [
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z3"
+              },
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z0"
+              }
+            ],
+            "out": {
+              "val": {
+                "f": [],
+                "t": "z",
+                "tag": "z0"
+              }
+            }
+          },
+          {
+            "inputs": [
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z3"
+              },
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z1"
+              }
+            ],
+            "out": {
+              "val": {
+                "f": [],
+                "t": "z",
+                "tag": "z3"
+              }
+            }
+          },
+          {
+            "inputs": [
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z3"
+              },
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z2"
+              }
+            ],
+            "out": {
+              "val": {
+                "f": [],
+                "t": "z",
+                "tag": "z1"
+              }
+            }
+          },
+          {
+            "inputs": [
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z3"
+              },
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z3"
+              }
+            ],
+            "out": {
+              "val": {
+                "f": [],
+                "t": "z",
+                "tag": "z4"
+              }
+            }
+          },
+          {
+            "inputs": [
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z3"
+              },
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z4"
+              }
+            ],
+            "out": {
+              "val": {
+                "f": [],
+                "t": "z",
+                "tag": "z2"
+              }
+            }
+          },
+          {
+            "inputs": [
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z4"
+              },
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z0"
+              }
+            ],
+            "out": {
+              "val": {
+                "f": [],
+                "t": "z",
+                "tag": "z0"
+              }
+            }
+          },
+          {
+            "inputs": [
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z4"
+              },
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z1"
+              }
+            ],
+            "out": {
+              "val": {
+                "f": [],
+                "t": "z",
+                "tag": "z4"
+              }
+            }
+          },
+          {
+            "inputs": [
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z4"
+              },
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z2"
+              }
+            ],
+            "out": {
+              "val": {
+                "f": [],
+                "t": "z",
+                "tag": "z3"
+              }
+            }
+          },
+          {
+            "inputs": [
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z4"
+              },
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z3"
+              }
+            ],
+            "out": {
+              "val": {
+                "f": [],
+                "t": "z",
+                "tag": "z2"
+              }
+            }
+          },
+          {
+            "inputs": [
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z4"
+              },
+              {
+                "f": [],
+                "t": "z",
+                "tag": "z4"
+              }
+            ],
+            "out": {
+              "val": {
+                "f": [],
+                "t": "z",
+                "tag": "z1"
+              }
+            }
+          }
+        ]
+      },
+      "inputs": [
+        {
+          "enter": "bottom",
+          "sort": "z"
+        },
+        {
+          "enter": "bottom",
+          "sort": "z"
+        }
+      ],
+      "name": "mul5",
+      "output": {
+        "enter": "bottom",
+        "sort": "z"
+      },
+      "reads_params": [],
+      "role": "combine",
+      "rule": "Finite table mul5",
+      "strict": true
+    }
+  ],
+  "params": {},
+  "schema": "opulse.world/2",
+  "tags": {
+    "agents": 1,
+    "difficulty": "five levels from cards to verified world composition",
+    "domain": "program",
+    "modalities": [
+      "text"
+    ],
+    "open_kinds": [
+      "object",
+      "operation",
+      "combinator",
+      "observation",
+      "law",
+      "bridge"
+    ],
+    "outcomes": "deterministic",
+    "reasoning": [
+      "compute",
+      "equivalence",
+      "search"
+    ],
+    "scale": "finite tables with at most 4096 tuples",
+    "star_kind": "operation",
+    "state": "stateless",
+    "uses": [
+      "teaching",
+      "evaluation",
+      "experiment"
+    ],
+    "visibility": "partial"
+  },
+  "version": 1,
+  "world": "builder"
+}

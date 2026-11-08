@@ -1,0 +1,15 @@
+.venv/
+__pycache__/
+*.egg-info/
+.pytest_cache/
+/build/
+/build/challenge_v2/
+dist/
+outputs/
+crosscheck_disagreements.jsonl
+*.so
+*.c
+*.pyx
+site/
+tools/video/output/
+tools/challenge_v2_grading.json

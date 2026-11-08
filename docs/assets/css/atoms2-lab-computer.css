@@ -1,0 +1,58 @@
+.a2-computer { max-width: 1120px; margin: 0 auto 2.5rem; }
+.a2-computer-overline { font: 700 .72rem var(--a2-mono, monospace); letter-spacing: .13em; color: var(--a2-muted); }
+.a2-computer h1 { margin: .4rem 0; font-size: clamp(2rem, 4vw, 3.5rem); line-height: 1.1; }
+.a2-computer > p { max-width: 72ch; margin: .7rem 0; }
+.a2-computer-workshop-entry { display: flex; align-items: center; flex-wrap: wrap; gap: .3rem .8rem; margin: .85rem 0; padding: .7rem .85rem; border: 1px solid var(--a2-line); border-radius: 9px; background: var(--a2-panel-2); font-size: .82rem; }
+.a2-computer-workshop-entry span { color: var(--a2-muted); }
+.a2-computer-workshop-entry a { margin-left: auto; }
+.a2-computer-panel { margin-top: 1rem; padding: clamp(.75rem, 2vw, 1.25rem); border: 1px solid var(--a2-line); border-radius: 14px; background: var(--a2-panel); }
+.a2-computer-badges { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; font-size: .76rem; color: var(--a2-muted); }
+.a2-computer-summary { min-width: 0; overflow-wrap: anywhere; margin: .8rem 0; padding: .65rem .8rem; border: 1px solid var(--a2-line); border-radius: 8px; background: var(--a2-panel-2); }
+.a2-computer-summary strong { font-size: clamp(.85rem, 1.6vw, 1.1rem); }
+.a2-computer-value { color: var(--op-cyan); font: 700 1em var(--a2-mono, monospace); font-variant-numeric: tabular-nums; }
+.a2-computer-different { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: .23em; }
+.a2-computer-machines { display: grid; grid-template-columns: minmax(0, 1fr); gap: .75rem; }
+.a2-computer-machine { min-width: 0; padding: .8rem; border: 1px solid var(--a2-line); border-radius: 10px; background: var(--a2-panel-2); }
+.a2-computer-machine.a2-computer-selected { border-color: var(--op-amber); box-shadow: inset 0 3px var(--op-amber); }
+.a2-computer-machine-head { display: flex; align-items: center; flex-wrap: wrap; gap: .45rem; margin-bottom: .65rem; font-size: .85rem; }
+.a2-computer-machine-head .a2-badge { display: block; flex-basis: 100%; width: max-content; }
+.a2-computer-vectors { display: grid; gap: .32rem; }
+.a2-computer-vector { display: grid; grid-template-columns: 1.25rem minmax(0, 1fr); align-items: center; gap: .3rem; }
+.a2-computer-vector > .a2-expr { padding: 0; font-size: .8rem; }
+.a2-computer-cells { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 2px; min-width: 0; }
+.a2-computer-byte { min-width: 0; display: grid; place-items: center; padding: .16rem 0; border: 1px solid var(--a2-line); border-radius: 4px; font-size: clamp(.54rem, .8vw, .78rem); line-height: 1.15; }
+.a2-computer-byte small { color: var(--a2-muted); font: 600 .64em var(--a2-mono, monospace); }
+.a2-computer-byte .a2-computer-value { font-size: 1em; }
+.a2-computer-byte.a2-computer-active { background: color-mix(in srgb, var(--op-amber) 23%, var(--a2-panel)); border-color: var(--op-amber); }
+.a2-computer-byte.a2-computer-last { border-style: dashed; }
+.a2-computer-readout { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; margin: .75rem 0 .55rem; }
+.a2-computer-registers { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .2rem; }
+.a2-computer-register { display: flex; flex-direction: column; align-items: center; min-width: 0; padding: .25rem 0; border: 1px solid var(--a2-line); border-radius: 5px; font-size: .72rem; }
+.a2-computer-register .a2-expr { padding: 0; }
+.a2-computer-register .a2-computer-value { animation: a2-computer-roll .38s ease-out both; }
+.a2-computer-outcome { display: grid; align-content: center; gap: .2rem; min-width: 0; font-size: .72rem; }
+.a2-computer-outcome > div { display: flex; flex-wrap: wrap; gap: .2rem; justify-content: space-between; }
+.a2-computer-outcome .a2-expr { padding: 0; }
+.a2-computer-fuel { font-size: .7rem; color: var(--a2-muted); }
+.a2-computer-fuel-track { height: 6px; margin-top: .2rem; border-radius: 6px; background: var(--a2-line); overflow: hidden; }
+.a2-computer-fuel-fill { height: 100%; background: var(--op-amber); transition: width .38s ease-out; }
+.a2-computer-state { margin: .5rem 0 0; font-size: .7rem; color: var(--a2-muted); }
+.a2-computer-state.a2-computer-unknown { color: var(--a2-bottom); font-weight: 700; }
+.a2-computer-controls { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; margin: .7rem 0 0; }
+.a2-computer-controls button { white-space: nowrap; }
+.a2-computer-controls label { display: flex; gap: .35rem; align-items: center; font-size: .8rem; }
+.a2-computer-controls input[type=number] { width: 6rem; padding: .3rem; background: var(--a2-panel-2); color: var(--a2-ink); border: 1px solid var(--a2-line); }
+.a2-computer-controls input[type=range] { flex: 1 1 10rem; min-width: 0; accent-color: var(--op-amber); }
+.a2-computer-step { flex-basis: 100%; color: var(--a2-muted); font: .74rem var(--a2-mono, monospace); }
+.a2-computer-method { margin-top: .8rem; border: 1px solid var(--a2-line); border-radius: 8px; padding: .4rem .7rem; font-size: .78rem; }
+.a2-computer-method summary { cursor: pointer; font-weight: 700; }
+.a2-computer-method p { margin: .4rem 0; color: var(--a2-muted); }
+.a2-computer button:focus-visible, .a2-computer input:focus-visible, .a2-computer summary:focus-visible { outline: 2px solid var(--op-amber); outline-offset: 3px; }
+@keyframes a2-computer-roll { from { opacity: .4; transform: translateY(-9px); } to { opacity: 1; transform: none; } }
+@media (max-width: 900px) { .a2-computer-machines { grid-template-columns: minmax(0, 1fr); } .a2-computer-byte { font-size: clamp(.65rem, 2vw, .85rem); } }
+@media (max-width: 480px) { .a2-computer-machine { padding: .5rem; } .a2-computer-readout { grid-template-columns: minmax(0, 1fr); } .a2-computer-cells { grid-template-columns: repeat(6, minmax(0, 1fr)); } .a2-computer-byte { font-size: .75rem; } .a2-computer-scrub { gap: .35rem; } .a2-computer-scrub input[type=range] { flex-basis: 4rem; } }
+@media (prefers-reduced-motion: reduce) { .a2-computer *, .a2-computer *::before { animation: none !important; transition: none !important; } }
+.a2-computer-world { display: flex; align-items: center; flex-wrap: wrap; gap: .5rem; margin: .5rem 0; }
+.a2-computer-world select { color: var(--a2-ink); background: var(--a2-panel); border: 1px solid var(--a2-line); padding: .35rem; max-width: 100%; }
+.a2-computer-run-status { margin: .35rem 0; font-size: .8rem; }
+.a2-computer-world select:focus-visible { outline: 2px solid var(--op-amber); }

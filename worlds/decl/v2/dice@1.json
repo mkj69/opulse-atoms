@@ -1,0 +1,1677 @@
+{
+  "schema": "opulse.world/2",
+  "world": "dice",
+  "version": 1,
+  "dialect": "atoms-v2",
+  "title": "Hidden Dice and Absorbing Walk",
+  "source": {
+    "title_zh": "暗骰与吸收游走"
+  },
+  "params": {},
+  "constants": {
+    "Fair": {
+      "weights": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    "Tilt": {
+      "weights": [
+        1,
+        1,
+        1,
+        1,
+        2,
+        6
+      ]
+    }
+  },
+  "objects": [
+    {
+      "kind": "object",
+      "name": "int",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Integer and bounded natural positions."
+    },
+    {
+      "kind": "object",
+      "name": "bool",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Truth value."
+    },
+    {
+      "kind": "object",
+      "name": "value",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Generic finite constructor/accessor value."
+    },
+    {
+      "kind": "object",
+      "name": "fraction",
+      "form": "compose",
+      "base": null,
+      "tags": {
+        "rational": {
+          "num": "int",
+          "den": "int"
+        }
+      },
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Canonical rational."
+    },
+    {
+      "kind": "object",
+      "name": "die",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Six strictly positive integer face weights."
+    },
+    {
+      "kind": "object",
+      "name": "Fair",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Named fair six-faced die, weights 1,1,1,1,1,1."
+    },
+    {
+      "kind": "object",
+      "name": "Tilt",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Named tilted six-faced die, weights 1,1,1,1,2,6."
+    },
+    {
+      "kind": "object",
+      "name": "dist",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": true,
+      "interface": [
+        "roll",
+        "pure",
+        "mass",
+        "entries",
+        "make_dist"
+      ],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Finite canonical normalized rational distribution."
+    },
+    {
+      "kind": "object",
+      "name": "state",
+      "form": "compose",
+      "base": null,
+      "tags": {
+        "position_die": {
+          "position": "int",
+          "die": "int"
+        }
+      },
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Position and persistent hidden die index 0 or 1."
+    },
+    {
+      "kind": "object",
+      "name": "weighted",
+      "form": "compose",
+      "base": null,
+      "tags": {
+        "entry": {
+          "value": "value",
+          "num": "int",
+          "den": "int"
+        }
+      },
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Generic weighted entry."
+    }
+  ],
+  "operations": [
+    {
+      "kind": "operation",
+      "name": "roll",
+      "symbol": "roll(die)",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "die",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "dist",
+        "enter": "bottom"
+      },
+      "rule": "Normalize the six positive integer die weights, without sampling.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.dice.hosts:roll",
+        "digest": "034d7490b08f6adf5c92ac401d9f8ecaaf028e3d3692ca593e0c69d38f14ce94"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "pure",
+      "symbol": "pure(value)",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "value",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "dist",
+        "enter": "bottom"
+      },
+      "rule": "One-point probability distribution for any hashable value.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.dice.hosts:pure",
+        "digest": "4c14d02cfd94453582b622b9243b4ef8274321d976501bbaf3f90c0d8a6e54d4"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "jump",
+      "symbol": "jump(int,int,int)",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg2",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Move -1 for 2..6, +1 for 7..9, +2 for 10..12; clip to 0..goal.",
+      "errors": [
+        "invalid",
+        "domain"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.dice.hosts:jump",
+        "digest": "933969a8f7779874e2961a522ad7b90a0d9d9ac2dc24d891c613ea63e6d3a202"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "mass",
+      "symbol": "mass(dist,value)",
+      "role": "decide",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "dist",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "value",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "fraction",
+        "enter": "bottom"
+      },
+      "rule": "Sum exact rational mass selected by an event range or finite set.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.dice.hosts:mass",
+        "digest": "7e1915d40ad6fad46c2de15eb225fd1f1992f0ce4721c6ac3709fee6c8b53065"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "entries",
+      "symbol": "entries(dist)",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "dist",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "value",
+        "enter": "bottom"
+      },
+      "rule": "Generic constructor, accessor, finite-list or exact-arithmetic primitive.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.dice.hosts:entries",
+        "digest": "31bcf1662a0b3abf5e69a4c4e9faab17355ce413841df85473645cd2b7d6c686"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "item",
+      "symbol": "item(weighted)",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "weighted",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "value",
+        "enter": "bottom"
+      },
+      "rule": "Generic constructor, accessor, finite-list or exact-arithmetic primitive.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.dice.hosts:item",
+        "digest": "0761f0fb7fc6ebf9df76f4b95b16a872939a1f407b796f2b35bca1a3cfa6f80b"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "weight",
+      "symbol": "weight(weighted)",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "weighted",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "fraction",
+        "enter": "bottom"
+      },
+      "rule": "Generic constructor, accessor, finite-list or exact-arithmetic primitive.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.dice.hosts:weight",
+        "digest": "bdeea4fcd7a0c3f0cbf24bce46242cc9c0a07ff3f7fa4c55d220d71d6ce4978f"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "field",
+      "symbol": "field(value,int)",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "value",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "value",
+        "enter": "bottom"
+      },
+      "rule": "Generic constructor, accessor, finite-list or exact-arithmetic primitive.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.dice.hosts:field",
+        "digest": "490afdb4712d2b501d918e1d8fb1e4f48e1886d2b55d3d219b0dac02ba719982"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "pair",
+      "symbol": "pair(value,value)",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "value",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "value",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "value",
+        "enter": "bottom"
+      },
+      "rule": "Generic constructor, accessor, finite-list or exact-arithmetic primitive.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.dice.hosts:pair",
+        "digest": "90393810c38b05b579ab333d33c27a6eee7e1bf7c45bcb356a0ca11b70ecb79a"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "state",
+      "symbol": "state(int,int)",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "state",
+        "enter": "bottom"
+      },
+      "rule": "Generic constructor, accessor, finite-list or exact-arithmetic primitive.",
+      "errors": [
+        "invalid",
+        "domain"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.dice.hosts:state",
+        "digest": "be3284562c4bec877abdc9e9bdac6084f1e59ab8f073e7f4609115b005663d72"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "die",
+      "symbol": "die(int,int,int,int,int,int)",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg2",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg3",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg4",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg5",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "die",
+        "enter": "bottom"
+      },
+      "rule": "Generic constructor, accessor, finite-list or exact-arithmetic primitive.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.dice.hosts:die",
+        "digest": "56b204090c48265cc2dd6040a7f936d9b34c5998267d29b22b4e8e5a83b836ea"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "event",
+      "symbol": "event(int,int)",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "value",
+        "enter": "bottom"
+      },
+      "rule": "Generic constructor, accessor, finite-list or exact-arithmetic primitive.",
+      "errors": [
+        "invalid",
+        "domain"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.dice.hosts:event",
+        "digest": "6438426ef5ed0eeac664a27097c3e706ec8f3a36a63041a7b737b1ee92b75bad"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "belief",
+      "symbol": "belief(fraction,fraction)",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "fraction",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "fraction",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "value",
+        "enter": "bottom"
+      },
+      "rule": "Generic constructor, accessor, finite-list or exact-arithmetic primitive.",
+      "errors": [
+        "invalid",
+        "domain"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.dice.hosts:belief",
+        "digest": "8a5a831a751a4e3e82e0585725316dbd1449581d3a99b66f3bce9c613461abaf"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "walk",
+      "symbol": "walk(value,int)",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "value",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "value",
+        "enter": "bottom"
+      },
+      "rule": "Generic constructor, accessor, finite-list or exact-arithmetic primitive.",
+      "errors": [
+        "invalid",
+        "domain"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.dice.hosts:walk",
+        "digest": "d3e3432d98015ad412a975a332981ce06cddafb1d30df484c0ea46c6a7a14415"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "make_entry",
+      "symbol": "make_entry(value,fraction)",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "value",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "fraction",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "weighted",
+        "enter": "bottom"
+      },
+      "rule": "Generic constructor, accessor, finite-list or exact-arithmetic primitive.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.dice.hosts:make_entry",
+        "digest": "5da5197779399c4a229929b6388be0231b9e0da2c69761734cfcba76fb1c6fa3"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "make_dist",
+      "symbol": "make_dist(value)",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "value",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "dist",
+        "enter": "bottom"
+      },
+      "rule": "Generic constructor, accessor, finite-list or exact-arithmetic primitive.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.dice.hosts:make_dist",
+        "digest": "e800c5d615eb9d8897148e3b71d7069c8855dbb76d851963e60c91f787e6183d"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "multiply",
+      "symbol": "multiply(fraction,fraction)",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "fraction",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "fraction",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "fraction",
+        "enter": "bottom"
+      },
+      "rule": "Generic constructor, accessor, finite-list or exact-arithmetic primitive.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.dice.hosts:multiply",
+        "digest": "d882aca7d3c5a22dbfb44dfa4624a8e964bbbdf27a25bcaec1dbe53e92a50514"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "add",
+      "symbol": "add(fraction,fraction)",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "fraction",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "fraction",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "fraction",
+        "enter": "bottom"
+      },
+      "rule": "Generic constructor, accessor, finite-list or exact-arithmetic primitive.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.dice.hosts:add",
+        "digest": "ec96765bf200eb87f1983c0168fcf4288cd6bd4260551250b88656e9d4147b49"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "divide",
+      "symbol": "divide(fraction,fraction)",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "fraction",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "fraction",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "fraction",
+        "enter": "bottom"
+      },
+      "rule": "Generic constructor, accessor, finite-list or exact-arithmetic primitive.",
+      "errors": [
+        "invalid",
+        "domain"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.dice.hosts:divide",
+        "digest": "fc18aae275bae70c7320f6ae4b2770e32ed1da15a8fe29286011b6f71c941bcb"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "subtract",
+      "symbol": "subtract(fraction,fraction)",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "fraction",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "fraction",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "fraction",
+        "enter": "bottom"
+      },
+      "rule": "Generic constructor, accessor, finite-list or exact-arithmetic primitive.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.dice.hosts:subtract",
+        "digest": "b4d77421f763bc5db02d0682683e9d618acf01b3a83aa55e343ee53ddb7fab8d"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "nth",
+      "symbol": "nth(value,int)",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "value",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "value",
+        "enter": "bottom"
+      },
+      "rule": "Generic constructor, accessor, finite-list or exact-arithmetic primitive.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.dice.hosts:nth",
+        "digest": "1918974b4345adb2fd4fcd3c673f4614bc0772ee8b6296747e3e3a5e1ec2ab0f"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "replace_at",
+      "symbol": "replace_at(value,int,value)",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "value",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg2",
+          "sort": "value",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "value",
+        "enter": "bottom"
+      },
+      "rule": "Generic constructor, accessor, finite-list or exact-arithmetic primitive.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.dice.hosts:replace_at",
+        "digest": "007501b4d4013ed842c4740f667dc22bb5e061a783dd3fb90d7c14facee714e3"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "int_add",
+      "symbol": "int_add(int,int)",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Generic constructor, accessor, finite-list or exact-arithmetic primitive.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.dice.hosts:int_add",
+        "digest": "0265a0212ce00a78b80ac061a29157b39be195e419f32f7367e232c18fa9a9ac"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "int_sub",
+      "symbol": "int_sub(int,int)",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Generic constructor, accessor, finite-list or exact-arithmetic primitive.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.dice.hosts:int_sub",
+        "digest": "afbf33736d2f78ec5bd8c946362db59b148e2fe62159098ec48f395b61bacd8e"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "int_mul_fraction",
+      "symbol": "int_mul_fraction(int,fraction)",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "fraction",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "fraction",
+        "enter": "bottom"
+      },
+      "rule": "Generic constructor, accessor, finite-list or exact-arithmetic primitive.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.dice.hosts:int_mul_fraction",
+        "digest": "39415543822316d8b0b775b8e1024af7c310661034b5f05323df09fac654e782"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "equal",
+      "symbol": "equal(value,value)",
+      "role": "decide",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "value",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "value",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Generic constructor, accessor, finite-list or exact-arithmetic primitive.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.dice.hosts:equal",
+        "digest": "aa0ede68ff259a29bfe2f00debf92177735ca59090d36e6a3fde0cafa714715e"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "less_equal",
+      "symbol": "less_equal(int,int)",
+      "role": "decide",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Generic constructor, accessor, finite-list or exact-arithmetic primitive.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.dice.hosts:less_equal",
+        "digest": "92077970e873b83bc480e65437fa749343da3e9b1c892f71c961291c2857f4e3"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "is_empty",
+      "symbol": "is_empty(value)",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "value",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Generic constructor, accessor, finite-list or exact-arithmetic primitive.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.dice.hosts:is_empty",
+        "digest": "99e1ea02782f981c5c9a5ea3c0fff3d44f470034a684f8767407318455c6b7fb"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "head",
+      "symbol": "head(value)",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "value",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "value",
+        "enter": "bottom"
+      },
+      "rule": "Generic constructor, accessor, finite-list or exact-arithmetic primitive.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.dice.hosts:head",
+        "digest": "fe606803f64c4c4efb9955862f9254668f32958fc8e7a1241564cd34cccabda4"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "tail",
+      "symbol": "tail(value)",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "value",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "value",
+        "enter": "bottom"
+      },
+      "rule": "Generic constructor, accessor, finite-list or exact-arithmetic primitive.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.dice.hosts:tail",
+        "digest": "5083bb2a07835bc3ab2a3b6a1fadf52867f8e1742f001f3d9c42604f5f4faaad"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "cons",
+      "symbol": "cons(value,value)",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "value",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "value",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "value",
+        "enter": "bottom"
+      },
+      "rule": "Generic constructor, accessor, finite-list or exact-arithmetic primitive.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.dice.hosts:cons",
+        "digest": "ed3c5f4fca7fdf6a45122b7672667d458a46255c6ef1acc17b13ef21910a10b8"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "length",
+      "symbol": "length(value)",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "value",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Generic constructor, accessor, finite-list or exact-arithmetic primitive.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.dice.hosts:length",
+        "digest": "c8c761103a3929451cbde237d35f865293b7ca50539477dcc4128f754f1d434e"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "intersect",
+      "symbol": "intersect(value,value)",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "value",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "value",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "value",
+        "enter": "bottom"
+      },
+      "rule": "Generic constructor, accessor, finite-list or exact-arithmetic primitive.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.dice.hosts:intersect",
+        "digest": "59f631bbe8ebd5e27e4f926d8a86d78a69ac31cfb938226738fcca21b97b7101"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    }
+  ],
+  "combinators": {
+    "nodes": [
+      "Var",
+      "Lit",
+      "Call",
+      "Let",
+      "Case",
+      "Rec"
+    ],
+    "library": [
+      {
+        "name": "bind",
+        "params": [
+          "dist",
+          "k",
+          "context"
+        ],
+        "op_params": [
+          "k"
+        ],
+        "body": {
+          "node": "Call",
+          "fn": "make_dist",
+          "args": [
+            {
+              "node": "Rec",
+              "fn": "outer_bind",
+              "params": [
+                "remaining",
+                "accumulated"
+              ],
+              "body": {
+                "node": "Case",
+                "arms": [
+                  [
+                    {
+                      "node": "Test",
+                      "expr": {
+                        "node": "Call",
+                        "fn": "is_empty",
+                        "args": [
+                          {
+                            "node": "Var",
+                            "name": "remaining"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "node": "Var",
+                      "name": "accumulated"
+                    }
+                  ]
+                ],
+                "default": {
+                  "node": "Let",
+                  "name": "current",
+                  "value": {
+                    "node": "Call",
+                    "fn": "head",
+                    "args": [
+                      {
+                        "node": "Var",
+                        "name": "remaining"
+                      }
+                    ]
+                  },
+                  "body": {
+                    "node": "Call",
+                    "fn": "outer_bind",
+                    "args": [
+                      {
+                        "node": "Call",
+                        "fn": "tail",
+                        "args": [
+                          {
+                            "node": "Var",
+                            "name": "remaining"
+                          }
+                        ]
+                      },
+                      {
+                        "node": "Let",
+                        "name": "outer",
+                        "value": {
+                          "node": "Var",
+                          "name": "current"
+                        },
+                        "body": {
+                          "node": "Rec",
+                          "fn": "inner_bind",
+                          "params": [
+                            "remaining",
+                            "accumulated"
+                          ],
+                          "body": {
+                            "node": "Case",
+                            "arms": [
+                              [
+                                {
+                                  "node": "Test",
+                                  "expr": {
+                                    "node": "Call",
+                                    "fn": "is_empty",
+                                    "args": [
+                                      {
+                                        "node": "Var",
+                                        "name": "remaining"
+                                      }
+                                    ]
+                                  }
+                                },
+                                {
+                                  "node": "Var",
+                                  "name": "accumulated"
+                                }
+                              ]
+                            ],
+                            "default": {
+                              "node": "Let",
+                              "name": "current",
+                              "value": {
+                                "node": "Call",
+                                "fn": "head",
+                                "args": [
+                                  {
+                                    "node": "Var",
+                                    "name": "remaining"
+                                  }
+                                ]
+                              },
+                              "body": {
+                                "node": "Call",
+                                "fn": "inner_bind",
+                                "args": [
+                                  {
+                                    "node": "Call",
+                                    "fn": "tail",
+                                    "args": [
+                                      {
+                                        "node": "Var",
+                                        "name": "remaining"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "node": "Call",
+                                    "fn": "cons",
+                                    "args": [
+                                      {
+                                        "node": "Call",
+                                        "fn": "make_entry",
+                                        "args": [
+                                          {
+                                            "node": "Call",
+                                            "fn": "item",
+                                            "args": [
+                                              {
+                                                "node": "Var",
+                                                "name": "current"
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "node": "Call",
+                                            "fn": "multiply",
+                                            "args": [
+                                              {
+                                                "node": "Call",
+                                                "fn": "weight",
+                                                "args": [
+                                                  {
+                                                    "node": "Var",
+                                                    "name": "outer"
+                                                  }
+                                                ]
+                                              },
+                                              {
+                                                "node": "Call",
+                                                "fn": "weight",
+                                                "args": [
+                                                  {
+                                                    "node": "Var",
+                                                    "name": "current"
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "node": "Var",
+                                        "name": "accumulated"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            }
+                          },
+                          "args": [
+                            {
+                              "node": "Call",
+                              "fn": "entries",
+                              "args": [
+                                {
+                                  "node": "Call",
+                                  "fn": "k",
+                                  "args": [
+                                    {
+                                      "node": "Call",
+                                      "fn": "item",
+                                      "args": [
+                                        {
+                                          "node": "Var",
+                                          "name": "current"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "node": "Var",
+                                      "name": "context"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "node": "Var",
+                              "name": "accumulated"
+                            }
+                          ],
+                          "measure": {
+                            "node": "Call",
+                            "fn": "length",
+                            "args": [
+                              {
+                                "node": "Var",
+                                "name": "remaining"
+                              }
+                            ]
+                          },
+                          "memo": false
+                        }
+                      }
+                    ]
+                  }
+                }
+              },
+              "args": [
+                {
+                  "node": "Call",
+                  "fn": "entries",
+                  "args": [
+                    {
+                      "node": "Var",
+                      "name": "dist"
+                    }
+                  ]
+                },
+                {
+                  "node": "Lit",
+                  "value": {
+                    "t": "tuple",
+                    "v": []
+                  }
+                }
+              ],
+              "measure": {
+                "node": "Call",
+                "fn": "length",
+                "args": [
+                  {
+                    "node": "Var",
+                    "name": "remaining"
+                  }
+                ]
+              },
+              "memo": false
+            }
+          ]
+        },
+        "unfold_rule": "substitute"
+      }
+    ],
+    "recursion": "measure"
+  },
+  "observation": {
+    "truth": "dist",
+    "probes": [
+      {
+        "name": "mass",
+        "sort": "fraction",
+        "reads": "dist",
+        "reveals": [
+          "event_mass"
+        ],
+        "impl": {
+          "host": "opulse.worlds_v2.dice.hosts:mass",
+          "digest": "7e1915d40ad6fad46c2de15eb225fd1f1992f0ce4721c6ac3709fee6c8b53065"
+        }
+      }
+    ],
+    "capabilities": {
+      "learner": {
+        "channels": [
+          "results",
+          "errors",
+          "renders",
+          "traces",
+          "steps"
+        ],
+        "probes": "all"
+      }
+    },
+    "show": {
+      "input": "distribution",
+      "result": "fraction"
+    },
+    "judge_view": "full_state"
+  },
+  "codec": {},
+  "lock": {
+    "host_digests": {
+      "roll": "034d7490b08f6adf5c92ac401d9f8ecaaf028e3d3692ca593e0c69d38f14ce94",
+      "pure": "4c14d02cfd94453582b622b9243b4ef8274321d976501bbaf3f90c0d8a6e54d4",
+      "jump": "933969a8f7779874e2961a522ad7b90a0d9d9ac2dc24d891c613ea63e6d3a202",
+      "mass": "7e1915d40ad6fad46c2de15eb225fd1f1992f0ce4721c6ac3709fee6c8b53065",
+      "entries": "31bcf1662a0b3abf5e69a4c4e9faab17355ce413841df85473645cd2b7d6c686",
+      "item": "0761f0fb7fc6ebf9df76f4b95b16a872939a1f407b796f2b35bca1a3cfa6f80b",
+      "weight": "bdeea4fcd7a0c3f0cbf24bce46242cc9c0a07ff3f7fa4c55d220d71d6ce4978f",
+      "field": "490afdb4712d2b501d918e1d8fb1e4f48e1886d2b55d3d219b0dac02ba719982",
+      "pair": "90393810c38b05b579ab333d33c27a6eee7e1bf7c45bcb356a0ca11b70ecb79a",
+      "state": "be3284562c4bec877abdc9e9bdac6084f1e59ab8f073e7f4609115b005663d72",
+      "die": "56b204090c48265cc2dd6040a7f936d9b34c5998267d29b22b4e8e5a83b836ea",
+      "event": "6438426ef5ed0eeac664a27097c3e706ec8f3a36a63041a7b737b1ee92b75bad",
+      "belief": "8a5a831a751a4e3e82e0585725316dbd1449581d3a99b66f3bce9c613461abaf",
+      "walk": "d3e3432d98015ad412a975a332981ce06cddafb1d30df484c0ea46c6a7a14415",
+      "make_entry": "5da5197779399c4a229929b6388be0231b9e0da2c69761734cfcba76fb1c6fa3",
+      "make_dist": "e800c5d615eb9d8897148e3b71d7069c8855dbb76d851963e60c91f787e6183d",
+      "multiply": "d882aca7d3c5a22dbfb44dfa4624a8e964bbbdf27a25bcaec1dbe53e92a50514",
+      "add": "ec96765bf200eb87f1983c0168fcf4288cd6bd4260551250b88656e9d4147b49",
+      "divide": "fc18aae275bae70c7320f6ae4b2770e32ed1da15a8fe29286011b6f71c941bcb",
+      "subtract": "b4d77421f763bc5db02d0682683e9d618acf01b3a83aa55e343ee53ddb7fab8d",
+      "nth": "1918974b4345adb2fd4fcd3c673f4614bc0772ee8b6296747e3e3a5e1ec2ab0f",
+      "replace_at": "007501b4d4013ed842c4740f667dc22bb5e061a783dd3fb90d7c14facee714e3",
+      "int_add": "0265a0212ce00a78b80ac061a29157b39be195e419f32f7367e232c18fa9a9ac",
+      "int_sub": "afbf33736d2f78ec5bd8c946362db59b148e2fe62159098ec48f395b61bacd8e",
+      "int_mul_fraction": "39415543822316d8b0b775b8e1024af7c310661034b5f05323df09fac654e782",
+      "equal": "aa0ede68ff259a29bfe2f00debf92177735ca59090d36e6a3fde0cafa714715e",
+      "less_equal": "92077970e873b83bc480e65437fa749343da3e9b1c892f71c961291c2857f4e3",
+      "is_empty": "99e1ea02782f981c5c9a5ea3c0fff3d44f470034a684f8767407318455c6b7fb",
+      "head": "fe606803f64c4c4efb9955862f9254668f32958fc8e7a1241564cd34cccabda4",
+      "tail": "5083bb2a07835bc3ab2a3b6a1fadf52867f8e1742f001f3d9c42604f5f4faaad",
+      "cons": "ed3c5f4fca7fdf6a45122b7672667d458a46255c6ef1acc17b13ef21910a10b8",
+      "length": "c8c761103a3929451cbde237d35f865293b7ca50539477dcc4128f754f1d434e",
+      "intersect": "59f631bbe8ebd5e27e4f926d8a86d78a69ac31cfb938226738fcca21b97b7101",
+      "probe.mass": "7e1915d40ad6fad46c2de15eb225fd1f1992f0ce4721c6ac3709fee6c8b53065"
+    },
+    "constants_hash": "18186e9e75358ab47532cc72f42795de42b2662ee3f0b4d3de1e6131b757e2a1",
+    "world_hash": "d164e031f269c3f81cbc832376da4a405c90210005b79c6042f7029cdf56d6fe"
+  }
+}

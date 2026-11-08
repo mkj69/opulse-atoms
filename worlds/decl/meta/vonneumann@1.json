@@ -1,0 +1,536 @@
+{
+  "tags": {
+    "domain": "program",
+    "modalities": [
+      "text",
+      "image"
+    ],
+    "open_kinds": [
+      "object",
+      "operation",
+      "combinator",
+      "observation",
+      "law",
+      "bridge"
+    ],
+    "star_kind": "operation",
+    "reasoning": [
+      "compute",
+      "search",
+      "inference"
+    ],
+    "state": "stateful",
+    "outcomes": "deterministic",
+    "visibility": "full",
+    "agents": 1,
+    "scale": "32 memory bytes; invented kernel definitions and 4 verified routines",
+    "difficulty": "straight-line execution to self-modifying full-state inference",
+    "uses": [
+      "evaluation",
+      "interpretability",
+      "teaching"
+    ]
+  },
+  "schema": "opulse.world/2",
+  "world": "vonneumann",
+  "version": 1,
+  "dialect": "atoms-v2",
+  "params": {
+    "n": 32
+  },
+  "constants": {},
+  "objects": [
+    {
+      "name": "byte",
+      "form": "refine",
+      "base": "int",
+      "tags": null,
+      "group": [],
+      "valid": {
+        "host": "opulse.meta.vn.machine:_byte",
+        "digest": "6bfbfdbfad701a7f2ebe1166f870b99794b9229e2ff04913578bad5778fb537c"
+      },
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null
+    },
+    {
+      "name": "mem",
+      "form": "compose",
+      "base": null,
+      "tags": {
+        "items": {
+          "items": "byte"
+        }
+      },
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [
+        "n:int"
+      ],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null
+    },
+    {
+      "name": "vn",
+      "form": "compose",
+      "base": null,
+      "tags": {
+        "vn": [
+          [
+            "pc",
+            "int"
+          ],
+          [
+            "a",
+            "byte"
+          ],
+          [
+            "mem",
+            "mem"
+          ],
+          [
+            "halted",
+            "bool"
+          ]
+        ]
+      },
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null
+    }
+  ],
+  "operations": [
+    {
+      "input_names": [
+        "s"
+      ],
+      "name": "step",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "vn",
+          "enter": "bottom",
+          "name": "s"
+        }
+      ],
+      "output": {
+        "sort": "vn",
+        "enter": "bottom"
+      },
+      "rule": "vn/1 step",
+      "errors": [
+        "illegal"
+      ],
+      "impl": {
+        "host": "opulse.meta.vn.machine:step",
+        "digest": "5802e4525e0d0a4bbe01432d724583312cf6f615f12fc22e86f457d22b4bb765"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "input_names": [
+        "s"
+      ],
+      "name": "is_halted",
+      "role": "decide",
+      "inputs": [
+        {
+          "sort": "vn",
+          "enter": "bottom",
+          "name": "s"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "vn/1 is_halted",
+      "errors": [],
+      "impl": {
+        "host": "opulse.meta.vn.machine:is_halted",
+        "digest": "c3aa02c744b2e1da28a9f7b9cabcec38e526d739dee65b53c427a32d283b6e62"
+      },
+      "cost": 0,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "input_names": [
+        "s",
+        "k",
+        "b"
+      ],
+      "name": "poke",
+      "role": "act",
+      "inputs": [
+        {
+          "sort": "vn",
+          "enter": "bottom",
+          "name": "s"
+        },
+        {
+          "sort": "int",
+          "enter": "bottom",
+          "name": "k"
+        },
+        {
+          "sort": "byte",
+          "enter": "bottom",
+          "name": "b"
+        }
+      ],
+      "output": {
+        "sort": "vn",
+        "enter": "bottom"
+      },
+      "rule": "vn/1 poke",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.meta.vn.machine:poke",
+        "digest": "f32a1ef418c19acc0e7405afd1fc6730e11875878dc119d1e9044d45d5d07ff8"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "input_names": [
+        "s",
+        "k"
+      ],
+      "name": "peek",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "vn",
+          "enter": "bottom",
+          "name": "s"
+        },
+        {
+          "sort": "int",
+          "enter": "bottom",
+          "name": "k"
+        }
+      ],
+      "output": {
+        "sort": "byte",
+        "enter": "bottom"
+      },
+      "rule": "vn/1 peek",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.meta.vn.machine:peek",
+        "digest": "8ebe8b16027542a23d84138be7830d62d0c1b76fa5802203ba4d00b217dfe03a"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "input_names": [
+        "s",
+        "k"
+      ],
+      "name": "set_a",
+      "role": "act",
+      "inputs": [
+        {
+          "sort": "vn",
+          "enter": "bottom",
+          "name": "s"
+        },
+        {
+          "sort": "byte",
+          "enter": "bottom",
+          "name": "k"
+        }
+      ],
+      "output": {
+        "sort": "vn",
+        "enter": "bottom"
+      },
+      "rule": "vn/1 set_a",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.meta.vn.machine:set_a",
+        "digest": "2600359cc3c1db871467ae03b602c7d88119770169c17fa78d119e2975a4d03c"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "input_names": [
+        "s"
+      ],
+      "name": "get_a",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "vn",
+          "enter": "bottom",
+          "name": "s"
+        }
+      ],
+      "output": {
+        "sort": "byte",
+        "enter": "bottom"
+      },
+      "rule": "vn/1 get_a",
+      "errors": [],
+      "impl": {
+        "host": "opulse.meta.vn.machine:get_a",
+        "digest": "8a7fe588e872a37dabc5be5e484b014087ea277e2ebe78fce169165a677fac70"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "input_names": [
+        "s",
+        "k"
+      ],
+      "name": "set_pc",
+      "role": "act",
+      "inputs": [
+        {
+          "sort": "vn",
+          "enter": "bottom",
+          "name": "s"
+        },
+        {
+          "sort": "int",
+          "enter": "bottom",
+          "name": "k"
+        }
+      ],
+      "output": {
+        "sort": "vn",
+        "enter": "bottom"
+      },
+      "rule": "vn/1 set_pc",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.meta.vn.machine:set_pc",
+        "digest": "13799eaf2083337aaf185ec243fbe74dc37ad5a15c5bedbfc9852e15edf63255"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "input_names": [
+        "s"
+      ],
+      "name": "get_pc",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "vn",
+          "enter": "bottom",
+          "name": "s"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "vn/1 get_pc",
+      "errors": [],
+      "impl": {
+        "host": "opulse.meta.vn.machine:get_pc",
+        "digest": "c43727930103b5604e517870b7db48c1d897cd8173ecd9218c6bf8f8e1711836"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "name": "eq",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "unknown",
+          "enter": "bottom"
+        },
+        {
+          "sort": "unknown",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Layer-0 eq for scoped kernel reasoning.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.meta.worlds.vonneumann.world:equal",
+        "digest": "057d9e827fbf2675e951ac8709f584f1e5bf8fb88c33b8e11a5afef467f1fc25"
+      },
+      "cost": 0,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "name": "comb_positive",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Layer-0 comb_positive for scoped kernel reasoning.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.meta.worlds.vonneumann.world:positive",
+        "digest": "8aa876b2771994d4081264af29f485e8eba948b3a532d968c890f8ceb0a0dc68"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "name": "comb_dec",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Layer-0 comb_dec for scoped kernel reasoning.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.meta.worlds.vonneumann.world:decrement",
+        "digest": "b3ae579e46332205c01d10c002d5b740027fae57c1757678cd816d21960903aa"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    }
+  ],
+  "combinators": {
+    "nodes": [
+      "Var",
+      "Lit",
+      "Call",
+      "Let",
+      "Case",
+      "Rec"
+    ],
+    "library": [
+      "exec"
+    ],
+    "recursion": "fuel"
+  },
+  "observation": {
+    "truth": "vn",
+    "probes": [
+      {
+        "name": "pc",
+        "sort": "int",
+        "kind": "observation",
+        "arity": 1,
+        "impl": {
+          "host": "opulse.meta.vn.machine:get_pc",
+          "digest": "c43727930103b5604e517870b7db48c1d897cd8173ecd9218c6bf8f8e1711836"
+        }
+      },
+      {
+        "name": "a",
+        "sort": "byte",
+        "kind": "observation",
+        "arity": 1,
+        "impl": {
+          "host": "opulse.meta.vn.machine:get_a",
+          "digest": "8a7fe588e872a37dabc5be5e484b014087ea277e2ebe78fce169165a677fac70"
+        }
+      },
+      {
+        "name": "cell",
+        "sort": "byte",
+        "kind": "observation",
+        "arity": 2,
+        "impl": {
+          "host": "opulse.meta.vn.machine:cell",
+          "digest": "bdfcd39cfc6eb7ad3e22e58aee0f093e5e9a1da1d0e930a8338a8c16de40a8cd"
+        }
+      },
+      {
+        "name": "halted",
+        "sort": "bool",
+        "kind": "observation",
+        "arity": 1,
+        "impl": {
+          "host": "opulse.meta.vn.machine:halted",
+          "digest": "fa97d77f9d5bea8fe110f51e65565489eb383a28a19e60b3c6aef194e6b54007"
+        }
+      }
+    ],
+    "judge_view": "full_state"
+  },
+  "lock": {
+    "host_digests": {
+      "step": "5802e4525e0d0a4bbe01432d724583312cf6f615f12fc22e86f457d22b4bb765",
+      "is_halted": "c3aa02c744b2e1da28a9f7b9cabcec38e526d739dee65b53c427a32d283b6e62",
+      "poke": "f32a1ef418c19acc0e7405afd1fc6730e11875878dc119d1e9044d45d5d07ff8",
+      "peek": "8ebe8b16027542a23d84138be7830d62d0c1b76fa5802203ba4d00b217dfe03a",
+      "set_a": "2600359cc3c1db871467ae03b602c7d88119770169c17fa78d119e2975a4d03c",
+      "get_a": "8a7fe588e872a37dabc5be5e484b014087ea277e2ebe78fce169165a677fac70",
+      "set_pc": "13799eaf2083337aaf185ec243fbe74dc37ad5a15c5bedbfc9852e15edf63255",
+      "get_pc": "c43727930103b5604e517870b7db48c1d897cd8173ecd9218c6bf8f8e1711836",
+      "pc": "c43727930103b5604e517870b7db48c1d897cd8173ecd9218c6bf8f8e1711836",
+      "a": "8a7fe588e872a37dabc5be5e484b014087ea277e2ebe78fce169165a677fac70",
+      "cell": "bdfcd39cfc6eb7ad3e22e58aee0f093e5e9a1da1d0e930a8338a8c16de40a8cd",
+      "halted": "fa97d77f9d5bea8fe110f51e65565489eb383a28a19e60b3c6aef194e6b54007",
+      "byte.valid": "6bfbfdbfad701a7f2ebe1166f870b99794b9229e2ff04913578bad5778fb537c",
+      "eq": "057d9e827fbf2675e951ac8709f584f1e5bf8fb88c33b8e11a5afef467f1fc25",
+      "comb_positive": "8aa876b2771994d4081264af29f485e8eba948b3a532d968c890f8ceb0a0dc68",
+      "comb_dec": "b3ae579e46332205c01d10c002d5b740027fae57c1757678cd816d21960903aa"
+    }
+  },
+  "open_kinds": [
+    "bridge",
+    "combinator",
+    "law",
+    "object",
+    "observation",
+    "operation"
+  ]
+}

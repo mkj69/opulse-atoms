@@ -1,0 +1,2008 @@
+{
+  "schema": "opulse.world/2",
+  "world": "obj_op",
+  "version": 1,
+  "dialect": "atoms-v2",
+  "title": "Idealized periodic schedules and blackout windows",
+  "source": {
+    "design": "obj_op.json",
+    "title_zh": "理想化周期调度与停运窗口"
+  },
+  "params": {},
+  "constants": {
+    "max_abs": "10^120-1",
+    "max_cycles": 32,
+    "max_bands": 4096
+  },
+  "objects": [
+    {
+      "kind": "object",
+      "name": "Int",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": ""
+    },
+    {
+      "kind": "object",
+      "name": "Bool",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": ""
+    },
+    {
+      "kind": "object",
+      "name": "Text",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": ""
+    },
+    {
+      "kind": "object",
+      "name": "List",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": ""
+    },
+    {
+      "kind": "object",
+      "name": "Band",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": ""
+    },
+    {
+      "kind": "object",
+      "name": "Outcome",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": ""
+    },
+    {
+      "kind": "object",
+      "name": "CycleRaw",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": ""
+    },
+    {
+      "kind": "object",
+      "name": "PlanRaw",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": ""
+    },
+    {
+      "kind": "object",
+      "name": "WindowRaw",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": ""
+    },
+    {
+      "kind": "object",
+      "name": "BlackoutRaw",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": ""
+    },
+    {
+      "kind": "object",
+      "name": "unknown",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": ""
+    },
+    {
+      "kind": "object",
+      "name": "int",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": ""
+    },
+    {
+      "kind": "object",
+      "name": "bool",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": ""
+    }
+  ],
+  "operations": [
+    {
+      "kind": "operation",
+      "name": "add",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Bounded public primitive add.",
+      "errors": [
+        "range",
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_op.hosts:add",
+        "digest": "0220fbd8c51522bd2f65d3b37c2cac2cfffbc8299dd57c2c5b68f7110d538719"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "sub",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Bounded public primitive sub.",
+      "errors": [
+        "range",
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_op.hosts:sub",
+        "digest": "da4398d56800da1c9ae129974ac3bf80a5dd163210e58e457d437fdfd1fe5227"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "mul",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Bounded public primitive mul.",
+      "errors": [
+        "range",
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_op.hosts:mul",
+        "digest": "67f2b1d2d0a629c787faafeefe1c3e5883785a83f31255adb9e44394c4eb98a9"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "mod",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Bounded public primitive mod.",
+      "errors": [
+        "range",
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_op.hosts:mod",
+        "digest": "96bbe74e3e1afa819141974deae893f60fa865206ea868843c2c98e6b7e326b7"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "div_floor",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Bounded public primitive div_floor.",
+      "errors": [
+        "range",
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_op.hosts:div_floor",
+        "digest": "52e4b1c02f4d7ad21b308fdde432b3664aeb0b77bee0d285b891aec0b7436369"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "egcd",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Bounded public primitive egcd.",
+      "errors": [
+        "range",
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_op.hosts:egcd",
+        "digest": "1251fe118e3d9ce228d6da7c3525a7ce30239c5281e5eb4328cc2da2a0b6604c"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "le",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Bounded public primitive le.",
+      "errors": [
+        "range",
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_op.hosts:le",
+        "digest": "b084d9158f011a999c0282feef47b3c923ea85bc7f29dba9601c04eddec9fea4"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "lt",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Bounded public primitive lt.",
+      "errors": [
+        "range",
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_op.hosts:lt",
+        "digest": "596d3244a307376d5f5b547c9bef6422fd40e540e757a7a84f49aa0bd4360dfb"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "eq",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "unknown",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "unknown",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Bounded public primitive eq.",
+      "errors": [
+        "range",
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_op.hosts:eq",
+        "digest": "cf0e83bac066c27d2ea2639b850492f1520a46ab9e882eec7f7fc7c2192b805b"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "list_length",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "List",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Bounded public primitive list_length.",
+      "errors": [
+        "range",
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_op.hosts:list_length",
+        "digest": "8757757a565878dffc92db3b3f38531f83a492ceed994bdc0070bbdf87065815"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "head",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "List",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "unknown",
+        "enter": "bottom"
+      },
+      "rule": "Bounded public primitive head.",
+      "errors": [
+        "range",
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_op.hosts:head",
+        "digest": "fc2f23f3b227711d232ea5f0dcefb974d3017f39c36afe372647c545bfa6c4fa"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "tail",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "List",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Bounded public primitive tail.",
+      "errors": [
+        "range",
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_op.hosts:tail",
+        "digest": "43e87dfcac1dafe5261599ad208bd1f2368273dc82793b9f9abc3e39c299f050"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "is_empty",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "List",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Bounded public primitive is_empty.",
+      "errors": [
+        "range",
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_op.hosts:is_empty",
+        "digest": "994d73c45da1358691d1c0a0fd79dc85d6a655a82276bdb71cd4273d09d9a435"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "cons",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "unknown",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "List",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Bounded public primitive cons.",
+      "errors": [
+        "range",
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_op.hosts:cons",
+        "digest": "c59c7c9308b1ebd594880e99c46924ca1719aa1873e4d5e7d6ed2aa784d73715"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "cycle_raw",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "CycleRaw",
+        "enter": "bottom"
+      },
+      "rule": "Bounded public primitive cycle_raw.",
+      "errors": [
+        "range",
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_op.hosts:cycle_raw",
+        "digest": "abf984bb014e6123bfb2d60d49550c2e7f74ccf14d444f2449b994a436dff35e"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "band_lo",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "Band",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Bounded public primitive band_lo.",
+      "errors": [
+        "range",
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_op.hosts:band_lo",
+        "digest": "71b4f327abe80be37b4e832d6376f363c6a538a9342ac200e7b12a5b0ece74b5"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "band_hi",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "Band",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Bounded public primitive band_hi.",
+      "errors": [
+        "range",
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_op.hosts:band_hi",
+        "digest": "a5724180e93ffe6e83b6254db06af49318d7dd1c7ce9b4b3e839b2bfa9d51e62"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "no_hit",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Bounded public primitive no_hit.",
+      "errors": [
+        "range",
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_op.hosts:no_hit",
+        "digest": "931871726e259ee79472fb4fc0c8abef9a627dd201664e40ebfc2098bc48f793"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "incompatible",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [],
+      "output": {
+        "sort": "unknown",
+        "enter": "bottom"
+      },
+      "rule": "Bounded public primitive incompatible.",
+      "errors": [
+        "range",
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_op.hosts:incompatible",
+        "digest": "739d9e77539be7608361f644296ed3d59e9b85f42d89425974c4c0a37346c7e3"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "band",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Band",
+        "enter": "bottom"
+      },
+      "rule": "Bounded public primitive band.",
+      "errors": [
+        "range",
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_op.hosts:band",
+        "digest": "43a015afbbfbfcd67085aaeb5a387f2fc50a5bf31d8e919e25defdde6382fb09"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "window_raw",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "unknown",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg1",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg2",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "arg3",
+          "sort": "unknown",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "WindowRaw",
+        "enter": "bottom"
+      },
+      "rule": "Bounded public primitive window_raw.",
+      "errors": [
+        "range",
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_op.hosts:window_raw",
+        "digest": "cca47a00dd091427630fb11d491df51c21facb2247ede7fdbe84c1fd3ed14d06"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "cycle_residue",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "unknown",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Bounded public primitive cycle_residue.",
+      "errors": [
+        "range",
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_op.hosts:cycle_residue",
+        "digest": "d63ea5ff829e5505adbf3f4892aca9e569b6d3de7d739ffdfe27cdaebd5cb284"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "cycle_period",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "unknown",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Bounded public primitive cycle_period.",
+      "errors": [
+        "range",
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_op.hosts:cycle_period",
+        "digest": "79623bd7bf5c5e3004d98801900f5078078a2af62f15de790d1a65b7a3c970c8"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "plan_cycles",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "unknown",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Bounded public primitive plan_cycles.",
+      "errors": [
+        "range",
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_op.hosts:plan_cycles",
+        "digest": "6251634d21f57698396660399d2c4a0371a1e4ce0e025b9b739e690aff4ea649"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "window_plan",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "unknown",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "unknown",
+        "enter": "bottom"
+      },
+      "rule": "Bounded public primitive window_plan.",
+      "errors": [
+        "range",
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_op.hosts:window_plan",
+        "digest": "ece0358ac41c301c195d9f38f7a3106c4fe19f8afe15dbf4c80c4995b15d4a72"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "window_lo",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "unknown",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Bounded public primitive window_lo.",
+      "errors": [
+        "range",
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_op.hosts:window_lo",
+        "digest": "3ba641ec47c767123150e6522d9cbeb5fe89619d4349813d1d3fa001c4b16303"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "window_hi",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "unknown",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Bounded public primitive window_hi.",
+      "errors": [
+        "range",
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_op.hosts:window_hi",
+        "digest": "04cc5fc8f2b07f16fced01feeb453c021ad7a57ab4b798eb4931dca00b21e5f9"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "window_compiled",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "unknown",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "unknown",
+        "enter": "bottom"
+      },
+      "rule": "Bounded public primitive window_compiled.",
+      "errors": [
+        "range",
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_op.hosts:window_compiled",
+        "digest": "1e1bfdc94052b14edf91b0d2a9b7b4f0480d90865540da45df1eeb01f27d2f00"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "blackout_window",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "unknown",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "unknown",
+        "enter": "bottom"
+      },
+      "rule": "Bounded public primitive blackout_window.",
+      "errors": [
+        "range",
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_op.hosts:blackout_window",
+        "digest": "7ad568d9b4f88cc5fdc30d3be8d645393c76f985ae3e057ea08f7a011a92344a"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "blackout_bands",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "arg0",
+          "sort": "unknown",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Bounded public primitive blackout_bands.",
+      "errors": [
+        "range",
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_op.hosts:blackout_bands",
+        "digest": "ef70cfccd52fa272c9aaf6d2e88c846bce2b54081ebc44b79ba7b4f86fbb0012"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "plan_raw",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "List",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "PlanRaw",
+        "enter": "bottom"
+      },
+      "rule": "Bounded public carrier plan_raw.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_op.hosts:plan_raw",
+        "digest": "ef7be24f84a5fc0d30a8d03237b24f171f9506056621ea53324671f87ffa13e6"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "blackout_raw",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "unknown",
+          "enter": "bottom"
+        },
+        {
+          "sort": "List",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "BlackoutRaw",
+        "enter": "bottom"
+      },
+      "rule": "Bounded public carrier blackout_raw.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_op.hosts:blackout_raw",
+        "digest": "6077f7bd3bf31d81e4915d49bf125d066904f3e8b860bcafbd3330998c5164ab"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "resource_unknown",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [],
+      "output": {
+        "sort": "unknown",
+        "enter": "bottom"
+      },
+      "rule": "Fixed bounded-search exhaustion returns Unknown(resource).",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_op.hosts:resource_unknown",
+        "digest": "b15fd87ede172c4d63859db16b1e85ecb6618bcc974dd4feefb9884d649ae854"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "mul_mod",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Modular product with unbounded internal intermediate and bounded result.",
+      "errors": [
+        "range",
+        "period"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_op.hosts:mul_mod",
+        "digest": "ea7ecfeae7ecfa5755eaf3f59b1fcb8550d5927cf4b981d865df2d7671616ed8"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "record_field",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "unknown",
+          "enter": "bottom"
+        },
+        {
+          "sort": "Text",
+          "enter": "bottom"
+        },
+        {
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "unknown",
+        "enter": "bottom"
+      },
+      "rule": "Read a field of a shaped raw or sealed record.",
+      "errors": [
+        "type"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_op.hosts:record_field",
+        "digest": "3b83461f29652ef88a7740f27c4e7ae5ca98878548029186dd1d6e4a6c59b175"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "is_defined",
+      "symbol": null,
+      "role": "decide",
+      "inputs": [
+        {
+          "sort": "unknown",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Test an outcome without consuming or changing its failure reason.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_op.hosts:is_defined",
+        "digest": "79913b61afdfe9c2629e2294d4c9c6206e36d16d62e1a81f2843dd399e5989c8"
+      },
+      "cost": 1,
+      "strict": false,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "mod_sub",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Bounded CRT arithmetic with unbounded internal temporaries: mod_sub.",
+      "errors": [
+        "range",
+        "period"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_op.hosts:mod_sub",
+        "digest": "ad42184ebb6e34df28e177b004c182c4897e5b834192537485c65b5eb59f0d92"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "offset_fits",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Bounded CRT arithmetic with unbounded internal temporaries: offset_fits.",
+      "errors": [
+        "range",
+        "period"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_op.hosts:offset_fits",
+        "digest": "09e03877a8a1e028c4afc128127fb4d9dcee86152d38a303892e2784a3dce06a"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "Cycle.residue",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "unknown",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Public sealed-object accessor Cycle.residue.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_op.hosts:cycle_residue",
+        "digest": "d63ea5ff829e5505adbf3f4892aca9e569b6d3de7d739ffdfe27cdaebd5cb284"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "Cycle.period",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "unknown",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Public sealed-object accessor Cycle.period.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_op.hosts:cycle_period",
+        "digest": "79623bd7bf5c5e3004d98801900f5078078a2af62f15de790d1a65b7a3c970c8"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "Plan.cycles",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "unknown",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Public sealed-object accessor Plan.cycles.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_op.hosts:plan_cycles",
+        "digest": "6251634d21f57698396660399d2c4a0371a1e4ce0e025b9b739e690aff4ea649"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "Window.plan",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "unknown",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "unknown",
+        "enter": "bottom"
+      },
+      "rule": "Public sealed-object accessor Window.plan.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_op.hosts:window_plan",
+        "digest": "ece0358ac41c301c195d9f38f7a3106c4fe19f8afe15dbf4c80c4995b15d4a72"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "Window.lo",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "unknown",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Public sealed-object accessor Window.lo.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_op.hosts:window_lo",
+        "digest": "3ba641ec47c767123150e6522d9cbeb5fe89619d4349813d1d3fa001c4b16303"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "Window.hi",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "unknown",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Public sealed-object accessor Window.hi.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_op.hosts:window_hi",
+        "digest": "04cc5fc8f2b07f16fced01feeb453c021ad7a57ab4b798eb4931dca00b21e5f9"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "Window.compiled",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "unknown",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "unknown",
+        "enter": "bottom"
+      },
+      "rule": "Public sealed-object accessor Window.compiled.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_op.hosts:window_compiled",
+        "digest": "1e1bfdc94052b14edf91b0d2a9b7b4f0480d90865540da45df1eeb01f27d2f00"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "Blackout.window",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "unknown",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "unknown",
+        "enter": "bottom"
+      },
+      "rule": "Public sealed-object accessor Blackout.window.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_op.hosts:blackout_window",
+        "digest": "7ad568d9b4f88cc5fdc30d3be8d645393c76f985ae3e057ea08f7a011a92344a"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "Blackout.bands",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "unknown",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "List",
+        "enter": "bottom"
+      },
+      "rule": "Public sealed-object accessor Blackout.bands.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.obj_op.hosts:blackout_bands",
+        "digest": "ef70cfccd52fa272c9aaf6d2e88c846bce2b54081ebc44b79ba7b4f86fbb0012"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    }
+  ],
+  "combinators": {
+    "nodes": [
+      "Lit",
+      "Var",
+      "Call",
+      "Let",
+      "Case",
+      "Rec"
+    ],
+    "recursion": "measure",
+    "library": [
+      {
+        "name": "fold",
+        "params": [
+          "step",
+          "seed",
+          "items"
+        ],
+        "op_params": [
+          "step"
+        ],
+        "body": {
+          "node": "Rec",
+          "fn": "fold_local",
+          "params": [
+            "remaining",
+            "accumulator"
+          ],
+          "body": {
+            "node": "Case",
+            "arms": [
+              [
+                {
+                  "node": "Test",
+                  "expr": {
+                    "node": "Call",
+                    "fn": "is_empty",
+                    "args": [
+                      {
+                        "node": "Var",
+                        "name": "remaining"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "node": "Var",
+                  "name": "accumulator"
+                }
+              ]
+            ],
+            "default": {
+              "node": "Call",
+              "fn": "fold_local",
+              "args": [
+                {
+                  "node": "Call",
+                  "fn": "tail",
+                  "args": [
+                    {
+                      "node": "Var",
+                      "name": "remaining"
+                    }
+                  ]
+                },
+                {
+                  "node": "Call",
+                  "fn": "step",
+                  "args": [
+                    {
+                      "node": "Var",
+                      "name": "accumulator"
+                    },
+                    {
+                      "node": "Call",
+                      "fn": "head",
+                      "args": [
+                        {
+                          "node": "Var",
+                          "name": "remaining"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "args": [
+            {
+              "node": "Var",
+              "name": "items"
+            },
+            {
+              "node": "Var",
+              "name": "seed"
+            }
+          ],
+          "measure": {
+            "node": "Call",
+            "fn": "list_length",
+            "args": [
+              {
+                "node": "Var",
+                "name": "remaining"
+              }
+            ]
+          },
+          "memo": false
+        },
+        "unfold_rule": "substitute"
+      },
+      "map",
+      {
+        "name": "until",
+        "params": [
+          "pred",
+          "step",
+          "seed",
+          "limit"
+        ],
+        "op_params": [
+          "pred",
+          "step"
+        ],
+        "body": {
+          "node": "Rec",
+          "fn": "until_local",
+          "params": [
+            "value",
+            "remaining"
+          ],
+          "body": {
+            "node": "Case",
+            "arms": [
+              [
+                {
+                  "node": "Test",
+                  "expr": {
+                    "node": "Call",
+                    "fn": "pred",
+                    "args": [
+                      {
+                        "node": "Var",
+                        "name": "value"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "node": "Var",
+                  "name": "value"
+                }
+              ]
+            ],
+            "default": {
+              "node": "Case",
+              "arms": [
+                [
+                  {
+                    "node": "Test",
+                    "expr": {
+                      "node": "Call",
+                      "fn": "le",
+                      "args": [
+                        {
+                          "node": "Var",
+                          "name": "remaining"
+                        },
+                        {
+                          "node": "Lit",
+                          "value": {
+                            "t": "int",
+                            "v": 0
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "node": "Call",
+                    "fn": "resource_unknown",
+                    "args": []
+                  }
+                ]
+              ],
+              "default": {
+                "node": "Call",
+                "fn": "until_local",
+                "args": [
+                  {
+                    "node": "Call",
+                    "fn": "step",
+                    "args": [
+                      {
+                        "node": "Var",
+                        "name": "value"
+                      }
+                    ]
+                  },
+                  {
+                    "node": "Call",
+                    "fn": "sub",
+                    "args": [
+                      {
+                        "node": "Var",
+                        "name": "remaining"
+                      },
+                      {
+                        "node": "Lit",
+                        "value": {
+                          "t": "int",
+                          "v": 1
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          "args": [
+            {
+              "node": "Var",
+              "name": "seed"
+            },
+            {
+              "node": "Var",
+              "name": "limit"
+            }
+          ],
+          "measure": {
+            "node": "Var",
+            "name": "remaining"
+          },
+          "memo": false
+        },
+        "unfold_rule": "substitute"
+      }
+    ]
+  },
+  "observation": {
+    "truth": "unknown",
+    "probes": [
+      {
+        "name": "value",
+        "sort": "Text",
+        "reads": "unknown",
+        "reveals": [
+          "canonical value"
+        ],
+        "impl": {
+          "host": "opulse.worlds_v2.obj_op.hosts:value",
+          "digest": "6bbcd0326c73fadc4c43c3ed6040f53919ac97cd5e74fb5b21ad0c2171d0c0de"
+        }
+      },
+      {
+        "name": "status",
+        "sort": "Text",
+        "reads": "unknown",
+        "reveals": [
+          "outcome status"
+        ],
+        "impl": {
+          "host": "opulse.worlds_v2.obj_op.hosts:status",
+          "digest": "84ac069de6fbaa5b8fc084d46f1979609cefb68620191cd9444efacdd7fdc45d"
+        }
+      },
+      {
+        "name": "range",
+        "sort": "List",
+        "reads": "unknown",
+        "reveals": [
+          "endpoints"
+        ],
+        "impl": {
+          "host": "opulse.worlds_v2.obj_op.hosts:range_probe",
+          "digest": "e7b3f2e15823d82dcd88255861bbca1273521a852089bbd74341696b1af8c875"
+        }
+      }
+    ],
+    "capabilities": {},
+    "show": {
+      "input": "public",
+      "result": "public"
+    },
+    "judge_view": "full_state"
+  },
+  "codec": {},
+  "open_kinds": [
+    "object",
+    "operation"
+  ],
+  "lock": {
+    "host_digests": {
+      "add": "0220fbd8c51522bd2f65d3b37c2cac2cfffbc8299dd57c2c5b68f7110d538719",
+      "sub": "da4398d56800da1c9ae129974ac3bf80a5dd163210e58e457d437fdfd1fe5227",
+      "mul": "67f2b1d2d0a629c787faafeefe1c3e5883785a83f31255adb9e44394c4eb98a9",
+      "mod": "96bbe74e3e1afa819141974deae893f60fa865206ea868843c2c98e6b7e326b7",
+      "div_floor": "52e4b1c02f4d7ad21b308fdde432b3664aeb0b77bee0d285b891aec0b7436369",
+      "egcd": "1251fe118e3d9ce228d6da7c3525a7ce30239c5281e5eb4328cc2da2a0b6604c",
+      "le": "b084d9158f011a999c0282feef47b3c923ea85bc7f29dba9601c04eddec9fea4",
+      "lt": "596d3244a307376d5f5b547c9bef6422fd40e540e757a7a84f49aa0bd4360dfb",
+      "eq": "cf0e83bac066c27d2ea2639b850492f1520a46ab9e882eec7f7fc7c2192b805b",
+      "list_length": "8757757a565878dffc92db3b3f38531f83a492ceed994bdc0070bbdf87065815",
+      "head": "fc2f23f3b227711d232ea5f0dcefb974d3017f39c36afe372647c545bfa6c4fa",
+      "tail": "43e87dfcac1dafe5261599ad208bd1f2368273dc82793b9f9abc3e39c299f050",
+      "is_empty": "994d73c45da1358691d1c0a0fd79dc85d6a655a82276bdb71cd4273d09d9a435",
+      "cons": "c59c7c9308b1ebd594880e99c46924ca1719aa1873e4d5e7d6ed2aa784d73715",
+      "cycle_raw": "abf984bb014e6123bfb2d60d49550c2e7f74ccf14d444f2449b994a436dff35e",
+      "band_lo": "71b4f327abe80be37b4e832d6376f363c6a538a9342ac200e7b12a5b0ece74b5",
+      "band_hi": "a5724180e93ffe6e83b6254db06af49318d7dd1c7ce9b4b3e839b2bfa9d51e62",
+      "no_hit": "931871726e259ee79472fb4fc0c8abef9a627dd201664e40ebfc2098bc48f793",
+      "incompatible": "739d9e77539be7608361f644296ed3d59e9b85f42d89425974c4c0a37346c7e3",
+      "band": "43a015afbbfbfcd67085aaeb5a387f2fc50a5bf31d8e919e25defdde6382fb09",
+      "window_raw": "cca47a00dd091427630fb11d491df51c21facb2247ede7fdbe84c1fd3ed14d06",
+      "cycle_residue": "d63ea5ff829e5505adbf3f4892aca9e569b6d3de7d739ffdfe27cdaebd5cb284",
+      "cycle_period": "79623bd7bf5c5e3004d98801900f5078078a2af62f15de790d1a65b7a3c970c8",
+      "plan_cycles": "6251634d21f57698396660399d2c4a0371a1e4ce0e025b9b739e690aff4ea649",
+      "window_plan": "ece0358ac41c301c195d9f38f7a3106c4fe19f8afe15dbf4c80c4995b15d4a72",
+      "window_lo": "3ba641ec47c767123150e6522d9cbeb5fe89619d4349813d1d3fa001c4b16303",
+      "window_hi": "04cc5fc8f2b07f16fced01feeb453c021ad7a57ab4b798eb4931dca00b21e5f9",
+      "window_compiled": "1e1bfdc94052b14edf91b0d2a9b7b4f0480d90865540da45df1eeb01f27d2f00",
+      "blackout_window": "7ad568d9b4f88cc5fdc30d3be8d645393c76f985ae3e057ea08f7a011a92344a",
+      "blackout_bands": "ef70cfccd52fa272c9aaf6d2e88c846bce2b54081ebc44b79ba7b4f86fbb0012",
+      "plan_raw": "ef7be24f84a5fc0d30a8d03237b24f171f9506056621ea53324671f87ffa13e6",
+      "blackout_raw": "6077f7bd3bf31d81e4915d49bf125d066904f3e8b860bcafbd3330998c5164ab",
+      "resource_unknown": "b15fd87ede172c4d63859db16b1e85ecb6618bcc974dd4feefb9884d649ae854",
+      "mul_mod": "ea7ecfeae7ecfa5755eaf3f59b1fcb8550d5927cf4b981d865df2d7671616ed8",
+      "record_field": "3b83461f29652ef88a7740f27c4e7ae5ca98878548029186dd1d6e4a6c59b175",
+      "is_defined": "79913b61afdfe9c2629e2294d4c9c6206e36d16d62e1a81f2843dd399e5989c8",
+      "mod_sub": "ad42184ebb6e34df28e177b004c182c4897e5b834192537485c65b5eb59f0d92",
+      "offset_fits": "09e03877a8a1e028c4afc128127fb4d9dcee86152d38a303892e2784a3dce06a",
+      "Cycle.residue": "d63ea5ff829e5505adbf3f4892aca9e569b6d3de7d739ffdfe27cdaebd5cb284",
+      "Cycle.period": "79623bd7bf5c5e3004d98801900f5078078a2af62f15de790d1a65b7a3c970c8",
+      "Plan.cycles": "6251634d21f57698396660399d2c4a0371a1e4ce0e025b9b739e690aff4ea649",
+      "Window.plan": "ece0358ac41c301c195d9f38f7a3106c4fe19f8afe15dbf4c80c4995b15d4a72",
+      "Window.lo": "3ba641ec47c767123150e6522d9cbeb5fe89619d4349813d1d3fa001c4b16303",
+      "Window.hi": "04cc5fc8f2b07f16fced01feeb453c021ad7a57ab4b798eb4931dca00b21e5f9",
+      "Window.compiled": "1e1bfdc94052b14edf91b0d2a9b7b4f0480d90865540da45df1eeb01f27d2f00",
+      "Blackout.window": "7ad568d9b4f88cc5fdc30d3be8d645393c76f985ae3e057ea08f7a011a92344a",
+      "Blackout.bands": "ef70cfccd52fa272c9aaf6d2e88c846bce2b54081ebc44b79ba7b4f86fbb0012",
+      "probe.value": "6bbcd0326c73fadc4c43c3ed6040f53919ac97cd5e74fb5b21ad0c2171d0c0de",
+      "probe.status": "84ac069de6fbaa5b8fc084d46f1979609cefb68620191cd9444efacdd7fdc45d",
+      "probe.range": "e7b3f2e15823d82dcd88255861bbca1273521a852089bbd74341696b1af8c875"
+    },
+    "constants_hash": "3491e3a803cc1f59cbcf2b20b22d4dae7f4036ebdbde66eb892038f6f6c97d1e",
+    "world_hash": "6a325b54826fe503e4e4b62d2f856be55de992a8d31f8dbbb9ebbaccab09accf"
+  }
+}

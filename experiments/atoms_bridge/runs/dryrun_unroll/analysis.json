@@ -1,0 +1,51 @@
+{
+ "G3_diagnostic": {
+  "ci90": [
+   0.0,
+   0.0
+  ],
+  "ci95": [
+   0.0,
+   0.0
+  ],
+  "difference": 0,
+  "n": [
+   1,
+   1
+  ]
+ },
+ "decision": "diagnostic",
+ "primary_G2_over_G1_length": {
+  "ci90": [
+   1.0,
+   1.0
+  ],
+  "ci95": [
+   1.0,
+   1.0
+  ],
+  "ratio": 1.0
+ },
+ "secondary_accuracy_G2_minus_G1": {
+  "ci90": [
+   0.0,
+   0.0
+  ],
+  "ci95": [
+   0.0,
+   0.0
+  ],
+  "difference": 0,
+  "n": [
+   1,
+   1
+  ]
+ },
+ "secondary_accuracy_noninferior": null,
+ "secondary_bridge_use_rate": {
+  "A": 0,
+  "B": 0,
+  "C": 0
+ },
+ "secondary_layer0_steps": {}
+}

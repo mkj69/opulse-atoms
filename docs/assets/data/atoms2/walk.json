@@ -1,0 +1,2449 @@
+{
+  "schema": "opulse.walk/1",
+  "core_digest": "d5923c44986a1450d6edf7b54d9addc8ef807b6c83ed3cc15067d99d2ca35d31",
+  "world_hash": "8bd51afbef77487e3f27460eb695e18aa7b7c80580e5da148c6a1b67f01e3dfd",
+  "layer0": {
+    "objects": [
+      {
+        "name": "int"
+      },
+      {
+        "name": "Record"
+      },
+      {
+        "name": "Pair"
+      },
+      {
+        "name": "Int"
+      }
+    ],
+    "operations": [
+      {
+        "name": "add"
+      },
+      {
+        "name": "is_even"
+      },
+      {
+        "name": "advance"
+      },
+      {
+        "name": "mul"
+      },
+      {
+        "name": "eq"
+      },
+      {
+        "name": "pair_add"
+      },
+      {
+        "name": "difference"
+      },
+      {
+        "name": "add_int"
+      }
+    ],
+    "observations": [
+      {
+        "name": "read_number"
+      }
+    ]
+  },
+  "artifact": "docs/assets/data/atoms2/walk.json",
+  "definitions": [
+    {
+      "kind": "object",
+      "name": "Even",
+      "declaration": "obj Even = <value: int> where is_even(x) L1",
+      "depends_on": [
+        "is_even"
+      ],
+      "stages": [
+        {
+          "station": "written",
+          "status": "written",
+          "content_hash": "41ef455a50edda8117e5c87c1c07d834b644e5fd8788a2ad5bb1f80d585f38a5",
+          "evidence": null,
+          "contract": null,
+          "cost": null
+        },
+        {
+          "station": "checked",
+          "status": "checked",
+          "content_hash": "41ef455a50edda8117e5c87c1c07d834b644e5fd8788a2ad5bb1f80d585f38a5",
+          "evidence": null,
+          "contract": null,
+          "cost": null
+        },
+        {
+          "station": "callable",
+          "status": "callable",
+          "content_hash": "41ef455a50edda8117e5c87c1c07d834b644e5fd8788a2ad5bb1f80d585f38a5",
+          "evidence": null,
+          "contract": null,
+          "cost": null
+        },
+        {
+          "station": "verified",
+          "status": "verified",
+          "content_hash": "41ef455a50edda8117e5c87c1c07d834b644e5fd8788a2ad5bb1f80d585f38a5",
+          "evidence": {
+            "method": "exhaustive",
+            "scope": {
+              "domain": "integers 0..24 (finite test domain)",
+              "size": 25,
+              "checked": {
+                "size": 25,
+                "sha256": "1bb046ad3052242d42b7b1c9a9a4b0e397c9313e18e97f2a0ba529008c8ddbff",
+                "bounds": {
+                  "0": {
+                    "min": 0,
+                    "max": 24
+                  }
+                },
+                "by": "library"
+              }
+            },
+            "seed": null,
+            "checks": [
+              "canon_total",
+              "canon_idempotent",
+              "canon_keeps_valid",
+              "respects_canon"
+            ],
+            "world_hash": "8bd51afbef77487e3f27460eb695e18aa7b7c80580e5da148c6a1b67f01e3dfd",
+            "deps_hash": "bdd5d3bc2126de027798ab86c0d89a5abebe3d7ed44c36a3023bfbd938700c74",
+            "content_hash": "41ef455a50edda8117e5c87c1c07d834b644e5fd8788a2ad5bb1f80d585f38a5",
+            "atoms_hash": "9674ef0b83274d4ebf25ee48050de709105c8c4099ed0a7ef5a922ff9f512e11"
+          },
+          "contract": null,
+          "cost": {
+            "length": 2,
+            "steps": {
+              "min": 1,
+              "max": 1,
+              "mean": 1.0,
+              "over": {
+                "domain": "integers 0..24 (finite test domain)",
+                "size": 25,
+                "checked": {
+                  "size": 25,
+                  "sha256": "1bb046ad3052242d42b7b1c9a9a4b0e397c9313e18e97f2a0ba529008c8ddbff",
+                  "bounds": {
+                    "0": {
+                      "min": 0,
+                      "max": 24
+                    }
+                  },
+                  "by": "library"
+                }
+              }
+            },
+            "reuse": 0
+          }
+        },
+        {
+          "station": "promoted",
+          "status": "promoted",
+          "content_hash": "41ef455a50edda8117e5c87c1c07d834b644e5fd8788a2ad5bb1f80d585f38a5",
+          "evidence": {
+            "method": "exhaustive",
+            "scope": {
+              "domain": "integers 0..24 (finite test domain)",
+              "size": 25,
+              "checked": {
+                "size": 25,
+                "sha256": "1bb046ad3052242d42b7b1c9a9a4b0e397c9313e18e97f2a0ba529008c8ddbff",
+                "bounds": {
+                  "0": {
+                    "min": 0,
+                    "max": 24
+                  }
+                },
+                "by": "library"
+              }
+            },
+            "seed": null,
+            "checks": [
+              "canon_total",
+              "canon_idempotent",
+              "canon_keeps_valid",
+              "respects_canon"
+            ],
+            "world_hash": "8bd51afbef77487e3f27460eb695e18aa7b7c80580e5da148c6a1b67f01e3dfd",
+            "deps_hash": "bdd5d3bc2126de027798ab86c0d89a5abebe3d7ed44c36a3023bfbd938700c74",
+            "content_hash": "41ef455a50edda8117e5c87c1c07d834b644e5fd8788a2ad5bb1f80d585f38a5",
+            "atoms_hash": "9674ef0b83274d4ebf25ee48050de709105c8c4099ed0a7ef5a922ff9f512e11"
+          },
+          "contract": {
+            "guarantees": "Only within integers 0..24 (finite test domain)",
+            "may_change": [],
+            "keeps": []
+          },
+          "cost": {
+            "length": 2,
+            "steps": {
+              "min": 1,
+              "max": 1,
+              "mean": 1.0,
+              "over": {
+                "domain": "integers 0..24 (finite test domain)",
+                "size": 25,
+                "checked": {
+                  "size": 25,
+                  "sha256": "1bb046ad3052242d42b7b1c9a9a4b0e397c9313e18e97f2a0ba529008c8ddbff",
+                  "bounds": {
+                    "0": {
+                      "min": 0,
+                      "max": 24
+                    }
+                  },
+                  "by": "library"
+                }
+              }
+            },
+            "reuse": 0
+          }
+        }
+      ],
+      "example": {
+        "input": "Even.make(18)",
+        "outcome": "Ok(Even.val<18>)",
+        "layer0_steps": 2,
+        "trace": [
+          {
+            "call": "root",
+            "layer": 0,
+            "steps": 2,
+            "leaf": false,
+            "outcome": "Ok(Even.val<18>)"
+          },
+          {
+            "call": "Even.make",
+            "layer": 1,
+            "steps": 2,
+            "leaf": false,
+            "outcome": "Ok(Even.val<18>)"
+          },
+          {
+            "call": "is_even",
+            "layer": 0,
+            "steps": 1,
+            "leaf": true,
+            "outcome": "Ok(true)"
+          },
+          {
+            "call": "Even._pack",
+            "layer": 0,
+            "steps": 1,
+            "leaf": true,
+            "outcome": "Ok(Even.val<18>)"
+          }
+        ]
+      },
+      "demonstrates": "An even-only refinement rejects odd inputs.",
+      "failure": {
+        "attempt": "Broken canon add(x, 2)",
+        "error": "canon_idempotent at 0: Ok(value=4)"
+      }
+    },
+    {
+      "kind": "operation",
+      "name": "bump_even",
+      "declaration": "op bump_even(arg0: Even) -> Even = advance(arg0) L1",
+      "depends_on": [
+        "advance"
+      ],
+      "stages": [
+        {
+          "station": "written",
+          "status": "written",
+          "content_hash": "55245ff6013b8c972f7e8f469f6ae252673f96c8bba251897d654d62b4c88cd2",
+          "evidence": null,
+          "contract": null,
+          "cost": null
+        },
+        {
+          "station": "checked",
+          "status": "checked",
+          "content_hash": "55245ff6013b8c972f7e8f469f6ae252673f96c8bba251897d654d62b4c88cd2",
+          "evidence": null,
+          "contract": null,
+          "cost": null
+        },
+        {
+          "station": "callable",
+          "status": "callable",
+          "content_hash": "55245ff6013b8c972f7e8f469f6ae252673f96c8bba251897d654d62b4c88cd2",
+          "evidence": null,
+          "contract": null,
+          "cost": null
+        },
+        {
+          "station": "verified",
+          "status": "verified",
+          "content_hash": "55245ff6013b8c972f7e8f469f6ae252673f96c8bba251897d654d62b4c88cd2",
+          "evidence": {
+            "method": "exhaustive",
+            "scope": {
+              "domain": "even integers 0..24",
+              "size": 13,
+              "checked": {
+                "size": 13,
+                "sha256": "76611aab54428abddd53ab4cf038ea1514b25f9c7eab9ccbc2acc45cc7acb6f0",
+                "bounds": {},
+                "by": "library"
+              }
+            },
+            "seed": null,
+            "checks": [
+              "reference",
+              "unfold_equivalence"
+            ],
+            "world_hash": "8bd51afbef77487e3f27460eb695e18aa7b7c80580e5da148c6a1b67f01e3dfd",
+            "deps_hash": "f309cf2b44a913caf430b5bc0461ed21dcdbaf2e1fece26a5c61e4978cfce2f9",
+            "content_hash": "55245ff6013b8c972f7e8f469f6ae252673f96c8bba251897d654d62b4c88cd2",
+            "atoms_hash": "9674ef0b83274d4ebf25ee48050de709105c8c4099ed0a7ef5a922ff9f512e11"
+          },
+          "contract": null,
+          "cost": {
+            "length": 2,
+            "steps": {
+              "min": 7,
+              "max": 7,
+              "mean": 7.0,
+              "over": {
+                "domain": "even integers 0..24",
+                "size": 13,
+                "checked": {
+                  "size": 13,
+                  "sha256": "76611aab54428abddd53ab4cf038ea1514b25f9c7eab9ccbc2acc45cc7acb6f0",
+                  "bounds": {},
+                  "by": "library"
+                }
+              }
+            },
+            "reuse": 0
+          }
+        },
+        {
+          "station": "promoted",
+          "status": "promoted",
+          "content_hash": "55245ff6013b8c972f7e8f469f6ae252673f96c8bba251897d654d62b4c88cd2",
+          "evidence": {
+            "method": "exhaustive",
+            "scope": {
+              "domain": "even integers 0..24",
+              "size": 13,
+              "checked": {
+                "size": 13,
+                "sha256": "76611aab54428abddd53ab4cf038ea1514b25f9c7eab9ccbc2acc45cc7acb6f0",
+                "bounds": {},
+                "by": "library"
+              }
+            },
+            "seed": null,
+            "checks": [
+              "reference",
+              "unfold_equivalence"
+            ],
+            "world_hash": "8bd51afbef77487e3f27460eb695e18aa7b7c80580e5da148c6a1b67f01e3dfd",
+            "deps_hash": "f309cf2b44a913caf430b5bc0461ed21dcdbaf2e1fece26a5c61e4978cfce2f9",
+            "content_hash": "55245ff6013b8c972f7e8f469f6ae252673f96c8bba251897d654d62b4c88cd2",
+            "atoms_hash": "9674ef0b83274d4ebf25ee48050de709105c8c4099ed0a7ef5a922ff9f512e11"
+          },
+          "contract": {
+            "guarantees": "Only within even integers 0..24",
+            "may_change": [],
+            "keeps": []
+          },
+          "cost": {
+            "length": 2,
+            "steps": {
+              "min": 7,
+              "max": 7,
+              "mean": 7.0,
+              "over": {
+                "domain": "even integers 0..24",
+                "size": 13,
+                "checked": {
+                  "size": 13,
+                  "sha256": "76611aab54428abddd53ab4cf038ea1514b25f9c7eab9ccbc2acc45cc7acb6f0",
+                  "bounds": {},
+                  "by": "library"
+                }
+              }
+            },
+            "reuse": 0
+          }
+        }
+      ],
+      "example": {
+        "input": "bump_even(Even.val<18>)",
+        "outcome": "Ok(Even.val<20>)",
+        "layer0_steps": 7,
+        "trace": [
+          {
+            "call": "root",
+            "layer": 0,
+            "steps": 7,
+            "leaf": false,
+            "outcome": "Ok(Even.val<20>)"
+          },
+          {
+            "call": "bump_even",
+            "layer": 1,
+            "steps": 7,
+            "leaf": false,
+            "outcome": "Ok(Even.val<20>)"
+          },
+          {
+            "call": "__opulse_edge_bump_even_0",
+            "layer": 0,
+            "steps": 3,
+            "leaf": false,
+            "outcome": "Ok(Even.val<18>)"
+          },
+          {
+            "call": "Even._stored",
+            "layer": 0,
+            "steps": 1,
+            "leaf": true,
+            "outcome": "Ok(18)"
+          },
+          {
+            "call": "Even._edge_valid",
+            "layer": 1,
+            "steps": 1,
+            "leaf": false,
+            "outcome": "Ok(true)"
+          },
+          {
+            "call": "is_even",
+            "layer": 0,
+            "steps": 1,
+            "leaf": true,
+            "outcome": "Ok(true)"
+          },
+          {
+            "call": "Even._pack",
+            "layer": 0,
+            "steps": 1,
+            "leaf": true,
+            "outcome": "Ok(Even.val<18>)"
+          },
+          {
+            "call": "advance",
+            "layer": 0,
+            "steps": 1,
+            "leaf": true,
+            "outcome": "Ok(Even.val<20>)"
+          },
+          {
+            "call": "__opulse_edge_bump_even_output",
+            "layer": 0,
+            "steps": 3,
+            "leaf": false,
+            "outcome": "Ok(Even.val<20>)"
+          },
+          {
+            "call": "Even._stored",
+            "layer": 0,
+            "steps": 1,
+            "leaf": true,
+            "outcome": "Ok(20)"
+          },
+          {
+            "call": "Even._edge_valid",
+            "layer": 1,
+            "steps": 1,
+            "leaf": false,
+            "outcome": "Ok(true)"
+          },
+          {
+            "call": "is_even",
+            "layer": 0,
+            "steps": 1,
+            "leaf": true,
+            "outcome": "Ok(true)"
+          },
+          {
+            "call": "Even._pack",
+            "layer": 0,
+            "steps": 1,
+            "leaf": true,
+            "outcome": "Ok(Even.val<20>)"
+          }
+        ]
+      },
+      "demonstrates": "Construction and unboxing preserve the refined type.",
+      "failure": {
+        "attempt": "Promote seeded sample (seed 17)",
+        "error": "sampled evidence cannot be promoted",
+        "evidence": {
+          "method": "sampled",
+          "scope": {
+            "domain": "seeded even integers 0..2",
+            "description": "seeded even integers 0..2",
+            "size": 2,
+            "checked": {
+              "size": 2,
+              "sha256": "58d30b2d48447ffa8e4b758d5f8aeeb561a13e63768006363ac4e421a9fc46b9",
+              "bounds": {},
+              "by": "library"
+            }
+          },
+          "seed": 17,
+          "checks": [
+            "reference",
+            "unfold_equivalence"
+          ],
+          "world_hash": "8bd51afbef77487e3f27460eb695e18aa7b7c80580e5da148c6a1b67f01e3dfd",
+          "deps_hash": "f309cf2b44a913caf430b5bc0461ed21dcdbaf2e1fece26a5c61e4978cfce2f9",
+          "content_hash": "55245ff6013b8c972f7e8f469f6ae252673f96c8bba251897d654d62b4c88cd2",
+          "atoms_hash": "9674ef0b83274d4ebf25ee48050de709105c8c4099ed0a7ef5a922ff9f512e11"
+        }
+      }
+    },
+    {
+      "kind": "combinator",
+      "name": "twice",
+      "declaration": "comb @twice[f: A -> A](x: A) -> A = f(f(x)) L1",
+      "depends_on": [],
+      "stages": [
+        {
+          "station": "written",
+          "status": "written",
+          "content_hash": "536ec5c8741a89aac059c7990c29d2472435837298b23996ee8255a7232dd49f",
+          "evidence": null,
+          "contract": null,
+          "cost": null
+        },
+        {
+          "station": "checked",
+          "status": "checked",
+          "content_hash": "536ec5c8741a89aac059c7990c29d2472435837298b23996ee8255a7232dd49f",
+          "evidence": null,
+          "contract": null,
+          "cost": null
+        },
+        {
+          "station": "callable",
+          "status": "callable",
+          "content_hash": "536ec5c8741a89aac059c7990c29d2472435837298b23996ee8255a7232dd49f",
+          "evidence": null,
+          "contract": null,
+          "cost": null
+        },
+        {
+          "station": "verified",
+          "status": "verified",
+          "content_hash": "536ec5c8741a89aac059c7990c29d2472435837298b23996ee8255a7232dd49f",
+          "evidence": {
+            "method": "bounded",
+            "scope": {
+              "domain": "even integers 0..24, bound 24; operation family bump_even",
+              "size": 13,
+              "op_family": [
+                "bump_even"
+              ],
+              "checked": {
+                "size": 13,
+                "sha256": "76611aab54428abddd53ab4cf038ea1514b25f9c7eab9ccbc2acc45cc7acb6f0",
+                "bounds": {},
+                "by": "library"
+              }
+            },
+            "seed": null,
+            "checks": [
+              "unfold_equivalence",
+              "reference"
+            ],
+            "world_hash": "8bd51afbef77487e3f27460eb695e18aa7b7c80580e5da148c6a1b67f01e3dfd",
+            "deps_hash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "content_hash": "536ec5c8741a89aac059c7990c29d2472435837298b23996ee8255a7232dd49f",
+            "atoms_hash": "9674ef0b83274d4ebf25ee48050de709105c8c4099ed0a7ef5a922ff9f512e11"
+          },
+          "contract": null,
+          "cost": {
+            "length": 3,
+            "steps": {
+              "min": 14,
+              "max": 14,
+              "mean": 14.0,
+              "over": {
+                "domain": "even integers 0..24, bound 24; operation family bump_even",
+                "size": 13,
+                "op_family": [
+                  "bump_even"
+                ],
+                "checked": {
+                  "size": 13,
+                  "sha256": "76611aab54428abddd53ab4cf038ea1514b25f9c7eab9ccbc2acc45cc7acb6f0",
+                  "bounds": {},
+                  "by": "library"
+                }
+              }
+            },
+            "reuse": 0
+          }
+        },
+        {
+          "station": "promoted",
+          "status": "promoted",
+          "content_hash": "536ec5c8741a89aac059c7990c29d2472435837298b23996ee8255a7232dd49f",
+          "evidence": {
+            "method": "bounded",
+            "scope": {
+              "domain": "even integers 0..24, bound 24; operation family bump_even",
+              "size": 13,
+              "op_family": [
+                "bump_even"
+              ],
+              "checked": {
+                "size": 13,
+                "sha256": "76611aab54428abddd53ab4cf038ea1514b25f9c7eab9ccbc2acc45cc7acb6f0",
+                "bounds": {},
+                "by": "library"
+              }
+            },
+            "seed": null,
+            "checks": [
+              "unfold_equivalence",
+              "reference"
+            ],
+            "world_hash": "8bd51afbef77487e3f27460eb695e18aa7b7c80580e5da148c6a1b67f01e3dfd",
+            "deps_hash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "content_hash": "536ec5c8741a89aac059c7990c29d2472435837298b23996ee8255a7232dd49f",
+            "atoms_hash": "9674ef0b83274d4ebf25ee48050de709105c8c4099ed0a7ef5a922ff9f512e11"
+          },
+          "contract": {
+            "guarantees": "Only within even integers 0..24, bound 24; operation family bump_even",
+            "may_change": [],
+            "keeps": []
+          },
+          "cost": {
+            "length": 3,
+            "steps": {
+              "min": 14,
+              "max": 14,
+              "mean": 14.0,
+              "over": {
+                "domain": "even integers 0..24, bound 24; operation family bump_even",
+                "size": 13,
+                "op_family": [
+                  "bump_even"
+                ],
+                "checked": {
+                  "size": 13,
+                  "sha256": "76611aab54428abddd53ab4cf038ea1514b25f9c7eab9ccbc2acc45cc7acb6f0",
+                  "bounds": {},
+                  "by": "library"
+                }
+              }
+            },
+            "reuse": 0
+          }
+        }
+      ],
+      "example": {
+        "input": "@twice[bump_even](Even.val<20>)",
+        "outcome": "Ok(Even.val<24>)",
+        "layer0_steps": 14,
+        "trace": [
+          {
+            "call": "root",
+            "layer": 0,
+            "steps": 14,
+            "leaf": false,
+            "outcome": "Ok(Even.val<24>)"
+          },
+          {
+            "call": "twice",
+            "layer": 1,
+            "steps": 14,
+            "leaf": false,
+            "outcome": "Ok(Even.val<24>)"
+          },
+          {
+            "call": "bump_even",
+            "layer": 1,
+            "steps": 7,
+            "leaf": false,
+            "outcome": "Ok(Even.val<22>)"
+          },
+          {
+            "call": "__opulse_edge_bump_even_0",
+            "layer": 0,
+            "steps": 3,
+            "leaf": false,
+            "outcome": "Ok(Even.val<20>)"
+          },
+          {
+            "call": "Even._stored",
+            "layer": 0,
+            "steps": 1,
+            "leaf": true,
+            "outcome": "Ok(20)"
+          },
+          {
+            "call": "Even._edge_valid",
+            "layer": 1,
+            "steps": 1,
+            "leaf": false,
+            "outcome": "Ok(true)"
+          },
+          {
+            "call": "is_even",
+            "layer": 0,
+            "steps": 1,
+            "leaf": true,
+            "outcome": "Ok(true)"
+          },
+          {
+            "call": "Even._pack",
+            "layer": 0,
+            "steps": 1,
+            "leaf": true,
+            "outcome": "Ok(Even.val<20>)"
+          },
+          {
+            "call": "advance",
+            "layer": 0,
+            "steps": 1,
+            "leaf": true,
+            "outcome": "Ok(Even.val<22>)"
+          },
+          {
+            "call": "__opulse_edge_bump_even_output",
+            "layer": 0,
+            "steps": 3,
+            "leaf": false,
+            "outcome": "Ok(Even.val<22>)"
+          },
+          {
+            "call": "Even._stored",
+            "layer": 0,
+            "steps": 1,
+            "leaf": true,
+            "outcome": "Ok(22)"
+          },
+          {
+            "call": "Even._edge_valid",
+            "layer": 1,
+            "steps": 1,
+            "leaf": false,
+            "outcome": "Ok(true)"
+          },
+          {
+            "call": "is_even",
+            "layer": 0,
+            "steps": 1,
+            "leaf": true,
+            "outcome": "Ok(true)"
+          },
+          {
+            "call": "Even._pack",
+            "layer": 0,
+            "steps": 1,
+            "leaf": true,
+            "outcome": "Ok(Even.val<22>)"
+          },
+          {
+            "call": "bump_even",
+            "layer": 1,
+            "steps": 7,
+            "leaf": false,
+            "outcome": "Ok(Even.val<24>)"
+          },
+          {
+            "call": "__opulse_edge_bump_even_0",
+            "layer": 0,
+            "steps": 3,
+            "leaf": false,
+            "outcome": "Ok(Even.val<22>)"
+          },
+          {
+            "call": "Even._stored",
+            "layer": 0,
+            "steps": 1,
+            "leaf": true,
+            "outcome": "Ok(22)"
+          },
+          {
+            "call": "Even._edge_valid",
+            "layer": 1,
+            "steps": 1,
+            "leaf": false,
+            "outcome": "Ok(true)"
+          },
+          {
+            "call": "is_even",
+            "layer": 0,
+            "steps": 1,
+            "leaf": true,
+            "outcome": "Ok(true)"
+          },
+          {
+            "call": "Even._pack",
+            "layer": 0,
+            "steps": 1,
+            "leaf": true,
+            "outcome": "Ok(Even.val<22>)"
+          },
+          {
+            "call": "advance",
+            "layer": 0,
+            "steps": 1,
+            "leaf": true,
+            "outcome": "Ok(Even.val<24>)"
+          },
+          {
+            "call": "__opulse_edge_bump_even_output",
+            "layer": 0,
+            "steps": 3,
+            "leaf": false,
+            "outcome": "Ok(Even.val<24>)"
+          },
+          {
+            "call": "Even._stored",
+            "layer": 0,
+            "steps": 1,
+            "leaf": true,
+            "outcome": "Ok(24)"
+          },
+          {
+            "call": "Even._edge_valid",
+            "layer": 1,
+            "steps": 1,
+            "leaf": false,
+            "outcome": "Ok(true)"
+          },
+          {
+            "call": "is_even",
+            "layer": 0,
+            "steps": 1,
+            "leaf": true,
+            "outcome": "Ok(true)"
+          },
+          {
+            "call": "Even._pack",
+            "layer": 0,
+            "steps": 1,
+            "leaf": true,
+            "outcome": "Ok(Even.val<24>)"
+          }
+        ]
+      },
+      "demonstrates": "Two uses of the invented operation unfold to the same given calls.",
+      "failure": {
+        "attempt": "@twice[bump_even](Even.val<18>) with fuel 1",
+        "error": "Unknown(fuel)",
+        "steps": 1
+      }
+    },
+    {
+      "kind": "observation",
+      "name": "number",
+      "declaration": "obs ?number{s} = read_number L1",
+      "depends_on": [],
+      "stages": [
+        {
+          "station": "written",
+          "status": "written",
+          "content_hash": "b63643f544a44d124a5f01f41d38dabb32978e2a074451e31c04d460a198195b",
+          "evidence": null,
+          "contract": null,
+          "cost": null
+        },
+        {
+          "station": "checked",
+          "status": "checked",
+          "content_hash": "b63643f544a44d124a5f01f41d38dabb32978e2a074451e31c04d460a198195b",
+          "evidence": null,
+          "contract": null,
+          "cost": null
+        },
+        {
+          "station": "callable",
+          "status": "callable",
+          "content_hash": "b63643f544a44d124a5f01f41d38dabb32978e2a074451e31c04d460a198195b",
+          "evidence": null,
+          "contract": null,
+          "cost": null
+        },
+        {
+          "station": "verified",
+          "status": "verified",
+          "content_hash": "b63643f544a44d124a5f01f41d38dabb32978e2a074451e31c04d460a198195b",
+          "evidence": {
+            "method": "exhaustive",
+            "scope": {
+              "domain": "even-card truth states 0..24",
+              "size": 13,
+              "checked": {
+                "size": 13,
+                "sha256": "76611aab54428abddd53ab4cf038ea1514b25f9c7eab9ccbc2acc45cc7acb6f0",
+                "bounds": {},
+                "by": "library"
+              }
+            },
+            "seed": null,
+            "checks": [
+              "dependency",
+              "facts_unchanged",
+              "reference",
+              "non_interference"
+            ],
+            "world_hash": "8bd51afbef77487e3f27460eb695e18aa7b7c80580e5da148c6a1b67f01e3dfd",
+            "deps_hash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "content_hash": "b63643f544a44d124a5f01f41d38dabb32978e2a074451e31c04d460a198195b",
+            "atoms_hash": "9674ef0b83274d4ebf25ee48050de709105c8c4099ed0a7ef5a922ff9f512e11"
+          },
+          "contract": null,
+          "cost": {
+            "length": 1,
+            "steps": {
+              "min": 1,
+              "max": 1,
+              "mean": 1.0,
+              "over": {
+                "domain": "even-card truth states 0..24",
+                "size": 13,
+                "checked": {
+                  "size": 13,
+                  "sha256": "76611aab54428abddd53ab4cf038ea1514b25f9c7eab9ccbc2acc45cc7acb6f0",
+                  "bounds": {},
+                  "by": "library"
+                }
+              }
+            },
+            "reuse": 0
+          }
+        },
+        {
+          "station": "promoted",
+          "status": "promoted",
+          "content_hash": "b63643f544a44d124a5f01f41d38dabb32978e2a074451e31c04d460a198195b",
+          "evidence": {
+            "method": "exhaustive",
+            "scope": {
+              "domain": "even-card truth states 0..24",
+              "size": 13,
+              "checked": {
+                "size": 13,
+                "sha256": "76611aab54428abddd53ab4cf038ea1514b25f9c7eab9ccbc2acc45cc7acb6f0",
+                "bounds": {},
+                "by": "library"
+              }
+            },
+            "seed": null,
+            "checks": [
+              "dependency",
+              "facts_unchanged",
+              "reference",
+              "non_interference"
+            ],
+            "world_hash": "8bd51afbef77487e3f27460eb695e18aa7b7c80580e5da148c6a1b67f01e3dfd",
+            "deps_hash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "content_hash": "b63643f544a44d124a5f01f41d38dabb32978e2a074451e31c04d460a198195b",
+            "atoms_hash": "9674ef0b83274d4ebf25ee48050de709105c8c4099ed0a7ef5a922ff9f512e11"
+          },
+          "contract": {
+            "guarantees": "Only within even-card truth states 0..24",
+            "may_change": [],
+            "keeps": []
+          },
+          "cost": {
+            "length": 1,
+            "steps": {
+              "min": 1,
+              "max": 1,
+              "mean": 1.0,
+              "over": {
+                "domain": "even-card truth states 0..24",
+                "size": 13,
+                "checked": {
+                  "size": 13,
+                  "sha256": "76611aab54428abddd53ab4cf038ea1514b25f9c7eab9ccbc2acc45cc7acb6f0",
+                  "bounds": {},
+                  "by": "library"
+                }
+              }
+            },
+            "reuse": 0
+          }
+        }
+      ],
+      "example": {
+        "input": "?number{Even.val<24>}",
+        "outcome": "Ok(24)",
+        "layer0_steps": 1,
+        "trace": [
+          {
+            "call": "root",
+            "layer": 0,
+            "steps": 1,
+            "leaf": false,
+            "outcome": "Ok(24)"
+          },
+          {
+            "call": "read_number",
+            "layer": 0,
+            "steps": 1,
+            "leaf": true,
+            "outcome": "Ok(24)"
+          }
+        ]
+      },
+      "demonstrates": "The prior combinator's result becomes a truth state; only the granted probe exposes its value.",
+      "failure": {
+        "attempt": "Read secret without a grant",
+        "error": "probe secret is not granted"
+      }
+    }
+  ],
+  "law_and_bridge": {
+    "law": {
+      "declaration": "law #mul_comm: eq(mul(a, b), mul(b, a)) for a: int, b: int L1",
+      "method": "bounded",
+      "scope": "all 64 ordered pairs with each operand 0..7",
+      "content_hash": "6bcdcc2e948207c3740d712f40a1e56e1b858f56a301c9b720a7e397c6c497d5",
+      "evidence": {
+        "method": "bounded",
+        "scope": {
+          "domain": "both integer operands 0..7",
+          "size": 64,
+          "values": [
+            [
+              "{\"t\": \"int\", \"v\": 0}",
+              "{\"t\": \"int\", \"v\": 0}"
+            ],
+            [
+              "{\"t\": \"int\", \"v\": 0}",
+              "{\"t\": \"int\", \"v\": 1}"
+            ],
+            [
+              "{\"t\": \"int\", \"v\": 0}",
+              "{\"t\": \"int\", \"v\": 2}"
+            ],
+            [
+              "{\"t\": \"int\", \"v\": 0}",
+              "{\"t\": \"int\", \"v\": 3}"
+            ],
+            [
+              "{\"t\": \"int\", \"v\": 0}",
+              "{\"t\": \"int\", \"v\": 4}"
+            ],
+            [
+              "{\"t\": \"int\", \"v\": 0}",
+              "{\"t\": \"int\", \"v\": 5}"
+            ],
+            [
+              "{\"t\": \"int\", \"v\": 0}",
+              "{\"t\": \"int\", \"v\": 6}"
+            ],
+            [
+              "{\"t\": \"int\", \"v\": 0}",
+              "{\"t\": \"int\", \"v\": 7}"
+            ],
+            [
+              "{\"t\": \"int\", \"v\": 1}",
+              "{\"t\": \"int\", \"v\": 0}"
+            ],
+            [
+              "{\"t\": \"int\", \"v\": 1}",
+              "{\"t\": \"int\", \"v\": 1}"
+            ],
+            [
+              "{\"t\": \"int\", \"v\": 1}",
+              "{\"t\": \"int\", \"v\": 2}"
+            ],
+            [
+              "{\"t\": \"int\", \"v\": 1}",
+              "{\"t\": \"int\", \"v\": 3}"
+            ],
+            [
+              "{\"t\": \"int\", \"v\": 1}",
+              "{\"t\": \"int\", \"v\": 4}"
+            ],
+            [
+              "{\"t\": \"int\", \"v\": 1}",
+              "{\"t\": \"int\", \"v\": 5}"
+            ],
+            [
+              "{\"t\": \"int\", \"v\": 1}",
+              "{\"t\": \"int\", \"v\": 6}"
+            ],
+            [
+              "{\"t\": \"int\", \"v\": 1}",
+              "{\"t\": \"int\", \"v\": 7}"
+            ],
+            [
+              "{\"t\": \"int\", \"v\": 2}",
+              "{\"t\": \"int\", \"v\": 0}"
+            ],
+            [
+              "{\"t\": \"int\", \"v\": 2}",
+              "{\"t\": \"int\", \"v\": 1}"
+            ],
+            [
+              "{\"t\": \"int\", \"v\": 2}",
+              "{\"t\": \"int\", \"v\": 2}"
+            ],
+            [
+              "{\"t\": \"int\", \"v\": 2}",
+              "{\"t\": \"int\", \"v\": 3}"
+            ],
+            [
+              "{\"t\": \"int\", \"v\": 2}",
+              "{\"t\": \"int\", \"v\": 4}"
+            ],
+            [
+              "{\"t\": \"int\", \"v\": 2}",
+              "{\"t\": \"int\", \"v\": 5}"
+            ],
+            [
+              "{\"t\": \"int\", \"v\": 2}",
+              "{\"t\": \"int\", \"v\": 6}"
+            ],
+            [
+              "{\"t\": \"int\", \"v\": 2}",
+              "{\"t\": \"int\", \"v\": 7}"
+            ],
+            [
+              "{\"t\": \"int\", \"v\": 3}",
+              "{\"t\": \"int\", \"v\": 0}"
+            ],
+            [
+              "{\"t\": \"int\", \"v\": 3}",
+              "{\"t\": \"int\", \"v\": 1}"
+            ],
+            [
+              "{\"t\": \"int\", \"v\": 3}",
+              "{\"t\": \"int\", \"v\": 2}"
+            ],
+            [
+              "{\"t\": \"int\", \"v\": 3}",
+              "{\"t\": \"int\", \"v\": 3}"
+            ],
+            [
+              "{\"t\": \"int\", \"v\": 3}",
+              "{\"t\": \"int\", \"v\": 4}"
+            ],
+            [
+              "{\"t\": \"int\", \"v\": 3}",
+              "{\"t\": \"int\", \"v\": 5}"
+            ],
+            [
+              "{\"t\": \"int\", \"v\": 3}",
+              "{\"t\": \"int\", \"v\": 6}"
+            ],
+            [
+              "{\"t\": \"int\", \"v\": 3}",
+              "{\"t\": \"int\", \"v\": 7}"
+            ],
+            [
+              "{\"t\": \"int\", \"v\": 4}",
+              "{\"t\": \"int\", \"v\": 0}"
+            ],
+            [
+              "{\"t\": \"int\", \"v\": 4}",
+              "{\"t\": \"int\", \"v\": 1}"
+            ],
+            [
+              "{\"t\": \"int\", \"v\": 4}",
+              "{\"t\": \"int\", \"v\": 2}"
+            ],
+            [
+              "{\"t\": \"int\", \"v\": 4}",
+              "{\"t\": \"int\", \"v\": 3}"
+            ],
+            [
+              "{\"t\": \"int\", \"v\": 4}",
+              "{\"t\": \"int\", \"v\": 4}"
+            ],
+            [
+              "{\"t\": \"int\", \"v\": 4}",
+              "{\"t\": \"int\", \"v\": 5}"
+            ],
+            [
+              "{\"t\": \"int\", \"v\": 4}",
+              "{\"t\": \"int\", \"v\": 6}"
+            ],
+            [
+              "{\"t\": \"int\", \"v\": 4}",
+              "{\"t\": \"int\", \"v\": 7}"
+            ],
+            [
+              "{\"t\": \"int\", \"v\": 5}",
+              "{\"t\": \"int\", \"v\": 0}"
+            ],
+            [
+              "{\"t\": \"int\", \"v\": 5}",
+              "{\"t\": \"int\", \"v\": 1}"
+            ],
+            [
+              "{\"t\": \"int\", \"v\": 5}",
+              "{\"t\": \"int\", \"v\": 2}"
+            ],
+            [
+              "{\"t\": \"int\", \"v\": 5}",
+              "{\"t\": \"int\", \"v\": 3}"
+            ],
+            [
+              "{\"t\": \"int\", \"v\": 5}",
+              "{\"t\": \"int\", \"v\": 4}"
+            ],
+            [
+              "{\"t\": \"int\", \"v\": 5}",
+              "{\"t\": \"int\", \"v\": 5}"
+            ],
+            [
+              "{\"t\": \"int\", \"v\": 5}",
+              "{\"t\": \"int\", \"v\": 6}"
+            ],
+            [
+              "{\"t\": \"int\", \"v\": 5}",
+              "{\"t\": \"int\", \"v\": 7}"
+            ],
+            [
+              "{\"t\": \"int\", \"v\": 6}",
+              "{\"t\": \"int\", \"v\": 0}"
+            ],
+            [
+              "{\"t\": \"int\", \"v\": 6}",
+              "{\"t\": \"int\", \"v\": 1}"
+            ],
+            [
+              "{\"t\": \"int\", \"v\": 6}",
+              "{\"t\": \"int\", \"v\": 2}"
+            ],
+            [
+              "{\"t\": \"int\", \"v\": 6}",
+              "{\"t\": \"int\", \"v\": 3}"
+            ],
+            [
+              "{\"t\": \"int\", \"v\": 6}",
+              "{\"t\": \"int\", \"v\": 4}"
+            ],
+            [
+              "{\"t\": \"int\", \"v\": 6}",
+              "{\"t\": \"int\", \"v\": 5}"
+            ],
+            [
+              "{\"t\": \"int\", \"v\": 6}",
+              "{\"t\": \"int\", \"v\": 6}"
+            ],
+            [
+              "{\"t\": \"int\", \"v\": 6}",
+              "{\"t\": \"int\", \"v\": 7}"
+            ],
+            [
+              "{\"t\": \"int\", \"v\": 7}",
+              "{\"t\": \"int\", \"v\": 0}"
+            ],
+            [
+              "{\"t\": \"int\", \"v\": 7}",
+              "{\"t\": \"int\", \"v\": 1}"
+            ],
+            [
+              "{\"t\": \"int\", \"v\": 7}",
+              "{\"t\": \"int\", \"v\": 2}"
+            ],
+            [
+              "{\"t\": \"int\", \"v\": 7}",
+              "{\"t\": \"int\", \"v\": 3}"
+            ],
+            [
+              "{\"t\": \"int\", \"v\": 7}",
+              "{\"t\": \"int\", \"v\": 4}"
+            ],
+            [
+              "{\"t\": \"int\", \"v\": 7}",
+              "{\"t\": \"int\", \"v\": 5}"
+            ],
+            [
+              "{\"t\": \"int\", \"v\": 7}",
+              "{\"t\": \"int\", \"v\": 6}"
+            ],
+            [
+              "{\"t\": \"int\", \"v\": 7}",
+              "{\"t\": \"int\", \"v\": 7}"
+            ]
+          ],
+          "checked": {
+            "size": 64,
+            "sha256": "ea92bcecd0048c5474500d87979dafa50bd51ebabb93ffeebc0a5e9006444135",
+            "bounds": {
+              "0": {
+                "min": 0,
+                "max": 7
+              },
+              "1": {
+                "min": 0,
+                "max": 7
+              }
+            },
+            "by": "library"
+          }
+        },
+        "seed": null,
+        "checks": [
+          "holds",
+          "equation"
+        ],
+        "world_hash": "357e675dee0b9a02a114aea7854b08c4c81a6255fd64ec49579456cc9a1fc133",
+        "deps_hash": "2f4f075304546496c3568d9a71bd7a423ca381f701b355670df9d6021e62c15c",
+        "content_hash": "6bcdcc2e948207c3740d712f40a1e56e1b858f56a301c9b720a7e397c6c497d5",
+        "atoms_hash": "189350e2c70f8c7b5f3b5b2092b64ef904716987774177f31f7d71b4c50dea46",
+        "checker": "opulse.atoms.library.Library.verify"
+      },
+      "before": "add(mul(5, 7), mul(7, 5))",
+      "after": "add(mul(7, 5), mul(7, 5))",
+      "before_outcome": "Ok(70)",
+      "after_outcome": "Ok(70)",
+      "rewrite_steps": 1,
+      "charged_steps": 3
+    },
+    "bridge": {
+      "declaration": "bridge ~to_difference: Pair -> Int = difference(x) commutes (pair_add -> add_int) L1",
+      "method": "bounded",
+      "scope": "all 16 pairs with components 0..3",
+      "evidence": {
+        "method": "bounded",
+        "scope": {
+          "domain": "pair components 0..3",
+          "size": 16,
+          "checked": {
+            "size": 16,
+            "sha256": "c86035a7178b27ac4d8f8f04013e4e9695c40b9043066276680a68ef79eca005",
+            "bounds": {},
+            "by": "bridge verifier"
+          },
+          "domain_size": 16,
+          "pairs_checked": 256
+        },
+        "checks": [
+          "commutes",
+          "total_on_domain"
+        ],
+        "content_hash": "2d7db3eb15fe7a4a2f9a1eb538335a802bd7a0cd3ec2c1f948077f44abd483d9",
+        "checker": "opulse.atoms.bridges.verify_bridge"
+      },
+      "domain_size": 16,
+      "pairs_checked": 256,
+      "checks": [
+        "commutes",
+        "total_on_domain"
+      ],
+      "input": "~to_difference(Pair<3, 1>)",
+      "outcome": "Ok(2)",
+      "layer0_steps": 1,
+      "diagram": "~to_difference(pair_add(Pair<2, 3>, Pair<3, 1>)) = add_int(~to_difference(Pair<2, 3>), ~to_difference(Pair<3, 1>)) = 1"
+    }
+  },
+  "link_limit": {
+    "attempt": "?number_twice{s} through @twice[bump_even]",
+    "error": "operation bump_even may read or change truth; operation advance may read or change truth",
+    "meaning": "Spec 0.5 rejects ?number_twice: bump_even and advance take the truth sort Even. Pure definitions may act on already observed or explicitly public values, not on the truth sort."
+  },
+  "notation3": {
+    "version": 1,
+    "worlds": {
+      "integer": {
+        "legend": [
+          {
+            "mark": "\\bbZ",
+            "display": "\u2124",
+            "name": "int",
+            "kind": "object",
+            "layer": 0,
+            "origin": "given",
+            "forms": [],
+            "signature": null
+          },
+          {
+            "mark": "\\bbB",
+            "display": "\ud835\udd39",
+            "name": "bool",
+            "kind": "object",
+            "layer": 0,
+            "origin": "given",
+            "forms": [
+              "false",
+              "true"
+            ],
+            "signature": null
+          },
+          {
+            "mark": "\\bbA",
+            "display": "\ud835\udd38",
+            "name": "str",
+            "kind": "object",
+            "layer": 0,
+            "origin": "given",
+            "forms": [],
+            "signature": null
+          },
+          {
+            "mark": "\\bbD",
+            "display": "\ud835\udd3b",
+            "name": "list",
+            "kind": "object",
+            "layer": 0,
+            "origin": "given",
+            "forms": [
+              "items"
+            ],
+            "signature": null
+          },
+          {
+            "mark": "\\bbE",
+            "display": "\ud835\udd3c",
+            "name": "pair",
+            "kind": "object",
+            "layer": 0,
+            "origin": "given",
+            "forms": [
+              "items"
+            ],
+            "signature": null
+          },
+          {
+            "mark": "\\bbG",
+            "display": "\ud835\udd3e",
+            "name": "frac",
+            "kind": "object",
+            "layer": 0,
+            "origin": "given",
+            "forms": [
+              "val"
+            ],
+            "signature": null
+          },
+          {
+            "mark": "\\bbH",
+            "display": "\u210d",
+            "name": "cf",
+            "kind": "object",
+            "layer": 0,
+            "origin": "given",
+            "forms": [
+              "val"
+            ],
+            "signature": null
+          },
+          {
+            "mark": "\\bbI",
+            "display": "\ud835\udd40",
+            "name": "any",
+            "kind": "object",
+            "layer": 0,
+            "origin": "given",
+            "forms": [],
+            "signature": null
+          },
+          {
+            "mark": "\\bbJ",
+            "display": "\ud835\udd41",
+            "name": "nat",
+            "kind": "object",
+            "layer": 0,
+            "origin": "given",
+            "forms": [
+              "val"
+            ],
+            "signature": null
+          },
+          {
+            "mark": "@",
+            "display": "@",
+            "name": "succ",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "@ : \\bbZ -> \\bbZ",
+              "display": "@ : \u2124 \u2192 \u2124"
+            }
+          },
+          {
+            "mark": "(+)",
+            "display": "(+)",
+            "name": "add",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "(+) : \\bbZ \\x \\bbZ -> \\bbZ",
+              "display": "(+) : \u2124 \u00d7 \u2124 \u2192 \u2124"
+            }
+          },
+          {
+            "mark": "#",
+            "display": "#",
+            "name": "neg",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "# : \\bbZ -> \\bbZ",
+              "display": "# : \u2124 \u2192 \u2124"
+            }
+          },
+          {
+            "mark": "$",
+            "display": "$",
+            "name": "gcd",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "$ : \\bbZ \\x \\bbZ -> \\bbZ",
+              "display": "$ : \u2124 \u00d7 \u2124 \u2192 \u2124"
+            }
+          },
+          {
+            "mark": "(<)",
+            "display": "(<)",
+            "name": "lt",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "(<) : \\bbZ \\x \\bbZ -> \\bbB",
+              "display": "(<) : \u2124 \u00d7 \u2124 \u2192 \ud835\udd39"
+            }
+          },
+          {
+            "mark": "(<=)",
+            "display": "(<=)",
+            "name": "le",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "(<=) : \\bbZ \\x \\bbZ -> \\bbB",
+              "display": "(<=) : \u2124 \u00d7 \u2124 \u2192 \ud835\udd39"
+            }
+          },
+          {
+            "mark": "(==)",
+            "display": "(==)",
+            "name": "eq",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "(==) : \\bbZ \\x \\bbZ -> \\bbB",
+              "display": "(==) : \u2124 \u00d7 \u2124 \u2192 \ud835\udd39"
+            }
+          },
+          {
+            "mark": "(!=)",
+            "display": "(!=)",
+            "name": "ne",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "(!=) : \\bbZ \\x \\bbZ -> \\bbB",
+              "display": "(!=) : \u2124 \u00d7 \u2124 \u2192 \ud835\udd39"
+            }
+          },
+          {
+            "mark": "(-)",
+            "display": "(-)",
+            "name": "sub",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "(-) : \\bbZ \\x \\bbZ -> \\bbZ",
+              "display": "(-) : \u2124 \u00d7 \u2124 \u2192 \u2124"
+            }
+          },
+          {
+            "mark": "&",
+            "display": "&",
+            "name": "quotient",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "& : \\bbZ \\x \\bbZ -> \\bbZ",
+              "display": "& : \u2124 \u00d7 \u2124 \u2192 \u2124"
+            }
+          },
+          {
+            "mark": "\\spade",
+            "display": "\u2660",
+            "name": "failure",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\spade : \\bbA -> \\bbZ",
+              "display": "\u2660 : \ud835\udd38 \u2192 \u2124"
+            }
+          },
+          {
+            "mark": "\\wspade",
+            "display": "\u2664",
+            "name": "pair",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "note": "constructor of \ud835\udd3c",
+            "signature": {
+              "ascii": "\\wspade : \\bbZ \\x \\bbZ -> \\bbE",
+              "display": "\u2664 : \u2124 \u00d7 \u2124 \u2192 \ud835\udd3c"
+            }
+          },
+          {
+            "mark": "\\heart",
+            "display": "\u2665",
+            "name": "first",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\heart : \\bbE -> \\bbZ",
+              "display": "\u2665 : \ud835\udd3c \u2192 \u2124"
+            }
+          },
+          {
+            "mark": "\\wheart",
+            "display": "\u2661",
+            "name": "second",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\wheart : \\bbE -> \\bbZ",
+              "display": "\u2661 : \ud835\udd3c \u2192 \u2124"
+            }
+          },
+          {
+            "mark": "\\dia",
+            "display": "\u2666",
+            "name": "list_empty",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "mark": "\\wdia",
+            "display": "\u2662",
+            "name": "cons",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\wdia : \\bbZ \\x \\bbD -> \\bbD",
+              "display": "\u2662 : \u2124 \u00d7 \ud835\udd3b \u2192 \ud835\udd3b"
+            }
+          },
+          {
+            "mark": "\\club",
+            "display": "\u2663",
+            "name": "append",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\club : \\bbD \\x \\bbZ -> \\bbD",
+              "display": "\u2663 : \ud835\udd3b \u00d7 \u2124 \u2192 \ud835\udd3b"
+            }
+          },
+          {
+            "mark": "\\wclub",
+            "display": "\u2667",
+            "name": "is_empty",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\wclub : \\bbD -> \\bbB",
+              "display": "\u2667 : \ud835\udd3b \u2192 \ud835\udd39"
+            }
+          },
+          {
+            "mark": "\\sq",
+            "display": "\u25a0",
+            "name": "head",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\sq : \\bbD -> \\bbZ",
+              "display": "\u25a0 : \ud835\udd3b \u2192 \u2124"
+            }
+          },
+          {
+            "mark": "\\wsq",
+            "display": "\u25a1",
+            "name": "tail",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\wsq : \\bbD -> \\bbD",
+              "display": "\u25a1 : \ud835\udd3b \u2192 \ud835\udd3b"
+            }
+          },
+          {
+            "mark": "\\dot",
+            "display": "\u25cf",
+            "name": "length",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\dot : \\bbD -> \\bbZ",
+              "display": "\u25cf : \ud835\udd3b \u2192 \u2124"
+            }
+          },
+          {
+            "mark": "\\wdot",
+            "display": "\u25cb",
+            "name": "numerator",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\wdot : \\bbG -> \\bbZ",
+              "display": "\u25cb : \ud835\udd3e \u2192 \u2124"
+            }
+          },
+          {
+            "mark": "\\up",
+            "display": "\u25b2",
+            "name": "denominator",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\up : \\bbG -> \\bbZ",
+              "display": "\u25b2 : \ud835\udd3e \u2192 \u2124"
+            }
+          },
+          {
+            "mark": "\\wup",
+            "display": "\u25b3",
+            "name": "digits",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\wup : \\bbH -> \\bbD",
+              "display": "\u25b3 : \u210d \u2192 \ud835\udd3b"
+            }
+          },
+          {
+            "mark": "\\dn",
+            "display": "\u25bc",
+            "name": "count",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\dn : \\bbJ -> \\bbZ",
+              "display": "\u25bc : \ud835\udd41 \u2192 \u2124"
+            }
+          },
+          {
+            "mark": "\\wdn",
+            "display": "\u25bd",
+            "name": "is_cf_data",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\wdn : \\bbI -> \\bbB",
+              "display": "\u25bd : \ud835\udd40 \u2192 \ud835\udd39"
+            }
+          },
+          {
+            "mark": "\\lz",
+            "display": "\u25c6",
+            "name": "is_pair",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\lz : \\bbI -> \\bbB",
+              "display": "\u25c6 : \ud835\udd40 \u2192 \ud835\udd39"
+            }
+          },
+          {
+            "mark": "\\wlz",
+            "display": "\u25c7",
+            "name": "is_base",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\wlz : \\bbI \\x \\bbA -> \\bbB",
+              "display": "\u25c7 : \ud835\udd40 \u00d7 \ud835\udd38 \u2192 \ud835\udd39"
+            }
+          },
+          {
+            "mark": "\\Gamma",
+            "display": "\u0393",
+            "name": "sequence",
+            "kind": "combinator",
+            "layer": 0,
+            "origin": "given",
+            "signature": {
+              "ascii": "\\Gamma : \\bbX_a -> \\bbX_e",
+              "display": "\u0393 : \ud835\udd4f\u2090 \u2192 \ud835\udd4f\u2091"
+            }
+          },
+          {
+            "mark": "\\hatA",
+            "display": "\u00c2",
+            "name": "value",
+            "kind": "observation",
+            "layer": 0,
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "mark": "\\bbK",
+            "display": "\ud835\udd42",
+            "name": "fn",
+            "kind": "object",
+            "layer": 0,
+            "origin": "given",
+            "forms": [],
+            "signature": null
+          },
+          {
+            "mark": "\\st",
+            "display": "\u2605",
+            "name": "cf.base",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "mark": "\\wst",
+            "display": "\u2606",
+            "name": "nat.base",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "mark": "\\bbL",
+            "display": "\ud835\udd43",
+            "name": "Record",
+            "kind": "object",
+            "layer": 0,
+            "origin": "given",
+            "forms": [],
+            "signature": null
+          },
+          {
+            "mark": "\\bbM",
+            "display": "\ud835\udd44",
+            "name": "Pair",
+            "kind": "object",
+            "layer": 0,
+            "origin": "given",
+            "forms": [],
+            "signature": null
+          },
+          {
+            "mark": "\\dia_01",
+            "display": "\u2666\u2080\u2081",
+            "name": "is_even",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "mark": "\\dia_02",
+            "display": "\u2666\u2080\u2082",
+            "name": "advance",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "mark": "\\dia_03",
+            "display": "\u2666\u2080\u2083",
+            "name": "pair_add",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "mark": "\\dia_04",
+            "display": "\u2666\u2080\u2084",
+            "name": "difference",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "mark": "\\dia_05",
+            "display": "\u2666\u2080\u2085",
+            "name": "add_int",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "mark": "\\hatC",
+            "display": "\u0108",
+            "name": "read_number",
+            "kind": "observation",
+            "layer": 0,
+            "origin": "given",
+            "signature": null
+          },
+          {
+            "mark": "\\dia_06",
+            "display": "\u2666\u2080\u2086",
+            "name": "bool.false",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "form_of": "bool",
+            "signature": null
+          },
+          {
+            "mark": "\\dia_07",
+            "display": "\u2666\u2080\u2087",
+            "name": "bool.true",
+            "kind": "operation",
+            "layer": 0,
+            "origin": "given",
+            "form_of": "bool",
+            "signature": null
+          },
+          {
+            "mark": "\\hatA_1",
+            "display": "\u00c2\u2081",
+            "name": "whole",
+            "kind": "observation",
+            "layer": 1,
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "mark": "\\Gamma_1",
+            "display": "\u0393\u2081",
+            "name": "fold_frac",
+            "kind": "combinator",
+            "layer": 1,
+            "origin": "invented",
+            "signature": {
+              "ascii": "^1\\Gamma_1 : \\bbX_a \\x \\bbX_a -> \\bbX_a",
+              "display": "\u00b9\u0393\u2081 : \ud835\udd4f\u2090 \u00d7 \ud835\udd4f\u2090 \u2192 \ud835\udd4f\u2090"
+            }
+          },
+          {
+            "mark": "\\dia_1",
+            "display": "\u2666\u2081",
+            "name": "cf_divmod",
+            "kind": "operation",
+            "layer": 1,
+            "origin": "invented",
+            "signature": {
+              "ascii": "^1\\dia_1 : \\bbZ \\x \\bbZ -> \\bbM",
+              "display": "\u00b9\u2666\u2081 : \u2124 \u00d7 \u2124 \u2192 \ud835\udd44"
+            }
+          },
+          {
+            "mark": "\\eqv_1",
+            "display": "\u2261\u2081",
+            "name": "add_comm",
+            "kind": "law",
+            "layer": 1,
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "mark": "\\eqv_2",
+            "display": "\u2261\u2082",
+            "name": "gcd_comm",
+            "kind": "law",
+            "layer": 1,
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "mark": "\\bbA_1",
+            "display": "\ud835\udd38\u2081",
+            "name": "Quot",
+            "kind": "template",
+            "layer": 1,
+            "origin": "invented",
+            "produces": "object",
+            "signature": null
+          },
+          {
+            "mark": "\\wsq_2",
+            "display": "\u25a1\u2082",
+            "name": "abs_int",
+            "kind": "operation",
+            "layer": 1,
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "mark": "\\dot_3",
+            "display": "\u25cf\u2083",
+            "name": "canonical_tail",
+            "kind": "operation",
+            "layer": 1,
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "mark": "\\wdot_4",
+            "display": "\u25cb\u2084",
+            "name": "expand",
+            "kind": "operation",
+            "layer": 1,
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "mark": "\\lz_5",
+            "display": "\u25c6\u2085",
+            "name": "quot_valid",
+            "kind": "operation",
+            "layer": 1,
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "mark": "\\wlz_6",
+            "display": "\u25c7\u2086",
+            "name": "reduce_ratio",
+            "kind": "operation",
+            "layer": 1,
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "mark": "\\bbA_2",
+            "display": "\ud835\udd38\u2082",
+            "name": "Even",
+            "kind": "object",
+            "layer": 1,
+            "origin": "invented",
+            "forms": [
+              "val"
+            ],
+            "signature": null
+          },
+          {
+            "mark": "\\wdn_7",
+            "display": "\u25bd\u2087",
+            "name": "bump_even",
+            "kind": "operation",
+            "layer": 1,
+            "origin": "invented",
+            "signature": {
+              "ascii": "^1\\wdn_7 : \\bbA_2 -> \\bbA_2",
+              "display": "\u00b9\u25bd\u2087 : \ud835\udd38\u2082 \u2192 \ud835\udd38\u2082"
+            }
+          },
+          {
+            "mark": "\\Delta_2",
+            "display": "\u0394\u2082",
+            "name": "twice",
+            "kind": "combinator",
+            "layer": 1,
+            "origin": "invented",
+            "signature": {
+              "ascii": "^1\\Delta_2 : \\bbX_a -> \\bbX_a",
+              "display": "\u00b9\u0394\u2082 : \ud835\udd4f\u2090 \u2192 \ud835\udd4f\u2090"
+            }
+          },
+          {
+            "mark": "\\hatC_2",
+            "display": "\u0108\u2082",
+            "name": "number",
+            "kind": "observation",
+            "layer": 1,
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "mark": "\\squig_1",
+            "display": "\u219d\u2081",
+            "name": "to_difference",
+            "kind": "bridge",
+            "layer": 1,
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "mark": "\\Theta_3",
+            "display": "\u0398\u2083",
+            "name": "repeat",
+            "kind": "combinator",
+            "layer": 2,
+            "origin": "invented",
+            "signature": {
+              "ascii": "^2\\Theta_3 : \\bbX_a \\x \\bbJ -> \\bbX_a",
+              "display": "\u00b2\u0398\u2083 : \ud835\udd4f\u2090 \u00d7 \ud835\udd41 \u2192 \ud835\udd4f\u2090"
+            }
+          },
+          {
+            "mark": "\\bbE_3",
+            "display": "\ud835\udd3c\u2083",
+            "name": "quot_frac",
+            "kind": "object",
+            "layer": 2,
+            "origin": "invented",
+            "forms": [
+              "val"
+            ],
+            "signature": null
+          },
+          {
+            "mark": "\\wst_8",
+            "display": "\u2606\u2088",
+            "name": "mod12",
+            "kind": "operation",
+            "layer": 2,
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "mark": "\\dia_9",
+            "display": "\u2666\u2089",
+            "name": "mul",
+            "kind": "operation",
+            "layer": 3,
+            "origin": "invented",
+            "signature": {
+              "ascii": "^3\\dia_9 : \\bbZ \\x \\bbZ -> \\bbZ",
+              "display": "\u00b3\u2666\u2089 : \u2124 \u00d7 \u2124 \u2192 \u2124"
+            }
+          },
+          {
+            "mark": "\\Lambda_4",
+            "display": "\u039b\u2084",
+            "name": "convergents",
+            "kind": "combinator",
+            "layer": 3,
+            "origin": "invented",
+            "signature": {
+              "ascii": "^3\\Lambda_4 : \\bbH -> \\bbD",
+              "display": "\u00b3\u039b\u2084 : \u210d \u2192 \ud835\udd3b"
+            }
+          },
+          {
+            "mark": "\\bbG_4",
+            "display": "\ud835\udd3e\u2084",
+            "name": "hour",
+            "kind": "object",
+            "layer": 3,
+            "origin": "invented",
+            "forms": [
+              "val"
+            ],
+            "signature": null
+          },
+          {
+            "mark": "\\spade_10",
+            "display": "\u2660\u2081\u2080",
+            "name": "qadd",
+            "kind": "operation",
+            "layer": 4,
+            "origin": "invented",
+            "signature": {
+              "ascii": "^4\\spade_10 : \\bbG \\x \\bbG -> \\bbG",
+              "display": "\u2074\u2660\u2081\u2080 : \ud835\udd3e \u00d7 \ud835\udd3e \u2192 \ud835\udd3e"
+            }
+          },
+          {
+            "mark": "\\heart_11",
+            "display": "\u2665\u2081\u2081",
+            "name": "qmul",
+            "kind": "operation",
+            "layer": 4,
+            "origin": "invented",
+            "signature": {
+              "ascii": "^4\\heart_11 : \\bbG \\x \\bbG -> \\bbG",
+              "display": "\u2074\u2665\u2081\u2081 : \ud835\udd3e \u00d7 \ud835\udd3e \u2192 \ud835\udd3e"
+            }
+          },
+          {
+            "mark": "\\eqv_3",
+            "display": "\u2261\u2083",
+            "name": "mul_comm",
+            "kind": "law",
+            "layer": 4,
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "mark": "\\eqv_4",
+            "display": "\u2261\u2084",
+            "name": "mul_distrib",
+            "kind": "law",
+            "layer": 4,
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "mark": "\\wdot_12",
+            "display": "\u25cb\u2081\u2082",
+            "name": "cf_step",
+            "kind": "operation",
+            "layer": 4,
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "mark": "\\lz_13",
+            "display": "\u25c6\u2081\u2083",
+            "name": "lcm",
+            "kind": "operation",
+            "layer": 4,
+            "origin": "invented",
+            "signature": null
+          },
+          {
+            "mark": "\\hatE_3",
+            "display": "\u00ca\u2083",
+            "name": "bounded_convergent",
+            "kind": "observation",
+            "layer": 5,
+            "origin": "invented",
+            "signature": {
+              "ascii": "^5\\hatE_3 : \\bbM -> \\bbG",
+              "display": "\u2075\u00ca\u2083 : \ud835\udd44 \u2192 \ud835\udd3e"
+            }
+          },
+          {
+            "mark": "\\eqv_5",
+            "display": "\u2261\u2085",
+            "name": "gcd_mul_lcm",
+            "kind": "law",
+            "layer": 5,
+            "origin": "invented",
+            "signature": null
+          }
+        ],
+        "formulas": {
+          "?number{Even.val<24>}": {
+            "display": "\u0108\u2082\u27e8\ud835\udd38\u2082(24)\u27e9",
+            "ascii": "\\hatC_2<|\\bbA_2(24)|>",
+            "signature": null
+          },
+          "@twice[bump_even](Even.val<20>)": {
+            "display": "\u0394\u2082[\u25bd\u2087] \ud835\udd38\u2082(20)",
+            "ascii": "\\Delta_2[\\wdn_7] \\bbA_2(20)",
+            "signature": null
+          },
+          "Even._edge_valid": {
+            "display": "\ud835\udd38\u2082",
+            "ascii": "\\bbA_2",
+            "signature": null
+          },
+          "Even._pack": {
+            "display": "\ud835\udd38\u2082",
+            "ascii": "\\bbA_2",
+            "signature": null
+          },
+          "Even._stored": {
+            "display": "\ud835\udd38\u2082",
+            "ascii": "\\bbA_2",
+            "signature": null
+          },
+          "Even.make": {
+            "display": "\ud835\udd38\u2082()",
+            "ascii": "\\bbA_2()",
+            "signature": null
+          },
+          "Even.make(18)": {
+            "display": "\ud835\udd38\u2082(18)",
+            "ascii": "\\bbA_2(18)",
+            "signature": null
+          },
+          "Ok(18)": {
+            "display": "18",
+            "ascii": "18",
+            "signature": null
+          },
+          "Ok(2)": {
+            "display": "2",
+            "ascii": "2",
+            "signature": null
+          },
+          "Ok(20)": {
+            "display": "20",
+            "ascii": "20",
+            "signature": null
+          },
+          "Ok(22)": {
+            "display": "22",
+            "ascii": "22",
+            "signature": null
+          },
+          "Ok(24)": {
+            "display": "24",
+            "ascii": "24",
+            "signature": null
+          },
+          "Ok(70)": {
+            "display": "70",
+            "ascii": "70",
+            "signature": null
+          },
+          "Ok(Even.val<18>)": {
+            "display": "\ud835\udd38\u2082(18)",
+            "ascii": "\\bbA_2(18)",
+            "signature": null
+          },
+          "Ok(Even.val<20>)": {
+            "display": "\ud835\udd38\u2082(20)",
+            "ascii": "\\bbA_2(20)",
+            "signature": null
+          },
+          "Ok(Even.val<22>)": {
+            "display": "\ud835\udd38\u2082(22)",
+            "ascii": "\\bbA_2(22)",
+            "signature": null
+          },
+          "Ok(Even.val<24>)": {
+            "display": "\ud835\udd38\u2082(24)",
+            "ascii": "\\bbA_2(24)",
+            "signature": null
+          },
+          "Ok(true)": {
+            "display": "\u22a4",
+            "ascii": "\\top",
+            "signature": null
+          },
+          "__opulse_edge_bump_even_0": {
+            "display": "vopulse_edge_bump_even_0_",
+            "ascii": "vopulse_edge_bump_even_0_",
+            "signature": null
+          },
+          "__opulse_edge_bump_even_output": {
+            "display": "vopulse_edge_bump_even_output_",
+            "ascii": "vopulse_edge_bump_even_output_",
+            "signature": null
+          },
+          "add(mul(5, 7), mul(7, 5))": {
+            "display": "5 \u2666\u2089 7 + 7 \u2666\u2089 5",
+            "ascii": "5 \\dia_9 7 + 7 \\dia_9 5",
+            "signature": null
+          },
+          "add(mul(7, 5), mul(7, 5))": {
+            "display": "7 \u2666\u2089 5 + 7 \u2666\u2089 5",
+            "ascii": "7 \\dia_9 5 + 7 \\dia_9 5",
+            "signature": null
+          },
+          "advance": {
+            "display": "advance",
+            "ascii": "advance",
+            "signature": null
+          },
+          "bridge ~to_difference: Pair -> Int = difference(x) commutes (pair_add -> add_int) L1": {
+            "display": "\u219d\u2081(x) = { \u2666\u2080\u2084 x }",
+            "ascii": "\\squig_1(x) = { \\dia_04 x }",
+            "signature": {
+              "display": "\u219d\u2081 : \ud835\udd44 \u2192 \u2124",
+              "ascii": "\\squig_1 : \\bbM -> \\bbZ"
+            }
+          },
+          "bump_even": {
+            "display": "bump_even",
+            "ascii": "bump_even",
+            "signature": null
+          },
+          "bump_even(Even.val<18>)": {
+            "display": "\u25bd\u2087 \ud835\udd38\u2082(18)",
+            "ascii": "\\wdn_7 \\bbA_2(18)",
+            "signature": null
+          },
+          "comb @twice[f: A -> A](x: A) -> A = f(f(x)) L1": {
+            "display": "\u0394\u2082[\u2666\u2090] x = { \u2666\u2090 (\u2666\u2090 x) }",
+            "ascii": "\\Delta_2[\\dia_a] x = { \\dia_a (\\dia_a x) }",
+            "signature": null
+          },
+          "is_even": {
+            "display": "is_even",
+            "ascii": "is_even",
+            "signature": null
+          },
+          "law #mul_comm: eq(mul(a, b), mul(b, a)) for a: int, b: int L1": {
+            "display": "\u2261\u2083 : \u2200 a, b \u2208 \u2124. a \u2666\u2089 b == b \u2666\u2089 a",
+            "ascii": "\\eqv_3 : \\all a, b \\in \\bbZ. a \\dia_9 b == b \\dia_9 a",
+            "signature": null
+          },
+          "obj Even = <value: int> where is_even(x) L1": {
+            "display": "\ud835\udd38\u2082 = { (value) \u2208 \u2124 \u2223 \u2666\u2080\u2081 x }",
+            "ascii": "\\bbA_2 = { (value) \\in \\bbZ \\mid \\dia_01 x }",
+            "signature": null
+          },
+          "obs ?number{s} = read_number L1": {
+            "display": "\u0108\u2082\u27e8s\u27e9 = { read_number }",
+            "ascii": "\\hatC_2<|s|> = { read_number }",
+            "signature": null
+          },
+          "op bump_even(arg0: Even) -> Even = advance(arg0) L1": {
+            "display": "\u25bd\u2087 arg0 = { \u2666\u2080\u2082 arg0 }",
+            "ascii": "\\wdn_7 arg0 = { \\dia_02 arg0 }",
+            "signature": {
+              "display": "\u00b9\u25bd\u2087 : \ud835\udd38\u2082 \u2192 \ud835\udd38\u2082",
+              "ascii": "^1\\wdn_7 : \\bbA_2 -> \\bbA_2"
+            }
+          },
+          "read_number": {
+            "display": "read_number",
+            "ascii": "read_number",
+            "signature": null
+          },
+          "root": {
+            "display": "root",
+            "ascii": "root",
+            "signature": null
+          },
+          "twice": {
+            "display": "twice",
+            "ascii": "twice",
+            "signature": null
+          },
+          "~to_difference(Pair<3, 1>)": {
+            "display": "\u219d\u2081 (\ud835\udd44(3, 1))",
+            "ascii": "\\squig_1 (\\bbM(3, 1))",
+            "signature": null
+          }
+        },
+        "prose": {},
+        "designs": [
+          "?number_twice{s} through @twice[bump_even]",
+          "@twice[bump_even](Even.val<18>) with fuel 1",
+          "Broken canon add(x, 2)",
+          "Promote seeded sample (seed 17)",
+          "Read secret without a grant",
+          "~to_difference(pair_add(Pair<2, 3>, Pair<3, 1>)) = add_int(~to_difference(Pair<2, 3>), ~to_difference(Pair<3, 1>)) = 1"
+        ],
+        "skipped": 0
+      }
+    },
+    "source": "atoms2/walk.json"
+  }
+}

@@ -1,0 +1,1212 @@
+{
+  "schema": "opulse.world/2",
+  "world": "calendar",
+  "version": 1,
+  "dialect": "atoms-v2",
+  "title": "Across leap day",
+  "source": {
+    "title_zh": "穿过闰日"
+  },
+  "params": {
+    "year_min": 2000,
+    "year_max": 2099,
+    "step_max": 7
+  },
+  "constants": {
+    "first_weekday_monday_zero": 5
+  },
+  "objects": [
+    {
+      "kind": "object",
+      "name": "int",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Exact integer literals for years, dates, counters and weekdays."
+    },
+    {
+      "kind": "object",
+      "name": "bool",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Canonical Boolean card."
+    },
+    {
+      "kind": "object",
+      "name": "str",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Finite failure reason literal."
+    },
+    {
+      "kind": "object",
+      "name": "date",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": {
+        "host": "opulse.worlds_v2.calendar.hosts:valid_date",
+        "digest": "bc9f8da4c6297e0b0c270eda891196fd9bc0f380ac2dea44ae3accf408e97788"
+      },
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Valid Gregorian date from 2000-01-01 through 2099-12-31, inclusive."
+    },
+    {
+      "kind": "object",
+      "name": "list",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Finite ordered sequences."
+    },
+    {
+      "kind": "object",
+      "name": "any",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "A generic canonical value carried by structural primitives."
+    },
+    {
+      "kind": "object",
+      "name": "pair",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Generic two-field records for month spans."
+    },
+    {
+      "kind": "object",
+      "name": "maybe_date",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "An optional date."
+    }
+  ],
+  "operations": [
+    {
+      "kind": "operation",
+      "name": "next_date",
+      "symbol": "next",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "date",
+          "sort": "date",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "date",
+        "enter": "bottom"
+      },
+      "rule": "Move forward exactly one Gregorian day, stopping at 2099-12-31.",
+      "errors": [
+        "invalid",
+        "range"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.calendar.hosts:next_date",
+        "digest": "2775e8b97e9e5f1458548388069e106e508661419b07a0d9eb4cf2dac8549c5a"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "year_of",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "date",
+          "sort": "date",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Read a valid date's year.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.calendar.hosts:year_of",
+        "digest": "9685714080750e0675c22f895a4cf8f7d68e72f2ed4e5ad37b5b8a7f8f61f644"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "month_of",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "date",
+          "sort": "date",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Read a valid date's month.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.calendar.hosts:month_of",
+        "digest": "fd3103137434a0e77b79cc02d039f6d83088b44833910983d35a6857b25cf1df"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "day_of",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "date",
+          "sort": "date",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Read a valid date's day.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.calendar.hosts:day_of",
+        "digest": "64b96ae1c9adc14c1b86b147ab42ce4db905a813ed7dcf96aaa42530c3c02085"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "equal_int",
+      "symbol": null,
+      "role": "decide",
+      "inputs": [
+        {
+          "name": "left",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "right",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Compare two integers for equality.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.calendar.hosts:equal_int",
+        "digest": "e3f96fcdfd536d13b9f1d562f593f95ec122081a15fcfdee6d37ccacf25d1853"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "less_int",
+      "symbol": null,
+      "role": "decide",
+      "inputs": [
+        {
+          "name": "left",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "right",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Compare two integers in ascending order.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.calendar.hosts:less_int",
+        "digest": "84b0dbc93ed50e8fddf1a2a5fe787fa8e404b6fb4899238db04c74bfc373f9a8"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "decrement",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "value",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Subtract one from a small positive counter (1 through 7).",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.calendar.hosts:decrement",
+        "digest": "bf21449b1b61215e4ff8aa8891eb002a6daab96618d0c5f8444c227f2a6a5621"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "fail",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "reason",
+          "sort": "str",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "date",
+        "enter": "bottom"
+      },
+      "rule": "Raise a domain failure with an explicit reason.",
+      "errors": [
+        "no_workday",
+        "not_leap_day",
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.calendar.hosts:fail",
+        "digest": "869db738bfeade18502ad67f1342bb47871a57f56ed0b8776012b563d7f627c3"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "eq",
+      "symbol": null,
+      "role": "decide",
+      "inputs": [
+        {
+          "name": "left",
+          "sort": "any",
+          "enter": "bottom"
+        },
+        {
+          "name": "right",
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Structural equality of two canonical values.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.calendar.hosts:eq",
+        "digest": "21d8b0dd9ce8350e7f6c76ab9f70fe300dfb801ae19cc6ba016997ce6291e9ba"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "lt",
+      "symbol": null,
+      "role": "decide",
+      "inputs": [
+        {
+          "name": "left",
+          "sort": "any",
+          "enter": "bottom"
+        },
+        {
+          "name": "right",
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Natural order on integers and dates.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.calendar.hosts:lt",
+        "digest": "30554ba1dd59a50f6c6a4aa6adf51e58b1ad11d82ee9ae6bd5ec32db586fa889"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "le",
+      "symbol": null,
+      "role": "decide",
+      "inputs": [
+        {
+          "name": "left",
+          "sort": "any",
+          "enter": "bottom"
+        },
+        {
+          "name": "right",
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Non-strict order on integers and dates.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.calendar.hosts:le",
+        "digest": "1b119ed6833cc01d4b23af6b0575161c6effa7765ab80707e7b28088d523f67a"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "add",
+      "symbol": null,
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "left",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "right",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Exact integer sum.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.calendar.hosts:add",
+        "digest": "82d52b971906e3b72e95576158010da795f8b779e24a44a2cf06fe423ff2d352"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "subtract",
+      "symbol": null,
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "left",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "right",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Exact integer difference.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.calendar.hosts:subtract",
+        "digest": "bb39fe560588fd235b4317d3ed2d27e1c0be84b64b9357f6e7cf8c37da67ff5a"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "indicator",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "value",
+          "sort": "bool",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Map true to one and false to zero.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.calendar.hosts:indicator",
+        "digest": "88e97b77970c89ea3b12124969c80f98c81fbdaed55e810f583ed33e3f1393e8"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "date",
+      "symbol": null,
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "year",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "month",
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "name": "day",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "date",
+        "enter": "bottom"
+      },
+      "rule": "Construct a validated Gregorian date.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.calendar.hosts:date",
+        "digest": "4b0ce46d831679447e244e5e7961c0acd2e4b9acea73ba2151d476e29c50d9eb"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "pair",
+      "symbol": null,
+      "role": "combine",
+      "inputs": [
+        {
+          "name": "left",
+          "sort": "any",
+          "enter": "bottom"
+        },
+        {
+          "name": "right",
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "pair",
+        "enter": "bottom"
+      },
+      "rule": "Construct a two-field record.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.calendar.hosts:pair",
+        "digest": "cf723bf1347d2fd5c28a33594eb88c180b69b04517b6c7dc0cb600d46cef03d5"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "first",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "value",
+          "sort": "pair",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "any",
+        "enter": "bottom"
+      },
+      "rule": "Read the first record field.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.calendar.hosts:first",
+        "digest": "1829e8e85114c93e023b85c14eb060001b266817de46395c5b0f2985002e590c"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "second",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "value",
+          "sort": "pair",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "any",
+        "enter": "bottom"
+      },
+      "rule": "Read the second record field.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.calendar.hosts:second",
+        "digest": "aed2c51726cf26d64275b3e2d6c207b87661263d555198d93ccc71f71a7c6ecf"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "some",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "date",
+          "sort": "date",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "maybe_date",
+        "enter": "bottom"
+      },
+      "rule": "Construct the occupied optional-date variant.",
+      "errors": [
+        "invalid"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.calendar.hosts:some",
+        "digest": "2d778de3db8edc67436961191471838f2a2fa8654542528b7ef5126d377d251f"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "optional_date",
+      "symbol": null,
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "value",
+          "sort": "maybe_date",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "date",
+        "enter": "bottom"
+      },
+      "rule": "Unwrap an occupied optional date.",
+      "errors": [
+        "no_open_day"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.calendar.hosts:optional_date",
+        "digest": "8af9224b11b201eed47db727c93d0958c014b6a893b78635ecdfc14786a0143b"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    }
+  ],
+  "combinators": {
+    "nodes": [
+      "Var",
+      "Lit",
+      "Call",
+      "Let",
+      "Case",
+      "Rec"
+    ],
+    "library": [
+      {
+        "name": "day_step",
+        "params": [
+          "date",
+          "days"
+        ],
+        "op_params": [],
+        "body": {
+          "node": "Case",
+          "arms": [
+            [
+              {
+                "node": "Test",
+                "expr": {
+                  "node": "Call",
+                  "fn": "less_int",
+                  "args": [
+                    {
+                      "node": "Var",
+                      "name": "days"
+                    },
+                    {
+                      "node": "Lit",
+                      "value": {
+                        "t": "int",
+                        "v": 0
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "node": "Call",
+                "fn": "fail",
+                "args": [
+                  {
+                    "node": "Lit",
+                    "value": {
+                      "t": "str",
+                      "v": "invalid"
+                    }
+                  }
+                ]
+              }
+            ],
+            [
+              {
+                "node": "Test",
+                "expr": {
+                  "node": "Call",
+                  "fn": "less_int",
+                  "args": [
+                    {
+                      "node": "Lit",
+                      "value": {
+                        "t": "int",
+                        "v": 7
+                      }
+                    },
+                    {
+                      "node": "Var",
+                      "name": "days"
+                    }
+                  ]
+                }
+              },
+              {
+                "node": "Call",
+                "fn": "fail",
+                "args": [
+                  {
+                    "node": "Lit",
+                    "value": {
+                      "t": "str",
+                      "v": "invalid"
+                    }
+                  }
+                ]
+              }
+            ]
+          ],
+          "default": {
+            "node": "Rec",
+            "fn": "walk",
+            "params": [
+              "current",
+              "count"
+            ],
+            "body": {
+              "node": "Case",
+              "arms": [
+                [
+                  {
+                    "node": "Test",
+                    "expr": {
+                      "node": "Call",
+                      "fn": "equal_int",
+                      "args": [
+                        {
+                          "node": "Var",
+                          "name": "count"
+                        },
+                        {
+                          "node": "Lit",
+                          "value": {
+                            "t": "int",
+                            "v": 0
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "node": "Var",
+                    "name": "current"
+                  }
+                ]
+              ],
+              "default": {
+                "node": "Call",
+                "fn": "walk",
+                "args": [
+                  {
+                    "node": "Call",
+                    "fn": "next_date",
+                    "args": [
+                      {
+                        "node": "Var",
+                        "name": "current"
+                      }
+                    ]
+                  },
+                  {
+                    "node": "Call",
+                    "fn": "decrement",
+                    "args": [
+                      {
+                        "node": "Var",
+                        "name": "count"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            "args": [
+              {
+                "node": "Var",
+                "name": "date"
+              },
+              {
+                "node": "Var",
+                "name": "days"
+              }
+            ],
+            "measure": {
+              "node": "Var",
+              "name": "count"
+            },
+            "memo": false
+          }
+        },
+        "unfold_rule": "substitute"
+      },
+      {
+        "name": "repeat",
+        "params": [
+          "step",
+          "date",
+          "days"
+        ],
+        "op_params": [
+          "step"
+        ],
+        "body": {
+          "node": "Case",
+          "arms": [
+            [
+              {
+                "node": "Test",
+                "expr": {
+                  "node": "Call",
+                  "fn": "less_int",
+                  "args": [
+                    {
+                      "node": "Var",
+                      "name": "days"
+                    },
+                    {
+                      "node": "Lit",
+                      "value": {
+                        "t": "int",
+                        "v": 0
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "node": "Lit",
+                "value": {
+                  "t": "bottom",
+                  "v": "invalid"
+                }
+              }
+            ],
+            [
+              {
+                "node": "Test",
+                "expr": {
+                  "node": "Call",
+                  "fn": "less_int",
+                  "args": [
+                    {
+                      "node": "Lit",
+                      "value": {
+                        "t": "int",
+                        "v": 7
+                      }
+                    },
+                    {
+                      "node": "Var",
+                      "name": "days"
+                    }
+                  ]
+                }
+              },
+              {
+                "node": "Lit",
+                "value": {
+                  "t": "bottom",
+                  "v": "invalid"
+                }
+              }
+            ]
+          ],
+          "default": {
+            "node": "Rec",
+            "fn": "repeat_walk",
+            "params": [
+              "current",
+              "count"
+            ],
+            "body": {
+              "node": "Case",
+              "arms": [
+                [
+                  {
+                    "node": "Test",
+                    "expr": {
+                      "node": "Call",
+                      "fn": "equal_int",
+                      "args": [
+                        {
+                          "node": "Var",
+                          "name": "count"
+                        },
+                        {
+                          "node": "Lit",
+                          "value": {
+                            "t": "int",
+                            "v": 0
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "node": "Var",
+                    "name": "current"
+                  }
+                ]
+              ],
+              "default": {
+                "node": "Call",
+                "fn": "repeat_walk",
+                "args": [
+                  {
+                    "node": "Call",
+                    "fn": "step",
+                    "args": [
+                      {
+                        "node": "Var",
+                        "name": "current"
+                      }
+                    ]
+                  },
+                  {
+                    "node": "Call",
+                    "fn": "decrement",
+                    "args": [
+                      {
+                        "node": "Var",
+                        "name": "count"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            "args": [
+              {
+                "node": "Var",
+                "name": "date"
+              },
+              {
+                "node": "Var",
+                "name": "days"
+              }
+            ],
+            "measure": {
+              "node": "Var",
+              "name": "count"
+            },
+            "memo": false
+          }
+        },
+        "unfold_rule": "substitute"
+      }
+    ],
+    "recursion": "measure"
+  },
+  "observation": {
+    "truth": "date",
+    "probes": [
+      {
+        "name": "weekday",
+        "sort": "int",
+        "reads": "date",
+        "reveals": [
+          "weekday_index_monday_zero"
+        ],
+        "impl": {
+          "host": "opulse.worlds_v2.calendar.hosts:weekday",
+          "digest": "2f4f369f4687cb43afa43caf2b44f21e401844d69a31db265a0dcaf2910f2909"
+        }
+      },
+      {
+        "name": "year_of",
+        "sort": "int",
+        "reads": "date",
+        "reveals": [
+          "year"
+        ],
+        "impl": {
+          "host": "opulse.worlds_v2.calendar.hosts:year_of",
+          "digest": "9685714080750e0675c22f895a4cf8f7d68e72f2ed4e5ad37b5b8a7f8f61f644"
+        }
+      },
+      {
+        "name": "month_of",
+        "sort": "int",
+        "reads": "date",
+        "reveals": [
+          "month"
+        ],
+        "impl": {
+          "host": "opulse.worlds_v2.calendar.hosts:month_of",
+          "digest": "fd3103137434a0e77b79cc02d039f6d83088b44833910983d35a6857b25cf1df"
+        }
+      },
+      {
+        "name": "day_of",
+        "sort": "int",
+        "reads": "date",
+        "reveals": [
+          "day"
+        ],
+        "impl": {
+          "host": "opulse.worlds_v2.calendar.hosts:day_of",
+          "digest": "64b96ae1c9adc14c1b86b147ab42ce4db905a813ed7dcf96aaa42530c3c02085"
+        }
+      }
+    ],
+    "capabilities": {
+      "learner": {
+        "probes": [
+          "weekday",
+          "year_of",
+          "month_of",
+          "day_of"
+        ]
+      }
+    },
+    "show": {
+      "input": "date",
+      "result": "weekday_index_monday_zero"
+    },
+    "judge_view": "full_state"
+  },
+  "codec": {
+    "date": "opulse.worlds_v2.calendar.hosts:to_card/from_card"
+  },
+  "lock": {
+    "host_digests": {
+      "next_date": "2775e8b97e9e5f1458548388069e106e508661419b07a0d9eb4cf2dac8549c5a",
+      "year_of": "9685714080750e0675c22f895a4cf8f7d68e72f2ed4e5ad37b5b8a7f8f61f644",
+      "month_of": "fd3103137434a0e77b79cc02d039f6d83088b44833910983d35a6857b25cf1df",
+      "day_of": "64b96ae1c9adc14c1b86b147ab42ce4db905a813ed7dcf96aaa42530c3c02085",
+      "equal_int": "e3f96fcdfd536d13b9f1d562f593f95ec122081a15fcfdee6d37ccacf25d1853",
+      "less_int": "84b0dbc93ed50e8fddf1a2a5fe787fa8e404b6fb4899238db04c74bfc373f9a8",
+      "decrement": "bf21449b1b61215e4ff8aa8891eb002a6daab96618d0c5f8444c227f2a6a5621",
+      "fail": "869db738bfeade18502ad67f1342bb47871a57f56ed0b8776012b563d7f627c3",
+      "eq": "21d8b0dd9ce8350e7f6c76ab9f70fe300dfb801ae19cc6ba016997ce6291e9ba",
+      "lt": "30554ba1dd59a50f6c6a4aa6adf51e58b1ad11d82ee9ae6bd5ec32db586fa889",
+      "le": "1b119ed6833cc01d4b23af6b0575161c6effa7765ab80707e7b28088d523f67a",
+      "add": "82d52b971906e3b72e95576158010da795f8b779e24a44a2cf06fe423ff2d352",
+      "subtract": "bb39fe560588fd235b4317d3ed2d27e1c0be84b64b9357f6e7cf8c37da67ff5a",
+      "indicator": "88e97b77970c89ea3b12124969c80f98c81fbdaed55e810f583ed33e3f1393e8",
+      "date": "4b0ce46d831679447e244e5e7961c0acd2e4b9acea73ba2151d476e29c50d9eb",
+      "pair": "cf723bf1347d2fd5c28a33594eb88c180b69b04517b6c7dc0cb600d46cef03d5",
+      "first": "1829e8e85114c93e023b85c14eb060001b266817de46395c5b0f2985002e590c",
+      "second": "aed2c51726cf26d64275b3e2d6c207b87661263d555198d93ccc71f71a7c6ecf",
+      "some": "2d778de3db8edc67436961191471838f2a2fa8654542528b7ef5126d377d251f",
+      "optional_date": "8af9224b11b201eed47db727c93d0958c014b6a893b78635ecdfc14786a0143b",
+      "date.valid": "bc9f8da4c6297e0b0c270eda891196fd9bc0f380ac2dea44ae3accf408e97788",
+      "probe.weekday": "2f4f369f4687cb43afa43caf2b44f21e401844d69a31db265a0dcaf2910f2909",
+      "probe.year_of": "9685714080750e0675c22f895a4cf8f7d68e72f2ed4e5ad37b5b8a7f8f61f644",
+      "probe.month_of": "fd3103137434a0e77b79cc02d039f6d83088b44833910983d35a6857b25cf1df",
+      "probe.day_of": "64b96ae1c9adc14c1b86b147ab42ce4db905a813ed7dcf96aaa42530c3c02085"
+    },
+    "constants_hash": "dc1513f107cfff6734a568447451274ee6b251946ff385fc2ab463685b05665e",
+    "world_hash": "3b12c290594ffbaa2bd4d7914bc0294a7d5fa2fc8b998f25649da78bacb1ecb0"
+  }
+}

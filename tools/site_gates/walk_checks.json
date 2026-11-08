@@ -1,0 +1,25 @@
+{
+  "pages": {
+    "checks": "/learn/checks/"
+  },
+  "urls": [
+    "checks"
+  ],
+  "steps": [
+    {
+      "wait": {
+        "text": "Four independent lifecycles",
+        "timeout": 15
+      }
+    },
+    {
+      "click_text": "Designed example"
+    },
+    {
+      "assert_text": "Verification scope"
+    },
+    {
+      "assert_text": "All members of a declared finite domain, if every case was run. Outside that domain, no claim."
+    }
+  ]
+}

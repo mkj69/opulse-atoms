@@ -1,0 +1,1358 @@
+{
+  "schema": "opulse.world/2",
+  "world": "computer",
+  "version": 2,
+  "dialect": "atoms-v2",
+  "title": "Deep Eight-Bit Computer",
+  "source": {
+    "title_zh": "八位小电脑",
+    "catalogue": "src/opulse/worlds_v2/computer2/metadata.json"
+  },
+  "params": {},
+  "constants": {
+    "memory_cells": 256,
+    "reserved_accumulator": 255
+  },
+  "objects": [
+    {
+      "kind": "object",
+      "name": "Byte",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Integer in 0..255; out-of-range input fails."
+    },
+    {
+      "kind": "object",
+      "name": "Addr",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Address of one of 256 memory cells."
+    },
+    {
+      "kind": "object",
+      "name": "Reg",
+      "form": "compose",
+      "base": null,
+      "tags": {
+        "A": {},
+        "B": {},
+        "C": {},
+        "D": {}
+      },
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Four fixed register selectors."
+    },
+    {
+      "kind": "object",
+      "name": "Mem256",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Exactly 256 individually addressable bytes."
+    },
+    {
+      "kind": "object",
+      "name": "Machine",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": true,
+      "interface": [
+        "put",
+        "add",
+        "dec",
+        "load",
+        "store",
+        "branch",
+        "snapshot",
+        "machine_new"
+      ],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Sealed four-register machine with memory, pc and zero flag."
+    },
+    {
+      "kind": "object",
+      "name": "vec_base",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Public vector representation."
+    },
+    {
+      "kind": "object",
+      "name": "wide_base",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Public three-byte representation."
+    },
+    {
+      "kind": "object",
+      "name": "pair",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Generic pair of finite values."
+    },
+    {
+      "kind": "object",
+      "name": "int",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Given int carrier."
+    },
+    {
+      "kind": "object",
+      "name": "bool",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Given bool carrier."
+    },
+    {
+      "kind": "object",
+      "name": "any",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Given any carrier."
+    },
+    {
+      "kind": "object",
+      "name": "Bit",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Given Bit carrier."
+    },
+    {
+      "kind": "object",
+      "name": "List",
+      "form": "given",
+      "base": null,
+      "tags": null,
+      "group": [],
+      "valid": null,
+      "canon": null,
+      "sealed": false,
+      "interface": [],
+      "params": [
+        "T"
+      ],
+      "equality": "canonical",
+      "canon_cost": "counted",
+      "body": null,
+      "host": null,
+      "doc": "Generic finite list."
+    }
+  ],
+  "operations": [
+    {
+      "kind": "operation",
+      "name": "put",
+      "symbol": "put",
+      "role": "act",
+      "inputs": [
+        {
+          "name": "s",
+          "sort": "Machine",
+          "enter": "bottom"
+        },
+        {
+          "name": "r",
+          "sort": "Reg",
+          "enter": "bottom"
+        },
+        {
+          "name": "v",
+          "sort": "Byte",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Machine",
+        "enter": "bottom"
+      },
+      "rule": "Write a register, update z and advance pc.",
+      "errors": [
+        "invalid_reg",
+        "invalid_byte"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.computer2.hosts:put",
+        "digest": "a5dcc682429177b4794c8a5adca026096ca9baf57e69d7ce66fef386e04715d9"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "add",
+      "symbol": "add",
+      "role": "act",
+      "inputs": [
+        {
+          "name": "s",
+          "sort": "Machine",
+          "enter": "bottom"
+        },
+        {
+          "name": "dst",
+          "sort": "Reg",
+          "enter": "bottom"
+        },
+        {
+          "name": "src",
+          "sort": "Reg",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Machine",
+        "enter": "bottom"
+      },
+      "rule": "Add registers modulo 256, update z and pc.",
+      "errors": [
+        "invalid_reg"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.computer2.hosts:add",
+        "digest": "1df90698c89f1349d47d13524db8ca2ce7c32a1fa3e79251160087381974feef"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "dec",
+      "symbol": "dec",
+      "role": "act",
+      "inputs": [
+        {
+          "name": "s",
+          "sort": "Machine",
+          "enter": "bottom"
+        },
+        {
+          "name": "r",
+          "sort": "Reg",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Machine",
+        "enter": "bottom"
+      },
+      "rule": "Decrement a register modulo 256 and update z and pc.",
+      "errors": [
+        "invalid_reg"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.computer2.hosts:dec",
+        "digest": "026890e7ba80f74e6286c36b5ec3e7d526be32601672bcea0e5ec99ce3527fe3"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "load",
+      "symbol": "load",
+      "role": "act",
+      "inputs": [
+        {
+          "name": "s",
+          "sort": "Machine",
+          "enter": "bottom"
+        },
+        {
+          "name": "r",
+          "sort": "Reg",
+          "enter": "bottom"
+        },
+        {
+          "name": "addr",
+          "sort": "Addr",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Machine",
+        "enter": "bottom"
+      },
+      "rule": "Read one memory byte into a register.",
+      "errors": [
+        "invalid_reg",
+        "invalid_addr"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.computer2.hosts:load",
+        "digest": "5a979ca665c89de3781e7f3774b2597483596cc527357d2ead68592a57ef8f99"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "store",
+      "symbol": "store",
+      "role": "act",
+      "inputs": [
+        {
+          "name": "s",
+          "sort": "Machine",
+          "enter": "bottom"
+        },
+        {
+          "name": "addr",
+          "sort": "Addr",
+          "enter": "bottom"
+        },
+        {
+          "name": "r",
+          "sort": "Reg",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Machine",
+        "enter": "bottom"
+      },
+      "rule": "Write a register to memory and advance pc without changing z.",
+      "errors": [
+        "invalid_reg",
+        "invalid_addr"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.computer2.hosts:store",
+        "digest": "ff8a4524431426a521639c9bf3c763b28eaa69d369db930ccf1693313b55b625"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "branch",
+      "symbol": "branch",
+      "role": "act",
+      "inputs": [
+        {
+          "name": "s",
+          "sort": "Machine",
+          "enter": "bottom"
+        },
+        {
+          "name": "p",
+          "sort": "bool",
+          "enter": "bottom"
+        },
+        {
+          "name": "target",
+          "sort": "Addr",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Machine",
+        "enter": "bottom"
+      },
+      "rule": "Jump to target on true, otherwise advance pc.",
+      "errors": [
+        "invalid_addr",
+        "invalid_condition"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.computer2.hosts:branch",
+        "digest": "6c6440aa8821722e3891ff24db151d27099f9751361dd29282b227f8941ff10f"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "snapshot",
+      "symbol": "snapshot",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "s",
+          "sort": "Machine",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Machine",
+        "enter": "bottom"
+      },
+      "rule": "Copy all machine fields without changing the source.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.computer2.hosts:snapshot",
+        "digest": "e7cb9359b9cb3e7eab4b2b935b3b01d17052633df79abf33613a3eaf787e7da1"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "inc",
+      "symbol": "inc",
+      "role": "transform",
+      "inputs": [
+        {
+          "name": "x",
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Generic integer successor.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.computer2.hosts:inc",
+        "digest": "89eee8e177d989bd60d593f122dba1616ba54ed403ac39a0d4cae926b2d6b8e0"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "sub",
+      "symbol": "sub",
+      "role": "combine",
+      "inputs": [
+        {
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Generic integer subtraction.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.computer2.hosts:sub",
+        "digest": "b07ba893449469b6d3fa240947da26ef1674afcda0dc2c11521e3ba7fe1e3d7a"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "lt",
+      "symbol": "lt",
+      "role": "decide",
+      "inputs": [
+        {
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Generic less-than test.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.computer2.hosts:lt",
+        "digest": "1476ec921d2f95a73390c73a31f78170567492d682a89129f95d8bf6db3f2ea5"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "le",
+      "symbol": "le",
+      "role": "decide",
+      "inputs": [
+        {
+          "sort": "int",
+          "enter": "bottom"
+        },
+        {
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Generic less-or-equal test.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.computer2.hosts:le",
+        "digest": "187eb6e961cc9feaeac89ff7453f5cb217acf6c6c31aa4a4ce230e5d092bca5c"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "eq",
+      "symbol": "eq",
+      "role": "decide",
+      "inputs": [
+        {
+          "sort": "any",
+          "enter": "bottom"
+        },
+        {
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Generic structural equality.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.computer2.hosts:eq",
+        "digest": "3dba116352f52f3f02ed03c483c7afafcbbb4b0c2934996b58e3be2e784debfd"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "byte_add",
+      "symbol": "byte_add",
+      "role": "combine",
+      "inputs": [
+        {
+          "sort": "Byte",
+          "enter": "bottom"
+        },
+        {
+          "sort": "Byte",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Byte",
+        "enter": "bottom"
+      },
+      "rule": "Generic byte addition modulo 256.",
+      "errors": [
+        "invalid_byte"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.computer2.hosts:byte_add",
+        "digest": "ff4cd2832fd598116c57a4a1f8758a574c0cccf0e0d2ba22432ddedfa626e02b"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "address",
+      "symbol": "address",
+      "role": "combine",
+      "inputs": [
+        {
+          "sort": "Addr",
+          "enter": "bottom"
+        },
+        {
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Addr",
+        "enter": "bottom"
+      },
+      "rule": "Generic address-offset addition.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.computer2.hosts:address",
+        "digest": "b752a6be5820a85e1e0564601d9ecba4314e8bd0a9df264dc1f0d76f15ab5475"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "pair",
+      "symbol": "pair",
+      "role": "combine",
+      "inputs": [
+        {
+          "sort": "any",
+          "enter": "bottom"
+        },
+        {
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "pair",
+        "enter": "bottom"
+      },
+      "rule": "Construct a generic pair.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.computer2.hosts:pair",
+        "digest": "907a2938ba760a204cd7b5e16149774cdb631d5459ff2837fbf090522c5aef39"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "first",
+      "symbol": "first",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "pair",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "any",
+        "enter": "bottom"
+      },
+      "rule": "Read first component of a pair.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.computer2.hosts:first",
+        "digest": "27976f4faa35c224037f01e928919c076f094687227f27b40904c78e2517b803"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "second",
+      "symbol": "second",
+      "role": "transform",
+      "inputs": [
+        {
+          "sort": "pair",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "any",
+        "enter": "bottom"
+      },
+      "rule": "Read second component of a pair.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.computer2.hosts:second",
+        "digest": "7b3435420334ac29c98e4c8bff2cc40f7739d626c5fb46060833d2abfc453135"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "machine_new",
+      "symbol": "machine_new",
+      "role": "combine",
+      "inputs": [
+        {
+          "sort": "Byte",
+          "enter": "bottom"
+        },
+        {
+          "sort": "Byte",
+          "enter": "bottom"
+        },
+        {
+          "sort": "Byte",
+          "enter": "bottom"
+        },
+        {
+          "sort": "Byte",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Machine",
+        "enter": "bottom"
+      },
+      "rule": "Construct a zeroed machine with four specified registers.",
+      "errors": [
+        "invalid_byte"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.computer2.hosts:machine_new",
+        "digest": "edbbcf547ec24761fed0ff76d9ea55baf09ce6ffe6671232c6e1ef45512a3eaf"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "vec",
+      "symbol": "vec",
+      "role": "combine",
+      "inputs": [
+        {
+          "sort": "Addr",
+          "enter": "bottom"
+        },
+        {
+          "sort": "int",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "vec_base",
+        "enter": "bottom"
+      },
+      "rule": "Generic constructor or field accessor for a declared record.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.computer2.hosts:vec",
+        "digest": "40a2943fed4975d5bcac67321f0960553b671a257342031b724d4daefa499eb9"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "wide",
+      "symbol": "wide",
+      "role": "combine",
+      "inputs": [
+        {
+          "sort": "Byte",
+          "enter": "bottom"
+        },
+        {
+          "sort": "Byte",
+          "enter": "bottom"
+        },
+        {
+          "sort": "Byte",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "wide_base",
+        "enter": "bottom"
+      },
+      "rule": "Generic constructor or field accessor for a declared record.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.computer2.hosts:wide",
+        "digest": "34e4b373e262f6c45dc367029f2730d0b45514b83e095206a787869b5e9a354a"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "vec_base.start",
+      "symbol": "vec_base.start",
+      "role": "combine",
+      "inputs": [
+        {
+          "sort": "vec_base",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Addr",
+        "enter": "bottom"
+      },
+      "rule": "Generic constructor or field accessor for a declared record.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.computer2.hosts:vec_start",
+        "digest": "e255cb420cca01d32f9c6e44c4cdb2f8cc70cecb5575e2f5de20cd840cfe4fb9"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "vec_base.len",
+      "symbol": "vec_base.len",
+      "role": "combine",
+      "inputs": [
+        {
+          "sort": "vec_base",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "int",
+        "enter": "bottom"
+      },
+      "rule": "Generic constructor or field accessor for a declared record.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.computer2.hosts:vec_len",
+        "digest": "953e84bca7e2981e4fdb3b8642215acd55e22a1c3c92dc4d04bd986891931007"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "wide_base.lo",
+      "symbol": "wide_base.lo",
+      "role": "combine",
+      "inputs": [
+        {
+          "sort": "wide_base",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Byte",
+        "enter": "bottom"
+      },
+      "rule": "Generic constructor or field accessor for a declared record.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.computer2.hosts:wide_lo",
+        "digest": "53baa195f50d747365f88da635721f15825b610b23ae07a5a3c8b0a63583e59d"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "wide_base.mid",
+      "symbol": "wide_base.mid",
+      "role": "combine",
+      "inputs": [
+        {
+          "sort": "wide_base",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Byte",
+        "enter": "bottom"
+      },
+      "rule": "Generic constructor or field accessor for a declared record.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.computer2.hosts:wide_mid",
+        "digest": "77337f4148367faed14c5998711c1245d2ca7cbe67a9ec1ebc59b4f40305b5d4"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "wide_base.hi",
+      "symbol": "wide_base.hi",
+      "role": "combine",
+      "inputs": [
+        {
+          "sort": "wide_base",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "Byte",
+        "enter": "bottom"
+      },
+      "rule": "Generic constructor or field accessor for a declared record.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.computer2.hosts:wide_hi",
+        "digest": "764cff4ec70eeaa10f573868b591a14dd2fc3a33935e13dbfae092f6790894f2"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "zip_error",
+      "symbol": "zip_error",
+      "role": "decide",
+      "inputs": [],
+      "output": {
+        "sort": "any",
+        "enter": "bottom"
+      },
+      "rule": "Signal unequal lengths of a finite structural zip.",
+      "errors": [
+        "zip_length_mismatch"
+      ],
+      "impl": {
+        "host": "opulse.worlds_v2.computer2.hosts:zip_error",
+        "digest": "2e991283e36dc7b84f250ddb78095d9e2be985994ad7ccb4e6bd182eb9b70a5e"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "is_vec_base",
+      "symbol": "is_vec_base",
+      "role": "decide",
+      "inputs": [
+        {
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Generic structural vec_base constructor test.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.computer2.hosts:is_vec_base",
+        "digest": "4f7a142786c72f4323573faedcd120b4ce2ab584edeaacd1b72b3b18853ca5b1"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    },
+    {
+      "kind": "operation",
+      "name": "is_wide_base",
+      "symbol": "is_wide_base",
+      "role": "decide",
+      "inputs": [
+        {
+          "sort": "any",
+          "enter": "bottom"
+        }
+      ],
+      "output": {
+        "sort": "bool",
+        "enter": "bottom"
+      },
+      "rule": "Generic structural wide_base constructor test.",
+      "errors": [],
+      "impl": {
+        "host": "opulse.worlds_v2.computer2.hosts:is_wide_base",
+        "digest": "c8294b051ec0a8117b8c77ca243b810ea1217f014af11fe2f00c82b54a5a29fd"
+      },
+      "cost": 1,
+      "strict": true,
+      "reads_params": []
+    }
+  ],
+  "combinators": {
+    "nodes": [
+      "Var",
+      "Lit",
+      "Call",
+      "Let",
+      "Case",
+      "Rec",
+      "Blocks",
+      "Jump",
+      "CondJump",
+      "Halt"
+    ],
+    "library": [
+      "@seq"
+    ],
+    "recursion": "measure",
+    "given": [
+      {
+        "name": "@seq",
+        "decl": "comb @seq[f:Machine->Machine,g:Machine->Machine](s:Machine)->Machine = g(f(s)) given",
+        "doc_zh": "顺次执行两个外置程序块。"
+      }
+    ]
+  },
+  "observation": {
+    "truth": "Machine",
+    "probes": [
+      {
+        "name": "?out",
+        "sort": "Byte",
+        "reveals": [
+          "A"
+        ],
+        "impl": {
+          "host": "opulse.worlds_v2.computer2.hosts:out",
+          "digest": "f52101b863ae14a5d9671ff6503c95c09c5748ecd81668d82ad0ae99f73cf840"
+        },
+        "reads": "Machine"
+      },
+      {
+        "name": "?regs",
+        "sort": "any",
+        "reveals": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "impl": {
+          "host": "opulse.worlds_v2.computer2.hosts:regs",
+          "digest": "0d00eb5fa6b45e8154a95d558aa06a6e1639d88e3bdcf9d7fb79666ad86db109"
+        },
+        "reads": "Machine"
+      },
+      {
+        "name": "?b",
+        "sort": "Byte",
+        "reveals": [
+          "B"
+        ],
+        "impl": {
+          "host": "opulse.worlds_v2.computer2.hosts:b",
+          "digest": "ef7fb1442ecd58f603bb7e5632e51355b057d6539bbc41a3bfa21c34e84ce1c8"
+        },
+        "reads": "Machine"
+      },
+      {
+        "name": "?c",
+        "sort": "Byte",
+        "reveals": [
+          "C"
+        ],
+        "impl": {
+          "host": "opulse.worlds_v2.computer2.hosts:c",
+          "digest": "14dd75a62f1aefab3189b048f73218b428413a9c5b95c54ed1ccaf38565cc995"
+        },
+        "reads": "Machine"
+      },
+      {
+        "name": "?d",
+        "sort": "Byte",
+        "reveals": [
+          "D"
+        ],
+        "impl": {
+          "host": "opulse.worlds_v2.computer2.hosts:d",
+          "digest": "32fbadc2c78315f907152bfe29c431e5edd1643c3bfe827a533004497bbb17e2"
+        },
+        "reads": "Machine"
+      },
+      {
+        "name": "?pc",
+        "sort": "Addr",
+        "reveals": [
+          "pc"
+        ],
+        "impl": {
+          "host": "opulse.worlds_v2.computer2.hosts:pc",
+          "digest": "2e4f819bd5d81f7a825ad14ed1e3ef0e6f0e9f36059b0679a22bfb1796bf43ae"
+        },
+        "reads": "Machine"
+      },
+      {
+        "name": "?mem",
+        "sort": "Byte",
+        "reveals": [
+          "one granted memory cell"
+        ],
+        "impl": {
+          "host": "opulse.worlds_v2.computer2.hosts:mem",
+          "digest": "dbecdb04b245a80ef70853929d43d8a265dfa72287e0268636039629c54880ef"
+        },
+        "reads": "Machine"
+      },
+      {
+        "name": "?z",
+        "sort": "int",
+        "reveals": [
+          "z"
+        ],
+        "impl": {
+          "host": "opulse.worlds_v2.computer2.hosts:z",
+          "digest": "4d84e7248047096559f971f6dd2c3ad7c205c9e1f07ce1337f982655e03b796c"
+        },
+        "reads": "Machine"
+      }
+    ],
+    "capabilities": {
+      "learner": {
+        "probes": "all",
+        "memory_ranges": [
+          [
+            16,
+            47
+          ],
+          [
+            64,
+            95
+          ],
+          [
+            120,
+            131
+          ]
+        ]
+      },
+      "play": {
+        "probes": [
+          "?d",
+          "?out",
+          "?mem"
+        ],
+        "memory_ranges": [
+          [
+            80,
+            91
+          ],
+          [
+            120,
+            131
+          ]
+        ]
+      }
+    },
+    "show": {
+      "input": "authorized_probes",
+      "result": "authorized_probes"
+    },
+    "judge_view": "full_state"
+  },
+  "codec": {
+    "Machine": {
+      "to_card": "opulse.worlds_v2.computer2.hosts:to_card",
+      "from_card": "opulse.worlds_v2.computer2.hosts:from_card"
+    }
+  },
+  "open_kinds": [
+    "object",
+    "operation",
+    "combinator",
+    "observation"
+  ],
+  "tags": {
+    "domain": "program",
+    "modalities": [
+      "text",
+      "image"
+    ],
+    "open_kinds": [
+      "object",
+      "operation",
+      "combinator",
+      "observation"
+    ],
+    "star_kind": "operation",
+    "reasoning": [
+      "compute",
+      "search",
+      "equivalence",
+      "counting"
+    ],
+    "state": "stateful",
+    "outcomes": "deterministic",
+    "visibility": "partial",
+    "agents": 1,
+    "scale": "256 memory cells; 11 invented tower cards",
+    "difficulty": "two-byte loops to 32-term exact dot products",
+    "uses": [
+      "teaching",
+      "evaluation",
+      "interpretability",
+      "experiment"
+    ]
+  },
+  "lock": {
+    "host_digests": {
+      "put": "a5dcc682429177b4794c8a5adca026096ca9baf57e69d7ce66fef386e04715d9",
+      "add": "1df90698c89f1349d47d13524db8ca2ce7c32a1fa3e79251160087381974feef",
+      "dec": "026890e7ba80f74e6286c36b5ec3e7d526be32601672bcea0e5ec99ce3527fe3",
+      "load": "5a979ca665c89de3781e7f3774b2597483596cc527357d2ead68592a57ef8f99",
+      "store": "ff8a4524431426a521639c9bf3c763b28eaa69d369db930ccf1693313b55b625",
+      "branch": "6c6440aa8821722e3891ff24db151d27099f9751361dd29282b227f8941ff10f",
+      "snapshot": "e7cb9359b9cb3e7eab4b2b935b3b01d17052633df79abf33613a3eaf787e7da1",
+      "inc": "89eee8e177d989bd60d593f122dba1616ba54ed403ac39a0d4cae926b2d6b8e0",
+      "sub": "b07ba893449469b6d3fa240947da26ef1674afcda0dc2c11521e3ba7fe1e3d7a",
+      "lt": "1476ec921d2f95a73390c73a31f78170567492d682a89129f95d8bf6db3f2ea5",
+      "le": "187eb6e961cc9feaeac89ff7453f5cb217acf6c6c31aa4a4ce230e5d092bca5c",
+      "eq": "3dba116352f52f3f02ed03c483c7afafcbbb4b0c2934996b58e3be2e784debfd",
+      "byte_add": "ff4cd2832fd598116c57a4a1f8758a574c0cccf0e0d2ba22432ddedfa626e02b",
+      "address": "b752a6be5820a85e1e0564601d9ecba4314e8bd0a9df264dc1f0d76f15ab5475",
+      "pair": "907a2938ba760a204cd7b5e16149774cdb631d5459ff2837fbf090522c5aef39",
+      "first": "27976f4faa35c224037f01e928919c076f094687227f27b40904c78e2517b803",
+      "second": "7b3435420334ac29c98e4c8bff2cc40f7739d626c5fb46060833d2abfc453135",
+      "machine_new": "edbbcf547ec24761fed0ff76d9ea55baf09ce6ffe6671232c6e1ef45512a3eaf",
+      "vec": "40a2943fed4975d5bcac67321f0960553b671a257342031b724d4daefa499eb9",
+      "wide": "34e4b373e262f6c45dc367029f2730d0b45514b83e095206a787869b5e9a354a",
+      "vec_base.start": "e255cb420cca01d32f9c6e44c4cdb2f8cc70cecb5575e2f5de20cd840cfe4fb9",
+      "vec_base.len": "953e84bca7e2981e4fdb3b8642215acd55e22a1c3c92dc4d04bd986891931007",
+      "wide_base.lo": "53baa195f50d747365f88da635721f15825b610b23ae07a5a3c8b0a63583e59d",
+      "wide_base.mid": "77337f4148367faed14c5998711c1245d2ca7cbe67a9ec1ebc59b4f40305b5d4",
+      "wide_base.hi": "764cff4ec70eeaa10f573868b591a14dd2fc3a33935e13dbfae092f6790894f2",
+      "zip_error": "2e991283e36dc7b84f250ddb78095d9e2be985994ad7ccb4e6bd182eb9b70a5e",
+      "is_vec_base": "4f7a142786c72f4323573faedcd120b4ce2ab584edeaacd1b72b3b18853ca5b1",
+      "is_wide_base": "c8294b051ec0a8117b8c77ca243b810ea1217f014af11fe2f00c82b54a5a29fd",
+      "probe.?out": "f52101b863ae14a5d9671ff6503c95c09c5748ecd81668d82ad0ae99f73cf840",
+      "probe.?regs": "0d00eb5fa6b45e8154a95d558aa06a6e1639d88e3bdcf9d7fb79666ad86db109",
+      "probe.?b": "ef7fb1442ecd58f603bb7e5632e51355b057d6539bbc41a3bfa21c34e84ce1c8",
+      "probe.?c": "14dd75a62f1aefab3189b048f73218b428413a9c5b95c54ed1ccaf38565cc995",
+      "probe.?d": "32fbadc2c78315f907152bfe29c431e5edd1643c3bfe827a533004497bbb17e2",
+      "probe.?pc": "2e4f819bd5d81f7a825ad14ed1e3ef0e6f0e9f36059b0679a22bfb1796bf43ae",
+      "probe.?mem": "dbecdb04b245a80ef70853929d43d8a265dfa72287e0268636039629c54880ef",
+      "probe.?z": "4d84e7248047096559f971f6dd2c3ad7c205c9e1f07ce1337f982655e03b796c"
+    },
+    "constants_hash": "fac2b4b4713de0c9f3d93bddd4dbbbb8b7f813e777bf7ab20526657098aceb1e",
+    "world_hash": "45fdab99e5e0e093b3d1c3bd9af6412c81774b8e1f07215fe6936f7fbac2f672"
+  }
+}
