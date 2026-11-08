@@ -1,0 +1,61 @@
+.a2-define { --a2-define-ink: var(--a2-ink); color: var(--a2-define-ink); max-width: 1120px; margin: 1rem auto 4rem; min-width: 0; }
+.a2-define * { box-sizing: border-box; }
+.a2-define [hidden] { display: none !important; }
+.a2-define h2 { margin: .35rem 0 .3rem; font-size: clamp(1.65rem, 3.4vw, 2.6rem); letter-spacing: -.04em; }
+.a2-define-tabs { display: flex; flex-wrap: wrap; gap: .5rem; margin: 0 0 .9rem; }
+.a2-define-tab { min-height: 38px; display: inline-flex; align-items: center; gap: .45rem; border: 1px solid var(--a2-line); border-radius: 9px; background: var(--a2-panel); color: var(--a2-ink); padding: .38rem .7rem; cursor: pointer; font: 700 .75rem/1.2 var(--md-text-font-family, sans-serif); transition: transform .22s var(--a2-ease-out), border-color .22s var(--a2-ease-out), background .22s var(--a2-ease-out); }
+.a2-define-tab:hover { transform: translateY(-2px); }
+.a2-define-tab[aria-selected="true"] { background: var(--a2-panel-2); border-color: var(--op-amber); box-shadow: inset 0 -2px var(--op-amber); }
+.a2-define-tab:focus-visible { outline: 2px solid var(--op-amber); outline-offset: 2px; }
+.a2-define-columns { display: grid; grid-template-columns: minmax(0, 1.03fr) minmax(0, .97fr); gap: .85rem; align-items: stretch; }
+.a2-define .a2-panel { padding: 1.05rem; min-width: 0; margin-bottom: .85rem; }
+.a2-define-editor, .a2-define-result { min-height: 445px; }
+.a2-define-section-head { display: flex; gap: .6rem; align-items: center; margin-bottom: .85rem; font-size: .86rem; }
+.a2-define-number { font: 700 .75rem var(--a2-mono); color: var(--a2-ink); border: 1px solid var(--a2-line); border-radius: 5px; padding: .2rem .28rem; }
+.a2-define-hint { margin: .4rem 0 .75rem; color: var(--a2-muted); font-size: .75rem; line-height: 1.5; }
+.a2-define-presets { display: flex; gap: .35rem; flex-wrap: wrap; margin-bottom: .6rem; }
+.a2-define-presets .a2-btn { font-size: .75rem; min-height: 32px; padding: .24rem .48rem; }
+.a2-define-text { display: block; width: 100%; min-height: 146px; resize: vertical; background: var(--a2-panel-2); border: 1px solid var(--a2-line); border-radius: 10px; color: var(--a2-ink); padding: .75rem; font: 500 .75rem/1.65 var(--a2-mono); overflow-wrap: anywhere; }
+.a2-define-text:focus, .a2-define-input:focus { outline: 2px solid var(--op-amber); outline-offset: 1px; }
+.a2-define-settings { display: grid; grid-template-columns: minmax(0, 1fr); gap: .5rem; margin: .8rem 0; }
+.a2-define-settings label { display: grid; gap: .3rem; color: var(--a2-muted); font-size: .75rem; }
+.a2-define-select, .a2-define-input { width: 100%; min-width: 0; min-height: 34px; padding: .28rem .42rem; border: 1px solid var(--a2-line); background: var(--a2-panel-2); border-radius: 6px; color: var(--a2-ink); font: 500 .75rem var(--a2-mono); }
+.a2-define-run.a2-btn { background: var(--a2-panel-2); border-color: var(--op-amber); color: var(--a2-ink); font-weight: 700; min-height: 38px; }
+.a2-define-controls { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem; margin-top: .75rem; }
+.a2-define-controls .a2-btn { min-height: 34px; }
+.a2-define-counter { color: var(--a2-muted); font: 600 .75rem var(--a2-mono); margin-left: auto; }
+.a2-define-empty { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .35rem; min-height: 110px; border: 1px dashed var(--a2-line); border-radius: 9px; color: var(--a2-muted); text-align: center; font-size: .75rem; }
+.a2-define-empty .a2-icon { width: 22px; height: 22px; }
+.a2-define-empty strong { color: var(--a2-ink); font-size: .8rem; }
+.a2-define-card { min-width: 0; overflow-x: auto; }
+.a2-define-card .a2-expr { display: block; max-width: 100%; white-space: pre-wrap; overflow-wrap: anywhere; margin-bottom: .35rem; }
+.a2-define-stations { display: grid; gap: .3rem; margin: .8rem 0; }
+.a2-define-station { display: flex; gap: .55rem; align-items: center; border: 1px solid var(--a2-line); background: var(--a2-panel-2); border-radius: 7px; padding: .4rem .55rem; min-width: 0; transition: background .22s var(--a2-ease-out), transform .22s var(--a2-ease-out); }
+.a2-define-station > div { display: grid; gap: .12rem; min-width: 0; }
+.a2-define-station strong { text-transform: capitalize; font-size: .75rem; }
+.a2-define-station small { color: var(--a2-muted); font-size: .75rem; line-height: 1.35; overflow-wrap: anywhere; }
+.a2-define-station-index { display: grid; place-items: center; flex: none; width: 24px; height: 24px; border: 1px solid var(--a2-line); border-radius: 100%; color: var(--a2-muted); font: 700 .75rem var(--a2-mono); }
+.a2-define-passed { background: color-mix(in srgb, var(--a2-ok) 7%, var(--a2-panel)); border-color: color-mix(in srgb, var(--a2-ok) 25%, var(--a2-line)); animation: a2-define-enter .22s var(--a2-ease-out) backwards; animation-delay: var(--a2-define-delay); }
+.a2-define-passed .a2-define-station-index { color: var(--a2-ok); border-color: var(--a2-ok); }
+.a2-define-failed { border-color: var(--a2-bottom); background: color-mix(in srgb, var(--a2-bottom) 9%, var(--a2-panel)); }
+.a2-define-failed .a2-define-station-index, .a2-define-error { color: var(--a2-bottom); }
+.a2-define-locked { border-style: dashed; }
+.a2-define-station.a2-define-locked:last-child { animation: a2-define-lock .42s var(--a2-ease-out) both; }
+.a2-define-status { color: var(--a2-muted); font-size: .75rem; min-height: 1.2rem; overflow-wrap: anywhere; }
+.a2-define-store.a2-btn:not(:disabled) { border-color: var(--a2-ok); color: var(--a2-ok); }
+.a2-define-shelves { display: grid; gap: .4rem; }
+.a2-define-shelf { display: flex; flex-wrap: wrap; gap: .35rem; align-items: center; min-width: 0; padding: .5rem; border-radius: 6px; background: var(--a2-panel-2); }
+.a2-define-shelf .a2-tok-given { color: var(--a2-chip-ink); }
+.a2-define-shelf.a2-define-arrived { animation: a2-define-shelf-glow .6s var(--a2-ease-out); }
+.a2-define-layer { font: 700 .75rem var(--a2-mono); color: var(--a2-muted); margin-right: .35rem; }
+.a2-define-use-input { display: flex; gap: .5rem; flex-wrap: wrap; margin-bottom: .7rem; }
+.a2-define-use-input .a2-define-input { flex: 1 1 160px; }
+.a2-define-boundary { min-width: 0; container-type: inline-size; }
+.a2-define-trace-badge { margin: .45rem 0; font-size: .75rem; color: var(--a2-muted); }
+.a2-define-boundary .a2-boundary-row .a2-badge-executable { display: none; }
+@keyframes a2-define-enter { from { opacity: .45; transform: translateY(-5px); } to { opacity: 1; transform: none; } }
+@keyframes a2-define-lock { 25% { transform: translateX(-3px); } 50% { transform: translateX(3px); } 75% { transform: translateX(-2px); } }
+@keyframes a2-define-shelf-glow { 40% { box-shadow: 0 0 0 5px color-mix(in srgb, var(--op-amber) 25%, transparent); } }
+@media (max-width: 850px) { .a2-define-columns { grid-template-columns: minmax(0, 1fr); } .a2-define-editor, .a2-define-result { min-height: 0; } }
+@media (max-width: 450px) { .a2-define .a2-panel { padding: .75rem; } .a2-define-settings { grid-template-columns: minmax(0, 1fr); } .a2-define-tab { flex: 1 1 40%; justify-content: center; padding: .35rem .3rem; } }
+@media (prefers-reduced-motion: reduce) { .a2-define * { animation: none !important; transition: none !important; } }

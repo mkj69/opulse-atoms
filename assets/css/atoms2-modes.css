@@ -1,0 +1,16 @@
+.a2-reference-modes { min-width: 0; }
+.a2-mode-panel { border: 1px solid var(--md-default-fg-color--lightest); border-radius: .8rem; padding: clamp(.9rem, 2vw, 1.4rem); margin: 1.5rem 0; min-width: 0; }
+.a2-mode-panel h3 { margin: 0 0 .5rem; }
+.a2-mode-panel p { max-width: 78ch; }
+.a2-mode-panel .ar-badge { margin: 0; }
+.a2-mode-fact { overflow-wrap: anywhere; }
+.a2-mode-fact code { white-space: normal; overflow-wrap: anywhere; }
+.a2-mode-accounting { font-weight: 650; }
+.a2-mode-viewer { min-width: 0; max-width: 100%; overflow: hidden; }
+.a2-mode-toggle { display: block; width: 100%; margin: .8rem 0 0; padding: .55rem .75rem; border: 1px solid var(--md-primary-fg-color); border-radius: .4rem; background: var(--md-default-bg-color); color: var(--md-default-fg-color); cursor: pointer; text-align: left; font: inherit; font-weight: 650; }
+.a2-mode-toggle:focus-visible { outline: 2px solid var(--md-accent-fg-color); outline-offset: 2px; }
+.a2-mode-viewer[hidden] { display: none; }
+.a2-mode-viewer .a2-boundary-compact { min-width: 0; }
+@media (prefers-reduced-motion: reduce) {
+  .a2-mode-panel *, .a2-mode-panel *::before, .a2-mode-panel *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}

@@ -1,0 +1,73 @@
+.a2-learn-lede { max-width: 46rem; font-size: 1.08rem; color: var(--a2-muted, #475569); }
+.a2-learn-app { --learn-line: var(--a2-line, #dfe4ea); --learn-ink: var(--a2-ink, #172238); --learn-muted: var(--a2-muted, #526077); color: var(--learn-ink); max-width: 100%; }
+.a2-learn-app *, .a2-learn-app *::before { box-sizing: border-box; }
+.a2-learn-hero { padding: clamp(1.1rem, 3vw, 2.2rem); border: 1px solid var(--learn-line); border-radius: 1.2rem; background: var(--a2-panel-2, #f6f8fb); }
+.a2-learn-hero p { margin: .65rem 0 0; }
+.a2-learn-hero strong { font-size: clamp(1.55rem, 3vw, 2.4rem); letter-spacing: -.035em; }
+.a2-learn-app h2 { margin: 2.3rem 0 .75rem; }
+.a2-learn-app h3 { margin: .3rem 0; font-size: 1.12rem; }
+.a2-learn-app .a2-expr { display: inline; overflow-wrap: anywhere; white-space: normal; }
+.a2-learn-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .8rem; margin: 1rem 0; }
+.a2-learn-card { border: 1px solid var(--learn-line); border-radius: .9rem; padding: 1rem 1.1rem; min-width: 0; background: var(--a2-panel, #fff); }
+.a2-learn-card .a2-tok { margin: .35rem 0; }
+.a2-learn-card p { margin: .6rem 0; line-height: 1.55; }
+.a2-learn-card small { display: block; color: var(--learn-muted); font-size: .78rem; line-height: 1.45; }
+.a2-learn-card code { overflow-wrap: anywhere; white-space: normal; }
+.a2-learn-card[data-kind="law"] { border-top: 3px double #0e7490; }
+.a2-learn-card[data-kind="bridge"] { border-top: 3px solid #b45309; }
+.a2-learn-actions { display: flex; align-items: center; flex-wrap: wrap; gap: .65rem; }
+.a2-learn-app button { border: 1px solid var(--learn-line); border-radius: .55rem; background: var(--a2-panel, #fff); color: var(--learn-ink); cursor: pointer; font: inherit; padding: .38rem .7rem; }
+.a2-learn-app button[aria-pressed="true"] { border-color: var(--op-amber); box-shadow: inset 0 0 0 1px var(--op-amber); }
+.a2-learn-app button:focus-visible { outline: 3px solid #0284c7; outline-offset: 3px; }
+.a2-learn-result { padding: .85rem 1rem; border-left: 3px solid #0891b2; background: var(--a2-panel-2, #f6f8fb); overflow-wrap: anywhere; }
+.a2-learn-subtle { color: var(--learn-muted); }
+.a2-learn-app .a2-badge { display: table; margin: .2rem 0 .55rem; }
+.a2-learn-app .a2-learn-hero strong { display: block; }
+.a2-learn-app .a2-tok { max-width: 100%; white-space: normal; overflow-wrap: anywhere; text-align: left; }
+.a2-learn-overview { max-width: 100%; }
+.a2-learn-overview table { display: block; max-width: 100%; overflow-x: auto; border-collapse: collapse; }
+.a2-learn-overview thead, .a2-learn-overview tbody { min-width: 32rem; }
+.a2-learn-overview tr { min-width: 32rem; }
+.a2-learn-overview th, .a2-learn-overview td { min-width: 8rem; }
+.a2-learn-overview th, .a2-learn-overview td { padding: .4rem .65rem; text-align: left; border-bottom: 1px solid var(--learn-line); font-size: .83rem; }
+.a2-learn-overview th:first-child { min-width: 7rem; }
+.a2-learn-overview .a2-expr { font-size: .78rem; }
+.a2-learn-form-label { display: none; }
+.a2-learn-pathway .a2-walk-switcher { display: flex; gap: .5rem; flex-wrap: wrap; margin: 1rem 0 .6rem; }
+.a2-learn-pathway .a2-walk-grid { max-width: 48rem; }
+.a2-learn-pathway .a2-walk-grid > article { margin: 0; overflow-wrap: anywhere; }
+.a2-learn-pathway .a2-walk-grid > article[hidden] { display: none; }
+.a2-learn-pathway .a2-walk-grid ol { padding-left: 1.2rem; }
+.a2-learn-pathway .a2-walk-grid li { border-top: 1px solid var(--learn-line); padding: .5rem 0; }
+.a2-learn-pathway .a2-walk-grid li:first-child { border: 0; }
+.a2-learn-pathway .a2-walk-grid code { overflow-wrap: anywhere; }
+.a2-learn-pathway .a2-walk-grid details { margin-top: .7rem; }
+.a2-learn-pathway .a2-walk-grid summary { cursor: pointer; }
+.a2-learn-pathway .a2-walk-grid summary:focus-visible { outline: 3px solid #0284c7; outline-offset: 3px; }
+.a2-learn-card small a { text-decoration: underline; text-underline-offset: .15em; }
+.a2-learn-detail { margin-top: .7rem; }
+.a2-learn-detail summary { cursor: pointer; font-weight: 650; }
+.a2-learn-detail summary:focus-visible { outline: 3px solid #0284c7; outline-offset: 3px; }
+.a2-learn-pathway .a2-learn-card { margin: .8rem 0; }
+.a2-learn-stages { padding-left: 1.35rem; margin: .7rem 0; }
+.a2-learn-stages li { margin: .5rem 0; line-height: 1.5; }
+.a2-learn-stages .a2-badge { display: inline-block; margin: 0 .5rem .2rem 0; font-size: .65rem; }
+[data-md-color-scheme="slate"] .a2-learn-app .a2-k-object { --a2-k: #81efad; }
+[data-md-color-scheme="slate"] .a2-learn-app .a2-k-operation { --a2-k: #ffb088; }
+[data-md-color-scheme="slate"] .a2-learn-app .a2-k-combinator { --a2-k: #b6c4ff; }
+[data-md-color-scheme="slate"] .a2-learn-app .a2-k-observation { --a2-k: #ffc0f0; }
+[data-md-color-scheme="slate"] .a2-learn-app .a2-k-law { --a2-k: #b4c1b9; }
+[data-md-color-scheme="slate"] .a2-learn-app .a2-k-bridge { --a2-k: #ddc2ff; }
+[data-md-color-scheme="slate"] .a2-learn-app .a2-x-keyword { color: #c7d4e5; }
+@media (max-width: 680px) { .a2-learn-grid { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 680px) {
+  .a2-learn-overview table, .a2-learn-overview tbody { display: block; min-width: 0; overflow: visible; }
+  .a2-learn-overview thead { position: absolute; width: 1px; min-width: 0; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+  .a2-learn-overview tr { display: block; min-width: 0; padding: .55rem .65rem; border-bottom: 1px solid var(--learn-line); }
+  .a2-learn-overview th, .a2-learn-overview th:first-child, .a2-learn-overview td { display: block; min-width: 0; padding: .12rem 0; border: 0; }
+  .a2-learn-overview th { font-size: .95rem; }
+  .a2-learn-overview .a2-learn-job { color: var(--learn-muted); }
+  .a2-learn-overview .a2-learn-form { overflow-wrap: anywhere; }
+  .a2-learn-form-label { display: inline; font-size: .78rem; font-weight: 650; }
+}
+@media (prefers-reduced-motion: reduce) { .a2-learn-app * { scroll-behavior: auto !important; transition: none !important; animation: none !important; } }

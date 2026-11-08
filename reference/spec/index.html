@@ -1,0 +1,3605 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+  
+  
+  
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Invent the pieces; then build with them.">
+  <link rel="canonical" href="https://mkj69.github.io/opulse-atoms/reference/spec/">
+  <link rel="prev" href="../">
+  <link rel="next" href="../notation-v3/">
+  
+  <link rel="icon" href="../../assets/images/favicon.svg">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Opulse">
+  
+  <meta property="og:title" content="Atoms v2 specification | Opulse">
+  <meta property="og:description" content="Invent the pieces; then build with them.">
+  <meta property="og:url" content="https://mkj69.github.io/opulse-atoms/reference/spec/">
+  <meta property="og:image" content="https://mkj69.github.io/opulse-atoms/assets/images/social/opulse-preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Atoms v2 specification | Opulse">
+  <meta name="twitter:description" content="Invent the pieces; then build with them.">
+  <meta name="twitter:image" content="https://mkj69.github.io/opulse-atoms/assets/images/social/opulse-preview.png">
+
+    
+      
+        <title>Atoms v2 specification - Opulse</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../assets/css/custom.css">
+    
+      <link rel="stylesheet" href="../../assets/css/atoms2.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  
+  <link rel="icon" type="image/svg+xml" href="../../assets/images/favicon.svg">
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#opulse-atoms-v2-the-six-kinds-of-atoms-specification" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Opulse" class="md-header__button md-logo" aria-label="Opulse" data-md-component="logo">
+      <img src="../../assets/images/mark.svg" alt="Opulse">
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis op-brand-text"><img src="../../assets/images/mark.svg" alt="">Opulse</span>
+          <a class="op-header-lockup" href="../.." aria-label="Opulse home">
+            <img class="op-lockup-light" src="../../assets/images/lockup-light.svg" alt="Opulse">
+            <img class="op-lockup-dark" src="../../assets/images/lockup-dark.svg" alt="Opulse">
+          </a>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Atoms v2 specification
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mkj69/opulse-atoms" class="op-repo-link" aria-label="Opulse on GitHub" rel="noopener">GitHub</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../learn/" class="md-tabs__link">
+          
+  
+  
+  Learn
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../play/" class="md-tabs__link">
+          
+  
+  
+  Play
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../worlds/" class="md-tabs__link">
+          
+  
+  
+  Worlds
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../research/" class="md-tabs__link">
+          
+  
+  
+  Research
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../build/" class="md-tabs__link">
+          
+  
+  
+  Build
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+  Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Opulse" class="md-nav__button md-logo" aria-label="Opulse" data-md-component="logo">
+      <img src="../../assets/images/mark.svg" alt="Opulse">
+    </a>
+    Opulse
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mkj69/opulse-atoms" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mkj69/opulse-atoms
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learn
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Learn
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How it grows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/kinds/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Six kinds
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/checks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Checks and limits
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Play
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Play
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../play/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../play/challenge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Challenge
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../play/ladders/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Task ladders
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Worlds
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Worlds
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../worlds/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Catalog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Research
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Research
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../research/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Use cases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../research/protocols/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Protocols
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../research/experiments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Experiments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Build
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Build
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../build/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../build/world/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Create a world
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Semantics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atoms v2 specification
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atoms v2 specification
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Values
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Values">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Value
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-json-encoding-schema-opulsevalue2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 JSON encoding (schema opulse.value/2)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-host-representations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Host representations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-integers-derived-from-zero-and-successor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 Integers derived from zero and successor
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-outcome" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Outcome
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-objects-objectspec" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Objects: ObjectSpec
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Objects: ObjectSpec">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-forms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Forms
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-static-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Static parameters
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-entry-make-and-the-enter-rule-of-each-edge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Entry: make and the enter rule of each edge
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-record" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 Record
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-operations-operationspec" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Operations: OperationSpec
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-combinators-combinatorspec-and-the-kernel-nodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Combinators: CombinatorSpec and the kernel nodes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Combinators: CombinatorSpec and the kernel nodes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-kernel-nodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Kernel nodes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-standard-library-combinators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Standard library combinators
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-rec" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Rec
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-blocks-and-jump" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 Blocks and Jump
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#65-fuel-and-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.5 Fuel and steps
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-observations-observationspec" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Observations: ObservationSpec
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Observations: ObservationSpec">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-world-side" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 World side
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-new-observations-kind-observation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 New observations (kind observation)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-definition-record" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Definition record
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-the-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. The pipeline
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. The pipeline">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#97-fast-paths" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.7 Fast paths
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-boundaries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Boundaries
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-the-four-invariants-and-their-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. The four invariants and their tests
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-world-declaration-schema-opulseworld2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. World declaration (schema opulse.world/2)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-legacy-compatibility-dialect-legacy-v1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Legacy compatibility: dialect legacy-v1
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13. Legacy compatibility: dialect legacy-v1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131-mapping-of-the-current-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.1 Mapping of the current code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132-dialect-rules-all-required-for-golden-equality" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.2 Dialect rules (all required for golden equality)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#133-codec-and-golden-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.3 Codec and golden tests
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-clock-world-a-true-clock-world-clock-version-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Clock world: a true clock (world clock, version 2)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-computer-world-v1-harvard-style" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Computer world v1 (Harvard style)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-not-in-v1-documented-limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. Not in v1 (documented limits)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#18-additions-in-03" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18. Additions in 0.3
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="18. Additions in 0.3">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#181-open-kinds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.1 Open kinds
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#182-more-combination-modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.2 More combination modes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#183-generic-probes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.3 Generic probes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#184-content-identity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.4 Content identity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#185-ascii-notation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.5 ASCII notation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#186-metered-atoms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.6 Metered atoms
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#19-laws-bridges-and-templates-04" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        19. Laws, bridges and templates (0.4)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="19. Laws, bridges and templates (0.4)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#191-laws-kind-law-sigil" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        19.1 Laws (kind law, sigil #)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#192-bridges-kind-bridge-sigil" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        19.2 Bridges (kind bridge, sigil ~)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#193-templates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        19.3 Templates
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-reference-implementation-python-and-versions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17. Reference implementation (Python) and versions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="17. Reference implementation (Python) and versions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Changes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notation-v3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Notation v3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API and CLI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../provenance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Provenance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Values
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Values">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Value
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-json-encoding-schema-opulsevalue2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 JSON encoding (schema opulse.value/2)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-host-representations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Host representations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-integers-derived-from-zero-and-successor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 Integers derived from zero and successor
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-outcome" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Outcome
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-objects-objectspec" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Objects: ObjectSpec
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Objects: ObjectSpec">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-forms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Forms
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-static-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Static parameters
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-entry-make-and-the-enter-rule-of-each-edge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Entry: make and the enter rule of each edge
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-record" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 Record
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-operations-operationspec" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Operations: OperationSpec
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-combinators-combinatorspec-and-the-kernel-nodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Combinators: CombinatorSpec and the kernel nodes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Combinators: CombinatorSpec and the kernel nodes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-kernel-nodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Kernel nodes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-standard-library-combinators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Standard library combinators
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-rec" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Rec
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-blocks-and-jump" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 Blocks and Jump
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#65-fuel-and-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.5 Fuel and steps
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-observations-observationspec" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Observations: ObservationSpec
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Observations: ObservationSpec">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-world-side" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 World side
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-new-observations-kind-observation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 New observations (kind observation)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-definition-record" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Definition record
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-the-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. The pipeline
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. The pipeline">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#97-fast-paths" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.7 Fast paths
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-boundaries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Boundaries
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-the-four-invariants-and-their-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. The four invariants and their tests
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-world-declaration-schema-opulseworld2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. World declaration (schema opulse.world/2)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-legacy-compatibility-dialect-legacy-v1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Legacy compatibility: dialect legacy-v1
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13. Legacy compatibility: dialect legacy-v1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131-mapping-of-the-current-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.1 Mapping of the current code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132-dialect-rules-all-required-for-golden-equality" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.2 Dialect rules (all required for golden equality)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#133-codec-and-golden-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.3 Codec and golden tests
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-clock-world-a-true-clock-world-clock-version-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Clock world: a true clock (world clock, version 2)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-computer-world-v1-harvard-style" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Computer world v1 (Harvard style)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-not-in-v1-documented-limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. Not in v1 (documented limits)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#18-additions-in-03" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18. Additions in 0.3
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="18. Additions in 0.3">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#181-open-kinds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.1 Open kinds
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#182-more-combination-modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.2 More combination modes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#183-generic-probes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.3 Generic probes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#184-content-identity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.4 Content identity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#185-ascii-notation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.5 ASCII notation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#186-metered-atoms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.6 Metered atoms
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#19-laws-bridges-and-templates-04" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        19. Laws, bridges and templates (0.4)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="19. Laws, bridges and templates (0.4)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#191-laws-kind-law-sigil" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        19.1 Laws (kind law, sigil #)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#192-bridges-kind-bridge-sigil" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        19.2 Bridges (kind bridge, sigil ~)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#193-templates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        19.3 Templates
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-reference-implementation-python-and-versions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17. Reference implementation (Python) and versions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="17. Reference implementation (Python) and versions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Changes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+  
+    
+    
+      <nav class="op-breadcrumb" aria-label="Breadcrumb">
+        <a href="../..">Home</a><span aria-hidden="true">/</span>
+        
+          <a href="../">Reference</a><span aria-hidden="true">/</span>
+          <span aria-current="page">Atoms v2 specification</span>
+        
+      </nav>
+    
+  
+  
+                  
+
+
+  
+  
+
+
+<h1 id="opulse-atoms-v2-the-six-kinds-of-atoms-specification">Opulse atoms-v2: the six kinds of atoms (specification)<a class="headerlink" href="#opulse-atoms-v2-the-six-kinds-of-atoms-specification" title="Permanent link">&para;</a></h1>
+<p>Spec version: <code>atoms-v2/0.5</code> (2026-11-04). Status: binding interface for the core, UI, experiment
+and tasks work. It implements the confirmed foundation (user, 2026-11-04). Changes to this file bump
+the spec version and are listed in section 17.</p>
+<p>Words used with a fixed meaning: <strong>must</strong> (required), <strong>must not</strong> (forbidden), <strong>may</strong> (allowed).</p>
+<h2 id="1-summary">1. Summary<a class="headerlink" href="#1-summary" title="Permanent link">&para;</a></h2>
+<p>A world declares its layer 0 with four kinds of atoms:</p>
+<table>
+<thead>
+<tr>
+<th>kind</th>
+<th>Python record</th>
+<th>question it answers</th>
+<th>example (integer world)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>object</code></td>
+<td><code>ObjectSpec</code></td>
+<td>what exists?</td>
+<td><code>int</code></td>
+</tr>
+<tr>
+<td><code>operation</code></td>
+<td><code>OperationSpec</code></td>
+<td>what can be done in one step?</td>
+<td><code>+</code>, <code>succ</code>, is-zero</td>
+</tr>
+<tr>
+<td><code>combinator</code></td>
+<td><code>CombinatorSpec</code></td>
+<td>how are steps put together?</td>
+<td>sequence, branch, recursion</td>
+</tr>
+<tr>
+<td><code>observation</code></td>
+<td><code>ObservationSpec</code></td>
+<td>what can the learner see?</td>
+<td>inputs and result</td>
+</tr>
+</tbody>
+</table>
+<p>Two more kinds are definable (section 19): <code>law</code> (<code>LawSpec</code>, sigil <code>#</code>: a statement that always
+holds, usable as one rewrite step) and <code>bridge</code> (<code>BridgeSpec</code>, sigil <code>~</code>: a translation whose
+diagram commutes). Worlds may give laws at layer 0 as axioms. <strong>Templates</strong> (<code>TemplateSpec</code>)
+produce definitions of any kind from kind and value parameters.</p>
+<p>A learner or a generator writes <strong>definitions</strong> of any of the six kinds. Every definition is one
+<code>Definition</code> record and goes through one pipeline (section 9):
+<code>written -&gt; checked -&gt; callable -&gt; verified -&gt; promoted</code>. A promoted definition is used as one step
+under a chosen <strong>boundary</strong> (section 10). The four invariants (section 11) are hard rules.</p>
+<p>The current Opulse (operations only, fixed combinators substitution / branch / recursion, fixed
+value types) is the special case "dialect <code>legacy-v1</code>" (section 13). Published worlds and data
+read unchanged through that dialect, except the clock world (section 14).</p>
+<h2 id="2-values">2. Values<a class="headerlink" href="#2-values" title="Permanent link">&para;</a></h2>
+<h3 id="21-value">2.1 Value<a class="headerlink" href="#21-value" title="Permanent link">&para;</a></h3>
+<div class="language-text highlight"><pre><span></span><code>Value = Int | Text | Card
+Int   = an integer of unbounded size (bool is NOT an Int)
+Text  = a finite sequence of Unicode code points
+Card  = Card(sort: SortRef, tag: str, fields: tuple[Value, ...])
+</code></pre></div>
+<ul>
+<li><code>sort</code> names the object (section 4) the card belongs to, with its static parameters, for
+  example <code>bool</code>, <code>list[int]</code>, <code>perm[4]</code>, <code>fraction</code>.</li>
+<li><code>tag</code> is one of the tags the sort declares. A record sort has one tag (by convention the sort
+  name). <code>bool</code> is the sort with tags <code>false</code> and <code>true</code> and no fields.</li>
+<li><code>fields</code> is an ordered tuple. A tag declares either a fixed list of named fields or one
+  variable-length field list <code>items: T</code> (used by sequences such as <code>list[T]</code>).</li>
+<li>Values are finite trees. There are no cycles and no infinite values (section 16).</li>
+</ul>
+<p>Two values are <strong>equal</strong> (kernel equality) when they have the same constructor, the same sort
+and tag, and equal fields in order. Kernel equality is structural on the canonical
+representation (section 4.3). A world operation <code>eq</code> is a separate thing and may differ (for
+example an IEEE <code>eq(NaN, NaN) = false</code> in a bit-level float world).</p>
+<h3 id="22-json-encoding-schema-opulsevalue2">2.2 JSON encoding (schema <code>opulse.value/2</code>)<a class="headerlink" href="#22-json-encoding-schema-opulsevalue2" title="Permanent link">&para;</a></h3>
+<div class="language-json highlight"><pre><span></span><code><span class="p">{</span><span class="nt">"t"</span><span class="p">:</span><span class="w"> </span><span class="s2">"int"</span><span class="p">,</span><span class="w"> </span><span class="nt">"v"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">}</span>
+<span class="p">{</span><span class="nt">"t"</span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w"> </span><span class="nt">"v"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abc"</span><span class="p">}</span>
+<span class="p">{</span><span class="nt">"t"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;sort&gt;"</span><span class="p">,</span><span class="w"> </span><span class="nt">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;tag&gt;"</span><span class="p">,</span><span class="w"> </span><span class="nt">"f"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">&lt;value&gt;</span><span class="p">,</span><span class="w"> </span><span class="err">...</span><span class="p">]}</span>
+</code></pre></div>
+<p>The legacy encodings <code>{"t": "int"|"bool"|"str"|"list[int]"|"perm"|"note"|"melody"|"grid"|"state"|..., "v": ...}</code>
+remain valid input and output in dialect <code>legacy-v1</code>. They are decoded with a <strong>world-context
+codec</strong> (section 13.3): the codec, not the tag alone, decides the sort.</p>
+<h3 id="23-host-representations">2.3 Host representations<a class="headerlink" href="#23-host-representations" title="Permanent link">&para;</a></h3>
+<p>A world may store a given sort in a host representation (Python <code>int</code>, <code>tuple</code>,
+<code>Permutation</code>, the robot state object) for speed. The world then must declare a codec
+<code>to_card / from_card</code> that is total and bijective on valid values. The host representation
+must not change any result, failure, step count or trace.</p>
+<h3 id="24-integers-derived-from-zero-and-successor">2.4 Integers derived from zero and successor<a class="headerlink" href="#24-integers-derived-from-zero-and-successor" title="Permanent link">&para;</a></h3>
+<p>The world <code>successor</code> (and new teaching worlds) may declare <code>nat = compose &lt;zero | succ(nat)&gt;</code>
+as an object. <code>3</code> then has the derivation <code>succ(succ(succ(zero)))</code>. This derivation is
+unfoldable and costs three <code>succ</code> steps. The kernel still carries integers as <code>Int</code>; the
+derivation is a teaching object, not the carrier.</p>
+<h2 id="3-outcome">3. Outcome<a class="headerlink" href="#3-outcome" title="Permanent link">&para;</a></h2>
+<p>Every evaluation returns an <code>Outcome</code>:</p>
+<div class="language-text highlight"><pre><span></span><code>Outcome = Ok(value: Value) | Bottom(reason: str) | Unknown(resource: str)
+</code></pre></div>
+<ul>
+<li><code>Bottom(reason)</code> is a domain failure: division by zero, a blocked robot move, no matching
+  case arm, a value outside <code>valid</code>. Reasons are short identifiers (<code>div_zero</code>, <code>blocked</code>,
+  <code>no_branch</code>, <code>invalid</code>, <code>measure</code>, <code>overflow</code>, <code>nan_condition</code>).</li>
+<li><code>Unknown(resource)</code> means the evaluation ran out of a resource: <code>fuel</code> (layer-0 step budget),
+  <code>depth</code>, <code>nodes</code>. Unknown is not a value.</li>
+<li>Calls and constructors are <strong>strict</strong>: a <code>Bottom</code> argument makes the call <code>Bottom</code> with the
+  same reason; an <code>Unknown</code> argument makes it <code>Unknown</code>. Arguments evaluate left to right and
+  evaluation stops at the first argument that is not <code>Ok</code> (later arguments are not evaluated
+  and charge nothing). <code>Let</code> is strict in the same way. Dialect <code>legacy-v1</code> differs (section
+  13.2, rule 8).</li>
+<li>Comparison of outcomes (<code>outcome_equal</code>): <code>Ok(a) == Ok(b)</code> iff <code>a</code> equals <code>b</code>;
+  <code>Bottom(r1) == Bottom(r2)</code> is true regardless of reason (legacy rule: two NaN are equal);
+  <code>Unknown</code> is never equal to anything, including another <code>Unknown</code>. A grader must never
+  judge an <code>Unknown</code> result correct.</li>
+<li>Containers must not hold <code>Bottom</code>. To keep a failure as data, a definition must use the
+  explicit lift: <code>lift[T] = bot(reason: str) | val(T)</code>, built by the non-strict operation
+  <code>catch</code>. <code>defined(x)</code> (legacy) is the non-strict test <code>Bottom -&gt; false</code>.</li>
+<li>Legacy codec: the legacy NaN value and <code>{"t": "nan", ...}</code> decode to <code>Bottom</code>; <code>Bottom</code>
+  encodes back to the legacy NaN in dialect <code>legacy-v1</code>.</li>
+</ul>
+<h2 id="4-objects-objectspec">4. Objects: <code>ObjectSpec</code><a class="headerlink" href="#4-objects-objectspec" title="Permanent link">&para;</a></h2>
+<h3 id="41-forms">4.1 Forms<a class="headerlink" href="#41-forms" title="Permanent link">&para;</a></h3>
+<p>An object is declared by one of two methods plus one switch:</p>
+<ol>
+<li><strong>compose</strong>: a sort is a set of tags; each tag has fields. Special cases:</li>
+<li>record: one tag with named fields, <code>pair = compose &lt;pair(a: int, b: int)&gt;</code>;</li>
+<li>variant: several tags, <code>option[T] = compose &lt;none | some(value: T)&gt;</code>;</li>
+<li>sequence: one tag with variable <code>items</code>, <code>list[T]</code> may be either the native sequence
+     <code>compose &lt;items(T*)&gt;</code> or the structural <code>compose &lt;nil | cons(head: T, tail: list[T])&gt;</code>;</li>
+<li>recursive and mutually recursive sorts: declared together as one <code>group</code>. Each group must
+     be strictly positive (a sort appears in its own fields only as a field type, never as a
+     function argument) and must have at least one base tag (a tag whose fields do not
+     mention the group) so that finite values exist.</li>
+<li><strong>refine</strong>: <code>refine base where valid; canon</code>.</li>
+<li><code>base</code>: an existing sort.</li>
+<li><code>valid: base -&gt; bool</code>: which representations are values.</li>
+<li><code>canon: base -&gt; base</code> (optional): the canonical representative.</li>
+<li><code>valid</code> and <code>canon</code> are nodes over the single variable <code>x</code> (the base representation);
+     record fields are read with the base sort's accessors, for example <code>record.den(x)</code>.</li>
+<li>Obligations (each recorded as evidence, section 8):
+     <code>canon</code> is total on valid values; idempotent (<code>canon(canon x) = canon x</code>); keeps validity
+     (<code>valid x -&gt; valid(canon x)</code>); and every interface operation <strong>respects</strong> canon
+     (<code>canon x = canon y -&gt; op(x) = op(y)</code>, per argument position).</li>
+<li><code>valid</code> and <code>canon</code> must be written in the terminating sublanguage: no <code>Blocks/Jump</code>;
+     <code>Rec</code> only with a measure (section 6.3). A definition whose <code>valid</code> or <code>canon</code> can return
+     <code>Unknown</code> on its verified scope must not be stored.</li>
+<li><strong>seal</strong> (switch, <code>sealed: true</code>): only the operations listed in <code>interface</code> may build or read
+   the inside. Other definitions see only the sort name and the interface. Unfolding for audit
+   may still show the inside.</li>
+</ol>
+<p>A <strong>named constant</strong> is an <code>ObjectSpec</code> with form <code>constant</code>. It introduces no new sort. Its body
+is a closed term of an existing sort, for example <code>three = succ(succ(succ(zero)))</code>. Unfolding
+replaces the name with the term; evaluation charges the steps of the term.</p>
+<h3 id="42-static-parameters">4.2 Static parameters<a class="headerlink" href="#42-static-parameters" title="Permanent link">&para;</a></h3>
+<p>A sort may take static parameters: type parameters (<code>list[T]</code>) and integer parameters
+(<code>perm[n]</code>, <code>uint[k]</code>). They are fixed at instantiation. Sizes known only at run time go into
+<code>valid</code> (the robot map width is checked by <code>valid</code>, not by a type parameter). A world constant
+(for example the name list of the <code>rel</code> world) read by <code>valid</code> is part of the world hash; a new
+constant value means a new world version.</p>
+<h3 id="43-entry-make-and-the-enter-rule-of-each-edge">4.3 Entry: <code>make</code> and the <code>enter</code> rule of each edge<a class="headerlink" href="#43-entry-make-and-the-enter-rule-of-each-edge" title="Permanent link">&para;</a></h3>
+<p>Every input edge <code>inputs[i]</code> and the output edge of an operation declares an entry rule:</p>
+<table>
+<thead>
+<tr>
+<th>rule</th>
+<th>meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bottom</code></td>
+<td>a value outside <code>valid</code> gives <code>Bottom(invalid)</code></td>
+</tr>
+<tr>
+<td><code>normalize</code></td>
+<td>apply <code>canon</code> of the sort (for example <code>n mod 12</code>)</td>
+</tr>
+<tr>
+<td><code>saturate(lo, hi)</code></td>
+<td>clamp into the range</td>
+</tr>
+<tr>
+<td><code>fold(name)</code></td>
+<td>a named legacy folding rule (section 13.2)</td>
+</tr>
+</tbody>
+</table>
+<p>The default for a refine sort is <code>normalize</code> when it has <code>canon</code>, else <code>bottom</code>. The check and
+the canonicalisation happen at the semantic position of <code>make</code> (the edge) and are charged
+there in exact layer-0 steps (<code>canon_cost: counted</code>), or declared free for a given layer-0 sort
+(<code>canon_cost: free</code>, part of the world version). Moving from a refine sort to its base is
+implicit. Narrowing from the base to the refine sort is explicit (<code>make</code>), except the
+legacy-v1 int-&gt;note rule (section 13.2).</p>
+<h3 id="44-record">4.4 Record<a class="headerlink" href="#44-record" title="Permanent link">&para;</a></h3>
+<div class="language-yaml highlight"><pre><span></span><code><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fraction</span>
+<span class="nt">form</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">refine</span>
+<span class="nt">base</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">record</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">num</span><span class="p">:</span><span class="w"> </span><span class="nv">int</span><span class="p p-Indicator">,</span><span class="nt"> den</span><span class="p">:</span><span class="w"> </span><span class="nv">int</span><span class="p p-Indicator">}}</span>
+<span class="nt">valid</span><span class="p">:</span><span class="w"> </span><span class="s">"den(x)</span><span class="nv"> </span><span class="s">!=</span><span class="nv"> </span><span class="s">0"</span><span class="w">              </span><span class="c1"># a Node over the variable x (section 6)</span>
+<span class="nt">canon</span><span class="p">:</span><span class="w"> </span><span class="s">"reduce</span><span class="nv"> </span><span class="s">x</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">gcd;</span><span class="nv"> </span><span class="s">den</span><span class="nv"> </span><span class="s">&gt;</span><span class="nv"> </span><span class="s">0"</span><span class="w"> </span><span class="c1"># a Node over x</span>
+<span class="nt">sealed</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="nt">interface</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">make_fraction</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">num</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">den</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">fraction_eq</span><span class="p p-Indicator">]</span>
+<span class="nt">params</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+<span class="nt">equality</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">canonical</span><span class="w">               </span><span class="c1"># canonical | none</span>
+<span class="nt">canon_cost</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">counted</span>
+</code></pre></div>
+<h2 id="5-operations-operationspec">5. Operations: <code>OperationSpec</code><a class="headerlink" href="#5-operations-operationspec" title="Permanent link">&para;</a></h2>
+<div class="language-yaml highlight"><pre><span></span><code><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">operation</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">add</span>
+<span class="nt">role</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">combine</span><span class="w">                     </span><span class="c1"># transform | combine | decide | relate | act</span>
+<span class="nt">inputs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[{</span><span class="nt">sort</span><span class="p">:</span><span class="w"> </span><span class="nv">byte</span><span class="p p-Indicator">,</span><span class="nt"> enter</span><span class="p">:</span><span class="w"> </span><span class="nv">bottom</span><span class="p p-Indicator">},</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">sort</span><span class="p">:</span><span class="w"> </span><span class="nv">byte</span><span class="p p-Indicator">,</span><span class="nt"> enter</span><span class="p">:</span><span class="w"> </span><span class="nv">bottom</span><span class="p p-Indicator">}]</span>
+<span class="nt">output</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">sort</span><span class="p">:</span><span class="w"> </span><span class="nv">byte</span><span class="p p-Indicator">,</span><span class="nt"> enter</span><span class="p">:</span><span class="w"> </span><span class="nv">normalize</span><span class="p p-Indicator">}</span>
+<span class="nt">rule</span><span class="p">:</span><span class="w"> </span><span class="s">"(a</span><span class="nv"> </span><span class="s">+</span><span class="nv"> </span><span class="s">b)</span><span class="nv"> </span><span class="s">mod</span><span class="nv"> </span><span class="s">256"</span><span class="w">           </span><span class="c1"># human-readable rule, required</span>
+<span class="nt">errors</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span><span class="w">                        </span><span class="c1"># Bottom reasons this operation can return</span>
+<span class="nt">impl</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="s">"&lt;module&gt;:add"</span><span class="p p-Indicator">,</span><span class="nt"> digest</span><span class="p">:</span><span class="w"> </span><span class="s">"&lt;sha256</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">source&gt;"</span><span class="p p-Indicator">}</span><span class="w">  </span><span class="c1"># or {table: ...} or {body: &lt;Node&gt;}</span>
+<span class="nt">cost</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span><span class="w">                           </span><span class="c1"># exact layer-0 steps of one call</span>
+<span class="nt">strict</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="nt">reads_params</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+</code></pre></div>
+<ul>
+<li><code>role</code> is a label only. <code>relate</code> operations return <code>set[lift[T]]</code> (several results);
+  <code>act</code> operations take and return a state sort (they change state).</li>
+<li><code>impl.host</code> is allowed only at layer 0 (given atoms). The digest of the host source goes into
+  the world lock; a change of the source changes the world version. Definitions written by a
+  learner or a generator must not use host code.</li>
+<li>Every given operation must state its rule, its errors and its cost.</li>
+<li>A host implementation must be a deterministic function of its arguments without side effects
+  (state changes are new state values returned, never mutation). Memoized recursion, fast paths
+  and replay rely on it; an atom that mutates its arguments is outside the model. The cost of a
+  call may be a declared function of the arguments (<code>cost_rule</code>), charged before the call.</li>
+<li>Comparison operations of legacy worlds (<code>&lt;</code>, <code>==</code> on int, str, list order) are given
+  operations with role <code>decide</code>. A sealed sort has no order unless its interface declares one.</li>
+</ul>
+<h2 id="6-combinators-combinatorspec-and-the-kernel-nodes">6. Combinators: <code>CombinatorSpec</code> and the kernel nodes<a class="headerlink" href="#6-combinators-combinatorspec-and-the-kernel-nodes" title="Permanent link">&para;</a></h2>
+<h3 id="61-kernel-nodes">6.1 Kernel nodes<a class="headerlink" href="#61-kernel-nodes" title="Permanent link">&para;</a></h3>
+<p>All bodies (of operations, combinators, observations, <code>valid</code>, <code>canon</code>) are trees of these
+nodes. Interpretation, tracing, type checking and cost accounting use the same tree.</p>
+<table>
+<thead>
+<tr>
+<th>node</th>
+<th>fields</th>
+<th>meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Var</code></td>
+<td><code>name</code></td>
+<td>a parameter or a <code>Let</code> name</td>
+</tr>
+<tr>
+<td><code>Lit</code></td>
+<td><code>value</code></td>
+<td>a literal value (checked against the expected sort)</td>
+</tr>
+<tr>
+<td><code>Call</code></td>
+<td><code>fn, args</code></td>
+<td>call an operation, a definition, or an operation parameter; strict; names resolve to a local <code>Rec</code> function, then a scope definition or atom, then a variable holding an operation reference (an operation parameter must not share a name with a scope name)</td>
+</tr>
+<tr>
+<td><code>Let</code></td>
+<td><code>name, value, body</code></td>
+<td>evaluate <code>value</code> once, bind it</td>
+</tr>
+<tr>
+<td><code>Case</code></td>
+<td><code>arms: [(cond, body)], default</code></td>
+<td>ordered, short-circuit; first true arm wins</td>
+</tr>
+<tr>
+<td><code>Rec</code></td>
+<td><code>fn, params, body, measure</code></td>
+<td>a local recursive function (section 6.3)</td>
+</tr>
+<tr>
+<td><code>Blocks</code></td>
+<td><code>vars, entry, blocks</code></td>
+<td>a flat program with labelled blocks (section 6.4)</td>
+</tr>
+<tr>
+<td><code>Jump</code></td>
+<td><code>target</code> / <code>cond, then, else</code></td>
+<td>block terminator: goto, conditional goto</td>
+</tr>
+<tr>
+<td><code>Halt</code></td>
+<td><code>value</code></td>
+<td>block terminator: return</td>
+</tr>
+</tbody>
+</table>
+<p>Conditions: <code>Test(node)</code> (the node evaluates to a <code>bool</code> card), <code>And</code>, <code>Or</code>, <code>Not</code>, <code>True</code>.
+Conditions evaluate left to right with short-circuit. If an evaluated condition is <code>Bottom</code>,
+the whole <code>Case</code> is <code>Bottom(nan_condition)</code>. If no arm matches and there is no default, the
+result is <code>Bottom(no_branch)</code>.</p>
+<p>A world opens a subset of nodes in <code>combinators.nodes</code>. A body that uses a node the world does
+not open fails the type check.</p>
+<h3 id="62-standard-library-combinators">6.2 Standard library combinators<a class="headerlink" href="#62-standard-library-combinators" title="Permanent link">&para;</a></h3>
+<p>A standard combinator is a <code>CombinatorSpec</code> with operation parameters and a public unfold rule
+written with kernel nodes:</p>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>parameters</th>
+<th>unfold rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>seq</code></td>
+<td><code>f, g</code></td>
+<td><code>x |-&gt; g(f(x))</code></td>
+</tr>
+<tr>
+<td><code>twice</code></td>
+<td><code>f</code></td>
+<td><code>x |-&gt; f(f(x))</code></td>
+</tr>
+<tr>
+<td><code>repeat</code></td>
+<td><code>f, n</code> (static)</td>
+<td><code>n</code> nested calls of <code>f</code></td>
+</tr>
+<tr>
+<td><code>fold</code></td>
+<td><code>f, z</code></td>
+<td><code>Rec</code> over a list: <code>fold(f, z, nil) = z</code>, <code>fold(f, z, cons(h, t)) = f(h, fold(f, z, t))</code></td>
+</tr>
+<tr>
+<td><code>map</code></td>
+<td><code>f</code></td>
+<td><code>Rec</code> over a list</td>
+</tr>
+<tr>
+<td><code>repeat_until</code></td>
+<td><code>body, stop, max, on_exhaust</code></td>
+<td>section 13.2 for the legacy robot form</td>
+</tr>
+<tr>
+<td><code>search</code></td>
+<td><code>bound, p</code></td>
+<td>least <code>i</code> in <code>0..bound</code> with <code>p(i)</code>; <code>Rec</code> with measure <code>bound - i</code></td>
+</tr>
+</tbody>
+</table>
+<p>A world may declare more. A new combinator definition (kind <code>combinator</code>) has the same shape:
+parameters (values and operation parameters), a body, and its unfold rule is "substitute the
+passed operations and arguments into the body".</p>
+<h3 id="63-rec">6.3 <code>Rec</code><a class="headerlink" href="#63-rec" title="Permanent link">&para;</a></h3>
+<p><code>Rec(fn, params, body, measure)</code> binds a recursive function <code>fn</code>. The body may call <code>fn</code>.</p>
+<ul>
+<li><code>measure</code> is a Node over <code>params</code> that returns a non-negative Int. At each recursive call the
+  kernel evaluates the measure of the new arguments; it must be smaller than the measure of
+  the current arguments, else the call is <code>Bottom(measure)</code>. The measure is a termination check,
+  not part of the computation: it is not charged and not traced, but it runs under the same fuel
+  and depth limits as a separate budget; a measure that does not finish makes the call <code>Unknown</code>.</li>
+<li>The recursion counter is updated by the world's own operations and charged like any call
+  (clock <code>%</code>, bits <code>shift_right</code>, negative counters in legacy worlds). The kernel never inserts a hidden
+  <code>n - 1</code>.</li>
+<li><code>measure: fuel</code> (allowed when the world sets <code>combinators.recursion: fuel</code>) means: no measure
+  check; the recursion is bounded only by fuel and depth, and running out is <code>Unknown</code>. This is
+  how a learner writes recursion without proving termination (the experiment worlds use it).</li>
+<li><code>measure: legacy</code> (dialect <code>legacy-v1</code> only) means the same, with the legacy depth limit
+  (10 000); exceeding it is <code>Unknown(depth)</code>.</li>
+<li><code>combinators.recursion</code> of a world is one of <code>legacy</code>, <code>measure</code> (every <code>Rec</code> needs a measure
+  node), <code>fuel</code> (a <code>Rec</code> may use <code>measure: fuel</code>), <code>none</code> (the world does not open <code>Rec</code>; a
+  machine world repeats with <code>Blocks/Jump</code>). <code>combinators.nodes</code> may also list the block
+  terminators <code>Jump</code>, <code>CondJump</code>, <code>Halt</code> next to <code>Blocks</code>.</li>
+</ul>
+<h3 id="64-blocks-and-jump">6.4 <code>Blocks</code> and <code>Jump</code><a class="headerlink" href="#64-blocks-and-jump" title="Permanent link">&para;</a></h3>
+<p><code>Blocks(vars, entry, blocks)</code> is a program with a program counter. Each block is a list of
+assignments <code>var := node</code> and one terminator (<code>Jump</code>, conditional <code>Jump</code>, <code>Halt</code>). Every
+executed jump charges one control step. Loops stop when the fuel runs out (<code>Unknown(fuel)</code>).
+A <code>Blocks</code> program is a combinator card. It is not a value and cannot modify itself
+(section 15).</p>
+<h3 id="65-fuel-and-steps">6.5 Fuel and steps<a class="headerlink" href="#65-fuel-and-steps" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Layer-0 steps</strong>: each call of a given operation charges its declared <code>cost</code> (default 1);
+  each executed <code>Jump</code> charges 1. Calls of definitions charge nothing themselves; their bodies
+  charge.</li>
+<li><strong>Fuel</strong> is a budget in layer-0 steps. When it runs out the result is <code>Unknown(fuel)</code>.</li>
+<li>The step count and the fuel are always computed on the full unfolding to layer 0, whatever
+  boundary is shown and whatever is promoted. A fast path for a promoted definition (section
+  9.7) must charge the exact layer-0 step count of the unfolding.</li>
+<li>Legacy step count = the old <code>base_ops</code> count (calls of base operations).</li>
+</ul>
+<h2 id="7-observations-observationspec">7. Observations: <code>ObservationSpec</code><a class="headerlink" href="#7-observations-observationspec" title="Permanent link">&para;</a></h2>
+<h3 id="71-world-side">7.1 World side<a class="headerlink" href="#71-world-side" title="Permanent link">&para;</a></h3>
+<div class="language-yaml highlight"><pre><span></span><code><span class="nt">observation</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">truth</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">robot_state</span><span class="w">                </span><span class="c1"># the sealed full state</span>
+<span class="w">  </span><span class="nt">probes</span><span class="p">:</span><span class="w">                           </span><span class="c1"># given read operations on the truth</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="nv">front_wall</span><span class="p p-Indicator">,</span><span class="nt"> sort</span><span class="p">:</span><span class="w"> </span><span class="nv">bool</span><span class="p p-Indicator">,</span><span class="nt"> reveals</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"whether</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">cell</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">front</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">wall"</span><span class="p p-Indicator">]}</span>
+<span class="w">  </span><span class="nt">capabilities</span><span class="p">:</span><span class="w">                     </span><span class="c1"># per agent; default agent "learner"</span>
+<span class="w">    </span><span class="nt">learner</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">channels</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">results</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">errors</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">renders</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">traces</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">steps</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">memory</span><span class="p p-Indicator">],</span><span class="nt"> probes</span><span class="p">:</span><span class="w"> </span><span class="nv">all</span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="nt">show</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">input</span><span class="p">:</span><span class="w"> </span><span class="nv">full_state</span><span class="p p-Indicator">,</span><span class="nt"> result</span><span class="p">:</span><span class="w"> </span><span class="nv">full_state</span><span class="p p-Indicator">}</span><span class="w">   </span><span class="c1"># what a task shows; may only narrow</span>
+<span class="w">  </span><span class="nt">judge_view</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">full_state</span><span class="w">            </span><span class="c1"># default; per task it may be a declared projection</span>
+</code></pre></div>
+<ul>
+<li>The truth is sealed. Only probes read it.</li>
+<li><code>channels</code> lists what the learner sees: results, error reasons, renders, traces, step counts,
+  memory (provisional default: all six).</li>
+<li>Grading always uses <code>judge_view</code> applied to the full truth state, never the learner's view
+  (invariant 3). Values: <code>full_state</code> (default), <code>contract_projection(fields)</code>.</li>
+</ul>
+<h3 id="72-new-observations-kind-observation">7.2 New observations (kind <code>observation</code>)<a class="headerlink" href="#72-new-observations-kind-observation" title="Permanent link">&para;</a></h3>
+<div class="language-yaml highlight"><pre><span></span><code><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">observation</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">front_free</span>
+<span class="nt">reads</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">front_wall</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">front_water</span><span class="p p-Indicator">]</span><span class="w">     </span><span class="c1"># granted probes only</span>
+<span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span><span class="w">                          </span><span class="c1"># or {sort: int, init: &lt;Lit&gt;, step: &lt;Node over memory and reads&gt;}</span>
+<span class="nt">body</span><span class="p">:</span><span class="w"> </span><span class="s">"not</span><span class="nv"> </span><span class="s">front_wall</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">not</span><span class="nv"> </span><span class="s">front_water"</span><span class="w">   </span><span class="c1"># a Node over the probe values and the memory</span>
+</code></pre></div>
+<p>Rules checked by the type checker:</p>
+<ul>
+<li>The body and <code>memory.step</code> may call only: probes in <code>reads</code> (each granted to the agent),
+  other observation definitions, and operations whose inputs do not include the truth sort.</li>
+<li>Memory is a fold over past observations: <code>memory.step(previous_memory, current probe values)</code>.
+  Memory never reads the truth directly.</li>
+<li>An observation cannot change the truth: it has no <code>act</code> operation in its dependency closure.</li>
+</ul>
+<p>Unfolding an observation shows the probes it reads ("front free" unfolds to two observations).</p>
+<h2 id="8-definition-record">8. Definition record<a class="headerlink" href="#8-definition-record" title="Permanent link">&para;</a></h2>
+<div class="language-yaml highlight"><pre><span></span><code><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="s">"&lt;world&gt;@&lt;version&gt;/&lt;name&gt;"</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MUL</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">operation</span><span class="w">                       </span><span class="c1"># object | operation | combinator | observation</span>
+<span class="nt">origin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">invented</span><span class="w">                      </span><span class="c1"># given | invented</span>
+<span class="nt">layer</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span><span class="w">                              </span><span class="c1"># 0 for given; else at least 1 + max(layer of depends_on)</span>
+<span class="nt">depends_on</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">add</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">dec</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">jump</span><span class="p p-Indicator">]</span>
+<span class="nt">spec</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nv">...</span><span class="p p-Indicator">}</span><span class="w">                           </span><span class="c1"># the ObjectSpec / OperationSpec / CombinatorSpec / ObservationSpec fields</span>
+<span class="nt">body</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;Node&gt;</span><span class="w">                          </span><span class="c1"># or {host: ...} for given atoms (HostRule)</span>
+<span class="nt">evidence</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">method</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">exhaustive</span><span class="w">                  </span><span class="c1"># exhaustive | bounded | sampled</span>
+<span class="w">  </span><span class="nt">scope</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">domain</span><span class="p">:</span><span class="w"> </span><span class="s">"byte</span><span class="nv"> </span><span class="s">x</span><span class="nv"> </span><span class="s">byte"</span><span class="p p-Indicator">,</span><span class="nt"> size</span><span class="p">:</span><span class="w"> </span><span class="nv">65536</span><span class="p p-Indicator">,</span><span class="nt"> description</span><span class="p">:</span><span class="w"> </span><span class="s">"all</span><span class="nv"> </span><span class="s">8-bit</span><span class="nv"> </span><span class="s">pairs,</span><span class="nv"> </span><span class="s">full</span><span class="nv"> </span><span class="s">machine</span><span class="nv"> </span><span class="s">state"</span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="nt">seed</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span><span class="w">                          </span><span class="c1"># required for sampled</span>
+<span class="w">  </span><span class="nt">checks</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">unfold_equivalence</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">boundary_invariance</span><span class="p p-Indicator">]</span><span class="w">   </span><span class="c1"># obligations covered</span>
+<span class="w">  </span><span class="nt">world_hash</span><span class="p">:</span><span class="w"> </span><span class="s">"&lt;sha256&gt;"</span>
+<span class="w">  </span><span class="nt">deps_hash</span><span class="p">:</span><span class="w"> </span><span class="s">"&lt;sha256</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">transitive</span><span class="nv"> </span><span class="s">dependency</span><span class="nv"> </span><span class="s">records&gt;"</span>
+<span class="nt">contract</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">guarantees</span><span class="p">:</span><span class="w"> </span><span class="s">"R0</span><span class="nv"> </span><span class="s">=</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">b</span><span class="nv"> </span><span class="s">mod</span><span class="nv"> </span><span class="s">256"</span>
+<span class="w">  </span><span class="nt">may_change</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">R2</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">flags</span><span class="p p-Indicator">]</span><span class="w">             </span><span class="c1"># descriptive; v1 promotion still needs full-state equality</span>
+<span class="w">  </span><span class="nt">keeps</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">memory</span><span class="p p-Indicator">]</span>
+<span class="nt">cost</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">length</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">14</span><span class="w">                          </span><span class="c1"># nodes in the body</span>
+<span class="w">  </span><span class="nt">steps</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">min</span><span class="p">:</span><span class="w"> </span><span class="nv">3</span><span class="p p-Indicator">,</span><span class="nt"> max</span><span class="p">:</span><span class="w"> </span><span class="nv">1020</span><span class="p p-Indicator">,</span><span class="nt"> mean</span><span class="p">:</span><span class="w"> </span><span class="nv">511.5</span><span class="p p-Indicator">,</span><span class="nt"> over</span><span class="p">:</span><span class="w"> </span><span class="s">"verification</span><span class="nv"> </span><span class="s">scope"</span><span class="p p-Indicator">}</span><span class="w">   </span><span class="c1"># exact layer-0 steps</span>
+<span class="w">  </span><span class="nt">reuse</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span><span class="w">                            </span><span class="c1"># call sites in other stored definitions and solutions</span>
+<span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">promoted</span><span class="w">                      </span><span class="c1"># written | checked | callable | verified | promoted</span>
+</code></pre></div>
+<ul>
+<li><code>layer</code> of an invented definition is at least 1 + the highest layer of its dependencies (a
+  definition may be placed higher, for example on a design row; never lower). Generated operations
+  of an object have the object's layer; those of world objects are layer 0.</li>
+<li><code>origin: given</code> marks world atoms. <code>origin: invented</code> marks definitions written by a learner
+  or a generator. Origin is never a performance shortcut.</li>
+<li>Evidence is invalid when the world hash or a dependency changes. The library then resets the
+  status to <code>callable</code>.</li>
+<li>Evidence methods and their rights:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>method</th>
+<th>meaning</th>
+<th>may be stored and called</th>
+<th>may be promoted</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>exhaustive</code></td>
+<td>every input in the scope <strong>and</strong> every claimed answer checked</td>
+<td>yes</td>
+<td>yes, scope carried</td>
+</tr>
+<tr>
+<td><code>bounded</code></td>
+<td>every input up to a size bound</td>
+<td>yes</td>
+<td>yes, scope carried</td>
+</tr>
+<tr>
+<td><code>sampled</code></td>
+<td>seeded random inputs; <code>seed</code> and count recorded</td>
+<td>yes</td>
+<td><strong>no</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The library must never turn an exhaustive claim into a sampled one silently, and must never
+  widen a scope.</p>
+<h2 id="9-the-pipeline">9. The pipeline<a class="headerlink" href="#9-the-pipeline" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>written</strong>: the record has <code>name</code>, <code>kind</code>, <code>body</code>, <code>depends_on</code>.
+   <code>depends_on</code> must equal the set of names the body references.</li>
+<li><strong>checked</strong>: the type checker accepts the body: every name resolves in the world plus the
+   library; sorts match; only opened nodes are used; observation and seal rules hold;
+   <code>valid</code>/<code>canon</code> use the terminating sublanguage; no dependency cycle except inside a
+   declared <code>Rec</code> or sort group.</li>
+<li><strong>callable</strong>: the kernel runs the body and unfolds it to layer 0 on at least one input.
+   Calls are charged by the unfolded layer-0 steps.</li>
+<li><strong>verified</strong>: evidence is recorded (section 8) with the obligations of the kind:</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>kind</th>
+<th>obligations</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>operation</td>
+<td>the result agrees with the reference (an oracle, a given operation it claims to equal, or a declared table) on the scope; <code>unfold_equivalence</code></td>
+</tr>
+<tr>
+<td>object</td>
+<td>refine: canon total, idempotent, keeps validity; every interface operation respects canon; seal: no outside definition reads the inside. Invented vs given: an abstraction map <code>abs</code> that commutes with the interface, checked exhaustively in a recorded scope; else seeded random interface-program tests, labelled <code>sampled</code></td>
+</tr>
+<tr>
+<td>combinator</td>
+<td>for every passed operation in a recorded finite family (the world's given operations and short compositions of them, listed in the scope) and every input in the scope, the combinator equals its unfold rule; always <code>bounded</code> or <code>sampled</code></td>
+</tr>
+<tr>
+<td>observation</td>
+<td>dependency check (only granted probes and memory); the value agrees with the claimed reference on the scope (required for promotion); the truth is unchanged; two truth states with equal probe values give equal observations</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li><strong>accounted</strong>: <code>cost.length</code>, <code>cost.steps</code>, <code>cost.reuse</code> are filled.</li>
+<li><strong>stored</strong>: the library keeps the record and its dependency records. The definition can be
+   called by name. It is not yet one step for display.
+   A verification domain is never empty, and every input of it is checked (observations: every
+   state of the domain; extra histories only order states for memory). Evidence also records the
+   content hash of the definition and a digest of the layer-0 atom implementations; a change of
+   either drops the evidence (also when a library is reloaded).</li>
+<li><strong>promoted</strong>: allowed only when the method is <code>exhaustive</code> or <code>bounded</code> and the
+   unfold-equivalence check passed on the scope <strong>on the full execution state</strong> (value,
+   <code>Bottom</code> vs <code>Ok</code>, side effects on the state, layer-0 steps). The record keeps its scope and
+   contract. Under a boundary that does not open it, a promoted definition is shown as one step.</li>
+</ol>
+<h3 id="97-fast-paths">9.7 Fast paths<a class="headerlink" href="#97-fast-paths" title="Permanent link">&para;</a></h3>
+<p>A promoted operation may carry a fast implementation used only inside its verified exhaustive
+scope. The fast path must return the same outcome and charge the exact layer-0 step count
+recorded for that input (or computed by an exact formula checked on the whole scope). Outside
+the scope the kernel runs the unfolding.</p>
+<h2 id="10-boundaries">10. Boundaries<a class="headerlink" href="#10-boundaries" title="Permanent link">&para;</a></h2>
+<p>A boundary decides which calls of definitions are shown as one step and which are opened. It
+never changes the evaluation (invariant 2).</p>
+<div class="language-python highlight"><pre><span></span><code><span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Boundary</span><span class="p">:</span>
+    <span class="n">depth</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>            <span class="c1"># open definitions of layer &gt;= depth (None: open none by depth)</span>
+    <span class="n">open_names</span><span class="p">:</span> <span class="nb">frozenset</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="o">...</span>    <span class="c1"># position: open these definitions wherever they occur</span>
+    <span class="n">keep_names</span><span class="p">:</span> <span class="nb">frozenset</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="o">...</span>    <span class="c1"># position: keep these as one step even if depth would open them</span>
+    <span class="n">open_paths</span><span class="p">:</span> <span class="nb">frozenset</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="o">...</span><span class="p">]]</span> <span class="o">=</span> <span class="o">...</span>   <span class="c1"># position: open the call at these call paths only</span>
+    <span class="n">kinds</span><span class="p">:</span> <span class="nb">frozenset</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">ALL_KINDS</span>   <span class="c1"># kind: open only along these kinds (object|operation|combinator|observation)</span>
+</code></pre></div>
+<p>A call of definition <code>d</code> at call path <code>p</code> is <strong>opened</strong> iff <code>d</code> is not given, <code>d.kind</code> is in
+<code>kinds</code>, <code>d.name</code> is not in <code>keep_names</code>, and one of: <code>d.layer &gt;= depth</code>, <code>d.name in open_names</code>,
+<code>p in open_paths</code>. Given atoms are never opened.</p>
+<ul>
+<li>The legacy <code>cut(known, known_layers)</code> is <code>Boundary(depth=known_layers, keep_names=known)</code>
+  restricted to kind <code>operation</code>.</li>
+<li>"Unfold everything" is <code>Boundary(depth=0)</code>. "Unfold nothing" is <code>Boundary()</code>.</li>
+<li>Examples from the design: DOT kept; DOT opened with MUL kept (<code>open_names={DOT}</code>, <code>keep_names={MUL}</code>);
+  everything to layer 0 (<code>depth=0</code>).</li>
+<li>Kind examples: MUL opens into additions, <code>three</code> opens into <code>succ</code> calls, <code>while</code> opens into
+  jumps, <code>front_free</code> opens into two probes.</li>
+</ul>
+<p><strong>Unfold-equivalence verifier</strong> (<code>verify.unfold_equivalent</code> in the package): for an expression,
+a list of boundaries and inputs, it evaluates under each boundary and checks equal outcome,
+equal final state, equal layer-0 step count, and that the flattened view of each boundary
+expands to the layer-0 trace.</p>
+<h2 id="11-the-four-invariants-and-their-tests">11. The four invariants and their tests<a class="headerlink" href="#11-the-four-invariants-and-their-tests" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>invariant</th>
+<th>rule</th>
+<th>test that must exist</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>I1 always unfoldable</td>
+<td>every promoted definition unfolds to layer 0 and gives the same outcome</td>
+<td>for every stored definition: evaluation with <code>Boundary()</code> equals evaluation of the full unfolding, on the evidence scope</td>
+</tr>
+<tr>
+<td>I2 boundary never changes a result</td>
+<td>a boundary changes only step visibility</td>
+<td>random expressions x random boundaries: outcome, state and layer-0 steps identical; flattened views splice exactly</td>
+</tr>
+<tr>
+<td>I3 observation never changes facts</td>
+<td>grading uses <code>judge_view(full truth)</code></td>
+<td>an observation definition run on a state leaves the state unchanged; grading with two learner views gives the same verdict</td>
+</tr>
+<tr>
+<td>I4 promotion carries scope and contract</td>
+<td>evidence and contract travel with the promoted record</td>
+<td>promoting without evidence, with <code>sampled</code>, or with a changed world hash fails; a derived world lists the scope of each promoted definition</td>
+</tr>
+</tbody>
+</table>
+<h2 id="12-world-declaration-schema-opulseworld2">12. World declaration (schema <code>opulse.world/2</code>)<a class="headerlink" href="#12-world-declaration-schema-opulseworld2" title="Permanent link">&para;</a></h2>
+<div class="language-yaml highlight"><pre><span></span><code><span class="nt">world</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">clock</span>
+<span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="nt">dialect</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">atoms-v2</span><span class="w">                     </span><span class="c1"># or legacy-v1</span>
+<span class="nt">params</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="nt">constants</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="nt">objects</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">hour</span><span class="p p-Indicator">]</span><span class="w">                       </span><span class="c1"># ObjectSpec records (given, layer 0)</span>
+<span class="nt">operations</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">add</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">sub</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">mul</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">div</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">mod</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">neg</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">reverse</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">triangle</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">popcount</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">digitsum</span><span class="p p-Indicator">]</span>
+<span class="nt">combinators</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">nodes</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">Var</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">Lit</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">Call</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">Let</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">Case</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">Rec</span><span class="p p-Indicator">],</span><span class="nt"> library</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[],</span><span class="nt"> recursion</span><span class="p">:</span><span class="w"> </span><span class="nv">legacy</span><span class="p p-Indicator">}</span>
+<span class="nt">observation</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">truth</span><span class="p">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span><span class="nt"> show</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">input</span><span class="p">:</span><span class="w"> </span><span class="nv">values</span><span class="p p-Indicator">,</span><span class="nt"> result</span><span class="p">:</span><span class="w"> </span><span class="nv">value</span><span class="p p-Indicator">},</span><span class="nt"> judge_view</span><span class="p">:</span><span class="w"> </span><span class="nv">full_state</span><span class="p p-Indicator">}</span>
+<span class="nt">lock</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">host_digests</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nv">...</span><span class="p p-Indicator">},</span><span class="nt"> constants_hash</span><span class="p">:</span><span class="w"> </span><span class="s">"..."</span><span class="p p-Indicator">,</span><span class="nt"> world_hash</span><span class="p">:</span><span class="w"> </span><span class="s">"..."</span><span class="p p-Indicator">}</span>
+</code></pre></div>
+<p><strong>Extra members.</strong> A world, an object, an operation and a probe may carry extra members
+(world <code>title</code>, <code>title_zh</code>, <code>source</code>, <code>codec</code>; operation <code>symbol</code>, <code>input_names</code>; object
+<code>host</code>, <code>doc</code>; probe <code>impl</code>; others allowed). Readers keep them in an <code>extra</code> dict and write them
+back unchanged. The world hash excludes the display-only members <code>title</code>, <code>title_zh</code>, <code>doc</code>,
+<code>source</code>, <code>symbol</code>, <code>input_names</code>, and includes every other member.</p>
+<p><strong>Derived world</strong>: <code>{"extends": "&lt;world&gt;@&lt;version&gt;", "promoted": ["&lt;definition id&gt;", ...]}</code>.
+A derived world adds promoted definitions as layer-k atoms with their scope and contract.
+World B + promoted MUL gives the same results as world A with given MUL; step counts and
+learning may differ (B charges the unfolded steps).</p>
+<h2 id="13-legacy-compatibility-dialect-legacy-v1">13. Legacy compatibility: dialect <code>legacy-v1</code><a class="headerlink" href="#13-legacy-compatibility-dialect-legacy-v1" title="Permanent link">&para;</a></h2>
+<h3 id="131-mapping-of-the-current-code">13.1 Mapping of the current code<a class="headerlink" href="#131-mapping-of-the-current-code" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>current</th>
+<th>atoms-v2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>core/types.py</code> <code>ValueType</code> (int, bool, str, list[int], perm[n], grid, note, melody, state, colour, direction)</td>
+<td>given <code>ObjectSpec</code>s of the world, with host codecs</td>
+</tr>
+<tr>
+<td><code>Operator</code> with <code>definition is None</code> (base atoms, <code>CUSTOM</code> primitives)</td>
+<td><code>Definition(kind=operation, origin=given, layer=0, body=HostRule)</code></td>
+</tr>
+<tr>
+<td>generated <code>Operator</code> with a definition</td>
+<td><code>Definition(kind=operation, origin=invented, layer=recursive_layer)</code></td>
+</tr>
+<tr>
+<td><code>definition_type</code> SIMPLE / BRANCH / RECURSIVE</td>
+<td>body without <code>Case</code> / with <code>Case</code> / with a self call in <code>Case</code> (<code>Rec</code>, <code>measure: legacy</code>). The old <code>definition_type</code> is kept as metadata, never re-derived</td>
+</tr>
+<tr>
+<td><code>Search</code> node</td>
+<td><code>search</code> combinator: bounded <code>Rec</code> + ordered <code>Case</code>; legacy steps count only the atoms inside the predicate; <code>definition_type</code> stays SIMPLE</td>
+</tr>
+<tr>
+<td><code>Compare</code> in conditions</td>
+<td>a call of a given <code>decide</code> operation (<code>int.lt</code>, ...) with legacy order</td>
+</tr>
+<tr>
+<td><code>NAN</code></td>
+<td><code>Bottom</code>; <code>same_value(NAN, NAN)</code> stays true</td>
+</tr>
+<tr>
+<td><code>OperatorRegistry</code></td>
+<td>the definition library of a world</td>
+</tr>
+<tr>
+<td><code>trace/tree.cut(known, known_layers)</code></td>
+<td><code>Boundary(depth=known_layers, keep_names=known)</code></td>
+</tr>
+<tr>
+<td>interpreter <code>Result(value, base_ops, calls)</code></td>
+<td><code>Outcome</code>, layer-0 steps = <code>base_ops</code></td>
+</tr>
+<tr>
+<td>robot <code>Skill</code> (repeat / guard)</td>
+<td><code>repeat_until</code> and <code>Case</code> over probes, dialect form</td>
+</tr>
+<tr>
+<td><code>Semantics.mode</code> exact / legacy / modular</td>
+<td>output edge <code>enter</code>: <code>bottom</code> on overflow / <code>fold(legacy_bound)</code> / <code>normalize(mod m)</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="132-dialect-rules-all-required-for-golden-equality">13.2 Dialect rules (all required for golden equality)<a class="headerlink" href="#132-dialect-rules-all-required-for-golden-equality" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Robot <code>repeat_until(body, stop, max)</code>: <code>max = 0</code> returns the state; each round checks <code>stop</code>
+   first, then runs <code>body</code>; after <code>max</code> rounds it returns the last state <strong>without</strong> checking
+   <code>stop</code> again. An illegal <code>forward</code> is <code>Bottom(blocked)</code>, never "stay in place".</li>
+<li>Pitch: where a <code>note</code> parameter receives an <code>int</code>, the dialect inserts a counted
+   <code>make_note</code> check <code>0..127</code>; out of range is <code>Bottom(invalid)</code>. <code>note -&gt; int</code> is implicit.</li>
+<li>Legacy integer mode: results fold symmetrically by the bound; <code>reverse</code>, <code>triangle</code>,
+   <code>digitsum</code> preprocess the input with <code>abs(a) % bound</code>; division and modulo by zero use
+   divisor 1. These are input-edge and output-edge rules of the dialect (<code>fold(legacy)</code>).</li>
+<li>Legacy recursion: counters are updated by the world operations (clock <code>%</code>, bits <code>shift_right</code>,
+   negative counters). No measure check; depth limit 10 000.</li>
+<li><code>search</code> keeps its old node, old steps and old traces.</li>
+<li>Old tags: <code>perm</code> gets its <code>n</code> from the world; packed integer aliases (<code>swap</code>, <code>recolour</code>)
+   are expanded by the codec; <code>nan</code> maps to <code>Bottom</code>; the empty grid crop <code>((0,),)</code> stays.</li>
+<li>Conditions: short-circuit <code>and</code>/<code>or</code>; a NaN condition aborts the definition (legacy reason
+   <code>nan_condition</code>).</li>
+<li>NaN flows as a value: every argument of a call is evaluated even when an earlier one is
+   <code>Bottom</code>; a given atom with <code>Bottom</code> arguments is still called and charged (legacy host
+   functions return NaN, <code>defined</code> returns 0); a definition with <code>Bottom</code> arguments is entered
+   with its parameters bound to <code>Bottom</code>; <code>Let</code> binds <code>Bottom</code>. Only <code>Unknown</code> stops evaluation.
+   Comparisons are given <code>decide</code> atoms of cost 0 (legacy step counts include only base
+   operations).</li>
+</ol>
+<h3 id="133-codec-and-golden-tests">13.3 Codec and golden tests<a class="headerlink" href="#133-codec-and-golden-tests" title="Permanent link">&para;</a></h3>
+<p>The codec of a world maps <code>legacy tag -&gt; sort</code> with the world context (for example <code>perm -&gt; perm[n]</code>,
+clock <code>int -&gt; hour</code>). Golden tests read every published example in
+<code>docs/assets/data/worlds/&lt;w&gt;.json</code> (and seed files, steps files, tasks) and must reproduce the
+outputs, failures, step counts and traces through the new kernel in dialect <code>legacy-v1</code>. The
+only exception is the clock world (section 14), whose data is regenerated.</p>
+<h2 id="14-clock-world-a-true-clock-world-clock-version-2">14. Clock world: a true clock (world <code>clock</code>, version 2)<a class="headerlink" href="#14-clock-world-a-true-clock-world-clock-version-2" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Object <code>hour = refine int; canon n |-&gt; n mod 12</code> (values 0..11). Entry rule <code>normalize</code> on every
+  operation input, every literal and every task input: <code>14</code> enters as <code>2</code>, <code>-4</code> enters as <code>8</code>.</li>
+<li>Every operation takes canonical hours and returns an hour (<code>out.enter: normalize</code>).
+  <code>reverse</code>, <code>digitsum</code>, <code>triangle</code>, <code>popcount</code> act on the 0..11 representation, so they are
+  well defined on hours. Division and modulo by <code>0</code> are <code>Bottom(div_zero)</code>.</li>
+<li>Recursion counters use the clock operations (as before).</li>
+<li>The clock data in <code>docs/assets/data/worlds/clock*</code> and the site examples are regenerated. Old
+  golden examples whose inputs are outside 0..11 are not compared. This is the only intended
+  change to published answers.</li>
+</ul>
+<h2 id="15-computer-world-v1-harvard-style">15. Computer world v1 (Harvard style)<a class="headerlink" href="#15-computer-world-v1-harvard-style" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Objects: <code>byte = refine int where 0 &lt;= x &lt; 256</code>; <code>reg = compose &lt;r0 | r1 | r2 | r3&gt;</code>;
+  <code>flag = bool</code>; <code>machine_state = compose &lt;machine(regs: array[4, byte], mem: array[256, byte], zero: flag, carry: flag)&gt;</code>
+  (registers are fields of the machine state).</li>
+<li>Operations: <code>read(state, reg) -&gt; byte</code>, <code>write(state, reg, byte) -&gt; state</code>, <code>load</code>, <code>store</code>,
+  <code>add</code> (wraps, sets carry), <code>dec</code>, <code>is_zero</code>. Each with rule, errors, cost 1.</li>
+<li>Combinators: <code>Blocks/Jump</code> with conditional jump; sequence. The program is a separate
+  combinator card, not in memory, and cannot modify itself.</li>
+<li>Observation: inputs and output, or all registers; per task.</li>
+<li>First experiment target: <code>MUL</code> as an invented operation (loop of <code>add</code> and <code>dec</code>), verified
+  exhaustively on 65 536 input pairs with the full machine state; contract states which
+  registers it changes.</li>
+</ul>
+<h2 id="16-not-in-v1-documented-limits">16. Not in v1 (documented limits)<a class="headerlink" href="#16-not-in-v1-documented-limits" title="Permanent link">&para;</a></h2>
+<ul>
+<li>(Moved into scope 11-04: definitions as objects, meta worlds, world building and self-modifying
+  code are built by the meta level; see the atoms-meta spec on the meta branch.)</li>
+<li>Infinite objects: streams, codata, corecursion.</li>
+<li>Narrow (contract-only) promotion: v1 promotion requires full-state equality.</li>
+<li>Proof certificates as evidence method; tolerance / prefix / three-valued answers.</li>
+</ul>
+<h2 id="18-additions-in-03">18. Additions in 0.3<a class="headerlink" href="#18-additions-in-03" title="Permanent link">&para;</a></h2>
+<h3 id="181-open-kinds">18.1 Open kinds<a class="headerlink" href="#181-open-kinds" title="Permanent link">&para;</a></h3>
+<p>A world declares <code>open_kinds</code>, a subset of the six kinds (default: the four layer-0 kinds, so older declarations keep their hash; JSON: a sorted
+list; part of the world hash). The library refuses to store an invented definition whose kind
+is closed. Old Opulse is <code>open_kinds = [operation]</code> (<code>legacy_world_decl</code>).</p>
+<h3 id="182-more-combination-modes">18.2 More combination modes<a class="headerlink" href="#182-more-combination-modes" title="Permanent link">&para;</a></h3>
+<p>Each has a public unfold to kernel nodes and exact layer-0 cost; each passes through the library
+pipeline with bounded or sampled evidence over a declared operation family.</p>
+<table>
+<thead>
+<tr>
+<th>mode</th>
+<th>form</th>
+<th>unfold</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>fixpoint until stable</td>
+<td><code>@fix[step] (x, height)</code></td>
+<td><code>Rec</code> with measure = remaining height; equal consecutive values stop; exhausting the declared finite height is <code>Bottom(not_stable)</code></td>
+</tr>
+<tr>
+<td>memoized recursion</td>
+<td><code>Rec(..., memo=True)</code></td>
+<td>same outcome and the same charged steps as the plain recursion; the kernel reports the memo work separately (<code>Run.work</code>)</td>
+</tr>
+<tr>
+<td>turns</td>
+<td><code>@turns[observe_i, choose_i, apply] (state, schedule)</code></td>
+<td>each agent chooses from its own observation only; schedules: round-robin with a count, an explicit order, or all orders up to a bound (the list of distinct final states)</td>
+</tr>
+<tr>
+<td>derived structural recursion</td>
+<td><code>@S.fold[on_tag...] (value)</code>, <code>S.size(value)</code></td>
+<td>every compose object (and sort group) gets its fold (one case per tag, recursive fields folded first; measure <code>S.size</code>) and its size (constructor count, cost 1)</td>
+</tr>
+</tbody>
+</table>
+<p>A combinator body may pass its own operation parameter on to another combinator; this records a
+dependency edge. Literals may hold an operation reference (<code>{"t": "fn", "v": name}</code>) and a
+declared failure (<code>{"t": "bottom", "v": reason}</code>).</p>
+<h3 id="183-generic-probes">18.3 Generic probes<a class="headerlink" href="#183-generic-probes" title="Permanent link">&para;</a></h3>
+<p>Probes are the atoms of kind <code>observation</code> named in <code>observation.probes</code>; they take the truth
+value. An observation may call probes and other observations; it may not call an operation whose
+role is <code>act</code> or whose inputs include the truth sort.
+The observed value is the observation's subject (<code>ObservationSpec.extra["subject"]</code>, default
+<code>s</code>). <code>?p{s}</code> is <code>Call(p, (Var(s),))</code>; the subject may be passed only to probes and observations.</p>
+<p>Since 0.5 (decision R13-D): a derived observation may apply pure definitions (operations,
+combinators, bridges, other observations) to observed values, provided nothing in its dependency
+closure has role <code>act</code> or takes the truth sort, and the truth subject still reaches only probes
+and observations. An observation may also observe public values: <code>extra["inputs"]</code> lists several
+typed inputs, none of the truth sort; it is then a pure function of those inputs, <code>facts_unchanged</code>
+applies to the inputs and <code>non_interference</code> does not apply (recorded as <code>n/a</code>).</p>
+<h3 id="184-content-identity">18.4 Content identity<a class="headerlink" href="#184-content-identity" title="Permanent link">&para;</a></h3>
+<p><code>Definition.content_hash(deps)</code> hashes the kind, the spec without display-only members, the body
+and the content hashes of the dependencies. Parameter names are semantic (they bind the body).
+Evidence records the content hash; promotion refuses a definition whose content hash changed. A
+promoted definition is immutable: a change is a new definition (<code>force_new_version</code>) that
+inherits no evidence.</p>
+<h3 id="185-ascii-notation">18.5 ASCII notation<a class="headerlink" href="#185-ascii-notation" title="Permanent link">&para;</a></h3>
+<p>The only written form of definitions, prompts and data is ASCII (<code>atoms.notation</code>: printer and
+parser, exact inverses). Four kinds, four brackets: objects <code>Frac&lt;1, 2&gt;</code>, <code>List&lt;1, 2&gt;</code>;
+operations <code>mul(3, 4)</code>; combinators <code>@twice[double] (3)</code>; observations <code>?even{12}</code>.
+Comparisons are operations (<code>lt</code>, <code>le</code>, <code>eq</code>, <code>ne</code>); only given <code>+ - *</code> may be infix.
+Declarations start with <code>obj</code>, <code>op</code>, <code>comb</code>, <code>obs</code> and end with <code>given</code> or <code>L&lt;n&gt;</code>. The sigils
+<code>@</code> and <code>?</code> are notation only: stored names are plain identifiers. Generated names: objects
+<code>A0</code>..<code>Z0</code>, <code>A1</code>..; operations <code>f6</code>; combinators <code>@k3</code>; observations <code>?q4</code>; old Unicode
+operator symbols map to <code>f&lt;n&gt;</code> through the legacy codec.</p>
+<h3 id="186-metered-atoms">18.6 Metered atoms<a class="headerlink" href="#186-metered-atoms" title="Permanent link">&para;</a></h3>
+<p><code>Atom(metered=True)</code> receives a context whose <code>call(defn, args, extra_defns, budget)</code> evaluates
+inside the running evaluation: the same step counter, fuel, depth and trace (inner calls are
+children of the atom's frame). The atom itself costs 0; a budget overrun is <code>Unknown(fuel)</code> for
+the atom. This is how <code>eval(code, args)</code> keeps exact layer-0 steps (meta level).</p>
+<h2 id="19-laws-bridges-and-templates-04">19. Laws, bridges and templates (0.4)<a class="headerlink" href="#19-laws-bridges-and-templates-04" title="Permanent link">&para;</a></h2>
+<h3 id="191-laws-kind-law-sigil">19.1 Laws (kind <code>law</code>, sigil <code>#</code>)<a class="headerlink" href="#191-laws-kind-law-sigil" title="Permanent link">&para;</a></h3>
+<p><code>LawSpec(name, vars, statement)</code>: <code>statement</code> is a boolean node over the typed <code>vars</code>. ASCII:
+<code>law #mul_comm: eq(mul(a, b), mul(b, a)) for a: Int, b: Int L1</code> (<code>given</code> for axioms). Evidence
+is the usual: every tuple of the domain makes the statement <code>Ok(true)</code>; the scope is recorded and
+never widened (a law checked on 8-bit values is not a law for all widths).
+An equation <code>eq(lhs, rhs)</code> may serve as ONE rewrite step <code>by #law</code> in a derivation once promoted.
+The step matches one side against a subterm (law variables bind subterms) and substitutes the
+other side. The derivation must still unfold to layer 0 with the same result: the rewrite is
+replayed as computation, and every binding of the law's variables must lie inside the verified
+scope; outside the scope the step is refused. A rewrite step costs no layer-0 step; the charged
+steps are those of evaluating the final expression.</p>
+<h3 id="192-bridges-kind-bridge-sigil">19.2 Bridges (kind <code>bridge</code>, sigil <code>~</code>)<a class="headerlink" href="#192-bridges-kind-bridge-sigil" title="Permanent link">&para;</a></h3>
+<p><code>BridgeSpec(name, source, target, map, domain, interface)</code>: <code>map</code> is a node over <code>x</code>, <code>domain</code> an
+optional boolean node over <code>x</code> (partial bridges: outside it the bridge is
+<code>Bottom(outside_domain)</code>), <code>interface</code> pairs <code>(source operation, target operation)</code>. ASCII:
+<code>bridge ~to_frac: MyFrac -&gt; Frac</code>, applied as <code>~to_frac(x)</code>. Obligation (<code>commutes</code>): on the
+recorded scope, translate-then-compute equals compute-then-translate for every interface pair.
+Cross-world bridges name <code>world@version:sort</code>. The invented-vs-given abstraction check
+(section 8) and the meta compiler are bridges. A composed bridge has its own evidence.</p>
+<h3 id="193-templates">19.3 Templates<a class="headerlink" href="#193-templates" title="Permanent link">&para;</a></h3>
+<p><code>TemplateSpec(name, params, produces, pattern)</code>: parameters are (name, kind or sort); the
+pattern is the produced spec with <code>$param</code> placeholders. Example: <code>obj Quot[T, canon] = refine T
+canon(canon)</code>; <code>Frac = Quot[Pair&lt;Int, Int&gt;, reduce]</code>, <code>Hour = Quot[Int, mod12]</code>. A template is
+checked once as a family (bounded or sampled evidence over a recorded finite family of
+instantiations, never exhaustive). Every instantiation is an ordinary definition with its own
+pipeline and evidence; it may cite the template's evidence only for arguments inside the recorded
+family. Content identity covers template and arguments; instantiations list the template in
+<code>depends_on</code>, so a boundary can open <code>Frac</code> into <code>Quot[...]</code> and then into its body.</p>
+<h2 id="17-reference-implementation-python-and-versions">17. Reference implementation (Python) and versions<a class="headerlink" href="#17-reference-implementation-python-and-versions" title="Permanent link">&para;</a></h2>
+<p>Package <code>opulse.atoms</code> (new; the old code keeps working unchanged):</p>
+<table>
+<thead>
+<tr>
+<th>module</th>
+<th>contents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>atoms.values</code></td>
+<td><code>Card</code>, <code>Ok</code>, <code>Bottom</code>, <code>Unknown</code>, <code>outcome_equal</code>, <code>value_equal</code>, JSON codec <code>opulse.value/2</code></td>
+</tr>
+<tr>
+<td><code>atoms.nodes</code></td>
+<td>kernel nodes (section 6.1), conditions, JSON round trip, <code>length()</code></td>
+</tr>
+<tr>
+<td><code>atoms.kernel</code></td>
+<td><code>evaluate(node, env, world, library, fuel) -&gt; (Outcome, Steps, Trace)</code>; strictness, Case, Rec, Blocks</td>
+</tr>
+<tr>
+<td><code>atoms.spec</code></td>
+<td><code>ObjectSpec</code>, <code>OperationSpec</code>, <code>CombinatorSpec</code>, <code>ObservationSpec</code>, <code>Definition</code>, <code>Evidence</code>, <code>Contract</code>, <code>Cost</code>, <code>Status</code></td>
+</tr>
+<tr>
+<td><code>atoms.world</code></td>
+<td><code>WorldDecl</code>, derived worlds, world hash</td>
+</tr>
+<tr>
+<td><code>atoms.boundary</code></td>
+<td><code>Boundary</code>, <code>opens()</code>, legacy <code>from_cut()</code></td>
+</tr>
+<tr>
+<td><code>atoms.verify</code></td>
+<td><code>unfold_equivalent</code>, evidence builders (exhaustive / bounded / sampled), object, combinator and observation obligations</td>
+</tr>
+<tr>
+<td><code>atoms.library</code></td>
+<td><code>Library</code>: add, check, run, verify, account, store, promote; invalidation</td>
+</tr>
+<tr>
+<td><code>atoms.legacy</code></td>
+<td>dialect <code>legacy-v1</code>: registry and robot skills -&gt; kernel scope; legacy definition records</td>
+</tr>
+<tr>
+<td><code>atoms.golden</code></td>
+<td>golden harness: every published example through the current engine or the kernel engine</td>
+</tr>
+<tr>
+<td><code>atoms.check</code></td>
+<td>the type checker of pipeline step 2</td>
+</tr>
+<tr>
+<td><code>atoms.objects</code></td>
+<td>object operations (constructors, accessors, <code>make</code>, seal) and object obligations</td>
+</tr>
+<tr>
+<td><code>atoms.observations</code></td>
+<td>robot probes, observation runs over histories, non-interference, <code>judge</code></td>
+</tr>
+<tr>
+<td><code>atoms.combinators</code></td>
+<td>the standard combinators, <code>instantiate</code>, combinator obligations over an operation family</td>
+</tr>
+<tr>
+<td><code>atoms.notation</code></td>
+<td>the ASCII notation: printer, parser, generated names (section 18.5)</td>
+</tr>
+<tr>
+<td><code>atoms.random_programs</code></td>
+<td>seeded random kernel programs and hypothesis strategies for the invariant tests</td>
+</tr>
+</tbody>
+</table>
+<p>JSON schemas: values <code>opulse.value/2</code>; definitions <code>opulse.definition/2</code>; worlds <code>opulse.world/2</code>.
+Each JSON object written by the reference implementation carries its <code>schema</code> field.</p>
+<h3 id="changes">Changes<a class="headerlink" href="#changes" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>atoms-v2/0.1</code> (2026-11-04): first version.</li>
+<li><code>atoms-v2/0.5</code> (2026-11-05): observations may call pure definitions and observe public values (18.3, R13-D).</li>
+<li><code>atoms-v2/0.4</code> (2026-11-05): six kinds (law, bridge), templates (section 19); ASCII only.</li>
+<li><code>atoms-v2/0.3</code> (2026-11-04): section 18 (open kinds, more combination modes,
+  generic probes and the observation subject, content identity, ASCII notation, metered atoms).</li>
+<li><code>atoms-v2/0.2</code> (2026-11-04): <code>measure: fuel</code> and <code>combinators.recursion</code>; strict argument
+  order; extra members and the world-hash rule; legacy-v1 rule 8 (NaN flows; comparisons cost 0).
+  Also in 0.2: an <code>Edge</code> may carry a parameter <code>name</code>; a given layer-0 object's <code>valid</code>/<code>canon</code>
+  may be a host rule <code>{"host": "module:qualname", "digest": sha256}</code>; tags may be written as a
+  <code>{field: sort}</code> mapping (<code>{"items": sort}</code> is a variable-length tag); recursion mode <code>none</code>.</li>
+</ul>
+<p><link rel="stylesheet" href="../../assets/css/atoms2-spec-tables.css"></p>
+<script src="../../assets/js/atoms2/spec-tables.js"></script>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    
+    <nav class="op-footer-links md-grid" aria-label="Continue and project links">
+      <a class="op-footer-next" href="../notation-v3/">Continue: Notation v3</a>
+      <a href="../provenance/">Contribute</a>
+      <a href="../provenance/">Cite</a>
+    </nav>
+  
+  <div class="md-footer-meta md-typeset"><div class="md-footer-meta__inner md-grid">
+    <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      © 2026 The Opulse Authors · Code: <a href="https://github.com/mkj69/opulse-atoms/blob/main/LICENSE">Apache 2.0</a> · Docs and data: <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>
+    </div>
+  
+  
+</div>
+    
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/mkj69/opulse-atoms" target="_blank" rel="noopener" title="Opulse on GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+  </div></div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "content.code.copy", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../assets/js/atoms2/n3.js"></script>
+      
+        <script src="../../assets/js/layout.js"></script>
+      
+        <script src="../../assets/js/atoms2/kit.js"></script>
+      
+        <script src="../../assets/js/atoms2/data.js"></script>
+      
+    
+  </body>
+</html>

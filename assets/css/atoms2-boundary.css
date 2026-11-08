@@ -1,0 +1,95 @@
+.a2-boundary { container-type: inline-size; color: var(--a2-ink); min-width: 0; font-size: 14px; }
+.a2-boundary-embedded .a2-boundary-intro { display: none; }
+.a2-boundary-compact .a2-boundary-picker, .a2-boundary-compact .a2-boundary-graph-panel { display: none; }
+.a2-boundary-compact .a2-boundary-workspace { grid-template-columns: minmax(0, 1fr); }
+.a2-boundary *, .a2-boundary *::before, .a2-boundary *::after { box-sizing: border-box; }
+.a2-boundary-intro { margin-bottom: 1rem; }
+.a2-boundary-eyebrow { color: var(--a2-muted); font: 700 12px/1.4 var(--a2-mono); letter-spacing: .09em; }
+.a2-boundary-intro p { font-size: 1.1rem; font-weight: 650; margin: .3rem 0 0; }
+.a2-boundary-controls { display: grid; gap: 1rem; margin-bottom: .8rem; }
+.a2-boundary-control-head, .a2-boundary-transport, .a2-boundary-record-line { display: flex; align-items: center; flex-wrap: wrap; gap: .5rem; }
+.a2-boundary-control-head { justify-content: space-between; }
+.a2-boundary-picker { display: flex; align-items: center; gap: .6rem; font-weight: 650; }
+.a2-boundary-select { min-height: 36px; max-width: min(100%, 320px); padding: .35rem .55rem; border: 1px solid var(--a2-line); border-radius: 7px; background: var(--a2-panel-2); color: var(--a2-ink); font: 500 13px var(--a2-mono); }
+.a2-boundary-transport .a2-btn { min-height: 36px; }
+.a2-boundary-counter { min-width: 82px; color: var(--a2-muted); font: 600 12px var(--a2-mono); text-align: right; }
+.a2-boundary-depth label, .a2-boundary-kind-group > span, .a2-boundary-record-line > span:first-child { font-weight: 650; }
+.a2-boundary-depth-value { color: var(--op-amber); }
+.a2-boundary-depth input { display: block; width: 100%; margin: .65rem 0 .15rem; accent-color: var(--op-amber); cursor: pointer; min-height: 32px; }
+.a2-boundary-scale { display: flex; justify-content: space-between; color: var(--a2-muted); font: 500 12px var(--a2-mono); }
+.a2-boundary-kind-group { display: grid; gap: .45rem; }
+.a2-boundary-kinds { display: flex; gap: .4rem; flex-wrap: wrap; }
+.a2-boundary-kind { display: inline-flex; align-items: center; justify-content: center; gap: .4rem; min-height: 36px; padding: .3rem .7rem; color: var(--a2-k); background: var(--a2-k-soft); border: 1px solid var(--a2-k); border-radius: 99px; font: 650 12px/1.25 var(--md-text-font-family, sans-serif); cursor: pointer; transition: background 220ms var(--a2-ease-out), opacity 220ms var(--a2-ease-out); }
+.a2-boundary-kind[aria-pressed="false"] { background: transparent; border-style: dashed; opacity: .7; }
+.a2-boundary-kind:hover { opacity: 1; }
+.a2-boundary-record-line { border-top: 1px solid var(--a2-line); padding-top: .8rem; }
+.a2-boundary-record { flex: 1; min-width: 0; overflow-wrap: anywhere; color: var(--a2-muted); font: 500 12px/1.5 var(--a2-mono); }
+.a2-boundary-invariants { display: flex; align-items: stretch; flex-wrap: wrap; gap: .4rem 0; padding: .7rem .9rem; margin-bottom: .8rem; border-color: var(--op-cyan); }
+.a2-boundary-metric { display: grid; align-content: center; gap: .25rem; min-width: 0; flex: 1 1 110px; padding: .2rem .9rem; border-right: 1px solid var(--a2-line); }
+.a2-boundary-metric:first-child { padding-left: 0; }
+.a2-boundary-pinned { flex: 2 1 40%; min-width: min(40%, 280px); }
+.a2-boundary-metric > span:first-child { font: 700 12px/1.35 var(--a2-mono); color: var(--a2-muted); letter-spacing: .03em; }
+.a2-boundary-metric strong { font: 700 1.2rem/1.4 var(--a2-mono); }
+.a2-boundary-pinned .a2-v { font-size: 1.15rem; color: var(--op-cyan); }
+.a2-boundary-result { min-height: 28px; min-width: 0; }
+.a2-boundary-wrapped-value { white-space: normal; overflow-wrap: normal; word-break: normal; line-height: 1.5; }
+.a2-boundary-wrapped-value > span { white-space: nowrap; }
+.a2-boundary-check { align-self: center; margin-left: auto; padding: .25rem .5rem; white-space: nowrap; border-radius: 6px; background: color-mix(in srgb, var(--a2-ok) 12%, transparent); color: var(--a2-ok); font: 700 12px var(--a2-mono); }
+.a2-boundary-caption { margin: 0 0 .8rem; padding: .6rem .85rem; border-left: 3px solid var(--a2-line); background: var(--a2-panel-2); font-size: 13px; line-height: 1.45; }
+.a2-boundary-pulse { animation: a2-boundary-pulse 650ms var(--a2-ease-out); }
+@keyframes a2-boundary-pulse { 40% { box-shadow: 0 0 0 6px color-mix(in srgb, var(--a2-ok) 22%, transparent); } }
+.a2-boundary-workspace { display: grid; grid-template-columns: minmax(0, 400px) minmax(0, 1fr); align-items: start; gap: .8rem; }
+.a2-boundary-workspace > * { min-width: 0; }
+.a2-boundary-workspace h3 { margin: 0; font-size: 15px; }
+.a2-boundary-graph-panel p { color: var(--a2-muted); font-size: 12px; margin: .4rem 0 1rem; }
+.a2-boundary-graph { max-width: 100%; overflow-x: auto; overflow-y: hidden; }
+.a2-boundary-graph-stage { position: relative; width: 360px; max-width: none; }
+.a2-boundary-edges { position: absolute; z-index: 2; inset: 0; width: 360px; height: 100%; overflow: visible; pointer-events: none; }
+.a2-boundary-edges path { fill: none; stroke: color-mix(in srgb, var(--a2-muted) 70%, transparent); stroke-width: 1.5; }
+.a2-boundary-layer-label { position: absolute; z-index: 1; left: 5px; padding: 0 .2rem; background: var(--a2-panel); color: var(--a2-muted); font: 600 12px var(--a2-mono); }
+.a2-boundary-node { position: absolute; z-index: 3; display: inline-flex; align-items: center; justify-content: center; width: 100px; min-height: 32px; padding: .2rem; border: 1px solid var(--a2-line); border-radius: 7px; background: var(--a2-panel); cursor: pointer; white-space: nowrap; }
+.a2-boundary-node.is-open { outline: 2px solid var(--a2-k); outline-offset: 1px; }
+.a2-boundary-node:disabled { cursor: default; opacity: .8; }
+.a2-boundary-node .a2-chip { max-width: 100%; padding: .08em .3em; font-size: 11px; }
+.a2-boundary-graph-cut { position: absolute; z-index: 4; left: 0; right: 0; padding-right: .6rem; border-top: 2px dashed var(--op-amber); color: var(--op-amber); text-align: right; font: 700 12px var(--a2-mono); pointer-events: none; transition: top 420ms var(--a2-ease-out); }
+.a2-boundary-graph-cut span { position: relative; top: -9px; padding-left: .3rem; background: var(--a2-panel); }
+.a2-boundary-trace { padding: .8rem; }
+.a2-boundary-trace-head { display: flex; align-items: baseline; justify-content: space-between; gap: .5rem; flex-wrap: wrap; margin-bottom: .65rem; }
+.a2-boundary-trace-head span { color: var(--a2-muted); font-size: 12px; }
+.a2-boundary-list { display: grid; gap: 3px; max-height: 475px; min-height: 73px; overflow: auto; overscroll-behavior: contain; scrollbar-color: var(--a2-line) transparent; }
+.a2-boundary-row { position: relative; display: flex; align-items: center; flex-wrap: wrap; gap: .3rem .55rem; width: calc(100% - 12px); min-height: 42px; margin-left: 12px; padding: .3rem .5rem .3rem calc(.4rem + var(--a2-boundary-indent)); border: 1px solid var(--a2-line); border-left: 3px solid var(--a2-k); border-radius: 6px; background: var(--a2-panel-2); color: var(--a2-ink); text-align: left; cursor: pointer; transition: background 220ms var(--a2-ease-out), border-color 220ms var(--a2-ease-out); }
+.a2-boundary-row.is-header { min-height: 35px; font-size: 12px; background: var(--a2-panel); border-style: dashed; }
+.a2-boundary-row.is-header::after { content: ""; position: absolute; left: calc(-3px + var(--a2-boundary-indent)); top: 100%; height: var(--a2-boundary-branch); border-left: 2px solid var(--a2-k); opacity: .7; pointer-events: none; }
+.a2-boundary-row.is-header .a2-boundary-expression { color: var(--a2-muted); }
+.a2-boundary-row.is-header .a2-boundary-arrow { font-size: 12px; color: var(--a2-muted); }
+.a2-boundary-row:hover { background: var(--a2-k-soft); }
+.a2-boundary-row:is(div, :disabled) { cursor: default; }
+.a2-boundary-row:is(div, :disabled):hover { background: var(--a2-panel-2); }
+.a2-boundary-row.is-focus { border-color: var(--op-amber); background: var(--a2-focus-bg); }
+.a2-boundary-row.is-new { border-color: var(--a2-line); background: var(--a2-panel-2); }
+.a2-boundary-row.is-new:not(.is-focus) { animation: a2-boundary-reveal 420ms var(--a2-ease-out) var(--a2-boundary-delay) both; }
+@keyframes a2-boundary-reveal { 0%, 72% { background: var(--a2-panel); } 100% { background: var(--a2-panel-2); } }
+.a2-boundary-row .a2-chip { flex: none; }
+.a2-boundary-mark { font: 700 19px/1 var(--a2-mono); color: var(--a2-k); }
+.a2-boundary-expression { display: inline-flex; align-items: center; flex-wrap: wrap; gap: .25rem; min-width: 0; overflow-wrap: anywhere; font: 500 12px/1.4 var(--a2-mono); }
+.a2-boundary-args { overflow-wrap: anywhere; }
+.a2-boundary-arrow { color: var(--a2-muted); font-size: 17px; }
+.a2-boundary-row-status { margin-left: auto; color: var(--a2-muted); font: 500 12px var(--a2-mono); white-space: nowrap; }
+.a2-boundary :is(button, select, input, .a2-boundary-list):focus-visible { outline: 3px solid var(--op-amber); outline-offset: 2px; }
+@container (max-width: 860px) {
+  .a2-boundary-workspace { grid-template-columns: minmax(0, 1fr); }
+}
+@container (max-width: 720px) {
+  .a2-boundary-graph-panel { padding: .75rem; }
+  .a2-boundary-graph-panel p { margin-bottom: .55rem; }
+  .a2-boundary-controls { padding: .8rem; }
+  .a2-boundary-invariants { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .65rem; }
+  .a2-boundary-metric { min-width: 0; padding: .2rem .4rem; border-right: 0; }
+  .a2-boundary-pinned { grid-column: 1 / -1; min-width: 0; }
+  .a2-boundary-metric:nth-child(2) { grid-column: 1; grid-row: 2; }
+  .a2-boundary-metric:nth-child(3) { grid-column: 2; grid-row: 2; }
+  .a2-boundary-metric > span:first-child { font-size: 12px; }
+  .a2-boundary-check { grid-column: 1 / -1; grid-row: 3; margin: auto 0 0; }
+  .a2-boundary-row { padding-left: calc(.3rem + var(--a2-boundary-indent)); }
+}
+@media (prefers-reduced-motion: reduce) { .a2-boundary-graph-cut, .a2-boundary-row { transition: none; } .a2-boundary-row.is-new { animation: none; } }

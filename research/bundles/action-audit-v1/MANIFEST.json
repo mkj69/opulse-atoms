@@ -1,0 +1,47 @@
+{
+  "digest_note": "MANIFEST.json is excluded from its own digest table to avoid a self-referential hash.",
+  "files": {
+    "action-declaration.json": {
+      "bytes": 28338,
+      "sha256": "38a4e9bb73edecf9a767c554b229344b41153016646d200b209ff4e8021a7fba"
+    },
+    "action-export.json": {
+      "bytes": 567796,
+      "sha256": "b1138f7eefd80a528375f7b5dd46f0a77de3fbfc6fccef4288b3d7f2ddcef1f1"
+    },
+    "action-lock.json": {
+      "bytes": 2516,
+      "sha256": "52b5f54026a4db7d6015db0f05c1cd711c3f5319152fd522bf9702d0ebf5c45a"
+    },
+    "metric.json": {
+      "bytes": 772,
+      "sha256": "f6143535d2f578851b44640888596f51bc473314e9658473c3460e3e883c3a2a"
+    },
+    "split.json": {
+      "bytes": 2510,
+      "sha256": "32759793b19c2d38e0c5ce47a77c743daa8b12872116663c52b3b07c32e3efdf"
+    },
+    "task-index.json": {
+      "bytes": 8862,
+      "sha256": "e1eb2d81749b5463e0b32d0c427f9e5f5396fa6110f95d6436bee1ac5cc691de"
+    }
+  },
+  "not_available": [
+    "action@2 challenge task IDs and compatible episode split",
+    "checker version and evaluation artifact",
+    "kernel revision for an audit run",
+    "policy checkpoints and result traces",
+    "measured metric values"
+  ],
+  "schema": "opulse.research_bundle/1",
+  "scope": "The bundle includes a seeded split of older `action@1` task IDs. It has no `action@2` maze episodes or evaluation results.",
+  "sources": {
+    "action-declaration.json": "worlds/decl/v2/action@2.json",
+    "action-export.json": "docs/assets/data/worlds_v2/action.json",
+    "action-lock.json": "lock field of worlds/decl/v2/action@2.json",
+    "task-index.json": "worlds/tasks/action@1/*.json (historical task IDs; incompatible with action@2 until ported)"
+  },
+  "status": "designed example; no evaluation run",
+  "world": "action@2",
+  "world_lock_hash": "dbd34885b3c792cea7b4ba94be0c7dea5c7e1fe9d707217fb8df3b42474195aa"
+}
