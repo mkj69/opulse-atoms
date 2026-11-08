@@ -36,16 +36,31 @@ def operators(tmp_path_factory) -> Path:
 
 
 @pytest.fixture(scope="session")
-def challenge_grading(tmp_path_factory):
+def challenge_grading_path(tmp_path_factory) -> Path:
+    """A private grading file built once per session in a temporary directory."""
     path = tmp_path_factory.mktemp("challenge_v2") / "grading.json"
-    data = build_grading(path)
-    assert verify_grading(data)
-    previous = os.environ.get("OPULSE_CHALLENGE_GRADING")
-    os.environ["OPULSE_CHALLENGE_GRADING"] = str(path)
-    try:
-        yield json.loads(data)
-    finally:
-        if previous is None:
-            os.environ.pop("OPULSE_CHALLENGE_GRADING", None)
-        else:
-            os.environ["OPULSE_CHALLENGE_GRADING"] = previous
+    assert verify_grading(build_grading(path))
+    return path
+
+
+@pytest.fixture(scope="session")
+def challenge_grading(challenge_grading_path):
+    """The private grading records; tests that request this see OPULSE_CHALLENGE_GRADING set."""
+    return json.loads(challenge_grading_path.read_bytes())
+
+
+@pytest.fixture(autouse=True)
+def _challenge_grading_environment(request):
+    """Point OPULSE_CHALLENGE_GRADING at the session file only while a test that requests it runs.
+
+    A session-wide assignment would leak into later tests and their subprocesses, so
+    ``challenge_grade --build`` would write somewhere other than build/challenge_v2/.
+    This fixture is autouse so that Hypothesis tests can still request the session data.
+    """
+    if "challenge_grading" not in request.fixturenames:
+        yield
+        return
+    path = request.getfixturevalue("challenge_grading_path")
+    monkeypatch = request.getfixturevalue("monkeypatch")
+    monkeypatch.setenv("OPULSE_CHALLENGE_GRADING", str(path))
+    yield

@@ -1518,7 +1518,7 @@
       "steps": 2
     }
   },
-  "inputs_sha256": "fec61db8ef6a62eaef0e70b2f98cfc60fd04d9583fadbed431efc42094a2c777",
+  "inputs_sha256": "fb384ff469cf7f7a63ae50bd14b9d763ed32a2c4a4c038dd40f90776a3acd883",
   "notation3": {
     "source": "atoms2/first_tower.json",
     "version": 1,

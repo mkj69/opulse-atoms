@@ -5,11 +5,27 @@ from __future__ import annotations
 import hashlib
 import json
 import re
+import sys
+from contextlib import contextmanager
 from dataclasses import replace
 
 from opulse.atoms import kernel, nodes
 from opulse.atoms.library import atoms_digest, checked_scope
 from opulse.atoms.values import Ok, encode, encode_outcome
+
+
+@contextmanager
+def recursion_limit_at_least(limit: int):
+    """Raise the recursion limit to at least ``limit`` for the block, then restore it."""
+    previous = sys.getrecursionlimit()
+    if previous < limit:
+        sys.setrecursionlimit(limit)
+    try:
+        yield
+    finally:
+        if sys.getrecursionlimit() != previous:
+            sys.setrecursionlimit(previous)
+
 
 TRACE_NODES = 150  # call-tree nodes kept per example; the rest is summarised as "elided"
 VALUE_CHARS = 1500  # trace inputs/outcomes larger than this (as JSON) are summarised

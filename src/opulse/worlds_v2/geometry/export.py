@@ -1,7 +1,6 @@
 """Publish twelve exact, kernel-run geometry cards and their call trees."""
 
 import json
-import sys
 from dataclasses import replace
 from pathlib import Path
 
@@ -11,6 +10,7 @@ from opulse.worlds_v2.export_util import (
     body_sha256,
     finalize_export,
     parseable_expression,
+    recursion_limit_at_least,
     source_matches,
     trace_json,
 )
@@ -195,8 +195,7 @@ def invert_isometries(library, source, target):
     return tuple(matches)
 
 
-def build_export(library=None) -> dict:
-    sys.setrecursionlimit(max(sys.getrecursionlimit(), 10000))
+def _build_export_unscoped(library=None) -> dict:
     if library is None:
         library = build_library()
     design = json.loads(DESIGN_PATH.read_text(encoding="utf-8"))
@@ -363,7 +362,10 @@ def build_export(library=None) -> dict:
 
 
 
-_build_export_raw = build_export
+def _build_export_raw(library=None) -> dict:
+    """Build the export with a raised recursion limit that is restored afterwards."""
+    with recursion_limit_at_least(10000):
+        return _build_export_unscoped(library)
 
 
 def build_export(*args, **kwargs):

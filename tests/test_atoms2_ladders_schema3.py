@@ -180,10 +180,11 @@ def test_schema3_page_discloses_offline_grading() -> None:
     assert "grader's reference file in the repository" not in SCRIPT.read_text()
 
 
-@pytest.mark.skipif(NODE is None, reason="node is required")
-def test_schema3_javascript_command_grades_real_reference_answer() -> None:
+def _javascript_command_grades_real_reference_answer() -> None:
+    # The build, node and grading steps all use PRIVATE, whatever the caller's environment says.
+    private = {"OPULSE_CHALLENGE_GRADING": str(PRIVATE)}
     build = subprocess.run([sys.executable, "-m", "opulse.tasks_v2.challenge_grade", "--build"],
-                           cwd=ROOT, env={**os.environ, "PYTHONPATH": "src"},
+                           cwd=ROOT, env={**os.environ, "PYTHONPATH": "src", **private},
                            capture_output=True, text=True, check=False)
     if build.returncode and "does not match the public catalogue hash" in build.stderr:
         pytest.skip("tasks must regenerate the public catalogue against this checkout")
@@ -197,8 +198,27 @@ console.log(bridge.pythonCommand(task, privateData[task.id].reference, data.sche
                                cwd=ROOT, capture_output=True, text=True, check=True)
     command = generated.stdout.strip()
     assert command.startswith("PYTHONPATH=src python -m opulse.tasks_v2.challenge_grade ")
-    environment = dict(os.environ, PATH=str(Path(sys.executable).parent) + os.pathsep + os.environ.get("PATH", ""))
+    environment = dict(os.environ, PATH=str(Path(sys.executable).parent) + os.pathsep + os.environ.get("PATH", ""),
+                       **private)
     environment.pop("PYTHONPATH", None)
     result = subprocess.run(command, shell=True, cwd=ROOT, env=environment,
                             capture_output=True, text=True, check=True)
     assert json.loads(result.stdout) == {"correct": True}
+
+
+@pytest.mark.skipif(NODE is None, reason="node is required")
+def test_schema3_javascript_command_grades_real_reference_answer() -> None:
+    _javascript_command_grades_real_reference_answer()
+
+
+@pytest.mark.skipif(NODE is None, reason="node is required")
+def test_schema3_javascript_command_ignores_session_grading_override(challenge_grading_path, challenge_grading) -> None:
+    # Regression: with the session override active, the build used to write to the temporary
+    # file and leave build/challenge_v2/grading.json missing for node.
+    assert os.environ["OPULSE_CHALLENGE_GRADING"] == str(challenge_grading_path) != str(PRIVATE)
+    _javascript_command_grades_real_reference_answer()
+
+
+def test_session_grading_override_does_not_leak_into_other_tests(challenge_grading_path) -> None:
+    # Runs after the test above in file order; the override must be gone once that test ends.
+    assert os.environ.get("OPULSE_CHALLENGE_GRADING") != str(challenge_grading_path)

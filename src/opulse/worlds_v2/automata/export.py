@@ -1,7 +1,6 @@
 """Generate the deep DFA world from real kernel executions."""
 
 import json
-import sys
 from dataclasses import replace
 from pathlib import Path
 
@@ -9,7 +8,7 @@ from opulse.atoms import kernel, nodes, notation, values
 from opulse.atoms.spec import Cost
 from opulse.atoms.values import Card
 from opulse.worlds_v2 import export_util
-from opulse.worlds_v2.export_util import finalize_export, trace_json
+from opulse.worlds_v2.export_util import finalize_export, recursion_limit_at_least, trace_json
 
 from . import hosts
 from .story import build_library, make_pair
@@ -75,17 +74,17 @@ def expressions():
 
 def example(expression, text, library):
     text = ascii_expression(expression, text)
-    sys.setrecursionlimit(max(50000, sys.getrecursionlimit()))
-    if isinstance(expression, nodes.Call) and all(isinstance(arg, nodes.Lit) for arg in expression.args):
-        run = library.run(expression.fn, tuple(arg.value for arg in expression.args), trace=True)
-    else:
-        run = kernel.evaluate(expression, scope=library.scope(), trace=True)
-    if run.trace is None:
-        raise ValueError(f"no kernel call for {text}")
-    return {"text": text, "expression": nodes.to_json(expression),
-            "inputs": [nodes.to_json(literal(arg))["value"] for arg in run.trace.inputs],
-            "outcome": values.encode_outcome(run.outcome), "steps": run.steps,
-            "trace": trace_json(run.trace, max_nodes=18)}
+    with recursion_limit_at_least(50000):
+        if isinstance(expression, nodes.Call) and all(isinstance(arg, nodes.Lit) for arg in expression.args):
+            run = library.run(expression.fn, tuple(arg.value for arg in expression.args), trace=True)
+        else:
+            run = kernel.evaluate(expression, scope=library.scope(), trace=True)
+        if run.trace is None:
+            raise ValueError(f"no kernel call for {text}")
+        return {"text": text, "expression": nodes.to_json(expression),
+                "inputs": [nodes.to_json(literal(arg))["value"] for arg in run.trace.inputs],
+                "outcome": values.encode_outcome(run.outcome), "steps": run.steps,
+                "trace": trace_json(run.trace, max_nodes=18)}
 
 
 def extra_examples():
